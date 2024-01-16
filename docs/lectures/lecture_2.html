@@ -403,12 +403,12 @@
 <h2>R Packages</h2>
 <ul>
 <li><p>Tidyverse</p></li>
-<li><p>INQS Tools</p></li>
+<li><p>csucistats</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span>(<span class="fu">inherits</span>(<span class="fu">try</span>(<span class="fu">library</span>(remotes)), <span class="st">"try-error"</span>)) </span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"inqs909/inqstools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">'csucistats'</span>, </span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">'https://inqs909.r-universe.dev'</span>, </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="st">'https://cloud.r-project.org'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-as-a-calculator" class="slide level2">

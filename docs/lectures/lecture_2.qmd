@@ -30,20 +30,18 @@ library(DT)
 library(tidyverse)
 ```
 
-
 ## R Packages
 
 -   Tidyverse
 
--   INQS Tools
+-   csucistats
 
 ```{r}
 #| eval: false
 #| echo: true
-
-if(inherits(try(library(remotes)), "try-error")) 
-  install.packages("remotes")
-remotes::install_github("inqs909/inqstools")
+install.packages('csucistats', 
+  repos = c('https://inqs909.r-universe.dev', 
+  'https://cloud.r-project.org'))
 ```
 
 ## R as a calculator
