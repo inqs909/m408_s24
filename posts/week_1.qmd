@@ -7,6 +7,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+::: callout-important
+## On Strike Jan 22 to Jan 26
+:::
+
 ## Learning Outcomes
 
 ### First Lecture
@@ -129,6 +133,6 @@ library(tidyverse)
 ## Resources
 
 | Lecture | Slides                                                   | Videos | Files                                                                                                                              |
-|-----------|-------------|-----------|-------------------------------------|
+|--------------|--------------|--------------|-------------------------------|
 | 1       | [Slides](https://m408.inqs.info/lectures/lecture_1.html) | NA     | NA                                                                                                                                 |
 | 2       | [Slides](https://m408.inqs.info/lectures/lecture_2.html) | NA     | [Examples](https://m408.inqs.info/files/r_scripts/class_2.R) [General Script](https://m408.inqs.info/files/r_scripts/gen_script.R) |
