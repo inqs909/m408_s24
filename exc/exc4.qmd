@@ -1,0 +1,30 @@
+---
+title: "Extra Credit 4"
+description: Instructions for extra credit five.
+date: 01-16-2023
+editor: visual
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+---
+
+Write a book report on *Data Feminism* by Catherine D'Ignazio and Lauren Klein. Provide a summary of the book, an write a brief analysis in supporting or opposing the book, and a personal reaction of the book.
+
+**Worth 3 percent points.**
+
+Report guidelines
+
+-   3-4 Pages
+
+-   Must include a title page
+
+-   Double Spaced
+
+-   12 point font
+
+-   Proofread your work
+
+-   Submit a pdf of your work to Canvas
+
+-   Due 5/15/2023

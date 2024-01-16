@@ -1,0 +1,97 @@
+---
+title: "Control Flow"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: false
+    comment: "#>" 
+
+editor: visual
+---
+
+```{r}
+#| include: false
+#| eval: true
+#| label: setup
+
+library(DT)
+library(tidyverse)
+```
+
+## Learning Objectives
+
+-   `break` Statements
+-   `while` Loops
+
+# `break` Statements
+
+## `break` Statements
+
+The `break` statement is used to stop a loop if the condition is met. This is used along with an `if` statement.
+
+```{r}
+#| eval: false
+
+for (i in vector){
+  perform task
+  if (condition){
+    break
+  } else {
+    perform task
+  }
+}
+```
+
+## Example
+
+Simulate from a $N(1,1)$ distribution until you have 30 positive numbers or you simulate one negative number.
+
+# `while` Loops
+
+## `while` Loops
+
+A while loop is a combination of a `for` loop and a `break` statement. The loop will continue indefinitely until a condition becomes false.
+
+```{r}
+#| eval: false
+
+
+while (condition){
+  perform task
+  condition <- update condition
+}
+```
+
+## Example
+
+Simulate from a $N(0,1)$ distribution until you have 50 positive numbers.\\
+
+## Example
+
+Find the value of $x$ where the function $y=1/x$ relative converges ($\frac{|y_{old}-y_{new}|}{y_{old}}$) at a level of $10^-6$ as $x\rightarrow \infty$.
+
+# `for` Loops
+
+## Example
+
+Generate the first 1000 prime numbers.
+
+## Example
+
+Write a loop that will generate the first 1000 numbers of the Fibonacci sequence.
+
+## Example
+
+Generate the 10th row of Pascal's Triangle.

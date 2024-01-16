@@ -1,0 +1,15 @@
+{
+  "hash": "b774bbddf5d4fb8cf4d7c52adf90273b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Homework 6\"\ndate: 3/31/23\ndescription: \"Assignment is due 4/6/23\"\neditor: visual\n---\n\n\n## Problem 1\n\nLet $Y_i\\overset{iid}{\\sim}Pois(\\lambda_i)$ with $\\lambda_i=g^{-1}(\\boldsymbol X_i^\\mathrm T\\boldsymbol \\beta)$, $\\eta_i = -1 + 3 X_i$, and $X_i\\sim N(0, 0.25)$. Write the code that will provide the log-likelihood function of the model.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- rnorm(1000, sd = sqrt(0.25)) \n\neta <- -1 + 2 * x\n\ny <- sapply(eta, \\(x) rpois(1, exp(x)))\nglm(y~x, family = poisson())\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n\nCall:  glm(formula = y ~ x, family = poisson())\n\nCoefficients:\n(Intercept)            x  \n     -1.025        2.101  \n\nDegrees of Freedom: 999 Total (i.e. Null);  998 Residual\nNull Deviance:\t    1555 \nResidual Deviance: 875.9 \tAIC: 1721\n```\n\n\n:::\n:::\n\n\n## Problem 2\n\nUsing the function above, minimize the likelihood function to identify the estimates of the parameters.\n\n## Problem 3\n\nRepeat Problems 1 and 2 a thousand times to conduct a simulation study.\n\n## Problem 4\n\nThe `lime` data set contains 385 observations on small-leaved lime trees. The `Foliage` variable measures the foliage biomass. Fit a regression model between `Foliage` and the following covariates: `DBH` tree diameter and `Age`. Fit the model using 3 different link functions. Print out the results for the one's that work. Comment why one's may work and others do not.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

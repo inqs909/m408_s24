@@ -1,0 +1,155 @@
+---
+title: "Data Manipulation"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: false
+    message: false
+    comment: "#>" 
+
+editor: visual
+---
+
+```{r}
+#| include: false
+#| eval: true
+#| label: setup
+
+library(DT)
+library(tidyverse)
+library(tidylog)
+```
+
+## Learning Objectives
+
+-   `tidyr` Functions
+
+-   Wide to Long Example
+
+# `Tidyr`
+
+## `tidyr` Functions
+
+A set of functions that will tidy up a data set such that:
+
+-   Every Column is a variable
+
+-   Every Row is an observation
+
+-   Every Cell is a single value
+
+## `pivot_longer()`
+
+-   The `pivot_longer()` function grabs the variables that repeated in an observation places them in one variable
+
+## `pivot_wider()`
+
+-   The `pivot_wider()` function then converts long data to wide data.
+
+## `separate()`
+
+-   The `separate()` function will separate a variable to multiple variables:
+
+# Example
+
+## Wide to Long Data Example
+
+We work on converting data from wide to long using the functions in the tidyr package. For many statistical analysis, long data is necessary.
+
+## Load Data
+
+Use the `read_csv()` to read `data_3_4.csv` into an object called `data1`;
+
+```{r,message=F}
+#| eval: true
+data1 <- read_csv(file="http://www.inqs.info/files/hiss_3/data_3_4.csv")
+```
+
+## Wide Data
+
+```{r}
+#| echo: false
+#| eval: true
+datatable(data1, options = list(pageLength = 3))
+```
+
+## Long Data
+
+```{r,include=FALSE}
+#| eval: true
+data1_long <- data1 %>% pivot_longer(`v1/mean`:`v4/median`,
+                                     names_to = "measurement",
+                                     values_to = "value") %>% 
+          separate(measurement, c("time","stat"),sep="/") %>% 
+          pivot_wider(names_from = stat,values_from = value)
+```
+
+```{r}
+#| echo: false
+#| eval: false
+datatable(data1_long, options = list(pageLength = 8))
+```
+
+## `pivot_longer()`
+
+-   The `pivot_longer()` function grabs the variables that repeated in an observation places them in one variable:
+
+::: fragment
+```{r}
+#| code-line-numbers: "|2"
+#| eval: true
+#| message: true
+df1 <- data1 %>% 
+  pivot_longer(cols=`v1/mean`:`v4/median`,
+               names_to = "measurement",
+               values_to = "value")
+```
+:::
+
+## `separate()`
+
+-   The `separate()` function will separate a variable to multiple variables:
+
+::: fragment
+```{r}
+#| code-line-numbers: "|3"
+#| eval: true
+#| message: true
+df2 <- data1 %>% 
+  pivot_longer(cols=`v1/mean`:`v4/median`,
+               names_to = "measurement",
+               values_to = "value") %>% 
+  separate(col=measurement,into=c("time","stat"),sep="/")
+```
+:::
+
+## `pivot_wider()`
+
+-   The `pivot_wider()` function then converts long data to wide data.
+
+::: fragment
+```{r}
+#| code-line-numbers: "|4"
+#| eval: true
+#| message: true
+df3 <- data1 %>% 
+  pivot_longer(`v1/mean`:`v4/median`,
+               names_to = "measurement", 
+               values_to = "value") %>% 
+  separate(measurement,c("time","stat"),sep="/") %>% 
+  pivot_wider(names_from = stat,
+              values_from = value)
+```
+:::

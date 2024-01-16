@@ -1,0 +1,58 @@
+---
+title: "Homework 4"
+date: 3/5/23
+editor: visual
+draft: true
+---
+
+**Due 3/10/23 \@ 11:59 PM**
+
+Use an RMD Notebook file from to create the assignment.
+
+Update `inqstools` for new template format.
+
+```{r}
+#| eval: false
+
+remotes::install_github("inqs909/inqstools")
+```
+
+You will need to knit the document if you use "M408 Alternative".
+
+You must comment all your code to receive credit.
+
+Submit the \*nb.html or \*.html file to canvas.
+
+## Problem 1
+
+The `faithful` data set in R contains information on `eruptions` time and `waiting` time. Describe the relationship between `waiting` (independent) and `eruptions` (dependent).
+
+You must provide descriptive statistics, visuals, and model.
+
+## Problem 2
+
+The `cats` data set from the `MASS` package contains information of cat body weight (kg; `Bwt`) and heart weight (g; `Hwt`). Fit a model to see if there is a significant association between body weight (predictor) and heart weight (outcome).
+
+You must provide descriptive statistics, visuals, and model.
+
+## Problem 3
+
+When estimating the $\beta$ coefficients, we are minimizing the sum of error squares:
+
+$$
+\sum^n_{i=1}(y_i-(\beta_0+\beta_1x_i))^2
+$$
+
+We square the errors to make sure we do not lose information when summing up all the values. However, what if we try to use an absolute value:
+
+$$
+\sum^n_{i=1}|y_i-(\beta_0+\beta_1x_i)|
+$$
+
+Simulate a data set, estimate the coefficients, and compare the results. Are they the same or different?
+
+## Problem 4
+
+Conduct a simulation assessing which case from problem 3 is better.
+
+To assess which case is better compare the mean and standard deviations of the simulated-estimated coefficients.

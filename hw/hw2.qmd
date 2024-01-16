@@ -1,0 +1,39 @@
+---
+title: "Homework 2"
+date: 2/10/23
+editor: visual
+draft: true
+---
+
+**Due 2/17/23 \@ 11:59 PM**
+
+Use an RMD Notebook file from to create the assignment.
+
+You must comment all your code to receive credit.
+
+Submit the \*nb.html file to canvas.
+
+## Problem 1
+
+Write a function that takes a vector as an input an returns a labeled list with the mean, median, and variance of the vector.
+
+## Problem 2
+
+Write a function for the following equation:
+
+$$
+f(x, y, z) =\left\{\begin{array}{cc}
+x^2+\sqrt y & z  = 0 \\ 
+x^2+2x+3+ \log(y) & z = 1
+\end{array}\right.
+$$
+
+Include any error messages if necessary.
+
+## Problem 3
+
+Create a function that will give you the first `x` Fibonacci numbers. You must use a `for` loop.
+
+## Problem 4
+
+Create a function that will randomly generate `n` numbers that are greater than `x` from a $Pois(\lambda)$.

@@ -1,0 +1,13 @@
+---
+title: "Homework 8"
+date: 4/27/23
+description: "Assignment is due 5/5/23"
+editor: visual
+draft: true
+---
+
+From *An Introduction to Statistical Learning* from James, Witten, Hastie, and Tibshirani (Second Edition)
+
+## Problem 1
+
+From the Applied Section in Chapter 8: Problem 8 a,b,c,d,e

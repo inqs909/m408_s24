@@ -1,0 +1,150 @@
+---
+title: "Welcome to Math 408"
+subtitle: "Advance Data Analysis"
+knitr:
+  opts_chunk: 
+    echo: true
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+editor: source
+---
+
+## Introductions
+
+-   San Bernardino, CA
+
+-   CSU Monterey Bay
+
+    -   BS Biology
+
+-   San Diego State University
+
+    -   Master's in Public Health
+
+-   UC Riverside
+
+    -   PhD in Applied Statistics
+
+## Introductions
+
+-   Name
+
+-   Year
+
+-   Major
+
+-   Fun Fact
+
+-   Career Goal
+
+## Goals for the Course
+
+-   Gain R Programming Skills
+
+-   Apply different modeling techniques
+
+    -   Linear Regression
+
+    -   Generalized Linear Models
+
+    -   Model Building
+
+-   Apply Different Machine Learning Techniques
+
+# Office Hours
+
+## OH: Traditional
+
+BTE 2840 MW 5-6 PM
+
+![](img/office.jpg){fig-align="center"}
+
+## OH: Casual
+
+Bell Tower Rooftop Terrace Th 1:30 - 3 PM
+
+![](img/terrace.jpg){fig-align="center"}
+
+## OH: R Programming
+
+BTE 2810 F 10AM - 12PM
+
+![](img/rp.jpg){fig-align="center"}
+
+# Syllabus
+
+## Syllabus
+
+[Syllabus](https://m408.inqs.info/syllabus.html)
+
+## Books
+
+-   Generalized Linear Models With Examples in R (GLM)
+    -   Peter Dunn & and Gordon Smyth
+    -   Available to Download from the Broome Library
+-   Statistical Learning from a Regression Perspective (SL)
+    -   Richard Berk
+    -   Available to Download from the Broome Library
+-   Statistical Computing (SC)
+    -   Isaac Quintanilla Salinas
+    -   <https://www.inqs.info/stat_comp/>
+    -   <https://hypothes.is/groups/xMmDdj2A/m408>
+
+# Introduction to R
+
+## R Programming
+
+R is a statistical programming package that allows you to conduct different types of analysis.
+
+[R](https://www.r-project.org/)
+
+## RStudio
+
+A piece of software that organizes how you conduct statistical analysis in R.
+
+[RStudio](https://posit.co/downloads/)
+
+## Posit Cloud
+
+A web version of RStudio.
+
+[Posit Cloud](https://posit.cloud/login)
+
+## R Packages
+
+-   Tidyverse
+
+-   INQS Tools
+
+    ```{r}
+    #| eval: false
+    remotes::install_gitlab("inqs909/inqstools")
+    ```
+
+## R as a calculator
+
+R can evaluate different expressions in the console tab.
+
+## Types of Data
+
+-   Numeric
+
+-   Character
+
+-   Logical
+
+-   Missing
+
+## R Functions
+
+R functions performs tasks to specific data values.

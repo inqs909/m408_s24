@@ -1,0 +1,247 @@
+---
+title: "Bagging, Random Forests, and Boosting"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: true
+    message: false
+    warnings: false
+    comment: "#>" 
+    
+revealjs-plugins:
+  - pointer
+  - verticator
+  
+filters: 
+  - reveal-header
+  - code-fullscreen
+
+editor: visual
+---
+
+## Learning Outcomes
+
+-   Bagging
+
+-   Random Forests
+
+-   Boosting
+
+# Bagging
+
+## Bagging
+
+When splitting the data to train and test data sets, the construction of the tree suffers from high variance.
+
+::: fragment
+This is due to splitting the data in a random way. One training data set will lead to different results from another training data set.
+:::
+
+::: fragment
+To improve performance, we implement a *Bootstrap Aggregation (Bagging)* technique.
+:::
+
+::: fragment
+Bagging will produce a forest of trees to classify a new observation.
+:::
+
+## Bagging Algorithm
+
+Given a single training data set:
+
+1.  Sample from the data with replacement.
+
+2.  Build a tree from the sampled data:
+
+    $$
+    \hat f^{*b}(x)
+    $$
+
+3.  Repeat the process B times (B=100)
+
+4.  Compute the final average for all predictions:
+
+    $$
+    \hat f_{bag}(x)=\frac{1}{B}\sum^B_{b=1}\hat f^{*b}(x)
+    $$
+
+## Classification
+
+To classify an observation, you can record the classification of each $b$ tree. Then classify an observation by majority rule.
+
+## Variable Importance
+
+With the implementation of Bagging, you lose interpretability from the original tree due to the forest.
+
+However, we can compute which variables reduced the RSS or Gini Index for all the trees. The variables with the largest reduction are considered important.
+
+# Random Forests
+
+## Random Forests
+
+Random Forests is an extension of Bagging, where a forest is generated from a bootstrap-based approach. However, when making a split, a **random** set of predictors (m\<p) are chosen for the split, instead of the full set p.
+
+::: fragment
+This will ensure that trees are unique, uncorrelated.
+:::
+
+::: fragment
+It ensures that no one predictor will have all the power and lower the variance.
+:::
+
+# Boosting
+
+## Boosting
+
+Boosting is a mechanism where a final tree is built slowly from smaller trees using the residuals.
+
+::: fragment
+This ensures a tree is built from a slow process and prevents overfitting.
+:::
+
+::: fragment
+This is done to improve prediction capabilities.
+:::
+
+## Algorithm
+
+1.  Set $\hat f(x) = 0$ and $r_i = y_i$ for all $i$ in the training set
+
+2.  For $b=1, 2, \ldots, B$ repeat:
+
+    1.  Fit tree $\hat f^b$ with $d$ splits ($d+1$ terminal nodes) to the training data $(X,r)$
+
+    2.  Update $\hat f$
+
+        $$
+        \hat f(x) \leftarrow \hat f(x) + \lambda\hat f^b(x)
+        $$
+
+    3.  Update residuals
+
+        $$
+        r_i \leftarrow r_i - \lambda\hat f^{b}(x_i)
+        $$
+
+3.  Output boosted model:
+
+    $$
+    \hat f(x) = \sum^B_{b=1} \lambda \hat f^b(x)
+    $$
+
+# R Code
+
+## Bagging Regression Trees
+
+::: panel-tabset
+### R Code
+
+```{r}
+library(randomForest)
+library(palmerpenguins)
+library(tidyverse)
+library(magrittr)
+
+penguins %<>% drop_na()
+train <- sample(1:nrow(penguins), nrow(penguins)/2)
+bag_penguins <- penguins %$% randomForest(body_mass_g ~ bill_depth_mm + bill_length_mm + flipper_length_mm, subset = train, mtry = 3, importance = T)
+
+```
+
+### Predictions
+
+```{r}
+yhat_bag <- predict(bag_penguins, newdata = penguins[-train , ])
+test <- penguins[-train , ]$body_mass_g
+plot(yhat_bag, test)
+```
+:::
+
+## Bagging Classification Trees
+
+::: panel-tabset
+### R Code
+
+```{r}
+bag_penguins <- penguins %$% randomForest(species ~ body_mass_g + bill_depth_mm + bill_length_mm + flipper_length_mm, subset = train, mtry = 4, importance = T)
+
+```
+
+### Prediction
+
+```{r}
+yhat_bag <- predict(bag_penguins, newdata = penguins[-train , ])
+test <- penguins[-train , ]$species
+table(yhat_bag, test)
+```
+:::
+
+## Random Forests Regression Trees
+
+::: panel-tabset
+### R Code
+
+```{r}
+bag_penguins <- penguins %$% randomForest(body_mass_g ~ bill_depth_mm + bill_length_mm + flipper_length_mm, subset = train, mtry = 2, importance = T)
+
+```
+
+### Prediction
+
+```{r}
+yhat_bag <- predict(bag_penguins, newdata = penguins[-train , ])
+test <- penguins[-train , ]$body_mass_g
+plot(yhat_bag, test)
+```
+:::
+
+## Random Forests Classification Trees
+
+::: panel-tabset
+### R Code
+
+```{r}
+bag_penguins <- penguins %$% randomForest(species ~ body_mass_g + bill_depth_mm + bill_length_mm + flipper_length_mm, subset = train, mtry = 2, importance = T)
+```
+
+### Prediction
+
+```{r}
+yhat_bag <- predict(bag_penguins, newdata = penguins[-train , ])
+test <- penguins[-train , ]$species
+table(yhat_bag, test)
+```
+:::
+
+## Boosting Regression Trees
+
+::: panel-tabset
+### R Code
+
+```{r}
+library(gbm)
+boost_penguin <- gbm(body_mass_g ~ bill_depth_mm + bill_length_mm + flipper_length_mm, data = penguins[train , ],
+distribution = "gaussian", n.trees = 5000,
+interaction.depth = 4)
+```
+
+### Prediction
+
+```{r}
+yhat_boost <- predict(boost_penguin, newdata = penguins[-train , ], n.trees = 5000)
+test <- penguins[-train , ]$body_mass_g
+plot(yhat_bag, test)
+```
+:::

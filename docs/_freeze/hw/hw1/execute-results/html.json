@@ -1,0 +1,15 @@
+{
+  "hash": "763ffbcccc516ed577ceb6299554d54c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Homework 1\"\ndate: 2/7/23\neditor: visual\n---\n\n\n**Due 2/10/23 \\@ 11:59 PM**\n\nUse an RMD Notebook file from to create the assignment.\n\nYou must comment all your code to receive credit.\n\nSubmit the \\*nb.html file to canvas.\n\nFor all problems, you must use at least one `for` or `while` loop.\n\n## Problem 1\n\nUsing the following code:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- matrix(rnorm(1500), nrow = 10)\n```\n:::\n\n\nWrite the code to produce the output if you use the `rowMeans()` on the R object `x`.\n\n## Problem 2\n\nWrite the code to generate the 10th row of Pascal's Triangle.\n\n## Problem 3\n\nUsing the following code:\n\n\n::: {.cell}\n\n```{.r .cell-code}\ny <- matrix(sample(1:400, 100, replace = T), nrow = 10)\n```\n:::\n\n\nFind the median value for each column of the matrix `y`. You are not allowed to use the `median()` function.\n\n## Problem 4\n\nWrite the code that will generate the first 1000 numbers of the Fibonacci sequence.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

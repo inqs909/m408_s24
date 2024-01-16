@@ -1,0 +1,83 @@
+---
+title: "Class 9"
+author: "Isaac Quintanilla Salinas"
+date: "`r format(Sys.time(),'%m-%d-%Y')`"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+## Reading Data Example
+
+```{r}
+library(tidyverse)
+data1 <- read_csv("/home/inqs/Repos/M408_S23/files/data/data_3_1.csv")
+data2 <- read_csv("/home/inqs/Repos/M408_S23/files/data/data_3_2.csv")
+```
+
+## Example
+
+Load data `data_3_1.csv` and `data_3_2.csv`.
+
+```{r}
+data1
+data2
+```
+
+## Example
+
+Load the following data: <https://m408.inqs.info/files/data/data_3_3.csv>
+
+```{r}
+
+```
+
+## Example
+
+Merge data sets `data_3_1.csv` and `data_3_2.csv` using the `full_join()`
+
+```{r}
+
+```
+
+## Example
+
+Using the `penguins` dataset from `palmerpenguins`, create a new variable that is the ln of `flipper_length_mm`.
+
+```{r}
+
+```
+
+## Example
+
+Using the `penguins` dataset from `palmerpenguins`, only select the variables that are continuous data points.
+
+```{r}
+
+```
+
+## Example
+
+Using the `penguins` dataset from `palmerpenguins`, filter the data set to look at penguins that are a Gentoo species.
+
+```{r}
+
+```
+
+## Example
+
+Using the `penguins` dataset from `palmerpenguins`, create a new variable that dichotomizes a penguin if their bill is longer than the average `bill_length_mm`.
+
+```{r}
+
+```
+
+## Example
+
+Using the `penguins` dataset from `palmerpenguins`, group by species and find the average ln `flipper_length_mm`
+
+```{r}
+
+```

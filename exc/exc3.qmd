@@ -1,0 +1,62 @@
+---
+title: "Extra Credit 3"
+description: Instructions for extra credit four.
+date: 01-16-2023
+editor: visual
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+---
+
+Write a report on Monte Carlo Methods. Provide a brief history and their purpose. Lastly, provide a toy example demonstrating the use of Monte Carlo Methods in R.
+
+**Worth 3 percent points.**
+
+#### Resources
+
+-   https://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694
+
+-   https://towardsdatascience.com/monte-carlo-simulation-a-practical-guide-85da45597f0e
+
+#### Report Guideline
+
+-   3-4 Pages
+
+-   Must include a title page
+
+-   Double Spaced
+
+-   12 point font
+
+-   Proofread your work
+
+-   Submit a pdf of your work to Canvas
+
+-   Due 5/15/2023
+
+Write a report on Survival Analysis. Make sure to provide a brief history of survival analysis and prominent methods such as Kaplan-Meier curves and Cox proportional hazard models. Lastly, provide a toy example demonstrating the use of Survival Analysis in R.
+
+**Worth 2 percent points.**
+
+#### Resources
+
+-   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2394262/
+
+-   https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival_print.html
+
+#### Report Guideline
+
+-   3-4 Pages
+
+-   Must include a title page
+
+-   Double Spaced
+
+-   12 point font
+
+-   Proofread your work
+
+-   Submit a pdf of your work to Canvas
+
+-   Due 5/15/2023

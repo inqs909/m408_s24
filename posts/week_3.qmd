@@ -1,0 +1,30 @@
+---
+title: "Week 3"
+date: 02-06-23
+description: We will continue our discussion with control flow and begin our discussion on Functional Programming Analysis.
+editor: visual
+draft: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Learning Outcomes
+
+### First Lecture
+
+-   break Statements
+
+-   while Loops
+
+### Second Lecture
+
+-   R Built-in-functions
+
+-   User-built functions
+
+## Resources
+
+| Lecture | Slides                                                   | Videos                                | Files                                                            |
+|---------------|--------------------|---------------|-----------------------|
+| 1       | [Slides](https://m408.inqs.info/lectures/lecture_5.html) | [Video](https://youtu.be/qeXT6HG1Fjo) | [Script](https://m408.inqs.info/files/r_scripts/class_5.nb.html) |
+| 2       | [Slides](https://m408.inqs.info/lectures/lecture_6.html) | [Video](https://youtu.be/NYZwJQ1dqpM) | [Script](https://m408.inqs.info/files/r_scripts/class_6.nb.html) |
