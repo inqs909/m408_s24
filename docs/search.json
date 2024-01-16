@@ -4,161 +4,14 @@
     "href": "syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "Term: Spring 2023\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nOther\nR Programming\n\n\n\n\nDay\nMW\nThur\nFri\n\n\nLocation\nBTE 2840\nLook for Group\nBTE 2810\n\n\nTime\n2-3 PM\n2-3 PM\n9 AM - 11 AM\n\n\n\nOr by Zoom appointment: https://calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 3:00-4:15 PM in BT 1462\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nGeneralized Linear Models With Examples in R (GLM)\n\nPeter Dunn & and Gordon Smyth\nAvailable to Download from the Broome Library\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nhttps://www.inqs.info/stat_comp/\nhttps://hypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: https://www.r-project.org/.\nR Notebooks is a interactive RMD file that can be used to provide reproducible code and documents. You can learn more about it here\nRStudio provides free and open source tools for your data analysis in R: https://www.rstudio.com/\nINQS Tools is my personal R package that will contain templates to submit assignments for class: INQS Tools\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted on https://m408.inqs.info/hw.html and CANVAS. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 10 point penalty. The last day late work will be accepted is on 5/14/2023 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Talking during the time of the exam, sharing materials, looking at another students’ exam, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 6 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/23-1/27\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/30-2/3\nControl Flow\nSC: Ch 2\nHW #1\n\n\n2/6-2/10\nControl Flow/Functional Programming\nSC: Ch 13\nHW #2\n\n\n2/13-2/17\nFunctional Programming\nSC: Ch 15\nHW #3\n\n\n2/20-9/24\nData Manipulation\nSC: Ch 3\nExam #1\n\n\n2/27-3/3\nLinear Regression\nGLM: Ch 2\nHW #4\n\n\n3/3-3/10\nMultivariable Linear Regression\nGLM: Ch 2\nHW #5\n\n\n3/13-3/17\nModel Development\nGLM: Ch 3\n\n\n\n3/20-3/24\nSpring Break\n\n\n\n\n3/27-3/31\nGeneralized Linear Models\nGLM: Ch 5\nHW #6\n\n\n4/3-4/7\nModel Inference\nGLM: Ch 6-7\nExam #2\n\n\n4/10-4/14\nIntro to Statistical Learning\nSL: Ch 2\nHW # 7\n\n\n4/17-4/21\nClassifications\nSL: Ch 4\nHW # 8\n\n\n4/24-4/28\nTree-Based Methods\nSL: Ch 8\nHW # 9\n\n\n5/1-5/5\nSupport Vector Machines\nSL: Ch 9\nHW # 10\n\n\n5/8-5/12\nDeep Learning\nSL: Ch 10\n\n\n\n5/15-5/19\nExam 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom."
+    "text": "Term: Spring 2024\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nTea Time\nR OH\n\n\n\n\nDay\nMW\nTBD\nTuesday\n\n\nLocation\nBTE 2840\nLook for Group\nBTE 2840\n\n\nTime\n2-3 PM\nTBD\n9 AM - 12 PM\n\n\n\nOr by Zoom appointment: https://calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 1:30-3:00 PM in BT 1462\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nhttps://www.inqs.info/stat_comp/\nhttps://hypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: https://www.r-project.org/.\nR Markdown is a scientific documentation known as an RMD file that can be used to provide reproducible code and documents.\nRStudio provides free and open source tools for your data analysis in R: https://www.rstudio.com/\ncsucistats is a developmental R package that will contain RMD templates to submit assignments for class: csucistats\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted on https://m408.inqs.info/hw.html and CANVAS. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 10 point penalty. The last day late work will be accepted is on 5/14/2023 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Communication about the exam, sharing material, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 6 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/22-1/26\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/29-2/2\nControl Flow\nSC: Ch 2\nHW #1\n\n\n2/5-2/9\nControl Flow/Functional Programming\nSC: Ch 13\nHW #2\n\n\n2/12-2/16\nFunctional Programming\nSC: Ch 15\nHW #3\n\n\n2/19-2/23\nData Manipulation\nSC: Ch 3\nExam #1\n\n\n2/26-3/1\nIntroduction to Statistical Learning\nSL: Ch 2\nHW #4\n\n\n3/4-3/8\nLinear Regression\nSL: Ch 3\nHW #5\n\n\n3/11-3/15\nMultivariable Linear Regression\nSL: Ch 3\n\n\n\n3/18-3/22\nSpring Break\n\n\n\n\n3/25-3/29\nClassification\nSL: Ch 4\nHW #6\n\n\n4/1-4/5\nResampling Methods\nSL: Ch 5\nExam #2\n\n\n4/8-4/12\nModel Selection\nSL: Ch 6\nHW # 7\n\n\n4/15-4/19\nNonparametric Regression\nSL: Ch 7\nHW # 8\n\n\n4/22-4/26\nTree-Based Methods\nSL: Ch 8\nHW # 9\n\n\n4/29-5/3\nSupport Vector Machines\nSL: Ch 9\nHW # 10\n\n\n5/6-5/10\nDeep Learning\nSL: Ch 10\n\n\n\n5/13-5/17\nExam 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom.\n\n\n\n\nThe California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. It is possible that we will call a strike or other work stoppage this term. I promise to promptly inform you of any schedule disruption. Our working conditions are your learning conditions; we seek to protect both. For further information go to www.CFAbargaining.org."
   },
   {
     "objectID": "syllabus.html#math-408-advance-data-analysis",
     "href": "syllabus.html#math-408-advance-data-analysis",
     "title": "Syllabus",
     "section": "",
-    "text": "Term: Spring 2023\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nOther\nR Programming\n\n\n\n\nDay\nMW\nThur\nFri\n\n\nLocation\nBTE 2840\nLook for Group\nBTE 2810\n\n\nTime\n2-3 PM\n2-3 PM\n9 AM - 11 AM\n\n\n\nOr by Zoom appointment: https://calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 3:00-4:15 PM in BT 1462\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nGeneralized Linear Models With Examples in R (GLM)\n\nPeter Dunn & and Gordon Smyth\nAvailable to Download from the Broome Library\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nhttps://www.inqs.info/stat_comp/\nhttps://hypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: https://www.r-project.org/.\nR Notebooks is a interactive RMD file that can be used to provide reproducible code and documents. You can learn more about it here\nRStudio provides free and open source tools for your data analysis in R: https://www.rstudio.com/\nINQS Tools is my personal R package that will contain templates to submit assignments for class: INQS Tools\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted on https://m408.inqs.info/hw.html and CANVAS. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 10 point penalty. The last day late work will be accepted is on 5/14/2023 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Talking during the time of the exam, sharing materials, looking at another students’ exam, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 6 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/23-1/27\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/30-2/3\nControl Flow\nSC: Ch 2\nHW #1\n\n\n2/6-2/10\nControl Flow/Functional Programming\nSC: Ch 13\nHW #2\n\n\n2/13-2/17\nFunctional Programming\nSC: Ch 15\nHW #3\n\n\n2/20-9/24\nData Manipulation\nSC: Ch 3\nExam #1\n\n\n2/27-3/3\nLinear Regression\nGLM: Ch 2\nHW #4\n\n\n3/3-3/10\nMultivariable Linear Regression\nGLM: Ch 2\nHW #5\n\n\n3/13-3/17\nModel Development\nGLM: Ch 3\n\n\n\n3/20-3/24\nSpring Break\n\n\n\n\n3/27-3/31\nGeneralized Linear Models\nGLM: Ch 5\nHW #6\n\n\n4/3-4/7\nModel Inference\nGLM: Ch 6-7\nExam #2\n\n\n4/10-4/14\nIntro to Statistical Learning\nSL: Ch 2\nHW # 7\n\n\n4/17-4/21\nClassifications\nSL: Ch 4\nHW # 8\n\n\n4/24-4/28\nTree-Based Methods\nSL: Ch 8\nHW # 9\n\n\n5/1-5/5\nSupport Vector Machines\nSL: Ch 9\nHW # 10\n\n\n5/8-5/12\nDeep Learning\nSL: Ch 10\n\n\n\n5/15-5/19\nExam 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom."
-  },
-  {
-    "objectID": "posts/week_8.html",
-    "href": "posts/week_8.html",
-    "title": "Week 8",
-    "section": "",
-    "text": "Residual Analysis\n\n\n\n\n\nModel Development"
-  },
-  {
-    "objectID": "posts/week_8.html#learning-outcomes",
-    "href": "posts/week_8.html#learning-outcomes",
-    "title": "Week 8",
-    "section": "",
-    "text": "Residual Analysis\n\n\n\n\n\nModel Development"
-  },
-  {
-    "objectID": "posts/week_8.html#resources",
-    "href": "posts/week_8.html#resources",
-    "title": "Week 8",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
-  },
-  {
-    "objectID": "posts/week_6.html",
-    "href": "posts/week_6.html",
-    "title": "Week 6",
-    "section": "",
-    "text": "Bivariate Associations\nLinear Regression\nSimulation Study\n\n\n\n\n\nEstimation Procedures\nStandard Errors\nSampling Distribution"
-  },
-  {
-    "objectID": "posts/week_6.html#learning-outcomes",
-    "href": "posts/week_6.html#learning-outcomes",
-    "title": "Week 6",
-    "section": "",
-    "text": "Bivariate Associations\nLinear Regression\nSimulation Study\n\n\n\n\n\nEstimation Procedures\nStandard Errors\nSampling Distribution"
-  },
-  {
-    "objectID": "posts/week_6.html#resources",
-    "href": "posts/week_6.html#resources",
-    "title": "Week 6",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\nScript\n\n\n2\nSlides\nVideo\nScript"
-  },
-  {
-    "objectID": "posts/week_4.html",
-    "href": "posts/week_4.html",
-    "title": "Week 4",
-    "section": "",
-    "text": "*apply family of functions\n\n\n\n\n\nAnonymous Functions\nPipes\nData Manipulation"
-  },
-  {
-    "objectID": "posts/week_4.html#learning-outcomes",
-    "href": "posts/week_4.html#learning-outcomes",
-    "title": "Week 4",
-    "section": "",
-    "text": "*apply family of functions\n\n\n\n\n\nAnonymous Functions\nPipes\nData Manipulation"
-  },
-  {
-    "objectID": "posts/week_4.html#resources",
-    "href": "posts/week_4.html#resources",
-    "title": "Week 4",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\nScript\n\n\n2\nSlides\nVideo\nScript"
-  },
-  {
-    "objectID": "posts/week_2.html",
-    "href": "posts/week_2.html",
-    "title": "Week 2",
-    "section": "",
-    "text": "Indexing\nComparisons\nIf/else Statements\ntry()\nfor Loops\n\n\n\n\n\nnested loops\nnext\nbreak\nwhile Loops"
-  },
-  {
-    "objectID": "posts/week_2.html#learning-outcomes",
-    "href": "posts/week_2.html#learning-outcomes",
-    "title": "Week 2",
-    "section": "",
-    "text": "Indexing\nComparisons\nIf/else Statements\ntry()\nfor Loops\n\n\n\n\n\nnested loops\nnext\nbreak\nwhile Loops"
-  },
-  {
-    "objectID": "posts/week_2.html#resources",
-    "href": "posts/week_2.html#resources",
-    "title": "Week 2",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\nR Script\n\n\n2\nSlides\nVideo\nR Script"
-  },
-  {
-    "objectID": "posts/week_14.html",
-    "href": "posts/week_14.html",
-    "title": "Week 14",
-    "section": "",
-    "text": "Maximum Margin Classifier\nSupport Vector Classifier\n\n\n\n\n\nSupport Vector Machine"
-  },
-  {
-    "objectID": "posts/week_14.html#learning-outcomes",
-    "href": "posts/week_14.html#learning-outcomes",
-    "title": "Week 14",
-    "section": "",
-    "text": "Maximum Margin Classifier\nSupport Vector Classifier\n\n\n\n\n\nSupport Vector Machine"
-  },
-  {
-    "objectID": "posts/week_14.html#resources",
-    "href": "posts/week_14.html#resources",
-    "title": "Week 14",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
-  },
-  {
-    "objectID": "posts/week_12.html",
-    "href": "posts/week_12.html",
-    "title": "Week 12",
-    "section": "",
-    "text": "Linear Discriminant Analysis\nQuadratic Discriminant Analysis\n\n\n\n\n\nCross-Validation Technique"
-  },
-  {
-    "objectID": "posts/week_12.html#learning-outcomes",
-    "href": "posts/week_12.html#learning-outcomes",
-    "title": "Week 12",
-    "section": "",
-    "text": "Linear Discriminant Analysis\nQuadratic Discriminant Analysis\n\n\n\n\n\nCross-Validation Technique"
-  },
-  {
-    "objectID": "posts/week_12.html#resources",
-    "href": "posts/week_12.html#resources",
-    "title": "Week 12",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
-  },
-  {
-    "objectID": "posts/week_10.html",
-    "href": "posts/week_10.html",
-    "title": "Week 10",
-    "section": "",
-    "text": "Residual Analysis\n\n\n\n\n\nHypothesis Testing"
-  },
-  {
-    "objectID": "posts/week_10.html#learning-outcomes",
-    "href": "posts/week_10.html#learning-outcomes",
-    "title": "Week 10",
-    "section": "",
-    "text": "Residual Analysis\n\n\n\n\n\nHypothesis Testing"
-  },
-  {
-    "objectID": "posts/week_10.html#resources",
-    "href": "posts/week_10.html#resources",
-    "title": "Week 10",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
+    "text": "Term: Spring 2024\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nTea Time\nR OH\n\n\n\n\nDay\nMW\nTBD\nTuesday\n\n\nLocation\nBTE 2840\nLook for Group\nBTE 2840\n\n\nTime\n2-3 PM\nTBD\n9 AM - 12 PM\n\n\n\nOr by Zoom appointment: https://calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 1:30-3:00 PM in BT 1462\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nhttps://www.inqs.info/stat_comp/\nhttps://hypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: https://www.r-project.org/.\nR Markdown is a scientific documentation known as an RMD file that can be used to provide reproducible code and documents.\nRStudio provides free and open source tools for your data analysis in R: https://www.rstudio.com/\ncsucistats is a developmental R package that will contain RMD templates to submit assignments for class: csucistats\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted on https://m408.inqs.info/hw.html and CANVAS. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 10 point penalty. The last day late work will be accepted is on 5/14/2023 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Communication about the exam, sharing material, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 6 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/22-1/26\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/29-2/2\nControl Flow\nSC: Ch 2\nHW #1\n\n\n2/5-2/9\nControl Flow/Functional Programming\nSC: Ch 13\nHW #2\n\n\n2/12-2/16\nFunctional Programming\nSC: Ch 15\nHW #3\n\n\n2/19-2/23\nData Manipulation\nSC: Ch 3\nExam #1\n\n\n2/26-3/1\nIntroduction to Statistical Learning\nSL: Ch 2\nHW #4\n\n\n3/4-3/8\nLinear Regression\nSL: Ch 3\nHW #5\n\n\n3/11-3/15\nMultivariable Linear Regression\nSL: Ch 3\n\n\n\n3/18-3/22\nSpring Break\n\n\n\n\n3/25-3/29\nClassification\nSL: Ch 4\nHW #6\n\n\n4/1-4/5\nResampling Methods\nSL: Ch 5\nExam #2\n\n\n4/8-4/12\nModel Selection\nSL: Ch 6\nHW # 7\n\n\n4/15-4/19\nNonparametric Regression\nSL: Ch 7\nHW # 8\n\n\n4/22-4/26\nTree-Based Methods\nSL: Ch 8\nHW # 9\n\n\n4/29-5/3\nSupport Vector Machines\nSL: Ch 9\nHW # 10\n\n\n5/6-5/10\nDeep Learning\nSL: Ch 10\n\n\n\n5/13-5/17\nExam 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom.\n\n\n\n\nThe California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. It is possible that we will call a strike or other work stoppage this term. I promise to promptly inform you of any schedule disruption. Our working conditions are your learning conditions; we seek to protect both. For further information go to www.CFAbargaining.org."
   },
   {
     "objectID": "lectures/lecture_9.html#learning-objectives",
@@ -1831,196 +1684,35 @@
     "href": "index.html",
     "title": "Welcome to Advanced Data Analysis!",
     "section": "",
-    "text": "Brief Introduction\n\n\n\n\n\nWelcome to the course! This is the home page of the course where I will provide a recap on what was covered in the week. Here I will post any documents or videos for your reference. If you have any questions, please email me at isaac.qs@csuci.edu.\n\n\n\n\n\n\n\n\n\nDiscord Server\n\n\n\n\n\nWill post if class creates one.\n\n\n\n\n\n\n\n\n\nIntroduction to Statistics Book\n\n\n\n\n\nhttps://openintro-ims.netlify.app/\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 15\n\n\n\n\n\nWe will begin our discussion on Tree-Based methods.\n\n\n\n\n\nMay 7, 2023\n\n\n\n\n\n\n\nWeek 14\n\n\n\n\n\nWe will begin our discussion on Tree-Based methods.\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\nWeek 13\n\n\n\n\n\nWe will begin our discussion on Tree-Based methods.\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\nWeek 12\n\n\n\n\n\nWe will begin our discussion on Classification.\n\n\n\n\n\nApr 17, 2023\n\n\n\n\n\n\n\nWeek 11\n\n\n\n\n\nWe will begin our discussion on statistical learning.\n\n\n\n\n\nApr 10, 2023\n\n\n\n\n\n\n\nWeek 10\n\n\n\n\n\nWe will begin our discussion on Residual Analysis and Hypothesis Testing for GLMs.\n\n\n\n\n\nApr 3, 2023\n\n\n\n\n\n\n\nWeek 9\n\n\n\n\n\nWe will begin our discussion on Generalized Linear Models\n\n\n\n\n\nMar 24, 2023\n\n\n\n\n\n\n\nWeek 8\n\n\n\n\n\nWe will continue our discussion on linear regression an model development.\n\n\n\n\n\nMar 12, 2023\n\n\n\n\n\n\n\nWeek 7\n\n\n\n\n\nWe will begin our discussion on multiple linear regression.\n\n\n\n\n\nMar 5, 2023\n\n\n\n\n\n\n\nWeek 6\n\n\n\n\n\nWe will begin our discussion on regression.\n\n\n\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\nWeek 5\n\n\n\n\n\nWe will continue and finish our discussion on data manipulation.\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\nWeek 4\n\n\n\n\n\nWe will finish our discussion with functions and begin data manipulation.\n\n\n\n\n\nFeb 10, 2023\n\n\n\n\n\n\n\nWeek 3\n\n\n\n\n\nWe will continue our discussion with control flow and begin our discussion on Functional Programming Analysis.\n\n\n\n\n\nFeb 6, 2023\n\n\n\n\n\n\n\nWeek 2\n\n\n\n\n\nWe will begin our discussion on control flow.\n\n\n\n\n\nJan 30, 2023\n\n\n\n\n\n\n\nWeek 1\n\n\n\n\n\nThis week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.\n\n\n\n\n\nJan 17, 2023\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "hw/hw8.html",
-    "href": "hw/hw8.html",
-    "title": "Homework 8",
-    "section": "",
-    "text": "From An Introduction to Statistical Learning from James, Witten, Hastie, and Tibshirani (Second Edition)"
-  },
-  {
-    "objectID": "hw/hw8.html#problem-1",
-    "href": "hw/hw8.html#problem-1",
-    "title": "Homework 8",
-    "section": "Problem 1",
-    "text": "Problem 1\nFrom the Applied Section in Chapter 8: Problem 8 a,b,c,d,e"
-  },
-  {
-    "objectID": "hw/hw6.html",
-    "href": "hw/hw6.html",
-    "title": "Homework 6",
-    "section": "",
-    "text": "Let \\(Y_i\\overset{iid}{\\sim}Pois(\\lambda_i)\\) with \\(\\lambda_i=g^{-1}(\\boldsymbol X_i^\\mathrm T\\boldsymbol \\beta)\\), \\(\\eta_i = -1 + 3 X_i\\), and \\(X_i\\sim N(0, 0.25)\\). Write the code that will provide the log-likelihood function of the model.\n\nx &lt;- rnorm(1000, sd = sqrt(0.25)) \n\neta &lt;- -1 + 2 * x\n\ny &lt;- sapply(eta, \\(x) rpois(1, exp(x)))\nglm(y~x, family = poisson())\n\n\nCall:  glm(formula = y ~ x, family = poisson())\n\nCoefficients:\n(Intercept)            x  \n     -1.025        2.101  \n\nDegrees of Freedom: 999 Total (i.e. Null);  998 Residual\nNull Deviance:      1555 \nResidual Deviance: 875.9    AIC: 1721"
-  },
-  {
-    "objectID": "hw/hw6.html#problem-1",
-    "href": "hw/hw6.html#problem-1",
-    "title": "Homework 6",
-    "section": "",
-    "text": "Let \\(Y_i\\overset{iid}{\\sim}Pois(\\lambda_i)\\) with \\(\\lambda_i=g^{-1}(\\boldsymbol X_i^\\mathrm T\\boldsymbol \\beta)\\), \\(\\eta_i = -1 + 3 X_i\\), and \\(X_i\\sim N(0, 0.25)\\). Write the code that will provide the log-likelihood function of the model.\n\nx &lt;- rnorm(1000, sd = sqrt(0.25)) \n\neta &lt;- -1 + 2 * x\n\ny &lt;- sapply(eta, \\(x) rpois(1, exp(x)))\nglm(y~x, family = poisson())\n\n\nCall:  glm(formula = y ~ x, family = poisson())\n\nCoefficients:\n(Intercept)            x  \n     -1.025        2.101  \n\nDegrees of Freedom: 999 Total (i.e. Null);  998 Residual\nNull Deviance:      1555 \nResidual Deviance: 875.9    AIC: 1721"
-  },
-  {
-    "objectID": "hw/hw6.html#problem-2",
-    "href": "hw/hw6.html#problem-2",
-    "title": "Homework 6",
-    "section": "Problem 2",
-    "text": "Problem 2\nUsing the function above, minimize the likelihood function to identify the estimates of the parameters."
-  },
-  {
-    "objectID": "hw/hw6.html#problem-3",
-    "href": "hw/hw6.html#problem-3",
-    "title": "Homework 6",
-    "section": "Problem 3",
-    "text": "Problem 3\nRepeat Problems 1 and 2 a thousand times to conduct a simulation study."
-  },
-  {
-    "objectID": "hw/hw6.html#problem-4",
-    "href": "hw/hw6.html#problem-4",
-    "title": "Homework 6",
-    "section": "Problem 4",
-    "text": "Problem 4\nThe lime data set contains 385 observations on small-leaved lime trees. The Foliage variable measures the foliage biomass. Fit a regression model between Foliage and the following covariates: DBH tree diameter and Age. Fit the model using 3 different link functions. Print out the results for the one’s that work. Comment why one’s may work and others do not."
-  },
-  {
-    "objectID": "hw/hw4.html",
-    "href": "hw/hw4.html",
-    "title": "Homework 4",
-    "section": "",
-    "text": "Due 3/10/23 @ 11:59 PM\nUse an RMD Notebook file from to create the assignment.\nUpdate inqstools for new template format.\nremotes::install_github(\"inqs909/inqstools\")\nYou will need to knit the document if you use “M408 Alternative”.\nYou must comment all your code to receive credit.\nSubmit the *nb.html or *.html file to canvas."
-  },
-  {
-    "objectID": "hw/hw4.html#problem-1",
-    "href": "hw/hw4.html#problem-1",
-    "title": "Homework 4",
-    "section": "Problem 1",
-    "text": "Problem 1\nThe faithful data set in R contains information on eruptions time and waiting time. Describe the relationship between waiting (independent) and eruptions (dependent).\nYou must provide descriptive statistics, visuals, and model."
-  },
-  {
-    "objectID": "hw/hw4.html#problem-2",
-    "href": "hw/hw4.html#problem-2",
-    "title": "Homework 4",
-    "section": "Problem 2",
-    "text": "Problem 2\nThe cats data set from the MASS package contains information of cat body weight (kg; Bwt) and heart weight (g; Hwt). Fit a model to see if there is a significant association between body weight (predictor) and heart weight (outcome).\nYou must provide descriptive statistics, visuals, and model."
-  },
-  {
-    "objectID": "hw/hw4.html#problem-3",
-    "href": "hw/hw4.html#problem-3",
-    "title": "Homework 4",
-    "section": "Problem 3",
-    "text": "Problem 3\nWhen estimating the \\(\\beta\\) coefficients, we are minimizing the sum of error squares:\n\\[\n\\sum^n_{i=1}(y_i-(\\beta_0+\\beta_1x_i))^2\n\\]\nWe square the errors to make sure we do not lose information when summing up all the values. However, what if we try to use an absolute value:\n\\[\n\\sum^n_{i=1}|y_i-(\\beta_0+\\beta_1x_i)|\n\\]\nSimulate a data set, estimate the coefficients, and compare the results. Are they the same or different?"
-  },
-  {
-    "objectID": "hw/hw4.html#problem-4",
-    "href": "hw/hw4.html#problem-4",
-    "title": "Homework 4",
-    "section": "Problem 4",
-    "text": "Problem 4\nConduct a simulation assessing which case from problem 3 is better.\nTo assess which case is better compare the mean and standard deviations of the simulated-estimated coefficients."
-  },
-  {
-    "objectID": "hw/hw2.html",
-    "href": "hw/hw2.html",
-    "title": "Homework 2",
-    "section": "",
-    "text": "Due 2/17/23 @ 11:59 PM\nUse an RMD Notebook file from to create the assignment.\nYou must comment all your code to receive credit.\nSubmit the *nb.html file to canvas."
-  },
-  {
-    "objectID": "hw/hw2.html#problem-1",
-    "href": "hw/hw2.html#problem-1",
-    "title": "Homework 2",
-    "section": "Problem 1",
-    "text": "Problem 1\nWrite a function that takes a vector as an input an returns a labeled list with the mean, median, and variance of the vector."
-  },
-  {
-    "objectID": "hw/hw2.html#problem-2",
-    "href": "hw/hw2.html#problem-2",
-    "title": "Homework 2",
-    "section": "Problem 2",
-    "text": "Problem 2\nWrite a function for the following equation:\n\\[\nf(x, y, z) =\\left\\{\\begin{array}{cc}\nx^2+\\sqrt y & z  = 0 \\\\\nx^2+2x+3+ \\log(y) & z = 1\n\\end{array}\\right.\n\\]\nInclude any error messages if necessary."
-  },
-  {
-    "objectID": "hw/hw2.html#problem-3",
-    "href": "hw/hw2.html#problem-3",
-    "title": "Homework 2",
-    "section": "Problem 3",
-    "text": "Problem 3\nCreate a function that will give you the first x Fibonacci numbers. You must use a for loop."
-  },
-  {
-    "objectID": "hw/hw2.html#problem-4",
-    "href": "hw/hw2.html#problem-4",
-    "title": "Homework 2",
-    "section": "Problem 4",
-    "text": "Problem 4\nCreate a function that will randomly generate n numbers that are greater than x from a \\(Pois(\\lambda)\\)."
+    "text": "Brief Introduction\n\n\n\n\n\nWelcome to the course! This is the home page of the course where I will provide a recap on what was covered in the week. Here I will post any documents or videos for your reference. If you have any questions, please email me at isaac.qs@csuci.edu.\n\n\n\n\n\n\n\n\n\nDiscord Server\n\n\n\n\n\nWill post if class creates one.\n\n\n\n\n\n\n\n\n\nIntroduction to Statistics Book\n\n\n\n\n\nhttps://openintro-ims.netlify.app/\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\n\n\n\n\n\nThis week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.\n\n\n\n\n\nJan 22, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "hw.html",
     "href": "hw.html",
     "title": "Homework",
     "section": "",
-    "text": "Below are the different homework assignments for the course. Make sure to upload your assignment as a single file on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 9\n\n\n\n\n\nAssignment is due 5/12/23\n\n\n\n\n\nMay 5, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 8\n\n\n\n\n\nAssignment is due 5/5/23\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 7\n\n\n\n\n\nAssignment is due 4/28/23\n\n\n\n\n\nApr 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 6\n\n\n\n\n\nAssignment is due 4/6/23\n\n\n\n\n\nMar 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPractice Homework\n\n\n\n\n\n\n\n\n\n\n\nMar 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 4\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 3\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 2\n\n\n\n\n\n\n\n\n\n\n\nFeb 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 1\n\n\n\n\n\n\n\n\n\n\n\nFeb 7, 2023\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "exc/exc5.html",
-    "href": "exc/exc5.html",
-    "title": "Extra Credit 5",
-    "section": "",
-    "text": "Write a book report on Data Feminism by Catherine D’Ignazio and Lauren Klein. Provide a summary of the book, an write a brief analysis in supporting or opposing the book, and a personal reaction of the book.\nWorth 3 percent points.\nReport guidelines\n\n3-4 Pages\nMust include a title page\nDouble Spaced\n12 point font\nProofread your work\nSubmit a pdf of your work to Canvas\nDue 5/15/2023"
+    "text": "Below are the different homework assignments for the course. Make sure to upload your assignment as a single file on Canvas.\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "exc/exc3.html",
     "href": "exc/exc3.html",
     "title": "Extra Credit 3",
     "section": "",
-    "text": "Create a website using either Quarto, RMarkdown, Blogdown, Jekyll, or any other website building tools that are not point-and-click based. Once you are finished creating your website, you must host it on GitHub Pages1. Below are the guidelines for the website:\nWorth 1 Percent Point."
-  },
-  {
-    "objectID": "exc/exc3.html#example-website",
-    "href": "exc/exc3.html#example-website",
-    "title": "Extra Credit 3",
-    "section": "Example Website",
-    "text": "Example Website\nMy Website"
-  },
-  {
-    "objectID": "exc/exc3.html#videos",
-    "href": "exc/exc3.html#videos",
-    "title": "Extra Credit 3",
-    "section": "Videos",
-    "text": "Videos\nRStudio Cloud"
-  },
-  {
-    "objectID": "exc/exc3.html#GitHub",
-    "href": "exc/exc3.html#GitHub",
-    "title": "Extra Credit 3",
-    "section": "Creating a GitHub Account (Required)",
-    "text": "Creating a GitHub Account (Required)\nGitHub can be considered as the google drive of code. It has great features to track code, implement changes, and host websites. You can create a Github account here: https://github.com/.\nOnce you have your account create a new repository with the following naming scheme: USERNAME.github.io. Then, make sure that repository is public, and click to create a README document."
-  },
-  {
-    "objectID": "exc/exc3.html#building-a-website-with-quarto",
-    "href": "exc/exc3.html#building-a-website-with-quarto",
-    "title": "Extra Credit 3",
-    "section": "Building a Website with Quarto",
-    "text": "Building a Website with Quarto\nI highly recommend building your website using quarto, it is very simple platform where your text documents become webpages.\n\nUsing RStudio Cloud\nRStudio Cloud (rstudio.cloud/) is an excellent resource to create website. It has all the software that you will need to create a website. Before we begin, make sure to create repository as stated by in the Creating a GitHub Account (Required) section.\n\nCreating an Account\nWhen you load the website, create a free account using either your email or your CSUCI gmail account. Once you create an account, the dashboard should load with your workspace.\n\n\nCreating a Project\nOn the top-right corner, click on the “New Project” blue button, and select “New RStudio Project”. This will create a new project called “Untitled Project”. Now change the name “Untitled Project” to “Website”. This project will create the material you need to develop a website.\n\n\nCreating and Connecting an SSH Key\nIn you website project, you will need a way for the project to connect with GitHub. You can do this by generating an SSH key in RStudio Cloud and transferring it to GitHub.\nThe SSH key can be thought of as a key that will unlock your computer to transfer data. You will generate the lock and key in RStudio, and then give the key to GitHub. Afterwards, transferring files will occur securely.\nTo generate an SSH key, go to the menu bar and select “Tools”, then “Global Options”. A menu will pop-up, select “Git/SVN” from the side menu. Click on the button “Create SSH key …”. A window will pop-up, then enter a password. Then click “Create”. Another window will pop-up showing your lock and key, you can close the window immediately.\nIn a different tab, go to your github account. On the top-right corner, click on your profile and select “Settings”. This will redirect you to a different page. In the left menu, click on “SSH and GPG Keys”. In the “SSH keys” section, click on the “New SSH key” green button. A new page will pop-up that will allow you to add a key. In the “Title” section, add any title2.\nBack at RStudio Cloud, click on the “View public key” link. Copy the highlighted text. Go back to Github and paste it in the “Key” section. Lastly, click on the “Add SSH Key” green button.\nNow you can transfer file easily between RStudio and GitHub.\n\n\nCloning a Repository\nCloning a repository is the process of downloading a repository from a remote server, in this case GitHub account. This will allow you to re-download your repository if it is ever deleted.\nIn GitHub, navigate to your repository. On the top-right hand corner, click on the green button labeled “Code”. Make sure the “SSH” tab is selected and copy, or click on the double squares button, the text they provide. You should copy something that look like this:\ngit@github.com:USERNAME/USERNAME.github.io.git \nIn your RStudio Cloud Project, select the terminal tab in your console pane, usually on the left-side of the IDE. Paste the following text in the terminal tab3:\ngit clone git@github.com:USERNAME/USERNAME.github.io.git\nIt will prompt you to accept the SSH connection, type “yes”. Afterwards, it will ask you for your SSH password. Type your password. Then, it will download your repository as a folder. In the “Files” tab, you should see the newly created folder.\n\n\nMaking a Quarto Website\nFor this section, we will primarily be working in the “Terminal” Tab in RStudio. Click on the “Terminal” Tab in the “Console” Pane. The you will type the following:\ncd USERNAME.github.io\nMake sure to replace USERNAME with your user name for GitHub. The above command will change the working folder to “USERNAME.github.io”. Afterwards, you want to fill the folder with the necessary contents for making a Quarto Website. Type the following command in the terminal:\nquarto create-project . --type website\nThis will fill generate new files for your website. Next, you will need to create a “nojekyll” file that tells GitHub, not to use Jekyll. Type the following in the terminal:\ntouch .nojekyll\nNow, go to the “Files” Tab and open “_quarto.yml”. At the top of the document, you will need to add output-dir: docs under the project:, you should have something like this:\nproject:\n  type: website\n  output-dir: docs\nNow you are set to Render your website!\n\n\nRendering and Publishing a Website\nWhenever you are finished updating your website files, you will need render your website so it will update all the new content. To begin, make sure you are working in the directory (folder) containing your website files:\ncd USERNAME.github.io\nNow, you can render your website using the following command:\nquarto render\nYour website will be rendered in the docs folder. Then you will need to commit the changes using git. First type\ngit add .\nThe commit your files using the following commands:\ngit commit -m \"Updates\"\nLastly, push your updates to GitHub:\ngit push\nIt will prompt your for your password related towards you SSH key. Then it will push all the updates. GitHub will then publish your website in a few minutes. Lastly, type “USERNAME.github.io” in any browser and your website should work.\n\n\n\nUsing RStudio on Mac/Linux\nComing Soon …\n\n\nUsing RStudio on Windows\nComing Soon …"
-  },
-  {
-    "objectID": "exc/exc3.html#creating-webpages",
-    "href": "exc/exc3.html#creating-webpages",
-    "title": "Extra Credit 3",
-    "section": "Creating Webpages",
-    "text": "Creating Webpages\nTo create a webpage, you will simply open a new quarto document, edit the page, and save it in your website’s folder. To link the webpage in your menu bar, add the qmd file to the “_quarto.yml” file:\nwebsite:\n  title: \"inqs909.github.io\"\n  navbar:\n    left:\n      - href: index.qmd\n        text: Home\n      - about.qmd\n      - NEWFILE.qmd\nThe render your website and push it to GitHub."
+    "text": "Write a report on Monte Carlo Methods. Provide a brief history and their purpose. Lastly, provide a toy example demonstrating the use of Monte Carlo Methods in R.\nWorth 3 percent points.\n\nResources\n\nhttps://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694\nhttps://towardsdatascience.com/monte-carlo-simulation-a-practical-guide-85da45597f0e\n\n\n\nReport Guideline\n\n3-4 Pages\nMust include a title page\nDouble Spaced\n12 point font\nProofread your work\nSubmit a pdf of your work to Canvas\nDue 5/15/2023\n\nWrite a report on Survival Analysis. Make sure to provide a brief history of survival analysis and prominent methods such as Kaplan-Meier curves and Cox proportional hazard models. Lastly, provide a toy example demonstrating the use of Survival Analysis in R.\nWorth 2 percent points.\n\n\nResources\n\nhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC2394262/\nhttps://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival_print.html\n\n\n\nReport Guideline\n\n3-4 Pages\nMust include a title page\nDouble Spaced\n12 point font\nProofread your work\nSubmit a pdf of your work to Canvas\nDue 5/15/2023"
   },
   {
     "objectID": "exc/exc1.html",
     "href": "exc/exc1.html",
     "title": "Extra Credit 1",
     "section": "",
-    "text": "Write a 2-page report practices related to self care. As you move on through college and your future careers, it is important to practice self care. For this extra credit assignments, write about what are some practices you will do to for your well being.\nWorth 1 percent points.\nReport guidelines\n\n2 Pages\nDouble Spaced\n12 point font\nDue 2/3/2023\n\nFor your reference, here is my Wellness Plan for Spring 2023."
+    "text": "Write a 2-page report practices related to self care. As you move on through college and your future careers, it is important to practice self care. For this extra credit assignments, write about what are some practices you will do to for your well being.\nWorth 1 percent points.\nReport guidelines\n\n2 Pages\nDouble Spaced\n12 point font\nDue 2/3/2023\n\nFor your reference, here is my Wellness Plan for Spring 2024."
   },
   {
     "objectID": "books.html",
     "href": "books.html",
     "title": "Books",
     "section": "",
-    "text": "A List of recommended books to learn more about Statistics, all freely available from the Broome Library:"
+    "text": "A list of recommended books to learn more about Statistics, the majority are freely available from the Broome Library:"
   },
   {
     "objectID": "books.html#basics",
@@ -2104,154 +1796,56 @@
     "href": "ec.html",
     "title": "Extra Credit",
     "section": "",
-    "text": "Extra Credit is designed to expand on different topics that related to Probability and Statistics, but are not necessarily required for the course. Additionally, these opportunities provide students relief when unexpected situations occur during the semester. While it is not required, I encourage everyone to attempt each opportunity.\nBelow is more information on each assignment.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 1\n\n\n\n\n\nInstructions for extra credit one.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 2\n\n\n\n\n\nInstructions for extra credit two.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 3\n\n\n\n\n\nInstructions for extra credit three.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 4\n\n\n\n\n\nInstructions for extra credit four.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 5\n\n\n\n\n\nInstructions for extra credit five.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 6\n\n\n\n\n\nInstructions for extra credit six.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Extra Credit is designed to expand on different topics that related to Probability and Statistics, but are not necessarily required for the course. Additionally, these opportunities provide students relief when unexpected situations occur during the semester. While it is not required, I encourage everyone to attempt each opportunity.\nBelow is more information on each assignment.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 1\n\n\n\n\n\nInstructions for extra credit one.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 2\n\n\n\n\n\nInstructions for extra credit three.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 3\n\n\n\n\n\nInstructions for extra credit four.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nExtra Credit 4\n\n\n\n\n\nInstructions for extra credit five.\n\n\n\n\n\nJan 16, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "exc/exc2.html",
     "href": "exc/exc2.html",
     "title": "Extra Credit 2",
     "section": "",
-    "text": "Write a 2 page report on non academic related activities you will be do for Spring Break. Make sure to highlight activities that will benefit your well being. If you written the wellness report, you can write an update on that and if there is any changes you want to do.\nWorth 1 percent points.\nReport guidelines\n\nMax 2 Pages\nDouble Spaced\n12 point font\nDue 3/17/2023"
+    "text": "Create a website using either Quarto, RMarkdown, Blogdown, Jekyll, or any other website building tools that are not point-and-click based. Once you are finished creating your website, you must host it on GitHub Pages1. Below are the guidelines for the website:\nWorth 3 Percent Point."
+  },
+  {
+    "objectID": "exc/exc2.html#example-website",
+    "href": "exc/exc2.html#example-website",
+    "title": "Extra Credit 2",
+    "section": "Example Website",
+    "text": "Example Website\nMy Website"
+  },
+  {
+    "objectID": "exc/exc2.html#videos",
+    "href": "exc/exc2.html#videos",
+    "title": "Extra Credit 2",
+    "section": "Videos",
+    "text": "Videos\nRStudio Cloud"
+  },
+  {
+    "objectID": "exc/exc2.html#GitHub",
+    "href": "exc/exc2.html#GitHub",
+    "title": "Extra Credit 2",
+    "section": "Creating a GitHub Account (Required)",
+    "text": "Creating a GitHub Account (Required)\nGitHub can be considered as the google drive of code. It has great features to track code, implement changes, and host websites. You can create a Github account here: https://github.com/.\nOnce you have your account create a new repository with the following naming scheme: USERNAME.github.io. Then, make sure that repository is public, and click to create a README document."
+  },
+  {
+    "objectID": "exc/exc2.html#building-a-website-with-quarto",
+    "href": "exc/exc2.html#building-a-website-with-quarto",
+    "title": "Extra Credit 2",
+    "section": "Building a Website with Quarto",
+    "text": "Building a Website with Quarto\nI highly recommend building your website using quarto, it is very simple platform where your text documents become webpages.\n\nUsing RStudio Cloud\nRStudio Cloud (rstudio.cloud/) is an excellent resource to create website. It has all the software that you will need to create a website. Before we begin, make sure to create repository as stated by in the Creating a GitHub Account (Required) section.\n\nCreating an Account\nWhen you load the website, create a free account using either your email or your CSUCI gmail account. Once you create an account, the dashboard should load with your workspace.\n\n\nCreating a Project\nOn the top-right corner, click on the “New Project” blue button, and select “New RStudio Project”. This will create a new project called “Untitled Project”. Now change the name “Untitled Project” to “Website”. This project will create the material you need to develop a website.\n\n\nCreating and Connecting an SSH Key\nIn you website project, you will need a way for the project to connect with GitHub. You can do this by generating an SSH key in RStudio Cloud and transferring it to GitHub.\nThe SSH key can be thought of as a key that will unlock your computer to transfer data. You will generate the lock and key in RStudio, and then give the key to GitHub. Afterwards, transferring files will occur securely.\nTo generate an SSH key, go to the menu bar and select “Tools”, then “Global Options”. A menu will pop-up, select “Git/SVN” from the side menu. Click on the button “Create SSH key …”. A window will pop-up, then enter a password. Then click “Create”. Another window will pop-up showing your lock and key, you can close the window immediately.\nIn a different tab, go to your github account. On the top-right corner, click on your profile and select “Settings”. This will redirect you to a different page. In the left menu, click on “SSH and GPG Keys”. In the “SSH keys” section, click on the “New SSH key” green button. A new page will pop-up that will allow you to add a key. In the “Title” section, add any title2.\nBack at RStudio Cloud, click on the “View public key” link. Copy the highlighted text. Go back to Github and paste it in the “Key” section. Lastly, click on the “Add SSH Key” green button.\nNow you can transfer file easily between RStudio and GitHub.\n\n\nCloning a Repository\nCloning a repository is the process of downloading a repository from a remote server, in this case GitHub account. This will allow you to re-download your repository if it is ever deleted.\nIn GitHub, navigate to your repository. On the top-right hand corner, click on the green button labeled “Code”. Make sure the “SSH” tab is selected and copy, or click on the double squares button, the text they provide. You should copy something that look like this:\ngit@github.com:USERNAME/USERNAME.github.io.git \nIn your RStudio Cloud Project, select the terminal tab in your console pane, usually on the left-side of the IDE. Paste the following text in the terminal tab3:\ngit clone git@github.com:USERNAME/USERNAME.github.io.git\nIt will prompt you to accept the SSH connection, type “yes”. Afterwards, it will ask you for your SSH password. Type your password. Then, it will download your repository as a folder. In the “Files” tab, you should see the newly created folder.\n\n\nMaking a Quarto Website\nFor this section, we will primarily be working in the “Terminal” Tab in RStudio. Click on the “Terminal” Tab in the “Console” Pane. The you will type the following:\ncd USERNAME.github.io\nMake sure to replace USERNAME with your user name for GitHub. The above command will change the working folder to “USERNAME.github.io”. Afterwards, you want to fill the folder with the necessary contents for making a Quarto Website. Type the following command in the terminal:\nquarto create-project . --type website\nThis will fill generate new files for your website. Next, you will need to create a “nojekyll” file that tells GitHub, not to use Jekyll. Type the following in the terminal:\ntouch .nojekyll\nNow, go to the “Files” Tab and open “_quarto.yml”. At the top of the document, you will need to add output-dir: docs under the project:, you should have something like this:\nproject:\n  type: website\n  output-dir: docs\nNow you are set to Render your website!\n\n\nRendering and Publishing a Website\nWhenever you are finished updating your website files, you will need render your website so it will update all the new content. To begin, make sure you are working in the directory (folder) containing your website files:\ncd USERNAME.github.io\nNow, you can render your website using the following command:\nquarto render\nYour website will be rendered in the docs folder. Then you will need to commit the changes using git. First type\ngit add .\nThe commit your files using the following commands:\ngit commit -m \"Updates\"\nLastly, push your updates to GitHub:\ngit push\nIt will prompt your for your password related towards you SSH key. Then it will push all the updates. GitHub will then publish your website in a few minutes. Lastly, type “USERNAME.github.io” in any browser and your website should work.\n\n\n\nUsing RStudio on Mac/Linux\nComing Soon …\n\n\nUsing RStudio on Windows\nComing Soon …"
+  },
+  {
+    "objectID": "exc/exc2.html#creating-webpages",
+    "href": "exc/exc2.html#creating-webpages",
+    "title": "Extra Credit 2",
+    "section": "Creating Webpages",
+    "text": "Creating Webpages\nTo create a webpage, you will simply open a new quarto document, edit the page, and save it in your website’s folder. To link the webpage in your menu bar, add the qmd file to the “_quarto.yml” file:\nwebsite:\n  title: \"inqs909.github.io\"\n  navbar:\n    left:\n      - href: index.qmd\n        text: Home\n      - about.qmd\n      - NEWFILE.qmd\nThe render your website and push it to GitHub."
   },
   {
     "objectID": "exc/exc4.html",
     "href": "exc/exc4.html",
     "title": "Extra Credit 4",
     "section": "",
-    "text": "Write a report on Monte Carlo Methods. Provide a brief history and their purpose. Lastly, provide a toy example demonstrating the use of Monte Carlo Methods in R.\nWorth 2 percent points.\n\nResources\n\nhttps://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694\nhttps://towardsdatascience.com/monte-carlo-simulation-a-practical-guide-85da45597f0e\n\n\n\nReport Guideline\n\n3-4 Pages\nMust include a title page\nDouble Spaced\n12 point font\nProofread your work\nSubmit a pdf of your work to Canvas\nDue 5/15/2023"
-  },
-  {
-    "objectID": "exc/exc6.html",
-    "href": "exc/exc6.html",
-    "title": "Extra Credit 6",
-    "section": "",
-    "text": "Write a report on Survival Analysis. Make sure to provide a brief history of survival analysis and prominent methods such as Kaplan-Meier curves and Cox proportional hazard models. Lastly, provide a toy example demonstrating the use of Survival Analysis in R.\nWorth 2 percent points.\n\nResources\n\nhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC2394262/\nhttps://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival_print.html\n\n\n\nReport Guideline\n\n3-4 Pages\nMust include a title page\nDouble Spaced\n12 point font\nProofread your work\nSubmit a pdf of your work to Canvas\nDue 5/15/2023"
-  },
-  {
-    "objectID": "hw/hw1.html",
-    "href": "hw/hw1.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "Due 2/10/23 @ 11:59 PM\nUse an RMD Notebook file from to create the assignment.\nYou must comment all your code to receive credit.\nSubmit the *nb.html file to canvas.\nFor all problems, you must use at least one for or while loop."
-  },
-  {
-    "objectID": "hw/hw1.html#problem-1",
-    "href": "hw/hw1.html#problem-1",
-    "title": "Homework 1",
-    "section": "Problem 1",
-    "text": "Problem 1\nUsing the following code:\n\nx &lt;- matrix(rnorm(1500), nrow = 10)\n\nWrite the code to produce the output if you use the rowMeans() on the R object x."
-  },
-  {
-    "objectID": "hw/hw1.html#problem-2",
-    "href": "hw/hw1.html#problem-2",
-    "title": "Homework 1",
-    "section": "Problem 2",
-    "text": "Problem 2\nWrite the code to generate the 10th row of Pascal’s Triangle."
-  },
-  {
-    "objectID": "hw/hw1.html#problem-3",
-    "href": "hw/hw1.html#problem-3",
-    "title": "Homework 1",
-    "section": "Problem 3",
-    "text": "Problem 3\nUsing the following code:\n\ny &lt;- matrix(sample(1:400, 100, replace = T), nrow = 10)\n\nFind the median value for each column of the matrix y. You are not allowed to use the median() function."
-  },
-  {
-    "objectID": "hw/hw1.html#problem-4",
-    "href": "hw/hw1.html#problem-4",
-    "title": "Homework 1",
-    "section": "Problem 4",
-    "text": "Problem 4\nWrite the code that will generate the first 1000 numbers of the Fibonacci sequence."
-  },
-  {
-    "objectID": "hw/hw3.html",
-    "href": "hw/hw3.html",
-    "title": "Homework 3",
-    "section": "",
-    "text": "Due 2/24/23 @ 11:59 PM\nUse an RMD Notebook file from to create the assignment.\nYou must comment all your code to receive credit.\nSubmit the *nb.html file to canvas."
-  },
-  {
-    "objectID": "hw/hw3.html#problem-1",
-    "href": "hw/hw3.html#problem-1",
-    "title": "Homework 3",
-    "section": "Problem 1",
-    "text": "Problem 1\nUsing the vectors below, use sapply() to determine if the numbers are even or odd.\n\nx &lt;- 1:20"
-  },
-  {
-    "objectID": "hw/hw3.html#problem-2",
-    "href": "hw/hw3.html#problem-2",
-    "title": "Homework 3",
-    "section": "Problem 2",
-    "text": "Problem 2\nEvaluate the following function:\n\\[\nk(j(i(h(g(f(x))))))\n\\]\n\n\\(f(x)=\\sin(x)\\)\n\\(g(x) = x^2 +5\\)\n\\(h(x) = \\exp{2x}\\)\n\\(i(x) = \\sin(\\pi x)\\)\n\\(j(x) = x^2 + 5\\)\n\\(k(x) = \\sqrt x\\)\n\nYou are not allowed to store values, but you may create and store functions."
-  },
-  {
-    "objectID": "hw/hw3.html#problem-3",
-    "href": "hw/hw3.html#problem-3",
-    "title": "Homework 3",
-    "section": "Problem 3",
-    "text": "Problem 3\nFrom the penguins data set from palmerpenguins package, create a new variable indicating if the penguin’s flipper length (flipper_length_mm) is greater than the average flipper length. Afterwards, group by the new variable and find the mean body_mass_g."
-  },
-  {
-    "objectID": "hw/hw3.html#problem-4",
-    "href": "hw/hw3.html#problem-4",
-    "title": "Homework 3",
-    "section": "Problem 4",
-    "text": "Problem 4\nFrom the penguins data set from palmerpenguins package, find the mean and standard deviation of flipper_length_mm by species."
-  },
-  {
-    "objectID": "hw/hw3.html#problem-5",
-    "href": "hw/hw3.html#problem-5",
-    "title": "Homework 3",
-    "section": "Problem 5",
-    "text": "Problem 5\nUsing the vector random_dates generated from the code below:\n\n# Set the start and end dates\nstart_date &lt;- as.POSIXct(\"2022-01-01 00:00:00\")\nend_date &lt;- as.POSIXct(\"2022-12-31 23:59:59\")\n\n# Generate a vector of random dates and times between the start and end dates\nrandom_dates &lt;- as.POSIXct(runif(10, start_date, end_date), origin = \"1970-01-01\")\n\n# Print the vector of random dates and times\nrandom_dates\n\nUse sapply() to determine what day of the week (in words) does the date represent. Hint: Look at the wday function from lubridate."
-  },
-  {
-    "objectID": "hw/hw5.html",
-    "href": "hw/hw5.html",
-    "title": "Practice Homework",
-    "section": "",
-    "text": "A random variable \\(Y\\) is can belong to an exponential family of distributions if the density function can take the following form:\n\\[\nf_Y(y) = a(y,\\phi)\\exp\\left\\{\\frac{y\\theta - b(\\theta)}{\\phi}\\right\\}\n\\]\n\n\\(\\theta\\): canonical parameter\n\\(b(\\theta)\\): cumulant function\n\\(\\phi&gt;0\\): dispersion parameter\n\\(a(y,\\phi)\\): normalizing function\n\nConvert the following distributions to the exponential form of the probability density function:\n\nNormal\nPoisson\nBinomial\nGamma"
-  },
-  {
-    "objectID": "hw/hw7.html",
-    "href": "hw/hw7.html",
-    "title": "Homework 7",
-    "section": "",
-    "text": "From An Introduction to Statistical Learning from James, Witten, Hastie, and Tibshirani (Second Edition)"
-  },
-  {
-    "objectID": "hw/hw7.html#problem-1",
-    "href": "hw/hw7.html#problem-1",
-    "title": "Homework 7",
-    "section": "Problem 1",
-    "text": "Problem 1\nFrom the Applied Section in Chapter 4: Problem 13 a,d,e,f,h,i"
-  },
-  {
-    "objectID": "hw/hw7.html#problem-2",
-    "href": "hw/hw7.html#problem-2",
-    "title": "Homework 7",
-    "section": "Problem 2",
-    "text": "Problem 2\nFrom the Applied Section in Chapter 4: Problem 14 a,b,c,d,e,f,g"
-  },
-  {
-    "objectID": "hw/hw9.html",
-    "href": "hw/hw9.html",
-    "title": "Homework 9",
-    "section": "",
-    "text": "From An Introduction to Statistical Learning from James, Witten, Hastie, and Tibshirani (Second Edition)"
-  },
-  {
-    "objectID": "hw/hw9.html#problem-1",
-    "href": "hw/hw9.html#problem-1",
-    "title": "Homework 9",
-    "section": "Problem 1",
-    "text": "Problem 1\nFrom the Applied Section in Chapter 9: Problem 7 a,b,c,d"
-  },
-  {
-    "objectID": "hw/hw9.html#problem-2",
-    "href": "hw/hw9.html#problem-2",
-    "title": "Homework 9",
-    "section": "Problem 2",
-    "text": "Problem 2\nFrom the Applied Section in Chapter 8: Problem 9 a,b,d,e"
+    "text": "Write a book report on Data Feminism by Catherine D’Ignazio and Lauren Klein. Provide a summary of the book, an write a brief analysis in supporting or opposing the book, and a personal reaction of the book.\nWorth 3 percent points.\nReport guidelines\n\n3-4 Pages\nMust include a title page\nDouble Spaced\n12 point font\nProofread your work\nSubmit a pdf of your work to Canvas\nDue 5/15/2023"
   },
   {
     "objectID": "lectures/lecture_1.html#introductions",
@@ -4065,145 +3659,5 @@
     "title": "Week 1",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nNA\nNA\n\n\n2\nSlides\nNA\nExamples General Script"
-  },
-  {
-    "objectID": "posts/week_11.html",
-    "href": "posts/week_11.html",
-    "title": "Week 11",
-    "section": "",
-    "text": "Intro to Statistical Learning\n\n\n\n\n\nBayes Classifier\nK-Nearest Neighbors"
-  },
-  {
-    "objectID": "posts/week_11.html#learning-outcomes",
-    "href": "posts/week_11.html#learning-outcomes",
-    "title": "Week 11",
-    "section": "",
-    "text": "Intro to Statistical Learning\n\n\n\n\n\nBayes Classifier\nK-Nearest Neighbors"
-  },
-  {
-    "objectID": "posts/week_11.html#resources",
-    "href": "posts/week_11.html#resources",
-    "title": "Week 11",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nNA\n\n\n\n2\nSlides\nVideo\nFile"
-  },
-  {
-    "objectID": "posts/week_13.html",
-    "href": "posts/week_13.html",
-    "title": "Week 13",
-    "section": "",
-    "text": "Trees\nPruning\n\n\n\n\n\nBagging\nRandom Forests\nBoosting"
-  },
-  {
-    "objectID": "posts/week_13.html#learning-outcomes",
-    "href": "posts/week_13.html#learning-outcomes",
-    "title": "Week 13",
-    "section": "",
-    "text": "Trees\nPruning\n\n\n\n\n\nBagging\nRandom Forests\nBoosting"
-  },
-  {
-    "objectID": "posts/week_13.html#resources",
-    "href": "posts/week_13.html#resources",
-    "title": "Week 13",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
-  },
-  {
-    "objectID": "posts/week_15.html",
-    "href": "posts/week_15.html",
-    "title": "Week 15",
-    "section": "",
-    "text": "Neural Networks\n\n\n\n\n\nTensorflow\nTorch"
-  },
-  {
-    "objectID": "posts/week_15.html#learning-outcomes",
-    "href": "posts/week_15.html#learning-outcomes",
-    "title": "Week 15",
-    "section": "",
-    "text": "Neural Networks\n\n\n\n\n\nTensorflow\nTorch"
-  },
-  {
-    "objectID": "posts/week_15.html#resources",
-    "href": "posts/week_15.html#resources",
-    "title": "Week 15",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\n\n\n\n\n2\nSlides"
-  },
-  {
-    "objectID": "posts/week_3.html",
-    "href": "posts/week_3.html",
-    "title": "Week 3",
-    "section": "",
-    "text": "break Statements\nwhile Loops\n\n\n\n\n\nR Built-in-functions\nUser-built functions"
-  },
-  {
-    "objectID": "posts/week_3.html#learning-outcomes",
-    "href": "posts/week_3.html#learning-outcomes",
-    "title": "Week 3",
-    "section": "",
-    "text": "break Statements\nwhile Loops\n\n\n\n\n\nR Built-in-functions\nUser-built functions"
-  },
-  {
-    "objectID": "posts/week_3.html#resources",
-    "href": "posts/week_3.html#resources",
-    "title": "Week 3",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\nScript\n\n\n2\nSlides\nVideo\nScript"
-  },
-  {
-    "objectID": "posts/week_5.html",
-    "href": "posts/week_5.html",
-    "title": "Week 5",
-    "section": "",
-    "text": "Directories/R Projects\nReading/Writing Data\nMerging Data\nCreating New Variables\n\n\n\n\n\nSplitting Variables\nSplitting Rows\nMerging Rows\nWide to long\nLong to wide\n\nResources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\nScript\n\n\n2\nSlides\nVideo\nScript"
-  },
-  {
-    "objectID": "posts/week_5.html#learning-outcomes",
-    "href": "posts/week_5.html#learning-outcomes",
-    "title": "Week 5",
-    "section": "",
-    "text": "Directories/R Projects\nReading/Writing Data\nMerging Data\nCreating New Variables\n\n\n\n\n\nSplitting Variables\nSplitting Rows\nMerging Rows\nWide to long\nLong to wide\n\nResources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\nScript\n\n\n2\nSlides\nVideo\nScript"
-  },
-  {
-    "objectID": "posts/week_7.html",
-    "href": "posts/week_7.html",
-    "title": "Week 7",
-    "section": "",
-    "text": "Multiple Linear Regression\nContinuous Variables\nCategorical Variables\n\n\n\n\n\nConfounding Variables\nInteraction Terms"
-  },
-  {
-    "objectID": "posts/week_7.html#learning-outcomes",
-    "href": "posts/week_7.html#learning-outcomes",
-    "title": "Week 7",
-    "section": "",
-    "text": "Multiple Linear Regression\nContinuous Variables\nCategorical Variables\n\n\n\n\n\nConfounding Variables\nInteraction Terms"
-  },
-  {
-    "objectID": "posts/week_7.html#resources",
-    "href": "posts/week_7.html#resources",
-    "title": "Week 7",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\nScript\n\n\n2\nSlides\nVideo"
-  },
-  {
-    "objectID": "posts/week_9.html",
-    "href": "posts/week_9.html",
-    "title": "Week 9",
-    "section": "",
-    "text": "Generalized Linear Models\n\n\n\n\n\nEstimation and Inference Procedures"
-  },
-  {
-    "objectID": "posts/week_9.html#learning-outcomes",
-    "href": "posts/week_9.html#learning-outcomes",
-    "title": "Week 9",
-    "section": "",
-    "text": "Generalized Linear Models\n\n\n\n\n\nEstimation and Inference Procedures"
-  },
-  {
-    "objectID": "posts/week_9.html#resources",
-    "href": "posts/week_9.html#resources",
-    "title": "Week 9",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo\nScript"
   }
 ]

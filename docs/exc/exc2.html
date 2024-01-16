@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2023-01-16">
-<meta name="description" content="Instructions for extra credit two.">
+<meta name="description" content="Instructions for extra credit three.">
 
 <title>MATH 408 - Extra Credit 2</title>
 <style>
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -117,7 +151,22 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#example-website" id="toc-example-website" class="nav-link active" data-scroll-target="#example-website">Example Website</a></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos">Videos</a></li>
+  <li><a href="#GitHub" id="toc-GitHub" class="nav-link" data-scroll-target="#GitHub">Creating a GitHub Account (Required)</a></li>
+  <li><a href="#building-a-website-with-quarto" id="toc-building-a-website-with-quarto" class="nav-link" data-scroll-target="#building-a-website-with-quarto">Building a Website with Quarto</a>
+  <ul class="collapse">
+  <li><a href="#using-rstudio-cloud" id="toc-using-rstudio-cloud" class="nav-link" data-scroll-target="#using-rstudio-cloud">Using RStudio Cloud</a></li>
+  <li><a href="#using-rstudio-on-maclinux" id="toc-using-rstudio-on-maclinux" class="nav-link" data-scroll-target="#using-rstudio-on-maclinux">Using RStudio on Mac/Linux</a></li>
+  <li><a href="#using-rstudio-on-windows" id="toc-using-rstudio-on-windows" class="nav-link" data-scroll-target="#using-rstudio-on-windows">Using RStudio on Windows</a></li>
+  </ul></li>
+  <li><a href="#creating-webpages" id="toc-creating-webpages" class="nav-link" data-scroll-target="#creating-webpages">Creating Webpages</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -129,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Instructions for extra credit two.
+    Instructions for extra credit three.
   </div>
 </div>
 
@@ -152,19 +201,137 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Write a 2 page report on non academic related activities you will be do for Spring Break. Make sure to highlight activities that will benefit your well being. If you written the wellness report, you can write an update on that and if there is any changes you want to do.</p>
-<p><strong>Worth 1 percent points.</strong></p>
-<p>Report guidelines</p>
+<p>Create a website using either <a href="https://quarto.org/">Quarto</a>, <a href="https://rmarkdown.rstudio.com/">RMarkdown</a>, <a href="https://bookdown.org/yihui/blogdown/">Blogdown</a>, <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll">Jekyll</a>, or any other website building tools that are not point-and-click based. Once you are finished creating your website, you must host it on <a href="https://pages.github.com/">GitHub Pages</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Below are the guidelines for the website:</p>
 <ul>
-<li><p>Max 2 Pages</p></li>
-<li><p>Double Spaced</p></li>
-<li><p>12 point font</p></li>
-<li><p>Due 3/17/2023</p></li>
+<li><p>Must have the following pages:</p>
+<ul>
+<li><p><strong>Home</strong> page</p>
+<ul>
+<li>Talk about your major and add a picture of yourself. Add any other information you want to share to the world.</li>
+</ul></li>
+<li><p><strong>About</strong> page</p>
+<ul>
+<li>Provide a small biography about yourself. Add anything you want to share.</li>
+</ul></li>
+<li><p><strong>Resume</strong> page</p>
+<ul>
+<li><p>Report your education</p></li>
+<li><p>Report any internships/jobs</p></li>
+<li><p>Any projects</p></li>
+</ul></li>
+</ul></li>
+<li><p>Must submit the URL of your website and github repo</p></li>
+<li><p>Due 5/15/2023</p></li>
 </ul>
+<p><strong>Worth 3 Percent Point.</strong></p>
+<section id="example-website" class="level2">
+<h2 class="anchored" data-anchor-id="example-website">Example Website</h2>
+<p><a href="https://www.inqs.info">My Website</a></p>
+</section>
+<section id="videos" class="level2">
+<h2 class="anchored" data-anchor-id="videos">Videos</h2>
+<p><a href="https://drive.google.com/file/d/1v_I6qCF2VwSstvq_5g23i2pDzIfSrmUN/view?usp=sharing">RStudio Cloud</a></p>
+</section>
+<section id="GitHub" class="level2">
+<h2 class="anchored" data-anchor-id="GitHub">Creating a GitHub Account (Required)</h2>
+<p>GitHub can be considered as the google drive of code. It has great features to track code, implement changes, and host websites. You can create a Github account here: <a href="https://github.com/" class="uri">https://github.com/</a>.</p>
+<p>Once you have your account create a new repository with the following naming scheme: USERNAME.github.io. Then, make sure that repository is <strong>public,</strong> and click to create a README document.</p>
+</section>
+<section id="building-a-website-with-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-website-with-quarto">Building a Website with Quarto</h2>
+<p>I highly recommend building your website using quarto, it is very simple platform where your text documents become webpages.</p>
+<section id="using-rstudio-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="using-rstudio-cloud">Using RStudio Cloud</h3>
+<p>RStudio Cloud (<a href="https://rstudio.cloud/">rstudio.cloud/</a>) is an excellent resource to create website. It has all the software that you will need to create a website. Before we begin, make sure to create repository as stated by in the <a href="#GitHub">Creating a GitHub Account (Required)</a> section.</p>
+<section id="creating-an-account" class="level4">
+<h4 class="anchored" data-anchor-id="creating-an-account">Creating an Account</h4>
+<p>When you load the website, create a free account using either your email or your CSUCI gmail account. Once you create an account, the dashboard should load with your workspace.</p>
+</section>
+<section id="creating-a-project" class="level4">
+<h4 class="anchored" data-anchor-id="creating-a-project">Creating a Project</h4>
+<p>On the top-right corner, click on the “New Project” blue button, and select “New RStudio Project”. This will create a new project called “Untitled Project”. Now change the name “Untitled Project” to “Website”. This project will create the material you need to develop a website.</p>
+</section>
+<section id="creating-and-connecting-an-ssh-key" class="level4">
+<h4 class="anchored" data-anchor-id="creating-and-connecting-an-ssh-key">Creating and Connecting an SSH Key</h4>
+<p>In you website project, you will need a way for the project to connect with GitHub. You can do this by generating an SSH key in RStudio Cloud and transferring it to GitHub.</p>
+<p>The SSH key can be thought of as a key that will unlock your computer to transfer data. You will generate the lock and key in RStudio, and then give the key to GitHub. Afterwards, transferring files will occur securely.</p>
+<p>To generate an SSH key, go to the menu bar and select “Tools”, then “Global Options”. A menu will pop-up, select “Git/SVN” from the side menu. Click on the button “Create SSH key …”. A window will pop-up, then enter a password. Then click “Create”. Another window will pop-up showing your lock and key, you can close the window immediately.</p>
+<p>In a different tab, go to your github account. On the top-right corner, click on your profile and select “Settings”. This will redirect you to a different page. In the left menu, click on “SSH and GPG Keys”. In the “SSH keys” section, click on the “New SSH key” green button. A new page will pop-up that will allow you to add a key. In the “Title” section, add any title<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Back at RStudio Cloud, click on the “View public key” link. Copy the highlighted text. Go back to Github and paste it in the “Key” section. Lastly, click on the “Add SSH Key” green button.</p>
+<p>Now you can transfer file easily between RStudio and GitHub.</p>
+</section>
+<section id="cloning-a-repository" class="level4">
+<h4 class="anchored" data-anchor-id="cloning-a-repository">Cloning a Repository</h4>
+<p>Cloning a repository is the process of downloading a repository from a remote server, in this case GitHub account. This will allow you to re-download your repository if it is ever deleted.</p>
+<p>In GitHub, navigate to your repository. On the top-right hand corner, click on the green button labeled “Code”. Make sure the “SSH” tab is selected and copy, or click on the double squares button, the text they provide. You should copy something that look like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>git@github.com:USERNAME/USERNAME.github.io.git </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In your RStudio Cloud Project, select the terminal tab in your console pane, usually on the left-side of the IDE. Paste the following text in the terminal tab<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git clone git@github.com:USERNAME/USERNAME.github.io.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It will prompt you to accept the SSH connection, type “yes”. Afterwards, it will ask you for your SSH password. Type your password. Then, it will download your repository as a folder. In the “Files” tab, you should see the newly created folder.</p>
+</section>
+<section id="making-a-quarto-website" class="level4">
+<h4 class="anchored" data-anchor-id="making-a-quarto-website">Making a Quarto Website</h4>
+<p>For this section, we will primarily be working in the “Terminal” Tab in RStudio. Click on the “Terminal” Tab in the “Console” Pane. The you will type the following:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cd USERNAME.github.io</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Make sure to replace USERNAME with your user name for GitHub. The above command will change the working folder to “USERNAME.github.io”. Afterwards, you want to fill the folder with the necessary contents for making a Quarto Website. Type the following command in the terminal:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>quarto create-project . --type website</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will fill generate new files for your website. Next, you will need to create a “nojekyll” file that tells GitHub, not to use Jekyll. Type the following in the terminal:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>touch .nojekyll</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, go to the “Files” Tab and open “_quarto.yml”. At the top of the document, you will need to add <code>output-dir: docs</code> under the <code>project:</code>, you should have something like this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>project:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  type: website</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  output-dir: docs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you are set to Render your website!</p>
+</section>
+<section id="rendering-and-publishing-a-website" class="level4">
+<h4 class="anchored" data-anchor-id="rendering-and-publishing-a-website">Rendering and Publishing a Website</h4>
+<p>Whenever you are finished updating your website files, you will need render your website so it will update all the new content. To begin, make sure you are working in the directory (folder) containing your website files:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cd USERNAME.github.io</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, you can render your website using the following command:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>quarto render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Your website will be rendered in the <code>docs</code> folder. Then you will need to commit the changes using git. First type</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>git add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The commit your files using the following commands:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>git commit -m "Updates"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Lastly, push your updates to GitHub:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>git push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It will prompt your for your password related towards you SSH key. Then it will push all the updates. GitHub will then publish your website in a few minutes. Lastly, type “USERNAME.github.io” in any browser and your website should work.</p>
+</section>
+</section>
+<section id="using-rstudio-on-maclinux" class="level3">
+<h3 class="anchored" data-anchor-id="using-rstudio-on-maclinux">Using RStudio on Mac/Linux</h3>
+<p>Coming Soon …</p>
+</section>
+<section id="using-rstudio-on-windows" class="level3">
+<h3 class="anchored" data-anchor-id="using-rstudio-on-windows">Using RStudio on Windows</h3>
+<p>Coming Soon …</p>
+</section>
+</section>
+<section id="creating-webpages" class="level2">
+<h2 class="anchored" data-anchor-id="creating-webpages">Creating Webpages</h2>
+<p>To create a webpage, you will simply open a new quarto document, edit the page, and save it in your website’s folder. To link the webpage in your menu bar, add the qmd file to the “_quarto.yml” file:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>website:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  title: "inqs909.github.io"</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  navbar:</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    left:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      - href: index.qmd</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        text: Home</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>      - about.qmd</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>      - NEWFILE.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The render your website and push it to GitHub.</p>
 
 
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>GitHub Pages allow you to host websites for free if it is a Public Repository.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>I usually give different names of galaxies for a title.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You may need to use a special keyboard shortcut to paste text. For me, it is ctrl-shift-v. Right-clicking should work as well.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
