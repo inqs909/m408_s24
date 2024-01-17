@@ -45,7 +45,7 @@ There are several available functions in R to conduct specific statistical metho
 ## Help Documentation
 
 | Section     | Description                                                 |
-|:---------------|:-------------------------------------------------------|
+|:-----------------|:-----------------------------------------------------|
 | Description | Provides a brief introduction of the function               |
 | Usage       | Provides potential usage of the function                    |
 | Arguments   | Arguments that the function can take                        |
@@ -182,5 +182,52 @@ Reticulate is an R package that allows you utilized python within R.
 ## Rcpp
 
 Rcpp is an R package that allows you to call C++ programs in R.
+
+Rcpp code:
+
+```{Rcpp}
+#| eval: true
+#include <Rcpp.h>
+using namespace Rcpp;
+// [[Rcpp::export]]
+double var_cpp(NumericVector x){
+int n = x.length();
+NumericVector pre(n);
+double mean_x = mean(x);
+for (int i=0; i<n; ++i){
+   pre[i] = pow(x[i]-mean_x, 2);
+}
+int divisor = n - 1;
+double post = sum(pre) / divisor;
+return post;
+}
+```
+
+R code:
+
+```{r}
+#| eval: true
+var_r <- function(x){
+  sum((x-mean(x))^2) / (length(x)-1)
+}
+```
+
+Benchmark Analysis
+
+```{r}
+#| echo: true
+#| eval: true
+x <- rnorm(50)
+bench::mark(
+var_cpp(x),
+var_r(x),
+var(x)
+)
+```
+
+```{r}
+#| eval: true
+var
+```
 
 This is an extremely advanced topic. Only do this if you need real speed and efficiency.

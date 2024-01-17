@@ -420,8 +420,8 @@
 <h2>Help Documentation</h2>
 <table>
 <colgroup>
-<col style="width: 22%">
-<col style="width: 77%">
+<col style="width: 25%">
+<col style="width: 75%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -602,6 +602,71 @@ z =  \frac{x-\bar y}{\sqrt{s^2_{y}/n_y}}
 <section id="rcpp" class="slide level2">
 <h2>Rcpp</h2>
 <p>Rcpp is an R package that allows you to call C++ programs in R.</p>
+<p>Rcpp code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">using</span> <span class="kw">namespace</span> Rcpp<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="dt">double</span> var_cpp<span class="op">(</span>NumericVector x<span class="op">){</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="dt">int</span> n <span class="op">=</span> x<span class="op">.</span>length<span class="op">();</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>NumericVector pre<span class="op">(</span>n<span class="op">);</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="dt">double</span> mean_x <span class="op">=</span> mean<span class="op">(</span>x<span class="op">);</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span>n<span class="op">;</span> <span class="op">++</span>i<span class="op">){</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>   pre<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> pow<span class="op">(</span>x<span class="op">[</span>i<span class="op">]-</span>mean_x<span class="op">,</span> <span class="dv">2</span><span class="op">);</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="op">}</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="dt">int</span> divisor <span class="op">=</span> n <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="dt">double</span> post <span class="op">=</span> sum<span class="op">(</span>pre<span class="op">)</span> <span class="op">/</span> divisor<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="cf">return</span> post<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>R code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>var_r <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Benchmark Analysis</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>bench<span class="sc">::</span><span class="fu">mark</span>(</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">var_cpp</span>(x),</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">var_r</span>(x),</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">var</span>(x)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 3 × 6
+#&gt;   expression      min   median `itr/sec` mem_alloc `gc/sec`
+#&gt;   &lt;bch:expr&gt; &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
+#&gt; 1 var_cpp(x)   1.36µs    3.3µs   266243.    2.93KB      0  
+#&gt; 2 var_r(x)     2.91µs   5.36µs   137830.   23.75KB     27.6
+#&gt; 3 var(x)       5.36µs  11.41µs    76099.   13.73KB     30.5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; function (x, y = NULL, na.rm = FALSE, use) 
+#&gt; {
+#&gt;     if (missing(use)) 
+#&gt;         use &lt;- if (na.rm) 
+#&gt;             "na.or.complete"
+#&gt;         else "everything"
+#&gt;     na.method &lt;- pmatch(use, c("all.obs", "complete.obs", "pairwise.complete.obs", 
+#&gt;         "everything", "na.or.complete"))
+#&gt;     if (is.na(na.method)) 
+#&gt;         stop("invalid 'use' argument")
+#&gt;     if (is.data.frame(x)) 
+#&gt;         x &lt;- as.matrix(x)
+#&gt;     else stopifnot(is.atomic(x))
+#&gt;     if (is.data.frame(y)) 
+#&gt;         y &lt;- as.matrix(y)
+#&gt;     else stopifnot(is.atomic(y))
+#&gt;     .Call(C_cov, x, y, na.method, FALSE)
+#&gt; }
+#&gt; &lt;bytecode: 0x643bdc514298&gt;
+#&gt; &lt;environment: namespace:stats&gt;</code></pre>
+</div>
+</div>
 <p>This is an extremely advanced topic. Only do this if you need real speed and efficiency.</p>
 
 <div class="footer footer-default">

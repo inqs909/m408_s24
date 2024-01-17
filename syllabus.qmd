@@ -7,7 +7,7 @@ format:
     html-math-method: katex
 ---
 
-## Math 408: Advance Data Analysis
+## Math 408: Advanced Data Analysis
 
 ### Course Information
 
@@ -27,9 +27,11 @@ format:
 | Location | BTE 2840 | Look for Group | BTE 2840      |
 | Time     | 3-4 PM   | TBD            | 9 AM - 12 PM  |
 
-Or by Zoom appointment: <https://calendly.com/isaac-qs/office-hours>
+Or by Zoom appointment: [calendly.com/isaac-qs/office-hours](https://calendly.com/isaac-qs/office-hours)
 
 **Lecture:** Monday and Wednesday 1:30-3:00 PM in BT 1462
+
+**Course Website:** [m408.inqs.info](https://m408.inqs.info/) AND Canvas
 
 ### Course Description
 
@@ -46,22 +48,23 @@ Introduction to data management, regression, and machine learning. Bayesian meth
 -   An Introduction to Statistical Learning (SL)
     -   Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani
     -   Available to Download from the Broome Library
+    -   [www.statlearning.com](https://www.statlearning.com/)
     
 -   Statistical Computing (SC)
     -   Isaac Quintanilla Salinas
-    -   <https://www.inqs.info/stat_comp/>
-    -   <https://hypothes.is/groups/xMmDdj2A/m408>
+    -   [www.inqs.info/stat_comp](https://www.inqs.info/stat_comp/)
+    -   [hypothes.is/groups/xMmDdj2A/m408](https://hypothes.is/groups/xMmDdj2A/m408)
 
 
 ### Required Software
 
 For this course, we will use R, Quarto, and RStudio. Please download and install on your computer.
 
--   **R** is a free statistical software program that is available for download at: <https://www.r-project.org/>.
+-   **R** is a free statistical software program that is available for download at: [www.r-project.org](https://www.r-project.org/).
 
 -   **R Markdown** is a scientific documentation known as an [RMD](https://rmarkdown.rstudio.com/) file that can be used to provide reproducible code and documents. 
 
--   **RStudio** provides free and open source tools for your data analysis in R: <https://www.rstudio.com/>
+-   **RStudio** provides free and open source tools for your data analysis in R: [posit.co/downloads](https://posit.co/downloads/)
 
 -   **csucistats** is a developmental R package that will contain RMD templates to submit assignments for class: [csucistats](https://www.inqs.info/csucistats/)
 
@@ -84,7 +87,7 @@ At the end of the quarter, course grades will be assigned according to the follo
 
 #### Homework
 
-Homework will be assigned on a regular basis and posted on <https://m408.inqs.info/hw.html> and CANVAS. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 10 point penalty. The last day late work will be accepted is on 5/14/2023 at 11:59 PM.
+Homework will be assigned on a regular basis and posted on [m408.inqs.info/hw.html](https://m408.inqs.info/hw.html) and Canvas. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 10 point penalty. The last day late work will be accepted is on 5/14/2023 at 11:59 PM.
 
 #### Exams
 
@@ -111,10 +114,10 @@ The following outline may be subject to change. Any changes will be announced in
 | 3/18-3/22 | Spring Break                         |             |                 |
 | 3/25-3/29 | Classification                       | SL: Ch 4    | HW #6           |
 | 4/1-4/5   | Resampling Methods                   | SL: Ch 5    | Exam #2         |
-| 4/8-4/12  | Model Selection                      | SL: Ch 6    | HW # 7         |
-| 4/15-4/19 | Nonparametric Regression             | SL: Ch 7    | HW # 8         |
-| 4/22-4/26 | Tree-Based Methods                   | SL: Ch 8    | HW # 9         |
-| 4/29-5/3  | Support Vector Machines              | SL: Ch 9    | HW # 10        |
+| 4/8-4/12  | Model Selection                      | SL: Ch 6    | HW # 7          |
+| 4/15-4/19 | Nonparametric Regression             | SL: Ch 7    | HW # 8          |
+| 4/22-4/26 | Tree-Based Methods                   | SL: Ch 8    | HW # 9          |
+| 4/29-5/3  | Support Vector Machines              | SL: Ch 9    | HW # 10         |
 | 5/6-5/10  | Deep Learning                        | SL: Ch 10   |                 |
 | 5/13-5/17 | Exam 3                               |             |                 |
 
@@ -134,6 +137,7 @@ The following outline may be subject to change. Any changes will be announced in
     
 ### Important note about a possible work stoppage during the semester
 
-The California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. It is possible that we will call a strike or other work stoppage this term. I promise to promptly inform you of any schedule disruption. Our working conditions are your learning conditions; we seek to protect both. For further information go to www.CFAbargaining.org.
+The California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. We will be going on strike from January 22 – January 26 unless management gives us a fair contract that recognizes the dignity of CSU faculty, staff, and students. Our working conditions are student learning conditions; we seek to protect both. For further information go to: www.calfac.org/strike.
+
     
 
