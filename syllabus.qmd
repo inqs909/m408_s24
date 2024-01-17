@@ -25,7 +25,7 @@ format:
 |:---------|:---------|:---------------|:--------------|
 | Day      | MW       | TBD            | Tuesday       |
 | Location | BTE 2840 | Look for Group | BTE 2840      |
-| Time     | 3-4 PM   | TBD            | 9 AM - 12 PM  |
+| Time     | 3-4 PM   | TBD            | 10 AM - 12 PM  |
 
 Or by Zoom appointment: [calendly.com/isaac-qs/office-hours](https://calendly.com/isaac-qs/office-hours)
 
