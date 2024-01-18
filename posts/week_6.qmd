@@ -24,7 +24,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides                                                    | Videos                                | Files                                                             |
-|--------------|--------------------|--------------|-----------------------|
-| 1       | [Slides](https://m408.inqs.info/lectures/lecture_11.html) | [Video](https://youtu.be/pOR-EfRtdPw) | [Script](https://m408.inqs.info/files/r_scripts/class_11.nb.html) |
-| 2       | [Slides](https://m408.inqs.info/lectures/lecture_12.html) | [Video](https://youtu.be/_0ZmC0iu4mg) | [Script](https://m408.inqs.info/files/r_scripts/class_12.nb.html) |
+| Lecture | Slides | Videos | Files |
+|---------|--------|--------|-------|
+| 1       |        |        |       |
+| 2       |        |        |       |

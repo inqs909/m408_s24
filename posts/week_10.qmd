@@ -20,7 +20,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides                                                    | Videos                                | Files |
-|------------------|------------------|------------------|-------------------|
-| 1       | [Slides](https://m408.inqs.info/lectures/lecture_19.html) | [Video](https://youtu.be/MGmxTKr1WlA) |       |
-| 2       | [Slides](https://m408.inqs.info/lectures/lecture_20.html) | [Video](https://youtu.be/KcbX659Jgdc) |       |
+| Lecture | Slides | Videos | Files |
+|---------|--------|--------|-------|
+| 1       |        |        |       |
+| 2       |        |        |       |
