@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -102,8 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -153,11 +117,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#first-lecture" id="toc-first-lecture" class="nav-link" data-scroll-target="#first-lecture">First Lecture</a></li>
   <li><a href="#second-lecture" id="toc-second-lecture" class="nav-link" data-scroll-target="#second-lecture">Second Lecture</a></li>
-  </ul></li>
-  <li><a href="#important-concepts" id="toc-important-concepts" class="nav-link" data-scroll-target="#important-concepts">Important Concepts</a>
-  <ul class="collapse">
-  <li><a href="#first-lecture-1" id="toc-first-lecture-1" class="nav-link" data-scroll-target="#first-lecture-1">First Lecture</a></li>
-  <li><a href="#second-lecture-1" id="toc-second-lecture-1" class="nav-link" data-scroll-target="#second-lecture-1">Second Lecture</a></li>
   </ul></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
@@ -229,107 +188,6 @@ On Strike Jan 22 to Jan 26
 </ul>
 </section>
 </section>
-<section id="important-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="important-concepts">Important Concepts</h2>
-<section id="first-lecture-1" class="level3">
-<h3 class="anchored" data-anchor-id="first-lecture-1">First Lecture</h3>
-<section id="accessing-r-rstudio" class="level4">
-<h4 class="anchored" data-anchor-id="accessing-r-rstudio">Accessing R &amp; RStudio</h4>
-<p>If you are on a tablet or Chromebook, you can access R &amp; RStudio via <a href="https://posit.cloud/" class="uri">https://posit.cloud/</a> for free. However, they have limited computing resources. Be mindful of your experimentation. You may also be able to use Quarto in Rstudio cloud.</p>
-<p>You can install R via their website: <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>.</p>
-<p>You can install RStudio for free from their website: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
-</section>
-<section id="using-r" class="level4">
-<h4 class="anchored" data-anchor-id="using-r">Using R</h4>
-<p>R can be used as a calculator; below are a few examples:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.75</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">*</span><span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 72</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 54.59815</code></pre>
-</div>
-</div>
-</section>
-<section id="types-of-data" class="level4">
-<h4 class="anchored" data-anchor-id="types-of-data">Types of Data</h4>
-<section id="numeric" class="level5">
-<h5 class="anchored" data-anchor-id="numeric">Numeric</h5>
-<p>These types of data are stored as a number in R. They may be whole numbers or contains decimal values known as double.</p>
-</section>
-<section id="characterstring" class="level5">
-<h5 class="anchored" data-anchor-id="characterstring">Character/String</h5>
-<p>This type of data is stored a string of character values. They are usually surrounded by quotes in the output.</p>
-</section>
-<section id="logical" class="level5">
-<h5 class="anchored" data-anchor-id="logical">Logical</h5>
-<p>This type of data indicates <code>TRUE</code> or <code>FALSE</code> data. It is binary data.</p>
-</section>
-<section id="missing" class="level5">
-<h5 class="anchored" data-anchor-id="missing">Missing</h5>
-<p>This indicates that a value is missing or not computed. Commonly stored as <code>NA</code> or <code>NaN</code>.</p>
-</section>
-</section>
-</section>
-<section id="second-lecture-1" class="level3">
-<h3 class="anchored" data-anchor-id="second-lecture-1">Second Lecture</h3>
-<section id="r-functions" class="level4">
-<h4 class="anchored" data-anchor-id="r-functions">R Functions</h4>
-<p>R has specialized functions that can compute specific values. R functions require inputs, known as arguments, to produce a specific output.</p>
-<p>For example, the <code>log()</code> function can be used to compute the natural logarithm of a specified input:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">34</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.526361</code></pre>
-</div>
-</div>
-<p>If you want to know information about a specific function, you can use the <code>?</code> operator:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>?log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>which will open the help tab. Notice there are 2 arguments: <code>x</code> and <code>base</code>. This means that the <code>log()</code> function can be extended to other base. To use common log<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, specify the arguments:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="at">x=</span><span class="dv">34</span>, <span class="at">base=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.531479</code></pre>
-</div>
-</div>
-<p>Notice that I specified the arguments. You can also type this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">34</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.531479</code></pre>
-</div>
-</div>
-<p>which produces the same results. This is because R uses positions in the function to determine argument values; therefore, if the positions are correct, you do not need to specify the argument name.</p>
-<p>Going back to the First Lecture example, <code>log(34)</code>, we did not specify the base. This is because functions have default values for arguments. The help documentation tells us what arguments have defaults and do not need to be specified.</p>
-</section>
-<section id="r-objects" class="level4">
-<h4 class="anchored" data-anchor-id="r-objects">R Objects</h4>
-</section>
-<section id="install-packages" class="level4">
-<h4 class="anchored" data-anchor-id="install-packages">Install packages</h4>
-<p>You can extend the functionality of R. The <a href="https://www.tidyverse.org/">tidyverse</a> package includes a popular set of R packages for data wrangling and analysis. To install tidyverse, use the <code>install.packages()</code> function<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'tidyverse'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Once you installed the R package, you will need to load with every R session using the <code>library()</code> function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-</section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <table class="table">
@@ -360,14 +218,7 @@ On Strike Jan 22 to Jan 26
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><span class="math inline">\(\log_{10}(x)\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>The package name must be inputted with quotes in the function.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
