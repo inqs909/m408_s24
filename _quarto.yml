@@ -20,8 +20,6 @@ website:
   navbar:
     right:
       - syllabus.qmd
-      - hw.qmd
-      - ec.qmd
       - books.qmd
 
 
