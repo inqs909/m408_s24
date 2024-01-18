@@ -1,7 +1,7 @@
 ---
 title: "Extra Credit 3"
 description: Instructions for extra credit four.
-date: 01-16-2023
+date: 01-16-2024
 editor: visual
 format:
   html: 
@@ -9,47 +9,35 @@ format:
     html-math-method: katex
 ---
 
-Write a report on Monte Carlo Methods. Provide a brief history and their purpose. Lastly, provide a toy example demonstrating the use of Monte Carlo Methods in R.
+Provide a summary of one book below, an write a brief analysis in supporting or opposing the book,and connect key elements of the book to your every day life. The majority of these books are available through the Broome Library.
 
-**Worth 3 percent points.**
+**Books:**
 
-#### Resources
+-   Happiness: A Guide to Developing Life's
 
--   https://towardsdatascience.com/an-overview-of-monte-carlo-methods-675384eb1694
+    -   Matthieu Ricard
 
--   https://towardsdatascience.com/monte-carlo-simulation-a-practical-guide-85da45597f0e
+-   Grit: The Power of Passion and Perserverance
 
-#### Report Guideline
+    -   Angela Duckworth
 
--   3-4 Pages
+-   Mindset: The New Psychology of Success
 
--   Must include a title page
+    -   Carol Dweck
 
--   Double Spaced
+-   Make it Stick: The Science of Successful Learning
 
--   12 point font
+    -   Peter Brown
 
--   Proofread your work
+-   Limitless Mind
 
--   Submit a pdf of your work to Canvas
+    -   Jo Boaler
 
--   Due 5/15/2023
+Report guidelines
 
-Write a report on Survival Analysis. Make sure to provide a brief history of survival analysis and prominent methods such as Kaplan-Meier curves and Cox proportional hazard models. Lastly, provide a toy example demonstrating the use of Survival Analysis in R.
+-   5-6 Pages
 
-**Worth 2 percent points.**
-
-#### Resources
-
--   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2394262/
-
--   https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_survival/BS704_Survival_print.html
-
-#### Report Guideline
-
--   3-4 Pages
-
--   Must include a title page
+-   Must include a title page (does not count toward page count)
 
 -   Double Spaced
 
@@ -59,4 +47,6 @@ Write a report on Survival Analysis. Make sure to provide a brief history of sur
 
 -   Submit a pdf of your work to Canvas
 
--   Due 5/15/2023
+-   **Due 5/13/2024**
+
+**Worth 3 final grade percentage points.**
