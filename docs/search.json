@@ -1071,6 +1071,20 @@
     "text": "Example\nSimulate from a \\(N(0,1)\\) distribution until you have 50 positive numbers."
   },
   {
+    "objectID": "lectures/1b.html#introductions-1",
+    "href": "lectures/1b.html#introductions-1",
+    "title": "R Basics",
+    "section": "Introductions",
+    "text": "Introductions\n\nSan Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
+  },
+  {
+    "objectID": "lectures/1b.html#introductions-2",
+    "href": "lectures/1b.html#introductions-2",
+    "title": "R Basics",
+    "section": "Introductions",
+    "text": "Introductions\n\nName\nYear\nMajor\nFun Fact\nCareer Goal"
+  },
+  {
     "objectID": "lectures/1b.html#r-programming",
     "href": "lectures/1b.html#r-programming",
     "title": "R Basics",
@@ -1103,7 +1117,7 @@
     "href": "lectures/1b.html#load-r-package",
     "title": "R Basics",
     "section": "Load R Package",
-    "text": "Load R Package\n\nlibrary(tidyverse)\n\n\nYou must load the package every new R Session"
+    "text": "Load R Package\n\nlibrary(tidyverse)\nlibrary(torch)\n\n\nYou must load packages every new R Session"
   },
   {
     "objectID": "lectures/1b.html#r-as-a-calculator",

@@ -13,7 +13,8 @@
 <script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
   <title>MATH 408 - R Basics</title>
@@ -106,7 +107,6 @@
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/verticator/verticator.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
@@ -545,7 +545,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"","id":1,"options":{"context":"interactive"}},{"code":"","id":2,"options":{"context":"interactive"}},{"code":"","id":3,"options":{"context":"interactive"}},{"code":"","id":4,"options":{"context":"interactive"}},{"code":"","id":5,"options":{"context":"interactive"}}];
+  globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"code":"","id":1},{"options":{"context":"interactive"},"code":"","id":2},{"options":{"context":"interactive"},"code":"","id":3},{"options":{"context":"interactive"},"code":"","id":4},{"options":{"context":"interactive"},"code":"","id":5}];
 
   </script>
   <script type="module">
@@ -1304,9 +1304,66 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </section>
 <section>
-<section id="r" class="title-slide slide level1 center">
+<section id="introductions" class="title-slide slide level1 agenda-slide center">
+<h1>Introductions</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-active">
+<p>Introductions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Basics</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="introductions-1" class="slide level2">
+<h2>Introductions</h2>
+<ul>
+<li><p>San Bernardino, CA</p></li>
+<li><p>CSU Monterey Bay</p>
+<ul>
+<li>BS Biology</li>
+</ul></li>
+<li><p>San Diego State University</p>
+<ul>
+<li>Master’s in Public Health</li>
+</ul></li>
+<li><p>UC Riverside</p>
+<ul>
+<li>PhD in Applied Statistics</li>
+</ul></li>
+</ul>
+</section>
+<section id="introductions-2" class="slide level2">
+<h2>Introductions</h2>
+<ul>
+<li><p>Name</p></li>
+<li><p>Year</p></li>
+<li><p>Major</p></li>
+<li><p>Fun Fact</p></li>
+<li><p>Career Goal</p></li>
+</ul>
+</section></section>
+<section>
+<section id="r" class="title-slide slide level1 agenda-slide center">
 <h1>R</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Introductions</p>
+</div></li>
+<li><div class="agenda-active">
+<p>R</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Basics</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="r-programming" class="slide level2">
 <h2>R Programming</h2>
@@ -1371,16 +1428,29 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="load-r-package" class="slide level2">
 <h2>Load R Package</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(torch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>You must load the package every new R Session</li>
+<li>You must load packages every new R Session</li>
 </ul>
 </section></section>
 <section>
-<section id="r-basics" class="title-slide slide level1 center">
+<section id="r-basics" class="title-slide slide level1 agenda-slide center">
 <h1>R Basics</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Introductions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>R</p>
+</div></li>
+<li><div class="agenda-active">
+<p>R Basics</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="r-as-a-calculator" class="slide level2">
 <h2>R as a calculator</h2>
@@ -1537,7 +1607,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
   <script src="../site_libs/revealjs/plugin/verticator/verticator.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
@@ -1561,7 +1630,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true,"src":"chalkboard.json","storage":"chalkboard_pres","theme":"whiteboard","chalkWidth":4},
-'pointer': {"key":"q","color":"red","pointerSize":16,"alwaysVisible":false},
 'verticator': {"themetag":"h1","color":"","inversecolor":"","skipuncounted":false,"clickable":true,"position":"auto","offset":"3vmin","autogenerate":true,"tooltip":false,"scale":1},
 'smaller': false,
  
@@ -1733,7 +1801,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, RevealPointer, Verticator, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Verticator, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -1742,6 +1810,44 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

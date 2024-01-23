@@ -21,11 +21,11 @@ knitr:
 
 
 revealjs-plugins:
-  - pointer
   - verticator
   
 filters: 
   - reveal-header
+  - reveal-auto-agenda
   - code-fullscreen
   - webr
 
@@ -42,6 +42,35 @@ library(DT)
 library(tidyverse)
 ```
 
+# Introductions
+
+## Introductions
+
+-   San Bernardino, CA
+
+-   CSU Monterey Bay
+
+    -   BS Biology
+
+-   San Diego State University
+
+    -   Master's in Public Health
+
+-   UC Riverside
+
+    -   PhD in Applied Statistics
+
+## Introductions
+
+-   Name
+
+-   Year
+
+-   Major
+
+-   Fun Fact
+
+-   Career Goal
 
 
 # R
@@ -132,10 +161,11 @@ install.packages('csucistats',
 #| eval: false
 
 library(tidyverse)
+library(torch)
 ```
 
 
-- You must load the package every new R Session
+- You must load packages every new R Session
 
 # R Basics
 
