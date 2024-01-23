@@ -8,9 +8,7 @@ editor_options:
 ---
 
 ::: callout-important
-## On Strike Jan 22 to Jan 26
-
-I will not be teaching during this week.
+## CLASS Begins on Wednesday (1/24)
 :::
 
 ## Learning Outcomes
@@ -25,11 +23,15 @@ I will not be teaching during this week.
 
 -   Types of Data
 
-### Second Lecture
+### First/Second Lecture
+
+-   Installing R and RStudio
+
+-   Scripts
+
+-   R Calculator
 
 -   R Objects
-
--   R Functions
 
 -   R Packages
 
@@ -37,5 +39,5 @@ I will not be teaching during this week.
 
 | Lecture | Slides | Videos | Files |
 |---------|--------|--------|-------|
-| 1       |        |        |       |
+| 1       | NA     | NA     | NA    |
 | 2       |        |        |       |
