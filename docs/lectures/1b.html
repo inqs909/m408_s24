@@ -545,7 +545,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive"},"code":""},{"id":2,"options":{"context":"interactive"},"code":""},{"id":3,"options":{"context":"interactive"},"code":""},{"id":4,"options":{"context":"interactive"},"code":""},{"id":5,"options":{"context":"interactive"},"code":""}];
+  globalThis.qwebrCellDetails = [{"code":"","id":1,"options":{"context":"interactive"}},{"code":"","id":2,"options":{"context":"interactive"}},{"code":"","id":3,"options":{"context":"interactive"}},{"code":"","id":4,"options":{"context":"interactive"}},{"code":"","id":5,"options":{"context":"interactive"}}];
 
   </script>
   <script type="module">
@@ -1367,6 +1367,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </div>
+</section>
+<section id="load-r-package" class="slide level2">
+<h2>Load R Package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>You must load the package every new R Session</li>
+</ul>
 </section></section>
 <section>
 <section id="r-basics" class="title-slide slide level1 center">
@@ -1417,10 +1426,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </ul>
 <p>Evaluate the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">is.numeric</span>(<span class="dv">1</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">is.numeric</span>(<span class="st">"1"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">is.numeric</span>(T)</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">is.numeric</span>(<span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">is.numeric</span>(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">is.numeric</span>(<span class="st">"1"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">is.numeric</span>(T)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">is.numeric</span>(<span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="types-of-data-1" class="slide level2">
@@ -1433,8 +1442,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>In R, an object contains a set of data. The most common types are <code>vectors</code> and <code>matrix</code>.</p>
 <p>Run this code and print out the objects in the console:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">34</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">34</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="types-of-objects-1" class="slide level2">
@@ -1447,7 +1456,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Data frames can be thought of as R’s version of a data set.</p>
 <p>Play around with mtcars:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>mtcars </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>mtcars </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 #&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
@@ -1490,8 +1499,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>List can be thought as an extended vector, but each element is a different R object.</p>
 <p>Try playing with this R object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>list_one <span class="ot">&lt;-</span> <span class="fu">list</span>(mtcars, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>),</span>
-<span id="cb6-2"><a href="#cb6-2"></a>                 <span class="fu">diag</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>list_one <span class="ot">&lt;-</span> <span class="fu">list</span>(mtcars, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>),</span>
+<span id="cb7-2"><a href="#cb7-2"></a>                 <span class="fu">diag</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lists-1" class="slide level2">
@@ -1733,44 +1742,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

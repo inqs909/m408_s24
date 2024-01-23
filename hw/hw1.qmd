@@ -1,17 +1,17 @@
 ---
 title: "Homework 1"
-date: 2/7/23
+date: 1/23/24
 editor: visual
 draft: true
 ---
 
-**Due 2/10/23 \@ 11:59 PM**
+**Due 2/10/24 \@ 11:59 PM**
 
-Use an RMD Notebook file from to create the assignment.
+Use an RMD M408 Templage to create the assignment.
 
 You must comment all your code to receive credit.
 
-Submit the \*nb.html file to canvas.
+Submit the \*.html file to canvas.
 
 For all problems, you must use at least one `for` or `while` loop.
 
@@ -27,10 +27,6 @@ Write the code to produce the output if you use the `rowMeans()` on the R object
 
 ## Problem 2
 
-Write the code to generate the 10th row of Pascal's Triangle.
-
-## Problem 3
-
 Using the following code:
 
 ```{r}
@@ -39,6 +35,6 @@ y <- matrix(sample(1:400, 100, replace = T), nrow = 10)
 
 Find the median value for each column of the matrix `y`. You are not allowed to use the `median()` function.
 
-## Problem 4
+## Problem 3
 
-Write the code that will generate the first 1000 numbers of the Fibonacci sequence.
+Write the code that will generate the first 1000 numbers of the [Fibonacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence).

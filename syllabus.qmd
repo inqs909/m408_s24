@@ -104,7 +104,7 @@ The following outline may be subject to change. Any changes will be announced in
 | Week      | Topic                                | Reading     | Assignment/Exam |
 |:----------|:-------------------------------------|:------------|:----------------|
 | 1/22-1/26 | Intro to Course/Intro to R/Notebooks | SC: Ch 1    |                 |
-| 1/29-2/2  | Control Flow                         | SC: Ch 2    | TBD             |
+| 1/29-2/2  | Control Flow                         | SC: Ch 2    | HW # 1          |
 | 2/5-2/9   | Control Flow/Functional Programming  | SC: Ch 13   | TBD             |
 | 2/12-2/16 | Functional Programming               | SC: Ch 15   | TBD             |
 | 2/19-2/23 | Data Manipulation                    | SC: Ch 3    | TBD             |   

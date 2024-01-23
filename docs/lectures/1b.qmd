@@ -125,6 +125,18 @@ install.packages('csucistats',
 
 :::
 
+## Load R Package
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(tidyverse)
+```
+
+
+- You must load the package every new R Session
+
 # R Basics
 
 ## R as a calculator

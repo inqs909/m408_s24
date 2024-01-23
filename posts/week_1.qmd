@@ -8,7 +8,7 @@ editor_options:
 ---
 
 ::: callout-important
-## CLASS Begins on Wednesday (1/24)
+## Class Begins on Wednesday (1/24)
 :::
 
 ## Learning Outcomes
@@ -37,7 +37,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       | NA     | NA     | NA    |
-| 2       |        |        |       |
+| Lecture | Slides                                                         | Videos | Files |
+|---------|----------------------------------------------------------------|--------|-------|
+| 1       | NA                                                             | NA     | NA    |
+| 2       | [Slides](https://m408.inqs.info/lectures/1b.html#/title-slide) |        |       |
