@@ -2,7 +2,7 @@
 title: "Homework 1"
 date: 1/23/24
 editor: visual
-draft: true
+draft: false
 ---
 
 **Due 2/10/24 \@ 11:59 PM**

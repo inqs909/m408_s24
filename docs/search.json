@@ -3666,5 +3666,33 @@
     "title": "Week 1",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nNA\nNA\nNA\n\n\n2\nSlides"
+  },
+  {
+    "objectID": "hw/hw1.html",
+    "href": "hw/hw1.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "Due 2/10/24 @ 11:59 PM\nUse an RMD M408 Templage to create the assignment.\nYou must comment all your code to receive credit.\nSubmit the *.html file to canvas.\nFor all problems, you must use at least one for or while loop."
+  },
+  {
+    "objectID": "hw/hw1.html#problem-1",
+    "href": "hw/hw1.html#problem-1",
+    "title": "Homework 1",
+    "section": "Problem 1",
+    "text": "Problem 1\nUsing the following code:\n\nx &lt;- matrix(rnorm(1500), nrow = 10)\n\nWrite the code to produce the output if you use the rowMeans() on the R object x."
+  },
+  {
+    "objectID": "hw/hw1.html#problem-2",
+    "href": "hw/hw1.html#problem-2",
+    "title": "Homework 1",
+    "section": "Problem 2",
+    "text": "Problem 2\nUsing the following code:\n\ny &lt;- matrix(sample(1:400, 100, replace = T), nrow = 10)\n\nFind the median value for each column of the matrix y. You are not allowed to use the median() function."
+  },
+  {
+    "objectID": "hw/hw1.html#problem-3",
+    "href": "hw/hw1.html#problem-3",
+    "title": "Homework 1",
+    "section": "Problem 3",
+    "text": "Problem 3\nWrite the code that will generate the first 1000 numbers of the Fibonacci Sequence."
   }
 ]
