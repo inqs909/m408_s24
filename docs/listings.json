@@ -7,7 +7,9 @@
   },
   {
     "listing": "/hw.html",
-    "items": []
+    "items": [
+      "/hw/hw1.html"
+    ]
   },
   {
     "listing": "/ec.html",

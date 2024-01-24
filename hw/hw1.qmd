@@ -7,7 +7,7 @@ draft: false
 
 **Due 2/10/24 \@ 11:59 PM**
 
-Use an RMD M408 Templage to create the assignment.
+Use an RMD M408 Template to create the assignment.
 
 You must comment all your code to receive credit.
 
