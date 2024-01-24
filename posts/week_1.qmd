@@ -37,7 +37,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides                                                         | Videos | Files |
-|---------|----------------------------------------------------------------|--------|-------|
-| 1       | NA                                                             | NA     | NA    |
-| 2       | [Slides](https://m408.inqs.info/lectures/1b.html#/title-slide) |        |       |
+| Lecture | Slides                                                         | Videos                                | Files |
+|----------|------------------------------------------|----------|----------|
+| 1       | NA                                                             | NA                                    | NA    |
+| 2       | [Slides](https://m408.inqs.info/lectures/1b.html#/title-slide) | [Video](https://youtu.be/fpVJ9X06aCM) |       |
