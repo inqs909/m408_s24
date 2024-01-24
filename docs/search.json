@@ -1089,7 +1089,7 @@
     "href": "lectures/1b.html#r-programming",
     "title": "R Basics",
     "section": "R Programming",
-    "text": "R Programming\nR is a st atistical programming package that allows you to conduct different types of analysis.\nR"
+    "text": "R Programming\nR is a statistical programming package that allows you to conduct different types of analysis.\nR"
   },
   {
     "objectID": "lectures/1b.html#rstudio",
@@ -3694,5 +3694,12 @@
     "title": "Homework 1",
     "section": "Problem 3",
     "text": "Problem 3\nWrite the code that will generate the first 1000 numbers of the Fibonacci Sequence."
+  },
+  {
+    "objectID": "lectures/1b.html#syllabus",
+    "href": "lectures/1b.html#syllabus",
+    "title": "R Basics",
+    "section": "Syllabus",
+    "text": "Syllabus"
   }
 ]

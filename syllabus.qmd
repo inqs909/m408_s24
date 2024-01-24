@@ -21,11 +21,11 @@ format:
 
 **Office Hours:**
 
-| OH       | Course   | Tea Time       | R OH          |
-|:---------|:---------|:---------------|:--------------|
-| Day      | MW       | TBD            | Tuesday       |
-| Location | BTE 2840 | Look for Group | BTE 2840      |
-| Time     | 3-4 PM   | TBD            | 10 AM - 12 PM  |
+| OH       | Course   | Tea Time       | R OH          | Tidy Tuesday on Wednesday |
+|:---------|:---------|:---------------|:--------------|---------------------------|
+| Day      | MW       | TBD            | Tuesday       | Wednesday                 |
+| Location | BTE 2840 | Look for Group | BTE 2840      | TBD                       |
+| Time     | 12-1 PM  | TBD            | 10 AM - 12 PM | 3-5 PM                    |
 
 Or by Zoom appointment: [calendly.com/isaac-qs/office-hours](https://calendly.com/isaac-qs/office-hours)
 

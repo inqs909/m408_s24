@@ -73,11 +73,15 @@ library(tidyverse)
 -   Career Goal
 
 
+## Syllabus
+
+<p><iframe title="embedded content" src="https://m408.inqs.info/syllabus.html" width="1100" height="500"></iframe></p>
+
 # R
 
 ## R Programming
 
-R is a st   atistical programming package that allows you to conduct different types of analysis.
+R is a statistical programming package that allows you to conduct different types of analysis.
 
 [R](https://www.r-project.org/)
 
