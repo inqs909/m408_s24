@@ -7,7 +7,14 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
   <title>MATH 408 - Control Flow</title>
@@ -100,6 +107,7 @@
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/verticator/verticator.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -409,9 +417,24 @@
 </ul>
 </section>
 <section>
-<section id="nested-for-loops" class="title-slide slide level1 center">
+<section id="nested-for-loops" class="title-slide slide level1 agenda-slide center">
 <h1>Nested <code>for</code> Loops</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-active">
+<p>Nested <code>for</code> Loops</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>while</code> Loops</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="nested-for-loops-1" class="slide level2">
 <h2>Nested <code>for</code> Loops</h2>
@@ -435,9 +458,24 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 \]</span></p>
 </section></section>
 <section>
-<section id="next-statements" class="title-slide slide level1 center">
+<section id="next-statements" class="title-slide slide level1 agenda-slide center">
 <h1><code>next</code> Statements</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Nested <code>for</code> Loops</p>
+</div></li>
+<li><div class="agenda-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>while</code> Loops</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="next-statements-1" class="slide level2">
 <h2><code>next</code> Statements</h2>
@@ -463,9 +501,24 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <p>Use <code>is.factor</code></p>
 </section></section>
 <section>
-<section id="break-statements" class="title-slide slide level1 center">
+<section id="break-statements" class="title-slide slide level1 agenda-slide center">
 <h1><code>break</code> Statements</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Nested <code>for</code> Loops</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>while</code> Loops</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="break-statements-1" class="slide level2">
 <h2><code>break</code> Statements</h2>
@@ -486,9 +539,24 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <p>Simulate from a <span class="math inline">\(N(1,1)\)</span> distribution until you have 30 positive numbers or you simulate one negative number.</p>
 </section></section>
 <section>
-<section id="while-loops" class="title-slide slide level1 center">
+<section id="while-loops" class="title-slide slide level1 agenda-slide center">
 <h1><code>while</code> Loops</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Nested <code>for</code> Loops</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-active">
+<p><code>while</code> Loops</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="while-loops-1" class="slide level2">
 <h2><code>while</code> Loops</h2>
@@ -503,9 +571,27 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
 <p>Simulate from a <span class="math inline">\(N(0,1)\)</span> distribution until you have 50 positive numbers.</p>
+</section>
+<section id="example-4" class="slide level2">
+<h2>Example</h2>
+<p>Simulate from a <span class="math inline">\(Binom(1,.2)\)</span> distribution the sum of the random variables generated is 50.</p>
 
 <div class="footer footer-default">
 
+</div>
+<div class="reveal-header">
+<div class="header-logo">
+<img data-src="">
+</div>
+<div class="sc-title">
+<p> </p>
+</div>
+<div class="header-text">
+<p> </p>
+</div>
+<div class="sb-title">
+<p> </p>
+</div>
 </div>
 </section></section>
     </div>
@@ -519,6 +605,7 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/verticator/verticator.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -541,6 +628,7 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true,"src":"chalkboard.json","storage":"chalkboard_pres","theme":"whiteboard","chalkWidth":4},
+'verticator': {"themetag":"h1","color":"","inversecolor":"","skipuncounted":false,"clickable":true,"position":"auto","offset":"3vmin","autogenerate":true,"tooltip":false,"scale":1},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -711,7 +799,7 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Verticator, QuartoSupport,
 
           RevealMath,
           RevealNotes,

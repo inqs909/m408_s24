@@ -12,13 +12,25 @@ format:
       storage: chalkboard_pres
       theme: whiteboard
       chalk-width: 4
+engine: knitr
 knitr:
   opts_chunk: 
     echo: true
     eval: false
     comment: "#>" 
 
-editor: visual
+
+revealjs-plugins:
+  - verticator
+  
+filters: 
+  - reveal-header
+  - reveal-auto-agenda
+  - code-fullscreen
+  - webr
+
+webr: 
+  show-startup-message: true
 ---
 
 ```{r}
@@ -138,3 +150,7 @@ while (condition){
 ## Example
 
 Simulate from a $N(0,1)$ distribution until you have 50 positive numbers.
+
+## Example
+
+Simulate from a $Binom(1,.2)$ distribution the sum of the random variables generated is 50.

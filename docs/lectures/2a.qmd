@@ -12,13 +12,25 @@ format:
       storage: chalkboard_pres
       theme: whiteboard
       chalk-width: 4
+engine: knitr
 knitr:
   opts_chunk: 
     echo: true
     eval: false
     comment: "#>" 
 
-editor: visual
+
+revealjs-plugins:
+  - verticator
+  
+filters: 
+  - reveal-header
+  - reveal-auto-agenda
+  - code-fullscreen
+  - webr
+
+webr: 
+  show-startup-message: true
 ---
 
 ```{r}
@@ -62,7 +74,7 @@ Indexing tells R which values to output.
 
 A vector can be indexed by adding `[]` after the object's name and specifying the number of each element.
 
-```{r}
+```{webr-r}
 letters
 letters[13]
 ```
@@ -71,7 +83,7 @@ letters[13]
 
 A matrix can be indexed by adding `[]` after the object's name and specifying the number of each element. Separate the values by commas for specific indexes.
 
-```{r}
+```{webr-r}
 x <- matrix(1:40, nrow = 4)
 ```
 
@@ -79,7 +91,7 @@ x <- matrix(1:40, nrow = 4)
 
 Data frames can be indexed using the `$` operator and `[]`.
 
-```{r}
+```{webr-r}
 mtcars[,"mpg"]
 ```
 
@@ -87,7 +99,7 @@ mtcars[,"mpg"]
 
 Lists can be indexed using the `[[]]` for a specific element of a list.
 
-```{r}
+```{webr-r}
 toy_list <- list(x = letters,
                  y = mtcars,
                  z = list(x = diag(rep(1, 5),
@@ -120,13 +132,13 @@ When you compare a number to a vector, it will result as a logical vector.
 
 Try the following code and explain what is happening:
 
-```{r}
+```{webr-r}
 4 > 1:8
 
 1:8 > 4
 ```
 
-# if/else Statements
+# `if`/`else` Statements
 
 ## if/else Statements
 
@@ -138,7 +150,7 @@ An `if` statement is used to if you want R to perform a specific function if a c
 
 ## Example
 
-```{r}
+```{webr-r}
 x <- sample(-10:10,1)
 if (x > 0){
   print("Positive")
@@ -153,7 +165,7 @@ An `else` statement will conduct a different task if the `if` statement does not
 
 ## Example
 
-```{r}
+```{webr-r}
 x <- sample(-10:10,1)
 if (x > 0 ){
   print("Positive")
@@ -170,7 +182,7 @@ If you have more than two options, you can chain `if/else` statements by adding 
 
 ## Example
 
-```{r}
+```{webr-r}
 x <- sample(-10:10,1)
 if (x > 0 ){
   print("Positive")
@@ -183,15 +195,15 @@ print(x)
 
 ```
 
-# try()
+# `try()`
 
-## try()
+## `try()`
 
 The `try()` is an extremely powerful function that will prevent a code from stopping if an error occurs.
 
 ## Example
 
-```{r}
+```{webr-r}
 x <- sample(-10:10,1)
 if (x > 0 ){
   stop("This is an error")
@@ -206,7 +218,7 @@ print(x)
 
 ```
 
-```{r}
+```{webr-r}
 x <- sample(-10:10,1)
 if (x > 0 ){
   try(stop("This is an error"))
@@ -221,7 +233,7 @@ print(x)
 
 ```
 
-```{r}
+```{webr-r}
 x <- sample(-10:10,1)
 if (x > 0 ){
   try(stop("This is an error"), silent = T)
