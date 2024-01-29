@@ -42,6 +42,15 @@ library(DT)
 library(tidyverse)
 ```
 
+## Anouncements
+
+Quarto Template for HW: [Template](https://m408.inqs.info/files/template.qmd)
+
+Guides:
+
+-   [Quarto](https://quarto.org/docs/guide/)
+-   [Statistical Computing](https://www.inqs.info/stat_comp/document.html)
+
 ## Learning Objectives
 
 -   Control Flow

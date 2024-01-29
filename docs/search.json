@@ -889,6 +889,13 @@
     "text": "Example\nGenerate the 10th row of Pascal’s Triangle."
   },
   {
+    "objectID": "lectures/2a.html#anouncements",
+    "href": "lectures/2a.html#anouncements",
+    "title": "Control Flow",
+    "section": "Anouncements",
+    "text": "Anouncements\nQuarto Template for HW: Template\nGuides:\n\nQuarto\nStatistical Computing"
+  },
+  {
     "objectID": "lectures/2a.html#learning-objectives",
     "href": "lectures/2a.html#learning-objectives",
     "title": "Control Flow",
@@ -1040,14 +1047,14 @@
     "href": "lectures/2a.html#example-5",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nCompute the mean:\n\\[\n\\bar x = \\frac{1}{n}\\sum^n_{i=1}x_i\n\\]\n\nx &lt;- rnorm(100)\nmean(x)\n\n#&gt; [1] 0.006944947"
+    "text": "Example\nCompute the mean:\n\\[\n\\bar x = \\frac{1}{n}\\sum^n_{i=1}x_i\n\\]\n\nx &lt;- rnorm(100)\nmean(x)\n\n#&gt; [1] -0.02207598"
   },
   {
     "objectID": "lectures/2a.html#example-6",
     "href": "lectures/2a.html#example-6",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nCompute the variance:\n\\[\ns^2 = \\frac{1}{n-1}\\sum^n_{i-1}(x_i-\\bar x)^2\n\\]\n\nx &lt;- rnorm(100)\nvar(x)\n\n#&gt; [1] 1.137815"
+    "text": "Example\nCompute the variance:\n\\[\ns^2 = \\frac{1}{n-1}\\sum^n_{i-1}(x_i-\\bar x)^2\n\\]\n\nx &lt;- rnorm(100)\nvar(x)\n\n#&gt; [1] 0.9781764"
   },
   {
     "objectID": "lectures/1a.html#introductions",

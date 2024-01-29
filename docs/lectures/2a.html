@@ -545,7 +545,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"letters\nletters[13]","options":{"context":"interactive"}},{"id":2,"code":"x <- matrix(1:40, nrow = 4)","options":{"context":"interactive"}},{"id":3,"code":"mtcars[,\"mpg\"]","options":{"context":"interactive"}},{"id":4,"code":"toy_list <- list(x = letters,\n                 y = mtcars,\n                 z = list(x = diag(rep(1, 5),\n                          y = matrix(1:40, nrow = 5),\n                          z = band_members)))","options":{"context":"interactive"}},{"id":5,"code":"4 > 1:8\n\n1:8 > 4","options":{"context":"interactive"}},{"id":6,"code":"x <- sample(-10:10,1)\nif (x > 0){\n  print(\"Positive\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":7,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else {\n  print(\"Non-positive\")\n} \nprint(x)","options":{"context":"interactive"}},{"id":8,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":9,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  stop(\"This is an error\")\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  stop(\"This is an error\")\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":10,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"))\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"))\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":11,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}}];
+  globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"letters\nletters[13]"},{"options":{"context":"interactive"},"id":2,"code":"x <- matrix(1:40, nrow = 4)"},{"options":{"context":"interactive"},"id":3,"code":"mtcars[,\"mpg\"]"},{"options":{"context":"interactive"},"id":4,"code":"toy_list <- list(x = letters,\n                 y = mtcars,\n                 z = list(x = diag(rep(1, 5),\n                          y = matrix(1:40, nrow = 5),\n                          z = band_members)))"},{"options":{"context":"interactive"},"id":5,"code":"4 > 1:8\n\n1:8 > 4"},{"options":{"context":"interactive"},"id":6,"code":"x <- sample(-10:10,1)\nif (x > 0){\n  print(\"Positive\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":7,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else {\n  print(\"Non-positive\")\n} \nprint(x)"},{"options":{"context":"interactive"},"id":8,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  print(\"Negative\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":9,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  stop(\"This is an error\")\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  stop(\"This is an error\")\n  print(\"Negative\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":10,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"))\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"))\n  print(\"Negative\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":11,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Negative\")\n}\nprint(x)"}];
 
   </script>
   <script type="module">
@@ -1303,6 +1303,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 
 </section>
+<section id="anouncements" class="slide level2">
+<h2>Anouncements</h2>
+<p>Quarto Template for HW: <a href="https://m408.inqs.info/files/template.qmd">Template</a></p>
+<p>Guides:</p>
+<ul>
+<li><a href="https://quarto.org/docs/guide/">Quarto</a></li>
+<li><a href="https://www.inqs.info/stat_comp/document.html">Statistical Computing</a></li>
+</ul>
+</section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
 <ul>
@@ -1578,7 +1587,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.006944947</code></pre>
+<pre><code>#&gt; [1] -0.02207598</code></pre>
 </div>
 </div>
 </section>
@@ -1592,7 +1601,7 @@ s^2 = \frac{1}{n-1}\sum^n_{i-1}(x_i-\bar x)^2
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 1.137815</code></pre>
+<pre><code>#&gt; [1] 0.9781764</code></pre>
 </div>
 </div>
 
