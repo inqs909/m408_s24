@@ -1,0 +1,17 @@
+{
+  "hash": "a200324327d9bb89dac8bd236f776ff0",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"01-29-2024\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n",
+    "supporting": [
+      "test_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
