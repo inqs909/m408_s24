@@ -893,7 +893,7 @@
     "href": "lectures/2a.html#anouncements",
     "title": "Control Flow",
     "section": "Anouncements",
-    "text": "Anouncements\nQuarto Template for HW: Template\nGuides:\n\nQuarto\nStatistical Computing"
+    "text": "Anouncements\nQuarto Template for HW\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\nGuides:\n\nQuarto\nStatistical Computing"
   },
   {
     "objectID": "lectures/2a.html#learning-objectives",
@@ -1047,14 +1047,14 @@
     "href": "lectures/2a.html#example-5",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nCompute the mean:\n\\[\n\\bar x = \\frac{1}{n}\\sum^n_{i=1}x_i\n\\]\n\nx &lt;- rnorm(100)\nmean(x)\n\n#&gt; [1] -0.02207598"
+    "text": "Example\nCompute the mean:\n\\[\n\\bar x = \\frac{1}{n}\\sum^n_{i=1}x_i\n\\]\n\nx &lt;- rnorm(100)\nmean(x)\n\n#&gt; [1] 0.1095409"
   },
   {
     "objectID": "lectures/2a.html#example-6",
     "href": "lectures/2a.html#example-6",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nCompute the variance:\n\\[\ns^2 = \\frac{1}{n-1}\\sum^n_{i-1}(x_i-\\bar x)^2\n\\]\n\nx &lt;- rnorm(100)\nvar(x)\n\n#&gt; [1] 0.9781764"
+    "text": "Example\nCompute the variance:\n\\[\ns^2 = \\frac{1}{n-1}\\sum^n_{i-1}(x_i-\\bar x)^2\n\\]\n\nx &lt;- rnorm(100)\nvar(x)\n\n#&gt; [1] 0.6916603"
   },
   {
     "objectID": "lectures/1a.html#introductions",
@@ -1824,14 +1824,14 @@
     "href": "hw.html",
     "title": "Homework",
     "section": "",
-    "text": "Below are the different homework assignments for the course. Make sure to upload your assignment as a single file on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 1\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "Quarto Template for HW\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n\n:::\nBelow are the different homework assignments for the course. Make sure to upload your assignment as a single file on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 1\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome to Advanced Data Analysis!",
     "section": "",
-    "text": "Brief Introduction\n\n\n\n\n\nWelcome to the course! This is the home page of the course where I will provide a recap on what was covered in the week. Here I will post any documents or videos for your reference. If you have any questions, please email me at isaac.qs@csuci.edu.\n\n\n\n\n\n\n\n\n\nDiscord Server\n\n\n\n\n\nWill post if class creates one.\n\n\n\n\n\n\n\n\n\nIntroduction to Statistics Book\n\n\n\n\n\nhttps://openintro-ims.netlify.app/\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\n\n\nWe will begin our discussion on control flow.\n\n\n\n\n\nJan 29, 2024\n\n\n\n\n\n\n\nWeek 1\n\n\n\n\n\nThis week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.\n\n\n\n\n\nJan 22, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "Brief Introduction\n\n\n\n\n\nWelcome to the course! This is the home page of the course where I will provide a recap on what was covered in the week. Here I will post any documents or videos for your reference. If you have any questions, please email me at isaac.qs@csuci.edu.\n\n\n\n\n\n\n\n\n\nQuarto Template for HW\n\n\n\n\n\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n\n\n\n\n\n\n\n\n\n\nDiscord Server\n\n\n\n\n\nWill post if class creates one.\n\n\n\n\n\n\n\n\n\nIntroduction to Statistics Book\n\n\n\n\n\nhttps://openintro-ims.netlify.app/\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\n\n\n\nWe will begin our discussion on control flow.\n\n\n\n\n\nJan 29, 2024\n\n\n\n\n\n\n\nWeek 1\n\n\n\n\n\nThis week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.\n\n\n\n\n\nJan 22, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/10b.html#learning-outcomes",
@@ -3735,7 +3735,7 @@
     "href": "posts/week_2.html#resources",
     "title": "Week 2",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\n\n\n\n\n2\nSlides"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
   },
   {
     "objectID": "syllabus.html",

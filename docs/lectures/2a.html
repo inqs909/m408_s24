@@ -545,7 +545,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"context":"interactive"},"id":1,"code":"letters\nletters[13]"},{"options":{"context":"interactive"},"id":2,"code":"x <- matrix(1:40, nrow = 4)"},{"options":{"context":"interactive"},"id":3,"code":"mtcars[,\"mpg\"]"},{"options":{"context":"interactive"},"id":4,"code":"toy_list <- list(x = letters,\n                 y = mtcars,\n                 z = list(x = diag(rep(1, 5),\n                          y = matrix(1:40, nrow = 5),\n                          z = band_members)))"},{"options":{"context":"interactive"},"id":5,"code":"4 > 1:8\n\n1:8 > 4"},{"options":{"context":"interactive"},"id":6,"code":"x <- sample(-10:10,1)\nif (x > 0){\n  print(\"Positive\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":7,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else {\n  print(\"Non-positive\")\n} \nprint(x)"},{"options":{"context":"interactive"},"id":8,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  print(\"Negative\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":9,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  stop(\"This is an error\")\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  stop(\"This is an error\")\n  print(\"Negative\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":10,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"))\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"))\n  print(\"Negative\")\n}\nprint(x)"},{"options":{"context":"interactive"},"id":11,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Negative\")\n}\nprint(x)"}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"letters\nletters[13]","options":{"context":"interactive"}},{"id":2,"code":"x <- matrix(1:40, nrow = 4)","options":{"context":"interactive"}},{"id":3,"code":"mtcars[,\"mpg\"]","options":{"context":"interactive"}},{"id":4,"code":"toy_list <- list(x = letters,\n                 y = mtcars,\n                 z = list(x = diag(rep(1, 5),\n                          y = matrix(1:40, nrow = 5),\n                          z = band_members)))","options":{"context":"interactive"}},{"id":5,"code":"4 > 1:8\n\n1:8 > 4","options":{"context":"interactive"}},{"id":6,"code":"x <- sample(-10:10,1)\nif (x > 0){\n  print(\"Positive\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":7,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else {\n  print(\"Non-positive\")\n} \nprint(x)","options":{"context":"interactive"}},{"id":8,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":9,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  stop(\"This is an error\")\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  stop(\"This is an error\")\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":10,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"))\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"))\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}},{"id":11,"code":"x <- sample(-10:10,1)\nif (x > 0 ){\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Positive\")\n} else if (x == 0) {\n  print(\"Zero\")\n} else {\n  try(stop(\"This is an error\"), silent = T)\n  print(\"Negative\")\n}\nprint(x)","options":{"context":"interactive"}}];
 
   </script>
   <script type="module">
@@ -1305,7 +1305,42 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="anouncements" class="slide level2">
 <h2>Anouncements</h2>
-<p>Quarto Template for HW: <a href="https://m408.inqs.info/files/template.qmd">Template</a></p>
+<h4 id="quarto-template-for-hw">Quarto Template for HW</h4>
+<p>Download it here: <a href="https://github.com/inqs909/m408_s24/blob/main/files/template.qmd">Github Repo</a></p>
+<p><strong>OR</strong> Type this in the RStudio terminal:</p>
+<pre><code>quarto use template inqs909/m408_hw</code></pre>
+<p>Type <code>Y</code> for the trust author. Type a name of a new directory in where to save the file. For example, type <code>hw1</code>.</p>
+<p><strong>OR</strong> Save this in an empty source quarto document:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>---</span>
+<span id="cb2-2"><a href="#cb2-2"></a>title: "Title"</span>
+<span id="cb2-3"><a href="#cb2-3"></a>author: "Name Here"</span>
+<span id="cb2-4"><a href="#cb2-4"></a>date: "`r format(Sys.time(),'%m-%d-%Y')`"</span>
+<span id="cb2-5"><a href="#cb2-5"></a>format: </span>
+<span id="cb2-6"><a href="#cb2-6"></a>  html:</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    toc: true</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    toc-depth: 2</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    code-fold: true</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    code-tools: true</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    code-line-numbers: true</span>
+<span id="cb2-12"><a href="#cb2-12"></a>knitr:</span>
+<span id="cb2-13"><a href="#cb2-13"></a>  opts_chunk:</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    echo: true</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    message: false</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    warning: false</span>
+<span id="cb2-17"><a href="#cb2-17"></a>    error: true</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    tidy: styler</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    R.options:</span>
+<span id="cb2-20"><a href="#cb2-20"></a>      digits: 3</span>
+<span id="cb2-21"><a href="#cb2-21"></a>      max.print: 100</span>
+<span id="cb2-22"><a href="#cb2-22"></a>---</span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a>## Problem 1</span>
+<span id="cb2-25"><a href="#cb2-25"></a></span>
+<span id="cb2-26"><a href="#cb2-26"></a>## Problem 2</span>
+<span id="cb2-27"><a href="#cb2-27"></a></span>
+<span id="cb2-28"><a href="#cb2-28"></a>## Problem 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Guides:</p>
 <ul>
 <li><a href="https://quarto.org/docs/guide/">Quarto</a></li>
@@ -1571,9 +1606,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2><code>for</code> Loops</h2>
 <p><code>for</code> loops are used to conduct an iterative task with slight changes to the input. The general format goes as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> (index <span class="cf">in</span> vector){</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  Conduct task</span>
-<span id="cb1-3"><a href="#cb1-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">for</span> (index <span class="cf">in</span> vector){</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  Conduct task</span>
+<span id="cb3-3"><a href="#cb3-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You will repeat the <code>for</code> loop untie all the elements in the vector have been used.</p>
 </section>
@@ -1584,10 +1619,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 \bar x = \frac{1}{n}\sum^n_{i=1}x_i
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] -0.02207598</code></pre>
+<pre><code>#&gt; [1] 0.1095409</code></pre>
 </div>
 </div>
 </section>
@@ -1598,10 +1633,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 s^2 = \frac{1}{n-1}\sum^n_{i-1}(x_i-\bar x)^2
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.9781764</code></pre>
+<pre><code>#&gt; [1] 0.6916603</code></pre>
 </div>
 </div>
 

@@ -194,13 +194,47 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>Discord Server</strong>
+Quarto Template for HW
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Will post if class creates one.</p>
+<p>Download it here: <a href="https://github.com/inqs909/m408_s24/blob/main/files/template.qmd">Github Repo</a></p>
+<p><strong>OR</strong> Type this in the RStudio terminal:</p>
+<pre><code>quarto use template inqs909/m408_hw</code></pre>
+<p>Type <code>Y</code> for the trust author. Type a name of a new directory in where to save the file. For example, type <code>hw1</code>.</p>
+<p><strong>OR</strong> Save this in an empty source quarto document:</p>
+<pre class="{default}"><code>---
+title: "Title"
+author: "Name Here"
+date: "`r format(Sys.time(),'%m-%d-%Y')`"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-tools: true
+    code-line-numbers: true
+knitr:
+  opts_chunk:
+    echo: true
+    message: false
+    warning: false
+    error: true
+    tidy: styler
+    R.options:
+      digits: 3
+      max.print: 100
+---
+
+## Problem 1
+
+## Problem 2
+
+## Problem 3
+
+</code></pre>
 </div>
 </div>
 </div>
@@ -210,11 +244,27 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>Introduction to Statistics Book</strong>
+<strong>Discord Server</strong>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Will post if class creates one.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Introduction to Statistics Book</strong>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><a href="https://openintro-ims.netlify.app/" class="uri">https://openintro-ims.netlify.app/</a></p>
 </div>
@@ -226,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1706515200000" data-listing-file-modified-sort="1706318041311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="151">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1706515200000" data-listing-file-modified-sort="1706572129465" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="207">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/week_2.html" class="no-external">Week 2</a>

@@ -148,7 +148,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#quarto-template-for-hw" id="toc-quarto-template-for-hw" class="nav-link active" data-scroll-target="#quarto-template-for-hw">Quarto Template for HW</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -172,10 +178,49 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="quarto-template-for-hw" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-template-for-hw">Quarto Template for HW</h3>
+<p>Download it here: <a href="https://github.com/inqs909/m408_s24/blob/main/files/template.qmd">Github Repo</a></p>
+<p><strong>OR</strong> Type this in the RStudio terminal:</p>
+<pre><code>quarto use template inqs909/m408_hw</code></pre>
+<p>Type <code>Y</code> for the trust author. Type a name of a new directory in where to save the file. For example, type <code>hw1</code>.</p>
+<p><strong>OR</strong> Save this in an empty source quarto document:</p>
+<pre class="{default}"><code>---
+title: "Title"
+author: "Name Here"
+date: "`r format(Sys.time(),'%m-%d-%Y')`"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-tools: true
+    code-line-numbers: true
+knitr:
+  opts_chunk:
+    echo: true
+    message: false
+    warning: false
+    error: true
+    tidy: styler
+    R.options:
+      digits: 3
+      max.print: 100
+---
+
+## Problem 1
+
+## Problem 2
+
+## Problem 3
+
+</code></pre>
+<p>:::</p>
 <p>Below are the different homework assignments for the course. Make sure to upload your assignment as a single file on Canvas.</p>
 
 
 
+</section>
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
