@@ -44,7 +44,10 @@ library(tidyverse)
 
 ## Learning Objectives
 
-- Nested `for` Loops
+-   Nested `for` Loops
+-   `next` Statements
+-   `break` Statements
+-   `while` Loops
 
 # Nested `for` Loops
 
@@ -73,53 +76,81 @@ $$
 s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 $$
 
+# `next` Statements
 
+## `next` Statements
 
-
-# More Examples
-
-## Example
-
-The `median()` function obtain the median value of a vector. Write code to obtain the median value for any vector.
+The `next` statement is used to skip an iteration of a loop. This is used along an `if` statement.
 
 ```{r}
-x <- rnorm(500)
-y <- rnorm(501)
-median(x)
-```
+#| eval: false
 
+for (i in vector){
+  perform task
+  if (condition){
+    next
+  } else {
+    perform task
+  }
+}
 
-## Example
-
-Using the code below:
-
-```{r}
-x <- rnorm(5000)
-```
-
-Create a new vector containing all the positive values of `x`. The new vector should be less than 5000.
-
-## Example
-
-Create a vector reporting the data type of each variable in `ISLR2::BrainCancer` 
-
-```{r}
-library(ISLR2)
-BrainCancer
 ```
 
 ## Example
 
-$$
-f(x,y) = x^2 + y^2 + \ln(x+y)
-$$
+Compute the variance for all the possible variables in the `leuk` data set.
 
-Find all the values of $f(x,y)$ for every combination of $x \in \{1, 8, 13, 25, 42, 67, 95\}$ and $y \in \{6, 12, 18, 52, 61, 79, 83\}$
+```{r}
+#| eval: false
+library(MASS)
+leuk
+```
 
-Store values in a $7\times 7$ matrix.
+Use `is.factor`
+
+# `break` Statements
+
+## `break` Statements
+
+The `break` statement is used to stop a loop if the condition is met. This is used along with an `if` statement.
+
+```{r}
+#| eval: false
+
+for (i in vector){
+  perform task
+  if (condition){
+    break
+  } else {
+    perform task
+  }
+}
+```
 
 ## Example
 
-For each column in `mtcars`, take the mean for the even columns, and median for the odd columns. Store the values in a list containing 2 vectors.
+Simulate from a $N(1,1)$ distribution until you have 30 positive numbers or you simulate one negative number.
+
+# `while` Loops
+
+## `while` Loops
+
+A while loop is a combination of a `for` loop and a `break` statement. The loop will continue indefinitely until a condition becomes false.
+
+```{r}
+#| eval: false
 
 
+while (condition){
+  perform task
+  condition <- update condition
+}
+```
+
+## Example
+
+Simulate from a $N(0,1)$ distribution until you have 50 positive numbers.
+
+## Example
+
+Simulate from a $Binom(1,.2)$ distribution the sum of the random variables generated is 50.
