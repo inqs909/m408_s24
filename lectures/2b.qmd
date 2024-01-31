@@ -86,7 +86,39 @@ The `median()` function obtain the median value of a vector. Write code to obtai
 x <- rnorm(500)
 y <- rnorm(501)
 median(x)
+median(y)
 ```
+
+Answer:
+
+```{r}
+#| code-fold: true
+
+wk <- x 
+pos50 <- (length(wk) + 1) / 2
+swk <- sort(wk)
+if ((length(wk) %% 2) == 0) {
+  val <- (swk[floor(pos50)] + swk[ceiling(pos50)]) / 2
+} else {
+  val <- swk[pos50]
+}
+print(val)
+median(wk)
+
+wk <- y 
+pos50 <- (length(wk) + 1) / 2
+swk <- sort(wk)
+if ((length(wk) %% 2) == 0) {
+  val <- (swk[floor(pos50)] + swk[ceiling(pos50)]) / 2
+} else {
+  val <- swk[pos50]
+}
+print(val)
+median(wk)
+
+```
+
+
 
 
 ## Example
@@ -99,6 +131,21 @@ x <- rnorm(5000)
 
 Create a new vector containing all the positive values of `x`. The new vector should be less than 5000.
 
+Answer:
+
+```{r}
+#| code-fold: true
+
+nn <- length(x)
+pos <- c()
+for (i in 1:nn){
+  if (x[i] > 0) {
+    pos <- c(pos, x[i])
+  }
+}
+pos
+```
+
 ## Example
 
 Create a vector reporting the data type of each variable in `ISLR2::BrainCancer` 
@@ -107,6 +154,19 @@ Create a vector reporting the data type of each variable in `ISLR2::BrainCancer`
 library(ISLR2)
 BrainCancer
 ```
+
+Answer:
+
+```{r}
+#| code-fold: true
+nn <- ncol(BrainCancer)
+y <- c()
+for (i in 1:nn){
+  y <- c(y, class(BrainCancer[,i]))
+}
+
+```
+
 
 ## Example
 
@@ -118,8 +178,48 @@ Find all the values of $f(x,y)$ for every combination of $x \in \{1, 8, 13, 25, 
 
 Store values in a $7\times 7$ matrix.
 
+Answer:
+
+```{r}
+#| code-fold: true
+x <- c(1, 8, 13, 25, 42, 67, 95)
+y <- c(6, 12, 18, 52, 61, 79, 83)
+res <- matrix(nrow = 7, ncol = 7)
+colnames(res) <- as.character(x)
+rownames(res) <- as.character(y)
+
+for (i in 1:7){
+  for (ii in 1:7){
+    res[ii,i] <- x[i]^2 + y[ii]^2 + log(x[i] + y[ii])
+  }
+}
+print(res)
+
+```
+
+
+
 ## Example
 
 For each column in `mtcars`, take the mean for the even columns, and median for the odd columns. Store the values in a list containing 2 vectors.
+
+Answer:
+
+```{r}
+#| code-fold: true
+x <- c()
+y <- c()
+nn <- ncol(mtcars)
+for (i in 1:nn){
+  if (i %% 2 == 0){
+    x <- c(x, mean(mtcars[,i]))
+  } else {
+    y <- c(y, median(mtcars[,i]))
+  }
+}
+
+xy <- list(x,y)
+
+```
 
 

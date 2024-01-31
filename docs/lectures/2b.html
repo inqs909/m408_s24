@@ -468,23 +468,76 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">501</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">median</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">median</span>(x)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">median</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Answer:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>wk <span class="ot">&lt;-</span> x </span>
+<span id="cb4-2"><a href="#cb4-2"></a>pos50 <span class="ot">&lt;-</span> (<span class="fu">length</span>(wk) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>swk <span class="ot">&lt;-</span> <span class="fu">sort</span>(wk)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="cf">if</span> ((<span class="fu">length</span>(wk) <span class="sc">%%</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  val <span class="ot">&lt;-</span> (swk[<span class="fu">floor</span>(pos50)] <span class="sc">+</span> swk[<span class="fu">ceiling</span>(pos50)]) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>} <span class="cf">else</span> {</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  val <span class="ot">&lt;-</span> swk[pos50]</span>
+<span id="cb4-8"><a href="#cb4-8"></a>}</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="fu">print</span>(val)</span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="fu">median</span>(wk)</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>wk <span class="ot">&lt;-</span> y </span>
+<span id="cb4-13"><a href="#cb4-13"></a>pos50 <span class="ot">&lt;-</span> (<span class="fu">length</span>(wk) <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>swk <span class="ot">&lt;-</span> <span class="fu">sort</span>(wk)</span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="cf">if</span> ((<span class="fu">length</span>(wk) <span class="sc">%%</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb4-16"><a href="#cb4-16"></a>  val <span class="ot">&lt;-</span> (swk[<span class="fu">floor</span>(pos50)] <span class="sc">+</span> swk[<span class="fu">ceiling</span>(pos50)]) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>} <span class="cf">else</span> {</span>
+<span id="cb4-18"><a href="#cb4-18"></a>  val <span class="ot">&lt;-</span> swk[pos50]</span>
+<span id="cb4-19"><a href="#cb4-19"></a>}</span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="fu">print</span>(val)</span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="fu">median</span>(wk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <p>Using the code below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create a new vector containing all the positive values of <code>x</code>. The new vector should be less than 5000.</p>
+<p>Answer:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>nn <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>pos <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nn){</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="cf">if</span> (x[i] <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    pos <span class="ot">&lt;-</span> <span class="fu">c</span>(pos, x[i])</span>
+<span id="cb6-6"><a href="#cb6-6"></a>  }</span>
+<span id="cb6-7"><a href="#cb6-7"></a>}</span>
+<span id="cb6-8"><a href="#cb6-8"></a>pos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
 <p>Create a vector reporting the data type of each variable in <code>ISLR2::BrainCancer</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>BrainCancer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>BrainCancer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Answer:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>nn <span class="ot">&lt;-</span> <span class="fu">ncol</span>(BrainCancer)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nn){</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  y <span class="ot">&lt;-</span> <span class="fu">c</span>(y, <span class="fu">class</span>(BrainCancer[,i]))</span>
+<span id="cb8-5"><a href="#cb8-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="example-4" class="slide level2">
@@ -494,10 +547,46 @@ f(x,y) = x^2 + y^2 + \ln(x+y)
 \]</span></p>
 <p>Find all the values of <span class="math inline">\(f(x,y)\)</span> for every combination of <span class="math inline">\(x \in \{1, 8, 13, 25, 42, 67, 95\}\)</span> and <span class="math inline">\(y \in \{6, 12, 18, 52, 61, 79, 83\}\)</span></p>
 <p>Store values in a <span class="math inline">\(7\times 7\)</span> matrix.</p>
+<p>Answer:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">25</span>, <span class="dv">42</span>, <span class="dv">67</span>, <span class="dv">95</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">52</span>, <span class="dv">61</span>, <span class="dv">79</span>, <span class="dv">83</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>res <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="dv">7</span>, <span class="at">ncol =</span> <span class="dv">7</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">colnames</span>(res) <span class="ot">&lt;-</span> <span class="fu">as.character</span>(x)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">rownames</span>(res) <span class="ot">&lt;-</span> <span class="fu">as.character</span>(y)</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>){</span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="cf">for</span> (ii <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>){</span>
+<span id="cb9-9"><a href="#cb9-9"></a>    res[ii,i] <span class="ot">&lt;-</span> x[i]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y[ii]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">log</span>(x[i] <span class="sc">+</span> y[ii])</span>
+<span id="cb9-10"><a href="#cb9-10"></a>  }</span>
+<span id="cb9-11"><a href="#cb9-11"></a>}</span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="fu">print</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="example-5" class="slide level2">
 <h2>Example</h2>
 <p>For each column in <code>mtcars</code>, take the mean for the even columns, and median for the odd columns. Store the values in a list containing 2 vectors.</p>
+<p>Answer:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb10-3"><a href="#cb10-3"></a>nn <span class="ot">&lt;-</span> <span class="fu">ncol</span>(mtcars)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nn){</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb10-6"><a href="#cb10-6"></a>    x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="fu">mean</span>(mtcars[,i]))</span>
+<span id="cb10-7"><a href="#cb10-7"></a>  } <span class="cf">else</span> {</span>
+<span id="cb10-8"><a href="#cb10-8"></a>    y <span class="ot">&lt;-</span> <span class="fu">c</span>(y, <span class="fu">median</span>(mtcars[,i]))</span>
+<span id="cb10-9"><a href="#cb10-9"></a>  }</span>
+<span id="cb10-10"><a href="#cb10-10"></a>}</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a>xy <span class="ot">&lt;-</span> <span class="fu">list</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 <div class="footer footer-default">
 

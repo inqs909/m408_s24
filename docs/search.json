@@ -914,35 +914,35 @@
     "href": "lectures/2b.html#example-1",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nThe median() function obtain the median value of a vector. Write code to obtain the median value for any vector.\n\nx &lt;- rnorm(500)\ny &lt;- rnorm(501)\nmedian(x)"
+    "text": "Example\nThe median() function obtain the median value of a vector. Write code to obtain the median value for any vector.\n\nx &lt;- rnorm(500)\ny &lt;- rnorm(501)\nmedian(x)\nmedian(y)\n\nAnswer:\n\n\nCode\nwk &lt;- x \npos50 &lt;- (length(wk) + 1) / 2\nswk &lt;- sort(wk)\nif ((length(wk) %% 2) == 0) {\n  val &lt;- (swk[floor(pos50)] + swk[ceiling(pos50)]) / 2\n} else {\n  val &lt;- swk[pos50]\n}\nprint(val)\nmedian(wk)\n\nwk &lt;- y \npos50 &lt;- (length(wk) + 1) / 2\nswk &lt;- sort(wk)\nif ((length(wk) %% 2) == 0) {\n  val &lt;- (swk[floor(pos50)] + swk[ceiling(pos50)]) / 2\n} else {\n  val &lt;- swk[pos50]\n}\nprint(val)\nmedian(wk)"
   },
   {
     "objectID": "lectures/2b.html#example-2",
     "href": "lectures/2b.html#example-2",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nUsing the code below:\n\nx &lt;- rnorm(5000)\n\nCreate a new vector containing all the positive values of x. The new vector should be less than 5000."
+    "text": "Example\nUsing the code below:\n\nx &lt;- rnorm(5000)\n\nCreate a new vector containing all the positive values of x. The new vector should be less than 5000.\nAnswer:\n\n\nCode\nnn &lt;- length(x)\npos &lt;- c()\nfor (i in 1:nn){\n  if (x[i] &gt; 0) {\n    pos &lt;- c(pos, x[i])\n  }\n}\npos"
   },
   {
     "objectID": "lectures/2b.html#example-3",
     "href": "lectures/2b.html#example-3",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nCreate a vector reporting the data type of each variable in ISLR2::BrainCancer\n\nlibrary(ISLR2)\nBrainCancer"
+    "text": "Example\nCreate a vector reporting the data type of each variable in ISLR2::BrainCancer\n\nlibrary(ISLR2)\nBrainCancer\n\nAnswer:\n\n\nCode\nnn &lt;- ncol(BrainCancer)\ny &lt;- c()\nfor (i in 1:nn){\n  y &lt;- c(y, class(BrainCancer[,i]))\n}"
   },
   {
     "objectID": "lectures/2b.html#example-4",
     "href": "lectures/2b.html#example-4",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\n\\[\nf(x,y) = x^2 + y^2 + \\ln(x+y)\n\\]\nFind all the values of \\(f(x,y)\\) for every combination of \\(x \\in \\{1, 8, 13, 25, 42, 67, 95\\}\\) and \\(y \\in \\{6, 12, 18, 52, 61, 79, 83\\}\\)\nStore values in a \\(7\\times 7\\) matrix."
+    "text": "Example\n\\[\nf(x,y) = x^2 + y^2 + \\ln(x+y)\n\\]\nFind all the values of \\(f(x,y)\\) for every combination of \\(x \\in \\{1, 8, 13, 25, 42, 67, 95\\}\\) and \\(y \\in \\{6, 12, 18, 52, 61, 79, 83\\}\\)\nStore values in a \\(7\\times 7\\) matrix.\nAnswer:\n\n\nCode\nx &lt;- c(1, 8, 13, 25, 42, 67, 95)\ny &lt;- c(6, 12, 18, 52, 61, 79, 83)\nres &lt;- matrix(nrow = 7, ncol = 7)\ncolnames(res) &lt;- as.character(x)\nrownames(res) &lt;- as.character(y)\n\nfor (i in 1:7){\n  for (ii in 1:7){\n    res[ii,i] &lt;- x[i]^2 + y[ii]^2 + log(x[i] + y[ii])\n  }\n}\nprint(res)"
   },
   {
     "objectID": "lectures/2b.html#example-5",
     "href": "lectures/2b.html#example-5",
     "title": "Control Flow",
     "section": "Example",
-    "text": "Example\nFor each column in mtcars, take the mean for the even columns, and median for the odd columns. Store the values in a list containing 2 vectors."
+    "text": "Example\nFor each column in mtcars, take the mean for the even columns, and median for the odd columns. Store the values in a list containing 2 vectors.\nAnswer:\n\n\nCode\nx &lt;- c()\ny &lt;- c()\nnn &lt;- ncol(mtcars)\nfor (i in 1:nn){\n  if (i %% 2 == 0){\n    x &lt;- c(x, mean(mtcars[,i]))\n  } else {\n    y &lt;- c(y, median(mtcars[,i]))\n  }\n}\n\nxy &lt;- list(x,y)"
   },
   {
     "objectID": "lectures/1b.html#introductions-1",
@@ -3791,7 +3791,7 @@
     "href": "posts/week_2.html#resources",
     "title": "Week 2",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
   },
   {
     "objectID": "syllabus.html",
