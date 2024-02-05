@@ -6,6 +6,7 @@ listing:
   sort: "date desc"
   type: default
 ---
+::: {.callout-note collapse="true" icon="false"}
 
 ### Quarto Template for HW
 
