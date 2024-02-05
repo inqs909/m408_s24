@@ -42,6 +42,10 @@ library(DT)
 library(tidyverse)
 ```
 
+## Anouncements - Tidy Tuesday on Wednesday
+
+![](img/Math_Club_Flyer.png){fig-align="center"}
+
 ## Learning Objectives
 
 -   `next` Statements
@@ -68,7 +72,6 @@ for (i in vector){
 
 ```
 
-
 # `break` Statements
 
 ## `break` Statements
@@ -87,7 +90,6 @@ for (i in vector){
   }
 }
 ```
-
 
 # `while` Loops
 
@@ -127,7 +129,6 @@ while (n < 51){
 pos_num
 ```
 
-
 ## Example
 
 Find the value of $x$ where the function $y=1/x$ relative converges ($\frac{|y_{old}-y_{new}|}{y_{old}}$) at a level of $10^-6$ as $x\rightarrow \infty$.
@@ -148,8 +149,6 @@ while (diff > 1e-6){
 
 ```
 
-
-
 ## Example
 
 Simulate from a $Binom(1,.2)$ distribution until the sum of the random variables generated is 50.
@@ -166,9 +165,6 @@ while (sum_bin <51) {
 sum_bin
 length(x)
 ```
-
-
-
 
 # `for` Loop Examples
 
@@ -214,4 +210,3 @@ while(N < 1001){
 }
 x
 ```
-
