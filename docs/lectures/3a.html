@@ -7,7 +7,14 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
   <title>MATH 408 - Control Flow</title>
@@ -100,6 +107,7 @@
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/verticator/verticator.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -402,75 +410,248 @@
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
 <ul>
+<li><code>next</code> Statements</li>
 <li><code>break</code> Statements</li>
 <li><code>while</code> Loops</li>
 </ul>
 </section>
 <section>
-<section id="break-statements" class="title-slide slide level1 center">
-<h1><code>break</code> Statements</h1>
-
+<section id="next-statements" class="title-slide slide level1 agenda-slide center">
+<h1><code>next</code> Statements</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>while</code> Loops</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>for</code> Loop Examples</p>
+</div></li>
+</ul>
+</div>
 </section>
-<section id="break-statements-1" class="slide level2">
-<h2><code>break</code> Statements</h2>
-<p>The <code>break</code> statement is used to stop a loop if the condition is met. This is used along with an <code>if</code> statement.</p>
+<section id="next-statements-1" class="slide level2">
+<h2><code>next</code> Statements</h2>
+<p>The <code>next</code> statement is used to skip an iteration of a loop. This is used along an <code>if</code> statement.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> (i <span class="cf">in</span> vector){</span>
 <span id="cb1-2"><a href="#cb1-2"></a>  perform task</span>
 <span id="cb1-3"><a href="#cb1-3"></a>  <span class="cf">if</span> (condition){</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="cf">break</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="cf">next</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a>  } <span class="cf">else</span> {</span>
 <span id="cb1-6"><a href="#cb1-6"></a>    perform task</span>
 <span id="cb1-7"><a href="#cb1-7"></a>  }</span>
 <span id="cb1-8"><a href="#cb1-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p>Simulate from a <span class="math inline">\(N(1,1)\)</span> distribution until you have 30 positive numbers or you simulate one negative number.</p>
 </section></section>
 <section>
-<section id="while-loops" class="title-slide slide level1 center">
+<section id="break-statements" class="title-slide slide level1 agenda-slide center">
+<h1><code>break</code> Statements</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>while</code> Loops</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>for</code> Loop Examples</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="break-statements-1" class="slide level2">
+<h2><code>break</code> Statements</h2>
+<p>The <code>break</code> statement is used to stop a loop if the condition is met. This is used along with an <code>if</code> statement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">for</span> (i <span class="cf">in</span> vector){</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  perform task</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="cf">if</span> (condition){</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">break</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    perform task</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  }</span>
+<span id="cb2-8"><a href="#cb2-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="while-loops" class="title-slide slide level1 agenda-slide center">
 <h1><code>while</code> Loops</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-active">
+<p><code>while</code> Loops</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>for</code> Loop Examples</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="while-loops-1" class="slide level2">
 <h2><code>while</code> Loops</h2>
 <p>A while loop is a combination of a <code>for</code> loop and a <code>break</code> statement. The loop will continue indefinitely until a condition becomes false.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">while</span> (condition){</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  perform task</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  condition <span class="ot">&lt;-</span> update condition</span>
-<span id="cb2-4"><a href="#cb2-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Initial Condition</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>condition <span class="ot">&lt;-</span> starting <span class="cn">TRUE</span> condition</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="cf">while</span> (condition){</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  perform task</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  condition <span class="ot">&lt;-</span> update condition</span>
+<span id="cb3-7"><a href="#cb3-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>Simulate from a <span class="math inline">\(N(0,1)\)</span> distribution until you have 50 positive numbers.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>n <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>pos_num <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="cf">while</span> (n <span class="sc">&lt;</span> <span class="dv">51</span>){</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    pos_num <span class="ot">&lt;-</span> <span class="fu">c</span>(pos_num, x)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    n <span class="ot">&lt;-</span> n <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  }</span>
+<span id="cb4-10"><a href="#cb4-10"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>pos_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
-<p>Simulate from a <span class="math inline">\(N(0,1)\)</span> distribution until you have 50 positive numbers.\</p>
+<p>Find the value of <span class="math inline">\(x\)</span> where the function <span class="math inline">\(y=1/x\)</span> relative converges (<span class="math inline">\(\frac{|y_{old}-y_{new}|}{y_{old}}\)</span>) at a level of <span class="math inline">\(10^-6\)</span> as <span class="math inline">\(x\rightarrow \infty\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>diff <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>y_old <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="cf">while</span> (diff <span class="sc">&gt;</span> <span class="fl">1e-6</span>){</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  y_new <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> x</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  diff <span class="ot">&lt;-</span> <span class="fu">abs</span>(y_old <span class="sc">-</span> y_new) <span class="sc">/</span> y_old</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  y_old <span class="ot">&lt;-</span> y_new</span>
+<span id="cb5-9"><a href="#cb5-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
-<p>Find the value of <span class="math inline">\(x\)</span> where the function <span class="math inline">\(y=1/x\)</span> relative converges (<span class="math inline">\(\frac{|y_{old}-y_{new}|}{y_{old}}\)</span>) at a level of <span class="math inline">\(10^-6\)</span> as <span class="math inline">\(x\rightarrow \infty\)</span>.</p>
+<p>Simulate from a <span class="math inline">\(Binom(1,.2)\)</span> distribution until the sum of the random variables generated is 50.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sum_bin <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="cf">while</span> (sum_bin <span class="sc">&lt;</span><span class="dv">51</span>) {</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.2</span>))</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  sum_bin <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>}</span>
+<span id="cb6-7"><a href="#cb6-7"></a>sum_bin</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section></section>
 <section>
-<section id="for-loops" class="title-slide slide level1 center">
-<h1><code>for</code> Loops</h1>
-
+<section id="for-loop-examples" class="title-slide slide level1 agenda-slide center">
+<h1><code>for</code> Loop Examples</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>while</code> Loops</p>
+</div></li>
+<li><div class="agenda-active">
+<p><code>for</code> Loop Examples</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
-<p>Generate the first 1000 prime numbers.</p>
+<p>Generate the 10th row of Pascal’s Triangle.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>i <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">11</span>){</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  y <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  y[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  y[n] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(n<span class="dv">-1</span>)){</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    y[i] <span class="ot">&lt;-</span> x[i<span class="dv">-1</span>] <span class="sc">+</span> x[i]</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  }</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  x <span class="ot">&lt;-</span> y</span>
+<span id="cb7-12"><a href="#cb7-12"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>}</span>
+<span id="cb7-14"><a href="#cb7-14"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="example-4" class="slide level2">
 <h2>Example</h2>
-<p>Write a loop that will generate the first 1000 numbers of the Fibonacci sequence.</p>
-</section>
-<section id="example-5" class="slide level2">
-<h2>Example</h2>
-<p>Generate the 10th row of Pascal’s Triangle.</p>
+<p>Generate the first 1000 prime numbers.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>N <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="cf">while</span>(N <span class="sc">&lt;</span> <span class="dv">1001</span>){</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  y <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  nn <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">which</span>(y <span class="sc">%%</span> x <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="cf">if</span> (nn <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    x <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y)</span>
+<span id="cb8-9"><a href="#cb8-9"></a>  }</span>
+<span id="cb8-10"><a href="#cb8-10"></a>  N <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb8-11"><a href="#cb8-11"></a>}</span>
+<span id="cb8-12"><a href="#cb8-12"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 <div class="footer footer-default">
 
+</div>
+<div class="reveal-header">
+<div class="header-logo">
+<img data-src="">
+</div>
+<div class="sc-title">
+<p> </p>
+</div>
+<div class="header-text">
+<p> </p>
+</div>
+<div class="sb-title">
+<p> </p>
+</div>
 </div>
 </section></section>
     </div>
@@ -484,6 +665,7 @@
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/verticator/verticator.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -506,6 +688,7 @@
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true,"src":"chalkboard.json","storage":"chalkboard_pres","theme":"whiteboard","chalkWidth":4},
+'verticator': {"themetag":"h1","color":"","inversecolor":"","skipuncounted":false,"clickable":true,"position":"auto","offset":"3vmin","autogenerate":true,"tooltip":false,"scale":1},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -676,7 +859,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Verticator, QuartoSupport,
 
           RevealMath,
           RevealNotes,

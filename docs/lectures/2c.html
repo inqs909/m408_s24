@@ -410,61 +410,16 @@
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
 <ul>
-<li>Nested <code>for</code> Loops</li>
 <li><code>next</code> Statements</li>
 <li><code>break</code> Statements</li>
 <li><code>while</code> Loops</li>
 </ul>
 </section>
 <section>
-<section id="nested-for-loops" class="title-slide slide level1 agenda-slide center">
-<h1>Nested <code>for</code> Loops</h1>
-<div class="agenda">
-<ul>
-<li><div class="agenda-active">
-<p>Nested <code>for</code> Loops</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p><code>next</code> Statements</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p><code>break</code> Statements</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p><code>while</code> Loops</p>
-</div></li>
-</ul>
-</div>
-</section>
-<section id="nested-for-loops-1" class="slide level2">
-<h2>Nested <code>for</code> Loops</h2>
-<p>Nested <code>for</code> loops are <code>for</code> loops within another <code>for</code> loop. You can stack these loops as much as needed. Just make sure the index is different for each loop. The general format for a loop goes as follow:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> (i <span class="cf">in</span> vector_1){</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="cf">for</span> (ii <span class="cf">in</span> vector_2){</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    perform task</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  }</span>
-<span id="cb1-5"><a href="#cb1-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p>Without using the <code>sd()</code> function, compute the standard deviation for each column of the matrix:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>), <span class="at">nrow =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><span class="math display">\[
-s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
-\]</span></p>
-</section></section>
-<section>
 <section id="next-statements" class="title-slide slide level1 agenda-slide center">
 <h1><code>next</code> Statements</h1>
 <div class="agenda">
 <ul>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Nested <code>for</code> Loops</p>
-</div></li>
 <li><div class="agenda-active">
 <p><code>next</code> Statements</p>
 </div></li>
@@ -473,6 +428,9 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 </div></li>
 <li><div class="agenda-inactive agenda-post-active">
 <p><code>while</code> Loops</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>for</code> Loop Examples</p>
 </div></li>
 </ul>
 </div>
@@ -481,33 +439,21 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <h2><code>next</code> Statements</h2>
 <p>The <code>next</code> statement is used to skip an iteration of a loop. This is used along an <code>if</code> statement.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">for</span> (i <span class="cf">in</span> vector){</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  perform task</span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="cf">if</span> (condition){</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="cf">next</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  } <span class="cf">else</span> {</span>
-<span id="cb3-6"><a href="#cb3-6"></a>    perform task</span>
-<span id="cb3-7"><a href="#cb3-7"></a>  }</span>
-<span id="cb3-8"><a href="#cb3-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> (i <span class="cf">in</span> vector){</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  perform task</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="cf">if</span> (condition){</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="cf">next</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    perform task</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  }</span>
+<span id="cb1-8"><a href="#cb1-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
-<p>Compute the variance for all the possible variables in the <code>leuk</code> data set.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>leuk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Use <code>is.factor</code></p>
 </section></section>
 <section>
 <section id="break-statements" class="title-slide slide level1 agenda-slide center">
 <h1><code>break</code> Statements</h1>
 <div class="agenda">
 <ul>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Nested <code>for</code> Loops</p>
-</div></li>
 <li><div class="agenda-inactive agenda-pre-active">
 <p><code>next</code> Statements</p>
 </div></li>
@@ -517,6 +463,9 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <li><div class="agenda-inactive agenda-post-active">
 <p><code>while</code> Loops</p>
 </div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>for</code> Loop Examples</p>
+</div></li>
 </ul>
 </div>
 </section>
@@ -524,28 +473,21 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <h2><code>break</code> Statements</h2>
 <p>The <code>break</code> statement is used to stop a loop if the condition is met. This is used along with an <code>if</code> statement.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">for</span> (i <span class="cf">in</span> vector){</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  perform task</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="cf">if</span> (condition){</span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="cf">break</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  } <span class="cf">else</span> {</span>
-<span id="cb5-6"><a href="#cb5-6"></a>    perform task</span>
-<span id="cb5-7"><a href="#cb5-7"></a>  }</span>
-<span id="cb5-8"><a href="#cb5-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">for</span> (i <span class="cf">in</span> vector){</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  perform task</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="cf">if</span> (condition){</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">break</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    perform task</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  }</span>
+<span id="cb2-8"><a href="#cb2-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="example-2" class="slide level2">
-<h2>Example</h2>
-<p>Simulate from a <span class="math inline">\(N(1,1)\)</span> distribution until you have 30 positive numbers or you simulate one negative number.</p>
 </section></section>
 <section>
 <section id="while-loops" class="title-slide slide level1 agenda-slide center">
 <h1><code>while</code> Loops</h1>
 <div class="agenda">
 <ul>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Nested <code>for</code> Loops</p>
-</div></li>
 <li><div class="agenda-inactive agenda-pre-active">
 <p><code>next</code> Statements</p>
 </div></li>
@@ -555,6 +497,9 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <li><div class="agenda-active">
 <p><code>while</code> Loops</p>
 </div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p><code>for</code> Loop Examples</p>
+</div></li>
 </ul>
 </div>
 </section>
@@ -562,19 +507,134 @@ s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
 <h2><code>while</code> Loops</h2>
 <p>A while loop is a combination of a <code>for</code> loop and a <code>break</code> statement. The loop will continue indefinitely until a condition becomes false.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">while</span> (condition){</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  perform task</span>
-<span id="cb6-3"><a href="#cb6-3"></a>  condition <span class="ot">&lt;-</span> update condition</span>
-<span id="cb6-4"><a href="#cb6-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Initial Condition</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>condition <span class="ot">&lt;-</span> starting <span class="cn">TRUE</span> condition</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="cf">while</span> (condition){</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  perform task</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  condition <span class="ot">&lt;-</span> update condition</span>
+<span id="cb3-7"><a href="#cb3-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>Simulate from a <span class="math inline">\(N(0,1)\)</span> distribution until you have 50 positive numbers.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>n <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>pos_num <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="cf">while</span> (n <span class="sc">&lt;</span> <span class="dv">51</span>){</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    pos_num <span class="ot">&lt;-</span> <span class="fu">c</span>(pos_num, x)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    n <span class="ot">&lt;-</span> n <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  }</span>
+<span id="cb4-10"><a href="#cb4-10"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>pos_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>Find the value of <span class="math inline">\(x\)</span> where the function <span class="math inline">\(y=1/x\)</span> relative converges (<span class="math inline">\(\frac{|y_{old}-y_{new}|}{y_{old}}\)</span>) at a level of <span class="math inline">\(10^-6\)</span> as <span class="math inline">\(x\rightarrow \infty\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>diff <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>y_old <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="cf">while</span> (diff <span class="sc">&gt;</span> <span class="fl">1e-6</span>){</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  y_new <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> x</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  diff <span class="ot">&lt;-</span> <span class="fu">abs</span>(y_old <span class="sc">-</span> y_new) <span class="sc">/</span> y_old</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  y_old <span class="ot">&lt;-</span> y_new</span>
+<span id="cb5-9"><a href="#cb5-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
+<p>Simulate from a <span class="math inline">\(Binom(1,.2)\)</span> distribution until the sum of the random variables generated is 50.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sum_bin <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="cf">while</span> (sum_bin <span class="sc">&lt;</span><span class="dv">51</span>) {</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.2</span>))</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  sum_bin <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>}</span>
+<span id="cb6-7"><a href="#cb6-7"></a>sum_bin</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section></section>
+<section>
+<section id="for-loop-examples" class="title-slide slide level1 agenda-slide center">
+<h1><code>for</code> Loop Examples</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>next</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>break</code> Statements</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p><code>while</code> Loops</p>
+</div></li>
+<li><div class="agenda-active">
+<p><code>for</code> Loop Examples</p>
+</div></li>
+</ul>
 </div>
 </section>
 <section id="example-3" class="slide level2">
 <h2>Example</h2>
-<p>Simulate from a <span class="math inline">\(N(0,1)\)</span> distribution until you have 50 positive numbers.</p>
+<p>Generate the 10th row of Pascal’s Triangle.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>i <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">11</span>){</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  y <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  y[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  y[n] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(n<span class="dv">-1</span>)){</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    y[i] <span class="ot">&lt;-</span> x[i<span class="dv">-1</span>] <span class="sc">+</span> x[i]</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  }</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  x <span class="ot">&lt;-</span> y</span>
+<span id="cb7-12"><a href="#cb7-12"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>}</span>
+<span id="cb7-14"><a href="#cb7-14"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="example-4" class="slide level2">
 <h2>Example</h2>
-<p>Simulate from a <span class="math inline">\(Binom(1,.2)\)</span> distribution the sum of the random variables generated is 50.</p>
+<p>Generate the first 1000 prime numbers.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>N <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="cf">while</span>(N <span class="sc">&lt;</span> <span class="dv">1001</span>){</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  y <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  nn <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">which</span>(y <span class="sc">%%</span> x <span class="sc">==</span> <span class="dv">0</span>))</span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="cf">if</span> (nn <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    x <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y)</span>
+<span id="cb8-9"><a href="#cb8-9"></a>  }</span>
+<span id="cb8-10"><a href="#cb8-10"></a>  N <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb8-11"><a href="#cb8-11"></a>}</span>
+<span id="cb8-12"><a href="#cb8-12"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 <div class="footer footer-default">
 

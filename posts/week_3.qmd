@@ -1,9 +1,9 @@
 ---
 title: "Week 3"
-date: 02-06-23
+date: 02-05-24
 description: We will continue our discussion with control flow and begin our discussion on Functional Programming Analysis.
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -11,8 +11,6 @@ editor_options:
 ## Learning Outcomes
 
 ### First Lecture
-
--   break Statements
 
 -   while Loops
 

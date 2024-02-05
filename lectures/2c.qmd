@@ -44,37 +44,9 @@ library(tidyverse)
 
 ## Learning Objectives
 
--   Nested `for` Loops
 -   `next` Statements
 -   `break` Statements
 -   `while` Loops
-
-# Nested `for` Loops
-
-## Nested `for` Loops
-
-Nested `for` loops are `for` loops within another `for` loop. You can stack these loops as much as needed. Just make sure the index is different for each loop. The general format for a loop goes as follow:
-
-```{r}
-#| eval: false
-for (i in vector_1){
-  for (ii in vector_2){
-    perform task
-  }
-}
-```
-
-## Example
-
-Without using the `sd()` function, compute the standard deviation for each column of the matrix:
-
-```{r}
-x <- matrix(rnorm(1000), nrow = 10)
-```
-
-$$
-s^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar x)^2
-$$
 
 # `next` Statements
 
@@ -96,17 +68,6 @@ for (i in vector){
 
 ```
 
-## Example
-
-Compute the variance for all the possible variables in the `leuk` data set.
-
-```{r}
-#| eval: false
-library(MASS)
-leuk
-```
-
-Use `is.factor`
 
 # `break` Statements
 
@@ -127,9 +88,6 @@ for (i in vector){
 }
 ```
 
-## Example
-
-Simulate from a $N(1,1)$ distribution until you have 30 positive numbers or you simulate one negative number.
 
 # `while` Loops
 
@@ -140,6 +98,8 @@ A while loop is a combination of a `for` loop and a `break` statement. The loop 
 ```{r}
 #| eval: false
 
+# Initial Condition
+condition <- starting TRUE condition
 
 while (condition){
   perform task
@@ -151,6 +111,107 @@ while (condition){
 
 Simulate from a $N(0,1)$ distribution until you have 50 positive numbers.
 
+```{r}
+#| code-fold: true
+n <- 0
+pos_num <- c()
+
+while (n < 51){
+  x <- rnorm(1)
+  if (x > 0) {
+    pos_num <- c(pos_num, x)
+    n <- n + 1
+  }
+}
+
+pos_num
+```
+
+
 ## Example
 
-Simulate from a $Binom(1,.2)$ distribution the sum of the random variables generated is 50.
+Find the value of $x$ where the function $y=1/x$ relative converges ($\frac{|y_{old}-y_{new}|}{y_{old}}$) at a level of $10^-6$ as $x\rightarrow \infty$.
+
+```{r}
+#| code-fold: true
+
+diff <- 10
+x <- 2
+y_old <- 1
+while (diff > 1e-6){
+  y_new <- 1 / x
+  diff <- abs(y_old - y_new) / y_old
+  x <- x + 1
+  y_old <- y_new
+}
+
+
+```
+
+
+
+## Example
+
+Simulate from a $Binom(1,.2)$ distribution until the sum of the random variables generated is 50.
+
+```{r}
+#| code-fold: true
+
+sum_bin <- 0
+x <- c()
+while (sum_bin <51) {
+  x <- c(x, rbinom(1, 1, 0.2))
+  sum_bin <- sum(x)
+}
+sum_bin
+length(x)
+```
+
+
+
+
+# `for` Loop Examples
+
+## Example
+
+Generate the 10th row of Pascal's Triangle.
+
+```{r}
+#| code-fold: true
+i <- 2
+x <- c(1, 1)
+while (i < 11){
+  n <- length(x) + 1
+  y <- vector(length = n)
+  y[1] <- 1
+  y[n] <- 1
+  for (i in 2:(n-1)){
+    y[i] <- x[i-1] + x[i]
+  }
+  x <- y
+  i <- i + 1
+}
+x
+```
+
+## Example
+
+Generate the first 1000 prime numbers.
+
+```{r}
+#| code-fold: true
+
+x <- 2
+y <- 2
+N <- 1
+while(N < 1001){
+  y <- y + 1
+  nn <- length(which(y %% x == 0))
+  if (nn == 0){
+    x <- c(x,y)
+  }
+  N <- length(x)
+}
+x
+```
+
