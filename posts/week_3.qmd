@@ -22,7 +22,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       |        |        |       |
-| 2       |        |        |       |
+| Lecture | Slides                                                         | Videos | Files |
+|---------|----------------------------------------------------------------|--------|-------|
+| 1       | [Slides](https://m408.inqs.info/lectures/3a.html#/title-slide) |        |       |
+| 2       |                                                                |        |       |
