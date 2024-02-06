@@ -45,7 +45,7 @@ There are several available functions in R to conduct specific statistical metho
 ## Help Documentation
 
 | Section     | Description                                                 |
-|:-----------------|:-----------------------------------------------------|
+|:------------------|:----------------------------------------------------|
 | Description | Provides a brief introduction of the function               |
 | Usage       | Provides potential usage of the function                    |
 | Arguments   | Arguments that the function can take                        |
@@ -177,11 +177,13 @@ library(tidyverse)
 
 ## Reticulate
 
-Reticulate is an R package that allows you utilized python within R.
+Reticulate is an R package that allows you to utilize python within R.
 
 ## Rcpp
 
 Rcpp is an R package that allows you to call C++ programs in R.
+
+We will compare variance functions written in cpp, user-built R, and built-in R.
 
 Rcpp code:
 
@@ -231,3 +233,70 @@ var
 ```
 
 This is an extremely advanced topic. Only do this if you need real speed and efficiency.
+
+# Bisection Method
+
+## Motivating Example
+
+$$
+f(x) = 2 x^3 - 20x -43
+$$
+
+```{r}
+#| code-fold: true
+#| eval: true
+
+f <- function(x) 2*x^3 - 20 * x - 43
+x <- seq(-5,5, length.out = 100)
+plot(x, f(x), type = "l")
+abline(h=0)
+
+
+```
+
+## Finding the Root
+
+```{r}
+#| code-fold: true
+#| eval: true
+
+
+f <- function(x) 2*x^3 - 20 * x - 43
+x <- seq(-5,5, length.out = 100)
+uniroot(f, lower = -5, upper = 5)
+
+```
+
+## Bisection Method
+
+1.  Begin with an interval $a$ and $b$ and evaluate $f(a)$ and $f(b)$.
+2.  If $f(a)$ and $f(b)$ are opposite signs, calculate $c = \frac{a+b}{2}$ and $f(c)$.
+3.  If $|f(c)|<\varepsilon$, for a small $\varepsilon$, then stop the algorithm and $c$ is the root.
+4.  Replace $(a,f(a))$ or $(b,f(b))$ with $(c, f(c))$ so that the signs of $f( \cdot )$ is 0.
+
+## Bisection Code
+
+```{r}
+#| code-fold: true
+
+f <- function(x){2*x^3 - 20 * x - 43}
+aa <- -5
+bb <- 5
+diff <- 10
+i <- 0
+while(diff > 1e-6){
+  faa <- f(aa)
+  cc <- (aa + bb) / 2
+  fcc <- f(cc)
+  if (faa < 0 & fcc > 0){
+    bb <- cc
+  } else {
+    aa <- cc
+  }
+  diff <- abs(fcc)
+  i <- i + 1
+}
+i
+cc
+fcc
+```

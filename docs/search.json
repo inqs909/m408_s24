@@ -2888,14 +2888,42 @@
     "href": "lectures/3b.html#reticulate",
     "title": "Functions",
     "section": "Reticulate",
-    "text": "Reticulate\nReticulate is an R package that allows you utilized python within R."
+    "text": "Reticulate\nReticulate is an R package that allows you to utilize python within R."
   },
   {
     "objectID": "lectures/3b.html#rcpp",
     "href": "lectures/3b.html#rcpp",
     "title": "Functions",
     "section": "Rcpp",
-    "text": "Rcpp\nRcpp is an R package that allows you to call C++ programs in R.\nRcpp code:\n\n#include &lt;Rcpp.h&gt;\nusing namespace Rcpp;\n// [[Rcpp::export]]\ndouble var_cpp(NumericVector x){\nint n = x.length();\nNumericVector pre(n);\ndouble mean_x = mean(x);\nfor (int i=0; i&lt;n; ++i){\n   pre[i] = pow(x[i]-mean_x, 2);\n}\nint divisor = n - 1;\ndouble post = sum(pre) / divisor;\nreturn post;\n}\n\nR code:\n\nvar_r &lt;- function(x){\n  sum((x-mean(x))^2) / (length(x)-1)\n}\n\nBenchmark Analysis\n\nx &lt;- rnorm(50)\nbench::mark(\nvar_cpp(x),\nvar_r(x),\nvar(x)\n)\n\n#&gt; # A tibble: 3 × 6\n#&gt;   expression      min   median `itr/sec` mem_alloc `gc/sec`\n#&gt;   &lt;bch:expr&gt; &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n#&gt; 1 var_cpp(x)   1.27µs   2.31µs   401858.    2.93KB      0  \n#&gt; 2 var_r(x)     2.69µs   3.38µs   248719.   23.75KB     49.8\n#&gt; 3 var(x)       4.91µs   6.29µs   147340.   13.73KB     59.0\n\n\n\nvar\n\n#&gt; function (x, y = NULL, na.rm = FALSE, use) \n#&gt; {\n#&gt;     if (missing(use)) \n#&gt;         use &lt;- if (na.rm) \n#&gt;             \"na.or.complete\"\n#&gt;         else \"everything\"\n#&gt;     na.method &lt;- pmatch(use, c(\"all.obs\", \"complete.obs\", \"pairwise.complete.obs\", \n#&gt;         \"everything\", \"na.or.complete\"))\n#&gt;     if (is.na(na.method)) \n#&gt;         stop(\"invalid 'use' argument\")\n#&gt;     if (is.data.frame(x)) \n#&gt;         x &lt;- as.matrix(x)\n#&gt;     else stopifnot(is.atomic(x))\n#&gt;     if (is.data.frame(y)) \n#&gt;         y &lt;- as.matrix(y)\n#&gt;     else stopifnot(is.atomic(y))\n#&gt;     .Call(C_cov, x, y, na.method, FALSE)\n#&gt; }\n#&gt; &lt;bytecode: 0x6535a35698d0&gt;\n#&gt; &lt;environment: namespace:stats&gt;\n\n\nThis is an extremely advanced topic. Only do this if you need real speed and efficiency."
+    "text": "Rcpp\nRcpp is an R package that allows you to call C++ programs in R.\nWe will compare variance functions written in cpp, user-built R, and built-in R.\nRcpp code:\n\n#include &lt;Rcpp.h&gt;\nusing namespace Rcpp;\n// [[Rcpp::export]]\ndouble var_cpp(NumericVector x){\nint n = x.length();\nNumericVector pre(n);\ndouble mean_x = mean(x);\nfor (int i=0; i&lt;n; ++i){\n   pre[i] = pow(x[i]-mean_x, 2);\n}\nint divisor = n - 1;\ndouble post = sum(pre) / divisor;\nreturn post;\n}\n\nR code:\n\nvar_r &lt;- function(x){\n  sum((x-mean(x))^2) / (length(x)-1)\n}\n\nBenchmark Analysis\n\nx &lt;- rnorm(50)\nbench::mark(\nvar_cpp(x),\nvar_r(x),\nvar(x)\n)\n\n#&gt; # A tibble: 3 × 6\n#&gt;   expression      min   median `itr/sec` mem_alloc `gc/sec`\n#&gt;   &lt;bch:expr&gt; &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n#&gt; 1 var_cpp(x)   1.26µs   2.25µs   426405.    2.93KB      0  \n#&gt; 2 var_r(x)     2.69µs   3.16µs   269567.   23.75KB     53.9\n#&gt; 3 var(x)       4.88µs   5.93µs   162312.   13.73KB     65.0\n\n\n\nvar\n\n#&gt; function (x, y = NULL, na.rm = FALSE, use) \n#&gt; {\n#&gt;     if (missing(use)) \n#&gt;         use &lt;- if (na.rm) \n#&gt;             \"na.or.complete\"\n#&gt;         else \"everything\"\n#&gt;     na.method &lt;- pmatch(use, c(\"all.obs\", \"complete.obs\", \"pairwise.complete.obs\", \n#&gt;         \"everything\", \"na.or.complete\"))\n#&gt;     if (is.na(na.method)) \n#&gt;         stop(\"invalid 'use' argument\")\n#&gt;     if (is.data.frame(x)) \n#&gt;         x &lt;- as.matrix(x)\n#&gt;     else stopifnot(is.atomic(x))\n#&gt;     if (is.data.frame(y)) \n#&gt;         y &lt;- as.matrix(y)\n#&gt;     else stopifnot(is.atomic(y))\n#&gt;     .Call(C_cov, x, y, na.method, FALSE)\n#&gt; }\n#&gt; &lt;bytecode: 0x61be96e40ff8&gt;\n#&gt; &lt;environment: namespace:stats&gt;\n\n\nThis is an extremely advanced topic. Only do this if you need real speed and efficiency."
+  },
+  {
+    "objectID": "lectures/3b.html#motivating-example",
+    "href": "lectures/3b.html#motivating-example",
+    "title": "Functions",
+    "section": "Motivating Example",
+    "text": "Motivating Example\n\\[\nf(x) = 2 x^3 - 20x -43\n\\]\n\n\nCode\nf &lt;- function(x) 2*x^3 - 20 * x - 43\nx &lt;- seq(-5,5, length.out = 100)\nplot(x, f(x), type = \"l\")\nabline(h=0)"
+  },
+  {
+    "objectID": "lectures/3b.html#finding-the-root",
+    "href": "lectures/3b.html#finding-the-root",
+    "title": "Functions",
+    "section": "Finding the Root",
+    "text": "Finding the Root\n\n\nCode\nf &lt;- function(x) 2*x^3 - 20 * x - 43\nx &lt;- seq(-5,5, length.out = 100)\nuniroot(f, lower = -5, upper = 5)\n\n\n#&gt; $root\n#&gt; [1] 3.932792\n#&gt; \n#&gt; $f.root\n#&gt; [1] -2.30166e-05\n#&gt; \n#&gt; $iter\n#&gt; [1] 7\n#&gt; \n#&gt; $init.it\n#&gt; [1] NA\n#&gt; \n#&gt; $estim.prec\n#&gt; [1] 6.103516e-05"
+  },
+  {
+    "objectID": "lectures/3b.html#bisection-method-1",
+    "href": "lectures/3b.html#bisection-method-1",
+    "title": "Functions",
+    "section": "Bisection Method",
+    "text": "Bisection Method\n\nBegin with an interval \\(a\\) and \\(b\\) and evaluate \\(f(a)\\) and \\(f(b)\\).\nIf \\(f(a)\\) and \\(f(b)\\) are opposite signs, calculate \\(c = \\frac{a+b}{2}\\) and \\(f(c)\\).\nIf \\(|f(c)|&lt;\\varepsilon\\), for a small \\(\\varepsilon\\), then stop the algorithm and \\(c\\) is the root.\nReplace \\((a,f(a))\\) or \\((b,f(b))\\) with \\((c, f(c))\\) so that the signs of \\(f( \\cdot )\\) is 0."
+  },
+  {
+    "objectID": "lectures/3b.html#bisection-code",
+    "href": "lectures/3b.html#bisection-code",
+    "title": "Functions",
+    "section": "Bisection Code",
+    "text": "Bisection Code\n\n\nCode\nf &lt;- function(x){2*x^3 - 20 * x - 43}\naa &lt;- -5\nbb &lt;- 5\ndiff &lt;- 10\ni &lt;- 0\nwhile(diff &gt; 1e-6){\n  faa &lt;- f(aa)\n  cc &lt;- (aa + bb) / 2\n  fcc &lt;- f(cc)\n  if (faa &lt; 0 & fcc &gt; 0){\n    bb &lt;- cc\n  } else {\n    aa &lt;- cc\n  }\n  diff &lt;- abs(fcc)\n  i &lt;- i + 1\n}\ni\ncc\nfcc"
   },
   {
     "objectID": "lectures/4b.html#learning-objectives",

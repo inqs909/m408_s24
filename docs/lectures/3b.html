@@ -420,8 +420,8 @@
 <h2>Help Documentation</h2>
 <table>
 <colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
+<col style="width: 26%">
+<col style="width: 73%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -597,11 +597,12 @@ z =  \frac{x-\bar y}{\sqrt{s^2_{y}/n_y}}
 </section>
 <section id="reticulate" class="slide level2">
 <h2>Reticulate</h2>
-<p>Reticulate is an R package that allows you utilized python within R.</p>
+<p>Reticulate is an R package that allows you to utilize python within R.</p>
 </section>
 <section id="rcpp" class="slide level2">
 <h2>Rcpp</h2>
 <p>Rcpp is an R package that allows you to call C++ programs in R.</p>
+<p>We will compare variance functions written in cpp, user-built R, and built-in R.</p>
 <p>Rcpp code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
@@ -637,9 +638,9 @@ z =  \frac{x-\bar y}{\sqrt{s^2_{y}/n_y}}
 <pre><code>#&gt; # A tibble: 3 × 6
 #&gt;   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #&gt;   &lt;bch:expr&gt; &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;
-#&gt; 1 var_cpp(x)   1.27µs   2.31µs   401858.    2.93KB      0  
-#&gt; 2 var_r(x)     2.69µs   3.38µs   248719.   23.75KB     49.8
-#&gt; 3 var(x)       4.91µs   6.29µs   147340.   13.73KB     59.0</code></pre>
+#&gt; 1 var_cpp(x)   1.26µs   2.25µs   426405.    2.93KB      0  
+#&gt; 2 var_r(x)     2.69µs   3.16µs   269567.   23.75KB     53.9
+#&gt; 3 var(x)       4.88µs   5.93µs   162312.   13.73KB     65.0</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -663,11 +664,96 @@ z =  \frac{x-\bar y}{\sqrt{s^2_{y}/n_y}}
 #&gt;     else stopifnot(is.atomic(y))
 #&gt;     .Call(C_cov, x, y, na.method, FALSE)
 #&gt; }
-#&gt; &lt;bytecode: 0x6535a35698d0&gt;
+#&gt; &lt;bytecode: 0x61be96e40ff8&gt;
 #&gt; &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 </div>
 <p>This is an extremely advanced topic. Only do this if you need real speed and efficiency.</p>
+</section></section>
+<section>
+<section id="bisection-method" class="title-slide slide level1 center">
+<h1>Bisection Method</h1>
+
+</section>
+<section id="motivating-example" class="slide level2">
+<h2>Motivating Example</h2>
+<p><span class="math display">\[
+f(x) = 2 x^3 - 20x -43
+\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span> <span class="sc">-</span> <span class="dv">20</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">43</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">plot</span>(x, <span class="fu">f</span>(x), <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="3b_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="finding-the-root" class="slide level2">
+<h2>Finding the Root</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span> <span class="sc">-</span> <span class="dv">20</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">43</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">uniroot</span>(f, <span class="at">lower =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">upper =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; $root
+#&gt; [1] 3.932792
+#&gt; 
+#&gt; $f.root
+#&gt; [1] -2.30166e-05
+#&gt; 
+#&gt; $iter
+#&gt; [1] 7
+#&gt; 
+#&gt; $init.it
+#&gt; [1] NA
+#&gt; 
+#&gt; $estim.prec
+#&gt; [1] 6.103516e-05</code></pre>
+</div>
+</div>
+</section>
+<section id="bisection-method-1" class="slide level2">
+<h2>Bisection Method</h2>
+<ol type="1">
+<li>Begin with an interval <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and evaluate <span class="math inline">\(f(a)\)</span> and <span class="math inline">\(f(b)\)</span>.</li>
+<li>If <span class="math inline">\(f(a)\)</span> and <span class="math inline">\(f(b)\)</span> are opposite signs, calculate <span class="math inline">\(c = \frac{a+b}{2}\)</span> and <span class="math inline">\(f(c)\)</span>.</li>
+<li>If <span class="math inline">\(|f(c)|&lt;\varepsilon\)</span>, for a small <span class="math inline">\(\varepsilon\)</span>, then stop the algorithm and <span class="math inline">\(c\)</span> is the root.</li>
+<li>Replace <span class="math inline">\((a,f(a))\)</span> or <span class="math inline">\((b,f(b))\)</span> with <span class="math inline">\((c, f(c))\)</span> so that the signs of <span class="math inline">\(f( \cdot )\)</span> is 0.</li>
+</ol>
+</section>
+<section id="bisection-code" class="slide level2">
+<h2>Bisection Code</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){<span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span> <span class="sc">-</span> <span class="dv">20</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">43</span>}</span>
+<span id="cb13-2"><a href="#cb13-2"></a>aa <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>bb <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>diff <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="cf">while</span>(diff <span class="sc">&gt;</span> <span class="fl">1e-6</span>){</span>
+<span id="cb13-7"><a href="#cb13-7"></a>  faa <span class="ot">&lt;-</span> <span class="fu">f</span>(aa)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>  cc <span class="ot">&lt;-</span> (aa <span class="sc">+</span> bb) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  fcc <span class="ot">&lt;-</span> <span class="fu">f</span>(cc)</span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="cf">if</span> (faa <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> fcc <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb13-11"><a href="#cb13-11"></a>    bb <span class="ot">&lt;-</span> cc</span>
+<span id="cb13-12"><a href="#cb13-12"></a>  } <span class="cf">else</span> {</span>
+<span id="cb13-13"><a href="#cb13-13"></a>    aa <span class="ot">&lt;-</span> cc</span>
+<span id="cb13-14"><a href="#cb13-14"></a>  }</span>
+<span id="cb13-15"><a href="#cb13-15"></a>  diff <span class="ot">&lt;-</span> <span class="fu">abs</span>(fcc)</span>
+<span id="cb13-16"><a href="#cb13-16"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a>}</span>
+<span id="cb13-18"><a href="#cb13-18"></a>i</span>
+<span id="cb13-19"><a href="#cb13-19"></a>cc</span>
+<span id="cb13-20"><a href="#cb13-20"></a>fcc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 <div class="footer footer-default">
 

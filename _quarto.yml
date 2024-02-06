@@ -4,6 +4,7 @@ project:
   render: 
     - "*.qmd"
     - "!files/"
+    - "files/functions.qmd"
   resources:
     - "*.json"
     - "files"
