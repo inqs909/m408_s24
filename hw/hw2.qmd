@@ -13,8 +13,6 @@ You must comment all your code to receive credit.
 
 Submit the \*.html file to canvas.
 
-For all problems, you must use at least one `for` or `while` loop.
-
 ## Problem 1
 
 Write a function that takes a vector as an input an returns a labeled list with the mean, median, and variance of the vector.
