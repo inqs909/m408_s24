@@ -420,16 +420,16 @@
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">sapply</span>(x, <span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  [1] 1.583350 1.683165 5.491732 2.625258 6.463434 6.428573 6.902904 7.505596
-#&gt;  [9] 9.267414 9.088313</code></pre>
+<pre><code>#&gt;  [1] 0.4761714 0.4663390 2.7443054 4.8339920 3.2745453 6.4229802 6.0477434
+#&gt;  [8] 7.5767346 8.7957866 9.4146682</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">sapply</span>(x, \(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  [1]  2.0613541  1.1815749 -0.5456864  3.2672445  1.8474063  5.7406827
-#&gt;  [7]  7.7469473 10.7560488 -7.6385682  3.1603468</code></pre>
+<pre><code>#&gt;  [1]   2.5001509   1.6759013   4.8664348  -0.7208172  -5.4506711   0.2530375
+#&gt;  [7]   7.0140669 -10.8440272  -8.3664015 -13.9958679</code></pre>
 </div>
 </div>
 </section>
@@ -491,7 +491,7 @@ C = \frac{5(F-32)}{9}
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 1.171329</code></pre>
+<pre><code>#&gt; [1] 0.4093433</code></pre>
 </div>
 </div>
 </section>
@@ -502,7 +502,7 @@ C = \frac{5(F-32)}{9}
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>mtcars <span class="sc">%$%</span> <span class="fu">plot</span>(mpg, hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="4b_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="4b_files/figure-html/unnamed-chunk-9-1.png" width="672" class="r-stretch"></section>
 <section id="t" class="slide level2">
 <h2><code>%T&gt;%</code></h2>
 <p>The Tee pipe, <code>%T&gt;%</code>, forward the output in the</p>
@@ -809,44 +809,6 @@ C = \frac{5(F-32)}{9}
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

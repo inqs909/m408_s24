@@ -18,7 +18,7 @@ knitr:
     eval: false
     comment: "#>" 
 
-editor: visual
+editor: source
 ---
 
 ```{r}
@@ -29,6 +29,10 @@ editor: visual
 library(DT)
 library(tidyverse)
 ```
+
+## Anouncements - Tidy Tuesday on Wednesday
+
+![](img/Math_Club_Flyer.png){fig-align="center"}
 
 ## Learning Objectives
 
@@ -45,7 +49,7 @@ There are several available functions in R to conduct specific statistical metho
 ## Help Documentation
 
 | Section     | Description                                                 |
-|:------------------|:----------------------------------------------------|
+|:-------------------|:---------------------------------------------------|
 | Description | Provides a brief introduction of the function               |
 | Usage       | Provides potential usage of the function                    |
 | Arguments   | Arguments that the function can take                        |

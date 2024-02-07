@@ -18,7 +18,7 @@ knitr:
     eval: false
     comment: "#>" 
 
-editor: visual
+editor: source
 ---
 
 ```{r}
@@ -98,7 +98,6 @@ lapply(X, FUN, ...)
 ## Example
 
 Create a function that returns a labeled list for with the following values: mean, standard deviation, median, max, and min.
-
 
 # `sapply()`
 

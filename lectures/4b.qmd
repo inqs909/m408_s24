@@ -19,7 +19,7 @@ knitr:
     message: false
     comment: "#>" 
 
-editor: visual
+editor: source
 ---
 
 ```{r}
@@ -134,7 +134,7 @@ sin_40 <- 1:40 %>% mean %T>% print %>% sin
 print(sin_40)
 ```
 
-## `%T>%` 
+## `%T>%`
 
 ```{r}
 rnorm(100) %>% 

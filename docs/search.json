@@ -816,7 +816,7 @@
     "href": "lectures/4b.html#anonymous-functions-1",
     "title": "Intro to Data Manipulation",
     "section": "Anonymous Functions",
-    "text": "Anonymous Functions\nAn anonymous function is a function that is not stored in an R object for the global environment. It can be thought of as a temporary function to complete a task. A common way to used an anonymous function is with an *apply() function\n\n\nx &lt;- 1:10\nsapply(x, function(x) rnorm(1,x))\n\n#&gt;  [1] 1.583350 1.683165 5.491732 2.625258 6.463434 6.428573 6.902904 7.505596\n#&gt;  [9] 9.267414 9.088313\n\n\n\nx &lt;- 1:10\nsapply(x, \\(x) rnorm(1,1,x))\n\n#&gt;  [1]  2.0613541  1.1815749 -0.5456864  3.2672445  1.8474063  5.7406827\n#&gt;  [7]  7.7469473 10.7560488 -7.6385682  3.1603468"
+    "text": "Anonymous Functions\nAn anonymous function is a function that is not stored in an R object for the global environment. It can be thought of as a temporary function to complete a task. A common way to used an anonymous function is with an *apply() function\n\n\nx &lt;- 1:10\nsapply(x, function(x) rnorm(1,x))\n\n#&gt;  [1] 0.4761714 0.4663390 2.7443054 4.8339920 3.2745453 6.4229802 6.0477434\n#&gt;  [8] 7.5767346 8.7957866 9.4146682\n\n\n\nx &lt;- 1:10\nsapply(x, \\(x) rnorm(1,1,x))\n\n#&gt;  [1]   2.5001509   1.6759013   4.8664348  -0.7208172  -5.4506711   0.2530375\n#&gt;  [7]   7.0140669 -10.8440272  -8.3664015 -13.9958679"
   },
   {
     "objectID": "lectures/4b.html#example",
@@ -851,7 +851,7 @@
     "href": "lectures/4b.html#section-1",
     "title": "Intro to Data Manipulation",
     "section": "%>%",
-    "text": "%&gt;%\nThe magrittr pipe, %&gt;%, operates the same way as |&gt;. Below are a couple of examples\n\nx &lt;- 1:10\nx %&gt;%  mean()\n\n#&gt; [1] 5.5\n\nx %&gt;% sd\n\n#&gt; [1] 3.02765\n\nx %&gt;% rnorm(1, .)\n\n#&gt; [1] 1.171329"
+    "text": "%&gt;%\nThe magrittr pipe, %&gt;%, operates the same way as |&gt;. Below are a couple of examples\n\nx &lt;- 1:10\nx %&gt;%  mean()\n\n#&gt; [1] 5.5\n\nx %&gt;% sd\n\n#&gt; [1] 3.02765\n\nx %&gt;% rnorm(1, .)\n\n#&gt; [1] 0.4093433"
   },
   {
     "objectID": "lectures/4b.html#section-2",
@@ -929,6 +929,13 @@
     "title": "Intro to Data Manipulation",
     "section": "Example",
     "text": "Example\n\nlibrary(palmerpenguins)\nsum_stats &lt;- penguins %&gt;% \n  drop_na %&gt;% \n  filter(year==2007) %&gt;% \n  group_by(island) %&gt;% \n  summarise(mean = mean(bill_length_mm),\n            sd = sd(bill_length_mm),\n            median = median(bill_length_mm),\n            n = length(bill_length_mm)) %&gt;% \n  print\n\n#&gt; # A tibble: 3 × 5\n#&gt;   island     mean    sd median     n\n#&gt;   &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;\n#&gt; 1 Biscoe     45.1  4.80   46.1    43\n#&gt; 2 Dream      44.7  5.64   45.4    45\n#&gt; 3 Torgersen  39.0  2.92   39.1    15"
+  },
+  {
+    "objectID": "lectures/3b.html#anouncements---tidy-tuesday-on-wednesday",
+    "href": "lectures/3b.html#anouncements---tidy-tuesday-on-wednesday",
+    "title": "Functions",
+    "section": "Anouncements - Tidy Tuesday on Wednesday",
+    "text": "Anouncements - Tidy Tuesday on Wednesday"
   },
   {
     "objectID": "lectures/3b.html#learning-objectives",
@@ -1026,7 +1033,7 @@
     "href": "lectures/3b.html#rcpp",
     "title": "Functions",
     "section": "Rcpp",
-    "text": "Rcpp\nRcpp is an R package that allows you to call C++ programs in R.\nWe will compare variance functions written in cpp, user-built R, and built-in R.\nRcpp code:\n\n#include &lt;Rcpp.h&gt;\nusing namespace Rcpp;\n// [[Rcpp::export]]\ndouble var_cpp(NumericVector x){\nint n = x.length();\nNumericVector pre(n);\ndouble mean_x = mean(x);\nfor (int i=0; i&lt;n; ++i){\n   pre[i] = pow(x[i]-mean_x, 2);\n}\nint divisor = n - 1;\ndouble post = sum(pre) / divisor;\nreturn post;\n}\n\nR code:\n\nvar_r &lt;- function(x){\n  sum((x-mean(x))^2) / (length(x)-1)\n}\n\nBenchmark Analysis\n\nx &lt;- rnorm(50)\nbench::mark(\nvar_cpp(x),\nvar_r(x),\nvar(x)\n)\n\n#&gt; # A tibble: 3 × 6\n#&gt;   expression      min   median `itr/sec` mem_alloc `gc/sec`\n#&gt;   &lt;bch:expr&gt; &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n#&gt; 1 var_cpp(x)   1.26µs   2.25µs   426405.    2.93KB      0  \n#&gt; 2 var_r(x)     2.69µs   3.16µs   269567.   23.75KB     53.9\n#&gt; 3 var(x)       4.88µs   5.93µs   162312.   13.73KB     65.0\n\n\n\nvar\n\n#&gt; function (x, y = NULL, na.rm = FALSE, use) \n#&gt; {\n#&gt;     if (missing(use)) \n#&gt;         use &lt;- if (na.rm) \n#&gt;             \"na.or.complete\"\n#&gt;         else \"everything\"\n#&gt;     na.method &lt;- pmatch(use, c(\"all.obs\", \"complete.obs\", \"pairwise.complete.obs\", \n#&gt;         \"everything\", \"na.or.complete\"))\n#&gt;     if (is.na(na.method)) \n#&gt;         stop(\"invalid 'use' argument\")\n#&gt;     if (is.data.frame(x)) \n#&gt;         x &lt;- as.matrix(x)\n#&gt;     else stopifnot(is.atomic(x))\n#&gt;     if (is.data.frame(y)) \n#&gt;         y &lt;- as.matrix(y)\n#&gt;     else stopifnot(is.atomic(y))\n#&gt;     .Call(C_cov, x, y, na.method, FALSE)\n#&gt; }\n#&gt; &lt;bytecode: 0x61be96e40ff8&gt;\n#&gt; &lt;environment: namespace:stats&gt;\n\n\nThis is an extremely advanced topic. Only do this if you need real speed and efficiency."
+    "text": "Rcpp\nRcpp is an R package that allows you to call C++ programs in R.\nWe will compare variance functions written in cpp, user-built R, and built-in R.\nRcpp code:\n\n#include &lt;Rcpp.h&gt;\nusing namespace Rcpp;\n// [[Rcpp::export]]\ndouble var_cpp(NumericVector x){\nint n = x.length();\nNumericVector pre(n);\ndouble mean_x = mean(x);\nfor (int i=0; i&lt;n; ++i){\n   pre[i] = pow(x[i]-mean_x, 2);\n}\nint divisor = n - 1;\ndouble post = sum(pre) / divisor;\nreturn post;\n}\n\nR code:\n\nvar_r &lt;- function(x){\n  sum((x-mean(x))^2) / (length(x)-1)\n}\n\nBenchmark Analysis\n\nx &lt;- rnorm(50)\nbench::mark(\nvar_cpp(x),\nvar_r(x),\nvar(x)\n)\n\n#&gt; # A tibble: 3 × 6\n#&gt;   expression      min   median `itr/sec` mem_alloc `gc/sec`\n#&gt;   &lt;bch:expr&gt; &lt;bch:tm&gt; &lt;bch:tm&gt;     &lt;dbl&gt; &lt;bch:byt&gt;    &lt;dbl&gt;\n#&gt; 1 var_cpp(x)   1.27µs   2.22µs   423478.    2.93KB      0  \n#&gt; 2 var_r(x)     2.71µs   3.19µs   268178.   23.75KB     53.6\n#&gt; 3 var(x)       4.89µs   5.92µs   162069.   13.73KB     64.9\n\n\n\nvar\n\n#&gt; function (x, y = NULL, na.rm = FALSE, use) \n#&gt; {\n#&gt;     if (missing(use)) \n#&gt;         use &lt;- if (na.rm) \n#&gt;             \"na.or.complete\"\n#&gt;         else \"everything\"\n#&gt;     na.method &lt;- pmatch(use, c(\"all.obs\", \"complete.obs\", \"pairwise.complete.obs\", \n#&gt;         \"everything\", \"na.or.complete\"))\n#&gt;     if (is.na(na.method)) \n#&gt;         stop(\"invalid 'use' argument\")\n#&gt;     if (is.data.frame(x)) \n#&gt;         x &lt;- as.matrix(x)\n#&gt;     else stopifnot(is.atomic(x))\n#&gt;     if (is.data.frame(y)) \n#&gt;         y &lt;- as.matrix(y)\n#&gt;     else stopifnot(is.atomic(y))\n#&gt;     .Call(C_cov, x, y, na.method, FALSE)\n#&gt; }\n#&gt; &lt;bytecode: 0x5b55f3ae2250&gt;\n#&gt; &lt;environment: namespace:stats&gt;\n\n\nThis is an extremely advanced topic. Only do this if you need real speed and efficiency."
   },
   {
     "objectID": "lectures/3b.html#motivating-example",
@@ -3882,6 +3889,6 @@
     "href": "posts/week_3.html#resources",
     "title": "Week 3",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
   }
 ]

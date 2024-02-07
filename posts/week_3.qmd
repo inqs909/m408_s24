@@ -23,6 +23,6 @@ editor_options:
 ## Resources
 
 | Lecture | Slides                                                         | Videos                                | Files |
-|---------------|---------------------------|----------------|---------------|
+|----------------|------------------------|----------------|----------------|
 | 1       | [Slides](https://m408.inqs.info/lectures/3a.html#/title-slide) | [Video](https://youtu.be/BcJezRy1vzg) |       |
-| 2       |                                                                |                                       |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/3b.html#/title-slide) |                                       |       |
