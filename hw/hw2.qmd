@@ -1,17 +1,19 @@
 ---
 title: "Homework 2"
-date: 2/10/23
+date: 2/7/23
 editor: visual
-draft: true
+draft: false
 ---
 
-**Due 2/17/23 \@ 11:59 PM**
+**Due 2/17/24 \@ 11:59 PM**
 
-Use an RMD Notebook file from to create the assignment.
+Use an RMD M408 Template to create the assignment.
 
 You must comment all your code to receive credit.
 
-Submit the \*nb.html file to canvas.
+Submit the \*.html file to canvas.
+
+For all problems, you must use at least one `for` or `while` loop.
 
 ## Problem 1
 
