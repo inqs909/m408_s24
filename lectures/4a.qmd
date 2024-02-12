@@ -30,6 +30,17 @@ library(DT)
 library(tidyverse)
 ```
 
+## Re Install
+-   csucistats
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages('csucistats', 
+  repos = c('https://inqs909.r-universe.dev', 
+  'https://cloud.r-project.org'))
+```
+
 ## Learning Objectives
 
 -   \*apply()

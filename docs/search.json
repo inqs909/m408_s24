@@ -1036,6 +1036,13 @@
     "text": "Example\nUsing the penguins dataset from palmerpenguins, group by species and find the average ln flipper_length_mm"
   },
   {
+    "objectID": "lectures/4a.html#re-install",
+    "href": "lectures/4a.html#re-install",
+    "title": "*apply Functions",
+    "section": "Re Install",
+    "text": "Re Install\n\ncsucistats\n\n\ninstall.packages('csucistats', \n  repos = c('https://inqs909.r-universe.dev', \n  'https://cloud.r-project.org'))"
+  },
+  {
     "objectID": "lectures/4a.html#learning-objectives",
     "href": "lectures/4a.html#learning-objectives",
     "title": "*apply Functions",
