@@ -1,5 +1,5 @@
 ---
-title: "Linear Regression"
+title: "Introduction to Statistical Learning"
 format:
   revealjs:
     scrollable: true
@@ -14,257 +14,319 @@ format:
       chalk-width: 4
 knitr:
   opts_chunk: 
-    echo: false
+    echo: true
     eval: true
     message: false
     warnings: false
     comment: "#>" 
+    
+revealjs-plugins:
+  - pointer
+  - verticator
+  
+filters: 
+  - reveal-header
+  - code-fullscreen
 
 editor: visual
 ---
 
+## Learning Outcomes
+
+-   Introduction to Statistical Learning
+
+-   Classification vs Regression
+
+-   Supervised vs Unsupervised Machine Learning
+
+-   Model Adequacy
+
+# Introduction to Statistical Learning
+
+## Introduction to Statistical Learning
+
+**What is Statistical Learning?**
+
+::: {#.fragment}
+Statistical learning is the task of predicting an outcome of interest given a set of predictor variables.
+:::
+
+## Statistical Learning Model
+
+$$
+Y = f(\boldsymbol X) + \varepsilon
+$$
+
+-   $Y$: Outcome variable
+
+-   $f(\cdot)$: systematic component explaining $Y$
+
+-   $\boldsymbol X$: vector of predictor variables
+
+-   $\varepsilon$: error term
+
+## Modeling $f(\cdot)$: Parametric
+
+-   Linear Models
+
+-   Generalized Linear Models (GLM)
+
+## Modeling $f(\cdot)$: Nonparametric
+
+-   Generalized Additive Models
+
+-   Local-Linear Models
+
+-   Smoothing Splines
+
+## Prediction
+
+-   Statistical Learning is only concerned with an accurate $Y$
+
+-   $f(\cdot)$ is considered a black box
+
+-   We will not know how $\boldsymbol X$ explains $Y$
+
+-   We choose flexible (nonparametric) models
+
+## Model Interpretability
+
+-   With a focus on prediction, model interpretability declines
+
+-   We will not know how changes in $\boldsymbol X$ will affect $Y$
+
+# Classification vs Regression
+
+## Regression
+
+Regression in statistical learning terms indicates predicting a continuous random variable.
+
+<div>
+
+What are the methods that we learned to model continuous random variables?
+
+</div>
+
+## Example
+
 ```{r}
 #| include: false
-#| eval: true
-#| label: setup
 
-library(DT)
 library(tidyverse)
-library(GLMsData)
-library(broom)
-library(palmerpenguins)
-library(magrittr)
+library(mgcv)
+n  <- 1e3
+dat <- data.frame("x1" = rnorm(n), "x2" = rnorm(n), "x3" = rnorm(n))
+dat$y <- with(dat, sin(x1) + 0.5*x2^2 + 0.2*x3 + pmax(x2, 0.2) * rnorm(n))
+b <- gam(y ~ s(x1) + s(x2) + x3, data = dat, method = "REML")
 
-x <- rnorm(50, 4)
-y <- 3 + 2 * x + rnorm(50, sd = 2)
-df <- tibble(x, y)
-
-
-
+p_obj <- plot(b, residuals = TRUE)
+p_obj <- p_obj[[1]] # just one smooth so select the first component
+sm_df <- as.data.frame(p_obj[c("x", "se", "fit")])
+data_df <- as.data.frame(p_obj[c("raw", "p.resid")])
 ```
-
-## Learning Objectives
-
--   Associations
-
--   Linear Regression
-
--   Conducting it in R
-
-# Associations
-
-## Types of Associations
-
--   Categorical vs Continuous
-
--   Categorical vs Categorical
-
--   Continuous vs Continuous
-
-## Categorical vs Continuous
-
-Describing the relationship between categorical and continuous variables can be done by stratifying by the categorical variable and finding the mean or median, or conducting a statistical test:
-
--   t-tests
-
--   ANOVA
-
-Measuring the association between species and flipper length from `palmerpenguins`:
-
-```{r}
-#| echo: true
-# Stratification
-penguins %>% drop_na %>%
-  group_by(species) %>% 
-  summarise(mean = mean(flipper_length_mm),
-            median = median(flipper_length_mm))
-# ANOVA
-species_aov <- aov(flipper_length_mm ~ species, penguins)
-tidy(species_aov)
-```
-
-## Categorical vs Categorical
-
-Comparing 2 categorical variables can be done by computing proportions or conducting a chi-square test. Below is an example comparing
-
-```{r}
-#| echo: true
-
-# Count and Proportions
-penguins %>% group_by(species, island) %>% 
-  summarise(count = n(), proportions = n() / nrow(penguins))
-
-# Chi-Square Test
-penguins %$% chisq.test(species, island) 
-
-```
-
-## Continuous vs Continuous
-
-To understand the relationship between two continuous random variables, we can use the following:
-
--   Correlation
-
--   Linear Regression
-
-## Correlation
-
-Correlations measures the association between 2 continuous random variables.
-
--   Pearson's Correlation
-
--   Spearman's Correlation
-
--   Kendall's Tau
-
-```{r}
-#| echo: true
-#| warning: false
-#| message: false
-
-# Pearson's Correlation
-penguins %>% drop_na %$% cor.test(body_mass_g, flipper_length_mm)
-
-# Spearman's Correlation 
-penguins %>% drop_na %$% cor.test(body_mass_g, flipper_length_mm, method = "spearman")
-
-# Kendall's Tau
-penguins %>% drop_na %$% cor.test(body_mass_g, flipper_length_mm, method = "kendall")
-
-```
-
-## Scatter Plot
-
-```{r}
-ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + geom_point() + theme_bw()
-```
-
-# Linear Regression
-
-## Linear Regression
-
-Linear regression is used to model the association between a set of predictor variables (x's) and an outcome variable (y). Linear regression will fit a line that best describes the data points.
-
-## Scatter Plot
-
-```{r}
-ggplot(df, aes(x = x, y = y)) + geom_point() + theme_bw()
-```
-
-## Simple Linear Regression
-
-Simple linear regression will model the association between one predictor variable and an outcome:
-
-$$
-Y = \beta_0 + \beta_1 X + \epsilon
-$$
-
--   $\beta_0$: Intercept term
-
--   $\beta_1$: Slope term
-
--   $\epsilon\sim N(0,\sigma^2)$
-
-## Estimated Model
-
-$$
-\hat Y = \hat \beta_0 + \hat \beta_1 X
-$$
-
-# R Examples
-
-## R Formulas
-
-In R, we create a formula using the `tilde`
-
-Outcome Variable `tilde` Independent Variables
-
-```{r}
-#| echo: true
-#| eval: false
-ooutcome_variable_name ~ independent_variable_name
-```
-
-## R Example
-
-Applying a linear regression model to `body_mass_g` (Predictor) and `flipper_length_mm` (Outcome) from `penguins`:
 
 ::: panel-tabset
-## R Output
-
-```{r}
-#| echo: true
-
-# summary(lm(flipper_length_mm ~ body_mass_g, data = penguins))
-
-# OR
-
-penguins %$% lm(flipper_length_mm ~ body_mass_g) %>% summary
-```
-
 ## Scatter Plot
 
 ```{r}
-#| echo: true
-#| warning: false
-#| message: false
-ggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) + geom_point() + 
-  geom_smooth(method = "lm") +
+#| echo: false
+ggplot(sm_df, aes(x = x, y = fit)) +
+  geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
+  # geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
+  #             alpha = 0.3) +
+  # geom_line() +
+  # labs(x = p_obj$xlab, y = p_obj$ylab) + 
+  # geom_smooth(method = "lm") +
+  xlab("X") + ylab("Y") +
   theme_bw()
 ```
 
-### Interpretation
-
-$$
-\hat y = 136.73 + 0.015 x
-$$
-:::
-
-## Simulation Example
-
-## Generate X Values
-
-Simulate 250 independent values (x) from $N(3, 1)$ and plot a histogram
+## Regression
 
 ```{r}
-#| echo: true
-x <- rnorm(205, 1)
+#| echo: false
+ggplot(sm_df, aes(x = x, y = fit)) +
+  geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
+  # geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
+  #             alpha = 0.3) +
+  # geom_line() +
+  # labs(x = p_obj$xlab, y = p_obj$ylab) + 
+  geom_smooth(method = "lm") +
+  xlab("X") + ylab("Y") +
+  theme_bw()
 ```
 
-## Generate Y Values
+## GAM
 
-Create a new variable with the following formula:
+```{r}
+#| echo: false
+ggplot(sm_df, aes(x = x, y = fit)) +
+  geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
+  geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
+              alpha = 0.3) +
+  geom_line() +
+  labs(x = p_obj$xlab, y = p_obj$ylab) +
+  # geom_smooth(method = "lm") +
+  xlab("X") + ylab("Y") +
+  theme_bw()
+```
+
+## Combined
+
+```{r}
+#| echo: false
+ggplot(sm_df, aes(x = x, y = fit)) +
+  geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
+  geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
+              alpha = 0.3) +
+  geom_line() +
+  labs(x = p_obj$xlab, y = p_obj$ylab) +
+  geom_smooth(method = "lm") +
+  xlab("X") + ylab("Y") +
+  theme_bw()
+```
+:::
+
+## Classification
+
+Classification in statistical learning terms indicates predicting a categorical random variable.
+
+<div>
+
+What are the methods that we learned to model categorical random variables?
+
+</div>
+
+## Example
+
+::: panel-tabset
+## Data
+
+```{r}
+#| echo: false
+ggplot(data = iris, 
+       aes(x = Petal.Length, y = Petal.Width, col = Species)) +
+  geom_point() + theme_bw()
+```
+
+## KNN
+
+```{r}
+#| echo: false
+library(class)
+set.seed(1236894)
+setosa<- rbind(iris[iris$Species=="setosa",])
+versicolor<- rbind(iris[iris$Species=="versicolor",])
+virginica<- rbind(iris[iris$Species=="virginica",])
+
+
+ind <- sample(1:nrow(setosa), nrow(setosa)*0.6)
+
+iris.train<- rbind(setosa[ind,], versicolor[ind,], virginica[ind,])
+iris.test<- rbind(setosa[-ind,], versicolor[-ind,], virginica[-ind,])
+iris_pred <- knn(train = iris.train[,1:4], test = iris.test[,1:4], cl = iris.train$Species, k=5)
+table(iris.test$Species,iris_pred)
+```
+
+## SVM
+
+```{r}
+#| echo: false
+
+library(e1071)
+svm_model <- svm(Species ~ ., data=iris,
+                 kernel="radial") #linear/polynomial/sigmoid
+pred = predict(svm_model,iris)
+tab = table(Predicted=pred, Actual = iris$Species)
+tab
+```
+
+## NN
+
+```{r}
+#| echo: false
+library(neuralnet)
+data(iris)
+iris$setosa <- iris$Species=="setosa"
+iris$virginica <- iris$Species == "virginica"
+iris$versicolor <- iris$Species == "versicolor"
+iris.train.idx <- sample(x = nrow(iris), size = nrow(iris)*0.5)
+iris.train <- iris[iris.train.idx,]
+iris.valid <- iris[-iris.train.idx,]
+library(neuralnet)
+iris.net <- neuralnet(setosa+versicolor+virginica ~ 
+                      Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, 
+                      data=iris.train, hidden=c(10,10), rep = 5, err.fct = "ce", 
+                      linear.output = F, lifesign = "minimal", stepmax = 1000000,
+                      threshold = 0.001)
+iris.prediction <- compute(iris.net, iris.valid[-5:-8])
+idx <- apply(iris.prediction$net.result, 1, which.max)
+predicted <- c('setosa', 'versicolor', 'virginica')[idx]
+table(predicted, iris.valid$Species)
+```
+:::
+
+# Supervised vs Unsupervised Machine Learning
+
+## Machine Learning
+
+Machine learning is a set of methods used for predicting and classifying data. Several statistical methods are considered machine learning techniques.
+
+::: {#.fragement}
+#### Common Methods
+
+-   Regression
+
+-   Mixed-Effects
+
+-   Nonparametric Regression
+
+-   Neural Networks
+
+-   Tree-based methods
+
+-   Bayesian Methods
+:::
+
+## Training Data
+
+Training Data is the data set used to construct a model.
+
+## Supervised
+
+Supervised Machine Learning techniques are techniques where the training data contains the outcome.
+
+## Unsupervised
+
+Unsupervised Machine Learning techniques are techniques where the training data **does not** contains the outcome.
+
+# Model Adequacy
+
+## Quality of Fit: Regression
 
 $$
-Y_i = 3 X_i + 20
+MSE = \frac{1}{n}\sum^n_{i=1}\{y_i - f(\boldsymbol x_i)\}^2
 $$
 
-Create a Scatter Plot
-
-## Generate Error Term
-
-Generate $\epsilon_i\sim N(0, 2)$
-
-Create a histogram
-
-## Add error term
-
-Create final form of $Y_i$:
+## Quality of Fit: Classification
 
 $$
-Y_i = 3 X_i + 20 + \epsilon_i
+ER = \frac{1}{n}\sum^n_{i=1}I(y_i \ne \hat y_i)
 $$
 
-Create Scatter Plot
+## Bias-Variance Tradeoff
 
-## Fit Model
+```{r}
+#| echo: false
+ggplot(sm_df, aes(x = x, y = fit)) +
+  geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
+  geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
+              alpha = 0.3) +
+  geom_line() +
+  labs(x = p_obj$xlab, y = p_obj$ylab) +
+  geom_smooth(method = "lm") +
+  xlab("X") + ylab("Y") +
+  theme_bw()
+```
 
-## Simulation Study
-
-To confirm that `lm` works, repeat the process 100 times and obtain the average $\beta$ estimates:
-
-1.  Generate 250 X values
-2.  Create Y Value
-3.  Add error term
-4.  Fit Model
-5.  Store Values
+## Bias-Variance Tradeoff

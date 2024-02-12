@@ -7,16 +7,10 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
-<script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
-<script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Introduction to Statistical Learning</title>
+  <title>MATH 408 - Linear Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -41,8 +100,6 @@
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/verticator/verticator.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -336,271 +393,308 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction to Statistical Learning</h1>
+  <h1 class="title">Linear Regression</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="learning-outcomes" class="slide level2">
-<h2>Learning Outcomes</h2>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
 <ul>
-<li><p>Introduction to Statistical Learning</p></li>
-<li><p>Classification vs Regression</p></li>
-<li><p>Supervised vs Unsupervised Machine Learning</p></li>
-<li><p>Model Adequacy</p></li>
+<li><p>Associations</p></li>
+<li><p>Linear Regression</p></li>
+<li><p>Conducting it in R</p></li>
 </ul>
 </section>
 <section>
-<section id="introduction-to-statistical-learning" class="title-slide slide level1 center">
-<h1>Introduction to Statistical Learning</h1>
+<section id="associations" class="title-slide slide level1 center">
+<h1>Associations</h1>
 
 </section>
-<section id="introduction-to-statistical-learning-1" class="slide level2">
-<h2>Introduction to Statistical Learning</h2>
-<p><strong>What is Statistical Learning?</strong></p>
-<div id=".fragment">
-<p>Statistical learning is the task of predicting an outcome of interest given a set of predictor variables.</p>
+<section id="types-of-associations" class="slide level2">
+<h2>Types of Associations</h2>
+<ul>
+<li><p>Categorical vs Continuous</p></li>
+<li><p>Categorical vs Categorical</p></li>
+<li><p>Continuous vs Continuous</p></li>
+</ul>
+</section>
+<section id="categorical-vs-continuous" class="slide level2">
+<h2>Categorical vs Continuous</h2>
+<p>Describing the relationship between categorical and continuous variables can be done by stratifying by the categorical variable and finding the mean or median, or conducting a statistical test:</p>
+<ul>
+<li><p>t-tests</p></li>
+<li><p>ANOVA</p></li>
+</ul>
+<p>Measuring the association between species and flipper length from <code>palmerpenguins</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Stratification</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>penguins <span class="sc">%&gt;%</span> drop_na <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(flipper_length_mm),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>            <span class="at">median =</span> <span class="fu">median</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 3 × 3
+#&gt;   species    mean median
+#&gt;   &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 Adelie     190.    190
+#&gt; 2 Chinstrap  196.    196
+#&gt; 3 Gentoo     217.    216</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>species_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(flipper_length_mm <span class="sc">~</span> species, penguins)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">tidy</span>(species_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 2 × 6
+#&gt;   term         df  sumsq  meansq statistic    p.value
+#&gt;   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+#&gt; 1 species       2 52473. 26237.       595.  1.35e-111
+#&gt; 2 Residuals   339 14953.    44.1       NA  NA</code></pre>
+</div>
 </div>
 </section>
-<section id="statistical-learning-model" class="slide level2">
-<h2>Statistical Learning Model</h2>
+<section id="categorical-vs-categorical" class="slide level2">
+<h2>Categorical vs Categorical</h2>
+<p>Comparing 2 categorical variables can be done by computing proportions or conducting a chi-square test. Below is an example comparing</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Count and Proportions</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">proportions =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(penguins))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 5 × 4
+#&gt; # Groups:   species [3]
+#&gt;   species   island    count proportions
+#&gt;   &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;
+#&gt; 1 Adelie    Biscoe       44       0.128
+#&gt; 2 Adelie    Dream        56       0.163
+#&gt; 3 Adelie    Torgersen    52       0.151
+#&gt; 4 Chinstrap Dream        68       0.198
+#&gt; 5 Gentoo    Biscoe      124       0.360</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Chi-Square Test</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>penguins <span class="sc">%$%</span> <span class="fu">chisq.test</span>(species, island) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt;  Pearson's Chi-squared test
+#&gt; 
+#&gt; data:  species and island
+#&gt; X-squared = 299.55, df = 4, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="continuous-vs-continuous" class="slide level2">
+<h2>Continuous vs Continuous</h2>
+<p>To understand the relationship between two continuous random variables, we can use the following:</p>
+<ul>
+<li><p>Correlation</p></li>
+<li><p>Linear Regression</p></li>
+</ul>
+</section>
+<section id="correlation" class="slide level2">
+<h2>Correlation</h2>
+<p>Correlations measures the association between 2 continuous random variables.</p>
+<ul>
+<li><p>Pearson’s Correlation</p></li>
+<li><p>Spearman’s Correlation</p></li>
+<li><p>Kendall’s Tau</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Pearson's Correlation</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>penguins <span class="sc">%&gt;%</span> drop_na <span class="sc">%$%</span> <span class="fu">cor.test</span>(body_mass_g, flipper_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt;  Pearson's product-moment correlation
+#&gt; 
+#&gt; data:  body_mass_g and flipper_length_mm
+#&gt; t = 32.562, df = 331, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: true correlation is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.8447622 0.8963550
+#&gt; sample estimates:
+#&gt;       cor 
+#&gt; 0.8729789</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Spearman's Correlation </span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>penguins <span class="sc">%&gt;%</span> drop_na <span class="sc">%$%</span> <span class="fu">cor.test</span>(body_mass_g, flipper_length_mm, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt;  Spearman's rank correlation rho
+#&gt; 
+#&gt; data:  body_mass_g and flipper_length_mm
+#&gt; S = 982284, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: true rho is not equal to 0
+#&gt; sample estimates:
+#&gt;       rho 
+#&gt; 0.8403902</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Kendall's Tau</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>penguins <span class="sc">%&gt;%</span> drop_na <span class="sc">%$%</span> <span class="fu">cor.test</span>(body_mass_g, flipper_length_mm, <span class="at">method =</span> <span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt;  Kendall's rank correlation tau
+#&gt; 
+#&gt; data:  body_mass_g and flipper_length_mm
+#&gt; z = 17.683, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: true tau is not equal to 0
+#&gt; sample estimates:
+#&gt;       tau 
+#&gt; 0.6614597</code></pre>
+</div>
+</div>
+</section>
+<section id="scatter-plot" class="slide level2">
+<h2>Scatter Plot</h2>
+
+<img data-src="6c_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="linear-regression" class="title-slide slide level1 center">
+<h1>Linear Regression</h1>
+
+</section>
+<section id="linear-regression-1" class="slide level2">
+<h2>Linear Regression</h2>
+<p>Linear regression is used to model the association between a set of predictor variables (x’s) and an outcome variable (y). Linear regression will fit a line that best describes the data points.</p>
+</section>
+<section id="scatter-plot-1" class="slide level2">
+<h2>Scatter Plot</h2>
+
+<img data-src="6c_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="simple-linear-regression" class="slide level2">
+<h2>Simple Linear Regression</h2>
+<p>Simple linear regression will model the association between one predictor variable and an outcome:</p>
 <p><span class="math display">\[
-Y = f(\boldsymbol X) + \varepsilon
+Y = \beta_0 + \beta_1 X + \epsilon
 \]</span></p>
 <ul>
-<li><p><span class="math inline">\(Y\)</span>: Outcome variable</p></li>
-<li><p><span class="math inline">\(f(\cdot)\)</span>: systematic component explaining <span class="math inline">\(Y\)</span></p></li>
-<li><p><span class="math inline">\(\boldsymbol X\)</span>: vector of predictor variables</p></li>
-<li><p><span class="math inline">\(\varepsilon\)</span>: error term</p></li>
+<li><p><span class="math inline">\(\beta_0\)</span>: Intercept term</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span>: Slope term</p></li>
+<li><p><span class="math inline">\(\epsilon\sim N(0,\sigma^2)\)</span></p></li>
 </ul>
 </section>
-<section id="modeling-fcdot-parametric" class="slide level2">
-<h2>Modeling <span class="math inline">\(f(\cdot)\)</span>: Parametric</h2>
-<ul>
-<li><p>Linear Models</p></li>
-<li><p>Generalized Linear Models (GLM)</p></li>
-</ul>
-</section>
-<section id="modeling-fcdot-nonparametric" class="slide level2">
-<h2>Modeling <span class="math inline">\(f(\cdot)\)</span>: Nonparametric</h2>
-<ul>
-<li><p>Generalized Additive Models</p></li>
-<li><p>Local-Linear Models</p></li>
-<li><p>Smoothing Splines</p></li>
-</ul>
-</section>
-<section id="prediction" class="slide level2">
-<h2>Prediction</h2>
-<ul>
-<li><p>Statistical Learning is only concerned with an accurate <span class="math inline">\(Y\)</span></p></li>
-<li><p><span class="math inline">\(f(\cdot)\)</span> is considered a black box</p></li>
-<li><p>We will not know how <span class="math inline">\(\boldsymbol X\)</span> explains <span class="math inline">\(Y\)</span></p></li>
-<li><p>We choose flexible (nonparametric) models</p></li>
-</ul>
-</section>
-<section id="model-interpretability" class="slide level2">
-<h2>Model Interpretability</h2>
-<ul>
-<li><p>With a focus on prediction, model interpretability declines</p></li>
-<li><p>We will not know how changes in <span class="math inline">\(\boldsymbol X\)</span> will affect <span class="math inline">\(Y\)</span></p></li>
-</ul>
+<section id="estimated-model" class="slide level2">
+<h2>Estimated Model</h2>
+<p><span class="math display">\[
+\hat Y = \hat \beta_0 + \hat \beta_1 X
+\]</span></p>
 </section></section>
 <section>
-<section id="classification-vs-regression" class="title-slide slide level1 center">
-<h1>Classification vs Regression</h1>
+<section id="r-examples" class="title-slide slide level1 center">
+<h1>R Examples</h1>
 
 </section>
-<section id="regression" class="slide level2">
-<h2>Regression</h2>
-<p>Regression in statistical learning terms indicates predicting a continuous random variable.</p>
-<div>
-<p>What are the methods that we learned to model continuous random variables?</p>
+<section id="r-formulas" class="slide level2">
+<h2>R Formulas</h2>
+<p>In R, we create a formula using the <code>tilde</code></p>
+<p>Outcome Variable <code>tilde</code> Independent Variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ooutcome_variable_name <span class="sc">~</span> independent_variable_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
+<section id="r-example" class="slide level2">
+<h2>R Example</h2>
+<p>Applying a linear regression model to <code>body_mass_g</code> (Predictor) and <code>flipper_length_mm</code> (Outcome) from <code>penguins</code>:</p>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Scatter Plot</a></li><li><a href="#tabset-1-2">Regression</a></li><li><a href="#tabset-1-3">GAM</a></li><li><a href="#tabset-1-4">Combined</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R Output</a></li><li><a href="#tabset-1-2">Scatter Plot</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="6a_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># summary(lm(flipper_length_mm ~ body_mass_g, data = penguins))</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># OR</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a>penguins <span class="sc">%$%</span> <span class="fu">lm</span>(flipper_length_mm <span class="sc">~</span> body_mass_g) <span class="sc">%&gt;%</span> summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = flipper_length_mm ~ body_mass_g)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -23.7626  -4.9138   0.9891   5.1166  16.6392 
+#&gt; 
+#&gt; Coefficients:
+#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept) 1.367e+02  1.997e+00   68.47   &lt;2e-16 ***
+#&gt; body_mass_g 1.528e-02  4.668e-04   32.72   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 6.913 on 340 degrees of freedom
+#&gt;   (2 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 
+#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">y =</span> flipper_length_mm, <span class="at">x =</span> body_mass_g)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="6a_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="6c_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-1-3">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="6a_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-4">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="6a_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="classification" class="slide level2">
-<h2>Classification</h2>
-<p>Classification in statistical learning terms indicates predicting a categorical random variable.</p>
-<div>
-<p>What are the methods that we learned to model categorical random variables?</p>
-</div>
-</section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Data</a></li><li><a href="#tabset-2-2">KNN</a></li><li><a href="#tabset-2-3">SVM</a></li><li><a href="#tabset-2-4">NN</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="6a_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-2">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;             iris_pred
-#&gt;              setosa versicolor virginica
-#&gt;   setosa         20          0         0
-#&gt;   versicolor      0         19         1
-#&gt;   virginica       0          0        20</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-2-3">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;             Actual
-#&gt; Predicted    setosa versicolor virginica
-#&gt;   setosa         50          0         0
-#&gt;   versicolor      0         48         2
-#&gt;   virginica       0          2        48</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-2-4">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;             
-#&gt; predicted    setosa versicolor virginica
-#&gt;   setosa         25          0         0
-#&gt;   versicolor      0         25         3
-#&gt;   virginica       0          2        20</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="supervised-vs-unsupervised-machine-learning" class="title-slide slide level1 center">
-<h1>Supervised vs Unsupervised Machine Learning</h1>
-
-</section>
-<section id="machine-learning" class="slide level2">
-<h2>Machine Learning</h2>
-<p>Machine learning is a set of methods used for predicting and classifying data. Several statistical methods are considered machine learning techniques.</p>
-<div id=".fragement">
-<h4 id="common-methods">Common Methods</h4>
-<ul>
-<li><p>Regression</p></li>
-<li><p>Mixed-Effects</p></li>
-<li><p>Nonparametric Regression</p></li>
-<li><p>Neural Networks</p></li>
-<li><p>Tree-based methods</p></li>
-<li><p>Bayesian Methods</p></li>
-</ul>
-</div>
-</section>
-<section id="training-data" class="slide level2">
-<h2>Training Data</h2>
-<p>Training Data is the data set used to construct a model.</p>
-</section>
-<section id="supervised" class="slide level2">
-<h2>Supervised</h2>
-<p>Supervised Machine Learning techniques are techniques where the training data contains the outcome.</p>
-</section>
-<section id="unsupervised" class="slide level2">
-<h2>Unsupervised</h2>
-<p>Unsupervised Machine Learning techniques are techniques where the training data <strong>does not</strong> contains the outcome.</p>
-</section></section>
-<section>
-<section id="model-adequacy" class="title-slide slide level1 center">
-<h1>Model Adequacy</h1>
-
-</section>
-<section id="quality-of-fit-regression" class="slide level2">
-<h2>Quality of Fit: Regression</h2>
+<h3 id="interpretation">Interpretation</h3>
 <p><span class="math display">\[
-MSE = \frac{1}{n}\sum^n_{i=1}\{y_i - f(\boldsymbol x_i)\}^2
+\hat y = 136.73 + 0.015 x
 \]</span></p>
+</div>
+</div>
+</div>
 </section>
-<section id="quality-of-fit-classification" class="slide level2">
-<h2>Quality of Fit: Classification</h2>
+<section id="simulation-example" class="slide level2">
+<h2>Simulation Example</h2>
+</section>
+<section id="generate-x-values" class="slide level2">
+<h2>Generate X Values</h2>
+<p>Simulate 250 independent values (x) from <span class="math inline">\(N(3, 1)\)</span> and plot a histogram</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">205</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="generate-y-values" class="slide level2">
+<h2>Generate Y Values</h2>
+<p>Create a new variable with the following formula:</p>
 <p><span class="math display">\[
-ER = \frac{1}{n}\sum^n_{i=1}I(y_i \ne \hat y_i)
+Y_i = 3 X_i + 20
 \]</span></p>
+<p>Create a Scatter Plot</p>
 </section>
-<section id="bias-variance-tradeoff" class="slide level2">
-<h2>Bias-Variance Tradeoff</h2>
-
-<img data-src="6a_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
-<section id="bias-variance-tradeoff-1" class="slide level2">
-<h2>Bias-Variance Tradeoff</h2>
+<section id="generate-error-term" class="slide level2">
+<h2>Generate Error Term</h2>
+<p>Generate <span class="math inline">\(\epsilon_i\sim N(0, 2)\)</span></p>
+<p>Create a histogram</p>
+</section>
+<section id="add-error-term" class="slide level2">
+<h2>Add error term</h2>
+<p>Create final form of <span class="math inline">\(Y_i\)</span>:</p>
+<p><span class="math display">\[
+Y_i = 3 X_i + 20 + \epsilon_i
+\]</span></p>
+<p>Create Scatter Plot</p>
+</section>
+<section id="fit-model" class="slide level2">
+<h2>Fit Model</h2>
+</section>
+<section id="simulation-study" class="slide level2">
+<h2>Simulation Study</h2>
+<p>To confirm that <code>lm</code> works, repeat the process 100 times and obtain the average <span class="math inline">\(\beta\)</span> estimates:</p>
+<ol type="1">
+<li>Generate 250 X values</li>
+<li>Create Y Value</li>
+<li>Add error term</li>
+<li>Fit Model</li>
+<li>Store Values</li>
+</ol>
 
 <div class="footer footer-default">
 
-</div>
-<div class="reveal-header">
-<div class="header-logo">
-<img data-src="">
-</div>
-<div class="sc-title">
-<p> </p>
-</div>
-<div class="header-text">
-<p> </p>
-</div>
-<div class="sb-title">
-<p> </p>
-</div>
 </div>
 </section></section>
     </div>
@@ -614,8 +708,6 @@ ER = \frac{1}{n}\sum^n_{i=1}I(y_i \ne \hat y_i)
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
-  <script src="../site_libs/revealjs/plugin/verticator/verticator.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -638,8 +730,6 @@ ER = \frac{1}{n}\sum^n_{i=1}I(y_i \ne \hat y_i)
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true,"src":"chalkboard.json","storage":"chalkboard_pres","theme":"whiteboard","chalkWidth":4},
-'pointer': {"key":"q","color":"red","pointerSize":16,"alwaysVisible":false},
-'verticator': {"themetag":"h1","color":"","inversecolor":"","skipuncounted":false,"clickable":true,"position":"auto","offset":"3vmin","autogenerate":true,"tooltip":false,"scale":1},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -810,7 +900,7 @@ ER = \frac{1}{n}\sum^n_{i=1}I(y_i \ne \hat y_i)
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, RevealPointer, Verticator, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,

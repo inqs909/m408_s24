@@ -1,17 +1,17 @@
 ---
 title: "Homework 3"
-date: 2/17/23
+date: 2/14/24
 editor: visual
-draft: true
+draft: false
 ---
 
-**Due 2/24/23 \@ 11:59 PM**
+**Due 2/24/24 \@ 11:59 PM**
 
-Use an RMD Notebook file from to create the assignment.
+Use an RMD file to create the assignment.
 
 You must comment all your code to receive credit.
 
-Submit the \*nb.html file to canvas.
+Submit the \*.html file to canvas.
 
 ## Problem 1
 

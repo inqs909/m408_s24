@@ -1,9 +1,9 @@
 ---
 title: "Week 4"
-date: 02-10-23
+date: 02-11-24
 description: We will finish our discussion with functions and begin data manipulation.
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -24,7 +24,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       |        |        |       |
-| 2       |        |        |       |
+| Lecture | Slides                                                         | Videos | Files |
+|---------|----------------------------------------------------------------|--------|-------|
+| 1       | [Slides](https://m408.inqs.info/lectures/4a.html#/title-slide) |        |       |
+| 2       |                                                                |        |       |

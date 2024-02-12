@@ -155,7 +155,7 @@ An extension of logistic regression, where there are more than two categories.
 
 Use a glm to fit a model with a Bernoulli or multinomial distribution.
 
-# Example  
+# Example
 
 ## Create the KNN algorithm in R
 

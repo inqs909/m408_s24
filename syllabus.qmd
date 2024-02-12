@@ -105,21 +105,21 @@ The following outline may be subject to change. Any changes will be announced in
 |:----------|:-------------------------------------|:------------|:----------------|
 | 1/22-1/26 | Intro to Course/Intro to R/Notebooks | SC: Ch 1    |                 |
 | 1/29-2/2  | Control Flow                         | SC: Ch 2    | HW # 1          |
-| 2/5-2/9   | Control Flow/Functional Programming  | SC: Ch 13   | TBD             |
-| 2/12-2/16 | Functional Programming               | SC: Ch 15   | TBD             |
-| 2/19-2/23 | Data Manipulation                    | SC: Ch 3    | TBD             |   
-| 2/26-3/1  | Introduction to Statistical Learning | SL: Ch 2    | TBD             |
-| 3/4-3/8   | Linear Regression                    | SL: Ch 3    | TBD             |
-| 3/11-3/15 | Multivariable Linear Regression      | SL: Ch 3    | TBD             |
+| 2/5-2/9   | Control Flow/Functional Programming  | SC: Ch 2-3  | HW # 2          |
+| 2/12-2/16 | Functional Programming               | SC: Ch 3-4  | HW # 3          |
+| 2/19-2/23 | Data Manipulation                    | SC: Ch 17   | TH Exam # 1     |   
+| 2/26-3/1  | Introduction to Statistical Learning | SL: Ch 2    | HW # 4          |
+| 3/4-3/8   | Linear Regression                    | SL: Ch 3    | HW # 5          |
+| 3/11-3/15 | Multivariable Linear Regression      | SL: Ch 3    |                 |
 | 3/18-3/22 | Spring Break                         |             |                 |
-| 3/25-3/29 | Classification                       | SL: Ch 4    | TBD             |
-| 4/1-4/5   | Resampling Methods                   | SL: Ch 5    | TBD             |
-| 4/8-4/12  | Model Selection                      | SL: Ch 6    | TBD             |
-| 4/15-4/19 | Nonparametric Regression             | SL: Ch 7    | TBD             |
-| 4/22-4/26 | Tree-Based Methods                   | SL: Ch 8    | TBD             |
-| 4/29-5/3  | Support Vector Machines              | SL: Ch 9    | TBD             |
+| 3/25-3/29 | Classification                       | SL: Ch 4    | HW # 6          |
+| 4/1-4/5   | Resampling Methods                   | SL: Ch 5    | TH Exam # 2     |
+| 4/8-4/12  | Model Selection                      | SL: Ch 6    | HW # 7          |
+| 4/15-4/19 | Nonparametric Regression             | SL: Ch 7    | HW # 8          |
+| 4/22-4/26 | Tree-Based Methods                   | SL: Ch 8    | HW # 9          |
+| 4/29-5/3  | Support Vector Machines              | SL: Ch 9    | HW # 10         |
 | 5/6-5/10  | Deep Learning                        | SL: Ch 10   |                 |
-| 5/13-5/17 | Exam 3                               |             |                 |
+| 5/13-5/17 | TH Exam # 3                          |             |                 |
 
 ### University Policies
 
