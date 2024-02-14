@@ -404,6 +404,7 @@
 <ul>
 <li><p>Anonymous Functions</p></li>
 <li><p>Pipes</p></li>
+<li><p>Scripting</p></li>
 <li><p>Data Manipulation</p></li>
 </ul>
 </section>
@@ -420,16 +421,16 @@
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">sapply</span>(x, <span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  [1] 0.4761714 0.4663390 2.7443054 4.8339920 3.2745453 6.4229802 6.0477434
-#&gt;  [8] 7.5767346 8.7957866 9.4146682</code></pre>
+<pre><code>#&gt;  [1]  0.9645593  2.4985323  3.6130830  3.4038356  6.6371189  3.9822256
+#&gt;  [7]  7.6365972  8.9805052 12.6891921  7.6383656</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">sapply</span>(x, \(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  [1]   2.5001509   1.6759013   4.8664348  -0.7208172  -5.4506711   0.2530375
-#&gt;  [7]   7.0140669 -10.8440272  -8.3664015 -13.9958679</code></pre>
+<pre><code>#&gt;  [1]   1.1161187   2.8188918  -1.8337787   3.9964652  -3.8217755  -1.3573966
+#&gt;  [7]  -1.4840088  -0.1488438  19.3957272 -12.3938028</code></pre>
 </div>
 </div>
 </section>
@@ -491,7 +492,7 @@ C = \frac{5(F-32)}{9}
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.4093433</code></pre>
+<pre><code>#&gt; [1] 2.281058</code></pre>
 </div>
 </div>
 </section>
@@ -502,7 +503,7 @@ C = \frac{5(F-32)}{9}
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>mtcars <span class="sc">%$%</span> <span class="fu">plot</span>(mpg, hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="4b_files/figure-html/unnamed-chunk-9-1.png" width="672" class="r-stretch"></section>
+<img data-src="4b_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="t" class="slide level2">
 <h2><code>%T&gt;%</code></h2>
 <p>The Tee pipe, <code>%T&gt;%</code>, forward the output in the</p>
@@ -548,6 +549,140 @@ C = \frac{5(F-32)}{9}
 <p>Chain pipe the previous results into <span class="math inline">\(x^2+5x+4\)</span></p>
 </section></section>
 <section>
+<section id="data-projects" class="title-slide slide level1 center">
+<h1>Data Projects</h1>
+
+</section>
+<section id="scripting" class="slide level2">
+<h2>Scripting</h2>
+<p>The structure a programming is important to ensure that all methods are executed properly.</p>
+</section>
+<section id="beginning-of-script" class="slide level2">
+<h2>Beginning of Script</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1"></a>## Todays data </span>
+<span id="cb23-2"><a href="#cb23-2"></a>analysis_data &lt;- format(Sys.time(),"%Y-%m-%d-%H-%M")</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a>## R Packages</span>
+<span id="cb23-5"><a href="#cb23-5"></a>library(tidyverse)</span>
+<span id="cb23-6"><a href="#cb23-6"></a>library(magrittr)</span>
+<span id="cb23-7"><a href="#cb23-7"></a></span>
+<span id="cb23-8"><a href="#cb23-8"></a>## Functions</span>
+<span id="cb23-9"><a href="#cb23-9"></a>source("fxs.R")</span>
+<span id="cb23-10"><a href="#cb23-10"></a>Rcpp::sourceCpp("fxs.cpp")</span>
+<span id="cb23-11"><a href="#cb23-11"></a></span>
+<span id="cb23-12"><a href="#cb23-12"></a>## Data</span>
+<span id="cb23-13"><a href="#cb23-13"></a>df1 &lt;- read_csv("file.csv")</span>
+<span id="cb23-14"><a href="#cb23-14"></a>df2 &lt;- load("file.RData") %&gt;% get</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="middle-of-script" class="slide level2">
+<h2>Middle of Script</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1"></a>## Pre Analysis</span>
+<span id="cb24-2"><a href="#cb24-2"></a>df1_prep &lt;- Prep_data(df1)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>df2_prep &lt;- Prep_data(df2)</span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>## Analysis</span>
+<span id="cb24-6"><a href="#cb24-6"></a>df1_analysis &lt;- analyze(df1_prep)</span>
+<span id="cb24-7"><a href="#cb24-7"></a>df2_analysis &lt;- analyze(df2_prep)</span>
+<span id="cb24-8"><a href="#cb24-8"></a></span>
+<span id="cb24-9"><a href="#cb24-9"></a>## Post Analysis</span>
+<span id="cb24-10"><a href="#cb24-10"></a>df1_post &lt;- Prep_post(df1_anlysis)</span>
+<span id="cb24-11"><a href="#cb24-11"></a>df2_post &lt;- Prep_post(df2_anlysis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="end-of-script" class="slide level2">
+<h2>End of Script</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1"></a>## Save Results</span>
+<span id="cb25-2"><a href="#cb25-2"></a>res &lt;- list(df1 = list(pre = df1_prep,</span>
+<span id="cb25-3"><a href="#cb25-3"></a>                       analysis = df1_analysis,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>                       post = df1_post),</span>
+<span id="cb25-5"><a href="#cb25-5"></a>            df2 = list(pre = df2_prep,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>                       analysis = df2_analysis,</span>
+<span id="cb25-7"><a href="#cb25-7"></a>                       post = df2_post))</span>
+<span id="cb25-8"><a href="#cb25-8"></a>file_name &lt;- paste0("results_", analysis_data, ".RData")</span>
+<span id="cb25-9"><a href="#cb25-9"></a>save(res, file = file_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="keyboard-shortcuts" class="slide level2">
+<h2>Keyboard Shortcuts</h2>
+<p>Below is a list of recommended keyboard shortcuts:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>Windows/Linux</th>
+<th>Mac</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%&gt;%</code></td>
+<td>Ctrl+Shift+M</td>
+<td>Cmd+Shift+M</td>
+</tr>
+<tr class="even">
+<td>Run Current Line</td>
+<td>Ctrl+Enter</td>
+<td>Cmd+Return</td>
+</tr>
+<tr class="odd">
+<td>Run Current Chunk</td>
+<td>Ctrl+Shift+Enter</td>
+<td>Cmd+Shift+Enter</td>
+</tr>
+<tr class="even">
+<td>Knit Document</td>
+<td>Ctrl+Shift+K</td>
+<td>Cmd+Shift+K</td>
+</tr>
+<tr class="odd">
+<td>Add Cursor Below</td>
+<td>Ctrl+Alt+Down</td>
+<td>Cmd+Alt+Down</td>
+</tr>
+<tr class="even">
+<td>Comment Line</td>
+<td>Ctrl+Shift+C</td>
+<td>Cmd+Shift+C</td>
+</tr>
+</tbody>
+</table>
+<p>I recommend modify these keyboard shortcuts in RStudio</p>
+<table>
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>Windows/Linux</th>
+<th>Mac</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%in%</code></td>
+<td>Ctrl+Shift+I</td>
+<td>Cmd+Shift+I</td>
+</tr>
+<tr class="even">
+<td><code>%$%</code></td>
+<td>Ctrl+Shift+D</td>
+<td>Cmd+Shift+D</td>
+</tr>
+<tr class="odd">
+<td><code>%T&gt;%</code></td>
+<td>Ctrl+Shift+T</td>
+<td>Cmd+Shift+T</td>
+</tr>
+</tbody>
+</table>
+<p>Note you will need to install the <code>extraInserts</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'konradzdeb/extraInserts'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
 <section id="data-manipulation" class="title-slide slide level1 center">
 <h1>Data Manipulation</h1>
 
@@ -573,16 +708,16 @@ C = \frac{5(F-32)}{9}
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="|2|3|4|5|6-9|10|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>sum_stats <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-6"><a href="#cb23-6"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bill_length_mm),</span>
-<span id="cb23-7"><a href="#cb23-7"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(bill_length_mm),</span>
-<span id="cb23-8"><a href="#cb23-8"></a>            <span class="at">median =</span> <span class="fu">median</span>(bill_length_mm),</span>
-<span id="cb23-9"><a href="#cb23-9"></a>            <span class="at">n =</span> <span class="fu">length</span>(bill_length_mm)) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-10"><a href="#cb23-10"></a>  print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="|2|3|4|5|6-9|10|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>sum_stats <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bill_length_mm),</span>
+<span id="cb27-7"><a href="#cb27-7"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(bill_length_mm),</span>
+<span id="cb27-8"><a href="#cb27-8"></a>            <span class="at">median =</span> <span class="fu">median</span>(bill_length_mm),</span>
+<span id="cb27-9"><a href="#cb27-9"></a>            <span class="at">n =</span> <span class="fu">length</span>(bill_length_mm)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-10"><a href="#cb27-10"></a>  print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 3 × 5
 #&gt;   island     mean    sd median     n
@@ -809,6 +944,44 @@ C = \frac{5(F-32)}{9}
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

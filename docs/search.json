@@ -3329,14 +3329,14 @@
     "href": "lectures/4b.html#learning-objectives",
     "title": "Intro to Data Manipulation",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nAnonymous Functions\nPipes\nData Manipulation"
+    "text": "Learning Objectives\n\nAnonymous Functions\nPipes\nScripting\nData Manipulation"
   },
   {
     "objectID": "lectures/4b.html#anonymous-functions-1",
     "href": "lectures/4b.html#anonymous-functions-1",
     "title": "Intro to Data Manipulation",
     "section": "Anonymous Functions",
-    "text": "Anonymous Functions\nAn anonymous function is a function that is not stored in an R object for the global environment. It can be thought of as a temporary function to complete a task. A common way to used an anonymous function is with an *apply() function\n\n\nx &lt;- 1:10\nsapply(x, function(x) rnorm(1,x))\n\n#&gt;  [1] 0.4761714 0.4663390 2.7443054 4.8339920 3.2745453 6.4229802 6.0477434\n#&gt;  [8] 7.5767346 8.7957866 9.4146682\n\n\n\nx &lt;- 1:10\nsapply(x, \\(x) rnorm(1,1,x))\n\n#&gt;  [1]   2.5001509   1.6759013   4.8664348  -0.7208172  -5.4506711   0.2530375\n#&gt;  [7]   7.0140669 -10.8440272  -8.3664015 -13.9958679"
+    "text": "Anonymous Functions\nAn anonymous function is a function that is not stored in an R object for the global environment. It can be thought of as a temporary function to complete a task. A common way to used an anonymous function is with an *apply() function\n\n\nx &lt;- 1:10\nsapply(x, function(x) rnorm(1,x))\n\n#&gt;  [1]  0.9645593  2.4985323  3.6130830  3.4038356  6.6371189  3.9822256\n#&gt;  [7]  7.6365972  8.9805052 12.6891921  7.6383656\n\n\n\nx &lt;- 1:10\nsapply(x, \\(x) rnorm(1,1,x))\n\n#&gt;  [1]   1.1161187   2.8188918  -1.8337787   3.9964652  -3.8217755  -1.3573966\n#&gt;  [7]  -1.4840088  -0.1488438  19.3957272 -12.3938028"
   },
   {
     "objectID": "lectures/4b.html#example",
@@ -3371,7 +3371,7 @@
     "href": "lectures/4b.html#section-1",
     "title": "Intro to Data Manipulation",
     "section": "%>%",
-    "text": "%&gt;%\nThe magrittr pipe, %&gt;%, operates the same way as |&gt;. Below are a couple of examples\n\nx &lt;- 1:10\nx %&gt;%  mean()\n\n#&gt; [1] 5.5\n\nx %&gt;% sd\n\n#&gt; [1] 3.02765\n\nx %&gt;% rnorm(1, .)\n\n#&gt; [1] 0.4093433"
+    "text": "%&gt;%\nThe magrittr pipe, %&gt;%, operates the same way as |&gt;. Below are a couple of examples\n\nx &lt;- 1:10\nx %&gt;%  mean()\n\n#&gt; [1] 5.5\n\nx %&gt;% sd\n\n#&gt; [1] 3.02765\n\nx %&gt;% rnorm(1, .)\n\n#&gt; [1] 2.281058"
   },
   {
     "objectID": "lectures/4b.html#section-2",
@@ -3421,6 +3421,41 @@
     "title": "Intro to Data Manipulation",
     "section": "Examples",
     "text": "Examples\nChain pipe the previous results into \\(x^2+5x+4\\)"
+  },
+  {
+    "objectID": "lectures/4b.html#scripting",
+    "href": "lectures/4b.html#scripting",
+    "title": "Intro to Data Manipulation",
+    "section": "Scripting",
+    "text": "Scripting\nThe structure a programming is important to ensure that all methods are executed properly."
+  },
+  {
+    "objectID": "lectures/4b.html#beginning-of-script",
+    "href": "lectures/4b.html#beginning-of-script",
+    "title": "Intro to Data Manipulation",
+    "section": "Beginning of Script",
+    "text": "Beginning of Script\n\n## Todays data \nanalysis_data &lt;- format(Sys.time(),\"%Y-%m-%d-%H-%M\")\n\n## R Packages\nlibrary(tidyverse)\nlibrary(magrittr)\n\n## Functions\nsource(\"fxs.R\")\nRcpp::sourceCpp(\"fxs.cpp\")\n\n## Data\ndf1 &lt;- read_csv(\"file.csv\")\ndf2 &lt;- load(\"file.RData\") %&gt;% get"
+  },
+  {
+    "objectID": "lectures/4b.html#middle-of-script",
+    "href": "lectures/4b.html#middle-of-script",
+    "title": "Intro to Data Manipulation",
+    "section": "Middle of Script",
+    "text": "Middle of Script\n\n## Pre Analysis\ndf1_prep &lt;- Prep_data(df1)\ndf2_prep &lt;- Prep_data(df2)\n\n## Analysis\ndf1_analysis &lt;- analyze(df1_prep)\ndf2_analysis &lt;- analyze(df2_prep)\n\n## Post Analysis\ndf1_post &lt;- Prep_post(df1_anlysis)\ndf2_post &lt;- Prep_post(df2_anlysis)"
+  },
+  {
+    "objectID": "lectures/4b.html#end-of-script",
+    "href": "lectures/4b.html#end-of-script",
+    "title": "Intro to Data Manipulation",
+    "section": "End of Script",
+    "text": "End of Script\n\n## Save Results\nres &lt;- list(df1 = list(pre = df1_prep,\n                       analysis = df1_analysis,\n                       post = df1_post),\n            df2 = list(pre = df2_prep,\n                       analysis = df2_analysis,\n                       post = df2_post))\nfile_name &lt;- paste0(\"results_\", analysis_data, \".RData\")\nsave(res, file = file_name)"
+  },
+  {
+    "objectID": "lectures/4b.html#keyboard-shortcuts",
+    "href": "lectures/4b.html#keyboard-shortcuts",
+    "title": "Intro to Data Manipulation",
+    "section": "Keyboard Shortcuts",
+    "text": "Keyboard Shortcuts\nBelow is a list of recommended keyboard shortcuts:\n\n\n\nShortcut\nWindows/Linux\nMac\n\n\n\n\n%&gt;%\nCtrl+Shift+M\nCmd+Shift+M\n\n\nRun Current Line\nCtrl+Enter\nCmd+Return\n\n\nRun Current Chunk\nCtrl+Shift+Enter\nCmd+Shift+Enter\n\n\nKnit Document\nCtrl+Shift+K\nCmd+Shift+K\n\n\nAdd Cursor Below\nCtrl+Alt+Down\nCmd+Alt+Down\n\n\nComment Line\nCtrl+Shift+C\nCmd+Shift+C\n\n\n\nI recommend modify these keyboard shortcuts in RStudio\n\n\n\nShortcut\nWindows/Linux\nMac\n\n\n\n\n%in%\nCtrl+Shift+I\nCmd+Shift+I\n\n\n%$%\nCtrl+Shift+D\nCmd+Shift+D\n\n\n%T&gt;%\nCtrl+Shift+T\nCmd+Shift+T\n\n\n\nNote you will need to install the extraInserts package:\n\nremotes::install_github('konradzdeb/extraInserts')"
   },
   {
     "objectID": "lectures/4b.html#data-manipulation-1",

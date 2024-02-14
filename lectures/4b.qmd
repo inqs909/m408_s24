@@ -37,6 +37,8 @@ library(tidyverse)
 
 -   Pipes
 
+-   Scripting
+
 -   Data Manipulation
 
 # Anonymous Functions
@@ -165,6 +167,91 @@ Chain pipe the previous results into $e^x$.
 
 Chain pipe the previous results into $x^2+5x+4$
 
+# Data Projects 
+
+## Scripting
+
+The structure a programming is important to ensure that all methods are executed properly.
+
+## Beginning of Script
+
+```{default}
+## Todays data 
+analysis_data <- format(Sys.time(),"%Y-%m-%d-%H-%M")
+
+## R Packages
+library(tidyverse)
+library(magrittr)
+
+## Functions
+source("fxs.R")
+Rcpp::sourceCpp("fxs.cpp")
+
+## Data
+df1 <- read_csv("file.csv")
+df2 <- load("file.RData") %>% get
+```
+
+## Middle of Script
+
+```{default}
+## Pre Analysis
+df1_prep <- Prep_data(df1)
+df2_prep <- Prep_data(df2)
+
+## Analysis
+df1_analysis <- analyze(df1_prep)
+df2_analysis <- analyze(df2_prep)
+
+## Post Analysis
+df1_post <- Prep_post(df1_anlysis)
+df2_post <- Prep_post(df2_anlysis)
+```
+
+## End of Script
+
+```{default}
+## Save Results
+res <- list(df1 = list(pre = df1_prep,
+                       analysis = df1_analysis,
+                       post = df1_post),
+            df2 = list(pre = df2_prep,
+                       analysis = df2_analysis,
+                       post = df2_post))
+file_name <- paste0("results_", analysis_data, ".RData")
+save(res, file = file_name)
+```
+
+
+## Keyboard Shortcuts
+
+Below is a list of recommended keyboard shortcuts:
+
+| Shortcut          | Windows/Linux    | Mac             |
+|-------------------|------------------|-----------------|
+| `%>%`             | Ctrl+Shift+M     | Cmd+Shift+M     |
+| Run Current Line  | Ctrl+Enter       | Cmd+Return      |
+| Run Current Chunk | Ctrl+Shift+Enter | Cmd+Shift+Enter |
+| Knit Document     | Ctrl+Shift+K     | Cmd+Shift+K     |
+| Add Cursor Below  | Ctrl+Alt+Down    | Cmd+Alt+Down    |
+| Comment Line      | Ctrl+Shift+C     | Cmd+Shift+C     |
+
+I recommend modify these keyboard shortcuts in RStudio
+
+| Shortcut | Windows/Linux | Mac         |
+|----------|---------------|-------------|
+| `%in%`   | Ctrl+Shift+I  | Cmd+Shift+I |
+| `%$%`    | Ctrl+Shift+D  | Cmd+Shift+D |
+| `%T>%`   | Ctrl+Shift+T  | Cmd+Shift+T |
+
+Note you will need to install the `extraInserts` package:
+
+```{r}
+#| eval: false
+remotes::install_github('konradzdeb/extraInserts')
+```
+
+
 # Data Manipulation
 
 ## Data Manipulation
@@ -198,3 +285,4 @@ sum_stats <- penguins %>%
             n = length(bill_length_mm)) %>% 
   print
 ```
+
