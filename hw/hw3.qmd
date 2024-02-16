@@ -7,7 +7,7 @@ draft: false
 
 **Due 2/24/24 \@ 11:59 PM**
 
-Use an RMD file to create the assignment.
+Use an RMD or QMD file to create the assignment.
 
 You must comment all your code to receive credit.
 

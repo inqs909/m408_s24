@@ -32,7 +32,7 @@
     "href": "posts/week_4.html#resources",
     "title": "Week 4",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
   },
   {
     "objectID": "posts/week_2.html",
@@ -756,6 +756,13 @@
     "text": "Introduction to Statistical Learning\nWhat is Statistical Learning?\n\nStatistical learning is the task of predicting an outcome of interest given a set of predictor variables."
   },
   {
+    "objectID": "lectures/6a.html#motivating-example",
+    "href": "lectures/6a.html#motivating-example",
+    "title": "Introduction to Statistical Learning",
+    "section": "Motivating Example",
+    "text": "Motivating Example"
+  },
+  {
     "objectID": "lectures/6a.html#statistical-learning-model",
     "href": "lectures/6a.html#statistical-learning-model",
     "title": "Introduction to Statistical Learning",
@@ -882,6 +889,13 @@
     "text": "Learning Objectives\n\nDirectories/R Projects\nReading/Writing Data\nMerging Data\ndplyr Functions"
   },
   {
+    "objectID": "lectures/5a.html#scripting-style-guide",
+    "href": "lectures/5a.html#scripting-style-guide",
+    "title": "Data Manipulation",
+    "section": "Scripting Style Guide",
+    "text": "Scripting Style Guide\nTidyverse Style Guide"
+  },
+  {
     "objectID": "lectures/5a.html#directories",
     "href": "lectures/5a.html#directories",
     "title": "Data Manipulation",
@@ -963,14 +977,14 @@
     "href": "lectures/5a.html#mutate",
     "title": "Data Manipulation",
     "section": "mutate()",
-    "text": "mutate()\n\nAdds a new variable to a data frame\nExample:\n\n\nmtcars %&gt;% mutate(log_mpg=log(mpg)) %&gt;% \n  head\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb  log_mpg\n#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4 3.044522\n#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4 3.044522\n#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1 3.126761\n#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1 3.063391\n#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2 2.928524\n#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1 2.895912"
+    "text": "mutate()\n\nAdds a new variable to a data frame\nExample:\n\n\nmtcars %&gt;%\n  mutate(log_mpg = log(mpg)) %&gt;%\n  head()\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb  log_mpg\n#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4 3.044522\n#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4 3.044522\n#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1 3.126761\n#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1 3.063391\n#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2 2.928524\n#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1 2.895912"
   },
   {
     "objectID": "lectures/5a.html#mutate-1",
     "href": "lectures/5a.html#mutate-1",
     "title": "Data Manipulation",
     "section": "mutate()",
-    "text": "mutate()\n\nEach argument is a new variable added\nExample:\n\n\nmtcars %&gt;% mutate(log_mpg=log(mpg),log_hp=log(hp)) %&gt;%\n  head\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb  log_mpg\n#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4 3.044522\n#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4 3.044522\n#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1 3.126761\n#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1 3.063391\n#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2 2.928524\n#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1 2.895912\n#&gt;                     log_hp\n#&gt; Mazda RX4         4.700480\n#&gt; Mazda RX4 Wag     4.700480\n#&gt; Datsun 710        4.532599\n#&gt; Hornet 4 Drive    4.700480\n#&gt; Hornet Sportabout 5.164786\n#&gt; Valiant           4.653960"
+    "text": "mutate()\n\nEach argument is a new variable added\nExample:\n\n\nmtcars %&gt;%\n  mutate(log_mpg = log(mpg), log_hp = log(hp)) %&gt;%\n  head()\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt;                    mpg cyl disp  hp drat    wt  qsec vs am gear carb  log_mpg\n#&gt; Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4 3.044522\n#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4 3.044522\n#&gt; Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1 3.126761\n#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1 3.063391\n#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2 2.928524\n#&gt; Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1 2.895912\n#&gt;                     log_hp\n#&gt; Mazda RX4         4.700480\n#&gt; Mazda RX4 Wag     4.700480\n#&gt; Datsun 710        4.532599\n#&gt; Hornet 4 Drive    4.700480\n#&gt; Hornet Sportabout 5.164786\n#&gt; Valiant           4.653960"
   },
   {
     "objectID": "lectures/5a.html#example-4",
@@ -984,7 +998,7 @@
     "href": "lectures/5a.html#select",
     "title": "Data Manipulation",
     "section": "select()",
-    "text": "select()\n-This selects the variables to keep in the data frame\n-Example:\n\nmtcars %&gt;% mutate(log_mpg=log(mpg),log_hp=log(hp)) %&gt;% \n  select(mpg,log_mpg,hp,log_hp) %&gt;% \n  head\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt;                    mpg  log_mpg  hp   log_hp\n#&gt; Mazda RX4         21.0 3.044522 110 4.700480\n#&gt; Mazda RX4 Wag     21.0 3.044522 110 4.700480\n#&gt; Datsun 710        22.8 3.126761  93 4.532599\n#&gt; Hornet 4 Drive    21.4 3.063391 110 4.700480\n#&gt; Hornet Sportabout 18.7 2.928524 175 5.164786\n#&gt; Valiant           18.1 2.895912 105 4.653960"
+    "text": "select()\n-This selects the variables to keep in the data frame\n-Example:\n\nmtcars %&gt;%\n  mutate(log_mpg = log(mpg), log_hp = log(hp)) %&gt;%\n  select(mpg, log_mpg, hp, log_hp) %&gt;%\n  head()\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt;                    mpg  log_mpg  hp   log_hp\n#&gt; Mazda RX4         21.0 3.044522 110 4.700480\n#&gt; Mazda RX4 Wag     21.0 3.044522 110 4.700480\n#&gt; Datsun 710        22.8 3.126761  93 4.532599\n#&gt; Hornet 4 Drive    21.4 3.063391 110 4.700480\n#&gt; Hornet Sportabout 18.7 2.928524 175 5.164786\n#&gt; Valiant           18.1 2.895912 105 4.653960"
   },
   {
     "objectID": "lectures/5a.html#example-5",
@@ -998,7 +1012,7 @@
     "href": "lectures/5a.html#filter",
     "title": "Data Manipulation",
     "section": "filter()",
-    "text": "filter()\n\nSelects observations that satisfy a condition\nExample:\n\n\nmtcars %&gt;% mutate(log_mpg=log(mpg),log_hp=log(hp)) %&gt;% \n  select(mpg,log_mpg,hp,log_hp) %&gt;% \n  filter(log_hp&lt;5) %&gt;% \n  head\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt; filter: removed 15 rows (47%), 17 rows remaining\n\n\n#&gt;                 mpg  log_mpg  hp   log_hp\n#&gt; Mazda RX4      21.0 3.044522 110 4.700480\n#&gt; Mazda RX4 Wag  21.0 3.044522 110 4.700480\n#&gt; Datsun 710     22.8 3.126761  93 4.532599\n#&gt; Hornet 4 Drive 21.4 3.063391 110 4.700480\n#&gt; Valiant        18.1 2.895912 105 4.653960\n#&gt; Merc 240D      24.4 3.194583  62 4.127134"
+    "text": "filter()\n\nSelects observations that satisfy a condition\nExample:\n\n\nmtcars %&gt;%\n  mutate(log_mpg = log(mpg), log_hp = log(hp)) %&gt;%\n  select(mpg, log_mpg, hp, log_hp) %&gt;%\n  filter(log_hp &lt; 5) %&gt;%\n  head()\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt; filter: removed 15 rows (47%), 17 rows remaining\n\n\n#&gt;                 mpg  log_mpg  hp   log_hp\n#&gt; Mazda RX4      21.0 3.044522 110 4.700480\n#&gt; Mazda RX4 Wag  21.0 3.044522 110 4.700480\n#&gt; Datsun 710     22.8 3.126761  93 4.532599\n#&gt; Hornet 4 Drive 21.4 3.063391 110 4.700480\n#&gt; Valiant        18.1 2.895912 105 4.653960\n#&gt; Merc 240D      24.4 3.194583  62 4.127134"
   },
   {
     "objectID": "lectures/5a.html#example-6",
@@ -1012,7 +1026,7 @@
     "href": "lectures/5a.html#if_else",
     "title": "Data Manipulation",
     "section": "if_else()",
-    "text": "if_else()\n\nA function that provides T (1) if the condition is met and F (0) otherwise\nExample:\n\n\nmtcars %&gt;% mutate(log_mpg=log(mpg),log_hp=log(hp)) %&gt;% \n  select(mpg,log_mpg,hp,log_hp) %&gt;% \n  filter(log_hp&lt;5) %&gt;% \n  mutate(hilhp=if_else(log_hp&gt;mean(log_hp),1,0)) %&gt;% \n  head\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt; filter: removed 15 rows (47%), 17 rows remaining\n\n\n#&gt; mutate: new variable 'hilhp' (double) with 2 unique values and 0% NA\n\n\n#&gt;                 mpg  log_mpg  hp   log_hp hilhp\n#&gt; Mazda RX4      21.0 3.044522 110 4.700480     1\n#&gt; Mazda RX4 Wag  21.0 3.044522 110 4.700480     1\n#&gt; Datsun 710     22.8 3.126761  93 4.532599     1\n#&gt; Hornet 4 Drive 21.4 3.063391 110 4.700480     1\n#&gt; Valiant        18.1 2.895912 105 4.653960     1\n#&gt; Merc 240D      24.4 3.194583  62 4.127134     0"
+    "text": "if_else()\n\nA function that provides T (1) if the condition is met and F (0) otherwise\nExample:\n\n\nmtcars %&gt;%\n  mutate(log_mpg = log(mpg), log_hp = log(hp)) %&gt;%\n  select(mpg, log_mpg, hp, log_hp) %&gt;%\n  filter(log_hp &lt; 5) %&gt;%\n  mutate(hilhp = if_else(log_hp &gt; mean(log_hp), 1, 0)) %&gt;%\n  head()\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt; filter: removed 15 rows (47%), 17 rows remaining\n\n\n#&gt; mutate: new variable 'hilhp' (double) with 2 unique values and 0% NA\n\n\n#&gt;                 mpg  log_mpg  hp   log_hp hilhp\n#&gt; Mazda RX4      21.0 3.044522 110 4.700480     1\n#&gt; Mazda RX4 Wag  21.0 3.044522 110 4.700480     1\n#&gt; Datsun 710     22.8 3.126761  93 4.532599     1\n#&gt; Hornet 4 Drive 21.4 3.063391 110 4.700480     1\n#&gt; Valiant        18.1 2.895912 105 4.653960     1\n#&gt; Merc 240D      24.4 3.194583  62 4.127134     0"
   },
   {
     "objectID": "lectures/5a.html#example-7",
@@ -1026,7 +1040,7 @@
     "href": "lectures/5a.html#group_by",
     "title": "Data Manipulation",
     "section": "group_by()",
-    "text": "group_by()\n\nThis groups the data frame\nExample:\n\n\nmtcars %&gt;% mutate(log_mpg=log(mpg),log_hp=log(hp)) %&gt;% \n  select(mpg,log_mpg,hp,log_hp) %&gt;% \n  filter(log_hp&lt;5) %&gt;% \n  mutate(hilhp=if_else(log_hp&gt;mean(log_hp),1,0)) %&gt;% \n  group_by(hilhp) %&gt;% \n  head\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt; filter: removed 15 rows (47%), 17 rows remaining\n\n\n#&gt; mutate: new variable 'hilhp' (double) with 2 unique values and 0% NA\n\n\n#&gt; group_by: one grouping variable (hilhp)\n\n\n#&gt; # A tibble: 6 × 5\n#&gt; # Groups:   hilhp [2]\n#&gt;     mpg log_mpg    hp log_hp hilhp\n#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1  21      3.04   110   4.70     1\n#&gt; 2  21      3.04   110   4.70     1\n#&gt; 3  22.8    3.13    93   4.53     1\n#&gt; 4  21.4    3.06   110   4.70     1\n#&gt; 5  18.1    2.90   105   4.65     1\n#&gt; 6  24.4    3.19    62   4.13     0"
+    "text": "group_by()\n\nThis groups the data frame\nExample:\n\n\nmtcars %&gt;%\n  mutate(log_mpg = log(mpg), log_hp = log(hp)) %&gt;%\n  select(mpg, log_mpg, hp, log_hp) %&gt;%\n  filter(log_hp &lt; 5) %&gt;%\n  mutate(hilhp = if_else(log_hp &gt; mean(log_hp), 1, 0)) %&gt;%\n  group_by(hilhp) %&gt;%\n  head()\n\n#&gt; mutate: new variable 'log_mpg' (double) with 25 unique values and 0% NA\n\n\n#&gt;         new variable 'log_hp' (double) with 22 unique values and 0% NA\n\n\n#&gt; select: dropped 9 variables (cyl, disp, drat, wt, qsec, …)\n\n\n#&gt; filter: removed 15 rows (47%), 17 rows remaining\n\n\n#&gt; mutate: new variable 'hilhp' (double) with 2 unique values and 0% NA\n\n\n#&gt; group_by: one grouping variable (hilhp)\n\n\n#&gt; # A tibble: 6 × 5\n#&gt; # Groups:   hilhp [2]\n#&gt;     mpg log_mpg    hp log_hp hilhp\n#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1  21      3.04   110   4.70     1\n#&gt; 2  21      3.04   110   4.70     1\n#&gt; 3  22.8    3.13    93   4.53     1\n#&gt; 4  21.4    3.06   110   4.70     1\n#&gt; 5  18.1    2.90   105   4.65     1\n#&gt; 6  24.4    3.19    62   4.13     0"
   },
   {
     "objectID": "lectures/5a.html#example-8",
@@ -2307,7 +2321,7 @@
     "href": "hw/hw3.html",
     "title": "Homework 3",
     "section": "",
-    "text": "Due 2/24/24 @ 11:59 PM\nUse an RMD file to create the assignment.\nYou must comment all your code to receive credit.\nSubmit the *.html file to canvas."
+    "text": "Due 2/24/24 @ 11:59 PM\nUse an RMD or QMD file to create the assignment.\nYou must comment all your code to receive credit.\nSubmit the *.html file to canvas."
   },
   {
     "objectID": "hw/hw3.html#problem-1",

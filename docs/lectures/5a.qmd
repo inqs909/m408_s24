@@ -19,7 +19,7 @@ knitr:
     message: false
     comment: "#>" 
 
-editor: visual
+editor: source
 ---
 
 ```{r}
@@ -43,6 +43,10 @@ library(tidylog)
 -   `dplyr` Functions
 
 # Directories/R Projects
+
+## Scripting Style Guide
+
+[Tidyverse Style Guide](https://style.tidyverse.org/index.html)
 
 ## Directories
 
@@ -144,8 +148,9 @@ Merge data sets `data_3_1.csv` and `data_3_2.csv` using the `full_join()`
 ```{r}
 #| message: true
 #| eval: true
-mtcars %>% mutate(log_mpg=log(mpg)) %>% 
-  head
+mtcars %>%
+  mutate(log_mpg = log(mpg)) %>%
+  head()
 ```
 
 ## `mutate()`
@@ -158,8 +163,9 @@ mtcars %>% mutate(log_mpg=log(mpg)) %>%
 #| message: true
 #| eval: true
 
-mtcars %>% mutate(log_mpg=log(mpg),log_hp=log(hp)) %>%
-  head
+mtcars %>%
+  mutate(log_mpg = log(mpg), log_hp = log(hp)) %>%
+  head()
 ```
 
 ## Example
@@ -176,9 +182,10 @@ Using the `penguins` dataset from `palmerpenguins`, create a new variable that i
 #| message: true
 #| eval: true
 
-mtcars %>% mutate(log_mpg=log(mpg),log_hp=log(hp)) %>% 
-  select(mpg,log_mpg,hp,log_hp) %>% 
-  head
+mtcars %>%
+  mutate(log_mpg = log(mpg), log_hp = log(hp)) %>%
+  select(mpg, log_mpg, hp, log_hp) %>%
+  head()
 ```
 
 ## Example
@@ -195,10 +202,11 @@ Using the `penguins` dataset from `palmerpenguins`, only select the variables th
 #| message: true
 #| eval: true
 
-mtcars %>% mutate(log_mpg=log(mpg),log_hp=log(hp)) %>% 
-  select(mpg,log_mpg,hp,log_hp) %>% 
-  filter(log_hp<5) %>% 
-  head
+mtcars %>%
+  mutate(log_mpg = log(mpg), log_hp = log(hp)) %>%
+  select(mpg, log_mpg, hp, log_hp) %>%
+  filter(log_hp < 5) %>%
+  head()
 ```
 
 ## Example
@@ -215,11 +223,12 @@ Using the `penguins` dataset from `palmerpenguins`, filter the data set to look 
 #| message: true
 #| eval: true
 
-mtcars %>% mutate(log_mpg=log(mpg),log_hp=log(hp)) %>% 
-  select(mpg,log_mpg,hp,log_hp) %>% 
-  filter(log_hp<5) %>% 
-  mutate(hilhp=if_else(log_hp>mean(log_hp),1,0)) %>% 
-  head
+mtcars %>%
+  mutate(log_mpg = log(mpg), log_hp = log(hp)) %>%
+  select(mpg, log_mpg, hp, log_hp) %>%
+  filter(log_hp < 5) %>%
+  mutate(hilhp = if_else(log_hp > mean(log_hp), 1, 0)) %>%
+  head()
 ```
 
 ## Example
@@ -236,12 +245,13 @@ Using the `penguins` dataset from `palmerpenguins`, create a new variable that d
 #| message: true
 #| eval: true
 
-mtcars %>% mutate(log_mpg=log(mpg),log_hp=log(hp)) %>% 
-  select(mpg,log_mpg,hp,log_hp) %>% 
-  filter(log_hp<5) %>% 
-  mutate(hilhp=if_else(log_hp>mean(log_hp),1,0)) %>% 
-  group_by(hilhp) %>% 
-  head
+mtcars %>%
+  mutate(log_mpg = log(mpg), log_hp = log(hp)) %>%
+  select(mpg, log_mpg, hp, log_hp) %>%
+  filter(log_hp < 5) %>%
+  mutate(hilhp = if_else(log_hp > mean(log_hp), 1, 0)) %>%
+  group_by(hilhp) %>%
+  head()
 ```
 
 ## Example

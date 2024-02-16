@@ -28,7 +28,7 @@ filters:
   - reveal-header
   - code-fullscreen
 
-editor: visual
+editor: source
 ---
 
 ## Learning Outcomes
@@ -50,6 +50,19 @@ editor: visual
 ::: {#.fragment}
 Statistical learning is the task of predicting an outcome of interest given a set of predictor variables.
 :::
+
+## Motivating Example
+
+```{r}
+#| echo: false
+library(ggplot2)
+x <- runif(100, 0, 10)
+y <- 1.25 * x^2 + 5 + rnorm(100, sd = 15)
+data.frame(x, y) |>
+  ggplot(aes(x, y)) +
+  geom_point() +
+  theme_bw()
+```
 
 ## Statistical Learning Model
 
@@ -114,9 +127,9 @@ What are the methods that we learned to model continuous random variables?
 
 library(tidyverse)
 library(mgcv)
-n  <- 1e3
+n <- 1e3
 dat <- data.frame("x1" = rnorm(n), "x2" = rnorm(n), "x3" = rnorm(n))
-dat$y <- with(dat, sin(x1) + 0.5*x2^2 + 0.2*x3 + pmax(x2, 0.2) * rnorm(n))
+dat$y <- with(dat, sin(x1) + 0.5 * x2^2 + 0.2 * x3 + pmax(x2, 0.2) * rnorm(n))
 b <- gam(y ~ s(x1) + s(x2) + x3, data = dat, method = "REML")
 
 p_obj <- plot(b, residuals = TRUE)
@@ -135,9 +148,10 @@ ggplot(sm_df, aes(x = x, y = fit)) +
   # geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
   #             alpha = 0.3) +
   # geom_line() +
-  # labs(x = p_obj$xlab, y = p_obj$ylab) + 
+  # labs(x = p_obj$xlab, y = p_obj$ylab) +
   # geom_smooth(method = "lm") +
-  xlab("X") + ylab("Y") +
+  xlab("X") +
+  ylab("Y") +
   theme_bw()
 ```
 
@@ -150,9 +164,10 @@ ggplot(sm_df, aes(x = x, y = fit)) +
   # geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
   #             alpha = 0.3) +
   # geom_line() +
-  # labs(x = p_obj$xlab, y = p_obj$ylab) + 
+  # labs(x = p_obj$xlab, y = p_obj$ylab) +
   geom_smooth(method = "lm") +
-  xlab("X") + ylab("Y") +
+  xlab("X") +
+  ylab("Y") +
   theme_bw()
 ```
 
@@ -163,11 +178,13 @@ ggplot(sm_df, aes(x = x, y = fit)) +
 ggplot(sm_df, aes(x = x, y = fit)) +
   geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
   geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
-              alpha = 0.3) +
+    alpha = 0.3
+  ) +
   geom_line() +
   labs(x = p_obj$xlab, y = p_obj$ylab) +
   # geom_smooth(method = "lm") +
-  xlab("X") + ylab("Y") +
+  xlab("X") +
+  ylab("Y") +
   theme_bw()
 ```
 
@@ -178,11 +195,13 @@ ggplot(sm_df, aes(x = x, y = fit)) +
 ggplot(sm_df, aes(x = x, y = fit)) +
   geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
   geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
-              alpha = 0.3) +
+    alpha = 0.3
+  ) +
   geom_line() +
   labs(x = p_obj$xlab, y = p_obj$ylab) +
   geom_smooth(method = "lm") +
-  xlab("X") + ylab("Y") +
+  xlab("X") +
+  ylab("Y") +
   theme_bw()
 ```
 :::
@@ -204,9 +223,12 @@ What are the methods that we learned to model categorical random variables?
 
 ```{r}
 #| echo: false
-ggplot(data = iris, 
-       aes(x = Petal.Length, y = Petal.Width, col = Species)) +
-  geom_point() + theme_bw()
+ggplot(
+  data = iris,
+  aes(x = Petal.Length, y = Petal.Width, col = Species)
+) +
+  geom_point() +
+  theme_bw()
 ```
 
 ## KNN
@@ -215,17 +237,17 @@ ggplot(data = iris,
 #| echo: false
 library(class)
 set.seed(1236894)
-setosa<- rbind(iris[iris$Species=="setosa",])
-versicolor<- rbind(iris[iris$Species=="versicolor",])
-virginica<- rbind(iris[iris$Species=="virginica",])
+setosa <- rbind(iris[iris$Species == "setosa", ])
+versicolor <- rbind(iris[iris$Species == "versicolor", ])
+virginica <- rbind(iris[iris$Species == "virginica", ])
 
 
-ind <- sample(1:nrow(setosa), nrow(setosa)*0.6)
+ind <- sample(1:nrow(setosa), nrow(setosa) * 0.6)
 
-iris.train<- rbind(setosa[ind,], versicolor[ind,], virginica[ind,])
-iris.test<- rbind(setosa[-ind,], versicolor[-ind,], virginica[-ind,])
-iris_pred <- knn(train = iris.train[,1:4], test = iris.test[,1:4], cl = iris.train$Species, k=5)
-table(iris.test$Species,iris_pred)
+iris.train <- rbind(setosa[ind, ], versicolor[ind, ], virginica[ind, ])
+iris.test <- rbind(setosa[-ind, ], versicolor[-ind, ], virginica[-ind, ])
+iris_pred <- knn(train = iris.train[, 1:4], test = iris.test[, 1:4], cl = iris.train$Species, k = 5)
+table(iris.test$Species, iris_pred)
 ```
 
 ## SVM
@@ -234,10 +256,12 @@ table(iris.test$Species,iris_pred)
 #| echo: false
 
 library(e1071)
-svm_model <- svm(Species ~ ., data=iris,
-                 kernel="radial") #linear/polynomial/sigmoid
-pred = predict(svm_model,iris)
-tab = table(Predicted=pred, Actual = iris$Species)
+svm_model <- svm(Species ~ .,
+  data = iris,
+  kernel = "radial"
+) # linear/polynomial/sigmoid
+pred <- predict(svm_model, iris)
+tab <- table(Predicted = pred, Actual = iris$Species)
 tab
 ```
 
@@ -247,21 +271,23 @@ tab
 #| echo: false
 library(neuralnet)
 data(iris)
-iris$setosa <- iris$Species=="setosa"
+iris$setosa <- iris$Species == "setosa"
 iris$virginica <- iris$Species == "virginica"
 iris$versicolor <- iris$Species == "versicolor"
-iris.train.idx <- sample(x = nrow(iris), size = nrow(iris)*0.5)
-iris.train <- iris[iris.train.idx,]
-iris.valid <- iris[-iris.train.idx,]
+iris.train.idx <- sample(x = nrow(iris), size = nrow(iris) * 0.5)
+iris.train <- iris[iris.train.idx, ]
+iris.valid <- iris[-iris.train.idx, ]
 library(neuralnet)
-iris.net <- neuralnet(setosa+versicolor+virginica ~ 
-                      Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, 
-                      data=iris.train, hidden=c(10,10), rep = 5, err.fct = "ce", 
-                      linear.output = F, lifesign = "minimal", stepmax = 1000000,
-                      threshold = 0.001)
+iris.net <- neuralnet(
+  setosa + versicolor + virginica ~
+    Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
+  data = iris.train, hidden = c(10, 10), rep = 5, err.fct = "ce",
+  linear.output = F, lifesign = "minimal", stepmax = 1000000,
+  threshold = 0.001
+)
 iris.prediction <- compute(iris.net, iris.valid[-5:-8])
 idx <- apply(iris.prediction$net.result, 1, which.max)
-predicted <- c('setosa', 'versicolor', 'virginica')[idx]
+predicted <- c("setosa", "versicolor", "virginica")[idx]
 table(predicted, iris.valid$Species)
 ```
 :::
@@ -321,11 +347,13 @@ $$
 ggplot(sm_df, aes(x = x, y = fit)) +
   geom_point(data = data_df, mapping = aes(x = raw, y = p.resid)) +
   geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
-              alpha = 0.3) +
+    alpha = 0.3
+  ) +
   geom_line() +
   labs(x = p_obj$xlab, y = p_obj$ylab) +
   geom_smooth(method = "lm") +
-  xlab("X") + ylab("Y") +
+  xlab("X") +
+  ylab("Y") +
   theme_bw()
 ```
 
