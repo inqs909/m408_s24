@@ -25,6 +25,6 @@ editor_options:
 ## Resources
 
 | Lecture | Slides                                                         | Videos                                | Files |
-|------------|-------------------------------|-----------------|------------|
+|---------|----------------------------------------------------------------|---------------------------------------|-------|
 | 1       | [Slides](https://m408.inqs.info/lectures/4a.html#/title-slide) | [Video](https://youtu.be/CJObNyHBbrQ) |       |
 | 2       | [Slides](https://m408.inqs.info/lectures/4b.html#/title-slide) | [Video](https://youtu.be/2ANVpUuXpS8) |       |
