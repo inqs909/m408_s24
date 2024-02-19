@@ -1,6 +1,6 @@
 ---
 title: "Week 5"
-date: 02-17-23
+date: 02-18-24
 description: We will continue and finish our discussion on data manipulation.
 editor: visual
 draft: false
@@ -28,6 +28,6 @@ editor_options:
 Resources
 
 | Lecture | Slides                                                         | Videos | Files |
-|----------|------------------------------------------|----------|----------|
+|-------------|-----------------------------------|-------------|-------------|
 | 1       | [Slides](https://m408.inqs.info/lectures/5a.html#/title-slide) |        |       |
 | 2       |                                                                |        |       |
