@@ -32,6 +32,10 @@ library(tidyverse)
 library(tidylog)
 ```
 
+## Announcements
+
+![](img/image001.png)
+
 ## Learning Objectives
 
 -   Directories/R Projects
