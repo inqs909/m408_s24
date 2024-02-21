@@ -3511,7 +3511,7 @@
     "href": "lectures/5b.html#learning-objectives",
     "title": "Data Manipulation",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\ntidyr Functions\nWide to Long Example"
+    "text": "Learning Objectives\n\ntidyr Functions\nWide to Long Example\nPlotting with ggplot2"
   },
   {
     "objectID": "lectures/5b.html#tidyr-functions",
@@ -3589,6 +3589,97 @@
     "title": "Data Manipulation",
     "section": "pivot_wider()",
     "text": "pivot_wider()\n\nThe pivot_wider() function then converts long data to wide data.\n\n\n\ndf3 &lt;- data1 %&gt;% \n  pivot_longer(`v1/mean`:`v4/median`,\n               names_to = \"measurement\", \n               values_to = \"value\") %&gt;% \n  separate(measurement,c(\"time\",\"stat\"),sep=\"/\") %&gt;% \n  pivot_wider(names_from = stat,\n              values_from = value)\n\n#&gt; pivot_longer: reorganized (v1/mean, v1/sd, v1/median, v2/mean, v2/sd, …) into (measurement, value) [was 1000x13, now 12000x3]\n\n\n#&gt; pivot_wider: reorganized (stat, value) into (mean, sd, median) [was 12000x4, now 4000x5]"
+  },
+  {
+    "objectID": "lectures/5b.html#ggplot2-1",
+    "href": "lectures/5b.html#ggplot2-1",
+    "title": "Data Manipulation",
+    "section": "ggplot2",
+    "text": "ggplot2\nggplot2 is an R package used to create plots. The main idea is to use a data frame and a set of aesthetics (variables in the data frame) to create a base plot. Then, ggplot2 will layer geometries (plots) to the base plot to create a data visualization.\nAll new changes to the plot are layered on with the + symbol."
+  },
+  {
+    "objectID": "lectures/5b.html#base-plot",
+    "href": "lectures/5b.html#base-plot",
+    "title": "Data Manipulation",
+    "section": "Base Plot",
+    "text": "Base Plot\n\nmtcars |&gt; ggplot(aes(x = mpg))"
+  },
+  {
+    "objectID": "lectures/5b.html#histogram",
+    "href": "lectures/5b.html#histogram",
+    "title": "Data Manipulation",
+    "section": "Histogram",
+    "text": "Histogram\n\nmtcars |&gt; ggplot(aes(x = mpg)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "lectures/5b.html#box-plot",
+    "href": "lectures/5b.html#box-plot",
+    "title": "Data Manipulation",
+    "section": "Box Plot",
+    "text": "Box Plot\n\nmtcars |&gt; ggplot(aes(x = mpg)) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "lectures/5b.html#density-plot",
+    "href": "lectures/5b.html#density-plot",
+    "title": "Data Manipulation",
+    "section": "Density Plot",
+    "text": "Density Plot\n\nmtcars |&gt; ggplot(aes(x = mpg)) +\n  geom_density()"
+  },
+  {
+    "objectID": "lectures/5b.html#box-plot-by-category",
+    "href": "lectures/5b.html#box-plot-by-category",
+    "title": "Data Manipulation",
+    "section": "Box Plot By Category",
+    "text": "Box Plot By Category\n\nmtcars |&gt; ggplot(aes(x = mpg, y = as.factor(cyl))) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "lectures/5b.html#density-plot-by-category",
+    "href": "lectures/5b.html#density-plot-by-category",
+    "title": "Data Manipulation",
+    "section": "Density Plot By Category",
+    "text": "Density Plot By Category\n\nmtcars |&gt; ggplot(aes(x = mpg, color = as.factor(cyl))) +\n  geom_density()"
+  },
+  {
+    "objectID": "lectures/5b.html#scatter-plot",
+    "href": "lectures/5b.html#scatter-plot",
+    "title": "Data Manipulation",
+    "section": "Scatter Plot",
+    "text": "Scatter Plot\n\nmtcars |&gt; ggplot(aes(x = wt, y = mpg)) +\n  geom_point()"
+  },
+  {
+    "objectID": "lectures/5b.html#scatter-plot-by-group",
+    "href": "lectures/5b.html#scatter-plot-by-group",
+    "title": "Data Manipulation",
+    "section": "Scatter Plot by Group",
+    "text": "Scatter Plot by Group\n\nmtcars |&gt; ggplot(aes(x = wt, y = mpg, color = as.factor(cyl))) +\n  geom_point()"
+  },
+  {
+    "objectID": "lectures/5b.html#add-regression-line",
+    "href": "lectures/5b.html#add-regression-line",
+    "title": "Data Manipulation",
+    "section": "Add Regression Line",
+    "text": "Add Regression Line\n\nmtcars |&gt; ggplot(aes(x = wt, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = F)"
+  },
+  {
+    "objectID": "lectures/5b.html#smooth-line",
+    "href": "lectures/5b.html#smooth-line",
+    "title": "Data Manipulation",
+    "section": "Smooth Line",
+    "text": "Smooth Line\n\nmtcars |&gt; ggplot(aes(x = wt, y = mpg)) +\n  geom_point() +\n  geom_smooth(se = F)"
+  },
+  {
+    "objectID": "lectures/5b.html#regression-lines-by-group",
+    "href": "lectures/5b.html#regression-lines-by-group",
+    "title": "Data Manipulation",
+    "section": "Regression Lines by Group",
+    "text": "Regression Lines by Group\n\nmtcars |&gt; ggplot(aes(x = wt, y = mpg,\n                  color = as.factor(cyl))) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = F)"
+  },
+  {
+    "objectID": "lectures/5b.html#example-1",
+    "href": "lectures/5b.html#example-1",
+    "title": "Data Manipulation",
+    "section": "Example",
+    "text": "Example\nUsing the penguins data set from palmerpenguins package. Create any plot and make it publication ready. Use the following resources to customize the plot: R Graphics Cookbook, R Graph Gallery, R Charts, and ggplot2"
   },
   {
     "objectID": "lectures/6c.html#learning-objectives",
@@ -4155,13 +4246,13 @@
     "href": "posts/week_5.html",
     "title": "Week 5",
     "section": "",
-    "text": "Directories/R Projects\nReading/Writing Data\nMerging Data\nCreating New Variables\n\n\n\n\n\nSplitting Variables\nSplitting Rows\nMerging Rows\nWide to long\nLong to wide\n\nResources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2"
+    "text": "Directories/R Projects\nReading/Writing Data\nMerging Data\nCreating New Variables\n\n\n\n\n\nSplitting Variables\nSplitting Rows\nMerging Rows\nWide to long\nLong to wide\n\nResources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
   },
   {
     "objectID": "posts/week_5.html#learning-outcomes",
     "href": "posts/week_5.html#learning-outcomes",
     "title": "Week 5",
     "section": "",
-    "text": "Directories/R Projects\nReading/Writing Data\nMerging Data\nCreating New Variables\n\n\n\n\n\nSplitting Variables\nSplitting Rows\nMerging Rows\nWide to long\nLong to wide\n\nResources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2"
+    "text": "Directories/R Projects\nReading/Writing Data\nMerging Data\nCreating New Variables\n\n\n\n\n\nSplitting Variables\nSplitting Rows\nMerging Rows\nWide to long\nLong to wide\n\nResources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
   }
 ]
