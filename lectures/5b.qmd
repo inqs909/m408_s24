@@ -100,7 +100,7 @@ data1_long <- data1 %>% pivot_longer(`v1/mean`:`v4/median`,
 
 ```{r}
 #| echo: false
-#| eval: false
+#| eval: true
 datatable(data1_long, options = list(pageLength = 8))
 ```
 
