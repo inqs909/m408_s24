@@ -202,6 +202,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>evenodd <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Even"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"Odd"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, evenodd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="problem-2" class="level2">
 <h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
@@ -218,30 +231,73 @@ k(j(i(h(g(f(x))))))
 <li><p><span class="math inline">\(k(x) = \sqrt x\)</span></p></li>
 </ul>
 <p>You are not allowed to store values, but you may create and store functions.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">|&gt;</span> <span class="fu">sin</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (\(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">5</span>)() <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  (\(x) <span class="fu">exp</span>(<span class="dv">2</span><span class="sc">*</span>x))() <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sinpi</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  (\(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">5</span>)() <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="problem-3" class="level2">
 <h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
 <p>From the <code>penguins</code> data set from <code>palmerpenguins</code> package, create a new variable indicating if the penguin’s flipper length (<code>flipper_length_mm</code>) is greater than the average flipper length. Afterwards, group by the new variable and find the mean <code>body_mass_g</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hilo =</span> <span class="fu">ifelse</span>(flipper_length_mm <span class="sc">&gt;</span> <span class="fu">mean</span>(flipper_length_mm),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Flipper Length greater than mean"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Flipper Length less than mean"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hilo) <span class="sc">|&gt;</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="problem-4" class="level2">
 <h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
 <p>From the <code>penguins</code> data set from <code>palmerpenguins</code> package, find the mean and standard deviation of <code>flipper_length_mm</code> by <code>species</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(flipper_length_mm),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="problem-5" class="level2">
 <h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
 <p>Using the vector <code>random_dates</code> generated from the code below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the start and end dates</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>start_date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2022-01-01 00:00:00"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2022-12-31 23:59:59"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a vector of random dates and times between the start and end dates</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>random_dates <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="fu">runif</span>(<span class="dv">10</span>, start_date, end_date), <span class="at">origin =</span> <span class="st">"1970-01-01"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the vector of random dates and times</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>random_dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the start and end dates</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>start_date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2022-01-01 00:00:00"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2022-12-31 23:59:59"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a vector of random dates and times between the start and end dates</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>random_dates <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="fu">runif</span>(<span class="dv">10</span>, start_date, end_date), <span class="at">origin =</span> <span class="st">"1970-01-01"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the vector of random dates and times</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>random_dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Use <code>sapply()</code> to determine what day of the week (in words) does the date represent. Hint: Look at the <code>wday</code> function from <code>lubridate</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(random_dates, wday, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>

@@ -5,6 +5,20 @@ editor: visual
 draft: false
 ---
 
+```{r}
+#| include: false
+
+start_date <- as.POSIXct("2022-01-01 00:00:00")
+end_date <- as.POSIXct("2022-12-31 23:59:59")
+
+# Generate a vector of random dates and times between the start and end dates
+random_dates <- as.POSIXct(runif(10, start_date, end_date), origin = "1970-01-01")
+
+# Print the vector of random dates and times
+random_dates
+
+```
+
 **Due 2/24/24 \@ 11:59 PM**
 
 Use an RMD or QMD file to create the assignment.
@@ -19,6 +33,20 @@ Using the vectors below, use `sapply()` to determine if the numbers are even or 
 
 ```{r}
 x <- 1:20
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: Answer
+#| eval: false
+evenodd <- function(x){
+  if (x %% 2 ==0){
+    return("Even")
+  } else {
+    return("Odd")
+  }
+}
+sapply(x, evenodd)
 ```
 
 ## Problem 2
@@ -43,13 +71,57 @@ $$
 
 You are not allowed to store values, but you may create and store functions.
 
+```{r}
+#| code-fold: true
+#| code-summary: Answer
+#| eval: false
+
+4 |> sin() |> 
+  (\(x) x^2 + 5)() |> 
+  (\(x) exp(2*x))() |> 
+  sinpi() |> 
+  (\(x) x^2 + 5)() |> 
+  sqrt()  
+
+```
+
 ## Problem 3
 
 From the `penguins` data set from `palmerpenguins` package, create a new variable indicating if the penguin's flipper length (`flipper_length_mm`) is greater than the average flipper length. Afterwards, group by the new variable and find the mean `body_mass_g`.
 
+```{r}
+#| code-fold: true
+#| code-summary: Answer
+#| eval: false
+
+library(tidyverse)
+library(palmerpenguins)
+
+penguins |> drop_na() |> 
+  mutate(hilo = ifelse(flipper_length_mm > mean(flipper_length_mm),
+                       "Flipper Length greater than mean",
+                       "Flipper Length less than mean")) |>
+  group_by(hilo) |> 
+  summarise(mean = mean(body_mass_g))
+```
+
 ## Problem 4
 
 From the `penguins` data set from `palmerpenguins` package, find the mean and standard deviation of `flipper_length_mm` by `species`.
+
+```{r}
+#| code-fold: true
+#| code-summary: Answer
+#| eval: false
+
+library(tidyverse)
+library(palmerpenguins)
+penguins |> drop_na() |> 
+  group_by(species) |> 
+  summarise(mean = mean(flipper_length_mm),
+            sd = sd(flipper_length_mm))
+
+```
 
 ## Problem 5
 
@@ -70,3 +142,12 @@ random_dates
 ```
 
 Use `sapply()` to determine what day of the week (in words) does the date represent. Hint: Look at the `wday` function from `lubridate`.
+
+```{r}
+#| code-fold: true
+#| code-summary: Answer
+#| eval: false
+library(tidyverse)
+sapply(random_dates, wday, label = TRUE)
+
+```

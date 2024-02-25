@@ -2139,28 +2139,28 @@
     "href": "hw/hw2.html#problem-1",
     "title": "Homework 2",
     "section": "Problem 1",
-    "text": "Problem 1\nWrite a function that takes a vector as an input an returns a labeled list with the mean, median, and variance of the vector."
+    "text": "Problem 1\nWrite a function that takes a vector as an input an returns a labeled list with the mean, median, and variance of the vector.\n\n\nAnswer\nxsummary &lt;- function(x){\n  list(mean = mean(x),\n       median = median(x),\n       variance = var(x))\n}"
   },
   {
     "objectID": "hw/hw2.html#problem-2",
     "href": "hw/hw2.html#problem-2",
     "title": "Homework 2",
     "section": "Problem 2",
-    "text": "Problem 2\nWrite a function for the following equation:\n\\[\nf(x, y, z) =\\left\\{\\begin{array}{cc}\nx^2+\\sqrt y & z  = 0 \\\\\nx^2+2x+3+ \\log(y) & z = 1\n\\end{array}\\right.\n\\]\nInclude any error messages if necessary."
+    "text": "Problem 2\nWrite a function for the following equation:\n\\[\nf(x, y, z) =\\left\\{\\begin{array}{cc}\nx^2+\\sqrt y & z  = 0 \\\\\nx^2+2x+3+ \\log(y) & z = 1\n\\end{array}\\right.\n\\]\nInclude any error messages if necessary.\n\n\nAnswer\nfxyz &lt;- function(x, y, z){\n  if (!z %in% c(0,1)){stop(\"z must be 0 or 1\")}\n  if (y&lt;=0){stop(\"y must be greater than 0\")}\n  if (z ==0){\n    return(x^2+sqrt(y))\n  } else {\n    return(x^2 + 2*x + 3 + log(y))\n  }\n}"
   },
   {
     "objectID": "hw/hw2.html#problem-3",
     "href": "hw/hw2.html#problem-3",
     "title": "Homework 2",
     "section": "Problem 3",
-    "text": "Problem 3\nCreate a function that will give you the first x Fibonacci numbers. You must use a for loop."
+    "text": "Problem 3\nCreate a function that will give you the first x Fibonacci numbers. You must use a for loop.\n\n\nAnswer\nfib &lt;- function(x){\n  post &lt;- c(0,1)\n  for(i in 3:x){\n    post &lt;- c(post, fib[i-2] + fib[i-1])\n  }\n  return(post)\n}"
   },
   {
     "objectID": "hw/hw2.html#problem-4",
     "href": "hw/hw2.html#problem-4",
     "title": "Homework 2",
     "section": "Problem 4",
-    "text": "Problem 4\nCreate a function that will randomly generate n numbers that are greater than x from a \\(Pois(\\lambda)\\)."
+    "text": "Problem 4\nCreate a function that will randomly generate n numbers that are greater than x from a \\(Pois(\\lambda)\\).\n\n\nAnswer\nnew_pois &lt;- function(n, x, lambda){\n  nn &lt;- 0\n  post &lt;- c()\n  while(nn &lt; n){\n    new &lt;- rpois(1, lambda)\n    if (new &gt; x){\n      post &lt;- c(post, new)\n      nn &lt;- length(post)\n    }\n  }\n  return(post)\n}"
   },
   {
     "objectID": "hw.html",
@@ -2307,21 +2307,21 @@
     "href": "hw/hw1.html#problem-1",
     "title": "Homework 1",
     "section": "Problem 1",
-    "text": "Problem 1\nUsing the following code:\n\nx &lt;- matrix(rnorm(1500), nrow = 10)\n\nWrite the code to produce the output if you use the rowMeans() on the R object x."
+    "text": "Problem 1\nUsing the following code:\n\nx &lt;- matrix(rnorm(1500), nrow = 10)\n\nWrite the code to produce the output if you use the rowMeans() on the R object x.\n\n\nAnswer\nxmeans &lt;- vector(length = nrow(x))\nfor(i in 1:nrow(x)){\n  xmeans[i] &lt;- mean(x[i,])\n}\n#xmeans"
   },
   {
     "objectID": "hw/hw1.html#problem-2",
     "href": "hw/hw1.html#problem-2",
     "title": "Homework 1",
     "section": "Problem 2",
-    "text": "Problem 2\nUsing the following code:\n\ny &lt;- matrix(sample(1:400, 100, replace = T), nrow = 10)\n\nFind the median value for each column of the matrix y. You are not allowed to use the median() function."
+    "text": "Problem 2\nUsing the following code:\n\ny &lt;- matrix(sample(1:400, 100, replace = T), nrow = 10)\n\nFind the median value for each column of the matrix y. You are not allowed to use the median() function.\n\n\nAnswer\nymedian &lt;- vector(length = ncol(x))\nfor(i in 1:nrow(x)){\n  ymedian[i] &lt;- sum(x[5:6,]) / 2\n}\n#ymedian"
   },
   {
     "objectID": "hw/hw1.html#problem-3",
     "href": "hw/hw1.html#problem-3",
     "title": "Homework 1",
     "section": "Problem 3",
-    "text": "Problem 3\nWrite the code that will generate the first 1000 numbers of the Fibonacci Sequence."
+    "text": "Problem 3\nWrite the code that will generate the first 1000 numbers of the Fibonacci Sequence.\n\n\nAnswer\nfib &lt;- c(0,1)\nfor(i in 3:1000){\n  fib &lt;- c(fib, fib[i-2] + fib[i-1])\n}\n#fib"
   },
   {
     "objectID": "hw/hw3.html",
@@ -2335,35 +2335,35 @@
     "href": "hw/hw3.html#problem-1",
     "title": "Homework 3",
     "section": "Problem 1",
-    "text": "Problem 1\nUsing the vectors below, use sapply() to determine if the numbers are even or odd.\n\nx &lt;- 1:20"
+    "text": "Problem 1\nUsing the vectors below, use sapply() to determine if the numbers are even or odd.\n\nx &lt;- 1:20\n\n\n\nAnswer\nevenodd &lt;- function(x){\n  if (x %% 2 ==0){\n    return(\"Even\")\n  } else {\n    return(\"Odd\")\n  }\n}\nsapply(x, evenodd)"
   },
   {
     "objectID": "hw/hw3.html#problem-2",
     "href": "hw/hw3.html#problem-2",
     "title": "Homework 3",
     "section": "Problem 2",
-    "text": "Problem 2\nEvaluate the following function:\n\\[\nk(j(i(h(g(f(x))))))\n\\]\n\n\\(f(x)=\\sin(x)\\)\n\\(g(x) = x^2 +5\\)\n\\(h(x) = \\exp{2x}\\)\n\\(i(x) = \\sin(\\pi x)\\)\n\\(j(x) = x^2 + 5\\)\n\\(k(x) = \\sqrt x\\)\n\nYou are not allowed to store values, but you may create and store functions."
+    "text": "Problem 2\nEvaluate the following function:\n\\[\nk(j(i(h(g(f(x))))))\n\\]\n\n\\(f(x)=\\sin(x)\\)\n\\(g(x) = x^2 +5\\)\n\\(h(x) = \\exp{2x}\\)\n\\(i(x) = \\sin(\\pi x)\\)\n\\(j(x) = x^2 + 5\\)\n\\(k(x) = \\sqrt x\\)\n\nYou are not allowed to store values, but you may create and store functions.\n\n\nAnswer\n4 |&gt; sin() |&gt; \n  (\\(x) x^2 + 5)() |&gt; \n  (\\(x) exp(2*x))() |&gt; \n  sinpi() |&gt; \n  (\\(x) x^2 + 5)() |&gt; \n  sqrt()"
   },
   {
     "objectID": "hw/hw3.html#problem-3",
     "href": "hw/hw3.html#problem-3",
     "title": "Homework 3",
     "section": "Problem 3",
-    "text": "Problem 3\nFrom the penguins data set from palmerpenguins package, create a new variable indicating if the penguin’s flipper length (flipper_length_mm) is greater than the average flipper length. Afterwards, group by the new variable and find the mean body_mass_g."
+    "text": "Problem 3\nFrom the penguins data set from palmerpenguins package, create a new variable indicating if the penguin’s flipper length (flipper_length_mm) is greater than the average flipper length. Afterwards, group by the new variable and find the mean body_mass_g.\n\n\nAnswer\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\npenguins |&gt; drop_na() |&gt; \n  mutate(hilo = ifelse(flipper_length_mm &gt; mean(flipper_length_mm),\n                       \"Flipper Length greater than mean\",\n                       \"Flipper Length less than mean\")) |&gt;\n  group_by(hilo) |&gt; \n  summarise(mean = mean(body_mass_g))"
   },
   {
     "objectID": "hw/hw3.html#problem-4",
     "href": "hw/hw3.html#problem-4",
     "title": "Homework 3",
     "section": "Problem 4",
-    "text": "Problem 4\nFrom the penguins data set from palmerpenguins package, find the mean and standard deviation of flipper_length_mm by species."
+    "text": "Problem 4\nFrom the penguins data set from palmerpenguins package, find the mean and standard deviation of flipper_length_mm by species.\n\n\nAnswer\nlibrary(tidyverse)\nlibrary(palmerpenguins)\npenguins |&gt; drop_na() |&gt; \n  group_by(species) |&gt; \n  summarise(mean = mean(flipper_length_mm),\n            sd = sd(flipper_length_mm))"
   },
   {
     "objectID": "hw/hw3.html#problem-5",
     "href": "hw/hw3.html#problem-5",
     "title": "Homework 3",
     "section": "Problem 5",
-    "text": "Problem 5\nUsing the vector random_dates generated from the code below:\n\n# Set the start and end dates\nstart_date &lt;- as.POSIXct(\"2022-01-01 00:00:00\")\nend_date &lt;- as.POSIXct(\"2022-12-31 23:59:59\")\n\n# Generate a vector of random dates and times between the start and end dates\nrandom_dates &lt;- as.POSIXct(runif(10, start_date, end_date), origin = \"1970-01-01\")\n\n# Print the vector of random dates and times\nrandom_dates\n\nUse sapply() to determine what day of the week (in words) does the date represent. Hint: Look at the wday function from lubridate."
+    "text": "Problem 5\nUsing the vector random_dates generated from the code below:\n\n# Set the start and end dates\nstart_date &lt;- as.POSIXct(\"2022-01-01 00:00:00\")\nend_date &lt;- as.POSIXct(\"2022-12-31 23:59:59\")\n\n# Generate a vector of random dates and times between the start and end dates\nrandom_dates &lt;- as.POSIXct(runif(10, start_date, end_date), origin = \"1970-01-01\")\n\n# Print the vector of random dates and times\nrandom_dates\n\nUse sapply() to determine what day of the week (in words) does the date represent. Hint: Look at the wday function from lubridate.\n\n\nAnswer\nlibrary(tidyverse)\nsapply(random_dates, wday, label = TRUE)"
   },
   {
     "objectID": "lectures/10a.html#learning-outcomes",

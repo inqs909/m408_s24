@@ -200,18 +200,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">1500</span>), <span class="at">nrow =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Write the code to produce the output if you use the <code>rowMeans()</code> on the R object <code>x</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xmeans <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="fu">nrow</span>(x))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)){</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  xmeans[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x[i,])</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#xmeans</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="problem-2" class="level2">
 <h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
 <p>Using the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="dv">100</span>, <span class="at">replace =</span> T), <span class="at">nrow =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="dv">100</span>, <span class="at">replace =</span> T), <span class="at">nrow =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Find the median value for each column of the matrix <code>y</code>. You are not allowed to use the <code>median()</code> function.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ymedian <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> <span class="fu">ncol</span>(x))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x)){</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  ymedian[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(x[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>,]) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#ymedian</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="problem-3" class="level2">
 <h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
 <p>Write the code that will generate the first 1000 numbers of the <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence">Fibonacci Sequence</a>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Answer</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  fib <span class="ot">&lt;-</span> <span class="fu">c</span>(fib, fib[i<span class="dv">-2</span>] <span class="sc">+</span> fib[i<span class="dv">-1</span>])</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#fib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>
