@@ -2,6 +2,14 @@
 title: "Homework 2"
 date: 2/7/24
 editor: visual
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-tools: true
+    code-line-numbers: true
+    embed-resources: true
 draft: false
 ---
 
