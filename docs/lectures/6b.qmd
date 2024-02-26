@@ -20,7 +20,7 @@ knitr:
     warnings: false
     comment: "#>" 
 
-editor: visual
+editor: source
 ---
 
 ```{r}
@@ -38,7 +38,7 @@ library(magrittr)
 x <- rnorm(50, 4)
 y <- 3 + 2 * x + rnorm(50, sd = 2)
 df <- tibble(x, y)
-
+theme_set(theme_bw())
 
 
 ```
@@ -142,9 +142,8 @@ penguins |>  drop_na() |> cor.test(~ body_mass_g + flipper_length_mm,
 
 ```{r}
 penguins |> 
-ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + 
-  geom_point() + 
-  theme_bw()
+ggplot(aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point() 
 ```
 
 # Linear Regression
@@ -156,9 +155,9 @@ Linear regression is used to model the association between a set of predictor va
 ## Scatter Plot
 
 ```{r}
-ggplot(df, aes(x = x, y = y)) + 
-  geom_point() + 
-  theme_bw()
+df |> 
+  ggplot(aes(x = x, y = y)) + 
+    geom_point() 
 ```
 
 ## Simple Linear Regression
@@ -180,6 +179,17 @@ $$
 $$
 \hat Y = \hat \beta_0 + \hat \beta_1 X
 $$
+
+
+## Process
+
+```{r}
+df |> 
+  ggplot(aes(x = x, y = y)) + 
+    geom_point() +
+    stat_smooth(method = "lm", se = F)
+```
+
 
 # R Examples
 
@@ -205,7 +215,10 @@ Applying a linear regression model to `body_mass_g` (Predictor) and `flipper_len
 ```{r}
 #| echo: true
 
-penguins |> lm(flipper_length_mm ~ body_mass_g, data = _) |> summary()
+penguins |> 
+  lm(flipper_length_mm ~ body_mass_g, 
+     data = _) |> 
+  summary()
 ```
 
 ## Scatter Plot
@@ -214,10 +227,10 @@ penguins |> lm(flipper_length_mm ~ body_mass_g, data = _) |> summary()
 #| echo: true
 #| warning: false
 #| message: false
-ggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) +   
-  geom_point() + 
-  geom_smooth(method = "lm") +
-  theme_bw()
+penguins |> 
+  ggplot(aes(y = flipper_length_mm, x = body_mass_g)) +   
+    geom_point() + 
+    geom_smooth(method = "lm")
 ```
 
 ### Interpretation
