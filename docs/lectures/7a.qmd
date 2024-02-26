@@ -1,5 +1,6 @@
 ---
-title: "Correlation, Confounding, and Interaction Terms"
+title: "Linear Regression"
+subtitle: "Estimation Procedures"
 format:
   revealjs:
     scrollable: true
@@ -35,144 +36,192 @@ library(broom)
 library(palmerpenguins)
 library(magrittr)
 
+x <- rnorm(50, 4)
+y <- 3 + 2 * x + rnorm(50, sd = 2)
+df <- tibble(x, y)
+
+
 
 ```
 
 ## Learning Objectives
 
--   Correlation vs Causation
+-   Estimation
 
--   Confounding Variables
+-   Ordinary Least Squares
 
--   Interaction Terms
+-   Matrix Formulation
 
-# Correlation vs Causation
+-   Standard Errors
 
-## Correlation vs Causation
+-   Conduct in R
 
-When 2 variables are associated with each other, this does not necessarily mean that one causes the other component.
+# Estimation
 
-## Correlation vs Causation
+## Estimation
 
-Looking at `body_mass_g` and `flipper_length_mm`
+-   Ordinary Least Squares
+
+-   Maximum Likelihood Approach
+
+-   Method of Moments
+
+## Standard Errors
+
+-   Find the variance of the estimate
+
+-   Find the information matrix
+
+-   Use for Inference
+
+# Ordinary Least Squares
+
+## Ordinary Least Squares
+
+For a data pair $(X_i,Y_i)_{i=1}^n$, the ordinary least squares estimator will find the estimates of $\hat\beta_0$ and $\hat\beta_1$ that minimize the following function:
+
+$$
+\sum^n_{i=1}\{y_i-(\beta_0+\beta_1x_i)\}^2
+$$
+
+## Estimates
+
+$$
+\hat\beta_0 = \bar y - \hat\beta_1\bar x
+$$ $$
+\hat\beta_1 = \frac{\sum^n_{i=1}(y_i-\bar y)(x_i-\bar x)}{\sum^n_{i=1}(x_i-\bar x)^2}
+$$ $$
+\hat\sigma^2 = \frac{1}{n-2}\sum^n_{i=1}(y_i-\hat y_i)^2
+$$
+
+# Matrix Formulation
+
+## Matrix Version of Model
+
+$$
+Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
+$$
+
+-   $Y_i$: Outcome Variable
+
+-   $\boldsymbol X_i=(1, X_i)^\mathrm T$: Predictors
+
+-   $\boldsymbol \beta = (\beta_0, \beta_1)^\mathrm T$: Coefficients
+
+-   $\epsilon_i$: error term
+
+## Data Matrix Formulation
+
+For $n$ data points
+
+$$
+\boldsymbol Y = \boldsymbol X^\mathrm T\boldsymbol \beta + \boldsymbol \epsilon
+$$
+
+-   $\boldsymbol Y = (Y_1, \cdots, Y_n)^\mathrm T$: Outcome Variable
+
+-   $\boldsymbol X=(\boldsymbol X_1, \cdots, \boldsymbol X_n)^\mathrm T$: Predictors
+
+-   $\boldsymbol \beta = (\beta_0, \beta_1)^\mathrm T$: Coefficients
+
+-   $\boldsymbol \epsilon = (\epsilon_1, \cdots, \epsilon_n)^\mathrm T$: Error terms
+
+## Least Squares Formula
+
+$$
+(Y - \boldsymbol X ^\mathrm T\boldsymbol \beta)^\mathrm T(Y - \boldsymbol X ^\mathrm T\boldsymbol \beta)
+$$
+
+## Estimates
+
+$$
+\hat{\boldsymbol \beta} = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1}\boldsymbol X ^\mathrm T\boldsymbol Y
+$$
+
+# Standard Errors
+
+## Estimate for $\sigma^2$
+
+$$
+\hat \sigma^2 = \frac{1}{n-2} \sum^n_{i=1} (Y_i-\boldsymbol X_i^\mathrm T\hat{\boldsymbol \beta})^2
+$$
+
+## Standard Errors of $\beta$'s
+
+$$
+SE(\hat\beta_0)=\sqrt{\frac{\sum^n_{i=1}x_i^2\hat\sigma^2}{n\sum^n_{i=1}(x_i-\bar x)^2}}
+$$
+
+$$
+SE(\hat\beta_1)=\sqrt\frac{\hat\sigma^2}{\sum^n_{i=1}(x_i-\bar x)^2}
+$$
+
+## Standard Errors Matrix Form
+
+$$
+Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \hat \sigma^2
+$$
+
+# R approaches
+
+## Built in Functions
+
+You can use the `lm` to fit a linear model and extract the estimated values and standard errors
+
+## Matrix Formulation
+
+R is capable of conducting matrix operations with the following functions:
+
+-   `%*%`: matrix multiplication
+
+-   `t()`: transpose a matrix
+
+-   `solve()`: computes the inverse matrix
+
+## Minimization Problem
+
+Minimize the least squares using a numerical methods in R. The `optim()` function will minimize a function for set of parameters. We can minimize a function, least squares function, and supply initial values (0) for the parameters of interest.
+
+## Fit a Line using `lm` for the following data
 
 ```{r}
-#| echo: true
-#| eval: false
-library(palmerpenguins)
-penguins %<>% drop_na
-penguins %$% lm(body_mass_g ~ flipper_length_mm)
-penguins %$% lm(flipper_length_mm ~ body_mass_g)
+x <- rpois(500, 6)
+y <- -9 * x + 32 + rnorm(500, sd = sqrt(2))
+lm_res <- lm(y ~ x) 
+summary(lm_res)
+sqrt(vcov(lm_res))
+sigma(lm_res)^2
+
 ```
 
-## Correlation vs Causation
-
-Looking at `body_mass_g` and `flipper_length_mm`
+## Fit a linear model using matrix operation
 
 ```{r}
-#| echo: true
-#| eval: true
-library(palmerpenguins)
-penguins %<>% drop_na
-penguins %$% lm(body_mass_g ~ flipper_length_mm)
-penguins %$% lm(flipper_length_mm ~ body_mass_g)
+X <- cbind(rep(1, 500), x)
+solve(t(X)%*%X) %*% t(X) %*% y  
 ```
 
-## Correlation vs Causation
+## Minimizing function using `optim`
 
-In observation studies, we cannot claim any one factor causes an outcome. At best we can claim things are associated with each other. To determine causation, a criteria is followed, randomized-controlled trials, or causal inference methods.
+Find the value of x and y that will minimize the following function for any value a and b.
 
-# Confounding Variables
-
-## Confounding Variables
-
-Confounding variables are tertiary variables that may cause an association between two variables when one does not exist.
-
-## Confounding Variable Example
-
-As ice cream sales increase, the number of shark attacks increase.
-
-## Confounding Variables
-
-![Source: Statology](img/confound2.png){fig-alt="Showing how confounding variables are related to both the independent and dependent variable." fig-align="center"}
-
-## Simulation example
+$$
+f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
+$$
 
 ```{r}
-#| echo: true
-z <- rnorm(1000, mean = 8)
-xy <- sapply(z, \(.) mvtnorm::rmvnorm(1000, .*c(1,1), 
-                                      matrix(c(1,0,0,1), nrow = 2)))
-lm(xy[1,]~xy[2,]) %>% summary
-lm(xy[1,]~xy[2,] + z) %>% summary
+para <- function(x,a,b){
+x[1]^2/a^2 + x[2]^2/b^2  
+}
+optim(c(0,0), para, a=3, b=3)
 ```
 
-## Simulation Example
+## Fit a linear model using `optim`
 
 ```{r}
-#| echo: true
-#| eval: true
-z <- rnorm(1000, mean = 8)
-xy <- sapply(z, \(.) mvtnorm::rmvnorm(1000, .*c(1,1), 
-                                      matrix(c(1,0,0,1), nrow = 2)))
-lm(xy[1,]~xy[2,]) %>% summary
-lm(xy[1,]~xy[2,] + z) %>% summary
-```
-
-## Activity
-
-Come up with examples that may have confounding variables.
-
-## Confounding Variables
-
-How would we adjust for confounding variables?
-
-# Interaction Terms
-
-## Interaction Terms
-
-An interaction occurs when the independent variable effect on an outcome variable varies based on a value of a third variable.
-
-## Interaction Terms
-
-```{r}
-#| eval: true
-#| echo: true
-x <- rnorm(1000, mean = 8)
-z <- sample(c(0,1), 1000, replace = T)
-y <- -4 + 3 * x - 5 * z + x*z + rnorm(1000, 2)
-df <- tibble(x, y, z)
-ggplot(df, aes(x,y)) + geom_point()+
-  geom_smooth(method = "lm", se = F) +
-  theme_bw()
-
-```
-
-## Interaction Terms
-
-```{r}
-#| eval: true
-#| echo: true
-#| warning: false
-#| message: false
-#| error: false
-x <- rnorm(1000, mean = 8)
-z <- sample(c(0,1), 1000, replace = T)
-y <- -4 + 3 * x -5 * z + x*z + rnorm(1000, 2)
-df <- tibble(x, y, z)
-ggplot(df, aes(x,y, color = z)) + geom_point()+
-  geom_smooth(method = "lm", se = F) +
-  geom_smooth(aes(group=z), method = "lm", se =F) +
-  theme_bw()
-```
-
-## Interaction Terms
-
-```{r}
-#| echo: true
-x <- rnorm(1000, mean = 8)
-z <- sample(c(0,1), 1000, replace = T)
-y <- -4 + 3 * x -5 * z + x*z + rnorm(1000, 2)
-df <- tibble(x, y, z)
-df %$% lm(y ~ x*z)
+sum_sq <- function(x, y, beta){
+  sum((y-beta[1]-beta[2]*x)^2)
+}
+sum_sq(x,y, c(1,2))
+optim(c(0,0), sum_sq, x=x, y=y)
 ```

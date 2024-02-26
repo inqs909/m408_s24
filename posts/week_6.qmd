@@ -1,9 +1,9 @@
 ---
 title: "Week 6"
-date: 02-27-23
+date: 02-26-24
 description: We will begin our discussion on regression.
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,19 +12,19 @@ editor_options:
 
 ### First Lecture
 
+-   Intro to Statistical Learning
+-   Regression
+-   Classification
+
+### Second Lecture
+
 -   Bivariate Associations
 -   Linear Regression
 -   Simulation Study
 
-### Second Lecture
-
--   Estimation Procedures
--   Standard Errors
--   Sampling Distribution
-
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       |        |        |       |
-| 2       |        |        |       |
+| Lecture | Slides                                                         | Videos | Files |
+|---------|----------------------------------------------------------------|--------|-------|
+| 1       | [Slides](https://m408.inqs.info/lectures/5a.html#/title-slide) |        |       |
+| 2       |                                                                |        |       |

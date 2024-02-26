@@ -74,8 +74,8 @@ Measuring the association between species and flipper length from `palmerpenguin
 ```{r}
 #| echo: true
 # Stratification
-penguins %>% drop_na %>%
-  group_by(species) %>% 
+penguins |>  drop_na()  |> 
+  group_by(species) |>  
   summarise(mean = mean(flipper_length_mm),
             median = median(flipper_length_mm))
 # ANOVA
@@ -91,11 +91,11 @@ Comparing 2 categorical variables can be done by computing proportions or conduc
 #| echo: true
 
 # Count and Proportions
-penguins %>% group_by(species, island) %>% 
+penguins |>  group_by(species, island) |> 
   summarise(count = n(), proportions = n() / nrow(penguins))
 
 # Chi-Square Test
-penguins %$% chisq.test(species, island) 
+penguins |> with(chisq.test(species, island))
 
 ```
 
@@ -123,20 +123,28 @@ Correlations measures the association between 2 continuous random variables.
 #| message: false
 
 # Pearson's Correlation
-penguins %>% drop_na %$% cor.test(body_mass_g, flipper_length_mm)
+penguins |> drop_na() |> cor.test(~ body_mass_g + flipper_length_mm, 
+                                  data = _)
 
 # Spearman's Correlation 
-penguins %>% drop_na %$% cor.test(body_mass_g, flipper_length_mm, method = "spearman")
+penguins |>  drop_na() |> cor.test(~ body_mass_g + flipper_length_mm,
+                                   data = _,
+                                   method = "spearman")
 
 # Kendall's Tau
-penguins %>% drop_na %$% cor.test(body_mass_g, flipper_length_mm, method = "kendall")
+penguins |>  drop_na() |> cor.test(~ body_mass_g + flipper_length_mm,
+                                   data = _,
+                                   method = "kendall")
 
 ```
 
 ## Scatter Plot
 
 ```{r}
-ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + geom_point() + theme_bw()
+penguins |> 
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) + 
+  geom_point() + 
+  theme_bw()
 ```
 
 # Linear Regression
@@ -148,7 +156,9 @@ Linear regression is used to model the association between a set of predictor va
 ## Scatter Plot
 
 ```{r}
-ggplot(df, aes(x = x, y = y)) + geom_point() + theme_bw()
+ggplot(df, aes(x = x, y = y)) + 
+  geom_point() + 
+  theme_bw()
 ```
 
 ## Simple Linear Regression
@@ -195,11 +205,7 @@ Applying a linear regression model to `body_mass_g` (Predictor) and `flipper_len
 ```{r}
 #| echo: true
 
-# summary(lm(flipper_length_mm ~ body_mass_g, data = penguins))
-
-# OR
-
-penguins %$% lm(flipper_length_mm ~ body_mass_g) %>% summary
+penguins |> lm(flipper_length_mm ~ body_mass_g, data = _) |> summary()
 ```
 
 ## Scatter Plot
@@ -208,7 +214,8 @@ penguins %$% lm(flipper_length_mm ~ body_mass_g) %>% summary
 #| echo: true
 #| warning: false
 #| message: false
-ggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) + geom_point() + 
+ggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) +   
+  geom_point() + 
   geom_smooth(method = "lm") +
   theme_bw()
 ```
@@ -255,7 +262,7 @@ $$
 Y_i = 3 X_i + 20 + \epsilon_i
 $$
 
-Create Scatter Plot
+Create a scatter plot
 
 ## Fit Model
 

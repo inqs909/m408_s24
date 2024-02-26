@@ -228,7 +228,7 @@ Simulate 250 independent values (x) from $N(3, 1)$ and plot a histogram
 
 ```{r}
 #| echo: true
-x <- rnorm(205, 1)
+x <- rnorm(205, 3, 1)
 ```
 
 ## Generate Y Values

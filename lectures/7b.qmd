@@ -254,8 +254,8 @@ The variance inflation factor is a measurement on how much variables are colline
 ```{r}
 #| eval: true
 #| echo: true
-x_lm <- iris %$% lm(Petal.Length ~ Sepal.Length + Sepal.Width) %T>% 
-  (\(.) print(summary(.)))
+x_lm <- iris |> lm(Petal.Length ~ Sepal.Length + Sepal.Width, data = _) 
+x_lm |> summary()
 
 ```
 
@@ -284,10 +284,11 @@ df_resid <- tibble(obs = 1:nrow(x_lm$model),
 #| echo: true
 #| eval: true
 
-ggplot(df_resid, aes(fitted, resid)) + geom_point() +
-  geom_hline(yintercept = 0) +
-  geom_smooth(se = F) +
-  theme_bw()
+df_resid |> 
+  ggplot(aes(fitted, resid)) + geom_point() +
+    geom_hline(yintercept = 0) +
+    geom_smooth(se = F) +
+    theme_bw()
 
 ```
 
@@ -297,9 +298,12 @@ ggplot(df_resid, aes(fitted, resid)) + geom_point() +
 #| echo: true
 #| eval: true
 
-ggplot(df_resid, aes(sample = resid)) + stat_qq() +
-  stat_qq_line() +
-  theme_bw()
+
+df_resid |> 
+  ggplot(aes(sample = resid)) + 
+    stat_qq() +
+    stat_qq_line() +
+    theme_bw()
 ```
 
 ## Residuals vs X
@@ -308,15 +312,17 @@ ggplot(df_resid, aes(sample = resid)) + stat_qq() +
 #| echo: true
 #| eval: true
 
-ggplot(df_resid, aes(Sepal.Length, resid)) + geom_point() +
-  geom_hline(yintercept = 0) +
-  stat_smooth(se = F) +
-  theme_bw()
+df_resid |> 
+  ggplot(aes(Sepal.Length, resid)) + geom_point() +
+    geom_hline(yintercept = 0) +
+    stat_smooth(se = F) +
+    theme_bw()
 
-ggplot(df_resid, aes(Sepal.Width, resid)) + geom_point() +
-  geom_hline(yintercept = 0) +
-  stat_smooth(se = F) +
-  theme_bw()
+df_resid |> 
+  ggplot(aes(Sepal.Width, resid)) + geom_point() +
+    geom_hline(yintercept = 0) +
+    stat_smooth(se = F) +
+    theme_bw()
 
 ```
 
@@ -326,8 +332,9 @@ ggplot(df_resid, aes(Sepal.Width, resid)) + geom_point() +
 #| echo: true
 #| eval: true
 
-ggplot(df_resid, aes(obs, jackknife)) + geom_point() +
-  theme_bw()
+df_resid |> 
+  ggplot(aes(obs, jackknife)) + geom_point() +
+    theme_bw()
 
 ```
 
@@ -337,8 +344,9 @@ ggplot(df_resid, aes(obs, jackknife)) + geom_point() +
 #| echo: true
 #| eval: true
 
-ggplot(df_resid, aes(obs, hatvals)) + geom_point() +
-  theme_bw()
+df_resid |> 
+  ggplot(aes(obs, hatvals)) + geom_point() +
+    theme_bw()
 
 ```
 
@@ -348,8 +356,10 @@ ggplot(df_resid, aes(obs, hatvals)) + geom_point() +
 #| echo: true
 #| eval: true
 
-ggplot(df_resid, aes(obs, cooks)) + geom_point() +
-  theme_bw()
+df_resid |> 
+  ggplot(aes(obs, cooks)) + 
+    geom_point() +
+    theme_bw()
 
 ```
 
@@ -360,6 +370,14 @@ ggplot(df_resid, aes(obs, cooks)) + geom_point() +
 #| echo: true
 #| eval: true
 library(car)
-iris %$% cor(Sepal.Length, Sepal.Width)
+iris |>  with(cor(Sepal.Length, Sepal.Width))
 vif(x_lm)
 ```
+
+## Example
+
+The `taylor` package contains the `taylor_all_songs` data frame with information on all of Taylor Swift's Songs. Fit a linear regression model and run a residual analysis on the following equation:
+
+$$
+danceability = energy\ +\ speechiness\ +\ acousticness\ +\ instrumentalness 
+$$

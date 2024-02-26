@@ -331,7 +331,7 @@ Unsupervised Machine Learning techniques are techniques where the training data 
 ## Quality of Fit: Regression
 
 $$
-MSE = \frac{1}{n}\sum^n_{i=1}\{y_i - f(\boldsymbol x_i)\}^2
+MSE = \frac{1}{n}\sum^n_{i=1}\{y_i - \hat f(\boldsymbol x_i)\}^2
 $$
 
 ## Quality of Fit: Classification
@@ -358,3 +358,83 @@ ggplot(sm_df, aes(x = x, y = fit)) +
 ```
 
 ## Bias-Variance Tradeoff
+
+
+$$
+E(MSE) = E\left\{y-\hat f(x)\right\}^2 = Var\left\{\hat f(x)\right\} + Bias\left\{\hat f(x)\right\}^2 
+$$
+
+## Example
+
+```{r}
+#| echo: false
+x <- runif(100, 0, 10)
+y <- 3 * x^2 - 5*x + 3 + rnorm(100, sd = 15)
+data.frame(x, y) |>
+  ggplot(aes(x, y)) +
+  geom_point() +
+  # stat_smooth() +
+  theme_bw()
+
+```
+
+## Using a Line
+
+```{r}
+#| echo: false
+x <- runif(100, 0, 10)
+y <- 3 * x^2 - 5*x + 3 + rnorm(100, sd = 15)
+data.frame(x, y) |>
+  ggplot(aes(x, y)) +
+  geom_point() +
+  stat_smooth(method = "lm") +
+  theme_bw()
+
+```
+
+## Using a Highly Fleible Model
+
+```{r}
+#| echo: false
+x <- runif(100, 0, 10)
+y <- 3 * x^2 - 5*x + 3 + rnorm(100, sd = 15)
+data.frame(x, y) |>
+  ggplot(aes(x, y)) +
+  geom_point() +
+  stat_smooth(method = "loess", span = 0.075) +
+  theme_bw()
+
+```
+
+## Semi-Flexible
+
+```{r}
+#| echo: false
+x <- runif(100, 0, 10)
+y <- 3 * x^2 - 5*x + 3 + rnorm(100, sd = 15)
+data.frame(x, y) |>
+  ggplot(aes(x, y)) +
+  geom_point() +
+  stat_smooth() +
+  theme_bw()
+
+```
+
+## All
+
+```{r}
+#| code-fold: true
+x <- runif(100, 0, 10)
+y <- 3 * x^2 - 5*x + 3 + rnorm(100, sd = 15)
+data.frame(x, y) |>
+  ggplot(aes(x, y)) +
+  geom_point() +
+  stat_smooth(method = "lm", 
+              color = "skyblue4", fill = "skyblue2") +
+  stat_smooth(method = "loess", span = 0.075, 
+              color = "springgreen4", fill = "springgreen2") +
+  stat_smooth(color = "violetred", fill = "violet") +
+  theme_bw()
+
+```
+

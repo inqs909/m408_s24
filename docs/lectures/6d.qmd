@@ -187,7 +187,11 @@ Minimize the least squares using a numerical methods in R. The `optim()` functio
 ```{r}
 x <- rpois(500, 6)
 y <- -9 * x + 32 + rnorm(500, sd = sqrt(2))
-lm_res <- lm(y ~ x) %T>% (\(x) print(summary(x))) %T>% (\(x) print(sigma(x)^2))
+lm_res <- lm(y ~ x) 
+summary(lm_res)
+sqrt(vcov(lm_res))
+sigma(lm_res)^2
+
 ```
 
 ## Fit a linear model using matrix operation
