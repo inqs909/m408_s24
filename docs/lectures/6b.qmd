@@ -180,14 +180,124 @@ $$
 \hat Y = \hat \beta_0 + \hat \beta_1 X
 $$
 
+## Process
+
+![](img/6b1.gif){fig-align="center"}
 
 ## Process
 
 ```{r}
+fit <- df |> lm(y ~ x, data = _)
+df$pred <- predict(fit, df)
+
 df |> 
   ggplot(aes(x = x, y = y)) + 
-    geom_point() +
+    geom_point(size = 2) +
+    geom_segment(aes(x=x,xend=x,y=y,yend=pred))+
     stat_smooth(method = "lm", se = F)
+```
+
+
+## Sums of Error Squared
+
+$$
+RSS = \sum^n_{i=1}(Y_i-\hat Y_i)^2
+$$
+
+## Searching
+
+```{r}
+finderr <- function(x,m,b){
+  m*x + b
+}
+a <- 2.4395
+b <- 1.363008
+df$pred <- finderr(df$x, a, b) 
+rss <- sum((df$y - df$pred)^2)
+df |> 
+  ggplot(aes(x = x, y = y)) + 
+    geom_point(size = 2) +
+    geom_segment(aes(x=x,xend=x,y=y,yend=pred))+    
+    geom_abline(slope = a,
+                intercept = b) +
+    annotate("text", x = 2.75, y = 16, label = paste0("RSS: ", round(rss,2)))
+
+```
+
+## Searching
+
+```{r}
+finderr <- function(x,m,b){
+  m*x + b
+}
+
+a <- -0.15341
+b <- 10.9204
+
+df$pred <- finderr(df$x, a, b) 
+rss <- sum((df$y - df$pred)^2)
+df |> 
+  ggplot(aes(x = x, y = y)) + 
+    geom_point(size = 2) +
+    geom_segment(aes(x=x,xend=x,y=y,yend=pred))+    
+    geom_abline(slope = a,
+                intercept = b) +
+    annotate("text", x = 2.75, y = 16, label = paste0("RSS: ", round(rss,2)))
+
+```
+
+## Searching
+
+```{r}
+finderr <- function(x,m,b){
+  m*x + b
+}
+a <- 2.0073747
+b <- 2.955920
+df$pred <- finderr(df$x, a, b) 
+rss <- sum((df$y - df$pred)^2)
+df |> 
+  ggplot(aes(x = x, y = y)) + 
+    geom_point(size = 2) +
+    geom_segment(aes(x=x,xend=x,y=y,yend=pred))+    
+    geom_abline(slope = a,
+                intercept = b) +
+    annotate("text", x = 2.75, y = 16, label = paste0("RSS: ", round(rss,2)))
+
+```
+
+## Searching
+
+```{r}
+finderr <- function(x,m,b){
+  m*x + b
+}
+a <- 1.575194
+b <- 4.548833
+df$pred <- finderr(df$x, a, b) 
+rss <- sum((df$y - df$pred)^2)
+df |> 
+  ggplot(aes(x = x, y = y)) + 
+    geom_point(size = 2) +
+    geom_segment(aes(x=x,xend=x,y=y,yend=pred))+    
+    geom_abline(slope = a,
+                intercept = b) +
+    annotate("text", x = 2.75, y = 16, label = paste0("RSS: ", round(rss,2)))
+
+```
+
+## Final
+
+```{r}
+fit <- df |> lm(y ~ x, data = _)
+df$pred <- predict(fit, df)
+rss <- sum(resid(fit)^2)
+df |> 
+  ggplot(aes(x = x, y = y)) + 
+    geom_point(size = 2) +
+    geom_segment(aes(x=x,xend=x,y=y,yend=pred))+
+    stat_smooth(method = "lm", se = F) +
+    annotate("text", x = 2.75, y = 16, label = paste0("RSS: ", round(rss,2)))
 ```
 
 

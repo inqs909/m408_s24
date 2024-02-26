@@ -41,6 +41,10 @@ editor: source
 
 -   Model Adequacy
 
+## Book
+
+![](https://images.squarespace-cdn.com/content/v1/5ff2adbe3fe4fe33db902812/1611294680091-25SIDM9AHA8ECIFFST23/Screen+Shot+2021-01-21+at+11.02.06+AM.png){fig-align="center"}
+
 # Introduction to Statistical Learning
 
 ## Introduction to Statistical Learning
@@ -359,7 +363,6 @@ ggplot(sm_df, aes(x = x, y = fit)) +
 
 ## Bias-Variance Tradeoff
 
-
 $$
 E(MSE) = E\left\{y-\hat f(x)\right\}^2 = Var\left\{\hat f(x)\right\} + Bias\left\{\hat f(x)\right\}^2 
 $$
@@ -437,4 +440,3 @@ data.frame(x, y) |>
   theme_bw()
 
 ```
-

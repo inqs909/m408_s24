@@ -1,7 +1,7 @@
 ---
 title: "Week 6"
 date: 02-26-24
-description: We will begin our discussion on regression.
+description: We will begin our discussion on statistical learning.
 editor: visual
 draft: false
 editor_options: 
@@ -25,6 +25,6 @@ editor_options:
 ## Resources
 
 | Lecture | Slides                                                         | Videos | Files |
-|---------|----------------------------------------------------------------|--------|-------|
-| 1       | [Slides](https://m408.inqs.info/lectures/5a.html#/title-slide) |        |       |
+|----------|------------------------------------------|----------|----------|
+| 1       | [Slides](https://m408.inqs.info/lectures/6a.html#/title-slide) |        |       |
 | 2       |                                                                |        |       |
