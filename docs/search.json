@@ -32,7 +32,7 @@
     "href": "posts/week_6.html#resources",
     "title": "Week 6",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
   },
   {
     "objectID": "posts/week_4.html",
@@ -630,11 +630,18 @@
     "text": "Minimizing function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x,y) = \\frac{(x-3)^2}{a^2} + \\frac{(y+4)^2}{b^2}\n\\]"
   },
   {
+    "objectID": "lectures/7a.html#minimizing-function-using-optim-1",
+    "href": "lectures/7a.html#minimizing-function-using-optim-1",
+    "title": "Linear Regression",
+    "section": "Minimizing function using optim",
+    "text": "Minimizing function using optim\nFind the value of \\(\\lambda\\) that minimize the following function:\n\\[\n\\ell(\\lambda) = \\sum^n_{i=1} -\\lambda+X_i\\log(\\lambda) -\\log(X_i!)\n\\]\nwith the following data:"
+  },
+  {
     "objectID": "lectures/7a.html#fit-a-linear-model-using-optim",
     "href": "lectures/7a.html#fit-a-linear-model-using-optim",
     "title": "Linear Regression",
     "section": "Fit a linear model using optim",
-    "text": "Fit a linear model using optim"
+    "text": "Fit a linear model using optim\nMinimize:\n\\[\n\\sum^n_{i=1}(y_i-\\hat y_i)^2\n\\]\n\\[\n\\hat y_i = \\hat \\beta_0 +\\hat\\beta_1 x_i\n\\]"
   },
   {
     "objectID": "lectures/6c.html#learning-objectives",
@@ -3903,7 +3910,7 @@
     "href": "lectures/6b.html#r-example",
     "title": "Linear Regression",
     "section": "R Example",
-    "text": "R Example\nApplying a linear regression model to body_mass_g (Predictor) and flipper_length_mm (Outcome) from penguins:\n\nR OutputScatter Plot\n\n\n\npenguins |&gt; \n  lm(flipper_length_mm ~ body_mass_g, \n     data = _) |&gt; \n  summary()\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = flipper_length_mm ~ body_mass_g, data = penguins)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -23.7626  -4.9138   0.9891   5.1166  16.6392 \n#&gt; \n#&gt; Coefficients:\n#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept) 1.367e+02  1.997e+00   68.47   &lt;2e-16 ***\n#&gt; body_mass_g 1.528e-02  4.668e-04   32.72   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 6.913 on 340 degrees of freedom\n#&gt;   (2 observations deleted due to missingness)\n#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 \n#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\npenguins |&gt; \n  ggplot(aes(y = flipper_length_mm, x = body_mass_g)) +   \n    geom_point() + \n    geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\nInterpretation\n\\[\n\\hat y = 136.73 + 0.015 x\n\\]"
+    "text": "R Example\nApplying a linear regression model to body_mass_g (Predictor) and flipper_length_mm (Outcome) from penguins:\n\nR OutputScatter Plot\n\n\n\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = flipper_length_mm ~ body_mass_g, data = penguins)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -23.7626  -4.9138   0.9891   5.1166  16.6392 \n#&gt; \n#&gt; Coefficients:\n#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept) 1.367e+02  1.997e+00   68.47   &lt;2e-16 ***\n#&gt; body_mass_g 1.528e-02  4.668e-04   32.72   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 6.913 on 340 degrees of freedom\n#&gt;   (2 observations deleted due to missingness)\n#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 \n#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation\n\\[\n\\hat y = 136.73 + 0.015 x\n\\]"
   },
   {
     "objectID": "lectures/6b.html#simulation-example",
@@ -3917,7 +3924,7 @@
     "href": "lectures/6b.html#generate-x-values",
     "title": "Linear Regression",
     "section": "Generate X Values",
-    "text": "Generate X Values\nSimulate 250 independent values (x) from \\(N(3, 1)\\) and plot a histogram\n\nx &lt;- rnorm(205, 3, 1)"
+    "text": "Generate X Values\nSimulate 250 independent values (x) from \\(N(3, 1)\\) and plot a histogram\n\nx &lt;- rnorm(250, 3, 1)"
   },
   {
     "objectID": "lectures/6b.html#generate-y-values",
@@ -3953,6 +3960,13 @@
     "title": "Linear Regression",
     "section": "Simulation Study",
     "text": "Simulation Study\nTo confirm that lm works, repeat the process 100 times and obtain the average \\(\\beta\\) estimates:\n\nGenerate 250 X values\nCreate Y Value\nAdd error term\nFit Model\nStore Values"
+  },
+  {
+    "objectID": "lectures/6b.html#simulation-study-1",
+    "href": "lectures/6b.html#simulation-study-1",
+    "title": "Linear Regression",
+    "section": "Simulation Study",
+    "text": "Simulation Study\nConduct a simulation study with this model:\n\\[\nY_i = 8 X_i^2 - 4 X_i + 11 + \\epsilon_i\n\\] \\[\n\\epsilon_i \\sim N(0, 0.8)\n\\]\nSimulat"
   },
   {
     "objectID": "lectures/6d.html#learning-objectives",

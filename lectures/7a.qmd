@@ -211,17 +211,33 @@ $$
 
 ```{r}
 para <- function(x,a,b){
-x[1]^2/a^2 + x[2]^2/b^2  
+(x[1]-a)^2/a^2 + (x[2]-b)^2/b^2  
 }
-optim(c(0,0), para, a=3, b=3)
+optim(c(0,0), para, a=3, b=-4)
+```
+
+## Minimizing function using `optim`
+
+Find the value of $\lambda$ that minimize the following function:
+
+$$
+\ell(\lambda) = \sum^n_{i=1} -\lambda+X_i\log(\lambda) -\log(X_i!)
+$$
+
+with the following data:
+
+```{r}
+z <- rpois(100, lambda = 2)
 ```
 
 ## Fit a linear model using `optim`
 
-```{r}
-sum_sq <- function(x, y, beta){
-  sum((y-beta[1]-beta[2]*x)^2)
-}
-sum_sq(x,y, c(1,2))
-optim(c(0,0), sum_sq, x=x, y=y)
-```
+Minimize:
+
+$$
+\sum^n_{i=1}(y_i-\hat y_i)^2
+$$
+
+$$
+\hat y_i = \hat \beta_0 +\hat\beta_1 x_i
+$$

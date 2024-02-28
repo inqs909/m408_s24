@@ -638,10 +638,6 @@ RSS = \sum^n_{i=1}(Y_i-\hat Y_i)^2
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">lm</span>(flipper_length_mm <span class="sc">~</span> body_mass_g, </span>
-<span id="cb16-3"><a href="#cb16-3"></a>     <span class="at">data =</span> _) <span class="sc">|&gt;</span> </span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -667,10 +663,6 @@ RSS = \sum^n_{i=1}(Y_i-\hat Y_i)^2
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> flipper_length_mm, <span class="at">x =</span> body_mass_g)) <span class="sc">+</span>   </span>
-<span id="cb18-3"><a href="#cb18-3"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb18-4"><a href="#cb18-4"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -694,7 +686,7 @@ RSS = \sum^n_{i=1}(Y_i-\hat Y_i)^2
 <h2>Generate X Values</h2>
 <p>Simulate 250 independent values (x) from <span class="math inline">\(N(3, 1)\)</span> and plot a histogram</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">205</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="generate-y-values" class="slide level2">
@@ -731,6 +723,16 @@ Y_i = 3 X_i + 20 + \epsilon_i
 <li>Fit Model</li>
 <li>Store Values</li>
 </ol>
+</section>
+<section id="simulation-study-1" class="slide level2">
+<h2>Simulation Study</h2>
+<p>Conduct a simulation study with this model:</p>
+<p><span class="math display">\[
+Y_i = 8 X_i^2 - 4 X_i + 11 + \epsilon_i
+\]</span> <span class="math display">\[
+\epsilon_i \sim N(0, 0.8)
+\]</span></p>
+<p>Simulat</p>
 
 <div class="footer footer-default">
 

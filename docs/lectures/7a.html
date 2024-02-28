@@ -491,8 +491,23 @@ Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \ha
 f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
 \]</span></p>
 </section>
+<section id="minimizing-function-using-optim-1" class="slide level2">
+<h2>Minimizing function using <code>optim</code></h2>
+<p>Find the value of <span class="math inline">\(\lambda\)</span> that minimize the following function:</p>
+<p><span class="math display">\[
+\ell(\lambda) = \sum^n_{i=1} -\lambda+X_i\log(\lambda) -\log(X_i!)
+\]</span></p>
+<p>with the following data:</p>
+</section>
 <section id="fit-a-linear-model-using-optim" class="slide level2">
 <h2>Fit a linear model using <code>optim</code></h2>
+<p>Minimize:</p>
+<p><span class="math display">\[
+\sum^n_{i=1}(y_i-\hat y_i)^2
+\]</span></p>
+<p><span class="math display">\[
+\hat y_i = \hat \beta_0 +\hat\beta_1 x_i
+\]</span></p>
 
 <div class="footer footer-default">
 

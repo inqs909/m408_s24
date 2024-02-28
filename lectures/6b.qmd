@@ -323,7 +323,7 @@ Applying a linear regression model to `body_mass_g` (Predictor) and `flipper_len
 ## R Output
 
 ```{r}
-#| echo: true
+#| code-fold: true
 
 penguins |> 
   lm(flipper_length_mm ~ body_mass_g, 
@@ -334,11 +334,11 @@ penguins |>
 ## Scatter Plot
 
 ```{r}
-#| echo: true
+#| code-fold: true
 #| warning: false
 #| message: false
 penguins |> 
-  ggplot(aes(y = flipper_length_mm, x = body_mass_g)) +   
+  ggplot(aes(y = flipper_length_mm, x = body_mass_g)) + 
     geom_point() + 
     geom_smooth(method = "lm")
 ```
@@ -358,7 +358,7 @@ Simulate 250 independent values (x) from $N(3, 1)$ and plot a histogram
 
 ```{r}
 #| echo: true
-x <- rnorm(205, 3, 1)
+x <- rnorm(250, 3, 1)
 ```
 
 ## Generate Y Values
@@ -398,3 +398,16 @@ To confirm that `lm` works, repeat the process 100 times and obtain the average 
 3.  Add error term
 4.  Fit Model
 5.  Store Values
+
+## Simulation Study
+
+Conduct a simulation study with this model:
+
+$$
+Y_i = 8 X_i^2 - 4 X_i + 11 + \epsilon_i
+$$
+$$
+\epsilon_i \sim N(0, 0.8) 
+$$
+
+Simulat
