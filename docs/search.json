@@ -3966,7 +3966,14 @@
     "href": "lectures/6b.html#simulation-study-1",
     "title": "Linear Regression",
     "section": "Simulation Study",
-    "text": "Simulation Study\nConduct a simulation study with this model:\n\\[\nY_i = 8 X_i^2 - 4 X_i + 11 + \\epsilon_i\n\\] \\[\n\\epsilon_i \\sim N(0, 0.8)\n\\]\nSimulat"
+    "text": "Simulation Study\nConduct a simulation study with this model:\n\\[\nY_i = 8 X_i^2 - 4 X_i + 11 + \\epsilon_i\n\\] \\[\n\\epsilon_i \\sim N(0, 0.8)\n\\]"
+  },
+  {
+    "objectID": "lectures/6b.html#generate-the-means",
+    "href": "lectures/6b.html#generate-the-means",
+    "title": "Linear Regression",
+    "section": "Generate the Means",
+    "text": "Generate the Means\nFind the means of the stored values."
   },
   {
     "objectID": "lectures/6d.html#learning-objectives",
