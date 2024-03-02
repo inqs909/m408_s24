@@ -1,6 +1,6 @@
 ---
 title: "Week 7"
-date: 03-5-23
+date: 03-4-24
 description: We will begin our discussion on multiple linear regression.
 editor: visual
 draft: true
@@ -12,15 +12,13 @@ editor_options:
 
 ### First Lecture
 
--   Multiple Linear Regression
--   Continuous Variables
--   Categorical Variables
+-   Estimation Procedures
 
 ### Second Lecture
 
--   Confounding Variables
-
--   Interaction Terms
+-   Multiple Linear Regression
+-   Continuous Variables
+-   Categorical Variables
 
 ## Resources
 

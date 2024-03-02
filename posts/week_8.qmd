@@ -12,11 +12,11 @@ editor_options:
 
 ### First Lecture
 
--   Residual Analysis
+-   Estimation Procedures
 
 ### Second Lecture
 
--   Model Development
+-   Multiple Linear Regression
 
 ## Resources
 

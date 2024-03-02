@@ -373,7 +373,7 @@
 </section>
 <section id="ordinary-least-squares-1" class="slide level2">
 <h2>Ordinary Least Squares</h2>
-<p>For a data pair <span class="math inline">\((X_i,Y_i)_{i=1}^n\)</span>, the ordinary least squares estimator will find the estimates of <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat\beta_1\)</span> that minimize the following function:</p>
+<p>For a data pair <span class="math inline">\((x_i,y_i)_{i=1}^n\)</span>, the ordinary least squares estimator will find the estimates of <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat\beta_1\)</span> that minimize the following function:</p>
 <p><span class="math display">\[
 \sum^n_{i=1}\{y_i-(\beta_0+\beta_1x_i)\}^2
 \]</span></p>
@@ -396,11 +396,11 @@
 <section id="matrix-version-of-model" class="slide level2">
 <h2>Matrix Version of Model</h2>
 <p><span class="math display">\[
-Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
+y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
 \]</span></p>
 <ul>
-<li><p><span class="math inline">\(Y_i\)</span>: Outcome Variable</p></li>
-<li><p><span class="math inline">\(\boldsymbol X_i=(1, X_i)^\mathrm T\)</span>: Predictors</p></li>
+<li><p><span class="math inline">\(y_i\)</span>: Outcome Variable</p></li>
+<li><p><span class="math inline">\(\boldsymbol X_i=(1, x_i)^\mathrm T\)</span>: Predictors</p></li>
 <li><p><span class="math inline">\(\boldsymbol \beta = (\beta_0, \beta_1)^\mathrm T\)</span>: Coefficients</p></li>
 <li><p><span class="math inline">\(\epsilon_i\)</span>: error term</p></li>
 </ul>
@@ -412,7 +412,7 @@ Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
 \boldsymbol Y = \boldsymbol X^\mathrm T\boldsymbol \beta + \boldsymbol \epsilon
 \]</span></p>
 <ul>
-<li><p><span class="math inline">\(\boldsymbol Y = (Y_1, \cdots, Y_n)^\mathrm T\)</span>: Outcome Variable</p></li>
+<li><p><span class="math inline">\(\boldsymbol Y = (y_1, \cdots, y_n)^\mathrm T\)</span>: Outcome Variable</p></li>
 <li><p><span class="math inline">\(\boldsymbol X=(\boldsymbol X_1, \cdots, \boldsymbol X_n)^\mathrm T\)</span>: Predictors</p></li>
 <li><p><span class="math inline">\(\boldsymbol \beta = (\beta_0, \beta_1)^\mathrm T\)</span>: Coefficients</p></li>
 <li><p><span class="math inline">\(\boldsymbol \epsilon = (\epsilon_1, \cdots, \epsilon_n)^\mathrm T\)</span>: Error terms</p></li>
@@ -438,7 +438,7 @@ Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
 <section id="estimate-for-sigma2" class="slide level2">
 <h2>Estimate for <span class="math inline">\(\sigma^2\)</span></h2>
 <p><span class="math display">\[
-\hat \sigma^2 = \frac{1}{n-2} \sum^n_{i=1} (Y_i-\boldsymbol X_i^\mathrm T\hat{\boldsymbol \beta})^2
+\hat \sigma^2 = \frac{1}{n-2} \sum^n_{i=1} (y_i-\boldsymbol X_i^\mathrm T\hat{\boldsymbol \beta})^2
 \]</span></p>
 </section>
 <section id="standard-errors-of-betas" class="slide level2">
@@ -484,6 +484,20 @@ Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \ha
 <section id="fit-a-linear-model-using-matrix-operation" class="slide level2">
 <h2>Fit a linear model using matrix operation</h2>
 </section>
+<section id="minimizing-a-function-using-optim" class="slide level2">
+<h2>Minimizing a function using <code>optim</code></h2>
+<p>Find the value of x and y that will minimize the following function for any value a and b.</p>
+<p><span class="math display">\[
+f(x) = 2(x - 5)^2 + 11
+\]</span></p>
+</section>
+<section id="maximizing-a-function-using-optim" class="slide level2">
+<h2>Maximizing a function using <code>optim</code></h2>
+<p>Find the value of x and y that will minimize the following function for any value a and b.</p>
+<p><span class="math display">\[
+f(x) = - 3 (x - 8)^2 + 9
+\]</span></p>
+</section>
 <section id="minimizing-function-using-optim" class="slide level2">
 <h2>Minimizing function using <code>optim</code></h2>
 <p>Find the value of x and y that will minimize the following function for any value a and b.</p>
@@ -491,9 +505,9 @@ Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \ha
 f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
 \]</span></p>
 </section>
-<section id="minimizing-function-using-optim-1" class="slide level2">
-<h2>Minimizing function using <code>optim</code></h2>
-<p>Find the value of <span class="math inline">\(\lambda\)</span> that minimize the following function:</p>
+<section id="maximizing-function-using-optim" class="slide level2">
+<h2>Maximizing function using <code>optim</code></h2>
+<p>Find the value of <span class="math inline">\(\lambda\)</span> that maximize the following function:</p>
 <p><span class="math display">\[
 \ell(\lambda) = \sum^n_{i=1} -\lambda+X_i\log(\lambda) -\log(X_i!)
 \]</span></p>

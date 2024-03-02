@@ -1,27 +1,13 @@
 ---
 title: "Homework 4"
-date: 3/5/23
+date: 3/3/24
 editor: visual
-draft: true
+draft: false
 ---
 
-**Due 3/10/23 \@ 11:59 PM**
+**Due 3/10/24 \@ 11:59 PM**
 
-Use an RMD Notebook file from to create the assignment.
-
-Update `inqstools` for new template format.
-
-```{r}
-#| eval: false
-
-remotes::install_github("inqs909/inqstools")
-```
-
-You will need to knit the document if you use "M408 Alternative".
-
-You must comment all your code to receive credit.
-
-Submit the \*nb.html or \*.html file to canvas.
+Submit the \*.html file to canvas.
 
 ## Problem 1
 

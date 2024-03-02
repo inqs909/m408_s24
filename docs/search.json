@@ -529,7 +529,7 @@
     "href": "lectures/7a.html#ordinary-least-squares-1",
     "title": "Linear Regression",
     "section": "Ordinary Least Squares",
-    "text": "Ordinary Least Squares\nFor a data pair \\((X_i,Y_i)_{i=1}^n\\), the ordinary least squares estimator will find the estimates of \\(\\hat\\beta_0\\) and \\(\\hat\\beta_1\\) that minimize the following function:\n\\[\n\\sum^n_{i=1}\\{y_i-(\\beta_0+\\beta_1x_i)\\}^2\n\\]"
+    "text": "Ordinary Least Squares\nFor a data pair \\((x_i,y_i)_{i=1}^n\\), the ordinary least squares estimator will find the estimates of \\(\\hat\\beta_0\\) and \\(\\hat\\beta_1\\) that minimize the following function:\n\\[\n\\sum^n_{i=1}\\{y_i-(\\beta_0+\\beta_1x_i)\\}^2\n\\]"
   },
   {
     "objectID": "lectures/7a.html#estimates",
@@ -543,14 +543,14 @@
     "href": "lectures/7a.html#matrix-version-of-model",
     "title": "Linear Regression",
     "section": "Matrix Version of Model",
-    "text": "Matrix Version of Model\n\\[\nY_i = \\boldsymbol X_i^\\mathrm T \\boldsymbol \\beta + \\epsilon_i\n\\]\n\n\\(Y_i\\): Outcome Variable\n\\(\\boldsymbol X_i=(1, X_i)^\\mathrm T\\): Predictors\n\\(\\boldsymbol \\beta = (\\beta_0, \\beta_1)^\\mathrm T\\): Coefficients\n\\(\\epsilon_i\\): error term"
+    "text": "Matrix Version of Model\n\\[\ny_i = \\boldsymbol X_i^\\mathrm T \\boldsymbol \\beta + \\epsilon_i\n\\]\n\n\\(y_i\\): Outcome Variable\n\\(\\boldsymbol X_i=(1, x_i)^\\mathrm T\\): Predictors\n\\(\\boldsymbol \\beta = (\\beta_0, \\beta_1)^\\mathrm T\\): Coefficients\n\\(\\epsilon_i\\): error term"
   },
   {
     "objectID": "lectures/7a.html#data-matrix-formulation",
     "href": "lectures/7a.html#data-matrix-formulation",
     "title": "Linear Regression",
     "section": "Data Matrix Formulation",
-    "text": "Data Matrix Formulation\nFor \\(n\\) data points\n\\[\n\\boldsymbol Y = \\boldsymbol X^\\mathrm T\\boldsymbol \\beta + \\boldsymbol \\epsilon\n\\]\n\n\\(\\boldsymbol Y = (Y_1, \\cdots, Y_n)^\\mathrm T\\): Outcome Variable\n\\(\\boldsymbol X=(\\boldsymbol X_1, \\cdots, \\boldsymbol X_n)^\\mathrm T\\): Predictors\n\\(\\boldsymbol \\beta = (\\beta_0, \\beta_1)^\\mathrm T\\): Coefficients\n\\(\\boldsymbol \\epsilon = (\\epsilon_1, \\cdots, \\epsilon_n)^\\mathrm T\\): Error terms"
+    "text": "Data Matrix Formulation\nFor \\(n\\) data points\n\\[\n\\boldsymbol Y = \\boldsymbol X^\\mathrm T\\boldsymbol \\beta + \\boldsymbol \\epsilon\n\\]\n\n\\(\\boldsymbol Y = (y_1, \\cdots, y_n)^\\mathrm T\\): Outcome Variable\n\\(\\boldsymbol X=(\\boldsymbol X_1, \\cdots, \\boldsymbol X_n)^\\mathrm T\\): Predictors\n\\(\\boldsymbol \\beta = (\\beta_0, \\beta_1)^\\mathrm T\\): Coefficients\n\\(\\boldsymbol \\epsilon = (\\epsilon_1, \\cdots, \\epsilon_n)^\\mathrm T\\): Error terms"
   },
   {
     "objectID": "lectures/7a.html#least-squares-formula",
@@ -571,7 +571,7 @@
     "href": "lectures/7a.html#estimate-for-sigma2",
     "title": "Linear Regression",
     "section": "Estimate for \\(\\sigma^2\\)",
-    "text": "Estimate for \\(\\sigma^2\\)\n\\[\n\\hat \\sigma^2 = \\frac{1}{n-2} \\sum^n_{i=1} (Y_i-\\boldsymbol X_i^\\mathrm T\\hat{\\boldsymbol \\beta})^2\n\\]"
+    "text": "Estimate for \\(\\sigma^2\\)\n\\[\n\\hat \\sigma^2 = \\frac{1}{n-2} \\sum^n_{i=1} (y_i-\\boldsymbol X_i^\\mathrm T\\hat{\\boldsymbol \\beta})^2\n\\]"
   },
   {
     "objectID": "lectures/7a.html#standard-errors-of-betas",
@@ -623,6 +623,20 @@
     "text": "Fit a linear model using matrix operation"
   },
   {
+    "objectID": "lectures/7a.html#minimizing-a-function-using-optim",
+    "href": "lectures/7a.html#minimizing-a-function-using-optim",
+    "title": "Linear Regression",
+    "section": "Minimizing a function using optim",
+    "text": "Minimizing a function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x) = 2(x - 5)^2 + 11\n\\]"
+  },
+  {
+    "objectID": "lectures/7a.html#maximizing-a-function-using-optim",
+    "href": "lectures/7a.html#maximizing-a-function-using-optim",
+    "title": "Linear Regression",
+    "section": "Maximizing a function using optim",
+    "text": "Maximizing a function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x) = - 3 (x - 8)^2 + 9\n\\]"
+  },
+  {
     "objectID": "lectures/7a.html#minimizing-function-using-optim",
     "href": "lectures/7a.html#minimizing-function-using-optim",
     "title": "Linear Regression",
@@ -630,11 +644,11 @@
     "text": "Minimizing function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x,y) = \\frac{(x-3)^2}{a^2} + \\frac{(y+4)^2}{b^2}\n\\]"
   },
   {
-    "objectID": "lectures/7a.html#minimizing-function-using-optim-1",
-    "href": "lectures/7a.html#minimizing-function-using-optim-1",
+    "objectID": "lectures/7a.html#maximizing-function-using-optim",
+    "href": "lectures/7a.html#maximizing-function-using-optim",
     "title": "Linear Regression",
-    "section": "Minimizing function using optim",
-    "text": "Minimizing function using optim\nFind the value of \\(\\lambda\\) that minimize the following function:\n\\[\n\\ell(\\lambda) = \\sum^n_{i=1} -\\lambda+X_i\\log(\\lambda) -\\log(X_i!)\n\\]\nwith the following data:"
+    "section": "Maximizing function using optim",
+    "text": "Maximizing function using optim\nFind the value of \\(\\lambda\\) that maximize the following function:\n\\[\n\\ell(\\lambda) = \\sum^n_{i=1} -\\lambda+X_i\\log(\\lambda) -\\log(X_i!)\n\\]\nwith the following data:"
   },
   {
     "objectID": "lectures/7a.html#fit-a-linear-model-using-optim",
@@ -2212,6 +2226,41 @@
     "text": "Brief Introduction\n\n\n\n\n\nWelcome to the course! This is the home page of the course where I will provide a recap on what was covered in the week. Here I will post any documents or videos for your reference. If you have any questions, please email me at isaac.qs@csuci.edu.\n\n\n\n\n\n\n\n\n\nQuarto Template for HW\n\n\n\n\n\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n\n\n\n\n\n\n\n\n\n\nDiscord Server\n\n\n\n\n\nWill post if class creates one.\n\n\n\n\n\n\n\n\n\nIntroduction to Statistics Book\n\n\n\n\n\nhttps://openintro-ims.netlify.app/\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\n\n\n\nWe will begin our discussion on statistical learning.\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\nWeek 5\n\n\n\n\n\nWe will continue and finish our discussion on data manipulation.\n\n\n\n\n\nFeb 18, 2024\n\n\n\n\n\n\n\nWeek 4\n\n\n\n\n\nWe will finish our discussion with functions and begin data manipulation.\n\n\n\n\n\nFeb 11, 2024\n\n\n\n\n\n\n\nWeek 3\n\n\n\n\n\nWe will continue our discussion with control flow and begin our discussion on Functional Programming Analysis.\n\n\n\n\n\nFeb 5, 2024\n\n\n\n\n\n\n\nWeek 2\n\n\n\n\n\nWe will begin our discussion on control flow.\n\n\n\n\n\nJan 29, 2024\n\n\n\n\n\n\n\nWeek 1\n\n\n\n\n\nThis week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.\n\n\n\n\n\nJan 22, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "hw/hw4.html",
+    "href": "hw/hw4.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "Due 3/10/24 @ 11:59 PM\nSubmit the *.html file to canvas."
+  },
+  {
+    "objectID": "hw/hw4.html#problem-1",
+    "href": "hw/hw4.html#problem-1",
+    "title": "Homework 4",
+    "section": "Problem 1",
+    "text": "Problem 1\nThe faithful data set in R contains information on eruptions time and waiting time. Describe the relationship between waiting (independent) and eruptions (dependent).\nYou must provide descriptive statistics, visuals, and model."
+  },
+  {
+    "objectID": "hw/hw4.html#problem-2",
+    "href": "hw/hw4.html#problem-2",
+    "title": "Homework 4",
+    "section": "Problem 2",
+    "text": "Problem 2\nThe cats data set from the MASS package contains information of cat body weight (kg; Bwt) and heart weight (g; Hwt). Fit a model to see if there is a significant association between body weight (predictor) and heart weight (outcome).\nYou must provide descriptive statistics, visuals, and model."
+  },
+  {
+    "objectID": "hw/hw4.html#problem-3",
+    "href": "hw/hw4.html#problem-3",
+    "title": "Homework 4",
+    "section": "Problem 3",
+    "text": "Problem 3\nWhen estimating the \\(\\beta\\) coefficients, we are minimizing the sum of error squares:\n\\[\n\\sum^n_{i=1}(y_i-(\\beta_0+\\beta_1x_i))^2\n\\]\nWe square the errors to make sure we do not lose information when summing up all the values. However, what if we try to use an absolute value:\n\\[\n\\sum^n_{i=1}|y_i-(\\beta_0+\\beta_1x_i)|\n\\]\nSimulate a data set, estimate the coefficients, and compare the results. Are they the same or different?"
+  },
+  {
+    "objectID": "hw/hw4.html#problem-4",
+    "href": "hw/hw4.html#problem-4",
+    "title": "Homework 4",
+    "section": "Problem 4",
+    "text": "Problem 4\nConduct a simulation assessing which case from problem 3 is better.\nTo assess which case is better compare the mean and standard deviations of the simulated-estimated coefficients."
+  },
+  {
     "objectID": "hw/hw2.html",
     "href": "hw/hw2.html",
     "title": "Homework 2",
@@ -2251,7 +2300,7 @@
     "href": "hw.html",
     "title": "Homework",
     "section": "",
-    "text": "Quarto Template for HW\n\n\n\n\n\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\n    embed-resources: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n\n\n\n\nBelow are the different homework assignments for the course. Make sure to upload your assignment as a single file on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 3\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 2\n\n\n\n\n\n\n\n\n\n\n\nFeb 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 1\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "Quarto Template for HW\n\n\n\n\n\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\n    embed-resources: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n\n\n\n\nBelow are the different homework assignments for the course. Make sure to upload your assignment as a single file on Canvas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 4\n\n\n\n\n\n\n\n\n\n\n\nMar 3, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 3\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 2\n\n\n\n\n\n\n\n\n\n\n\nFeb 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nHomework 1\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "exc/exc4.html",

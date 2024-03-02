@@ -78,7 +78,7 @@ df <- tibble(x, y)
 
 ## Ordinary Least Squares
 
-For a data pair $(X_i,Y_i)_{i=1}^n$, the ordinary least squares estimator will find the estimates of $\hat\beta_0$ and $\hat\beta_1$ that minimize the following function:
+For a data pair $(x_i,y_i)_{i=1}^n$, the ordinary least squares estimator will find the estimates of $\hat\beta_0$ and $\hat\beta_1$ that minimize the following function:
 
 $$
 \sum^n_{i=1}\{y_i-(\beta_0+\beta_1x_i)\}^2
@@ -99,12 +99,12 @@ $$
 ## Matrix Version of Model
 
 $$
-Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
+y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
 $$
 
--   $Y_i$: Outcome Variable
+-   $y_i$: Outcome Variable
 
--   $\boldsymbol X_i=(1, X_i)^\mathrm T$: Predictors
+-   $\boldsymbol X_i=(1, x_i)^\mathrm T$: Predictors
 
 -   $\boldsymbol \beta = (\beta_0, \beta_1)^\mathrm T$: Coefficients
 
@@ -118,7 +118,7 @@ $$
 \boldsymbol Y = \boldsymbol X^\mathrm T\boldsymbol \beta + \boldsymbol \epsilon
 $$
 
--   $\boldsymbol Y = (Y_1, \cdots, Y_n)^\mathrm T$: Outcome Variable
+-   $\boldsymbol Y = (y_1, \cdots, y_n)^\mathrm T$: Outcome Variable
 
 -   $\boldsymbol X=(\boldsymbol X_1, \cdots, \boldsymbol X_n)^\mathrm T$: Predictors
 
@@ -143,7 +143,7 @@ $$
 ## Estimate for $\sigma^2$
 
 $$
-\hat \sigma^2 = \frac{1}{n-2} \sum^n_{i=1} (Y_i-\boldsymbol X_i^\mathrm T\hat{\boldsymbol \beta})^2
+\hat \sigma^2 = \frac{1}{n-2} \sum^n_{i=1} (y_i-\boldsymbol X_i^\mathrm T\hat{\boldsymbol \beta})^2
 $$
 
 ## Standard Errors of $\beta$'s
@@ -201,6 +201,36 @@ X <- cbind(rep(1, 500), x)
 solve(t(X)%*%X) %*% t(X) %*% y  
 ```
 
+## Minimizing a function using `optim`
+
+Find the value of x and y that will minimize the following function for any value a and b.
+
+$$
+f(x) = 2(x - 5)^2 + 11 
+$$
+
+```{r}
+d <- function(x){
+  2 * (x - 5) + 11
+}
+optim(0, d)
+```
+
+## Maximizing a function using `optim`
+
+Find the value of x and y that will minimize the following function for any value a and b.
+
+$$
+f(x) = - 3 (x - 8)^2 + 9 
+$$
+
+```{r}
+d <- function(x){
+  2 * (x - 5) + 11
+}
+optim(0, d)
+```
+
 ## Minimizing function using `optim`
 
 Find the value of x and y that will minimize the following function for any value a and b.
@@ -216,9 +246,9 @@ para <- function(x,a,b){
 optim(c(0,0), para, a=3, b=-4)
 ```
 
-## Minimizing function using `optim`
+## Maximizing function using `optim`
 
-Find the value of $\lambda$ that minimize the following function:
+Find the value of $\lambda$ that maximize the following function:
 
 $$
 \ell(\lambda) = \sum^n_{i=1} -\lambda+X_i\log(\lambda) -\log(X_i!)
@@ -227,7 +257,7 @@ $$
 with the following data:
 
 ```{r}
-z <- rpois(100, lambda = 2)
+z <- rpois(1000, lambda = 2)
 ```
 
 ## Fit a linear model using `optim`
