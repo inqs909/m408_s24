@@ -3,7 +3,7 @@ title: "Week 7"
 date: 03-4-24
 description: We will begin our discussion on multiple linear regression.
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
