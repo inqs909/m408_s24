@@ -1,0 +1,178 @@
+---
+title: "Correlation, Confounding, and Interaction Terms"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: false
+    eval: false
+    message: false
+    warnings: false
+    comment: "#>" 
+
+editor: visual
+---
+
+```{r}
+#| include: false
+#| eval: true
+#| label: setup
+
+library(DT)
+library(tidyverse)
+library(GLMsData)
+library(broom)
+library(palmerpenguins)
+library(magrittr)
+
+
+```
+
+## Learning Objectives
+
+-   Correlation vs Causation
+
+-   Confounding Variables
+
+-   Interaction Terms
+
+# Correlation vs Causation
+
+## Correlation vs Causation
+
+When 2 variables are associated with each other, this does not necessarily mean that one causes the other component.
+
+## Correlation vs Causation
+
+Looking at `body_mass_g` and `flipper_length_mm`
+
+```{r}
+#| echo: true
+#| eval: false
+library(palmerpenguins)
+penguins %<>% drop_na
+penguins %$% lm(body_mass_g ~ flipper_length_mm)
+penguins %$% lm(flipper_length_mm ~ body_mass_g)
+```
+
+## Correlation vs Causation
+
+Looking at `body_mass_g` and `flipper_length_mm`
+
+```{r}
+#| echo: true
+#| eval: true
+library(palmerpenguins)
+penguins %<>% drop_na
+penguins %$% lm(body_mass_g ~ flipper_length_mm)
+penguins %$% lm(flipper_length_mm ~ body_mass_g)
+```
+
+## Correlation vs Causation
+
+In observation studies, we cannot claim any one factor causes an outcome. At best we can claim things are associated with each other. To determine causation, a criteria is followed, randomized-controlled trials, or causal inference methods.
+
+# Confounding Variables
+
+## Confounding Variables
+
+Confounding variables are tertiary variables that may cause an association between two variables when one does not exist.
+
+## Confounding Variable Example
+
+As ice cream sales increase, the number of shark attacks increase.
+
+## Confounding Variables
+
+![Source: Statology](img/confound2.png){fig-alt="Showing how confounding variables are related to both the independent and dependent variable." fig-align="center"}
+
+## Simulation example
+
+```{r}
+#| echo: true
+z <- rnorm(1000, mean = 8)
+xy <- sapply(z, \(.) mvtnorm::rmvnorm(1000, .*c(1,1), 
+                                      matrix(c(1,0,0,1), nrow = 2)))
+lm(xy[1,]~xy[2,]) %>% summary
+lm(xy[1,]~xy[2,] + z) %>% summary
+```
+
+## Simulation Example
+
+```{r}
+#| echo: true
+#| eval: true
+z <- rnorm(1000, mean = 8)
+xy <- sapply(z, \(.) mvtnorm::rmvnorm(1000, .*c(1,1), 
+                                      matrix(c(1,0,0,1), nrow = 2)))
+lm(xy[1,]~xy[2,]) %>% summary
+lm(xy[1,]~xy[2,] + z) %>% summary
+```
+
+## Activity
+
+Come up with examples that may have confounding variables.
+
+## Confounding Variables
+
+How would we adjust for confounding variables?
+
+# Interaction Terms
+
+## Interaction Terms
+
+An interaction occurs when the independent variable effect on an outcome variable varies based on a value of a third variable.
+
+## Interaction Terms
+
+```{r}
+#| eval: true
+#| echo: true
+x <- rnorm(1000, mean = 8)
+z <- sample(c(0,1), 1000, replace = T)
+y <- -4 + 3 * x - 5 * z + x*z + rnorm(1000, 2)
+df <- tibble(x, y, z)
+ggplot(df, aes(x,y)) + geom_point()+
+  geom_smooth(method = "lm", se = F) +
+  theme_bw()
+
+```
+
+## Interaction Terms
+
+```{r}
+#| eval: true
+#| echo: true
+#| warning: false
+#| message: false
+#| error: false
+x <- rnorm(1000, mean = 8)
+z <- sample(c(0,1), 1000, replace = T)
+y <- -4 + 3 * x -5 * z + x*z + rnorm(1000, 2)
+df <- tibble(x, y, z)
+ggplot(df, aes(x,y, color = z)) + geom_point()+
+  geom_smooth(method = "lm", se = F) +
+  geom_smooth(aes(group=z), method = "lm", se =F) +
+  theme_bw()
+```
+
+## Interaction Terms
+
+```{r}
+#| echo: true
+x <- rnorm(1000, mean = 8)
+z <- sample(c(0,1), 1000, replace = T)
+y <- -4 + 3 * x -5 * z + x*z + rnorm(1000, 2)
+df <- tibble(x, y, z)
+df %$% lm(y ~ x*z)
+```
