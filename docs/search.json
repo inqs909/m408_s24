@@ -4701,7 +4701,7 @@
     "href": "lectures/7a.html#fit-a-linear-model-using-optim",
     "title": "Linear Regression",
     "section": "Fit a linear model using optim",
-    "text": "Fit a linear model using optim\nMinimize:\n\\[\n\\sum^n_{i=1}(y_i-\\hat y_i)^2\n\\]\n\\[\n\\hat y_i = \\hat \\beta_0 +\\hat\\beta_1 x_i\n\\]"
+    "text": "Fit a linear model using optim\nMinimize:\n\\[\n\\sum^n_{i=1}(y_i-\\hat y_i)^2\n\\]\n\\[\n\\hat y_i = \\hat \\beta_0 +\\hat\\beta_1 x_i\n\\]\nData:\n\nx &lt;- rpois(500, 6)\ny &lt;- -9 * x + 32 + rnorm(500, sd = sqrt(2))"
   },
   {
     "objectID": "lectures/7c.html#learning-objectives",

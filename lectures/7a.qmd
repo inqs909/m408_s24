@@ -317,3 +317,14 @@ $$
 $$
 \hat y_i = \hat \beta_0 +\hat\beta_1 x_i
 $$
+
+Data:
+
+```{r}
+#| echo: true
+
+x <- rpois(500, 6)
+y <- -9 * x + 32 + rnorm(500, sd = sqrt(2))
+
+
+```

@@ -652,6 +652,11 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
 <p><span class="math display">\[
 \hat y_i = \hat \beta_0 +\hat\beta_1 x_i
 \]</span></p>
+<p>Data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">500</span>, <span class="dv">6</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">9</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">32</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="footer footer-default">
 
