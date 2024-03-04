@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Classification"
+title: "Classification"
 format:
   revealjs:
     scrollable: true
@@ -37,7 +37,9 @@ editor: visual
 
 -   Bayes' Classifier
 
--   Logistic Regression
+-   Linear and Quadratic Discriminant Analysis
+
+-   Naive Bayes
 
 ## Classification
 
@@ -141,19 +143,207 @@ To apply Bayes classifier, we must specify the form of $f(\boldsymbol X| C)$ and
 
 -   Multinomial
 
-# Logistic Regression
+# Linear Discriminant Analysis
 
-## Logistic Regression
+## LDA
 
-Logistic regression can be used to classify an input of $\boldsymbol X$ to a binary category.
+Linear Discriminant Analysis is used to classify a new data point, from a set of classifications, given information from a set of predictors.
 
-## Multinomial Regression
+LDA classifies data using a Bayes classifier and imposing a normal distribution to the model.
 
-An extension of logistic regression, where there are more than two categories.
+## LDA (p=1)
 
-## Fitting a model
+$$
+f_k(\boldsymbol X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{(x-\mu_k)^2}{2\sigma^2}\right\}
+$$
 
-Use a glm to fit a model with a Bernoulli or multinomial distribution.
+$$
+f(X) = \sum^K_{l=1} \pi_l f_l(X)
+$$
+
+## LDA (p=1)
+
+$$
+\delta_k = f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
+$$
+
+$$
+\delta_k(x) = x\frac{\mu_k}{\sigma^2}-\frac{\mu_k^2}{\sigma^2} + \ln(\pi_k) 
+$$
+
+## LDA (p=1) Estimates
+
+Let $Y_i=c_l$, $l=1\ldots, K$, and $X_i=x_i$ bet the data from n observations:
+
+$$
+\hat\mu_k = \frac{1}{n_k}\sum^n_{i=1(Y_i=c_k)} x_i
+$$
+
+$$
+\hat\sigma^2=\frac{1}{n-K}\sum^K_{l=1}\sum_{i=1(Y_i=c_l)}^n(x_i-\hat\mu_l)^2 
+$$
+
+-   $n_k$: number of observations in class $k$
+
+## LDA (p\>1)
+
+$$
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
+$$
+
+$$
+f(\boldsymbol X) = \sum^K_{l=1} \pi_l f_l(\boldsymbol X)
+$$
+
+## LDA (p\>1)
+
+$$
+\delta_k(\boldsymbol x) = \boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k + \ln(\pi_k) 
+$$
+
+## LDA Classification
+
+Classify each new data point as class $c_k$ based on the largest $\delta_k(\boldsymbol X)$.
+
+# Quadratic Discriminant Analysis
+
+## QDA
+
+In LDA, it is assumed that $\Sigma$ from $\boldsymbol X$ is the same for all classification groups. In Quadratic Discriminant Analysis, this assumption is relaxed, resulting in $\Sigma_k$ for each classification.
+
+## QDA
+
+$$
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma_k^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
+$$
+
+## QDA
+
+$$
+\delta_k(\boldsymbol x) = -\frac{1}{2}\boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol x + \boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k - \frac{1}{2}\ln|\Sigma_k| + \ln(\pi_k) 
+$$
+
+# Naive Bayes
+
+## Naive Bayes
+
+A Naive Bayes classifier, assumes the predictors in $\boldsymbol X$ are independent of each other.
+
+## Naive Bayes
+
+$$
+f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
+$$
+
+## Naive Bayes
+
+::: columns
+::: {.column width="50%"}
+### Quantitative
+
+-   Normal: $N(\mu_{jk}, \sigma^2_{jk})$
+
+-   Nonparametric
+
+    -   Kernel Density
+:::
+
+::: {.column width="50%"}
+### Qualitative
+
+-   Nonparametric
+:::
+:::
+
+# R Code
+
+## LDA
+
+```{r}
+library(palmerpenguins)
+library(MASS)
+library(tidyverse)
+library(magrittr)
+
+penguins <- penguins |> drop_na()
+x_lda <- penguins |> lda(species ~ bill_length_mm + 
+                                   bill_depth_mm + 
+                                   flipper_length_mm + 
+                                   body_mass_g,
+                         data = _)
+
+
+```
+
+## LDA Prediction
+
+```{r}
+new_df <- penguins |> select(bill_length_mm, 
+                             bill_depth_mm,
+                             flipper_length_mm,
+                             body_mass_g)
+x_lda_predict <- x_lda |> predict(new_df)
+```
+
+## LDA Confusion Matrix
+
+```{r}
+table(penguins_df$species, x_lda_predict$class)
+```
+
+## QDA
+
+```{r}
+x_qda <- penguins |> qda(species ~ bill_length_mm + 
+                                   bill_depth_mm + 
+                                   flipper_length_mm + 
+                                   body_mass_g,
+                         data = _)
+
+```
+
+## QDA Prediction
+
+```{r}
+x_qda_predict <- x_qda |>  predict(penguins |>
+                                     select(bill_length_mm, 
+                                            bill_depth_mm,
+                                            flipper_length_mm,
+                                            body_mass_g))
+```
+
+## QDA Confusion Matrix
+
+```{r}
+table(penguins_df$species, x_qda_predict$class)
+```
+
+## Naive Bayes
+
+```{r}
+library(e1071)
+x_nb <- penguins_df |>  naiveBayes(species ~ bill_length_mm +
+                                             bill_depth_mm + 
+                                             flipper_length_mm + 
+                                             body_mass_g, 
+                                   data = _)
+```
+
+## Naive Bayes Prediction
+
+```{r}
+x_nb_predict <- x_nb %>% predict(penguins |>
+                                     select(bill_length_mm, 
+                                            bill_depth_mm,
+                                            flipper_length_mm,
+                                            body_mass_g))
+```
+
+## Naive Bayes Confusion Matrix
+
+```{r}
+table(penguins_df$species, x_nb_predict)
+```
 
 # Example
 

@@ -1,5 +1,5 @@
 ---
-title: "Model Building"
+title: "Residual Analysis"
 format:
   revealjs:
     scrollable: true
@@ -39,514 +39,345 @@ library(broom)
 library(palmerpenguins)
 
 library(magrittr)
-
-library(leaps)
-
-library(glmnet)
 ```
 
 ## Learning Objective
 
--   Fixing Assumptions
+-   Model Assumptions
+-   Residual Analysis
+-   Multicollinearity
 
--   Model Building
+# Model Assumptions
 
-# Fixing Assumptions
+## Model
 
-## Fixing Assumptions
+$$
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+
+-   $\epsilon \sim N(0,\sigma^2)$
+
+## Model Scatter Plot
+
+```{r}
+#| eval: true
+#| echo: true
+x <- rnorm(1000, 8)
+y <- -4 + 2*x + rnorm(1000, sd = 1)
+df <- tibble(x,y)
+ggplot(df, aes(x,y)) + geom_point() +
+  theme_bw()
+```
+
+## Model Assumptions
+
+-   Errors are normally distributed
+
+-   Constant Variance
 
 -   Linearity
 
--   Collinearity
+-   Independence
 
--   Unequal Variances
+-   No outliers
 
--   Influential observations and Outliers
-
-## Residual Function
+## Errors Normally Distributed
 
 ```{r}
 #| eval: true
-#| echo: true
 
-df_resid <- function(x){
-  res <- data.frame(obs = 1:nrow(x$model),
-                    x$model, 
-                    resid = resid(x),
-                    fitted = fitted(x),
-                    sresid = rstandard(x),
-                    hatvals = hatvalues(x),
-                    jackknife =  rstudent(x),
-                    cooks = cooks.distance(x)
-                    )
-  return(res)
-}
+df %$% hist(y, main = "Histogram of Error") 
+
 ```
 
-## Linearity $\log(x)$
+## Constant Variance
 
 ```{r}
 #| eval: true
-#| echo: true
-
-x <- rnorm(50, 6, 2)
-y <- 3 - 2 * log(x) + rnorm(50, sd = 0.25)
-x_lm <- lm(y ~ x)
-resid_df <- df_resid(x_lm)
-ggplot(resid_df, aes(x, resid)) + geom_point() +
-  stat_smooth(se = F) +
-  geom_hline(yintercept = 0)+
+ggplot(df, aes(x,y)) + geom_point() +
   theme_bw()
 ```
 
-```{r}
-#| eval: true
-#| echo: true
+## Constant Variance
 
-x_lm <- lm(y ~ log(x))
-resid_df <- df_resid(x_lm)
-ggplot(resid_df, aes(x, resid)) + geom_point() +
-  stat_smooth(se = F) +
-  geom_hline(yintercept = 0)+
+```{r}
+#| echo: true
+#| eval: true
+
+x <- rnorm(1000, 8, sd = 0.5)
+y <- sapply(x, \(.) -4 + 5*. + rnorm(1, sd = ./2))
+df <- tibble(x,y)
+ggplot(df, aes(x,y)) + geom_point() +
   theme_bw()
 ```
 
-## Linearity $1/x$
+## Linearity
 
 ```{r}
 #| eval: true
 #| echo: true
-
-x <- rnorm(50, 6, 1.5)
-y <- 3 - 2 / x + rnorm(50, sd = 0.2)
-x_lm <- lm(y ~ x)
-resid_df <- df_resid(x_lm)
-ggplot(resid_df, aes(x, resid)) + geom_point() +
-  stat_smooth(se = F) +
-  geom_hline(yintercept = 0)+
+x <- rnorm(1000, 8)
+y <- -4 + 2*x + rnorm(1000, sd = 1)
+df <- tibble(x,y)
+ggplot(df, aes(x,y)) + geom_point() +
   theme_bw()
 ```
 
+## Linearity
+
 ```{r}
-#| echo: true
 #| eval: true
-#| 
-x_lm <- lm(y ~ I(1/x))
-resid_df <- df_resid(x_lm)
-ggplot(resid_df, aes(x, resid)) + geom_point() +
-  stat_smooth(se = F) +
-  geom_hline(yintercept = 0)+
+#| echo: true
+x <- rnorm(1000, 8, sd = 4)
+y <- -4 - 1*x + -2*x^2 + rnorm(1000, sd = 16)
+df <- tibble(x,y)
+ggplot(df, aes(x,y)) + geom_point() +
   theme_bw()
 ```
 
-## Other Common Covariate Function Transformations
+## No Outliers
 
--   $\log_{10}(x)$
+```{r}
+#| eval: true
+#| echo: true
+x <- rnorm(1000, 8)
+y <- -4 + 2*x + rnorm(1000, sd = 1)
+df <- tibble(x,y)
+ggplot(df, aes(x,y)) + geom_point() +
+  theme_bw()
+```
 
--   $x^2$
+# Residuals and Influential Measurements
 
--   $\sqrt x$
+## Residuals
 
--   $x^3$
+Residuals are the errors between the observed value and the estimated model. Common residuals include
 
-## Unequal Variance
+-   Raw Residual
 
-There are a couple of methods to adjust for unequal variances
+-   Standardized Residual
 
--   Generalized Least Squares
+-   Jackknife (studentized) Residuals
 
--   Mixed-Effects Models
+## Influential Measurements
 
-## Collinearity
+Influential measures are statistics that determine how much a data point affects the model. Common influential measures are
 
-There are couple of methods to fix collinearity:
+-   Leverages
 
--   Principal Components Analysis
+-   Cook's Distance
 
--   Ridge Regression
-
--   Lasso Regression
-
-# Model Building
-
-## Model Building
-
-When given a set of predictors, we want to build a model that only contains predictors that best fits the data, without overfitting.
-
-Ideally, we always want to choose a parsimonious model that best describes the outcome variable. The more predictors into the model, the less parsimonious and less powerful.
-
-Choosing the best model can be done based on selection criteria such as Mallow's $C_p$, AIC, AICc, BIC, and adjusted $R^2$.
-
-## Model Building
-
--   Best Subset Model
-
-    -   Fit all models and select the best model based criteria
-
--   Forward Stepwise Model Building
-
-    -   Begin with the null model ($Y\sim 1$) and add variables until a final model is chosen.
-
--   Backward Stepwise Model Building
-
-    -   Begin with the full model, and remove variable until the final model is chosen.
-
--   Hybrid Stepwise Regression
-
-    -   A hybrid approach between the forward and backward building approach.
-
-## Best Subset Model Building
-
-1.  Begin with the null model, no predictors
-2.  For $k=1,\ldots, p$ (number of predictors):
-    1.  Fit all $\left(^p_k\right)$ models that contain $k$ predictors
-
-    2.  Define $M_k$ as the model with the largest $R²$
-3.  The final model is the model $M_k$ based on selection criteria
-
-## Forward Stepwise Model Building
-
-1.  Begin with the null model, no predictors
-2.  For $k=0,\ldots, p-1$ (number of predictors):
-    1.  Fit all $p-k$ models that adds one new predictor to the orginal model containing $k$ predictors
-
-    2.  Define $M_{k+1}$ as the model with the largest $R²$ among $p-k$ models
-3.  The final model is the model $M_(k+1)$ based on selection criteria
-
-## Backward Stepwise Model Building
-
-1.  Begin with the full model $M_p$, with all predictors
-2.  For $k=p,p-1, \ldots, 1$ (number of predictors):
-    1.  Fit all models that contain $k-1$ predictors
-
-    2.  Define $M_{k-1}$ as the model with the largest $R²$
-3.  The final model is the model $M_k$ based on selection criteria
-
-# Penalty Term Techniques
-
-## Ridge Regression
-
-Minimizes the following function
+## Raw Residuals
 
 $$
-\sum^n_{i=1}(y_i-\boldsymbol X_i^\mathrm T \boldsymbol \beta)^2 +\lambda \boldsymbol \beta ^\mathrm T\boldsymbol \beta
+\hat r_i = y_i - \hat y_i
 $$
 
--   $\boldsymbol X_i$: Design matrix for $i$th observation
-
--   $\boldsymbol \beta$: regression coefficients
-
--   $\lambda > 0$: tuning parameter
-
-## Lasso Regression
-
-Minimize the following function:
+## Leverages
 
 $$
-\sum^n_{i=1}(y_i-\boldsymbol X_i^\mathrm T \boldsymbol \beta)^2 +\lambda \sum^p_{j=0}|\beta_j|
+H = \boldsymbol X (\boldsymbol X^\mathrm T\boldsymbol X)^{-1}\boldsymbol X ^\mathrm T
 $$
 
-## Selecting the Ideal penalty term
+-   $\boldsymbol X$: design matrix
 
-Selecting the correct penalty term is essential to ensure an ideal bias-variance trade-off. The best approach is to use a cross-validation approach, more specifically, the LOOCV (leave-one-out cross-validation).
+-   $h_i = H[i,i]$: leverage for $i$th value
 
-## Cross-Validation
-
--   Choose a set of tuning parameters to test.
-
--   For each $k$th turning parameter Calculate the tuning parameter error for each value
-
-    -   Utilize the leave-one-out approach
-
-        -   For each observation fit and compute:
-
-            $$
-            MSE_i = (y_i - \hat y_{i(i)})^2
-            $$
-
-        -   Compute the following error:
-
-            $$
-            CVE_k = \frac{1}{n}\sum^n_{i=1}MSE_i 
-            $$
-
--   Identify the $k$th tuning parameter with the lowest $CVE_k$
-
-# Selection Criteria
-
-## Mallow's $C_p$
+## Standardized Residuals
 
 $$
-C_p = \frac{1}{n}(RSS + 2 d \hat \sigma^2) 
+\hat r^*_i = \frac{\hat r_i}{\sqrt{\hat\sigma^2(1-h_{i})}}
 $$
 
--   $RSS$: Residual Sum of Squares
+-   $\hat \sigma^2$: Mean square error
 
--   $\hat \sigma^2$: Mean Square Error
+-   $h_{ii}$: leverage of $i$th data point
 
--   $d$: number of predictors
-
--   Lower is better
-
-## Aikaike Information Criteria (AIC)
+## Jackknife Residuals
 
 $$
-\frac{1}{n\hat\sigma^2}(RSS+2d\hat\sigma^2)
+\hat r ^\prime_i = \frac{y_i - \hat y_{i(i)}}{\sqrt{\hat \sigma^2_{(i)}(1-h_{i})}}
 $$
 
--   Lower is Better
+-   $\hat y_{i(i)}$: fitted value for $i$th value from model fitted without $i$th data point
 
-## Bayesian Information Criteria (BIC)
+-   $\hat\sigma^2_{(i)}$: mean square error from model fitted without $i$th data point
 
-$$
-\frac{1}{n\hat\sigma^2}\{RSS+\log(n)d\hat\sigma^2\}
-$$
-
--   Lower is better
-
-## $R^2$
+## Cook's Distance
 
 $$
-1-\frac{RSS}{TSS}
+\hat d_i = \frac{(y_i - \hat y_{i})^2}{(k+1)\hat \sigma^2}\left\{\frac{h_i}{(1-h_i)^2}\right\}
 $$
 
--   $RSS=\sum^n_{i=1}(y_i-\hat y_i)^2$
+-   $k$: number of predictors
 
--   $TSS=\sum^n_{i=1}(y_i-\bar y)^2$
+# Residual Analysis
 
--   Higher is Better
+## Residual Analysis
 
-## Adjusted $R^2$
+A residual analysis is used to test the assumptions of linear regression.
+
+## QQ Plot
+
+A qq (quantile-quantile) plot will plot the estimated quantiles of the residuals against the theoretical quantiles from a normal distribution function. If the points from the qq-plot lie on $y=x$, it is said that the residuals follow a normal distribution.
+
+## Residual vs Fitted Plot
+
+This plot allows you to assess the linearity, constant variance, and identify potential outliers. Create a scatter plot between the fitted values (x-axis) and the raw/standardized residuals (y-axis).
+
+## Residual vs X Plots
+
+This plot helps identify issues with linearity and suggests potential solution. Create a scatter plot between raw/standardized residuals (y-axis) and the predictor variables (x-axis).
+
+## Outlier Plots
+
+An outlier plot can tell you if there are any outliers in the data. Create a scatter plot between the index number (x-axis) and standardized/studentized residuals (y-axis)
+
+## Influential Observations Plots
+
+Will identify outliers/observations that will have an affect on the model. Create a scatter plot between the index number (x-axis) and leverages/cook's distance (y-axis).
+
+# Multicollinearity
+
+## Mulitcollinearity
+
+Multicolinearity occurs when predictor variable have a correlation between each other. Collinearity between predictor variables with inflate the standard errors and cause problems with inference.
+
+## Variance Inflation Factor
+
+The variance inflation factor is a measurement on how much variables are collinear with each other. A value greater than 10 is a cause for concern and action should be taken.
+
+# R Code
+
+## Fitting a model
+
+```{r}
+#| eval: true
+#| echo: true
+x_lm <- iris |> lm(Petal.Length ~ Sepal.Length + Sepal.Width, data = _) 
+x_lm |> summary()
+
+```
+
+## Data Prep
+
+```{r}
+#| echo: true
+#| eval: true
+
+df_resid <- tibble(obs = 1:nrow(x_lm$model),
+                   x_lm$model, 
+                   resid = resid(x_lm),
+                   fitted = fitted(x_lm),
+                   sresid = rstandard(x_lm),
+                   hatvals = hatvalues(x_lm),
+                   jackknife =  rstudent(x_lm),
+                   cooks = cooks.distance(x_lm)
+                   )
+
+
+```
+
+## Residual vs Fitted
+
+```{r}
+#| echo: true
+#| eval: true
+
+df_resid |> 
+  ggplot(aes(fitted, resid)) + geom_point() +
+    geom_hline(yintercept = 0) +
+    geom_smooth(se = F) +
+    theme_bw()
+
+```
+
+## QQ Plot
+
+```{r}
+#| echo: true
+#| eval: true
+
+
+df_resid |> 
+  ggplot(aes(sample = resid)) + 
+    stat_qq() +
+    stat_qq_line() +
+    theme_bw()
+```
+
+## Residuals vs X
+
+```{r}
+#| echo: true
+#| eval: true
+
+df_resid |> 
+  ggplot(aes(Sepal.Length, resid)) + geom_point() +
+    geom_hline(yintercept = 0) +
+    stat_smooth(se = F) +
+    theme_bw()
+
+df_resid |> 
+  ggplot(aes(Sepal.Width, resid)) + geom_point() +
+    geom_hline(yintercept = 0) +
+    stat_smooth(se = F) +
+    theme_bw()
+
+```
+
+## Jackknife Residuals
+
+```{r}
+#| echo: true
+#| eval: true
+
+df_resid |> 
+  ggplot(aes(obs, jackknife)) + geom_point() +
+    theme_bw()
+
+```
+
+## Levarages
+
+```{r}
+#| echo: true
+#| eval: true
+
+df_resid |> 
+  ggplot(aes(obs, hatvals)) + geom_point() +
+    theme_bw()
+
+```
+
+## Cook's Distance
+
+```{r}
+#| echo: true
+#| eval: true
+
+df_resid |> 
+  ggplot(aes(obs, cooks)) + 
+    geom_point() +
+    theme_bw()
+
+```
+
+## Multicolinearity
+
+```{r}
+#| message: false
+#| echo: true
+#| eval: true
+library(car)
+iris |>  with(cor(Sepal.Length, Sepal.Width))
+vif(x_lm)
+```
+
+## Example
+
+The `taylor` package contains the `taylor_all_songs` data frame with information on all of Taylor Swift's Songs. Fit a linear regression model and run a residual analysis on the following equation:
 
 $$
-1-\frac{RSS/(n-d-1)}{
-TSS/(n-1)}
+danceability = energy\ +\ speechiness\ +\ acousticness\ +\ instrumentalness 
 $$
-
--   Higher is Better
-
-# Model Building R Code
-
-## R Code
-
-```{r}
-#| echo: true
-#| eval: false
-
-library(leaps)
-regsubsets(y ~ ., data)
-
-```
-
-## Full Subset
-
-::: panel-tabset
-## Code
-
-```{r}
-#| echo: true
-#| eval: true
-lm_full <- regsubsets(mpg ~ ., data = mtcars)
-
-```
-
-## Summary
-
-```{r}
-#| echo: true
-#| eval: true
-sum_lm_full <- summary(lm_full)
-print(sum_lm_full)
-```
-
-## Plot
-
-```{r}
-#| echo: true
-#| eval: true
-plot(sum_lm_full$cp)
-```
-
-## Model
-
-```{r}
-#| echo: true
-#| eval: true
-coef(lm_full,3)
-```
-:::
-
-## Forward Model Building
-
-::: panel-tabset
-## Code
-
-```{r}
-#| echo: true
-#| eval: true
-lm_full <- regsubsets(mpg ~ ., data = mtcars,
-                      method =  "forward")
-
-```
-
-## Summary
-
-```{r}
-#| echo: true
-#| eval: true
-sum_lm_full <- summary(lm_full)
-print(sum_lm_full)
-```
-
-## Plot
-
-```{r}
-#| echo: true
-#| eval: true
-plot(sum_lm_full$cp)
-```
-
-## Model
-
-```{r}
-#| echo: true
-#| eval: true
-coef(lm_full,3)
-```
-:::
-
-## Backward Model Building
-
-::: panel-tabset
-## Code
-
-```{r}
-#| echo: true
-#| eval: true
-lm_full <- regsubsets(mpg ~ ., data = mtcars,
-                      method =  "backward")
-
-```
-
-## Summary
-
-```{r}
-#| echo: true
-#| eval: true
-sum_lm_full <- summary(lm_full)
-print(sum_lm_full)
-```
-
-## Plot
-
-```{r}
-#| echo: true
-#| eval: true
-plot(sum_lm_full$cp)
-```
-
-## Model
-
-```{r}
-#| echo: true
-#| eval: true
-coef(lm_full,3)
-```
-:::
-
-## Ridge and Lasso Regression
-
-```{r}
-#| echo: true
-
-library(glmnet)
-# Ridge Regression
-glmnet(x, y, 
-       alpha = 0, 
-       lambda = grid)
-# Lasso Regression
-glmnet(x, y, 
-       alpha = 1, 
-       lambda = grid)
-```
-
-## Ridge Regression
-
-::: panel-tabset
-## Prep
-
-```{r}
-#| echo: true
-#| eval: true
-x <- model.matrix(mpg ~ ., data = mtcars)[,-1]
-y <- mtcars$mpg
-
-grid_lambda <- seq(0, 100, by = 0.1)
-
-```
-
-## CV
-
-```{r}
-#| echo: true
-#| eval: true
-ridge_reg_cv <- cv.glmnet(x, y,
-                    alpha = 0,
-                    lambda = grid_lambda)
-ridge_reg_cv
-
-```
-
-## Model
-
-```{r}
-#| echo: true
-#| eval: true
-ridge_reg <- glmnet(x, y,
-                    alpha = 0,
-                    lambda = grid_lambda)
-
-coef(ridge_reg)[,974]
-```
-:::
-
-## Lasso Regression
-
-::: panel-tabset
-## Prep
-
-```{r}
-#| echo: true
-#| eval: true
-x <- model.matrix(mpg ~ ., data = mtcars)[,-1]
-y <- mtcars$mpg
-
-grid_lambda <- seq(0, 100, by = 0.1)
-
-```
-
-## CV
-
-```{r}
-#| echo: true
-#| eval: true
-lasso_reg_cv <- cv.glmnet(x, y,
-                    alpha = 1,
-                    lambda = grid_lambda)
-lasso_reg_cv
-
-```
-
-## Model
-
-```{r}
-#| echo: true
-#| eval: true
-
-lasso_reg <- glmnet(x, y,
-                    alpha = 1,
-                    lambda = grid_lambda)
-
-coef(lasso_reg)[,993]
-```
-:::

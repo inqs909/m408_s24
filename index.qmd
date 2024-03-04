@@ -41,6 +41,7 @@ format:
     code-fold: true
     code-tools: true
     code-line-numbers: true
+    embed-resources: true
 knitr:
   opts_chunk:
     echo: true

@@ -1,5 +1,5 @@
 ---
-title: "Residual Analysis"
+title: "Multivariable Linear Regression"
 format:
   revealjs:
     scrollable: true
@@ -29,355 +29,236 @@ editor: visual
 #| label: setup
 
 library(DT)
-
 library(tidyverse)
-
 library(GLMsData)
-
 library(broom)
-
 library(palmerpenguins)
-
 library(magrittr)
+
+x <- rnorm(50, 4)
+z <- rnorm(50, -2)
+y <- 3 + 2 * x + 4 * z + rnorm(50, sd = 2)
+df <- tibble(x, y, z)
+
+
+
 ```
 
-## Learning Objective
+## Learning Objectives
 
--   Model Assumptions
--   Residual Analysis
--   Multicollinearity
+-   Multivariable Linear Regression
 
-# Model Assumptions
+-   Simulation Study 1
 
-## Model
+-   Simulation Study 2
+
+-   Matrix Formulation
+
+# Multivariable Linear Regression
+
+## MLR
+
+Multivariable linear regression models are used when more than one explanatory variable is used to explain the outcome of interest.
+
+## Continuous Variable
+
+To fit an additional continuous random variable to the model, we will only need to add it to the model:
 
 $$
-y = \beta_0 + \beta_1 x + \epsilon
+Y = \beta_0 +\beta_1 X_1 + \beta_2 X_2
 $$
-
--   $\epsilon \sim N(0,\sigma^2)$
-
-## Model Scatter Plot
-
-```{r}
-#| eval: true
-#| echo: true
-x <- rnorm(1000, 8)
-y <- -4 + 2*x + rnorm(1000, sd = 1)
-df <- tibble(x,y)
-ggplot(df, aes(x,y)) + geom_point() +
-  theme_bw()
-```
-
-## Model Assumptions
-
--   Errors are normally distributed
-
--   Constant Variance
-
--   Linearity
-
--   Independence
-
--   No outliers
-
-## Errors Normally Distributed
-
-```{r}
-#| eval: true
-
-df %$% hist(y, main = "Histogram of Error") 
-
-```
-
-## Constant Variance
-
-```{r}
-#| eval: true
-ggplot(df, aes(x,y)) + geom_point() +
-  theme_bw()
-```
-
-## Constant Variance
-
-```{r}
-#| echo: true
-#| eval: true
-
-x <- rnorm(1000, 8, sd = 0.5)
-y <- sapply(x, \(.) -4 + 5*. + rnorm(1, sd = ./2))
-df <- tibble(x,y)
-ggplot(df, aes(x,y)) + geom_point() +
-  theme_bw()
-```
-
-## Linearity
-
-```{r}
-#| eval: true
-#| echo: true
-x <- rnorm(1000, 8)
-y <- -4 + 2*x + rnorm(1000, sd = 1)
-df <- tibble(x,y)
-ggplot(df, aes(x,y)) + geom_point() +
-  theme_bw()
-```
-
-## Linearity
-
-```{r}
-#| eval: true
-#| echo: true
-x <- rnorm(1000, 8, sd = 4)
-y <- -4 - 1*x + -2*x^2 + rnorm(1000, sd = 16)
-df <- tibble(x,y)
-ggplot(df, aes(x,y)) + geom_point() +
-  theme_bw()
-```
-
-## No Outliers
-
-```{r}
-#| eval: true
-#| echo: true
-x <- rnorm(1000, 8)
-y <- -4 + 2*x + rnorm(1000, sd = 1)
-df <- tibble(x,y)
-ggplot(df, aes(x,y)) + geom_point() +
-  theme_bw()
-```
-
-# Residuals and Influential Measurements
-
-## Residuals
-
-Residuals are the errors between the observed value and the estimated model. Common residuals include
-
--   Raw Residual
-
--   Standardized Residual
-
--   Jackknife (studentized) Residuals
-
-## Influential Measurements
-
-Influential measures are statistics that determine how much a data point affects the model. Common influential measures are
-
--   Leverages
-
--   Cook's Distance
-
-## Raw Residuals
-
-$$
-\hat r_i = y_i - \hat y_i
-$$
-
-## Leverages
-
-$$
-H = \boldsymbol X (\boldsymbol X^\mathrm T\boldsymbol X)^{-1}\boldsymbol X ^\mathrm T
-$$
-
--   $\boldsymbol X$: design matrix
-
--   $h_i = H[i,i]$: leverage for $i$th value
-
-## Standardized Residuals
-
-$$
-\hat r^*_i = \frac{\hat r_i}{\sqrt{\hat\sigma^2(1-h_{i})}}
-$$
-
--   $\hat \sigma^2$: Mean square error
-
--   $h_{ii}$: leverage of $i$th data point
-
-## Jackknife Residuals
-
-$$
-\hat r ^\prime_i = \frac{y_i - \hat y_{i(i)}}{\sqrt{\hat \sigma^2_{(i)}(1-h_{i})}}
-$$
-
--   $\hat y_{i(i)}$: fitted value for $i$th value from model fitted without $i$th data point
-
--   $\hat\sigma^2_{(i)}$: mean square error from model fitted without $i$th data point
-
-## Cook's Distance
-
-$$
-\hat d_i = \frac{(y_i - \hat y_{i})^2}{(k+1)\hat \sigma^2}\left\{\frac{h_i}{(1-h_i)^2}\right\}
-$$
-
--   $k$: number of predictors
-
-# Residual Analysis
-
-## Residual Analysis
-
-A residual analysis is used to test the assumptions of linear regression.
-
-## QQ Plot
-
-A qq (quantile-quantile) plot will plot the estimated quantiles of the residuals against the theoretical quantiles from a normal distribution function. If the points from the qq-plot lie on $y=x$, it is said that the residuals follow a normal distribution.
-
-## Residual vs Fitted Plot
-
-This plot allows you to assess the linearity, constant variance, and identify potential outliers. Create a scatter plot between the fitted values (x-axis) and the raw/standardized residuals (y-axis).
-
-## Residual vs X Plots
-
-This plot helps identify issues with linearity and suggests potential solution. Create a scatter plot between raw/standardized residuals (y-axis) and the predictor variables (x-axis).
-
-## Outlier Plots
-
-An outlier plot can tell you if there are any outliers in the data. Create a scatter plot between the index number (x-axis) and standardized/studentized residuals (y-axis)
-
-## Influential Observations Plots
-
-Will identify outliers/observations that will have an affect on the model. Create a scatter plot between the index number (x-axis) and leverages/cook's distance (y-axis).
-
-# Multicollinearity
-
-## Mulitcollinearity
-
-Multicolinearity occurs when predictor variable have a correlation between each other. Collinearity between predictor variables with inflate the standard errors and cause problems with inference.
-
-## Variance Inflation Factor
-
-The variance inflation factor is a measurement on how much variables are collinear with each other. A value greater than 10 is a cause for concern and action should be taken.
-
-# R Code
-
-## Fitting a model
-
-```{r}
-#| eval: true
-#| echo: true
-x_lm <- iris |> lm(Petal.Length ~ Sepal.Length + Sepal.Width, data = _) 
-x_lm |> summary()
-
-```
-
-## Data Prep
-
-```{r}
-#| echo: true
-#| eval: true
-
-df_resid <- tibble(obs = 1:nrow(x_lm$model),
-                   x_lm$model, 
-                   resid = resid(x_lm),
-                   fitted = fitted(x_lm),
-                   sresid = rstandard(x_lm),
-                   hatvals = hatvalues(x_lm),
-                   jackknife =  rstudent(x_lm),
-                   cooks = cooks.distance(x_lm)
-                   )
-
-
-```
-
-## Residual vs Fitted
-
-```{r}
-#| echo: true
-#| eval: true
-
-df_resid |> 
-  ggplot(aes(fitted, resid)) + geom_point() +
-    geom_hline(yintercept = 0) +
-    geom_smooth(se = F) +
-    theme_bw()
-
-```
-
-## QQ Plot
-
-```{r}
-#| echo: true
-#| eval: true
-
-
-df_resid |> 
-  ggplot(aes(sample = resid)) + 
-    stat_qq() +
-    stat_qq_line() +
-    theme_bw()
-```
-
-## Residuals vs X
-
-```{r}
-#| echo: true
-#| eval: true
-
-df_resid |> 
-  ggplot(aes(Sepal.Length, resid)) + geom_point() +
-    geom_hline(yintercept = 0) +
-    stat_smooth(se = F) +
-    theme_bw()
-
-df_resid |> 
-  ggplot(aes(Sepal.Width, resid)) + geom_point() +
-    geom_hline(yintercept = 0) +
-    stat_smooth(se = F) +
-    theme_bw()
-
-```
-
-## Jackknife Residuals
-
-```{r}
-#| echo: true
-#| eval: true
-
-df_resid |> 
-  ggplot(aes(obs, jackknife)) + geom_point() +
-    theme_bw()
-
-```
-
-## Levarages
-
-```{r}
-#| echo: true
-#| eval: true
-
-df_resid |> 
-  ggplot(aes(obs, hatvals)) + geom_point() +
-    theme_bw()
-
-```
-
-## Cook's Distance
-
-```{r}
-#| echo: true
-#| eval: true
-
-df_resid |> 
-  ggplot(aes(obs, cooks)) + 
-    geom_point() +
-    theme_bw()
-
-```
-
-## Multicolinearity
-
-```{r}
-#| message: false
-#| echo: true
-#| eval: true
-library(car)
-iris |>  with(cor(Sepal.Length, Sepal.Width))
-vif(x_lm)
-```
 
 ## Example
 
-The `taylor` package contains the `taylor_all_songs` data frame with information on all of Taylor Swift's Songs. Fit a linear regression model and run a residual analysis on the following equation:
+Looking at the `penguins` from `palmerpenguins`, fit a model between `body_mass_g` as an outcome variable and `flipper_length_mm` and `bill_length_mm` as predictor variables.
+
+```{r}
+#| echo: true
+library(palmerpenguins)
+penguins |>  lm(body_mass_g ~ flipper_length_mm + bill_length_mm, 
+                data = _)
+```
+
+## Interpretation
+
+```{r}
+#| eval: true
+library(palmerpenguins)
+penguins |>  lm(body_mass_g ~ flipper_length_mm + bill_length_mm,
+                data = _)
+```
+
+## Categorical Variable
+
+A categorical variable can be included in a model, but a reference category must be specified.
+
+## Fitting a model with categorical variables
+
+To fit a model with categorical variables, we must utilize dummy (binary) variables that indicate which category is being referenced. We use $C-1$ dummy variables where $C$ indicates the number of categories. When coded correctly, each category will be represented by a combination of dummy variables.
+
+## Example
+
+If we have 4 categories, we will need 3 dummy variables:
+
+|         | Cat 1 | Cat 2 | Cat 3 | Cat 4 |
+|---------|-------|-------|-------|-------|
+| Dummy 1 | 1     | 0     | 0     | 0     |
+| Dummy 2 | 0     | 1     | 0     | 0     |
+| Dummy 3 | 0     | 0     | 1     | 0     |
+
+Which one is the reference category?
+
+## Fitting a model with categorical variables
+
+Looking at the `penguins` from `palmerpenguins`, fit a model between `body_mass_g` as an outcome variable and `flipper_length_mm` and `islands` as predictor variables.
+
+```{r}
+#| echo: true
+library(palmerpenguins)
+penguins |>  lm(body_mass_g ~ flipper_length_mm + island,
+                data = _)
+```
+
+## Interpreting Categorical Variable Results
+
+```{r}
+#| eval: true
+library(palmerpenguins)
+penguins |> lm(body_mass_g ~ flipper_length_mm + island,
+               data = _)
+penguins |>  with(levels(island))
+```
+
+## Relevel a factor variable in R
+
+```{r}
+library(palmerpenguins)
+penguins <- penguins |> 
+  mutate(island_dream = relevel(island , ref = "Dream"))
+penguins |> lm(body_mass_g ~ flipper_length_mm + island_dream, 
+               data = _)
+```
+
+# Simulation Study 1
+
+## Simulation Study 1
+
+Simulate 1000 random variables from the following model:
 
 $$
-danceability = energy\ +\ speechiness\ +\ acousticness\ +\ instrumentalness 
+Y = 3 + 2X_1 + 4X_2 + \epsilon
 $$
+
+-   $X_1\sim N(2,1)$
+
+-   $X_2\sim N(-4,1)$
+
+-   $\epsilon\sim N(0, 2)$
+
+```{r}
+x1 <- rnorm(1000, 2)
+x2 <- rnorm(1000, -4)
+y <- 3 + 2 * x1 + 4 * x2 + rnorm(1000, sd = sqrt(2))
+df <- tibble(x1, x2, y)
+```
+
+## Fit Model
+
+Fit a model between $Y$ and $X_1$.
+
+Repeat the process 1000 times. and answer the following questions:
+
+-   On average does $\beta_1$ get estimated correctly? Why?
+
+-   What is the average model variance?
+
+## MLR Model
+
+Instead of fitting a simple linear regression model. Fit a model that will include predictor $X_2$. This can be done by adding $X_2$ in R:
+
+```{r}
+#| echo: true
+
+lm(y ~ x1 + x2)
+
+```
+
+Modify your simulation study and see what happens to $\beta_1$ and the model variance.
+
+# Simulation Study 2
+
+## Simulation Study 2
+
+Simulate 1000 random variables from the following model:
+
+$$
+Y = 3 + 2log(X_1) + \epsilon
+$$
+
+-   $X_1\sim N(8,1)$
+
+-   $\epsilon\sim N(0, 2)$
+
+```{r}
+x <- rnorm(1000, 8)
+y <- 3 + 2 * log(x) + rnorm(1000, sd = sqrt(2))
+df <- tibble(x, y)
+lm(y~log(x))
+```
+
+## Fit Model
+
+Fit a model between $Y$ and $X_1$.
+
+Repeat the process 1000 times. and answer the following questions:
+
+-   On average does $\beta_1$ get estimated correctly? Why?
+
+-   What is the average model variance?
+
+## SLR Model
+
+Fit a simple linear regression model using $\log(X_1)$ instead.
+
+```{r}
+#| echo: true
+
+lm(y ~ log(x1))
+
+```
+
+Modify your simulation study and see what happens to $\beta_1$ and the model variance.
+
+# Matrix Formulation
+
+## Matrix Formulation
+
+$$
+Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
+$$
+
+-   $Y_i$: Outcome Variable
+
+-   $\boldsymbol X_i$: Predictors
+
+-   $\boldsymbol \beta$: Coefficients
+
+-   $\epsilon_i$: error term
+
+## Matrix Formulation
+
+Fit the following models using matrix formulas instead of the `lm` function.
+
+$$
+body\_mass\_g = \beta_0+\beta_1flipper\_length\_mm + \beta_2bill\_length\_mm 
+$$
+
+$$
+body\_mass\_g = \beta_0 +\beta_1 flipper\_length\_mm + \beta_2 dream \_island +\beta_3 biscoe\_island  
+$$
+
+$$
+\boldsymbol\beta = (\boldsymbol X^\mathrm T \boldsymbol X)^{-1} \boldsymbol X^\mathrm T \boldsymbol Y
+$$
+
+Define $\boldsymbol X$ in each case.
