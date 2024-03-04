@@ -28,7 +28,7 @@ filters:
   - reveal-header
   - code-fullscreen
 
-editor: visual
+editor: source
 ---
 
 ## Learning Outcomes
@@ -263,8 +263,7 @@ $$
 library(palmerpenguins)
 library(MASS)
 library(tidyverse)
-library(magrittr)
-
+select <- dplyr::select
 penguins <- penguins |> drop_na()
 x_lda <- penguins |> lda(species ~ bill_length_mm + 
                                    bill_depth_mm + 
@@ -278,17 +277,19 @@ x_lda <- penguins |> lda(species ~ bill_length_mm +
 ## LDA Prediction
 
 ```{r}
-new_df <- penguins |> select(bill_length_mm, 
-                             bill_depth_mm,
-                             flipper_length_mm,
-                             body_mass_g)
+
+new_df <- penguins |> select(bill_length_mm,
+                           bill_depth_mm,
+                          flipper_length_mm,
+                         body_mass_g)
 x_lda_predict <- x_lda |> predict(new_df)
+
 ```
 
 ## LDA Confusion Matrix
 
 ```{r}
-table(penguins_df$species, x_lda_predict$class)
+#table(penguins$species, x_lda_predict$class)
 ```
 
 ## QDA
@@ -315,14 +316,14 @@ x_qda_predict <- x_qda |>  predict(penguins |>
 ## QDA Confusion Matrix
 
 ```{r}
-table(penguins_df$species, x_qda_predict$class)
+table(penguins$species, x_qda_predict$class)
 ```
 
 ## Naive Bayes
 
 ```{r}
 library(e1071)
-x_nb <- penguins_df |>  naiveBayes(species ~ bill_length_mm +
+x_nb <- penguins |>  naiveBayes(species ~ bill_length_mm +
                                              bill_depth_mm + 
                                              flipper_length_mm + 
                                              body_mass_g, 
@@ -332,7 +333,7 @@ x_nb <- penguins_df |>  naiveBayes(species ~ bill_length_mm +
 ## Naive Bayes Prediction
 
 ```{r}
-x_nb_predict <- x_nb %>% predict(penguins |>
+x_nb_predict <- x_nb  |>  predict(penguins |>
                                      select(bill_length_mm, 
                                             bill_depth_mm,
                                             flipper_length_mm,
@@ -342,7 +343,7 @@ x_nb_predict <- x_nb %>% predict(penguins |>
 ## Naive Bayes Confusion Matrix
 
 ```{r}
-table(penguins_df$species, x_nb_predict)
+table(penguins$species, x_nb_predict)
 ```
 
 # Example
