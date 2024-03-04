@@ -225,6 +225,7 @@ Minimize the least squares using a numerical methods in R. The `optim()` functio
 ## Fit a Line using `lm` for the following data
 
 ```{r}
+#| echo: true
 x <- rpois(500, 6)
 y <- -9 * x + 32 + rnorm(500, sd = sqrt(2))
 lm_res <- lm(y ~ x) 
@@ -237,6 +238,7 @@ sigma(lm_res)^2
 ## Fit a linear model using matrix operation
 
 ```{r}
+#| echo: true
 X <- cbind(rep(1, 500), x)
 solve(t(X)%*%X) %*% t(X) %*% y  
 ```
@@ -250,6 +252,7 @@ f(x) = 2(x - 5)^2 + 11
 $$
 
 ```{r}
+#| echo: true
 d <- function(x){
   2 * (x - 5) + 11
 }
@@ -265,6 +268,7 @@ f(x) = - 3 (x - 8)^2 + 9
 $$
 
 ```{r}
+#| echo: true
 d <- function(x){
   2 * (x - 5) + 11
 }
@@ -280,6 +284,7 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
 $$
 
 ```{r}
+#| code-fold: true
 para <- function(x,a,b){
 (x[1]-a)^2/a^2 + (x[2]-b)^2/b^2  
 }
@@ -297,6 +302,7 @@ $$
 with the following data:
 
 ```{r}
+#| echo: true
 z <- rpois(1000, lambda = 2)
 ```
 

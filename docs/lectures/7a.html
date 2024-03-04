@@ -583,9 +583,21 @@ Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \ha
 </section>
 <section id="fit-a-line-using-lm-for-the-following-data" class="slide level2">
 <h2>Fit a Line using <code>lm</code> for the following data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">500</span>, <span class="dv">6</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">9</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">32</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span>
+<span id="cb2-3"><a href="#cb2-3"></a>lm_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x) </span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">summary</span>(lm_res)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">sqrt</span>(<span class="fu">vcov</span>(lm_res))</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">sigma</span>(lm_res)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="fit-a-linear-model-using-matrix-operation" class="slide level2">
 <h2>Fit a linear model using matrix operation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">500</span>), x)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">solve</span>(<span class="fu">t</span>(X)<span class="sc">%*%</span>X) <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> y  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="minimizing-a-function-using-optim" class="slide level2">
 <h2>Minimizing a function using <code>optim</code></h2>
@@ -593,6 +605,12 @@ Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \ha
 <p><span class="math display">\[
 f(x) = 2(x - 5)^2 + 11
 \]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>d <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">11</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">optim</span>(<span class="dv">0</span>, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="maximizing-a-function-using-optim" class="slide level2">
 <h2>Maximizing a function using <code>optim</code></h2>
@@ -600,6 +618,12 @@ f(x) = 2(x - 5)^2 + 11
 <p><span class="math display">\[
 f(x) = - 3 (x - 8)^2 + 9
 \]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>d <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">11</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">optim</span>(<span class="dv">0</span>, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="minimizing-function-using-optim" class="slide level2">
 <h2>Minimizing function using <code>optim</code></h2>
@@ -615,6 +639,9 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
 \ell(\lambda) = \sum^n_{i=1} -\lambda+X_i\log(\lambda) -\log(X_i!)
 \]</span></p>
 <p>with the following data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>z <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, <span class="at">lambda =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="fit-a-linear-model-using-optim" class="slide level2">
 <h2>Fit a linear model using <code>optim</code></h2>

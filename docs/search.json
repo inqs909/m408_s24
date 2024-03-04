@@ -4659,28 +4659,28 @@
     "href": "lectures/7a.html#fit-a-line-using-lm-for-the-following-data",
     "title": "Linear Regression",
     "section": "Fit a Line using lm for the following data",
-    "text": "Fit a Line using lm for the following data"
+    "text": "Fit a Line using lm for the following data\n\nx &lt;- rpois(500, 6)\ny &lt;- -9 * x + 32 + rnorm(500, sd = sqrt(2))\nlm_res &lt;- lm(y ~ x) \nsummary(lm_res)\nsqrt(vcov(lm_res))\nsigma(lm_res)^2"
   },
   {
     "objectID": "lectures/7a.html#fit-a-linear-model-using-matrix-operation",
     "href": "lectures/7a.html#fit-a-linear-model-using-matrix-operation",
     "title": "Linear Regression",
     "section": "Fit a linear model using matrix operation",
-    "text": "Fit a linear model using matrix operation"
+    "text": "Fit a linear model using matrix operation\n\nX &lt;- cbind(rep(1, 500), x)\nsolve(t(X)%*%X) %*% t(X) %*% y"
   },
   {
     "objectID": "lectures/7a.html#minimizing-a-function-using-optim",
     "href": "lectures/7a.html#minimizing-a-function-using-optim",
     "title": "Linear Regression",
     "section": "Minimizing a function using optim",
-    "text": "Minimizing a function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x) = 2(x - 5)^2 + 11\n\\]"
+    "text": "Minimizing a function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x) = 2(x - 5)^2 + 11\n\\]\n\nd &lt;- function(x){\n  2 * (x - 5) + 11\n}\noptim(0, d)"
   },
   {
     "objectID": "lectures/7a.html#maximizing-a-function-using-optim",
     "href": "lectures/7a.html#maximizing-a-function-using-optim",
     "title": "Linear Regression",
     "section": "Maximizing a function using optim",
-    "text": "Maximizing a function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x) = - 3 (x - 8)^2 + 9\n\\]"
+    "text": "Maximizing a function using optim\nFind the value of x and y that will minimize the following function for any value a and b.\n\\[\nf(x) = - 3 (x - 8)^2 + 9\n\\]\n\nd &lt;- function(x){\n  2 * (x - 5) + 11\n}\noptim(0, d)"
   },
   {
     "objectID": "lectures/7a.html#minimizing-function-using-optim",
@@ -4694,7 +4694,7 @@
     "href": "lectures/7a.html#maximizing-function-using-optim",
     "title": "Linear Regression",
     "section": "Maximizing function using optim",
-    "text": "Maximizing function using optim\nFind the value of \\(\\lambda\\) that maximize the following function:\n\\[\n\\ell(\\lambda) = \\sum^n_{i=1} -\\lambda+X_i\\log(\\lambda) -\\log(X_i!)\n\\]\nwith the following data:"
+    "text": "Maximizing function using optim\nFind the value of \\(\\lambda\\) that maximize the following function:\n\\[\n\\ell(\\lambda) = \\sum^n_{i=1} -\\lambda+X_i\\log(\\lambda) -\\log(X_i!)\n\\]\nwith the following data:\n\nz &lt;- rpois(1000, lambda = 2)"
   },
   {
     "objectID": "lectures/7a.html#fit-a-linear-model-using-optim",
