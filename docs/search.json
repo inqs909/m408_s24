@@ -4550,6 +4550,13 @@
     "text": "Updated Quarto HW Document\n\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\n    embed-resources: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3"
   },
   {
+    "objectID": "lectures/7a.html#resources",
+    "href": "lectures/7a.html#resources",
+    "title": "Linear Regression",
+    "section": "Resources",
+    "text": "Resources\nLinear Algebra for Data Science"
+  },
+  {
     "objectID": "lectures/7a.html#estimation-1",
     "href": "lectures/7a.html#estimation-1",
     "title": "Linear Regression",
@@ -5352,6 +5359,6 @@
     "href": "posts/week_7.html#resources",
     "title": "Week 7",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\n\n\n\n\n\n2"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\n\n\n\n\n2"
   }
 ]
