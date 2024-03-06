@@ -132,7 +132,7 @@ penguins |>  with(levels(island))
 ## Relevel a factor variable in R
 
 ```{r}
-library(palmerpenguins)
+#| echo: true
 penguins <- penguins |> 
   mutate(island_dream = relevel(island , ref = "Dream"))
 penguins |> lm(body_mass_g ~ flipper_length_mm + island_dream, 
@@ -250,11 +250,11 @@ $$
 Fit the following models using matrix formulas instead of the `lm` function.
 
 $$
-body\_mass\_g = \beta_0+\beta_1flipper\_length\_mm + \beta_2bill\_length\_mm 
+bmg = \beta_0+\beta_1 flipper\_length\_mm + \beta_2 bill\_length\_mm
 $$
 
 $$
-body\_mass\_g = \beta_0 +\beta_1 flipper\_length\_mm + \beta_2 dream \_island +\beta_3 biscoe\_island  
+bmg = \beta_0 +\beta_1 flipper\_length\_mm + \beta_2 dream + \beta_3 biscoe  
 $$
 
 $$
@@ -265,10 +265,17 @@ Define $\boldsymbol X$ in each case.
 
 # R Tips
 
+## Create a Model Matrix X
+
+$$
+bmg = \\
+\beta_0+ \beta_1bill\_length\_mm +  \beta_2 dream +\beta_3 biscoe  
+$$
+
 ## Model Matrix
 
 ```{r}
-library(palmerpenguins)
-model.matrix(~flipper_length_mm + species, data = penguins)
+#| echo: true
+penguins |> model.matrix(~flipper_length_mm + bill_length_mm + islands, data = _)
 
 ```

@@ -886,7 +886,7 @@
     "href": "lectures/7b.html#relevel-a-factor-variable-in-r",
     "title": "Multivariable Linear Regression",
     "section": "Relevel a factor variable in R",
-    "text": "Relevel a factor variable in R"
+    "text": "Relevel a factor variable in R\n\npenguins &lt;- penguins |&gt; \n  mutate(island_dream = relevel(island , ref = \"Dream\"))\npenguins |&gt; lm(body_mass_g ~ flipper_length_mm + island_dream, \n               data = _)"
   },
   {
     "objectID": "lectures/7b.html#simulation-study-1-1",
@@ -942,14 +942,21 @@
     "href": "lectures/7b.html#matrix-formulation-2",
     "title": "Multivariable Linear Regression",
     "section": "Matrix Formulation",
-    "text": "Matrix Formulation\nFit the following models using matrix formulas instead of the lm function.\n\\[\nbody\\_mass\\_g = \\beta_0+\\beta_1flipper\\_length\\_mm + \\beta_2bill\\_length\\_mm\n\\]\n\\[\nbody\\_mass\\_g = \\beta_0 +\\beta_1 flipper\\_length\\_mm + \\beta_2 dream \\_island +\\beta_3 biscoe\\_island  \n\\]\n\\[\n\\boldsymbol\\beta = (\\boldsymbol X^\\mathrm T \\boldsymbol X)^{-1} \\boldsymbol X^\\mathrm T \\boldsymbol Y\n\\]\nDefine \\(\\boldsymbol X\\) in each case."
+    "text": "Matrix Formulation\nFit the following models using matrix formulas instead of the lm function.\n\\[\nbmg = \\beta_0+\\beta_1 flipper\\_length\\_mm + \\beta_2 bill\\_length\\_mm\n\\]\n\\[\nbmg = \\beta_0 +\\beta_1 flipper\\_length\\_mm + \\beta_2 dream + \\beta_3 biscoe  \n\\]\n\\[\n\\boldsymbol\\beta = (\\boldsymbol X^\\mathrm T \\boldsymbol X)^{-1} \\boldsymbol X^\\mathrm T \\boldsymbol Y\n\\]\nDefine \\(\\boldsymbol X\\) in each case."
+  },
+  {
+    "objectID": "lectures/7b.html#create-a-model-matrix-x",
+    "href": "lectures/7b.html#create-a-model-matrix-x",
+    "title": "Multivariable Linear Regression",
+    "section": "Create a Model Matrix X",
+    "text": "Create a Model Matrix X\n\\[\nbmg = \\\\\n\\beta_0+ \\beta_1bill\\_length\\_mm +  \\beta_2 dream +\\beta_3 biscoe  \n\\]"
   },
   {
     "objectID": "lectures/7b.html#model-matrix",
     "href": "lectures/7b.html#model-matrix",
     "title": "Multivariable Linear Regression",
     "section": "Model Matrix",
-    "text": "Model Matrix"
+    "text": "Model Matrix\n\npenguins |&gt; model.matrix(~flipper_length_mm + bill_length_mm + islands, data = _)"
   },
   {
     "objectID": "lectures/6d.html#learning-objectives",

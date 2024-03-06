@@ -523,6 +523,12 @@ Y = \beta_0 +\beta_1 X_1 + \beta_2 X_2
 </section>
 <section id="relevel-a-factor-variable-in-r" class="slide level2">
 <h2>Relevel a factor variable in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">mutate</span>(<span class="at">island_dream =</span> <span class="fu">relevel</span>(island , <span class="at">ref =</span> <span class="st">"Dream"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3"></a>penguins <span class="sc">|&gt;</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> island_dream, </span>
+<span id="cb6-4"><a href="#cb6-4"></a>               <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section>
 <section>
 <section id="simulation-study-1" class="title-slide slide level1 center">
@@ -554,7 +560,7 @@ Y = 3 + 2X_1 + 4X_2 + \epsilon
 <h2>MLR Model</h2>
 <p>Instead of fitting a simple linear regression model. Fit a model that will include predictor <span class="math inline">\(X_2\)</span>. This can be done by adding <span class="math inline">\(X_2\)</span> in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Modify your simulation study and see what happens to <span class="math inline">\(\beta_1\)</span> and the model variance.</p>
 </section></section>
@@ -587,7 +593,7 @@ Y = 3 + 2log(X_1) + \epsilon
 <h2>SLR Model</h2>
 <p>Fit a simple linear regression model using <span class="math inline">\(\log(X_1)\)</span> instead.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">log</span>(x1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">log</span>(x1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Modify your simulation study and see what happens to <span class="math inline">\(\beta_1\)</span> and the model variance.</p>
 </section></section>
@@ -612,10 +618,10 @@ Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
 <h2>Matrix Formulation</h2>
 <p>Fit the following models using matrix formulas instead of the <code>lm</code> function.</p>
 <p><span class="math display">\[
-body\_mass\_g = \beta_0+\beta_1flipper\_length\_mm + \beta_2bill\_length\_mm
+bmg = \beta_0+\beta_1 flipper\_length\_mm + \beta_2 bill\_length\_mm
 \]</span></p>
 <p><span class="math display">\[
-body\_mass\_g = \beta_0 +\beta_1 flipper\_length\_mm + \beta_2 dream \_island +\beta_3 biscoe\_island  
+bmg = \beta_0 +\beta_1 flipper\_length\_mm + \beta_2 dream + \beta_3 biscoe  
 \]</span></p>
 <p><span class="math display">\[
 \boldsymbol\beta = (\boldsymbol X^\mathrm T \boldsymbol X)^{-1} \boldsymbol X^\mathrm T \boldsymbol Y
@@ -627,8 +633,18 @@ body\_mass\_g = \beta_0 +\beta_1 flipper\_length\_mm + \beta_2 dream \_island +\
 <h1>R Tips</h1>
 
 </section>
+<section id="create-a-model-matrix-x" class="slide level2">
+<h2>Create a Model Matrix X</h2>
+<p><span class="math display">\[
+bmg = \\
+\beta_0+ \beta_1bill\_length\_mm +  \beta_2 dream +\beta_3 biscoe  
+\]</span></p>
+</section>
 <section id="model-matrix" class="slide level2">
 <h2>Model Matrix</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">model.matrix</span>(<span class="sc">~</span>flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> islands, <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="footer footer-default">
 
