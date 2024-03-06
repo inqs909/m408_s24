@@ -262,3 +262,13 @@ $$
 $$
 
 Define $\boldsymbol X$ in each case.
+
+# R Tips
+
+## Model Matrix
+
+```{r}
+library(palmerpenguins)
+model.matrix(~flipper_length_mm + species, data = penguins)
+
+```

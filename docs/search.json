@@ -945,6 +945,13 @@
     "text": "Matrix Formulation\nFit the following models using matrix formulas instead of the lm function.\n\\[\nbody\\_mass\\_g = \\beta_0+\\beta_1flipper\\_length\\_mm + \\beta_2bill\\_length\\_mm\n\\]\n\\[\nbody\\_mass\\_g = \\beta_0 +\\beta_1 flipper\\_length\\_mm + \\beta_2 dream \\_island +\\beta_3 biscoe\\_island  \n\\]\n\\[\n\\boldsymbol\\beta = (\\boldsymbol X^\\mathrm T \\boldsymbol X)^{-1} \\boldsymbol X^\\mathrm T \\boldsymbol Y\n\\]\nDefine \\(\\boldsymbol X\\) in each case."
   },
   {
+    "objectID": "lectures/7b.html#model-matrix",
+    "href": "lectures/7b.html#model-matrix",
+    "title": "Multivariable Linear Regression",
+    "section": "Model Matrix",
+    "text": "Model Matrix"
+  },
+  {
     "objectID": "lectures/6d.html#learning-objectives",
     "href": "lectures/6d.html#learning-objectives",
     "title": "Linear Regression",
