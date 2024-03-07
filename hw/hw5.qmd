@@ -59,7 +59,6 @@ Fit a linear model showing the relationship between `score` (outcome; higher is 
 Run this code below to obtain the data (you may need to install `tidytuesdayR`):
 
 ```{r}
-
 #| echo: true
 #| eval: false
 
