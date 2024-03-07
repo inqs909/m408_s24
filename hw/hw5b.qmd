@@ -1,0 +1,30 @@
+---
+title: "Practice Homework"
+date: 3/8/23
+editor: visual
+draft: true
+---
+
+A random variable $Y$ is can belong to an exponential family of distributions if the density function can take the following form:
+
+$$
+f_Y(y) = a(y,\phi)\exp\left\{\frac{y\theta - b(\theta)}{\phi}\right\}
+$$
+
+-   $\theta$: canonical parameter
+
+-   $b(\theta)$: cumulant function
+
+-   $\phi>0$: dispersion parameter
+
+-   $a(y,\phi)$: normalizing function
+
+Convert the following distributions to the exponential form of the probability density function:
+
+-   Normal
+
+-   Poisson
+
+-   Binomial
+
+-   Gamma
