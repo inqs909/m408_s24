@@ -788,6 +788,14 @@ Y = 3 + 2X_1 + \epsilon
 <li><p><span class="math inline">\(X_1\sim N(8,1)\)</span></p></li>
 <li><p><span class="math inline">\(\epsilon\sim N(0, 2)\)</span></p></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">8</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>yp <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x</span>
+<span id="cb21-4"><a href="#cb21-4"></a>err <span class="ot">&lt;-</span> <span class="fu">sapply</span>(yp, <span class="cf">function</span>(i){<span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">sd =</span> <span class="fu">abs</span>(i)<span class="sc">^</span><span class="dv">2</span>)}) </span>
+<span id="cb21-5"><a href="#cb21-5"></a>y <span class="ot">&lt;-</span> yp <span class="sc">+</span> err</span>
+<span id="cb21-6"><a href="#cb21-6"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="fit-model-1" class="slide level2">
 <h2>Fit Model</h2>
@@ -811,6 +819,12 @@ Y = 3 + 2X_1 + \epsilon
 <li><p><span class="math inline">\(X_1\sim N(8,1)\)</span></p></li>
 <li><p><span class="math inline">\(\epsilon\sim Gamma(2, 1)\)</span></p></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">8</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rgamma</span>(n, <span class="dv">2</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="fit-model-2" class="slide level2">
 <h2>Fit Model</h2>

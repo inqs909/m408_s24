@@ -374,7 +374,6 @@ iris |>  with(cor(Sepal.Length, Sepal.Width))
 vif(x_lm)
 ```
 
-
 # Issues with Linearity
 
 ## Simulation Study
@@ -418,6 +417,7 @@ $$
 -   $\epsilon\sim N(0, 2)$
 
 ```{r}
+#| echo: true
 n <- 1000
 x <- rnorm(n, 8, sd = 2)
 yp <- 3 + 2 * x
@@ -447,6 +447,7 @@ $$
 -   $\epsilon\sim Gamma(2, 1)$
 
 ```{r}
+#| echo: true
 n <- 1000
 x <- rnorm(n, 8, sd = 2)
 y <- 3 + 2 * x + rgamma(n, 2)
@@ -458,7 +459,3 @@ df <- tibble(x, y)
 Fit a model between $Y$ and $X_1$.
 
 -   Fit Residuals Plots
-
-
-
-

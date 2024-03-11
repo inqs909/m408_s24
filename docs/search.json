@@ -5240,7 +5240,7 @@
     "href": "lectures/8a.html#simulation-study-1",
     "title": "Residual Analysis",
     "section": "Simulation Study",
-    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2X_1 + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim N(0, 2)\\)"
+    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2X_1 + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim N(0, 2)\\)\n\n\nn &lt;- 1000\nx &lt;- rnorm(n, 8, sd = 2)\nyp &lt;- 3 + 2 * x\nerr &lt;- sapply(yp, function(i){rnorm(1, sd = abs(i)^2)}) \ny &lt;- yp + err\ndf &lt;- tibble(x, y)"
   },
   {
     "objectID": "lectures/8a.html#fit-model-1",
@@ -5254,7 +5254,7 @@
     "href": "lectures/8a.html#simulation-study-2",
     "title": "Residual Analysis",
     "section": "Simulation Study",
-    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2X_1 + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim Gamma(2, 1)\\)"
+    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2X_1 + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim Gamma(2, 1)\\)\n\n\nn &lt;- 1000\nx &lt;- rnorm(n, 8, sd = 2)\ny &lt;- 3 + 2 * x + rgamma(n, 2)\ndf &lt;- tibble(x, y)"
   },
   {
     "objectID": "lectures/8a.html#fit-model-2",
