@@ -393,7 +393,6 @@ $$
 x <- rnorm(1000, 8)
 y <- 3 + 2 * log(x) + rnorm(1000, sd = sqrt(2))
 df <- tibble(x, y)
-lm(y~log(x))
 ```
 
 ## Fit Model

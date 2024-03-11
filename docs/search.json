@@ -5226,7 +5226,7 @@
     "href": "lectures/8a.html#simulation-study",
     "title": "Residual Analysis",
     "section": "Simulation Study",
-    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2log(X_1) + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim N(0, 2)\\)\n\n\nx &lt;- rnorm(1000, 8)\ny &lt;- 3 + 2 * log(x) + rnorm(1000, sd = sqrt(2))\ndf &lt;- tibble(x, y)\nlm(y~log(x))"
+    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2log(X_1) + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim N(0, 2)\\)\n\n\nx &lt;- rnorm(1000, 8)\ny &lt;- 3 + 2 * log(x) + rnorm(1000, sd = sqrt(2))\ndf &lt;- tibble(x, y)"
   },
   {
     "objectID": "lectures/8a.html#fit-model",
