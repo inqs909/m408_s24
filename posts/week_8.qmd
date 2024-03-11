@@ -1,7 +1,7 @@
 ---
 title: "Week 8"
-date: 03-12-23
-description: We will continue our discussion on linear regression an model development.
+date: 03-11-24
+description: We will continue our discussion on linear regression.
 editor: visual
 draft: true
 editor_options: 
@@ -12,15 +12,15 @@ editor_options:
 
 ### First Lecture
 
--   Estimation Procedures
+-   Residual Analysis
 
 ### Second Lecture
 
--   Multiple Linear Regression
+-   Hypothesis Testing
 
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       |        |        |       |
-| 2       |        |        |       |
+| Lecture | Slides                                                         | Videos | Files |
+|---------|----------------------------------------------------------------|--------|-------|
+| 1       | [Slides](https://m408.inqs.info/lectures/8a.html#/title-slide) |        |       |
+| 2       |                                                                |        |       |

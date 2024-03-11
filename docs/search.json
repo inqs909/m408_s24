@@ -529,28 +529,28 @@
     "href": "lectures/8a.html#leverages",
     "title": "Residual Analysis",
     "section": "Leverages",
-    "text": "Leverages\n\\[\nH = \\boldsymbol X (\\boldsymbol X^\\mathrm T\\boldsymbol X)^{-1}\\boldsymbol X ^\\mathrm T\n\\]\n\n\\(\\boldsymbol X\\): design matrix\n\\(h_i = H[i,i]\\): leverage for \\(i\\)th value"
+    "text": "Leverages\n\\[\nH = \\boldsymbol X (\\boldsymbol X^\\mathrm T\\boldsymbol X)^{-1}\\boldsymbol X ^\\mathrm T\n\\]\n\n\\(\\boldsymbol X\\): design matrix\n\\(h_{ii} = H[i,i]\\): leverage for \\(i\\)th value"
   },
   {
     "objectID": "lectures/8a.html#standardized-residuals",
     "href": "lectures/8a.html#standardized-residuals",
     "title": "Residual Analysis",
     "section": "Standardized Residuals",
-    "text": "Standardized Residuals\n\\[\n\\hat r^*_i = \\frac{\\hat r_i}{\\sqrt{\\hat\\sigma^2(1-h_{i})}}\n\\]\n\n\\(\\hat \\sigma^2\\): Mean square error\n\\(h_{ii}\\): leverage of \\(i\\)th data point"
+    "text": "Standardized Residuals\n\\[\n\\hat r^*_i = \\frac{\\hat r_i}{\\sqrt{\\hat\\sigma^2(1-h_{ii})}}\n\\]\n\n\\(\\hat \\sigma^2\\): Estimated mean square error\n\\(h_{ii}\\): Leverage of \\(i\\)th data point"
   },
   {
     "objectID": "lectures/8a.html#jackknife-residuals",
     "href": "lectures/8a.html#jackknife-residuals",
     "title": "Residual Analysis",
     "section": "Jackknife Residuals",
-    "text": "Jackknife Residuals\n\\[\n\\hat r ^\\prime_i = \\frac{y_i - \\hat y_{i(i)}}{\\sqrt{\\hat \\sigma^2_{(i)}(1-h_{i})}}\n\\]\n\n\\(\\hat y_{i(i)}\\): fitted value for \\(i\\)th value from model fitted without \\(i\\)th data point\n\\(\\hat\\sigma^2_{(i)}\\): mean square error from model fitted without \\(i\\)th data point"
+    "text": "Jackknife Residuals\n\\[\n\\hat r ^\\prime_i = \\frac{y_i - \\hat y_{i(i)}}{\\sqrt{\\hat \\sigma^2_{(i)}(1-h_{ii})}}\n\\]\n\n\\(\\hat y_{i(i)}\\): fitted value for \\(i\\)th value from model fitted without \\(i\\)th data point\n\\(\\hat\\sigma^2_{(i)}\\): mean square error from model fitted without \\(i\\)th data point"
   },
   {
     "objectID": "lectures/8a.html#cooks-distance",
     "href": "lectures/8a.html#cooks-distance",
     "title": "Residual Analysis",
     "section": "Cook’s Distance",
-    "text": "Cook’s Distance\n\\[\n\\hat d_i = \\frac{(y_i - \\hat y_{i})^2}{(k+1)\\hat \\sigma^2}\\left\\{\\frac{h_i}{(1-h_i)^2}\\right\\}\n\\]\n\n\\(k\\): number of predictors"
+    "text": "Cook’s Distance\n\\[\n\\hat d_i = \\frac{(y_i - \\hat y_{i})^2}{(k+1)\\hat \\sigma^2}\\left\\{\\frac{h_{ii}}{(1-h_{ii})^2}\\right\\}\n\\]\n\n\\(k\\): number of predictors"
   },
   {
     "objectID": "lectures/8a.html#residual-analysis-1",
@@ -564,7 +564,7 @@
     "href": "lectures/8a.html#qq-plot",
     "title": "Residual Analysis",
     "section": "QQ Plot",
-    "text": "QQ Plot\nA qq (quantile-quantile) plot will plot the estimated quantiles of the residuals against the theoretical quantiles from a normal distribution function. If the points from the qq-plot lie on \\(y=x\\), it is said that the residuals follow a normal distribution."
+    "text": "QQ Plot\nA qq (quantile-quantile) plot will plot the estimated quantiles of the residuals against the theoretical quantiles from a normal distribution function. If the points from the qq-plot lie on the \\(y=x\\) line, it is said that the residuals follow a normal distribution."
   },
   {
     "objectID": "lectures/8a.html#residual-vs-fitted-plot",
@@ -651,11 +651,11 @@
     "text": "Jackknife Residuals\n\ndf_resid |&gt; \n  ggplot(aes(obs, jackknife)) + geom_point() +\n    theme_bw()"
   },
   {
-    "objectID": "lectures/8a.html#levarages",
-    "href": "lectures/8a.html#levarages",
+    "objectID": "lectures/8a.html#leverages-1",
+    "href": "lectures/8a.html#leverages-1",
     "title": "Residual Analysis",
-    "section": "Levarages",
-    "text": "Levarages\n\ndf_resid |&gt; \n  ggplot(aes(obs, hatvals)) + geom_point() +\n    theme_bw()"
+    "section": "Leverages",
+    "text": "Leverages\n\ndf_resid |&gt; \n  ggplot(aes(obs, hatvals)) + geom_point() +\n    theme_bw()"
   },
   {
     "objectID": "lectures/8a.html#cooks-distance-1",
@@ -672,11 +672,46 @@
     "text": "Multicolinearity\n\nlibrary(car)\niris |&gt;  with(cor(Sepal.Length, Sepal.Width))\n\n#&gt; [1] -0.1175698\n\nvif(x_lm)\n\n#&gt; Sepal.Length  Sepal.Width \n#&gt;     1.014016     1.014016"
   },
   {
-    "objectID": "lectures/8a.html#example",
-    "href": "lectures/8a.html#example",
+    "objectID": "lectures/8a.html#simulation-study",
+    "href": "lectures/8a.html#simulation-study",
     "title": "Residual Analysis",
-    "section": "Example",
-    "text": "Example\nThe taylor package contains the taylor_all_songs data frame with information on all of Taylor Swift’s Songs. Fit a linear regression model and run a residual analysis on the following equation:\n\\[\ndanceability = energy\\ +\\ speechiness\\ +\\ acousticness\\ +\\ instrumentalness\n\\]"
+    "section": "Simulation Study",
+    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2log(X_1) + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim N(0, 2)\\)\n\n\nx &lt;- rnorm(1000, 8)\ny &lt;- 3 + 2 * log(x) + rnorm(1000, sd = sqrt(2))\ndf &lt;- tibble(x, y)\nlm(y~log(x))"
+  },
+  {
+    "objectID": "lectures/8a.html#fit-model",
+    "href": "lectures/8a.html#fit-model",
+    "title": "Residual Analysis",
+    "section": "Fit Model",
+    "text": "Fit Model\nFit a model between \\(Y\\) and \\(X_1\\).\n\nFit Residuals Plots"
+  },
+  {
+    "objectID": "lectures/8a.html#simulation-study-1",
+    "href": "lectures/8a.html#simulation-study-1",
+    "title": "Residual Analysis",
+    "section": "Simulation Study",
+    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2X_1 + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim N(0, 2)\\)"
+  },
+  {
+    "objectID": "lectures/8a.html#fit-model-1",
+    "href": "lectures/8a.html#fit-model-1",
+    "title": "Residual Analysis",
+    "section": "Fit Model",
+    "text": "Fit Model\nFit a model between \\(Y\\) and \\(X_1\\).\n\nFit Residuals Plots"
+  },
+  {
+    "objectID": "lectures/8a.html#simulation-study-2",
+    "href": "lectures/8a.html#simulation-study-2",
+    "title": "Residual Analysis",
+    "section": "Simulation Study",
+    "text": "Simulation Study\nSimulate 1000 random variables from the following model:\n\\[\nY = 3 + 2X_1 + \\epsilon\n\\]\n\n\\(X_1\\sim N(8,1)\\)\n\\(\\epsilon\\sim Gamma(2, 1)\\)"
+  },
+  {
+    "objectID": "lectures/8a.html#fit-model-2",
+    "href": "lectures/8a.html#fit-model-2",
+    "title": "Residual Analysis",
+    "section": "Fit Model",
+    "text": "Fit Model\nFit a model between \\(Y\\) and \\(X_1\\).\n\nFit Residuals Plots"
   },
   {
     "objectID": "lectures/7d.html#learning-objectives",

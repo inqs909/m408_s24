@@ -181,22 +181,22 @@ $$
 
 -   $\boldsymbol X$: design matrix
 
--   $h_i = H[i,i]$: leverage for $i$th value
+-   $h_{ii} = H[i,i]$: leverage for $i$th value
 
 ## Standardized Residuals
 
 $$
-\hat r^*_i = \frac{\hat r_i}{\sqrt{\hat\sigma^2(1-h_{i})}}
+\hat r^*_i = \frac{\hat r_i}{\sqrt{\hat\sigma^2(1-h_{ii})}}
 $$
 
--   $\hat \sigma^2$: Mean square error
+-   $\hat \sigma^2$: Estimated mean square error
 
--   $h_{ii}$: leverage of $i$th data point
+-   $h_{ii}$: Leverage of $i$th data point
 
 ## Jackknife Residuals
 
 $$
-\hat r ^\prime_i = \frac{y_i - \hat y_{i(i)}}{\sqrt{\hat \sigma^2_{(i)}(1-h_{i})}}
+\hat r ^\prime_i = \frac{y_i - \hat y_{i(i)}}{\sqrt{\hat \sigma^2_{(i)}(1-h_{ii})}}
 $$
 
 -   $\hat y_{i(i)}$: fitted value for $i$th value from model fitted without $i$th data point
@@ -206,7 +206,7 @@ $$
 ## Cook's Distance
 
 $$
-\hat d_i = \frac{(y_i - \hat y_{i})^2}{(k+1)\hat \sigma^2}\left\{\frac{h_i}{(1-h_i)^2}\right\}
+\hat d_i = \frac{(y_i - \hat y_{i})^2}{(k+1)\hat \sigma^2}\left\{\frac{h_{ii}}{(1-h_{ii})^2}\right\}
 $$
 
 -   $k$: number of predictors
@@ -219,7 +219,7 @@ A residual analysis is used to test the assumptions of linear regression.
 
 ## QQ Plot
 
-A qq (quantile-quantile) plot will plot the estimated quantiles of the residuals against the theoretical quantiles from a normal distribution function. If the points from the qq-plot lie on $y=x$, it is said that the residuals follow a normal distribution.
+A qq (quantile-quantile) plot will plot the estimated quantiles of the residuals against the theoretical quantiles from a normal distribution function. If the points from the qq-plot lie on the $y=x$ line, it is said that the residuals follow a normal distribution.
 
 ## Residual vs Fitted Plot
 
@@ -338,7 +338,7 @@ df_resid |>
 
 ```
 
-## Levarages
+## Leverages
 
 ```{r}
 #| echo: true
@@ -374,10 +374,91 @@ iris |>  with(cor(Sepal.Length, Sepal.Width))
 vif(x_lm)
 ```
 
-## Example
 
-The `taylor` package contains the `taylor_all_songs` data frame with information on all of Taylor Swift's Songs. Fit a linear regression model and run a residual analysis on the following equation:
+# Issues with Linearity
+
+## Simulation Study
+
+Simulate 1000 random variables from the following model:
 
 $$
-danceability = energy\ +\ speechiness\ +\ acousticness\ +\ instrumentalness 
+Y = 3 + 2log(X_1) + \epsilon
 $$
+
+-   $X_1\sim N(8,1)$
+
+-   $\epsilon\sim N(0, 2)$
+
+```{r}
+#| echo: true
+x <- rnorm(1000, 8)
+y <- 3 + 2 * log(x) + rnorm(1000, sd = sqrt(2))
+df <- tibble(x, y)
+lm(y~log(x))
+```
+
+## Fit Model
+
+Fit a model between $Y$ and $X_1$.
+
+-   Fit Residuals Plots
+
+# Issues with Constant Variances
+
+## Simulation Study
+
+Simulate 1000 random variables from the following model:
+
+$$
+Y = 3 + 2X_1 + \epsilon
+$$
+
+-   $X_1\sim N(8,1)$
+
+-   $\epsilon\sim N(0, 2)$
+
+```{r}
+n <- 1000
+x <- rnorm(n, 8, sd = 2)
+yp <- 3 + 2 * x
+err <- sapply(yp, function(i){rnorm(1, sd = abs(i)^2)}) 
+y <- yp + err
+df <- tibble(x, y)
+```
+
+## Fit Model
+
+Fit a model between $Y$ and $X_1$.
+
+-   Fit Residuals Plots
+
+# Issues with Normality
+
+## Simulation Study
+
+Simulate 1000 random variables from the following model:
+
+$$
+Y = 3 + 2X_1 + \epsilon
+$$
+
+-   $X_1\sim N(8,1)$
+
+-   $\epsilon\sim Gamma(2, 1)$
+
+```{r}
+n <- 1000
+x <- rnorm(n, 8, sd = 2)
+y <- 3 + 2 * x + rgamma(n, 2)
+df <- tibble(x, y)
+```
+
+## Fit Model
+
+Fit a model between $Y$ and $X_1$.
+
+-   Fit Residuals Plots
+
+
+
+
