@@ -32,7 +32,7 @@
     "href": "posts/week_8.html#resources",
     "title": "Week 8",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\n\n\n\n\n2"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
   },
   {
     "objectID": "posts/week_6.html",
@@ -459,7 +459,7 @@
     "href": "lectures/8b.html#common-hypothesis-tests",
     "title": "Hypothesis Testing",
     "section": "Common Hypothesis Tests",
-    "text": "Common Hypothesis Tests\n\n\n\n\n\n\n\n\n\n\n\n\nTest\n# of Samples\nNull Hypothesis\nDistribution\nDF\nTest Statistics\nNotes\n\n\n\n\nt-test\n1\n\\(\\mu=\\mu_0\\)\n\\(t_{DF}\\)\n\\(DF=n-1\\)\n\\(\\frac{\\bar X-\\mu_0}{\\sqrt{s^2/n}}\\)\n\\(n&lt;30\\)\n\n\nz-test\n1\n\\(\\mu=\\mu_0\\)\n\\(N(0,1)\\)\nNone\n\\(\\frac{\\bar X-\\mu_0}{\\sqrt{\\sigma^2/n}}\\)\n\\(n&gt;30\\) \\(\\sigma^2\\) known\n\n\nz-test\n1\n\\(\\mu=\\mu_0\\)\n\\(N(0,1)\\)\nNone\n\\(\\frac{\\bar X-\\mu_0}{\\sqrt{s^2/n}}\\)\n\\(n&gt;30\\) \\(\\sigma^2\\) unknown\n\n\npaired t-test\n2\n\\(\\mu_1-\\mu_2=D\\)\n\\(t_{DF}\\)\n\\(DF=n-1\\)\n\\(\\frac{\\bar X_d-D}{\\sqrt{s_d^2/n}}\\)\n\\(n\\) is the number of pairs\n\n\nindependent t-test\n2\n\\(\\mu_1-\\mu_2=D\\)\n\\(t_{DF}\\)\n\\(DF=n_1+n_2-2\\)\n\\(\\frac{\\bar X_1-\\bar X_2-D}{\\sqrt{s_p^2(1/n_1+1/n_2)}}\\)\n\\(s_p^2=\\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\\)\n\n\nindependent t-test\n2\n\\(\\mu_1-\\mu_2=D\\)\n\\(t_{DF}\\)\n\\(DF=\\frac{(s^2_1/n_1+s^2_2/n_2)^2}{(s^2_1/n_1)^2/(n_1-1)+(s^2_2/n_2)^2/(n_2-1)}\\)\n\\(\\frac{\\bar X_1-\\bar X_2-D}{\\sqrt{s_1^2/n_1+s^2_2/n_2}}\\)"
+    "text": "Common Hypothesis Tests\n\n\n\n\n\n\n\n\n\n\n\n\nTest\n# of Samples\nNull Hypothesis\nDistribution\nDF\nTest Statistics\nNotes\n\n\n\n\nt-test\n1\n\\(\\mu=\\mu_0\\)\n\\(t_{DF}\\)\n\\(DF=n-1\\)\n\\(\\frac{\\bar X-\\mu_0}{\\sqrt{s^2/n}}\\)\n\\(n&lt;30\\)\n\n\nz-test\n1\n\\(\\mu=\\mu_0\\)\n\\(N(0,1)\\)\nNone\n\\(\\frac{\\bar X-\\mu_0}{\\sqrt{\\sigma^2/n}}\\)\n\\(n&gt;30\\) \\(\\sigma^2\\) known\n\n\nz-test\n1\n\\(\\mu=\\mu_0\\)\n\\(N(0,1)\\)\nNone\n\\(\\frac{\\bar X-\\mu_0}{\\sqrt{s^2/n}}\\)\n\\(n&gt;30\\) \\(\\sigma^2\\) unknown\n\n\npaired t-test\n2\n\\(\\mu_1-\\mu_2=D\\)\n\\(t_{DF}\\)\n\\(DF=n-1\\)\n\\(\\frac{\\bar X_d-D}{\\sqrt{s_d^2/n}}\\)\n\\(n\\) is the number of pairs\n\n\nindependent t-test\n2\n\\(\\mu_1-\\mu_2=D\\)\n\\(t_{DF}\\)\n\\(DF=n_1+n_2-2\\)\n\\(\\frac{\\bar X_1-\\bar X_2-D}{\\sqrt{s_p^2(1/n_1+1/n_2)}}\\)\n\\(s_p^2=\\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\\)\n\n\nindependent t-test\n2\n\\(\\mu_1-\\mu_2=D\\)\n\\(t_{DF}\\)\n\\(DF=\\frac{(s^2_1/n_1+s^2_2/n_2)^2}{(s^2_1/n_1)^2/(n_1-1)+(s^2_2/n_2)^2/(n_2-1)}\\)\n\\(\\frac{\\bar X_1-\\bar X_2-D}{\\sqrt{s_1^2/n_1+s^2_2/n_2}}\\)\n\n\n\nANOVA\n&gt;2\n\\(\\mu_1=\\mu_2=\\cdots=\\mu_k\\)\n\\(F_{DF1,DF2}\\)"
   },
   {
     "objectID": "lectures/8b.html#decision-making-p-value",
@@ -525,25 +525,53 @@
     "text": "Test Statistic\n\\[\n\\hat F = \\frac{[SSE(RED) - SSE(FULL)]/[DFE(RED)-DFE(FULL)]}{MSE(FULL)}\n\\]\n\\[\n\\hat F \\sim F[DFE(RED) - DFE(FULL), DFE(FULL)]\n\\]"
   },
   {
-    "objectID": "lectures/8b.html#applications-in-r-1",
-    "href": "lectures/8b.html#applications-in-r-1",
+    "objectID": "lectures/8b.html#sample-t-test",
+    "href": "lectures/8b.html#sample-t-test",
     "title": "Hypothesis Testing",
-    "section": "Applications in R",
-    "text": "Applications in R"
+    "section": "1-Sample t-test",
+    "text": "1-Sample t-test\nThis can be conducted as \\(Y=\\beta_0\\)\nTest the following hypothesis: \\(H_0:\\ \\beta_0 = 205\\) OR \\(H_0: \\mu = 205\\)\n\nlibrary(palmerpenguins)\nlibrary(tidyverse)\npenguins &lt;- penguins |&gt; drop_na()\nxlm &lt;- penguins  |&gt;  lm(flipper_length_mm ~ 1, data = _)\ncoef(xlm)\nconfint(xlm)\n\n## OR\nt.test(penguins$flipper_length_mm, mu = 205)"
+  },
+  {
+    "objectID": "lectures/8b.html#sample-t-test-1",
+    "href": "lectures/8b.html#sample-t-test-1",
+    "title": "Hypothesis Testing",
+    "section": "2-Sample t-test",
+    "text": "2-Sample t-test\nThis can be conducted as \\(Y=\\beta_0 + \\beta_1 X\\), where \\(X\\) is a binary variable for 2 samples.\nTest the following hypothesis: \\(H_0:\\ \\beta_1 = 0\\) OR \\(H_0: \\mu_1-\\mu_2 = 0\\)\n\nmtcars |&gt; lm(mpg ~ vs, data = _) |&gt; summary()\n\n## OR\n\nmtcars |&gt; t.test(mpg ~ vs, data = _)"
+  },
+  {
+    "objectID": "lectures/8b.html#paired-t-test",
+    "href": "lectures/8b.html#paired-t-test",
+    "title": "Hypothesis Testing",
+    "section": "Paired t-test",
+    "text": "Paired t-test\nThis can be conducted as \\(Y_1 - Y_2=\\beta_0\\)\nTest the following hypothesis: \\(H_0:\\ \\beta_0 = 0\\) OR \\(H_0: \\mu_1 - \\mu_2 = 0\\)\n\n# DATA PREP\nbefore &lt;-c(200.1, 190.9, 192.7, 213, 241.4, 196.9, 172.2, 185.5, 205.2, 193.7)\nafter &lt;-c(392.9, 393.2, 345.1, 393, 434, 427.9, 422, 383.9, 392.3, 352.2)\ndf &lt;- data.frame(before, after)\n\ndf |&gt; lm(after - before ~ 1, data = _) |&gt; (\\(x) c(coef(x), confint(x)))()\n## OR\ndf |&gt; with(t.test(before, after, paired = T))"
+  },
+  {
+    "objectID": "lectures/8b.html#anova",
+    "href": "lectures/8b.html#anova",
+    "title": "Hypothesis Testing",
+    "section": "ANOVA",
+    "text": "ANOVA\nThis can be conducted as \\(Y=\\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_k X_k\\), where \\(X_k\\) are binary variable for k samples.\nTest the following hypothesis: \\(H_0:\\ \\beta_1 =\\beta_2 =\\cdots=\\beta_k = 0\\) OR \\(H_0: \\mu_1 =\\mu_2 =\\cdots=\\mu_k = 0\\)\n\npenguins |&gt; lm(flipper_length_mm ~ species, data = _) |&gt; anova()\n\n## OR\n\npenguins |&gt; aov(flipper_length_mm ~ species, data = _) |&gt; anova()"
   },
   {
     "objectID": "lectures/8b.html#individual-hypothesis-testing",
     "href": "lectures/8b.html#individual-hypothesis-testing",
     "title": "Hypothesis Testing",
     "section": "Individual Hypothesis Testing",
-    "text": "Individual Hypothesis Testing"
+    "text": "Individual Hypothesis Testing\n\npenguins |&gt; \n  lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm + species, data = _) |&gt; \n  summary()"
   },
   {
     "objectID": "lectures/8b.html#model-inference-4",
     "href": "lectures/8b.html#model-inference-4",
     "title": "Hypothesis Testing",
     "section": "Model Inference",
-    "text": "Model Inference"
+    "text": "Model Inference\n\nxlm &lt;- penguins |&gt; \n  lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm + species, data = _) \n\nsummary(xlm)\nanova(xlm)\n\n## OR\n\nxlm_null &lt;- penguins |&gt; lm(body_mass_g ~ 1, data = _)\nanova(xlm_null, xlm)\n\n## OR\n\nlibrary(supernova)\nsupernova(xlm)"
+  },
+  {
+    "objectID": "lectures/8b.html#comparing-different-models",
+    "href": "lectures/8b.html#comparing-different-models",
+    "title": "Hypothesis Testing",
+    "section": "Comparing Different Models",
+    "text": "Comparing Different Models\n\nxlm1 &lt;- penguins |&gt; \n  lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm + species, data = _) \n\nxlm2 &lt;- penguins |&gt; \n  lm(body_mass_g ~ flipper_length_mm + species, data = _) \n\nanova(xlm2, xlm1)"
   },
   {
     "objectID": "lectures/7e.html#learning-objective",

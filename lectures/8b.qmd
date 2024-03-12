@@ -16,7 +16,7 @@ format:
 knitr:
   opts_chunk: 
     echo: true
-    eval: true
+    eval: false
     message: false
     warnings: false
     comment: "#>" 
@@ -74,14 +74,15 @@ Notice how there are 3 types of null and alternative hypothesis, The first type 
 
 ## Common Hypothesis Tests
 
-| Test               | \# of Samples | Null Hypothesis | Distribution | DF                                                                               | Test Statistics                                          | Notes                                               |
+| Test               | \# of Samples | Null Hypothesis            | Distribution  | DF                                                                               | Test Statistics                                          | Notes                                               |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-| t-test             | 1             | $\mu=\mu_0$     | $t_{DF}$     | $DF=n-1$                                                                         | $\frac{\bar X-\mu_0}{\sqrt{s^2/n}}$                      | $n<30$                                              |
-| z-test             | 1             | $\mu=\mu_0$     | $N(0,1)$     | None                                                                             | $\frac{\bar X-\mu_0}{\sqrt{\sigma^2/n}}$                 | $n>30$ $\sigma^2$ known                             |
-| z-test             | 1             | $\mu=\mu_0$     | $N(0,1)$     | None                                                                             | $\frac{\bar X-\mu_0}{\sqrt{s^2/n}}$                      | $n>30$ $\sigma^2$ unknown                           |
-| paired t-test      | 2             | $\mu_1-\mu_2=D$ | $t_{DF}$     | $DF=n-1$                                                                         | $\frac{\bar X_d-D}{\sqrt{s_d^2/n}}$                      | $n$ is the number of pairs                          |
-| independent t-test | 2             | $\mu_1-\mu_2=D$ | $t_{DF}$     | $DF=n_1+n_2-2$                                                                   | $\frac{\bar X_1-\bar X_2-D}{\sqrt{s_p^2(1/n_1+1/n_2)}}$  | $s_p^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$ |
-| independent t-test | 2             | $\mu_1-\mu_2=D$ | $t_{DF}$     | $DF=\frac{(s^2_1/n_1+s^2_2/n_2)^2}{(s^2_1/n_1)^2/(n_1-1)+(s^2_2/n_2)^2/(n_2-1)}$ | $\frac{\bar X_1-\bar X_2-D}{\sqrt{s_1^2/n_1+s^2_2/n_2}}$ |                                                     |
+| t-test             | 1             | $\mu=\mu_0$                | $t_{DF}$      | $DF=n-1$                                                                         | $\frac{\bar X-\mu_0}{\sqrt{s^2/n}}$                      | $n<30$                                              |
+| z-test             | 1             | $\mu=\mu_0$                | $N(0,1)$      | None                                                                             | $\frac{\bar X-\mu_0}{\sqrt{\sigma^2/n}}$                 | $n>30$ $\sigma^2$ known                             |
+| z-test             | 1             | $\mu=\mu_0$                | $N(0,1)$      | None                                                                             | $\frac{\bar X-\mu_0}{\sqrt{s^2/n}}$                      | $n>30$ $\sigma^2$ unknown                           |
+| paired t-test      | 2             | $\mu_1-\mu_2=D$            | $t_{DF}$      | $DF=n-1$                                                                         | $\frac{\bar X_d-D}{\sqrt{s_d^2/n}}$                      | $n$ is the number of pairs                          |
+| independent t-test | 2             | $\mu_1-\mu_2=D$            | $t_{DF}$      | $DF=n_1+n_2-2$                                                                   | $\frac{\bar X_1-\bar X_2-D}{\sqrt{s_p^2(1/n_1+1/n_2)}}$  | $s_p^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$ |
+| independent t-test | 2             | $\mu_1-\mu_2=D$            | $t_{DF}$      | $DF=\frac{(s^2_1/n_1+s^2_2/n_2)^2}{(s^2_1/n_1)^2/(n_1-1)+(s^2_2/n_2)^2/(n_2-1)}$ | $\frac{\bar X_1-\bar X_2-D}{\sqrt{s_1^2/n_1+s^2_2/n_2}}$ |                                                     |
+| ANOVA              | \>2           | $\mu_1=\mu_2=\cdots=\mu_k$ | $F_{DF1,DF2}$ |                                                                                  |                                                          |                                                     |
 
 ## Decision Making: P-Value
 
@@ -127,18 +128,15 @@ $$
 
 ## Model inference
 
-We conduct model inference to determine if different models are better at explaining variation.
-A common example is to compare a linear model ($\hat Y=\hat\beta_0 + \hat\beta_1 X$) to the mean of Y ($\hat \mu_y$).
-We determine the significance of the variation explained using an Analysis of Variance (ANOVA) table and F test.
+We conduct model inference to determine if different models are better at explaining variation. A common example is to compare a linear model ($\hat Y=\hat\beta_0 + \hat\beta_1 X$) to the mean of Y ($\hat \mu_y$). We determine the significance of the variation explained using an Analysis of Variance (ANOVA) table and F test.
 
 ## ANOVA Table
 
-| Source | DF        | SS            | MS                    | F                   |
-|--------|-----------|---------------|-----------------------|---------------------|
+| Source | DF        | SS            | MS                    | F                        |
+|--------------|--------------|--------------|-----------------|---------------|
 | Model  | $DFR=k-1$ | $SSR$         | $MSR=\frac{SSM}{DFR}$ | $\hat F=\frac{MSR}{MSE}$ |
-| Error  | $DFE=n-k$ | $SSE$         | $MSE=\frac{SSE}{DFE}$ |                     |
-| Total  | $TDF=n-1$ | $TSS=SSR+SSE$ |                       |                     |
-
+| Error  | $DFE=n-k$ | $SSE$         | $MSE=\frac{SSE}{DFE}$ |                          |
+| Total  | $TDF=n-1$ | $TSS=SSR+SSE$ |                       |                          |
 
 $$
 \hat F \sim F(DFR, DFE)
@@ -175,15 +173,115 @@ $$
 \hat F \sim F[DFE(RED) - DFE(FULL), DFE(FULL)]
 $$
 
-# Applications in R
+# Linear Models Equivalent of Common Statistical Tests
 
-## Applications in R
+## 1-Sample t-test
+
+This can be conducted as $Y=\beta_0$
+
+Test the following hypothesis: $H_0:\ \beta_0 = 205$ OR $H_0: \mu = 205$
+
+```{r}
+#| echo: true
+library(palmerpenguins)
+library(tidyverse)
+penguins <- penguins |> drop_na()
+xlm <- penguins  |>  lm(flipper_length_mm ~ 1, data = _)
+coef(xlm)
+confint(xlm)
+
+## OR
+t.test(penguins$flipper_length_mm, mu = 205)
+```
+
+## 2-Sample t-test
+
+This can be conducted as $Y=\beta_0 + \beta_1 X$, where $X$ is a binary variable for 2 samples.
+
+Test the following hypothesis: $H_0:\ \beta_1 = 0$ OR $H_0: \mu_1-\mu_2 = 0$
 
 ```{r}
 
+mtcars |> lm(mpg ~ vs, data = _) |> summary()
+
+## OR
+
+mtcars |> t.test(mpg ~ vs, data = _)
 ```
+
+## Paired t-test
+
+This can be conducted as $Y_1 - Y_2=\beta_0$
+
+Test the following hypothesis: $H_0:\ \beta_0 = 0$ OR $H_0: \mu_1 - \mu_2 = 0$
+
+```{r}
+# DATA PREP
+before <-c(200.1, 190.9, 192.7, 213, 241.4, 196.9, 172.2, 185.5, 205.2, 193.7)
+after <-c(392.9, 393.2, 345.1, 393, 434, 427.9, 422, 383.9, 392.3, 352.2)
+df <- data.frame(before, after)
+
+df |> lm(after - before ~ 1, data = _) |> (\(x) c(coef(x), confint(x)))()
+## OR
+df |> with(t.test(before, after, paired = T))
+```
+
+## ANOVA
+
+This can be conducted as $Y=\beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k$, where $X_k$ are binary variable for k samples.
+
+Test the following hypothesis: $H_0:\ \beta_1 =\beta_2 =\cdots=\beta_k = 0$ OR $H_0: \mu_1 =\mu_2 =\cdots=\mu_k = 0$
+
+```{r}
+penguins |> lm(flipper_length_mm ~ species, data = _) |> anova()
+
+## OR
+
+penguins |> aov(flipper_length_mm ~ species, data = _) |> anova()
+
+```
+
+# Applications in R
 
 ## Individual Hypothesis Testing
 
+```{r}
+penguins |> 
+  lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm + species, data = _) |> 
+  summary()
+
+```
+
 ## Model Inference
 
+```{r}
+xlm <- penguins |> 
+  lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm + species, data = _) 
+
+summary(xlm)
+anova(xlm)
+
+## OR
+
+xlm_null <- penguins |> lm(body_mass_g ~ 1, data = _)
+anova(xlm_null, xlm)
+
+## OR
+
+library(supernova)
+supernova(xlm)
+
+```
+
+## Comparing Different Models
+
+```{r}
+xlm1 <- penguins |> 
+  lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm + species, data = _) 
+
+xlm2 <- penguins |> 
+  lm(body_mass_g ~ flipper_length_mm + species, data = _) 
+
+anova(xlm2, xlm1)
+
+```
