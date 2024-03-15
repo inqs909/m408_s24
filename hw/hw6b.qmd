@@ -1,0 +1,32 @@
+---
+title: "Homework 6"
+date: 3/31/23
+description: "Assignment is due 4/6/23"
+editor: visual
+draft: true
+---
+
+## Problem 1
+
+Let $Y_i\overset{iid}{\sim}Pois(\lambda_i)$ with $\lambda_i=g^{-1}(\boldsymbol X_i^\mathrm T\boldsymbol \beta)$, $\eta_i = -1 + 3 X_i$, and $X_i\sim N(0, 0.25)$. Write the code that will provide the log-likelihood function of the model.
+
+```{r}
+x <- rnorm(1000, sd = sqrt(0.25)) 
+
+eta <- -1 + 2 * x
+
+y <- sapply(eta, \(x) rpois(1, exp(x)))
+glm(y~x, family = poisson())
+```
+
+## Problem 2
+
+Using the function above, minimize the likelihood function to identify the estimates of the parameters.
+
+## Problem 3
+
+Repeat Problems 1 and 2 a thousand times to conduct a simulation study.
+
+## Problem 4
+
+The `lime` data set contains 385 observations on small-leaved lime trees. The `Foliage` variable measures the foliage biomass. Fit a regression model between `Foliage` and the following covariates: `DBH` tree diameter and `Age`. Fit the model using 3 different link functions. Print out the results for the one's that work. Comment why one's may work and others do not.
