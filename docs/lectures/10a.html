@@ -13,6 +13,7 @@
 <script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
@@ -402,7 +403,6 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Generalized Linear Models</h1>
-  <p class="subtitle">Model Inference</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -411,10 +411,184 @@
 <section id="learning-outcomes" class="slide level2">
 <h2>Learning Outcomes</h2>
 <ul>
-<li><p>Hypothesis Tests</p></li>
-<li><p>Model Inference</p></li>
+<li><p>Exponential Family of Distributions</p></li>
+<li><p>Generalized Linear Models</p></li>
+<li><p>R Code</p></li>
 </ul>
 </section>
+<section>
+<section id="exponential-family-of-distributions" class="title-slide slide level1 center">
+<h1>Exponential Family of Distributions</h1>
+
+</section>
+<section id="exponential-family-of-distributions-1" class="slide level2">
+<h2>Exponential Family of Distributions</h2>
+<p>An exponential family of distributions are random variables that allow their probability density function to have the following form:</p>
+<p><span class="math display">\[
+f(y; \theta,\phi) = a(y,\phi)\exp\left\{\frac{y\theta-\kappa(\theta)}{\phi}\right\}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\theta\)</span>: is the canonical parameter (also a function of other parameters)</p></li>
+<li><p><span class="math inline">\(\kappa(\theta)\)</span>: is a known cumulant function</p></li>
+<li><p><span class="math inline">\(\phi&gt;0\)</span>: dispersion parameter function</p></li>
+<li><p><span class="math inline">\(a(y,\phi)\)</span>: normalizing constant</p></li>
+</ul>
+</section>
+<section id="canonical-parameter" class="slide level2">
+<h2>Canonical Parameter</h2>
+<p>The canonical parameter represents the relationship between the random variable and the <span class="math inline">\(E(Y)=\mu\)</span></p>
+</section>
+<section id="normal-distribution" class="slide level2">
+<h2>Normal Distribution</h2>
+<p><span class="math display">\[
+f(x;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]</span></p>
+</section>
+<section id="binomial-distribution" class="slide level2">
+<h2>Binomial Distribution</h2>
+<p><span class="math display">\[
+f(x;n,p)=\big(^n_x\big) p^x(1-p)^{n-x}
+\]</span></p>
+</section>
+<section id="poisson-distribution" class="slide level2">
+<h2>Poisson Distribution</h2>
+<p><span class="math display">\[
+f(x;\lambda) = \frac{e^{-\lambda}\lambda^x}{x!}
+\]</span></p>
+</section>
+<section id="common-distributions-and-canonical-parameters" class="slide level2">
+<h2>Common Distributions and Canonical Parameters</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Random Variable</th>
+<th>Canonical Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Normal</td>
+<td><span class="math inline">\(\mu\)</span></td>
+</tr>
+<tr class="even">
+<td>Binomial</td>
+<td><span class="math inline">\(\log\left(\frac{\mu}{1-\mu}\right)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Negative Binomial</td>
+<td><span class="math inline">\(\log\left(\frac{\mu}{\mu+k}\right)\)</span></td>
+</tr>
+<tr class="even">
+<td>Poisson</td>
+<td><span class="math inline">\(\log(\mu)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Gamma</td>
+<td><span class="math inline">\(-\frac{1}{\mu}\)</span></td>
+</tr>
+<tr class="even">
+<td>Inverse Gaussian</td>
+<td><span class="math inline">\(-\frac{1}{2\mu^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="generalized-linear-models" class="title-slide slide level1 center">
+<h1>Generalized Linear Models</h1>
+
+</section>
+<section id="generalized-linear-models-1" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>A generalized linear model (GLM) is used to model the association between an outcome variable (of any data type) and a set of predictor values. We estimate a set of regression coefficients <span class="math inline">\(\boldsymbol \beta\)</span> to explain how each predictor is related to the expected value of the outcome.</p>
+</section>
+<section id="generalized-linear-models-2" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>A GLM is composed of a systematic and random component.</p>
+</section>
+<section id="random-component" class="slide level2">
+<h2>Random Component</h2>
+<p>The random component is the random variable that defines the randomness and variation of the outcome variable.</p>
+</section>
+<section id="systematic-component" class="slide level2">
+<h2>Systematic Component</h2>
+<p>The systematic component is the linear model that models the association between a set of predictors and the expected value of Y:</p>
+<p><span class="math display">\[
+g(\mu)=\eta=\boldsymbol X_i^\mathrm T \boldsymbol \beta
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\boldsymbol\beta\)</span>: regression coefficients</p></li>
+<li><p><span class="math inline">\(\boldsymbol X_i=(1, X_{i1}, \ldots, X_{ip})^\mathrm T\)</span>: design vector</p></li>
+<li><p><span class="math inline">\(\eta\)</span>: linear model</p></li>
+<li><p><span class="math inline">\(\mu=E(Y)\)</span></p></li>
+<li><p><span class="math inline">\(g(\cdot)\)</span>: link function</p></li>
+</ul>
+</section></section>
+<section>
+<section id="r-code" class="title-slide slide level1 center">
+<h1>R Code</h1>
+
+</section>
+<section id="general-r-code" class="slide level2">
+<h2>General R Code</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="fu">glm</span>(formula,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a>    data,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3"></a>    family)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Supply a formula for R</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Supply the data frame</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Which family and link function is used to model data</span>
+</dd>
+</dl>
+</div>
+</div>
+</section>
+<section id="poisson-regression" class="slide level2">
+<h2>Poisson Regression</h2>
+<p>Poisson Regression is used when the outcome is count data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x,</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    data, </span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="at">family =</span> <span class="fu">poisson</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="gamma-regression" class="slide level2">
+<h2>Gamma Regression</h2>
+<p>Gamma Regression is used when modeling the association between predictors and positive continuous values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
+<span id="cb2-2"><a href="#cb2-2"></a>    data, </span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="at">family =</span> <span class="fu">Gamma</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="negative-binomial-regression" class="slide level2">
+<h2>Negative Binomial Regression</h2>
+<p>Negative Binomial Regression is used four with overdispersed count data, where the variance is larger than expected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">glm.nb</span>(y<span class="sc">~</span>x, </span>
+<span id="cb3-3"><a href="#cb3-3"></a>       data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="inverse-gaussian-regression" class="slide level2">
+<h2>Inverse Gaussian Regression</h2>
+<p>Inverse Gaussian Regression is used for overly dispersed positive continuous data where Gamma Regression is inappropriate:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
+<span id="cb4-2"><a href="#cb4-2"></a>    data, </span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="at">family =</span> <span class="fu">inverse.gaussian</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
 <section>
 <section id="hypothesis-tests" class="title-slide slide level1 center">
 <h1>Hypothesis Tests</h1>
@@ -423,20 +597,6 @@
 <section id="hypothesis-tests-1" class="slide level2">
 <h2>Hypothesis Tests</h2>
 <p>Hypothesis tests are used to test whether claims are valid or not. This is conducted by collecting data, setting the <strong>Null</strong> and <strong>Alternative</strong> Hypothesis.</p>
-</section>
-<section id="null-hypothesis" class="slide level2">
-<h2>Null Hypothesis</h2>
-</section>
-<section id="alternative-hypothesis" class="slide level2">
-<h2>Alternative Hypothesis</h2>
-</section>
-<section id="common-hypothesis-tests" class="slide level2">
-<h2>Common Hypothesis Tests</h2>
-<ul>
-<li><p>t-tests</p></li>
-<li><p>ANOVA</p></li>
-<li><p><span class="math inline">\(\chi^2\)</span>-tests</p></li>
-</ul>
 </section>
 <section id="testing-beta_j" class="slide level2">
 <h2>Testing <span class="math inline">\(\beta_j\)</span></h2>
@@ -465,99 +625,153 @@ PE \pm CV \times SE
 <li><p><span class="math inline">\(\alpha\)</span>: significance level</p></li>
 <li><p>SE: Standard Error</p></li>
 </ul>
+</section></section>
+<section>
+<section id="examples" class="title-slide slide level1 center">
+<h1>Examples</h1>
+
 </section>
-<section id="model-inference" class="slide level2">
-<h2>Model Inference</h2>
-<p><span class="math display">\[
-\hat\eta \pm CV\times SE
-\]</span></p>
-<p><span class="math display">\[
-(LB = \hat\eta - CV\times SE, UB = \hat\eta + CV\times SE
-\]</span></p>
-</section>
-<section id="model-inference-for-mu" class="slide level2">
-<h2>Model inference for <span class="math inline">\(\mu\)</span></h2>
-<p><span class="math display">\[
-\{g^{-1}(LB), g^{-1}(UB)\}
-\]</span></p>
-</section>
-<section id="applications-in-r" class="slide level2">
-<h2>Applications in R</h2>
+<section id="fitting-models" class="slide level2">
+<h2>Fitting Models</h2>
+<p>Use the <code>survival</code>, <code>MASS</code> and <code>GLMsData</code> R packages to fit the models for examples.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>pois_glm <span class="ot">&lt;-</span> bladder1 <span class="sc">%$%</span> <span class="fu">glm</span>(recur <span class="sc">~</span> treatment <span class="sc">+</span> number <span class="sc">+</span> size, </span>
-<span id="cb1-5"><a href="#cb1-5"></a>                <span class="at">family =</span> poisson)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(GLMsData)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(survival)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="individual-hypothesis-testing" class="slide level2">
-<h2>Individual Hypothesis Testing</h2>
+<section id="poisson-regression-1" class="slide level2">
+<h2>Poisson Regression</h2>
+<p>Fit a model between the outcome <code>recur</code>, number of reccurrence, and predictors <code>treatment</code>, drugs or placebo, and <code>number</code>, the initial number of tumors, from the <code>bladder1</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>pois_glm <span class="sc">%&gt;%</span> summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>bladder1 <span class="sc">|&gt;</span>  <span class="fu">glm</span>(recur <span class="sc">~</span> treatment <span class="sc">+</span> number,</span>
+<span id="cb6-2"><a href="#cb6-2"></a>                 <span class="at">data =</span> _,</span>
+<span id="cb6-3"><a href="#cb6-3"></a>                 <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
-#&gt; glm(formula = recur ~ treatment + number + size, family = poisson)
+#&gt; glm(formula = recur ~ treatment + number, family = poisson(link = "log"), 
+#&gt;     data = bladder1)
 #&gt; 
 #&gt; Coefficients:
 #&gt;                     Estimate Std. Error z value Pr(&gt;|z|)    
-#&gt; (Intercept)          1.10381    0.07532  14.656  &lt; 2e-16 ***
-#&gt; treatmentpyridoxine  0.26176    0.06892   3.798 0.000146 ***
-#&gt; treatmentthiotepa   -0.45650    0.08609  -5.303 1.14e-07 ***
-#&gt; number               0.11152    0.01627   6.853 7.22e-12 ***
-#&gt; size                -0.04337    0.02081  -2.084 0.037132 *  
+#&gt; (Intercept)          1.00918    0.06057  16.661  &lt; 2e-16 ***
+#&gt; treatmentpyridoxine  0.25506    0.06889   3.702 0.000214 ***
+#&gt; treatmentthiotepa   -0.45167    0.08626  -5.236 1.64e-07 ***
+#&gt; number               0.11603    0.01620   7.164 7.82e-13 ***
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 
 #&gt; (Dispersion parameter for poisson family taken to be 1)
 #&gt; 
 #&gt;     Null deviance: 868.47  on 293  degrees of freedom
-#&gt; Residual deviance: 767.66  on 289  degrees of freedom
-#&gt; AIC: 1527
+#&gt; Residual deviance: 772.19  on 290  degrees of freedom
+#&gt; AIC: 1529.5
 #&gt; 
 #&gt; Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 </div>
 </section>
-<section id="model-inference-1" class="slide level2">
-<h2>Model Inference</h2>
-<p>Expected Reoccurrence for those on Pyridoxine and 2 tumors, largest tumor 4 cm.</p>
+<section id="negative-binomial-regression-1" class="slide level2">
+<h2>Negative Binomial Regression</h2>
+<p>Fit a model between the outcome <code>Count</code>, viral activity (pock counts), and predictor <code>Dilution</code> factor from the <code>pock</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> <span class="st">"pyridoxine"</span>, <span class="at">number =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">4</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>res <span class="ot">&lt;-</span> pois_glm <span class="sc">%&gt;%</span> <span class="fu">predict</span>(newdata, </span>
-<span id="cb4-3"><a href="#cb4-3"></a>                     <span class="at">se.fit =</span> T, </span>
-<span id="cb4-4"><a href="#cb4-4"></a>                     <span class="at">type =</span> <span class="st">"response"</span>) <span class="sc">%T&gt;%</span> print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">data</span>(<span class="st">"pock"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>pock <span class="sc">|&gt;</span> <span class="fu">glm.nb</span>(Count <span class="sc">~</span> Dilution, </span>
+<span id="cb8-3"><a href="#cb8-3"></a>               <span class="at">data =</span> _)  <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; $fit
-#&gt;        1 
-#&gt; 4.116953 
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; glm.nb(formula = Count ~ Dilution, data = pock, init.theta = 6.045172803, 
+#&gt;     link = log)
 #&gt; 
-#&gt; $se.fit
-#&gt;         1 
-#&gt; 0.2683267 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    
+#&gt; (Intercept)  5.05810    0.09622   52.57   &lt;2e-16 ***
+#&gt; Dilution    -0.19204    0.01322  -14.53   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 
-#&gt; $residual.scale
-#&gt; [1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ci <span class="ot">&lt;-</span> (res<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">*</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> res<span class="sc">$</span>se.fit) <span class="sc">%T&gt;%</span> print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 3.591042 4.642863</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">exp</span>(res<span class="sc">$</span>fit) <span class="co"># Expected occurrence</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;        1 
-#&gt; 61.37193</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">exp</span>(ci) <span class="co"># 95% C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1]  36.27185 103.84125</code></pre>
+#&gt; (Dispersion parameter for Negative Binomial(6.0452) family taken to be 1)
+#&gt; 
+#&gt;     Null deviance: 262.687  on 47  degrees of freedom
+#&gt; Residual deviance:  48.891  on 46  degrees of freedom
+#&gt; AIC: 427.26
+#&gt; 
+#&gt; Number of Fisher Scoring iterations: 1
+#&gt; 
+#&gt; 
+#&gt;               Theta:  6.05 
+#&gt;           Std. Err.:  1.43 
+#&gt; 
+#&gt;  2 x log-likelihood:  -421.261</code></pre>
 </div>
 </div>
 </section>
-<section id="model-inference-2" class="slide level2">
-<h2>Model Inference</h2>
-<p>For those who are on <code>thiotepa</code>, what is the difference in the average number of recuccrence for a patient who has 6 than a patient who has 0 tumors, keeping size constant.</p>
+<section id="gamma-regression-1" class="slide level2">
+<h2>Gamma Regression</h2>
+<p>Fit a model between the outcome <code>Foliage</code>, foliage biomass, and predictor <code>DBH</code>, tree diameter at breast height, from the <code>lime</code> data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>             <span class="at">data =</span> _,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>             <span class="at">family =</span> <span class="fu">Gamma</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span>  </span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">summary</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; glm(formula = Foliage ~ DBH, family = Gamma(link = "log"), data = lime)
+#&gt; 
+#&gt; Coefficients:
+#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept) -1.786052   0.085994  -20.77   &lt;2e-16 ***
+#&gt; DBH          0.122388   0.004736   25.84   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; (Dispersion parameter for Gamma family taken to be 0.5432673)
+#&gt; 
+#&gt;     Null deviance: 508.48  on 384  degrees of freedom
+#&gt; Residual deviance: 189.57  on 383  degrees of freedom
+#&gt; AIC: 831.65
+#&gt; 
+#&gt; Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+</section>
+<section id="inverse-gaussian-regression-1" class="slide level2">
+<h2>Inverse Gaussian Regression</h2>
+<p>Fit a model between the outcome <code>Foliage</code>, foliage biomass, and predictor <code>DBH</code>, tree diameter at breast height, from the <code>lime</code> data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>             <span class="at">data =</span> _,</span>
+<span id="cb12-4"><a href="#cb12-4"></a>             <span class="at">family =</span> <span class="fu">inverse.gaussian</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; glm(formula = Foliage ~ DBH, family = inverse.gaussian(link = "log"), 
+#&gt;     data = lime)
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  -2.7290     0.1113  -24.53   &lt;2e-16 ***
+#&gt; DBH           0.2077     0.0118   17.59   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; (Dispersion parameter for inverse.gaussian family taken to be 1.571078)
+#&gt; 
+#&gt;     Null deviance: 873.60  on 384  degrees of freedom
+#&gt; Residual deviance: 542.83  on 383  degrees of freedom
+#&gt; AIC: 1192.6
+#&gt; 
+#&gt; Number of Fisher Scoring iterations: 16</code></pre>
+</div>
+</div>
 
 <div class="footer footer-default">
 

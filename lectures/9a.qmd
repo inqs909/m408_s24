@@ -1,6 +1,6 @@
 ---
-title: "Generalized Linear Models"
-subtitle: "Estimation"
+title: "Classification"
+subtitle: "Logistic Regression"
 format:
   revealjs:
     scrollable: true
@@ -16,7 +16,7 @@ format:
 knitr:
   opts_chunk: 
     echo: false
-    eval: false
+    eval: true
     message: false
     warnings: false
     comment: "#>" 
@@ -29,93 +29,267 @@ filters:
   - reveal-header
   - code-fullscreen
 
-editor: visual
+editor: source
 ---
 
 ## Learning Outcomes
 
--   Estimation Procedures
+-   Logistic Regression
 
-    -   Regression Coefficients
+-   Multinomial Regression
 
-    -   Dispersion Parameter
+## Classification
 
--   Newton-Raphson Algorithm
+The practice of classifying data points into different categories.
 
-# Estimating: $\boldsymbol \beta$
+## Motivation
 
-## Estimating $\boldsymbol\beta$
+```{r}
+#| echo: true
+library(palmerpenguins)
+library(tidyverse)
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm, color = species)) +
+  geom_point()
+```
 
-To obtain the estimates of $\boldsymbol \beta$ we can use the maximum log-likelihood approach to obtain $\hat{\boldsymbol\beta}$.
+## For Now ...
 
-$$
-L(\boldsymbol \beta) =  \prod^n_{i=1}f\left(y_i|\boldsymbol X_i;\boldsymbol \beta,\phi\right)
-$$
+```{r}
+#| echo: true
+penguins <- penguins |> drop_na() |>  
+  mutate(gentoo = ifelse(species == "Gentoo", "Gentoo", "Other"))
+penguins |> ggplot(aes(body_mass_g, flipper_length_mm, color = gentoo)) +
+  geom_point()
+```
 
-## Maximum Likelihood Approach
-
-$$
-\ell(\boldsymbol \beta) =  \sum^n_{i=1}\log\left\{f\left(y_i|\boldsymbol X_i;\boldsymbol \beta,\phi\right)\right\}
-$$
-
-## Numerical Approaches
-
--   Newton-Rhapson Algorithm
-
--   Fisher-Scoring Algorithm
-
--   Nelder-Mead
-
--   BFGS
-
-# Estimating: $\phi$
-
-## Estimating $\phi$
-
-Depending on the random variable, the dispersion parameter will need to be estimated to conduct inference procedures. There are 4 methods to estimate the dispersion parameter:
-
--   Maximum Likelihood
-
--   Maximum (Modified) Profile Likelihood Approach
-
--   Mean Deviance Estimator
-
--   Pearson Estimator
-
-## Maximum Likelihood Approach
+## Potential Model
 
 $$
-\ell(\phi) =  \sum^n_{i=1}\log\left\{f\left(y_i|\boldsymbol X_i;\boldsymbol \beta,\phi\right)\right\}
+\left(\begin{array}{c}
+Gentoo \\
+Other
+\end{array}\right) = \boldsymbol X^\mathrm T \boldsymbol \beta
 $$
 
-## Maximum (Modified) Profile Likelihood Approach
+# Logistic Regression
+
+## Logistic Regression
+
+Logistic Regression is used to model the association between a set of predictors and a binary outcome.
+
+## Construct Model
 
 $$
-\ell_p(\phi) = \frac{p}{2}\log \phi + \sum^n_{i=1}\log\left\{f\left(y_i|\boldsymbol X_i;\hat{\boldsymbol \beta},\phi\right)\right\}
+\left(\begin{array}{c}
+Gentoo \\
+Other
+\end{array}\right) = \boldsymbol X^\mathrm T \boldsymbol \beta
 $$
 
-## Mean Deviance Estimator
+## Let ...
 
 $$
-\tilde \phi = \frac{D(y,\hat\mu)}{n-p}
+Y = \left\{\begin{array}{cc}
+1 & Gentoo \\
+0 & Other
+\end{array}\right.
 $$
 
--   $D(y,\hat\mu)=2\sum^n_{i=1}\left\{t(y,y) - t(y,\mu) \right\}$
-
--   $t(y,\mu)=y\theta-\kappa(\theta)$
-
--   $p$: number of regression coefficients
-
-## Pearson Estimator
+## Construct a Model
 
 $$
-\bar \phi = \frac{\Lambda^2}{n-p}
+P\left(Y = 1\right) = \boldsymbol X^\mathrm T \boldsymbol \beta
 $$
 
--   $\Lambda^2=\sum^n_{i=1}\frac{y_i-\hat\mu_i}{V(\hat\mu_i)}$
+## Construct a Model
 
--   $\hat \mu_i = g^{-1}(\hat\beta_0 + \sum^n_{j=1}{X_{ij}\hat\beta_j})$
+$$
+P\left(Y = 1\right) = \frac{\exp(\boldsymbol X^\mathrm T \boldsymbol \beta)}{1 + \exp(\boldsymbol X^\mathrm T \boldsymbol \beta)}
+$$
 
--   $V(\hat\mu_i)=\frac{d^2\kappa(\hat\theta_i)}{d\theta_i^2}$
+## Construct a Model
 
-# Newton-Raphson Algorithm
+$$
+\frac{P(Y = 1)}{1-P(Y = 1)} = \exp(\boldsymbol X^\mathrm T \boldsymbol \beta)
+$$
+
+## The Logistic Model
+
+$$
+\log\left\{\frac{P(Y = 1)}{1-P(Y = 1)}\right\} = \boldsymbol X^\mathrm T \boldsymbol \beta
+$$
+
+## Odds and Log-Odds
+
+$$
+\frac{P(Y = 1)}{1-P(Y = 1)}
+$$ 
+
+$$
+\log\left\{\frac{P(Y = 1)}{1-P(Y = 1)}\right\}
+$$
+
+## Estimation
+
+Estimation is done by finding the values of $\boldsymbol \beta$ that maximizes the likelihood function given the data pair $(\boldsymbol X_i, Y_i)$
+
+$$
+L(\boldsymbol \beta) = \prod_{i=1}^n P(Y_i=1)^{Y_i}\left\{1-P(Y_i=1)\right\}^{1-Y_i}
+$$
+
+## Predicting Category
+
+Once the estimates $\hat \beta$ are obtained, compute:
+
+$$ 
+P\left(Y_i = 1\right) = \frac{\exp(\boldsymbol X_i^\mathrm T \boldsymbol{\hat\beta})}{1 + \exp(\boldsymbol X^\mathrm T \boldsymbol{\hat\beta)}}
+$$
+
+$$
+Y_i = \left\{\begin{array}{cc}
+1 & P(Y_i =1) \geq 0.5 \\
+0 & Otherwise
+\end{array}\right.
+$$
+
+# Ordinal Regression
+
+## Ordinal Regression
+
+Ordinal regression extends the logistic regression to more than one category ($J$ Categories) that has a natural order.
+
+An example can be thought of as Grade Levels: A, B, C, D, F
+
+## Modeling Ordinal Responses
+
+We can model Ordinal responses using the the proportional odds model and a logit formula:
+
+$$
+\mathrm{logit}\{P(Y\leq j|X)\} = \boldsymbol X_{(j)} ^\mathrm T \boldsymbol \beta _{(j)}
+$$
+
+## Linear Model
+
+$$
+\boldsymbol X_{(j)}^\mathrm T \boldsymbol \beta_{(j)} = \beta_{0(j)} + \sum^p_{i=1}X_{i}\beta_i
+$$
+
+# Multinomial Regression
+
+## Multinomial Regression
+
+## Model
+
+$$
+\log\left\{\frac{P(Y = k)}{P(Y = \mathrm{REF})}\right\} = \boldsymbol X^\mathrm T \boldsymbol \beta_k
+$$
+
+$\mathrm{REF}$ is a reference value to be modeled.
+
+# R Examples
+
+## R Preparation
+
+```{r}
+#| echo: true
+## Data
+library(GLMsData)
+library(carData)
+library(palmerpenguins)
+
+## Ordinal and Multinomial Models
+library(VGAM)
+```
+
+## Logistic Regression
+
+```{r}
+#| echo: true
+#| eval: false
+
+glm(y ~ x,
+    data,
+    family = binomial())
+
+```
+
+## Logistic Regression
+
+```{r}
+#| echo: true
+penguins <- penguins |> mutate(gentoo = ifelse(gentoo == "Gentoo", 1, 0))
+res <- penguins |> glm(gentoo ~ flipper_length_mm + body_mass_g, 
+                       data = _,
+                       family = binomial())
+summary(res)
+```
+
+## Prediction Logistic Regression
+
+```{r}
+#| echo: true
+predict(res, 
+        newdata = data.frame(flipper_length_mm = 200, body_mass_g = 4005),
+        type = "response")
+predict(res, 
+        newdata = data.frame(flipper_length_mm = 220, body_mass_g = 4775),
+        type = "response")
+```
+
+
+## Ordinal Regression
+
+```{r}
+#| echo: true
+#| eval: false
+
+vglm(y ~ x,
+    data,
+    family = propodds())
+
+```
+
+## Ordinal Regression
+
+```{r}
+#| echo: true
+res <- vglm(poverty~religion+degree+country+age+gender,
+            family = propodds(),
+            data = WVS)
+```
+
+## Summary
+
+```{r}
+#| echo: true
+summary(res)
+```
+
+## Multinomial Regression
+
+```{r}
+#| echo: true
+#| eval: false
+
+vglm(y ~ x,
+    data,
+    family = multinomial())
+
+```
+
+## Multinomial Regression
+
+```{r}
+#| echo: true
+res <- penguins |> 
+  vglm(species ~ body_mass_g + flipper_length_mm,
+       family = multinomial(),
+       data = _)
+```
+
+## Summary
+
+```{r}
+#| echo: true
+summary(res)
+```

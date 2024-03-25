@@ -16,7 +16,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Generalized Linear Models</title>
+  <title>MATH 408 - Classification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,71 +34,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -401,8 +336,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Generalized Linear Models</h1>
-  <p class="subtitle">Residual Analysis</p>
+  <h1 class="title">Classification</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -411,337 +345,281 @@
 <section id="learning-outcomes" class="slide level2">
 <h2>Learning Outcomes</h2>
 <ul>
-<li><p>Model Diagnostics</p></li>
-<li><p>Residuals</p></li>
-<li><p>Residual Analysis</p></li>
-<li><p>Model Selection</p></li>
+<li><p>K-Nearest Neighbors</p></li>
+<li><p>Bayes’ Classifier</p></li>
+<li><p>Linear and Quadratic Discriminant Analysis</p></li>
+<li><p>Naive Bayes</p></li>
 </ul>
 </section>
+<section id="classification" class="slide level2">
+<h2>Classification</h2>
+<p>The practice of classifying data points into different categories.</p>
+</section>
 <section>
-<section id="model-diagnostics" class="title-slide slide level1 center">
-<h1>Model Diagnostics</h1>
+<section id="k-nearest-neighbors" class="title-slide slide level1 center">
+<h1>K-Nearest Neighbors</h1>
 
 </section>
-<section id="assumptions" class="slide level2">
-<h2>Assumptions</h2>
+<section id="k-nearest-neighbors-1" class="slide level2">
+<h2>K-Nearest Neighbors</h2>
+<p>K-Nearest Neighbors will assign a category to a new data point based on the majority category of its <strong>K</strong> nearest neighbors.</p>
+</section>
+<section id="knn" class="slide level2">
+<h2>KNN</h2>
+
+<img data-src="9b_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="distances" class="slide level2">
+<h2>Distances</h2>
+<p>The distance between a given point and the training data must be computed. These are the most commonly used distances:</p>
 <ul>
-<li><p>Linearity</p></li>
-<li><p>Correct Distribution</p>
+<li><p>Manhattan</p></li>
+<li><p>Euclidean</p></li>
+<li><p>Minkowski</p></li>
+</ul>
+</section>
+<section id="manhattan-distance" class="slide level2">
+<h2>Manhattan Distance</h2>
+<p><span class="math display">\[
+d(x,y) = \sum_{i=1}^{p} |x_i - y_i|
+\]</span></p>
 <ul>
-<li><p>Random Component</p></li>
-<li><p>Link Function</p></li>
-</ul></li>
-<li><p>Dispersion parameter constant</p></li>
-<li><p>Independence</p></li>
-<li><p>No Outliers</p></li>
+<li><p><span class="math inline">\(x\)</span>: vector values of individual point</p></li>
+<li><p><span class="math inline">\(y\)</span>: vector values of new point</p></li>
+<li><p><span class="math inline">\(p\)</span>: length of vector</p></li>
+</ul>
+</section>
+<section id="euclidean-distance" class="slide level2">
+<h2>Euclidean Distance</h2>
+<p><span class="math display">\[
+d(x,y) = \sqrt{\sum_{i=1}^{p} (x_i - y_i)^2}
+\]</span></p>
+</section>
+<section id="minkowski-distance" class="slide level2">
+<h2>Minkowski Distance</h2>
+<p><span class="math display">\[
+d(x,y) = \left( \sum_{i=1}^{p} |x_i - y_i|^w \right)^{\frac{1}{w}}
+\]</span></p>
+</section>
+<section id="algorithm" class="slide level2">
+<h2>Algorithm</h2>
+<p>Given a training data set, conduct the following steps:</p>
+<ul>
+<li><p>Compute the distance between a new data point and every point in the training data set.</p></li>
+<li><p>Choose the <span class="math inline">\(K\)</span> nearest training data points to the new point using the smallest distance.</p></li>
+<li><p>Categorize the new data point based on the majority of category from the <span class="math inline">\(K\)</span> nearest training data points.</p></li>
 </ul>
 </section></section>
 <section>
-<section id="residuals" class="title-slide slide level1 center">
-<h1>Residuals</h1>
+<section id="bayes-classifier" class="title-slide slide level1 center">
+<h1>Bayes Classifier</h1>
 
 </section>
-<section id="raw-residuals" class="slide level2">
-<h2>Raw Residuals</h2>
+<section id="bayes-classifier-1" class="slide level2">
+<h2>Bayes Classifier</h2>
+<p>Bayes Classifier is used to classify a data point to a category <span class="math inline">\(c\)</span></p>
 <p><span class="math display">\[
-r = y - \hat \mu
+f(\boldsymbol x) = argmax_{c \in C} f(C|\boldsymbol X)
+\]</span></p>
+</section>
+<section id="probability" class="slide level2">
+<h2>Probability</h2>
+<p><span class="math display">\[
+f(C = c|\boldsymbol X = x) = \frac{f(\boldsymbol X | C)\pi_c}{f(\boldsymbol X)}
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\hat \mu\)</span>: fitted value</li>
+<li><p><span class="math inline">\(f(\boldsymbol X| C)\)</span>: conditional distribution of <span class="math inline">\(\boldsymbol X\)</span></p></li>
+<li><p><span class="math inline">\(\pi_c\)</span>: probability of observing category <span class="math inline">\(C\)</span></p></li>
+<li><p><span class="math inline">\(f(\boldsymbol X)\)</span>: marginal distribution of <span class="math inline">\(\boldsymbol X\)</span></p></li>
 </ul>
 </section>
-<section id="working-responses" class="slide level2">
-<h2>Working Responses</h2>
+<section id="distribution-of-fboldsymbol-xc-and-fboldsymbol-x" class="slide level2">
+<h2>Distribution of <span class="math inline">\(f(\boldsymbol X|C)\)</span> and <span class="math inline">\(f(\boldsymbol X)\)</span></h2>
+<p>To apply Bayes classifier, we must specify the form of <span class="math inline">\(f(\boldsymbol X| C)\)</span> and <span class="math inline">\(f(\boldsymbol X)\)</span>. Common distributions are:</p>
+<ul>
+<li><p>Normal</p></li>
+<li><p>Bernoulli</p></li>
+<li><p>Multinomial</p></li>
+</ul>
+</section></section>
+<section>
+<section id="linear-discriminant-analysis" class="title-slide slide level1 center">
+<h1>Linear Discriminant Analysis</h1>
+
+</section>
+<section id="lda" class="slide level2">
+<h2>LDA</h2>
+<p>Linear Discriminant Analysis is used to classify a new data point, from a set of classifications, given information from a set of predictors.</p>
+<p>LDA classifies data using a Bayes classifier and imposing a normal distribution to the model.</p>
+</section>
+<section id="lda-p1" class="slide level2">
+<h2>LDA (p=1)</h2>
 <p><span class="math display">\[
-z_i = \hat \eta_i + \frac{d\eta_i}{d\mu_i}(y_i-\hat\mu_i)
+f_k(\boldsymbol X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{(x-\mu_k)^2}{2\sigma^2}\right\}
+\]</span></p>
+<p><span class="math display">\[
+f(X) = \sum^K_{l=1} \pi_l f_l(X)
 \]</span></p>
 </section>
-<section id="partial-residuals" class="slide level2">
-<h2>Partial Residuals</h2>
+<section id="lda-p1-1" class="slide level2">
+<h2>LDA (p=1)</h2>
 <p><span class="math display">\[
-u_{ij} = e_i + \hat\beta_j x_{ij}
+\delta_k = f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
+\]</span></p>
+<p><span class="math display">\[
+\delta_k(x) = x\frac{\mu_k}{\sigma^2}-\frac{\mu_k^2}{\sigma^2} + \ln(\pi_k)
+\]</span></p>
+</section>
+<section id="lda-p1-estimates" class="slide level2">
+<h2>LDA (p=1) Estimates</h2>
+<p>Let <span class="math inline">\(Y_i=c_l\)</span>, <span class="math inline">\(l=1\ldots, K\)</span>, and <span class="math inline">\(X_i=x_i\)</span> bet the data from n observations:</p>
+<p><span class="math display">\[
+\hat\mu_k = \frac{1}{n_k}\sum^n_{i=1(Y_i=c_k)} x_i
+\]</span></p>
+<p><span class="math display">\[
+\hat\sigma^2=\frac{1}{n-K}\sum^K_{l=1}\sum_{i=1(Y_i=c_l)}^n(x_i-\hat\mu_l)^2
 \]</span></p>
 <ul>
-<li><span class="math inline">\(e_i = z_i - \hat \eta_i\)</span></li>
+<li><span class="math inline">\(n_k\)</span>: number of observations in class <span class="math inline">\(k\)</span></li>
 </ul>
 </section>
-<section id="pearson-residuals" class="slide level2">
-<h2>Pearson Residuals</h2>
+<section id="lda-p1-2" class="slide level2">
+<h2>LDA (p&gt;1)</h2>
 <p><span class="math display">\[
-r^* = \frac{y-\hat \mu}{\sqrt{V(\hat\mu)}}
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
 \]</span></p>
-<ul>
-<li><p><span class="math inline">\(\hat\mu\)</span>: fitted value</p></li>
-<li><p><span class="math inline">\(V(\mu)\)</span>: variance function</p></li>
-</ul>
-</section>
-<section id="deviance-residuals" class="slide level2">
-<h2>Deviance Residuals</h2>
 <p><span class="math display">\[
-r^\prime = \mathrm{sign}(y-\hat\mu)\sqrt{d(y,\hat\mu)}
+f(\boldsymbol X) = \sum^K_{l=1} \pi_l f_l(\boldsymbol X)
 \]</span></p>
-<ul>
-<li><p><span class="math inline">\(d(y,\mu)=2\left\{t(y,y) - t(y,\mu)\right\}\)</span></p></li>
-<li><p><span class="math inline">\(t(y, \mu)=y\theta - \kappa(\theta)\)</span></p></li>
-</ul>
 </section>
-<section id="quantile-residuals" class="slide level2">
-<h2>Quantile Residuals</h2>
+<section id="lda-p1-3" class="slide level2">
+<h2>LDA (p&gt;1)</h2>
 <p><span class="math display">\[
-r^+ = \Phi^{-1}\left\{F(y;\hat\mu,\phi)\right\}
+\delta_k(\boldsymbol x) = \boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k + \ln(\pi_k)
 \]</span></p>
-<ul>
-<li><p><span class="math inline">\(\Phi^{-1}\)</span>: Inverse CDF of Standard Normal Distribution</p></li>
-<li><p><span class="math inline">\(F(\cdot)\)</span>: CDF of random variable <span class="math inline">\(y\)</span></p></li>
-</ul>
 </section>
-<section id="leverages" class="slide level2">
-<h2>Leverages</h2>
+<section id="lda-classification" class="slide level2">
+<h2>LDA Classification</h2>
+<p>Classify each new data point as class <span class="math inline">\(c_k\)</span> based on the largest <span class="math inline">\(\delta_k(\boldsymbol X)\)</span>.</p>
+</section></section>
+<section>
+<section id="quadratic-discriminant-analysis" class="title-slide slide level1 center">
+<h1>Quadratic Discriminant Analysis</h1>
+
+</section>
+<section id="qda" class="slide level2">
+<h2>QDA</h2>
+<p>In LDA, it is assumed that <span class="math inline">\(\Sigma\)</span> from <span class="math inline">\(\boldsymbol X\)</span> is the same for all classification groups. In Quadratic Discriminant Analysis, this assumption is relaxed, resulting in <span class="math inline">\(\Sigma_k\)</span> for each classification.</p>
+</section>
+<section id="qda-1" class="slide level2">
+<h2>QDA</h2>
 <p><span class="math display">\[
-H = W^{1/2} X(X^{\mathrm T}X)^{-1}X^{\mathrm T}W^{1/2}
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma_k|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma_k^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
 \]</span></p>
-<ul>
-<li><p><span class="math inline">\(X\)</span>: Design Matrix</p></li>
-<li><p><span class="math inline">\(W = \mathrm{diag}(W_1, \cdots, W_n)\)</span></p></li>
-<li><p><span class="math inline">\(W_i = \frac{(d\mu_i/d\eta_i)^2}{V(\hat\mu_i)}\)</span></p></li>
-<li><p><span class="math inline">\(h_i\)</span>: diagonal element of <span class="math inline">\(H\)</span> is the the leverage for observation <span class="math inline">\(i\)</span></p></li>
-</ul>
 </section>
-<section id="standardized-residuals" class="slide level2">
-<h2>Standardized Residuals</h2>
+<section id="qda-2" class="slide level2">
+<h2>QDA</h2>
+<p><span class="math display">\[
+\delta_k(\boldsymbol x) = -\frac{1}{2}\boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol x + \boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k - \frac{1}{2}\ln|\Sigma_k| + \ln(\pi_k)
+\]</span></p>
+</section></section>
+<section>
+<section id="naive-bayes" class="title-slide slide level1 center">
+<h1>Naive Bayes</h1>
+
+</section>
+<section id="naive-bayes-1" class="slide level2">
+<h2>Naive Bayes</h2>
+<p>A Naive Bayes classifier, assumes the predictors in <span class="math inline">\(\boldsymbol X\)</span> are independent of each other.</p>
+</section>
+<section id="naive-bayes-2" class="slide level2">
+<h2>Naive Bayes</h2>
+<p><span class="math display">\[
+f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
+\]</span></p>
+</section>
+<section id="naive-bayes-3" class="slide level2">
+<h2>Naive Bayes</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="math display">\[
-r^*_s = \frac{y -\hat \mu}{\sqrt{\hat\phi V(\hat\mu)(1-h)}}
-\]</span></p>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[
-r^\prime_s = \frac{\mathrm{sign}(y-\hat\mu)\sqrt{d(y,\hat\mu)}}{\sqrt{\hat\phi(1-h)}}
-\]</span></p>
-</div>
-</div>
-</section>
-<section id="cooks-distance" class="slide level2">
-<h2>Cook’s Distance</h2>
-<p><span class="math display">\[
-D \approx\frac{(r^*_s)^2}{p^\prime}\frac{h}{1-h}
-\]</span></p>
+<h3 id="quantitative">Quantitative</h3>
 <ul>
-<li><span class="math inline">\(p^\prime\)</span>: number of predictors plus one</li>
+<li><p>Normal: <span class="math inline">\(N(\mu_{jk}, \sigma^2_{jk})\)</span></p></li>
+<li><p>Nonparametric</p>
+<ul>
+<li>Kernel Density</li>
+</ul></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<h3 id="qualitative">Qualitative</h3>
+<ul>
+<li>Nonparametric</li>
+</ul>
+</div>
+</div>
 </section></section>
 <section>
-<section id="residual-analysis" class="title-slide slide level1 center">
-<h1>Residual Analysis</h1>
+<section id="r-code" class="title-slide slide level1 center">
+<h1>R Code</h1>
 
 </section>
-<section id="residual-plots" class="slide level2">
-<h2>Residual Plots</h2>
-<ul>
-<li><p>Residual plots are used to test both the systematic and random component of the model</p></li>
-<li><p>It can also be used to identify potential outliers in the data.</p></li>
-</ul>
+<section id="lda-1" class="slide level2">
+<h2>LDA</h2>
 </section>
-<section id="fitting-a-model" class="slide level2">
-<h2>Fitting a Model</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>bin_model <span class="ot">&lt;-</span> bacteria <span class="sc">%$%</span> <span class="fu">glm</span>(y <span class="sc">~</span> ap <span class="sc">+</span> hilo, </span>
-<span id="cb1-2"><a href="#cb1-2"></a>                 <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="lda-prediction" class="slide level2">
+<h2>LDA Prediction</h2>
 </section>
-<section id="residual-plot-data-frame" class="slide level2">
-<h2>Residual Plot Data Frame</h2>
+<section id="lda-confusion-matrix" class="slide level2">
+<h2>LDA Confusion Matrix</h2>
+</section>
+<section id="qda-3" class="slide level2">
+<h2>QDA</h2>
+</section>
+<section id="qda-prediction" class="slide level2">
+<h2>QDA Prediction</h2>
+</section>
+<section id="qda-confusion-matrix" class="slide level2">
+<h2>QDA Confusion Matrix</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1"></a><span class="fu">library</span>(statmod)</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>resid_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(bin_model<span class="sc">$</span>model),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3"></a>                       bin_model<span class="sc">$</span>model,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4"></a>                       <span class="at">fitted =</span> <span class="fu">fitted</span>(bin_model),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5"></a>                       <span class="at">eta =</span> bin_model<span class="sc">$</span>linear.predictors,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6"></a>                       <span class="at">raw =</span> <span class="fu">resid</span>(bin_model, <span class="at">type =</span> <span class="st">"response"</span>),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-2-7" class="code-annotation-target"><a href="#annotated-cell-2-7"></a>                       <span class="at">pearson =</span> <span class="fu">resid</span>(bin_model, <span class="at">type =</span> <span class="st">"pearson"</span>),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8"></a>                       <span class="at">deviance =</span> <span class="fu">resid</span>(bin_model),</span>
-<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9"></a>                       <span class="at">working =</span> <span class="fu">resid</span>(bin_model, <span class="at">type =</span> <span class="st">"working"</span>) <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-2-10" class="code-annotation-target"><a href="#annotated-cell-2-10"></a>                                 bin_model<span class="sc">$</span>linear.predictors,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="9" onclick="event.preventDefault();">9</a><span id="annotated-cell-2-11" class="code-annotation-target"><a href="#annotated-cell-2-11"></a>                       <span class="at">partial =</span> <span class="fu">resid</span>(bin_model, <span class="at">type =</span> <span class="st">"partial"</span>),</span>
-<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12"></a>                       <span class="at">std_pear =</span> <span class="fu">rstandard</span>(bin_model, </span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="10" onclick="event.preventDefault();">10</a><span id="annotated-cell-2-13" class="code-annotation-target"><a href="#annotated-cell-2-13"></a>                                            <span class="at">type =</span> <span class="st">"pearson"</span>),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="11" onclick="event.preventDefault();">11</a><span id="annotated-cell-2-14" class="code-annotation-target"><a href="#annotated-cell-2-14"></a>                       <span class="at">std_dev =</span> <span class="fu">rstandard</span>(bin_model),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="12" onclick="event.preventDefault();">12</a><span id="annotated-cell-2-15" class="code-annotation-target"><a href="#annotated-cell-2-15"></a>                       <span class="at">stud_dev =</span> <span class="fu">rstudent</span>(bin_model),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="13" onclick="event.preventDefault();">13</a><span id="annotated-cell-2-16" class="code-annotation-target"><a href="#annotated-cell-2-16"></a>                       <span class="at">qresid =</span> <span class="fu">qresid</span>(bin_model),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="14" onclick="event.preventDefault();">14</a><span id="annotated-cell-2-17" class="code-annotation-target"><a href="#annotated-cell-2-17"></a>                       <span class="at">leverages =</span> <span class="fu">hatvalues</span>(bin_model),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="15" onclick="event.preventDefault();">15</a><span id="annotated-cell-2-18" class="code-annotation-target"><a href="#annotated-cell-2-18"></a>                       <span class="at">cooks =</span> <span class="fu">cooks.distance</span>(bin_model))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1">Index</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="2">Data to fit model</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="3"><span class="math inline">\(\hat \mu\)</span></span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="4"><span class="math inline">\(\hat \eta\)</span></span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="6" data-code-annotation="5">Raw Residual</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="7" data-code-annotation="6">Pearson Residual</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="7">7</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="7">Deviance Residual</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="8">8</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="10" data-code-annotation="8">Working Responses</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="9">9</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="11" data-code-annotation="9">Partial Values: each individual X</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="10">10</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="13" data-code-annotation="10">Standardized Pearson Residuals</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="11">11</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="14" data-code-annotation="11">Standardized Deviance Residuals</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="12">12</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="15" data-code-annotation="12">Studentized Deviance Residuals</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="13">13</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="16" data-code-annotation="13">Quantile Residuals</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="14">14</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="17" data-code-annotation="14">Leverages</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="15">15</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="18" data-code-annotation="15">Cook’s Distance</span>
-</dd>
-</dl>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;            
+#&gt;             Adelie Chinstrap Gentoo
+#&gt;   Adelie       144         2      0
+#&gt;   Chinstrap      2        66      0
+#&gt;   Gentoo         0         0    119</code></pre>
 </div>
 </div>
 </section>
-<section id="residuals-vs-fitted" class="slide level2">
-<h2>Residuals vs Fitted</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">ggplot</span>(resid_df, <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> deviance)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">stat_smooth</span>() <span class="sc">+</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="9b_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="working-responses-vs-hateta" class="slide level2">
-<h2>Working Responses vs <span class="math inline">\(\hat\eta\)</span></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(resid_df, <span class="fu">aes</span>(<span class="at">x =</span> eta, <span class="at">y =</span> working)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">stat_smooth</span>() <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="9b_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="partial-residuals-vs-x" class="slide level2">
-<h2>Partial Residuals vs X</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">ap</a></li><li><a href="#tabset-1-2">hilo</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(resid_df, <span class="fu">aes</span>(ap, partial.ap)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">stat_smooth</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="9b_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(resid_df, <span class="fu">aes</span>(hilo, partial.hilo)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">stat_smooth</span>() <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="9b_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="naive-bayes-4" class="slide level2">
+<h2>Naive Bayes</h2>
 </section>
-<section id="qq-plot-of-quantile-residuals" class="slide level2">
-<h2>QQ Plot of Quantile Residuals</h2>
+<section id="naive-bayes-prediction" class="slide level2">
+<h2>Naive Bayes Prediction</h2>
+</section>
+<section id="naive-bayes-confusion-matrix" class="slide level2">
+<h2>Naive Bayes Confusion Matrix</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(resid_df, <span class="fu">aes</span>(<span class="at">sample =</span> qresid)) <span class="sc">+</span> <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;            x_nb_predict
+#&gt;             Adelie Chinstrap Gentoo
+#&gt;   Adelie       141         5      0
+#&gt;   Chinstrap      5        63      0
+#&gt;   Gentoo         0         0    119</code></pre>
 </div>
-<img data-src="9b_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-<section id="leverages-plot" class="slide level2">
-<h2>Leverages Plot</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(resid_df, <span class="fu">aes</span>(obs, leverages)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
 </div>
-<img data-src="9b_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section id="cooks-distance-plot" class="slide level2">
-<h2>Cook’s Distance Plot</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(resid_df, <span class="fu">aes</span>(obs, cooks)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="9b_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section></section>
+</section></section>
 <section>
-<section id="model-selection" class="title-slide slide level1 center">
-<h1>Model Selection</h1>
+<section id="example" class="title-slide slide level1 center">
+<h1>Example</h1>
 
 </section>
-<section id="aic" class="slide level2">
-<h2>AIC</h2>
-<p><span class="math display">\[
-\mathrm{AIC} = -2\ell(\hat{\boldsymbol\beta},\hat\phi,y) + 2 p^{\prime}
-\]</span></p>
+<section id="create-the-knn-algorithm-in-r" class="slide level2">
+<h2>Create the KNN algorithm in R</h2>
 <ul>
-<li><p><span class="math inline">\(\ell(\cdot)\)</span>: log-likelihood function</p></li>
-<li><p><span class="math inline">\(p^\prime\)</span>: number of predictors plus one</p></li>
-<li><p>Lower is better</p></li>
+<li><p>Manhattan</p></li>
+<li><p>Euclidean</p></li>
+<li><p>Minkowski (<span class="math inline">\(w=5\)</span>)</p></li>
 </ul>
-</section>
-<section id="bic" class="slide level2">
-<h2>BIC</h2>
-<p><span class="math display">\[
-\mathrm{BIC} = -2\ell(\hat{\boldsymbol\beta}, \hat \phi, y) + \log (n) (p^\prime+1)
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(\ell(\cdot)\)</span>: log-likelihood function</p></li>
-<li><p><span class="math inline">\(p^\prime\)</span>: number of predictors plus one</p></li>
-<li><p>Lower is better</p></li>
-</ul>
+<p>Use the <code>penguins</code> data set from <code>palmerpenguins</code> and categorize the following data: <code>bill_depth = 19</code>, <code>bill_length = 40</code>, <code>flipper_length = 185</code>, and <code>body_mass = 3345</code>.</p>
 
 <div class="footer footer-default">
 

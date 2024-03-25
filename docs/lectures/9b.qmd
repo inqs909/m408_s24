@@ -1,7 +1,5 @@
 ---
-title: "Generalized Linear Models"
-subtitle: "Residual Analysis"
-
+title: "Classification"
 format:
   revealjs:
     scrollable: true
@@ -14,14 +12,13 @@ format:
       storage: chalkboard_pres
       theme: whiteboard
       chalk-width: 4
-      
 knitr:
   opts_chunk: 
-    echo: true
+    echo: false
     eval: true
     message: false
     warnings: false
-    comment: "#>"
+    comment: "#>" 
     
 revealjs-plugins:
   - pointer
@@ -30,284 +27,333 @@ revealjs-plugins:
 filters: 
   - reveal-header
   - code-fullscreen
-editor: visual
 
-editor_options:
-  chunk_output_type: inline
+editor: source
 ---
 
 ## Learning Outcomes
 
--   Model Diagnostics
+-   K-Nearest Neighbors
 
--   Residuals
+-   Bayes' Classifier
 
--   Residual Analysis
+-   Linear and Quadratic Discriminant Analysis
 
--   Model Selection
+-   Naive Bayes
+
+## Classification
+
+The practice of classifying data points into different categories.
+
+# K-Nearest Neighbors
+
+## K-Nearest Neighbors
+
+K-Nearest Neighbors will assign a category to a new data point based on the majority category of its **K** nearest neighbors.
+
+## KNN
 
 ```{r}
-#| include: false
-
-library(MASS)
 library(magrittr)
-library(statmod)
+library(tidyverse)
+library(palmerpenguins)
+
+penguins %>% sample_n(100) %>%  
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +
+  geom_point() +
+  xlab("X") + ylab("Y") +
+  guides(color = FALSE) +
+  theme_bw()
+
 ```
 
-# Model Diagnostics
+## Distances
 
-## Assumptions
+The distance between a given point and the training data must be computed. These are the most commonly used distances:
 
--   Linearity
+-   Manhattan
 
--   Correct Distribution
+-   Euclidean
 
-    -   Random Component
+-   Minkowski
 
-    -   Link Function
-
--   Dispersion parameter constant
-
--   Independence
-
--   No Outliers
-
-# Residuals
-
-## Raw Residuals
+## Manhattan Distance
 
 $$
-r = y - \hat \mu
+d(x,y) = \sum_{i=1}^{p} |x_i - y_i|
 $$
 
--   $\hat \mu$: fitted value
+-   $x$: vector values of individual point
 
-## Working Responses
+-   $y$: vector values of new point
 
-$$
-z_i = \hat \eta_i + \frac{d\eta_i}{d\mu_i}(y_i-\hat\mu_i)
-$$
+-   $p$: length of vector
 
-## Partial Residuals
+## Euclidean Distance
 
 $$
-u_{ij} = e_i + \hat\beta_j x_{ij}
+d(x,y) = \sqrt{\sum_{i=1}^{p} (x_i - y_i)^2}
 $$
 
--   $e_i = z_i - \hat \eta_i$
-
-## Pearson Residuals
+## Minkowski Distance
 
 $$
-r^* = \frac{y-\hat \mu}{\sqrt{V(\hat\mu)}}
+d(x,y) = \left( \sum_{i=1}^{p} |x_i - y_i|^w \right)^{\frac{1}{w}}
 $$
 
--   $\hat\mu$: fitted value
+## Algorithm
 
--   $V(\mu)$: variance function
+Given a training data set, conduct the following steps:
 
-## Deviance Residuals
+-   Compute the distance between a new data point and every point in the training data set.
 
-$$
-r^\prime = \mathrm{sign}(y-\hat\mu)\sqrt{d(y,\hat\mu)}
-$$
+-   Choose the $K$ nearest training data points to the new point using the smallest distance.
 
--   $d(y,\mu)=2\left\{t(y,y) - t(y,\mu)\right\}$
+-   Categorize the new data point based on the majority of category from the $K$ nearest training data points.
 
--   $t(y, \mu)=y\theta - \kappa(\theta)$
+# Bayes Classifier
 
-## Quantile Residuals
+## Bayes Classifier
 
-$$
-r^+ = \Phi^{-1}\left\{F(y;\hat\mu,\phi)\right\}
-$$
-
--   $\Phi^{-1}$: Inverse CDF of Standard Normal Distribution
-
--   $F(\cdot)$: CDF of random variable $y$
-
-## Leverages
+Bayes Classifier is used to classify a data point to a category $c$
 
 $$
-H = W^{1/2} X(X^{\mathrm T}X)^{-1}X^{\mathrm T}W^{1/2}
+f(\boldsymbol x) = argmax_{c \in C} f(C|\boldsymbol X)
 $$
 
--   $X$: Design Matrix
+## Probability
 
--   $W = \mathrm{diag}(W_1, \cdots, W_n)$
+$$
+f(C = c|\boldsymbol X = x) = \frac{f(\boldsymbol X | C)\pi_c}{f(\boldsymbol X)}
+$$
 
--   $W_i = \frac{(d\mu_i/d\eta_i)^2}{V(\hat\mu_i)}$
+-   $f(\boldsymbol X| C)$: conditional distribution of $\boldsymbol X$
 
--   $h_i$: diagonal element of $H$ is the the leverage for observation $i$
+-   $\pi_c$: probability of observing category $C$
 
-## Standardized Residuals
+-   $f(\boldsymbol X)$: marginal distribution of $\boldsymbol X$
+
+## Distribution of $f(\boldsymbol X|C)$ and $f(\boldsymbol X)$
+
+To apply Bayes classifier, we must specify the form of $f(\boldsymbol X| C)$ and $f(\boldsymbol X)$. Common distributions are:
+
+-   Normal
+
+-   Bernoulli
+
+-   Multinomial
+
+# Linear Discriminant Analysis
+
+## LDA
+
+Linear Discriminant Analysis is used to classify a new data point, from a set of classifications, given information from a set of predictors.
+
+LDA classifies data using a Bayes classifier and imposing a normal distribution to the model.
+
+## LDA (p=1)
+
+$$
+f_k(\boldsymbol X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{(x-\mu_k)^2}{2\sigma^2}\right\}
+$$
+
+$$
+f(X) = \sum^K_{l=1} \pi_l f_l(X)
+$$
+
+## LDA (p=1)
+
+$$
+\delta_k = f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
+$$
+
+$$
+\delta_k(x) = x\frac{\mu_k}{\sigma^2}-\frac{\mu_k^2}{\sigma^2} + \ln(\pi_k) 
+$$
+
+## LDA (p=1) Estimates
+
+Let $Y_i=c_l$, $l=1\ldots, K$, and $X_i=x_i$ bet the data from n observations:
+
+$$
+\hat\mu_k = \frac{1}{n_k}\sum^n_{i=1(Y_i=c_k)} x_i
+$$
+
+$$
+\hat\sigma^2=\frac{1}{n-K}\sum^K_{l=1}\sum_{i=1(Y_i=c_l)}^n(x_i-\hat\mu_l)^2 
+$$
+
+-   $n_k$: number of observations in class $k$
+
+## LDA (p\>1)
+
+$$
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
+$$
+
+$$
+f(\boldsymbol X) = \sum^K_{l=1} \pi_l f_l(\boldsymbol X)
+$$
+
+## LDA (p\>1)
+
+$$
+\delta_k(\boldsymbol x) = \boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k + \ln(\pi_k) 
+$$
+
+## LDA Classification
+
+Classify each new data point as class $c_k$ based on the largest $\delta_k(\boldsymbol X)$.
+
+# Quadratic Discriminant Analysis
+
+## QDA
+
+In LDA, it is assumed that $\Sigma$ from $\boldsymbol X$ is the same for all classification groups. In Quadratic Discriminant Analysis, this assumption is relaxed, resulting in $\Sigma_k$ for each classification.
+
+## QDA
+
+$$
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma_k|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma_k^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
+$$
+
+## QDA
+
+$$
+\delta_k(\boldsymbol x) = -\frac{1}{2}\boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol x + \boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k - \frac{1}{2}\ln|\Sigma_k| + \ln(\pi_k) 
+$$
+
+# Naive Bayes
+
+## Naive Bayes
+
+A Naive Bayes classifier, assumes the predictors in $\boldsymbol X$ are independent of each other.
+
+## Naive Bayes
+
+$$
+f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
+$$
+
+## Naive Bayes
 
 ::: columns
 ::: {.column width="50%"}
-$$
-r^*_s = \frac{y -\hat \mu}{\sqrt{\hat\phi V(\hat\mu)(1-h)}}
-$$
+### Quantitative
+
+-   Normal: $N(\mu_{jk}, \sigma^2_{jk})$
+
+-   Nonparametric
+
+    -   Kernel Density
 :::
 
 ::: {.column width="50%"}
-$$
-r^\prime_s = \frac{\mathrm{sign}(y-\hat\mu)\sqrt{d(y,\hat\mu)}}{\sqrt{\hat\phi(1-h)}}
-$$
+### Qualitative
+
+-   Nonparametric
 :::
 :::
 
-## Cook's Distance
+# R Code
 
-$$
-D \approx\frac{(r^*_s)^2}{p^\prime}\frac{h}{1-h}
-$$
-
--   $p^\prime$: number of predictors plus one
-
-# Residual Analysis
-
-## Residual Plots
-
--   Residual plots are used to test both the systematic and random component of the model
-
--   It can also be used to identify potential outliers in the data.
-
-## Fitting a Model
+## LDA
 
 ```{r}
-bin_model <- bacteria %$% glm(y ~ ap + hilo, 
-                 family = binomial(link = "logit"))
-```
+library(palmerpenguins)
+library(MASS)
+library(tidyverse)
+select <- dplyr::select
+penguins <- penguins |> drop_na()
+x_lda <- penguins |> lda(species ~ bill_length_mm + 
+                                   bill_depth_mm + 
+                                   flipper_length_mm + 
+                                   body_mass_g,
+                         data = _)
 
-## Residual Plot Data Frame
-
-```{r}
-
-library(statmod)
-resid_df <- data.frame(obs = 1:nrow(bin_model$model), # <1>
-                       bin_model$model, # <2> 
-                       fitted = fitted(bin_model), # <3> 
-                       eta = bin_model$linear.predictors, # <4> 
-                       raw = resid(bin_model, type = "response"), # <5> 
-                       pearson = resid(bin_model, type = "pearson"), # <6> 
-                       deviance = resid(bin_model), # <7> 
-                       working = resid(bin_model, type = "working") +
-                                 bin_model$linear.predictors, # <8> 
-                       partial = resid(bin_model, type = "partial"), # <9> 
-                       std_pear = rstandard(bin_model, 
-                                            type = "pearson"), # <10> 
-                       std_dev = rstandard(bin_model), # <11> 
-                       stud_dev = rstudent(bin_model), # <12> 
-                       qresid = qresid(bin_model), # <13> 
-                       leverages = hatvalues(bin_model), # <14> 
-                       cooks = cooks.distance(bin_model)) # <15> 
 
 ```
 
-1.  Index
-2.  Data to fit model
-3.  $\hat \mu$
-4.  $\hat \eta$
-5.  Raw Residual
-6.  Pearson Residual
-7.  Deviance Residual
-8.  Working Responses
-9.  Partial Values: each individual X
-10. Standardized Pearson Residuals
-11. Standardized Deviance Residuals
-12. Studentized Deviance Residuals
-13. Quantile Residuals
-14. Leverages
-15. Cook's Distance
-
-## Residuals vs Fitted
+## LDA Prediction
 
 ```{r}
 
-library(ggplot2)
-ggplot(resid_df, aes(x = fitted, y = deviance)) + geom_point() +
-  stat_smooth() +
-  theme_bw()
+new_df <- penguins |> select(bill_length_mm,
+                           bill_depth_mm,
+                          flipper_length_mm,
+                         body_mass_g)
+x_lda_predict <- x_lda |> predict(new_df)
+
 ```
 
-## Working Responses vs $\hat\eta$
+## LDA Confusion Matrix
 
 ```{r}
-ggplot(resid_df, aes(x = eta, y = working)) + geom_point() +
-  stat_smooth() +
-  theme_bw()
+#table(penguins$species, x_lda_predict$class)
 ```
 
-## Partial Residuals vs X
-
-::: panel-tabset
-## ap
+## QDA
 
 ```{r}
-
-ggplot(resid_df, aes(ap, partial.ap)) + geom_point() +
-  stat_smooth() +
-  theme_bw()
+x_qda <- penguins |> qda(species ~ bill_length_mm + 
+                                   bill_depth_mm + 
+                                   flipper_length_mm + 
+                                   body_mass_g,
+                         data = _)
 
 ```
 
-## hilo
+## QDA Prediction
 
 ```{r}
-
-ggplot(resid_df, aes(hilo, partial.hilo)) + geom_point() +
-  stat_smooth() +
-  theme_bw()
-
+x_qda_predict <- x_qda |>  predict(penguins |>
+                                     select(bill_length_mm, 
+                                            bill_depth_mm,
+                                            flipper_length_mm,
+                                            body_mass_g))
 ```
-:::
 
-## QQ Plot of Quantile Residuals
+## QDA Confusion Matrix
 
 ```{r}
-ggplot(resid_df, aes(sample = qresid)) + stat_qq() +
-  stat_qq_line() +
-  theme_bw()
+table(penguins$species, x_qda_predict$class)
 ```
 
-## Leverages Plot
+## Naive Bayes
 
 ```{r}
-
-ggplot(resid_df, aes(obs, leverages)) + geom_point() +
-  theme_bw()
-
+library(e1071)
+x_nb <- penguins |>  naiveBayes(species ~ bill_length_mm +
+                                             bill_depth_mm + 
+                                             flipper_length_mm + 
+                                             body_mass_g, 
+                                   data = _)
 ```
 
-## Cook's Distance Plot
+## Naive Bayes Prediction
 
 ```{r}
-ggplot(resid_df, aes(obs, cooks)) + geom_point() +
-  theme_bw()
+x_nb_predict <- x_nb  |>  predict(penguins |>
+                                     select(bill_length_mm, 
+                                            bill_depth_mm,
+                                            flipper_length_mm,
+                                            body_mass_g))
 ```
 
-# Model Selection
+## Naive Bayes Confusion Matrix
 
-## AIC
+```{r}
+table(penguins$species, x_nb_predict)
+```
 
-$$
-\mathrm{AIC} = -2\ell(\hat{\boldsymbol\beta},\hat\phi,y) + 2 p^{\prime} 
-$$
+# Example
 
--   $\ell(\cdot)$: log-likelihood function
+## Create the KNN algorithm in R
 
--   $p^\prime$: number of predictors plus one
+-   Manhattan
 
--   Lower is better
+-   Euclidean
 
-## BIC
+-   Minkowski ($w=5$)
 
-$$
-\mathrm{BIC} = -2\ell(\hat{\boldsymbol\beta}, \hat \phi, y) + \log (n) (p^\prime+1)
-$$
-
--   $\ell(\cdot)$: log-likelihood function
-
--   $p^\prime$: number of predictors plus one
-
--   Lower is better
+Use the `penguins` data set from `palmerpenguins` and categorize the following data: `bill_depth = 19`, `bill_length = 40`, `flipper_length = 185`, and `body_mass = 3345`.
