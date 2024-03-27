@@ -1,0 +1,17 @@
+{
+  "hash": "122a3f385100154dc1e1b6f45965e752",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Homework 5\"\ndate: 3/7/24\neditor: visual\ndraft: false\n---\n\n\n**Due 3/17/24 \\@ 11:59 PM**\n\nSubmit the \\*.html file to canvas.\n\n## Problem 1\n\nThe `faithful` data set in R contains information on `eruptions` time and `waiting` time. Describe the relationship between `waiting` (independent) and `eruptions` (dependent).\n\nYou must provide descriptive statistics, visuals, and model.\n\n## Problem 2\n\nWhen estimating the $\\beta$ coefficients, we are minimizing the sum of error squares:\n\n$$\n\\sum^n_{i=1}(y_i-(\\beta_0+\\beta_1x_i))^2\n$$\n\nWe square the errors to make sure we do not lose information when summing up all the values. However, what if we try to use an absolute value:\n\n$$\n\\sum^n_{i=1}|y_i-(\\beta_0+\\beta_1x_i)|\n$$\n\nSimulate a data set, estimate the coefficients, and compare the results. Are they the same or different?\n\n## Problem 3\n\nConduct a simulation assessing which case from problem 3 is better.\n\nTo assess which case is better compare the mean and standard deviations of the simulated-estimated coefficients.\n\n## Problem 4\n\nRun the code below to obtain the data:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nanime <- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv\") |> filter(!type == \"Unknown\") |> as.data.frame()\n```\n:::\n\n\nThe `anime` data set from MyAnimeList contains information on rankings and popularity scores of different anime episodes.\n\nFit a linear model showing the relationship between `score` (outcome; higher is better) and the predictors `type`, `popularity`, and `rank`. On average, what is the score for an anime that is a \"Special\", popularity score of 520, and rank of 3582?\n\n## Problem 5\n\nRun this code below to obtain the data (you may need to install `tidytuesdayR`):\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\ntuesdata <- tidytuesdayR::tt_load(2021, week = 52)\nstarbucks <- tuesdata$starbucks |> drop_na() |> filter(size %in% c(\"tall\", \"grande\", \"venti\"))\n```\n:::\n\n\nFit a linear model between the outcome `caffeine_mg` (outcome) and predictors `size`, `calories`, and `sugar_g` from the `starbucks` data set using the matrix formulation approach (do matrix algebra) by defining the $X$ matrix. Use `tall` as the reference value for the `size` variable.\n",
+    "supporting": [
+      "hw5_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

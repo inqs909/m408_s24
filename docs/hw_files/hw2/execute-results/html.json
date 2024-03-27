@@ -1,0 +1,15 @@
+{
+  "hash": "9dd029170b82321f856e0c5a36b284e8",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Homework 2\"\ndate: 2/7/24\neditor: visual\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\n    embed-resources: true\ndraft: false\n---\n\n\n**Due 2/17/24 \\@ 11:59 PM**\n\nUse an RMD M408 Template to create the assignment.\n\nYou must comment all your code to receive credit.\n\nSubmit the \\*.html file to canvas.\n\n## Problem 1\n\nWrite a function that takes a vector as an input an returns a labeled list with the mean, median, and variance of the vector.\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\" code-summary=\"Answer\"}\nxsummary <- function(x){\n  list(mean = mean(x),\n       median = median(x),\n       variance = var(x))\n}\n```\n:::\n\n\n## Problem 2\n\nWrite a function for the following equation:\n\n$$\nf(x, y, z) =\\left\\{\\begin{array}{cc}\nx^2+\\sqrt y & z  = 0 \\\\ \nx^2+2x+3+ \\log(y) & z = 1\n\\end{array}\\right.\n$$\n\nInclude any error messages if necessary.\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\" code-summary=\"Answer\"}\nfxyz <- function(x, y, z){\n  if (!z %in% c(0,1)){stop(\"z must be 0 or 1\")}\n  if (y<=0){stop(\"y must be greater than 0\")}\n  if (z ==0){\n    return(x^2+sqrt(y))\n  } else {\n    return(x^2 + 2*x + 3 + log(y))\n  }\n}\n```\n:::\n\n\n## Problem 3\n\nCreate a function that will give you the first `x` Fibonacci numbers. You must use a `for` loop.\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\" code-summary=\"Answer\"}\nfib <- function(x){\n  post <- c(0,1)\n  for(i in 3:x){\n    post <- c(post, fib[i-2] + fib[i-1])\n  }\n  return(post)\n}\n```\n:::\n\n\n## Problem 4\n\nCreate a function that will randomly generate `n` numbers that are greater than `x` from a $Pois(\\lambda)$.\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\" code-summary=\"Answer\"}\nnew_pois <- function(n, x, lambda){\n  nn <- 0\n  post <- c()\n  while(nn < n){\n    new <- rpois(1, lambda)\n    if (new > x){\n      post <- c(post, new)\n      nn <- length(post)\n    }\n  }\n  return(post)\n}\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

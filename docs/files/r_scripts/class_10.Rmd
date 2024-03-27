@@ -1,0 +1,30 @@
+---
+title: "Class 10"
+author: "Isaac Quintanilla Salinas"
+date: "`r format(Sys.time(),'%m-%d-%Y')`"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+## Reading Data Example
+
+```{r, message=FALSE}
+library(magrittr)
+library(tidyverse)
+data1 <- read_csv(file="http://m408.inqs.info/files/data/data_3_4.csv")
+```
+
+## Wide to Long Example
+
+```{r}
+df3 <- data1 %>% 
+  pivot_longer(`v1/mean`:`v4/median`, 
+               names_to = "measurement", 
+               values_to = "value") %>% 
+  separate(measurement,c("time","stat"),sep="/") %>% 
+  pivot_wider(names_from = stat,values_from = value)
+head(df3)
+```
