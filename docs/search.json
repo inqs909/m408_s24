@@ -277,7 +277,7 @@
     "href": "lectures/9b.html#knn",
     "title": "Classification",
     "section": "KNN",
-    "text": "KNN"
+    "text": "KNN\n\nlibrary(magrittr)\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\npenguins %&gt;% sample_n(100) %&gt;%  \n  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +\n  geom_point() +\n  xlab(\"X\") + ylab(\"Y\") +\n  guides(color = FALSE) +\n  theme_bw()"
   },
   {
     "objectID": "lectures/9b.html#distances",
@@ -431,63 +431,63 @@
     "href": "lectures/9b.html#lda-1",
     "title": "Classification",
     "section": "LDA",
-    "text": "LDA"
+    "text": "LDA\n\nlibrary(palmerpenguins)\nlibrary(MASS)\nlibrary(tidyverse)\nselect &lt;- dplyr::select\npenguins &lt;- penguins |&gt; drop_na()\nx_lda &lt;- penguins |&gt; lda(species ~ bill_length_mm + \n                                   bill_depth_mm + \n                                   flipper_length_mm + \n                                   body_mass_g,\n                         data = _)"
   },
   {
     "objectID": "lectures/9b.html#lda-prediction",
     "href": "lectures/9b.html#lda-prediction",
     "title": "Classification",
     "section": "LDA Prediction",
-    "text": "LDA Prediction"
+    "text": "LDA Prediction\n\nnew_df &lt;- penguins |&gt; select(bill_length_mm,\n                           bill_depth_mm,\n                          flipper_length_mm,\n                         body_mass_g)\nx_lda_predict &lt;- x_lda |&gt; predict(new_df)"
   },
   {
     "objectID": "lectures/9b.html#lda-confusion-matrix",
     "href": "lectures/9b.html#lda-confusion-matrix",
     "title": "Classification",
     "section": "LDA Confusion Matrix",
-    "text": "LDA Confusion Matrix"
+    "text": "LDA Confusion Matrix\n\ntable(penguins$species, x_lda_predict$class)\n\n#&gt;            \n#&gt;             Adelie Chinstrap Gentoo\n#&gt;   Adelie       145         1      0\n#&gt;   Chinstrap      3        65      0\n#&gt;   Gentoo         0         0    119"
   },
   {
     "objectID": "lectures/9b.html#qda-3",
     "href": "lectures/9b.html#qda-3",
     "title": "Classification",
     "section": "QDA",
-    "text": "QDA"
+    "text": "QDA\n\nx_qda &lt;- penguins |&gt; qda(species ~ bill_length_mm + \n                                   bill_depth_mm + \n                                   flipper_length_mm + \n                                   body_mass_g,\n                         data = _)"
   },
   {
     "objectID": "lectures/9b.html#qda-prediction",
     "href": "lectures/9b.html#qda-prediction",
     "title": "Classification",
     "section": "QDA Prediction",
-    "text": "QDA Prediction"
+    "text": "QDA Prediction\n\nx_qda_predict &lt;- x_qda |&gt;  predict(penguins |&gt;\n                                     select(bill_length_mm, \n                                            bill_depth_mm,\n                                            flipper_length_mm,\n                                            body_mass_g))"
   },
   {
     "objectID": "lectures/9b.html#qda-confusion-matrix",
     "href": "lectures/9b.html#qda-confusion-matrix",
     "title": "Classification",
     "section": "QDA Confusion Matrix",
-    "text": "QDA Confusion Matrix\n\n\n#&gt;            \n#&gt;             Adelie Chinstrap Gentoo\n#&gt;   Adelie       144         2      0\n#&gt;   Chinstrap      2        66      0\n#&gt;   Gentoo         0         0    119"
+    "text": "QDA Confusion Matrix\n\ntable(penguins$species, x_qda_predict$class)\n\n#&gt;            \n#&gt;             Adelie Chinstrap Gentoo\n#&gt;   Adelie       144         2      0\n#&gt;   Chinstrap      2        66      0\n#&gt;   Gentoo         0         0    119"
   },
   {
     "objectID": "lectures/9b.html#naive-bayes-4",
     "href": "lectures/9b.html#naive-bayes-4",
     "title": "Classification",
     "section": "Naive Bayes",
-    "text": "Naive Bayes"
+    "text": "Naive Bayes\n\nlibrary(e1071)\nx_nb &lt;- penguins |&gt;  naiveBayes(species ~ bill_length_mm +\n                                             bill_depth_mm + \n                                             flipper_length_mm + \n                                             body_mass_g, \n                                   data = _)"
   },
   {
     "objectID": "lectures/9b.html#naive-bayes-prediction",
     "href": "lectures/9b.html#naive-bayes-prediction",
     "title": "Classification",
     "section": "Naive Bayes Prediction",
-    "text": "Naive Bayes Prediction"
+    "text": "Naive Bayes Prediction\n\nx_nb_predict &lt;- x_nb  |&gt;  predict(penguins |&gt;\n                                     select(bill_length_mm, \n                                            bill_depth_mm,\n                                            flipper_length_mm,\n                                            body_mass_g))"
   },
   {
     "objectID": "lectures/9b.html#naive-bayes-confusion-matrix",
     "href": "lectures/9b.html#naive-bayes-confusion-matrix",
     "title": "Classification",
     "section": "Naive Bayes Confusion Matrix",
-    "text": "Naive Bayes Confusion Matrix\n\n\n#&gt;            x_nb_predict\n#&gt;             Adelie Chinstrap Gentoo\n#&gt;   Adelie       141         5      0\n#&gt;   Chinstrap      5        63      0\n#&gt;   Gentoo         0         0    119"
+    "text": "Naive Bayes Confusion Matrix\n\ntable(penguins$species, x_nb_predict)\n\n#&gt;            x_nb_predict\n#&gt;             Adelie Chinstrap Gentoo\n#&gt;   Adelie       141         5      0\n#&gt;   Chinstrap      5        63      0\n#&gt;   Gentoo         0         0    119"
   },
   {
     "objectID": "lectures/9b.html#create-the-knn-algorithm-in-r",

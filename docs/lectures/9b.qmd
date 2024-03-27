@@ -14,7 +14,7 @@ format:
       chalk-width: 4
 knitr:
   opts_chunk: 
-    echo: false
+    echo: true
     eval: true
     message: false
     warnings: false
@@ -289,7 +289,7 @@ x_lda_predict <- x_lda |> predict(new_df)
 ## LDA Confusion Matrix
 
 ```{r}
-#table(penguins$species, x_lda_predict$class)
+table(penguins$species, x_lda_predict$class)
 ```
 
 ## QDA
