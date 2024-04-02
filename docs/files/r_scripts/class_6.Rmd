@@ -1,0 +1,86 @@
+---
+title: "Class 6"
+author: "Isaac Quintanilla Salinas"
+date: "`r format(Sys.time(),'%m-%d-%Y')`"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+    code_folding: hide
+
+---
+
+## Example 1
+
+$$
+y = \ln(x^2)
+$$
+
+```{r}
+ln_sq <- function(z){
+  y <- log(z^2)
+  return(y)
+}
+ln_sq(34)
+```
+
+## Example 2
+
+$$
+f(x) = \left\{\begin{array}{cc}
+x^3 &  x<0\ \\
+x^2 + 5 & \mathrm{otherwise}
+\end{array} \right.
+$$
+
+```{r}
+secondfunction <- function(x){
+  if(x<0){
+    y = x^3
+  } else{
+    y = x^2 +5
+  }
+  return(y)
+}
+secondfunction(-1)
+secondfunction(1)
+```
+
+## Example 3
+
+$$
+f(x,y) = \left\{\begin{array}{cc}
+x^3 e^y &  x<0\ \\
+x^2 + 5 + \ln(y) & \mathrm{otherwise}
+\end{array} \right.
+$$
+
+```{r, error=TRUE}
+this <- function(x, y) {
+  if(y < 0) {
+    stop("it is negative")
+  }
+  if(x < 0) {
+    z <- x^3 * exp(y)
+  } else {
+    z <- x^2 + 5 + log(y)
+  }
+  return(z)
+}
+this(2,1)
+this(-2,1)
+this(2,-1)
+```
+
+## Example 4
+
+$$
+z =  \frac{x-\bar y}{\sqrt{s^2_{y}/n_y}}
+$$
+
+```{r}
+zscore <- function(x,y){
+  (x-mean(y))/(sqrt(var(y)/length(y)))
+}
+zscore(5,1:5)
+```

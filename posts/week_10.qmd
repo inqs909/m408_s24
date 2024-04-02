@@ -1,6 +1,6 @@
 ---
 title: "Week 10"
-date: 04-03-23
+date: 04-01-24
 description: We will discuss GLMs.
 editor: visual
 draft: false

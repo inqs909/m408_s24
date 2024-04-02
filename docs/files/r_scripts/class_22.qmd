@@ -1,0 +1,41 @@
+---
+title: "Lecture 22 Code"
+editor: visual
+
+format:
+  html:
+    code-tools: true
+---
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+knn_distance <- \(x, y, p){
+  (sum(abs(x-y)^p))^(1/p)
+}
+
+new_penguin <- c(40, 19, 185, 3345)
+penguins_df <- penguins %>% drop_na()
+penguins_mat <- penguins_df[,c(3:6)]
+penguins_df$manhattan <- penguins_mat %>% 
+  apply(1, knn_distance, y = new_penguin, p = 1)
+
+penguins_df$euclidean <- penguins_mat %>% 
+  apply(1, knn_distance, y = new_penguin, p = 2)
+
+penguins_df$m5 <- penguins_mat %>% 
+  apply(1, knn_distance, y = new_penguin, p = 5)
+
+penguins_df %>% arrange(manhattan) %>% 
+  select(species, manhattan) %>% head(8)
+
+penguins_df %>% arrange(euclidean) %>% 
+  select(species, manhattan) %>% head(8)
+
+penguins_df %>% arrange(m5) %>% 
+  select(species, manhattan) %>% head(8)
+
+
+
+```
+
