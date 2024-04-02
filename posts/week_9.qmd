@@ -12,15 +12,15 @@ editor_options:
 
 ### First Lecture
 
--   Classification
+-   Logistic Regression
 
 ### Second Lecture
 
--   Generalized Linear Models
+-   Classificaion
 
 ## Resources
 
-| Lecture | Slides                                                         | Videos | Files |
-|----------|------------------------------------------|----------|----------|
-| 1       | [Slides](https://m408.inqs.info/lectures/9a.html#/title-slide) |        |       |
-| 2       | [Slides](https://m408.inqs.info/lectures/9b.html#/title-slide) |        |       |
+| Lecture | Slides                                                         | Videos                                | Files |
+|-------------|-----------------------------------|-------------|-------------|
+| 1       | [Slides](https://m408.inqs.info/lectures/9a.html#/title-slide) | [Video](https://youtu.be/zsnqBrn86iA) |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/9b.html#/title-slide) | [Video](https://youtu.be/UnQA7aMxcFo) |       |
