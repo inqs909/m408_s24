@@ -47,7 +47,7 @@ editor: visual
 An exponential family of distributions are random variables that allow their probability density function to have the following form:
 
 $$
-f(y; \theta,\phi) = a(y,\phi)\exp\left\{\frac{y\theta-\kappa(\theta)}{\phi}\right\}
+f(y; \theta,\phi) = a(x,\phi)\exp\left\{\frac{x\theta-\kappa(\theta)}{\phi}\right\}
 $$
 
 -   $\theta$: is the canonical parameter (also a function of other parameters)
@@ -68,17 +68,23 @@ $$
 f(x;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 $$
 
+::: fragmet
+$$
+f(x;\mu,\sigma^2)= \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left\{\frac{x\mu-\mu^2/2}{\sigma^2}-\frac{x^2}{2\sigma^2}\right\}
+$$
+:::
+
 ## Binomial Distribution
 
 $$
-f(x;n,p)=\big(^n_x\big) p^x(1-p)^{n-x}
+f(x;n,p) = \left(\begin{array}{c}n\\x\end{array}\right) p^x(1-p)^{n-p}
 $$
 
-## Poisson Distribution
-
+::: fragment
 $$
-f(x;\lambda) = \frac{e^{-\lambda}\lambda^x}{x!} 
+f(x;n,p) = \left(\begin{array}{c}n\\x\end{array}\right) \exp\left\{x\log\left(\frac{p}{1-p}\right) + n \log(1-p)\right\}
 $$
+:::
 
 ## Common Distributions and Canonical Parameters
 

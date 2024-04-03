@@ -16,7 +16,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Classification</title>
+  <title>MATH 408 - Nonparametric Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,6 +34,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -336,7 +401,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Classification</h1>
+  <h1 class="title">Nonparametric Regression</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -345,281 +410,106 @@
 <section id="learning-outcomes" class="slide level2">
 <h2>Learning Outcomes</h2>
 <ul>
-<li><p>K-Nearest Neighbors</p></li>
-<li><p>Bayes’ Classifier</p></li>
-<li><p>Linear and Quadratic Discriminant Analysis</p></li>
-<li><p>Naive Bayes</p></li>
+<li><p>LASSO</p></li>
+<li><p>Regression Splines</p></li>
+<li><p>Smoothing Splines</p></li>
+<li><p>Generalized Additive Models</p></li>
 </ul>
-</section>
-<section id="classification" class="slide level2">
-<h2>Classification</h2>
-<p>The practice of classifying data points into different categories.</p>
 </section>
 <section>
-<section id="k-nearest-neighbors" class="title-slide slide level1 center">
-<h1>K-Nearest Neighbors</h1>
+<section id="cross-validation" class="title-slide slide level1 center">
+<h1>Cross-Validation</h1>
 
 </section>
-<section id="k-nearest-neighbors-1" class="slide level2">
-<h2>K-Nearest Neighbors</h2>
-<p>K-Nearest Neighbors will assign a category to a new data point based on the majority category of its <strong>K</strong> nearest neighbors.</p>
+<section id="cross-validation-1" class="slide level2">
+<h2>Cross-Validation</h2>
+<p>A cross-validation approach is to obtain a good estimate of the error-rate of a machine learning algorithm. We split the data set into two categories: training and testing. The training data set is used to train the model, and the test data is used to test the model and compute the error rate.</p>
 </section>
-<section id="knn" class="slide level2">
-<h2>KNN</h2>
-
-<img data-src="11a_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="distances" class="slide level2">
-<h2>Distances</h2>
-<p>The distance between a given point and the training data must be computed. These are the most commonly used distances:</p>
+<section id="tuning-parameter" class="slide level2">
+<h2>Tuning Parameter</h2>
+<p>A cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate.</p>
+</section>
+<section id="loocv-cross-validation" class="slide level2">
+<h2>LOOCV Cross-Validation</h2>
 <ul>
-<li><p>Manhattan</p></li>
-<li><p>Euclidean</p></li>
-<li><p>Minkowski</p></li>
-</ul>
-</section>
-<section id="manhattan-distance" class="slide level2">
-<h2>Manhattan Distance</h2>
-<p><span class="math display">\[
-d(x,y) = \sum_{i=1}^{p} |x_i - y_i|
-\]</span></p>
+<li><p>Choose a set of tuning parameters to test.</p></li>
+<li><p>For each <span class="math inline">\(k\)</span>th turning parameter Calculate the tuning parameter error for each value</p>
 <ul>
-<li><p><span class="math inline">\(x\)</span>: vector values of individual point</p></li>
-<li><p><span class="math inline">\(y\)</span>: vector values of new point</p></li>
-<li><p><span class="math inline">\(p\)</span>: length of vector</p></li>
-</ul>
-</section>
-<section id="euclidean-distance" class="slide level2">
-<h2>Euclidean Distance</h2>
-<p><span class="math display">\[
-d(x,y) = \sqrt{\sum_{i=1}^{p} (x_i - y_i)^2}
-\]</span></p>
-</section>
-<section id="minkowski-distance" class="slide level2">
-<h2>Minkowski Distance</h2>
-<p><span class="math display">\[
-d(x,y) = \left( \sum_{i=1}^{p} |x_i - y_i|^w \right)^{\frac{1}{w}}
-\]</span></p>
-</section>
-<section id="algorithm" class="slide level2">
-<h2>Algorithm</h2>
-<p>Given a training data set, conduct the following steps:</p>
+<li><p>Utilize the leave-one-out approach</p>
 <ul>
-<li><p>Compute the distance between a new data point and every point in the training data set.</p></li>
-<li><p>Choose the <span class="math inline">\(K\)</span> nearest training data points to the new point using the smallest distance.</p></li>
-<li><p>Categorize the new data point based on the majority of category from the <span class="math inline">\(K\)</span> nearest training data points.</p></li>
-</ul>
-</section></section>
-<section>
-<section id="bayes-classifier" class="title-slide slide level1 center">
-<h1>Bayes Classifier</h1>
-
-</section>
-<section id="bayes-classifier-1" class="slide level2">
-<h2>Bayes Classifier</h2>
-<p>Bayes Classifier is used to classify a data point to a category <span class="math inline">\(c\)</span></p>
+<li><p>For each observation fit a model with the remaining observations and fit the excluded value</p></li>
+<li><p>Compute the following error:</p>
 <p><span class="math display">\[
-f(\boldsymbol x) = argmax_{c \in C} f(C|\boldsymbol X)
-\]</span></p>
-</section>
-<section id="probability" class="slide level2">
-<h2>Probability</h2>
-<p><span class="math display">\[
-f(C = c|\boldsymbol X = x) = \frac{f(\boldsymbol X | C)\pi_c}{f(\boldsymbol X)}
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(f(\boldsymbol X| C)\)</span>: conditional distribution of <span class="math inline">\(\boldsymbol X\)</span></p></li>
-<li><p><span class="math inline">\(\pi_c\)</span>: probability of observing category <span class="math inline">\(C\)</span></p></li>
-<li><p><span class="math inline">\(f(\boldsymbol X)\)</span>: marginal distribution of <span class="math inline">\(\boldsymbol X\)</span></p></li>
-</ul>
-</section>
-<section id="distribution-of-fboldsymbol-xc-and-fboldsymbol-x" class="slide level2">
-<h2>Distribution of <span class="math inline">\(f(\boldsymbol X|C)\)</span> and <span class="math inline">\(f(\boldsymbol X)\)</span></h2>
-<p>To apply Bayes classifier, we must specify the form of <span class="math inline">\(f(\boldsymbol X| C)\)</span> and <span class="math inline">\(f(\boldsymbol X)\)</span>. Common distributions are:</p>
-<ul>
-<li><p>Normal</p></li>
-<li><p>Bernoulli</p></li>
-<li><p>Multinomial</p></li>
-</ul>
-</section></section>
-<section>
-<section id="linear-discriminant-analysis" class="title-slide slide level1 center">
-<h1>Linear Discriminant Analysis</h1>
-
-</section>
-<section id="lda" class="slide level2">
-<h2>LDA</h2>
-<p>Linear Discriminant Analysis is used to classify a new data point, from a set of classifications, given information from a set of predictors.</p>
-<p>LDA classifies data using a Bayes classifier and imposing a normal distribution to the model.</p>
-</section>
-<section id="lda-p1" class="slide level2">
-<h2>LDA (p=1)</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{(x-\mu_k)^2}{2\sigma^2}\right\}
-\]</span></p>
-<p><span class="math display">\[
-f(X) = \sum^K_{l=1} \pi_l f_l(X)
-\]</span></p>
-</section>
-<section id="lda-p1-1" class="slide level2">
-<h2>LDA (p=1)</h2>
-<p><span class="math display">\[
-\delta_k = f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
-\]</span></p>
-<p><span class="math display">\[
-\delta_k(x) = x\frac{\mu_k}{\sigma^2}-\frac{\mu_k^2}{\sigma^2} + \ln(\pi_k)
-\]</span></p>
-</section>
-<section id="lda-p1-estimates" class="slide level2">
-<h2>LDA (p=1) Estimates</h2>
-<p>Let <span class="math inline">\(Y_i=c_l\)</span>, <span class="math inline">\(l=1\ldots, K\)</span>, and <span class="math inline">\(X_i=x_i\)</span> bet the data from n observations:</p>
-<p><span class="math display">\[
-\hat\mu_k = \frac{1}{n_k}\sum^n_{i=1(Y_i=c_k)} x_i
-\]</span></p>
-<p><span class="math display">\[
-\hat\sigma^2=\frac{1}{n-K}\sum^K_{l=1}\sum_{i=1(Y_i=c_l)}^n(x_i-\hat\mu_l)^2
-\]</span></p>
-<ul>
-<li><span class="math inline">\(n_k\)</span>: number of observations in class <span class="math inline">\(k\)</span></li>
-</ul>
-</section>
-<section id="lda-p1-2" class="slide level2">
-<h2>LDA (p&gt;1)</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
-\]</span></p>
-<p><span class="math display">\[
-f(\boldsymbol X) = \sum^K_{l=1} \pi_l f_l(\boldsymbol X)
-\]</span></p>
-</section>
-<section id="lda-p1-3" class="slide level2">
-<h2>LDA (p&gt;1)</h2>
-<p><span class="math display">\[
-\delta_k(\boldsymbol x) = \boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k + \ln(\pi_k)
-\]</span></p>
-</section>
-<section id="lda-classification" class="slide level2">
-<h2>LDA Classification</h2>
-<p>Classify each new data point as class <span class="math inline">\(c_k\)</span> based on the largest <span class="math inline">\(\delta_k(\boldsymbol X)\)</span>.</p>
-</section></section>
-<section>
-<section id="quadratic-discriminant-analysis" class="title-slide slide level1 center">
-<h1>Quadratic Discriminant Analysis</h1>
-
-</section>
-<section id="qda" class="slide level2">
-<h2>QDA</h2>
-<p>In LDA, it is assumed that <span class="math inline">\(\Sigma\)</span> from <span class="math inline">\(\boldsymbol X\)</span> is the same for all classification groups. In Quadratic Discriminant Analysis, this assumption is relaxed, resulting in <span class="math inline">\(\Sigma_k\)</span> for each classification.</p>
-</section>
-<section id="qda-1" class="slide level2">
-<h2>QDA</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma_k^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
-\]</span></p>
-</section>
-<section id="qda-2" class="slide level2">
-<h2>QDA</h2>
-<p><span class="math display">\[
-\delta_k(\boldsymbol x) = -\frac{1}{2}\boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol x + \boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k - \frac{1}{2}\ln|\Sigma_k| + \ln(\pi_k)
-\]</span></p>
-</section></section>
-<section>
-<section id="naive-bayes" class="title-slide slide level1 center">
-<h1>Naive Bayes</h1>
-
-</section>
-<section id="naive-bayes-1" class="slide level2">
-<h2>Naive Bayes</h2>
-<p>A Naive Bayes classifier, assumes the predictors in <span class="math inline">\(\boldsymbol X\)</span> are independent of each other.</p>
-</section>
-<section id="naive-bayes-2" class="slide level2">
-<h2>Naive Bayes</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
-\]</span></p>
-</section>
-<section id="naive-bayes-3" class="slide level2">
-<h2>Naive Bayes</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="quantitative">Quantitative</h3>
-<ul>
-<li><p>Normal: <span class="math inline">\(N(\mu_{jk}, \sigma^2_{jk})\)</span></p></li>
-<li><p>Nonparametric</p>
-<ul>
-<li>Kernel Density</li>
+CVE_k = \frac{1}{n}\sum^n_{i=1}e_i
+\]</span></p></li>
 </ul></li>
+</ul></li>
+<li><p>Identify the <span class="math inline">\(k\)</span>th tuning parameter with the lowest <span class="math inline">\(CVE_k\)</span></p></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<h3 id="qualitative">Qualitative</h3>
+</section>
+<section id="k-fold-cross-validation" class="slide level2">
+<h2>K-Fold Cross-Validation</h2>
 <ul>
-<li>Nonparametric</li>
+<li><p>Choose a set of tuning parameters to test.</p></li>
+<li><p>Create different K subsets of the data.</p></li>
+<li><p>For each <span class="math inline">\(j\)</span>th turning parameter Calculate the tuning parameter error for each value</p>
+<ul>
+<li><p>For each K subset, fit a model using the data excluding the Kth subset</p></li>
+<li><p>Predict the values in the Kth subset using the fitted model</p></li>
+<li><p>Repeat the process for each K subset</p></li>
+<li><p>Compute the following error:</p>
+<p><span class="math display">\[
+CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
+\]</span></p></li>
+</ul></li>
+<li><p>Identify the <span class="math inline">\(j\)</span>th tuning parameter with the lowest <span class="math inline">\(CVE_j\)</span></p></li>
 </ul>
-</div>
-</div>
 </section></section>
 <section>
-<section id="r-code" class="title-slide slide level1 center">
-<h1>R Code</h1>
+<section id="bootstrap-methods" class="title-slide slide level1 center">
+<h1>Bootstrap Methods</h1>
 
 </section>
-<section id="lda-1" class="slide level2">
-<h2>LDA</h2>
+<section id="bootstrap-methods-1" class="slide level2">
+<h2>Bootstrap Methods</h2>
+<p>Bootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.</p>
+<p>When all else fails, a bootstrap approach will compute accurate standard errors.</p>
 </section>
-<section id="lda-prediction" class="slide level2">
-<h2>LDA Prediction</h2>
+<section id="bootstrap-algorithm" class="slide level2">
+<h2>Bootstrap Algorithm</h2>
+<ol type="1">
+<li>Draw a sample <span class="math inline">\(X*\)</span> of size <span class="math inline">\(n\)</span> with replacement from the original data <span class="math inline">\(X\)</span>.
+<ol type="1">
+<li><span class="math inline">\(n\)</span> is the size of the data</li>
+</ol></li>
+<li>Compute the bootstrap replicate statistic <span class="math inline">\(T* = g(X*)\)</span>, where <span class="math inline">\(g(\cdot)\)</span> is the function that computes the statistic of interest.</li>
+<li>Repeat steps 1-2 <span class="math inline">\(B\)</span> times to obtain <span class="math inline">\(B\)</span> bootstrap replicates <span class="math inline">\({T*_1, T*_2, ..., T*_B}\)</span>.</li>
+<li>The computed statistics from <span class="math inline">\(B\)</span> samples are the empirical bootstrap distribution of the statistic, <span class="math inline">\(g(X)\)</span>.</li>
+<li>Calculate the bootstrap standard error of the statistic, <span class="math inline">\(se_b(g(X))\)</span>, as the standard deviation of the bootstrap replicates.</li>
+<li>Calculate the bootstrap confidence interval for the statistic, <span class="math inline">\(CI(g(X))\)</span>, with the <span class="math inline">\(\alpha\)</span> and <span class="math inline">\((1-\alpha)%\)</span> percentiles of the bootstrap replicates, where <span class="math inline">\(\alpha\)</span> is the desired level of significance.</li>
+</ol>
 </section>
-<section id="lda-confusion-matrix" class="slide level2">
-<h2>LDA Confusion Matrix</h2>
-</section>
-<section id="qda-3" class="slide level2">
-<h2>QDA</h2>
-</section>
-<section id="qda-prediction" class="slide level2">
-<h2>QDA Prediction</h2>
-</section>
-<section id="qda-confusion-matrix" class="slide level2">
-<h2>QDA Confusion Matrix</h2>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
+<p>Fitting the following model:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb1-5"><a href="#cb1-5"></a>penguins <span class="sc">%$%</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;            
-#&gt;             Adelie Chinstrap Gentoo
-#&gt;   Adelie       144         2      0
-#&gt;   Chinstrap      2        66      0
-#&gt;   Gentoo         0         0    119</code></pre>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = body_mass_g ~ flipper_length_mm + bill_length_mm + 
+#&gt;     bill_depth_mm)
+#&gt; 
+#&gt; Coefficients:
+#&gt;       (Intercept)  flipper_length_mm     bill_length_mm      bill_depth_mm  
+#&gt;         -6445.476             50.762              3.293             17.836</code></pre>
 </div>
 </div>
-</section>
-<section id="naive-bayes-4" class="slide level2">
-<h2>Naive Bayes</h2>
-</section>
-<section id="naive-bayes-prediction" class="slide level2">
-<h2>Naive Bayes Prediction</h2>
-</section>
-<section id="naive-bayes-confusion-matrix" class="slide level2">
-<h2>Naive Bayes Confusion Matrix</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;            x_nb_predict
-#&gt;             Adelie Chinstrap Gentoo
-#&gt;   Adelie       141         5      0
-#&gt;   Chinstrap      5        63      0
-#&gt;   Gentoo         0         0    119</code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="example" class="title-slide slide level1 center">
-<h1>Example</h1>
-
-</section>
-<section id="create-the-knn-algorithm-in-r" class="slide level2">
-<h2>Create the KNN algorithm in R</h2>
-<ul>
-<li><p>Manhattan</p></li>
-<li><p>Euclidean</p></li>
-<li><p>Minkowski (<span class="math inline">\(w=5\)</span>)</p></li>
-</ul>
-<p>Use the <code>penguins</code> data set from <code>palmerpenguins</code> and categorize the following data: <code>bill_depth = 19</code>, <code>bill_length = 40</code>, <code>flipper_length = 185</code>, and <code>body_mass = 3345</code>.</p>
+<p>Obtain the Bootstrap-based Standard Errors. Use <span class="math inline">\(B=1000\)</span> bootstrap samples.</p>
 
 <div class="footer footer-default">
 

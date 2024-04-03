@@ -13,11 +13,10 @@
 <script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
-<script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Generalized Linear Models</title>
+  <title>MATH 408 - Bayes Classifier</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -402,7 +401,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Generalized Linear Models</h1>
+  <h1 class="title">Bayes Classifier</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -411,369 +410,261 @@
 <section id="learning-outcomes" class="slide level2">
 <h2>Learning Outcomes</h2>
 <ul>
-<li><p>Exponential Family of Distributions</p></li>
-<li><p>Generalized Linear Models</p></li>
+<li><p>Bayes Classifier</p></li>
+<li><p>Linear Discriminant Analysis</p></li>
+<li><p>Quadratic Discriminant Analysis</p></li>
+<li><p>Naive Bayes</p></li>
 <li><p>R Code</p></li>
 </ul>
 </section>
 <section>
-<section id="exponential-family-of-distributions" class="title-slide slide level1 center">
-<h1>Exponential Family of Distributions</h1>
+<section id="bayes-classifier" class="title-slide slide level1 center">
+<h1>Bayes Classifier</h1>
 
 </section>
-<section id="exponential-family-of-distributions-1" class="slide level2">
-<h2>Exponential Family of Distributions</h2>
-<p>An exponential family of distributions are random variables that allow their probability density function to have the following form:</p>
+<section id="bayes-classifier-1" class="slide level2">
+<h2>Bayes Classifier</h2>
+<p>Bayes Classifier is used to classify a data point to a category <span class="math inline">\(c\)</span>, given a set of predictors <span class="math inline">\(\boldsymbol x\)</span></p>
 <p><span class="math display">\[
-f(y; \theta,\phi) = a(x,\phi)\exp\left\{\frac{x\theta-\kappa(\theta)}{\phi}\right\}
+\Delta(\boldsymbol x) = argmax_{k \in K} f_k(c_k|\boldsymbol X)
 \]</span></p>
 <ul>
-<li><p><span class="math inline">\(\theta\)</span>: is the canonical parameter (also a function of other parameters)</p></li>
-<li><p><span class="math inline">\(\kappa(\theta)\)</span>: is a known cumulant function</p></li>
-<li><p><span class="math inline">\(\phi&gt;0\)</span>: dispersion parameter function</p></li>
-<li><p><span class="math inline">\(a(y,\phi)\)</span>: normalizing constant</p></li>
+<li><p><span class="math inline">\(c_1, c_2,\ldots, c_K\)</span>: Categories</p></li>
+<li><p><span class="math inline">\(f_k(c_k|\boldsymbol X)\)</span>: conditional density function of <span class="math inline">\(c_k\)</span> given <span class="math inline">\(\boldsymbol X\)</span></p></li>
 </ul>
 </section>
-<section id="canonical-parameter" class="slide level2">
-<h2>Canonical Parameter</h2>
-<p>The canonical parameter represents the relationship between the random variable and the <span class="math inline">\(E(Y)=\mu\)</span></p>
-</section>
-<section id="normal-distribution" class="slide level2">
-<h2>Normal Distribution</h2>
+<section id="probability" class="slide level2">
+<h2>Probability</h2>
 <p><span class="math display">\[
-f(x;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
 \]</span></p>
-<div class="fragmet">
-<p><span class="math display">\[
-f(x;\mu,\sigma^2)= \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left\{\frac{x\mu-\mu^2/2}{\sigma^2}-\frac{x^2}{2\sigma^2}\right\}
-\]</span></p>
-</div>
-</section>
-<section id="binomial-distribution" class="slide level2">
-<h2>Binomial Distribution</h2>
-<p><span class="math display">\[
-f(x;n,p) = \left(\begin{array}{c}n\\x\end{array}\right) p^x(1-p)^{n-p}
-\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[
-f(x;n,p) = \left(\begin{array}{c}n\\x\end{array}\right) \exp\left\{x\log\left(\frac{p}{1-p}\right) + n \log(1-p)\right\}
-\]</span></p>
-</div>
-</section>
-<section id="common-distributions-and-canonical-parameters" class="slide level2">
-<h2>Common Distributions and Canonical Parameters</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Random Variable</th>
-<th>Canonical Parameter</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Normal</td>
-<td><span class="math inline">\(\mu\)</span></td>
-</tr>
-<tr class="even">
-<td>Binomial</td>
-<td><span class="math inline">\(\log\left(\frac{\mu}{1-\mu}\right)\)</span></td>
-</tr>
-<tr class="odd">
-<td>Negative Binomial</td>
-<td><span class="math inline">\(\log\left(\frac{\mu}{\mu+k}\right)\)</span></td>
-</tr>
-<tr class="even">
-<td>Poisson</td>
-<td><span class="math inline">\(\log(\mu)\)</span></td>
-</tr>
-<tr class="odd">
-<td>Gamma</td>
-<td><span class="math inline">\(-\frac{1}{\mu}\)</span></td>
-</tr>
-<tr class="even">
-<td>Inverse Gaussian</td>
-<td><span class="math inline">\(-\frac{1}{2\mu^2}\)</span></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><p><span class="math inline">\(f_k(\boldsymbol X)\)</span>: conditional density of <span class="math inline">\(\boldsymbol X\)</span> given <span class="math inline">\(c_k\)</span></p></li>
+<li><p><span class="math inline">\(\pi_k\)</span>: probability of observing <span class="math inline">\(c_k\)</span></p></li>
+<li><p><span class="math inline">\(f(\boldsymbol X)\)</span>: probability density function of <span class="math inline">\(\boldsymbol X\)</span></p></li>
+</ul>
 </section></section>
 <section>
-<section id="generalized-linear-models" class="title-slide slide level1 center">
-<h1>Generalized Linear Models</h1>
+<section id="linear-discriminant-analysis" class="title-slide slide level1 center">
+<h1>Linear Discriminant Analysis</h1>
 
 </section>
-<section id="generalized-linear-models-1" class="slide level2">
-<h2>Generalized Linear Models</h2>
-<p>A generalized linear model (GLM) is used to model the association between an outcome variable (of any data type) and a set of predictor values. We estimate a set of regression coefficients <span class="math inline">\(\boldsymbol \beta\)</span> to explain how each predictor is related to the expected value of the outcome.</p>
+<section id="lda" class="slide level2">
+<h2>LDA</h2>
+<p>Linear Discriminant Analysis is used to classify a new data point, from a set of classifications, given information from a set of predictors.</p>
+<p>LDA classifies data using a Bayes classifier and imposing a normal distribution to the model.</p>
 </section>
-<section id="generalized-linear-models-2" class="slide level2">
-<h2>Generalized Linear Models</h2>
-<p>A GLM is composed of a systematic and random component.</p>
-</section>
-<section id="random-component" class="slide level2">
-<h2>Random Component</h2>
-<p>The random component is the random variable that defines the randomness and variation of the outcome variable.</p>
-</section>
-<section id="systematic-component" class="slide level2">
-<h2>Systematic Component</h2>
-<p>The systematic component is the linear model that models the association between a set of predictors and the expected value of Y:</p>
+<section id="lda-p1" class="slide level2">
+<h2>LDA (p=1)</h2>
 <p><span class="math display">\[
-g(\mu)=\eta=\boldsymbol X_i^\mathrm T \boldsymbol \beta
+f_k(\boldsymbol X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{(x-\mu_k)^2}{2\sigma^2}\right\}
+\]</span></p>
+<p><span class="math display">\[
+f(X) = \sum^K_{l=1} \pi_l f_l(X)
+\]</span></p>
+</section>
+<section id="lda-p1-1" class="slide level2">
+<h2>LDA (p=1)</h2>
+<p><span class="math display">\[
+\delta_k = f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
+\]</span></p>
+<p><span class="math display">\[
+\delta_k(x) = x\frac{\mu_k}{\sigma^2}-\frac{\mu_k^2}{\sigma^2} + \ln(\pi_k)
+\]</span></p>
+</section>
+<section id="lda-p1-estimates" class="slide level2">
+<h2>LDA (p=1) Estimates</h2>
+<p>Let <span class="math inline">\(Y_i=c_l\)</span>, <span class="math inline">\(l=1\ldots, K\)</span>, and <span class="math inline">\(X_i=x_i\)</span> bet the data from n observations:</p>
+<p><span class="math display">\[
+\hat\mu_k = \frac{1}{n_k}\sum^n_{i=1(Y_i=c_k)} x_i
+\]</span></p>
+<p><span class="math display">\[
+\hat\sigma^2=\frac{1}{n-K}\sum^K_{l=1}\sum_{i=1(Y_i=c_l)}^n(x_i-\hat\mu_l)^2
 \]</span></p>
 <ul>
-<li><p><span class="math inline">\(\boldsymbol\beta\)</span>: regression coefficients</p></li>
-<li><p><span class="math inline">\(\boldsymbol X_i=(1, X_{i1}, \ldots, X_{ip})^\mathrm T\)</span>: design vector</p></li>
-<li><p><span class="math inline">\(\eta\)</span>: linear model</p></li>
-<li><p><span class="math inline">\(\mu=E(Y)\)</span></p></li>
-<li><p><span class="math inline">\(g(\cdot)\)</span>: link function</p></li>
+<li><span class="math inline">\(n_k\)</span>: number of observations in class <span class="math inline">\(k\)</span></li>
 </ul>
+</section>
+<section id="lda-p1-2" class="slide level2">
+<h2>LDA (p&gt;1)</h2>
+<p><span class="math display">\[
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
+\]</span></p>
+<p><span class="math display">\[
+f(\boldsymbol X) = \sum^K_{l=1} \pi_l f_l(\boldsymbol X)
+\]</span></p>
+</section>
+<section id="lda-p1-3" class="slide level2">
+<h2>LDA (p&gt;1)</h2>
+<p><span class="math display">\[
+\delta_k(\boldsymbol x) = \boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k + \ln(\pi_k)
+\]</span></p>
+</section>
+<section id="lda-classification" class="slide level2">
+<h2>LDA Classification</h2>
+<p>Classify each new data point as class <span class="math inline">\(c_k\)</span> based on the largest <span class="math inline">\(\delta_k(\boldsymbol X)\)</span>.</p>
+</section></section>
+<section>
+<section id="quadratic-discriminant-analysis" class="title-slide slide level1 center">
+<h1>Quadratic Discriminant Analysis</h1>
+
+</section>
+<section id="qda" class="slide level2">
+<h2>QDA</h2>
+<p>In LDA, it is assumed that <span class="math inline">\(\Sigma\)</span> from <span class="math inline">\(\boldsymbol X\)</span> is the same for all classification groups. In Quadratic Discriminant Analysis, this assumption is relaxed, resulting in <span class="math inline">\(\Sigma_k\)</span> for each classification.</p>
+</section>
+<section id="qda-1" class="slide level2">
+<h2>QDA</h2>
+<p><span class="math display">\[
+f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma_k^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
+\]</span></p>
+</section>
+<section id="qda-2" class="slide level2">
+<h2>QDA</h2>
+<p><span class="math display">\[
+\delta_k(\boldsymbol x) = -\frac{1}{2}\boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol x + \boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k - \frac{1}{2}\ln|\Sigma_k| + \ln(\pi_k)
+\]</span></p>
+</section></section>
+<section>
+<section id="naive-bayes" class="title-slide slide level1 center">
+<h1>Naive Bayes</h1>
+
+</section>
+<section id="naive-bayes-1" class="slide level2">
+<h2>Naive Bayes</h2>
+<p>A Naive Bayes classifier, assumes the predictors in <span class="math inline">\(\boldsymbol X\)</span> are independent of each other.</p>
+</section>
+<section id="naive-bayes-2" class="slide level2">
+<h2>Naive Bayes</h2>
+<p><span class="math display">\[
+f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
+\]</span></p>
+</section>
+<section id="naive-bayes-3" class="slide level2">
+<h2>Naive Bayes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="quantitative">Quantitative</h3>
+<ul>
+<li><p>Normal: <span class="math inline">\(N(\mu_{jk}, \sigma^2_{jk})\)</span></p></li>
+<li><p>Nonparametric</p>
+<ul>
+<li>Kernel Density</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="qualitative">Qualitative</h3>
+<ul>
+<li>Nonparametric</li>
+</ul>
+</div>
+</div>
 </section></section>
 <section>
 <section id="r-code" class="title-slide slide level1 center">
 <h1>R Code</h1>
 
 </section>
-<section id="general-r-code" class="slide level2">
-<h2>General R Code</h2>
+<section id="lda-1" class="slide level2">
+<h2>LDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="fu">glm</span>(formula,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a>    data,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3"></a>    family)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Supply a formula for R</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Supply the data frame</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Which family and link function is used to model data</span>
-</dd>
-</dl>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>penguins_df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> drop_na</span>
+<span id="cb1-7"><a href="#cb1-7"></a>x_lda <span class="ot">&lt;-</span> penguins_df <span class="sc">%$%</span> <span class="fu">lda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
+<span id="cb1-8"><a href="#cb1-8"></a>                                       bill_depth_mm <span class="sc">+</span> </span>
+<span id="cb1-9"><a href="#cb1-9"></a>                                       flipper_length_mm <span class="sc">+</span> </span>
+<span id="cb1-10"><a href="#cb1-10"></a>                                       body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="poisson-regression" class="slide level2">
-<h2>Poisson Regression</h2>
-<p>Poisson Regression is used when the outcome is count data:</p>
+<section id="lda-prediction" class="slide level2">
+<h2>LDA Prediction</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x,</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    data, </span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="at">family =</span> <span class="fu">poisson</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>new_df <span class="ot">&lt;-</span> penguins_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(bill_length_mm, </span>
+<span id="cb2-2"><a href="#cb2-2"></a>                                 bill_depth_mm,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>                                 flipper_length_mm,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>                                 body_mass_g)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>x_lda_predict <span class="ot">&lt;-</span> x_lda <span class="sc">%&gt;%</span> <span class="fu">predict</span>(new_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="gamma-regression" class="slide level2">
-<h2>Gamma Regression</h2>
-<p>Gamma Regression is used when modeling the association between predictors and positive continuous values:</p>
+<section id="lda-confusion-matrix" class="slide level2">
+<h2>LDA Confusion Matrix</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
-<span id="cb2-2"><a href="#cb2-2"></a>    data, </span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="at">family =</span> <span class="fu">Gamma</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="negative-binomial-regression" class="slide level2">
-<h2>Negative Binomial Regression</h2>
-<p>Negative Binomial Regression is used four with overdispersed count data, where the variance is larger than expected.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">glm.nb</span>(y<span class="sc">~</span>x, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>       data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="inverse-gaussian-regression" class="slide level2">
-<h2>Inverse Gaussian Regression</h2>
-<p>Inverse Gaussian Regression is used for overly dispersed positive continuous data where Gamma Regression is inappropriate:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
-<span id="cb4-2"><a href="#cb4-2"></a>    data, </span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="at">family =</span> <span class="fu">inverse.gaussian</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="hypothesis-tests" class="title-slide slide level1 center">
-<h1>Hypothesis Tests</h1>
-
-</section>
-<section id="hypothesis-tests-1" class="slide level2">
-<h2>Hypothesis Tests</h2>
-<p>Hypothesis tests are used to test whether claims are valid or not. This is conducted by collecting data, setting the <strong>Null</strong> and <strong>Alternative</strong> Hypothesis.</p>
-</section>
-<section id="testing-beta_j" class="slide level2">
-<h2>Testing <span class="math inline">\(\beta_j\)</span></h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="phi-known"><span class="math inline">\(\phi\)</span> known</h3>
-<p><span class="math display">\[
-\frac{\hat\beta_j - \theta}{\mathrm{se}(\hat\beta_j)} \sim N(0,1)
-\]</span></p>
-</div><div class="column" style="width:50%;">
-<h3 id="phi-unknown"><span class="math inline">\(\phi\)</span> unknown</h3>
-<p><span class="math display">\[
-\frac{\hat\beta_j-\theta}{\mathrm{se}(\hat\beta_j)} \sim t_{n-p^\prime}
-\]</span></p>
-</div>
-</div>
-</section>
-<section id="confidence-intervals" class="slide level2">
-<h2>Confidence Intervals</h2>
-<p><span class="math display">\[
-PE \pm CV \times SE
-\]</span></p>
-<ul>
-<li><p>PE: Point Estimate</p></li>
-<li><p>CV: Critical Value <span class="math inline">\(P(X&lt;CV) = 1-\alpha/2\)</span></p></li>
-<li><p><span class="math inline">\(\alpha\)</span>: significance level</p></li>
-<li><p>SE: Standard Error</p></li>
-</ul>
-</section></section>
-<section>
-<section id="examples" class="title-slide slide level1 center">
-<h1>Examples</h1>
-
-</section>
-<section id="fitting-models" class="slide level2">
-<h2>Fitting Models</h2>
-<p>Use the <code>survival</code>, <code>MASS</code> and <code>GLMsData</code> R packages to fit the models for examples.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(GLMsData)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(survival)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="poisson-regression-1" class="slide level2">
-<h2>Poisson Regression</h2>
-<p>Fit a model between the outcome <code>recur</code>, number of reccurrence, and predictors <code>treatment</code>, drugs or placebo, and <code>number</code>, the initial number of tumors, from the <code>bladder1</code> data set.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>bladder1 <span class="sc">|&gt;</span>  <span class="fu">glm</span>(recur <span class="sc">~</span> treatment <span class="sc">+</span> number,</span>
-<span id="cb6-2"><a href="#cb6-2"></a>                 <span class="at">data =</span> _,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>                 <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">table</span>(penguins_df<span class="sc">$</span>species, x_lda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; glm(formula = recur ~ treatment + number, family = poisson(link = "log"), 
-#&gt;     data = bladder1)
-#&gt; 
-#&gt; Coefficients:
-#&gt;                     Estimate Std. Error z value Pr(&gt;|z|)    
-#&gt; (Intercept)          1.00918    0.06057  16.661  &lt; 2e-16 ***
-#&gt; treatmentpyridoxine  0.25506    0.06889   3.702 0.000214 ***
-#&gt; treatmentthiotepa   -0.45167    0.08626  -5.236 1.64e-07 ***
-#&gt; number               0.11603    0.01620   7.164 7.82e-13 ***
-#&gt; ---
-#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-#&gt; 
-#&gt; (Dispersion parameter for poisson family taken to be 1)
-#&gt; 
-#&gt;     Null deviance: 868.47  on 293  degrees of freedom
-#&gt; Residual deviance: 772.19  on 290  degrees of freedom
-#&gt; AIC: 1529.5
-#&gt; 
-#&gt; Number of Fisher Scoring iterations: 5</code></pre>
+<pre><code>#&gt;            
+#&gt;             Adelie Chinstrap Gentoo
+#&gt;   Adelie       145         1      0
+#&gt;   Chinstrap      3        65      0
+#&gt;   Gentoo         0         0    119</code></pre>
 </div>
 </div>
 </section>
-<section id="negative-binomial-regression-1" class="slide level2">
-<h2>Negative Binomial Regression</h2>
-<p>Fit a model between the outcome <code>Count</code>, viral activity (pock counts), and predictor <code>Dilution</code> factor from the <code>pock</code> data set.</p>
+<section id="qda-3" class="slide level2">
+<h2>QDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">data</span>(<span class="st">"pock"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>pock <span class="sc">|&gt;</span> <span class="fu">glm.nb</span>(Count <span class="sc">~</span> Dilution, </span>
-<span id="cb8-3"><a href="#cb8-3"></a>               <span class="at">data =</span> _)  <span class="sc">|&gt;</span> </span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x_qda <span class="ot">&lt;-</span> penguins_df <span class="sc">%$%</span> <span class="fu">qda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>                                       bill_depth_mm <span class="sc">+</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>                                       flipper_length_mm <span class="sc">+</span> </span>
+<span id="cb5-4"><a href="#cb5-4"></a>                                       body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="qda-prediction" class="slide level2">
+<h2>QDA Prediction</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x_qda_predict <span class="ot">&lt;-</span> x_qda <span class="sc">%&gt;%</span> <span class="fu">predict</span>(penguins_df <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
+<span id="cb6-3"><a href="#cb6-3"></a>                                            bill_depth_mm,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>                                            flipper_length_mm,</span>
+<span id="cb6-5"><a href="#cb6-5"></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="qda-confusion-matrix" class="slide level2">
+<h2>QDA Confusion Matrix</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">table</span>(penguins_df<span class="sc">$</span>species, x_qda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; glm.nb(formula = Count ~ Dilution, data = pock, init.theta = 6.045172803, 
-#&gt;     link = log)
-#&gt; 
-#&gt; Coefficients:
-#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    
-#&gt; (Intercept)  5.05810    0.09622   52.57   &lt;2e-16 ***
-#&gt; Dilution    -0.19204    0.01322  -14.53   &lt;2e-16 ***
-#&gt; ---
-#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-#&gt; 
-#&gt; (Dispersion parameter for Negative Binomial(6.0452) family taken to be 1)
-#&gt; 
-#&gt;     Null deviance: 262.687  on 47  degrees of freedom
-#&gt; Residual deviance:  48.891  on 46  degrees of freedom
-#&gt; AIC: 427.26
-#&gt; 
-#&gt; Number of Fisher Scoring iterations: 1
-#&gt; 
-#&gt; 
-#&gt;               Theta:  6.05 
-#&gt;           Std. Err.:  1.43 
-#&gt; 
-#&gt;  2 x log-likelihood:  -421.261</code></pre>
+<pre><code>#&gt;            
+#&gt;             Adelie Chinstrap Gentoo
+#&gt;   Adelie       144         2      0
+#&gt;   Chinstrap      2        66      0
+#&gt;   Gentoo         0         0    119</code></pre>
 </div>
 </div>
 </section>
-<section id="gamma-regression-1" class="slide level2">
-<h2>Gamma Regression</h2>
-<p>Fit a model between the outcome <code>Foliage</code>, foliage biomass, and predictor <code>DBH</code>, tree diameter at breast height, from the <code>lime</code> data set.</p>
+<section id="naive-bayes-4" class="slide level2">
+<h2>Naive Bayes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
-<span id="cb10-3"><a href="#cb10-3"></a>             <span class="at">data =</span> _,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>             <span class="at">family =</span> <span class="fu">Gamma</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span>  </span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">summary</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; glm(formula = Foliage ~ DBH, family = Gamma(link = "log"), data = lime)
-#&gt; 
-#&gt; Coefficients:
-#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    
-#&gt; (Intercept) -1.786052   0.085994  -20.77   &lt;2e-16 ***
-#&gt; DBH          0.122388   0.004736   25.84   &lt;2e-16 ***
-#&gt; ---
-#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-#&gt; 
-#&gt; (Dispersion parameter for Gamma family taken to be 0.5432673)
-#&gt; 
-#&gt;     Null deviance: 508.48  on 384  degrees of freedom
-#&gt; Residual deviance: 189.57  on 383  degrees of freedom
-#&gt; AIC: 831.65
-#&gt; 
-#&gt; Number of Fisher Scoring iterations: 5</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>x_nb <span class="ot">&lt;-</span> penguins_df <span class="sc">%&gt;%</span> <span class="fu">naiveBayes</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>                                             bill_depth_mm <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a>                                             flipper_length_mm <span class="sc">+</span> </span>
+<span id="cb9-5"><a href="#cb9-5"></a>                                             body_mass_g, .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="inverse-gaussian-regression-1" class="slide level2">
-<h2>Inverse Gaussian Regression</h2>
-<p>Fit a model between the outcome <code>Foliage</code>, foliage biomass, and predictor <code>DBH</code>, tree diameter at breast height, from the <code>lime</code> data set.</p>
+<section id="naive-bayes-prediction" class="slide level2">
+<h2>Naive Bayes Prediction</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
-<span id="cb12-3"><a href="#cb12-3"></a>             <span class="at">data =</span> _,</span>
-<span id="cb12-4"><a href="#cb12-4"></a>             <span class="at">family =</span> <span class="fu">inverse.gaussian</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x_nb_predict <span class="ot">&lt;-</span> x_nb <span class="sc">%&gt;%</span> <span class="fu">predict</span>(penguins_df <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
+<span id="cb10-3"><a href="#cb10-3"></a>                                            bill_depth_mm,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                                            flipper_length_mm,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="naive-bayes-confusion-matrix" class="slide level2">
+<h2>Naive Bayes Confusion Matrix</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">table</span>(penguins_df<span class="sc">$</span>species, x_nb_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; glm(formula = Foliage ~ DBH, family = inverse.gaussian(link = "log"), 
-#&gt;     data = lime)
-#&gt; 
-#&gt; Coefficients:
-#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
-#&gt; (Intercept)  -2.7290     0.1113  -24.53   &lt;2e-16 ***
-#&gt; DBH           0.2077     0.0118   17.59   &lt;2e-16 ***
-#&gt; ---
-#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-#&gt; 
-#&gt; (Dispersion parameter for inverse.gaussian family taken to be 1.571078)
-#&gt; 
-#&gt;     Null deviance: 873.60  on 384  degrees of freedom
-#&gt; Residual deviance: 542.83  on 383  degrees of freedom
-#&gt; AIC: 1192.6
-#&gt; 
-#&gt; Number of Fisher Scoring iterations: 16</code></pre>
+<pre><code>#&gt;            x_nb_predict
+#&gt;             Adelie Chinstrap Gentoo
+#&gt;   Adelie       141         5      0
+#&gt;   Chinstrap      5        63      0
+#&gt;   Gentoo         0         0    119</code></pre>
 </div>
 </div>
 

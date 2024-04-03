@@ -16,7 +16,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Bayes Classifier</title>
+  <title>MATH 408 - Resampling Methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -401,7 +401,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Bayes Classifier</h1>
+  <h1 class="title">Resampling Methods</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -410,263 +410,108 @@
 <section id="learning-outcomes" class="slide level2">
 <h2>Learning Outcomes</h2>
 <ul>
-<li><p>Bayes Classifier</p></li>
-<li><p>Linear Discriminant Analysis</p></li>
-<li><p>Quadratic Discriminant Analysis</p></li>
-<li><p>Naive Bayes</p></li>
-<li><p>R Code</p></li>
-</ul>
-</section>
-<section>
-<section id="bayes-classifier" class="title-slide slide level1 center">
-<h1>Bayes Classifier</h1>
-
-</section>
-<section id="bayes-classifier-1" class="slide level2">
-<h2>Bayes Classifier</h2>
-<p>Bayes Classifier is used to classify a data point to a category <span class="math inline">\(c\)</span>, given a set of predictors <span class="math inline">\(\boldsymbol x\)</span></p>
-<p><span class="math display">\[
-\Delta(\boldsymbol x) = argmax_{k \in K} f_k(c_k|\boldsymbol X)
-\]</span></p>
+<li><p>Cross-Validation</p>
 <ul>
-<li><p><span class="math inline">\(c_1, c_2,\ldots, c_K\)</span>: Categories</p></li>
-<li><p><span class="math inline">\(f_k(c_k|\boldsymbol X)\)</span>: conditional density function of <span class="math inline">\(c_k\)</span> given <span class="math inline">\(\boldsymbol X\)</span></p></li>
-</ul>
-</section>
-<section id="probability" class="slide level2">
-<h2>Probability</h2>
-<p><span class="math display">\[
-f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(f_k(\boldsymbol X)\)</span>: conditional density of <span class="math inline">\(\boldsymbol X\)</span> given <span class="math inline">\(c_k\)</span></p></li>
-<li><p><span class="math inline">\(\pi_k\)</span>: probability of observing <span class="math inline">\(c_k\)</span></p></li>
-<li><p><span class="math inline">\(f(\boldsymbol X)\)</span>: probability density function of <span class="math inline">\(\boldsymbol X\)</span></p></li>
-</ul>
-</section></section>
-<section>
-<section id="linear-discriminant-analysis" class="title-slide slide level1 center">
-<h1>Linear Discriminant Analysis</h1>
-
-</section>
-<section id="lda" class="slide level2">
-<h2>LDA</h2>
-<p>Linear Discriminant Analysis is used to classify a new data point, from a set of classifications, given information from a set of predictors.</p>
-<p>LDA classifies data using a Bayes classifier and imposing a normal distribution to the model.</p>
-</section>
-<section id="lda-p1" class="slide level2">
-<h2>LDA (p=1)</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{(x-\mu_k)^2}{2\sigma^2}\right\}
-\]</span></p>
-<p><span class="math display">\[
-f(X) = \sum^K_{l=1} \pi_l f_l(X)
-\]</span></p>
-</section>
-<section id="lda-p1-1" class="slide level2">
-<h2>LDA (p=1)</h2>
-<p><span class="math display">\[
-\delta_k = f_k(c_k|\boldsymbol X ) = \frac{f_k(\boldsymbol X)\pi_c}{f(\boldsymbol X)}
-\]</span></p>
-<p><span class="math display">\[
-\delta_k(x) = x\frac{\mu_k}{\sigma^2}-\frac{\mu_k^2}{\sigma^2} + \ln(\pi_k)
-\]</span></p>
-</section>
-<section id="lda-p1-estimates" class="slide level2">
-<h2>LDA (p=1) Estimates</h2>
-<p>Let <span class="math inline">\(Y_i=c_l\)</span>, <span class="math inline">\(l=1\ldots, K\)</span>, and <span class="math inline">\(X_i=x_i\)</span> bet the data from n observations:</p>
-<p><span class="math display">\[
-\hat\mu_k = \frac{1}{n_k}\sum^n_{i=1(Y_i=c_k)} x_i
-\]</span></p>
-<p><span class="math display">\[
-\hat\sigma^2=\frac{1}{n-K}\sum^K_{l=1}\sum_{i=1(Y_i=c_l)}^n(x_i-\hat\mu_l)^2
-\]</span></p>
-<ul>
-<li><span class="math inline">\(n_k\)</span>: number of observations in class <span class="math inline">\(k\)</span></li>
-</ul>
-</section>
-<section id="lda-p1-2" class="slide level2">
-<h2>LDA (p&gt;1)</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
-\]</span></p>
-<p><span class="math display">\[
-f(\boldsymbol X) = \sum^K_{l=1} \pi_l f_l(\boldsymbol X)
-\]</span></p>
-</section>
-<section id="lda-p1-3" class="slide level2">
-<h2>LDA (p&gt;1)</h2>
-<p><span class="math display">\[
-\delta_k(\boldsymbol x) = \boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma^{-1}\boldsymbol \mu_k + \ln(\pi_k)
-\]</span></p>
-</section>
-<section id="lda-classification" class="slide level2">
-<h2>LDA Classification</h2>
-<p>Classify each new data point as class <span class="math inline">\(c_k\)</span> based on the largest <span class="math inline">\(\delta_k(\boldsymbol X)\)</span>.</p>
-</section></section>
-<section>
-<section id="quadratic-discriminant-analysis" class="title-slide slide level1 center">
-<h1>Quadratic Discriminant Analysis</h1>
-
-</section>
-<section id="qda" class="slide level2">
-<h2>QDA</h2>
-<p>In LDA, it is assumed that <span class="math inline">\(\Sigma\)</span> from <span class="math inline">\(\boldsymbol X\)</span> is the same for all classification groups. In Quadratic Discriminant Analysis, this assumption is relaxed, resulting in <span class="math inline">\(\Sigma_k\)</span> for each classification.</p>
-</section>
-<section id="qda-1" class="slide level2">
-<h2>QDA</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{1/2}}\exp\left\{(\boldsymbol x-\boldsymbol{\mu_k})^{\mathrm T}\Sigma_k^{-1}(\boldsymbol x-\boldsymbol \mu_k)\right\}
-\]</span></p>
-</section>
-<section id="qda-2" class="slide level2">
-<h2>QDA</h2>
-<p><span class="math display">\[
-\delta_k(\boldsymbol x) = -\frac{1}{2}\boldsymbol x^{\mathrm T}\Sigma^{-1}\boldsymbol x + \boldsymbol x^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k-\frac{1}{2}\boldsymbol \mu_k^{\mathrm T}\Sigma_k^{-1}\boldsymbol \mu_k - \frac{1}{2}\ln|\Sigma_k| + \ln(\pi_k)
-\]</span></p>
-</section></section>
-<section>
-<section id="naive-bayes" class="title-slide slide level1 center">
-<h1>Naive Bayes</h1>
-
-</section>
-<section id="naive-bayes-1" class="slide level2">
-<h2>Naive Bayes</h2>
-<p>A Naive Bayes classifier, assumes the predictors in <span class="math inline">\(\boldsymbol X\)</span> are independent of each other.</p>
-</section>
-<section id="naive-bayes-2" class="slide level2">
-<h2>Naive Bayes</h2>
-<p><span class="math display">\[
-f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
-\]</span></p>
-</section>
-<section id="naive-bayes-3" class="slide level2">
-<h2>Naive Bayes</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="quantitative">Quantitative</h3>
-<ul>
-<li><p>Normal: <span class="math inline">\(N(\mu_{jk}, \sigma^2_{jk})\)</span></p></li>
-<li><p>Nonparametric</p>
-<ul>
-<li>Kernel Density</li>
+<li><p>Leave-one-out</p></li>
+<li><p>K-Fold</p></li>
 </ul></li>
+<li><p>Bootstrap Methods</p></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<h3 id="qualitative">Qualitative</h3>
-<ul>
-<li>Nonparametric</li>
-</ul>
-</div>
-</div>
-</section></section>
+</section>
 <section>
-<section id="r-code" class="title-slide slide level1 center">
-<h1>R Code</h1>
+<section id="cross-validation" class="title-slide slide level1 center">
+<h1>Cross-Validation</h1>
 
 </section>
-<section id="lda-1" class="slide level2">
-<h2>LDA</h2>
+<section id="cross-validation-1" class="slide level2">
+<h2>Cross-Validation</h2>
+<p>A cross-validation approach is to obtain a good estimate of the error-rate of a machine learning algorithm. We split the data set into two categories: training and testing. The training data set is used to train the model, and the test data is used to test the model and compute the error rate.</p>
+</section>
+<section id="tuning-parameter" class="slide level2">
+<h2>Tuning Parameter</h2>
+<p>A cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate.</p>
+</section>
+<section id="loocv-cross-validation" class="slide level2">
+<h2>LOOCV Cross-Validation</h2>
+<ul>
+<li><p>Choose a set of tuning parameters to test.</p></li>
+<li><p>For each <span class="math inline">\(k\)</span>th turning parameter Calculate the tuning parameter error for each value</p>
+<ul>
+<li><p>Utilize the leave-one-out approach</p>
+<ul>
+<li><p>For each observation fit a model with the remaining observations and fit the excluded value</p></li>
+<li><p>Compute the following error:</p>
+<p><span class="math display">\[
+CVE_k = \frac{1}{n}\sum^n_{i=1}e_i
+\]</span></p></li>
+</ul></li>
+</ul></li>
+<li><p>Identify the <span class="math inline">\(k\)</span>th tuning parameter with the lowest <span class="math inline">\(CVE_k\)</span></p></li>
+</ul>
+</section>
+<section id="k-fold-cross-validation" class="slide level2">
+<h2>K-Fold Cross-Validation</h2>
+<ul>
+<li><p>Choose a set of tuning parameters to test.</p></li>
+<li><p>Create different K subsets of the data.</p></li>
+<li><p>For each <span class="math inline">\(j\)</span>th turning parameter Calculate the tuning parameter error for each value</p>
+<ul>
+<li><p>For each K subset, fit a model using the data excluding the Kth subset</p></li>
+<li><p>Predict the values in the Kth subset using the fitted model</p></li>
+<li><p>Repeat the process for each K subset</p></li>
+<li><p>Compute the following error:</p>
+<p><span class="math display">\[
+CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
+\]</span></p></li>
+</ul></li>
+<li><p>Identify the <span class="math inline">\(j\)</span>th tuning parameter with the lowest <span class="math inline">\(CVE_j\)</span></p></li>
+</ul>
+</section></section>
+<section>
+<section id="bootstrap-methods" class="title-slide slide level1 center">
+<h1>Bootstrap Methods</h1>
+
+</section>
+<section id="bootstrap-methods-1" class="slide level2">
+<h2>Bootstrap Methods</h2>
+<p>Bootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.</p>
+<p>When all else fails, a bootstrap approach will compute accurate standard errors.</p>
+</section>
+<section id="bootstrap-algorithm" class="slide level2">
+<h2>Bootstrap Algorithm</h2>
+<ol type="1">
+<li>Draw a sample <span class="math inline">\(X*\)</span> of size <span class="math inline">\(n\)</span> with replacement from the original data <span class="math inline">\(X\)</span>.
+<ol type="1">
+<li><span class="math inline">\(n\)</span> is the size of the data</li>
+</ol></li>
+<li>Compute the bootstrap replicate statistic <span class="math inline">\(T* = g(X*)\)</span>, where <span class="math inline">\(g(\cdot)\)</span> is the function that computes the statistic of interest.</li>
+<li>Repeat steps 1-2 <span class="math inline">\(B\)</span> times to obtain <span class="math inline">\(B\)</span> bootstrap replicates <span class="math inline">\({T*_1, T*_2, ..., T*_B}\)</span>.</li>
+<li>The computed statistics from <span class="math inline">\(B\)</span> samples are the empirical bootstrap distribution of the statistic, <span class="math inline">\(g(X)\)</span>.</li>
+<li>Calculate the bootstrap standard error of the statistic, <span class="math inline">\(se_b(g(X))\)</span>, as the standard deviation of the bootstrap replicates.</li>
+<li>Calculate the bootstrap confidence interval for the statistic, <span class="math inline">\(CI(g(X))\)</span>, with the <span class="math inline">\(\alpha\)</span> and <span class="math inline">\((1-\alpha)%\)</span> percentiles of the bootstrap replicates, where <span class="math inline">\(\alpha\)</span> is the desired level of significance.</li>
+</ol>
+</section>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
+<p>Fitting the following model:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>penguins_df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> drop_na</span>
-<span id="cb1-7"><a href="#cb1-7"></a>x_lda <span class="ot">&lt;-</span> penguins_df <span class="sc">%$%</span> <span class="fu">lda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
-<span id="cb1-8"><a href="#cb1-8"></a>                                       bill_depth_mm <span class="sc">+</span> </span>
-<span id="cb1-9"><a href="#cb1-9"></a>                                       flipper_length_mm <span class="sc">+</span> </span>
-<span id="cb1-10"><a href="#cb1-10"></a>                                       body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="lda-prediction" class="slide level2">
-<h2>LDA Prediction</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>new_df <span class="ot">&lt;-</span> penguins_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(bill_length_mm, </span>
-<span id="cb2-2"><a href="#cb2-2"></a>                                 bill_depth_mm,</span>
-<span id="cb2-3"><a href="#cb2-3"></a>                                 flipper_length_mm,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>                                 body_mass_g)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>x_lda_predict <span class="ot">&lt;-</span> x_lda <span class="sc">%&gt;%</span> <span class="fu">predict</span>(new_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="lda-confusion-matrix" class="slide level2">
-<h2>LDA Confusion Matrix</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">table</span>(penguins_df<span class="sc">$</span>species, x_lda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb1-5"><a href="#cb1-5"></a>penguins <span class="sc">%$%</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;            
-#&gt;             Adelie Chinstrap Gentoo
-#&gt;   Adelie       145         1      0
-#&gt;   Chinstrap      3        65      0
-#&gt;   Gentoo         0         0    119</code></pre>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = body_mass_g ~ flipper_length_mm + bill_length_mm + 
+#&gt;     bill_depth_mm)
+#&gt; 
+#&gt; Coefficients:
+#&gt;       (Intercept)  flipper_length_mm     bill_length_mm      bill_depth_mm  
+#&gt;         -6445.476             50.762              3.293             17.836</code></pre>
 </div>
 </div>
-</section>
-<section id="qda-3" class="slide level2">
-<h2>QDA</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x_qda <span class="ot">&lt;-</span> penguins_df <span class="sc">%$%</span> <span class="fu">qda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>                                       bill_depth_mm <span class="sc">+</span> </span>
-<span id="cb5-3"><a href="#cb5-3"></a>                                       flipper_length_mm <span class="sc">+</span> </span>
-<span id="cb5-4"><a href="#cb5-4"></a>                                       body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="qda-prediction" class="slide level2">
-<h2>QDA Prediction</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x_qda_predict <span class="ot">&lt;-</span> x_qda <span class="sc">%&gt;%</span> <span class="fu">predict</span>(penguins_df <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
-<span id="cb6-3"><a href="#cb6-3"></a>                                            bill_depth_mm,</span>
-<span id="cb6-4"><a href="#cb6-4"></a>                                            flipper_length_mm,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="qda-confusion-matrix" class="slide level2">
-<h2>QDA Confusion Matrix</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">table</span>(penguins_df<span class="sc">$</span>species, x_qda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;            
-#&gt;             Adelie Chinstrap Gentoo
-#&gt;   Adelie       144         2      0
-#&gt;   Chinstrap      2        66      0
-#&gt;   Gentoo         0         0    119</code></pre>
-</div>
-</div>
-</section>
-<section id="naive-bayes-4" class="slide level2">
-<h2>Naive Bayes</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(e1071)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>x_nb <span class="ot">&lt;-</span> penguins_df <span class="sc">%&gt;%</span> <span class="fu">naiveBayes</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>                                             bill_depth_mm <span class="sc">+</span> </span>
-<span id="cb9-4"><a href="#cb9-4"></a>                                             flipper_length_mm <span class="sc">+</span> </span>
-<span id="cb9-5"><a href="#cb9-5"></a>                                             body_mass_g, .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="naive-bayes-prediction" class="slide level2">
-<h2>Naive Bayes Prediction</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x_nb_predict <span class="ot">&lt;-</span> x_nb <span class="sc">%&gt;%</span> <span class="fu">predict</span>(penguins_df <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2"></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
-<span id="cb10-3"><a href="#cb10-3"></a>                                            bill_depth_mm,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>                                            flipper_length_mm,</span>
-<span id="cb10-5"><a href="#cb10-5"></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="naive-bayes-confusion-matrix" class="slide level2">
-<h2>Naive Bayes Confusion Matrix</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">table</span>(penguins_df<span class="sc">$</span>species, x_nb_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;            x_nb_predict
-#&gt;             Adelie Chinstrap Gentoo
-#&gt;   Adelie       141         5      0
-#&gt;   Chinstrap      5        63      0
-#&gt;   Gentoo         0         0    119</code></pre>
-</div>
-</div>
+<p>Obtain the Bootstrap-based Standard Errors. Use <span class="math inline">\(B=1000\)</span> bootstrap samples.</p>
 
 <div class="footer footer-default">
 
