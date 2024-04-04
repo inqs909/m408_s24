@@ -3315,7 +3315,7 @@
     "href": "lectures/10a.html#exponential-family-of-distributions-1",
     "title": "Generalized Linear Models",
     "section": "Exponential Family of Distributions",
-    "text": "Exponential Family of Distributions\nAn exponential family of distributions are random variables that allow their probability density function to have the following form:\n\\[\nf(y; \\theta,\\phi) = a(x,\\phi)\\exp\\left\\{\\frac{x\\theta-\\kappa(\\theta)}{\\phi}\\right\\}\n\\]\n\n\\(\\theta\\): is the canonical parameter (also a function of other parameters)\n\\(\\kappa(\\theta)\\): is a known cumulant function\n\\(\\phi&gt;0\\): dispersion parameter function\n\\(a(y,\\phi)\\): normalizing constant"
+    "text": "Exponential Family of Distributions\nAn exponential family of distributions are random variables that allow their probability density function to have the following form:\n\\[\nf(x; \\theta,\\phi) = a(x,\\phi)\\exp\\left\\{\\frac{x\\theta-\\kappa(\\theta)}{\\phi}\\right\\}\n\\]\n\n\\(\\theta\\): is the canonical parameter (also a function of other parameters)\n\\(\\kappa(\\theta)\\): is a known cumulant function\n\\(\\phi&gt;0\\): dispersion parameter function\n\\(a(y,\\phi)\\): normalizing constant"
   },
   {
     "objectID": "lectures/10a.html#canonical-parameter",

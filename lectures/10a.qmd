@@ -47,7 +47,7 @@ editor: visual
 An exponential family of distributions are random variables that allow their probability density function to have the following form:
 
 $$
-f(y; \theta,\phi) = a(x,\phi)\exp\left\{\frac{x\theta-\kappa(\theta)}{\phi}\right\}
+f(x; \theta,\phi) = a(x,\phi)\exp\left\{\frac{x\theta-\kappa(\theta)}{\phi}\right\}
 $$
 
 -   $\theta$: is the canonical parameter (also a function of other parameters)
