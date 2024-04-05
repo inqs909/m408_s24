@@ -18,4 +18,4 @@ From the Applied Section in Chapter 4: Problem 14 a,b,c,d,e,f,g
 
 ## Problem 3
 
-From the Applied Section in Chapter 4: Problem 16
+From the Applied Section in Chapter 4: Problem 16 (Don't do the KNN algorithm.)
