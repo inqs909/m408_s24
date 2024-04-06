@@ -757,6 +757,77 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 <li><p>Minkowski (<span class="math inline">\(w=5\)</span>)</p></li>
 </ul>
 <p>Use the <code>penguins</code> data set from <code>palmerpenguins</code> and categorize the following data: <code>bill_depth = 19</code>, <code>bill_length = 40</code>, <code>flipper_length = 185</code>, and <code>body_mass = 3345</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>manhattan <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">sum</span>(<span class="fu">abs</span>(x<span class="sc">-</span>y))</span>
+<span id="cb14-3"><a href="#cb14-3"></a>}</span>
+<span id="cb14-4"><a href="#cb14-4"></a>euclidean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb14-6"><a href="#cb14-6"></a>}</span>
+<span id="cb14-7"><a href="#cb14-7"></a>minkowski_5 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb14-8"><a href="#cb14-8"></a>  (<span class="fu">sum</span>(<span class="fu">abs</span>(x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">5</span>))<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>}</span>
+<span id="cb14-9"><a href="#cb14-9"></a>}</span>
+<span id="cb14-10"><a href="#cb14-10"></a></span>
+<span id="cb14-11"><a href="#cb14-11"></a>x <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">select</span>(bill_depth_mm, bill_length_mm, flipper_length_mm, body_mass_g) <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span>
+<span id="cb14-12"><a href="#cb14-12"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">40</span>, <span class="dv">185</span>, <span class="dv">3345</span>)</span>
+<span id="cb14-13"><a href="#cb14-13"></a></span>
+<span id="cb14-14"><a href="#cb14-14"></a>manx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, manhattan, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
+<span id="cb14-15"><a href="#cb14-15"></a>eucx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, euclidean, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
+<span id="cb14-16"><a href="#cb14-16"></a>minx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, minkowski_5, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
+<span id="cb14-17"><a href="#cb14-17"></a></span>
+<span id="cb14-18"><a href="#cb14-18"></a>penguins_rank <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">manx =</span> manx, <span class="at">eucx =</span> eucx, <span class="at">minx =</span> minx)</span>
+<span id="cb14-19"><a href="#cb14-19"></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(manx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 333 × 1
+#&gt;    species  
+#&gt;    &lt;fct&gt;    
+#&gt;  1 Chinstrap
+#&gt;  2 Chinstrap
+#&gt;  3 Adelie   
+#&gt;  4 Adelie   
+#&gt;  5 Adelie   
+#&gt;  6 Adelie   
+#&gt;  7 Adelie   
+#&gt;  8 Adelie   
+#&gt;  9 Adelie   
+#&gt; 10 Chinstrap
+#&gt; # ℹ 323 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(eucx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 333 × 1
+#&gt;    species  
+#&gt;    &lt;fct&gt;    
+#&gt;  1 Chinstrap
+#&gt;  2 Chinstrap
+#&gt;  3 Adelie   
+#&gt;  4 Adelie   
+#&gt;  5 Adelie   
+#&gt;  6 Adelie   
+#&gt;  7 Adelie   
+#&gt;  8 Adelie   
+#&gt;  9 Adelie   
+#&gt; 10 Chinstrap
+#&gt; # ℹ 323 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(minx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 333 × 1
+#&gt;    species  
+#&gt;    &lt;fct&gt;    
+#&gt;  1 Chinstrap
+#&gt;  2 Chinstrap
+#&gt;  3 Adelie   
+#&gt;  4 Adelie   
+#&gt;  5 Adelie   
+#&gt;  6 Adelie   
+#&gt;  7 Adelie   
+#&gt;  8 Adelie   
+#&gt;  9 Adelie   
+#&gt; 10 Chinstrap
+#&gt; # ℹ 323 more rows</code></pre>
+</div>
+</div>
 
 <div class="footer footer-default">
 

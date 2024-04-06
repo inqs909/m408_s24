@@ -357,3 +357,30 @@ table(penguins$species, x_nb_predict)
 -   Minkowski ($w=5$)
 
 Use the `penguins` data set from `palmerpenguins` and categorize the following data: `bill_depth = 19`, `bill_length = 40`, `flipper_length = 185`, and `body_mass = 3345`.
+
+
+```{r}
+manhattan <- function(x, y){
+  sum(abs(x-y))
+}
+euclidean <- function(x, y){
+  sqrt(sum((x-y)^2))
+}
+minkowski_5 <- function(x, y){
+  (sum(abs(x-y)^5))^{1/5}
+}
+
+x <- penguins |> select(bill_depth_mm, bill_length_mm, flipper_length_mm, body_mass_g) |> as.matrix()
+y <- c(19, 40, 185, 3345)
+
+manx <- apply(x, 1, manhattan, y = y) |> rank()
+eucx <- apply(x, 1, euclidean, y = y) |> rank()
+minx <- apply(x, 1, minkowski_5, y = y) |> rank()
+
+penguins_rank <- penguins |> mutate(manx = manx, eucx = eucx, minx = minx)
+penguins_rank |> arrange(manx) |> select(species)
+penguins_rank |> arrange(eucx) |> select(species)
+penguins_rank |> arrange(minx) |> select(species)
+  
+```
+
