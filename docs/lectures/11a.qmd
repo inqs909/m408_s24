@@ -1,5 +1,5 @@
 ---
-title: "Nonparametric Regression"
+title: "Model Selection"
 format:
   revealjs:
     scrollable: true
@@ -33,7 +33,7 @@ editor: visual
 
 ## Learning Outcomes
 
--   LASSO
+-   Shrinkage Methods
 
 -   Regression Splines
 
@@ -41,84 +41,92 @@ editor: visual
 
 -   Generalized Additive Models
 
-# Cross-Validation
+# Shrinkage Methods
 
-## Cross-Validation
+## Shrinkage Methods
 
-A cross-validation approach is to obtain a good estimate of the error-rate of a machine learning algorithm. We split the data set into two categories: training and testing. The training data set is used to train the model, and the test data is used to test the model and compute the error rate.
+Shrinkage methods are techniques that will reduce a full parameterized model (a high number of predictors) to a lower parameterized model (a smaller number of predictors).
 
-## Tuning Parameter
+## Ridge Regression
 
-A cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate.
+Ridge regression incorporates a shrinkage penalty term to the least squares formula. The shrinkage penalty term will reduce the $\beta$ coefficients towards 0 based on a penalty parameter ($\lambda$)
 
-## LOOCV Cross-Validation
+## Ridge Regression
 
--   Choose a set of tuning parameters to test.
+$$
+\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}\beta_j^2
+$$
 
--   For each $k$th turning parameter Calculate the tuning parameter error for each value
+## LASSO
 
-    -   Utilize the leave-one-out approach
+Least Absolute Shrinkage and Selection Operator (LASSO) is known as a shrinkage method which forces $\beta$ coefficients that do not have a significant predicit power towards and possibly equal to 0.
 
-        -   For each observation fit a model with the remaining observations and fit the excluded value
+## LASSO
 
-        -   Compute the following error:
+$$
+\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}|\beta_j|
+$$
 
-            $$
-            CVE_k = \frac{1}{n}\sum^n_{i=1}e_i 
-            $$
+## Why Ridge or LASSO?
 
--   Identify the $k$th tuning parameter with the lowest $CVE_k$
+Each method is capable on identifying the optimum MSE for the Bias-Variance trade-off scenario. This will lead to a lower prediction error. The key is to find the optimal penalty parameter. This can be done with a Cross-Validation technique (next lecture).
 
-## K-Fold Cross-Validation
-
--   Choose a set of tuning parameters to test.
-
--   Create different K subsets of the data.
-
--   For each $j$th turning parameter Calculate the tuning parameter error for each value
-
-    -   For each K subset, fit a model using the data excluding the Kth subset
-
-    -   Predict the values in the Kth subset using the fitted model
-
-    -   Repeat the process for each K subset
-
-    -   Compute the following error:
-
-        $$
-        CVE_j = \frac{1}{n}\sum^n_{i=1}e_i 
-        $$
-
--   Identify the $j$th tuning parameter with the lowest $CVE_j$
-
-# Bootstrap Methods
-
-## Bootstrap Methods
-
-Bootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.
-
-When all else fails, a bootstrap approach will compute accurate standard errors.
-
-## Bootstrap Algorithm
-
-1.  Draw a sample $X*$ of size $n$ with replacement from the original data $X$.
-    1.  $n$ is the size of the data
-2.  Compute the bootstrap replicate statistic $T* = g(X*)$, where $g(\cdot)$ is the function that computes the statistic of interest.
-3.  Repeat steps 1-2 $B$ times to obtain $B$ bootstrap replicates ${T*_1, T*_2, ..., T*_B}$.
-4.  The computed statistics from $B$ samples are the empirical bootstrap distribution of the statistic, $g(X)$.
-5.  Calculate the bootstrap standard error of the statistic, $se_b(g(X))$, as the standard deviation of the bootstrap replicates.
-6.  Calculate the bootstrap confidence interval for the statistic, $CI(g(X))$, with the $\alpha$ and $(1-\alpha)%$ percentiles of the bootstrap replicates, where $\alpha$ is the desired level of significance.
-
-## Examples
-
-Fitting the following model:
+## Ridge Regression in R
 
 ```{r}
-library(palmerpenguins)
-library(tidyverse)
-library(magrittr)
-penguins <- penguins %>% drop_na()
-penguins %$% lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm)
+#| eval: false
+library(glmnet)
+glmnet(x,
+       y,
+       alpha = 0,
+       lambda)
+
 ```
 
-Obtain the Bootstrap-based Standard Errors. Use $B=1000$ bootstrap samples.
+## LASSO in R
+
+```{r}
+#| eval: false
+library(glmnet)
+glmnet(x,
+       y,
+       alpha = 1,
+       lambda)
+
+```
+
+## Example
+
+```{r}
+library(glmnet)
+library(tidyverse)
+library(palmerpenguins)
+penguins <- penguins |> drop_na()
+mod <- penguins |> model.matrix(~ flipper_length_mm + bill_depth_mm + bill_length_mm - 1,
+  data = _) # Must include -1 to remove intercept, needed for glmnet
+ridge_mod <- glmnet(x = mod, 
+                    y = penguins$body_mass_g,
+                    alpha = 0,
+                    lambda = 1.3) # lambda was chosen at random
+coef(ridge_mod)[,1]
+```
+
+## Example
+
+```{r}
+lasso_mod <- glmnet(x = mod, 
+                    y = penguins$body_mass_g,
+                    alpha = 1,
+                    lambda = 1.3) # lambda was chosen at random
+coef(lasso_mod)[,1]
+```
+
+# Nonparametric Regression
+
+## Nonparametric Regression
+
+# Regression Splines
+
+# Smoothing Splines
+
+# Generalized Additive Models

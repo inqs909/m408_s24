@@ -1,5 +1,5 @@
 ---
-title: "Resampling Methods"
+title: "Model Selection"
 format:
   revealjs:
     scrollable: true
@@ -33,92 +33,333 @@ editor: visual
 
 ## Learning Outcomes
 
--   Cross-Validation
+-   Selection Criteria
 
-    -   Leave-one-out
+-   Subset Selection
 
-    -   K-Fold
+-   Shrinkage Methods
 
--   Bootstrap Methods
+## Model Building
 
-# Cross-Validation
+When given a set of predictors, we want to build a model that only contains predictors that best fits the data, without overfitting.
 
-## Cross-Validation
+## Model Building
 
-A cross-validation approach is to obtain a good estimate of the error-rate of a machine learning algorithm. We split the data set into two categories: training and testing. The training data set is used to train the model, and the test data is used to test the model and compute the error rate.
+Ideally, we always want to choose a parsimonious model that best describes the outcome variable. The more predictors into the model, the less parsimonious and less powerful.
 
-## Tuning Parameter
+Choosing the best model can be done based on selection criteria such as Mallow's $C_p$, AIC, AICc, BIC, and adjusted $R^2$.
 
-A cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate.
+# Selection Criteria
 
-## LOOCV Cross-Validation
+## Mallow's $C_p$
 
--   Choose a set of tuning parameters to test.
+$$
+C_p = \frac{1}{n}(RSS + 2 d \hat \sigma^2) 
+$$
 
--   For each $k$th turning parameter Calculate the tuning parameter error for each value
+-   $RSS$: Residual Sum of Squares
 
-    -   Utilize the leave-one-out approach
+-   $\hat \sigma^2$: Mean Square Error
 
-        -   For each observation fit a model with the remaining observations and fit the excluded value
+-   $d$: number of predictors
 
-        -   Compute the following error:
+-   Lower is better
 
-            $$
-            CVE_k = \frac{1}{n}\sum^n_{i=1}e_i 
-            $$
+## Aikaike Information Criteria (AIC)
 
--   Identify the $k$th tuning parameter with the lowest $CVE_k$
+$$
+\frac{1}{n\hat\sigma^2}(RSS+2d\hat\sigma^2)
+$$
 
-## K-Fold Cross-Validation
+-   Lower is Better
 
--   Choose a set of tuning parameters to test.
+## Bayesian Information Criteria (BIC)
 
--   Create different K subsets of the data.
+$$
+\frac{1}{n\hat\sigma^2}\{RSS+\log(n)d\hat\sigma^2\}
+$$
 
--   For each $j$th turning parameter Calculate the tuning parameter error for each value
+-   Lower is better
 
-    -   For each K subset, fit a model using the data excluding the Kth subset
+## $R^2$
 
-    -   Predict the values in the Kth subset using the fitted model
+$$
+1-\frac{RSS}{TSS}
+$$
 
-    -   Repeat the process for each K subset
+-   $RSS=\sum^n_{i=1}(y_i-\hat y_i)^2$
 
-    -   Compute the following error:
+-   $TSS=\sum^n_{i=1}(y_i-\bar y)^2$
 
-        $$
-        CVE_j = \frac{1}{n}\sum^n_{i=1}e_i 
-        $$
+-   Higher is Better
 
--   Identify the $j$th tuning parameter with the lowest $CVE_j$
+## Adjusted $R^2$
 
-# Bootstrap Methods
+$$
+1-\frac{RSS/(n-d-1)}{
+TSS/(n-1)}
+$$
 
-## Bootstrap Methods
+-   Higher is Better
 
-Bootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.
+# Subset Selection
 
-When all else fails, a bootstrap approach will compute accurate standard errors.
+## Model Building
 
-## Bootstrap Algorithm
+-   Best Subset Model
 
-1.  Draw a sample $X*$ of size $n$ with replacement from the original data $X$.
-    1.  $n$ is the size of the data
-2.  Compute the bootstrap replicate statistic $T* = g(X*)$, where $g(\cdot)$ is the function that computes the statistic of interest.
-3.  Repeat steps 1-2 $B$ times to obtain $B$ bootstrap replicates ${T*_1, T*_2, ..., T*_B}$.
-4.  The computed statistics from $B$ samples are the empirical bootstrap distribution of the statistic, $g(X)$.
-5.  Calculate the bootstrap standard error of the statistic, $se_b(g(X))$, as the standard deviation of the bootstrap replicates.
-6.  Calculate the bootstrap confidence interval for the statistic, $CI(g(X))$, with the $\alpha$ and $(1-\alpha)%$ percentiles of the bootstrap replicates, where $\alpha$ is the desired level of significance.
+    -   Fit all models and select the best model based criteria
 
-## Examples
+-   Forward Stepwise Model Building
 
-Fitting the following model:
+    -   Begin with the null model ($Y\sim 1$) and add variables until a final model is chosen.
+
+-   Backward Stepwise Model Building
+
+    -   Begin with the full model, and remove variable until the final model is chosen.
+
+-   Hybrid Stepwise Regression
+
+    -   A hybrid approach between the forward and backward building approach.
+
+## Best Subset Model Building
+
+1.  Begin with the null model, no predictors
+2.  For $k=1,\ldots, p$ (number of predictors):
+    1.  Fit all $\left(^p_k\right)$ models that contain $k$ predictors
+
+    2.  Define $M_k$ as the model with the largest $R²$
+3.  The final model is the model $M_k$ based on selection criteria
+
+## Forward Stepwise Model Building
+
+1.  Begin with the null model, no predictors
+2.  For $k=0,\ldots, p-1$ (number of predictors):
+    1.  Fit all $p-k$ models that adds one new predictor to the orginal model containing $k$ predictors
+
+    2.  Define $M_{k+1}$ as the model with the largest $R²$ among $p-k$ models
+3.  The final model is the model $M_(k+1)$ based on selection criteria
+
+## Backward Stepwise Model Building
+
+1.  Begin with the full model $M_p$, with all predictors
+2.  For $k=p,p-1, \ldots, 1$ (number of predictors):
+    1.  Fit all models that contain $k-1$ predictors
+
+    2.  Define $M_{k-1}$ as the model with the largest $R²$
+3.  The final model is the model $M_k$ based on selection criteria
+
+## R Code
 
 ```{r}
-library(palmerpenguins)
-library(tidyverse)
-library(magrittr)
-penguins <- penguins %>% drop_na()
-penguins %$% lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm)
+#| echo: true
+#| eval: false
+
+library(leaps)
+regsubsets(y ~ ., data)
+
 ```
 
-Obtain the Bootstrap-based Standard Errors. Use $B=1000$ bootstrap samples.
+## Full Subset
+
+::: panel-tabset
+## Code
+
+```{r}
+#| echo: true
+#| eval: true
+
+library(leaps)
+lm_full <- regsubsets(mpg ~ ., data = mtcars)
+
+```
+
+## Summary
+
+```{r}
+#| echo: true
+#| eval: true
+sum_lm_full <- summary(lm_full)
+print(sum_lm_full)
+```
+
+## Plot
+
+```{r}
+#| echo: true
+#| eval: true
+plot(sum_lm_full$cp)
+```
+
+## Model
+
+```{r}
+#| echo: true
+#| eval: true
+coef(lm_full,3)
+```
+:::
+
+## Forward Model Building
+
+::: panel-tabset
+## Code
+
+```{r}
+#| echo: true
+#| eval: true
+lm_full <- regsubsets(mpg ~ ., data = mtcars,
+                      method =  "forward")
+
+```
+
+## Summary
+
+```{r}
+#| echo: true
+#| eval: true
+sum_lm_full <- summary(lm_full)
+print(sum_lm_full)
+```
+
+## Plot
+
+```{r}
+#| echo: true
+#| eval: true
+plot(sum_lm_full$bic)
+```
+
+## Model
+
+```{r}
+#| echo: true
+#| eval: true
+coef(lm_full,2)
+```
+:::
+
+## Backward Model Building
+
+::: panel-tabset 
+## Code
+
+```{r}
+#| echo: true
+#| eval: true
+lm_full <- regsubsets(mpg ~ ., data = mtcars,
+                      method =  "backward")
+
+```
+
+## Summary
+
+```{r}
+#| echo: true
+#| eval: true
+sum_lm_full <- summary(lm_full)
+print(sum_lm_full)
+```
+
+## Plot
+
+```{r}
+#| echo: true
+#| eval: true
+plot(sum_lm_full$adjr2)
+```
+
+## Model
+
+```{r}
+#| echo: true
+#| eval: true
+
+coef(lm_full,6)
+```
+
+
+:::
+
+## Selection Critera
+
+
+# Shrinkage Methods
+
+## Shrinkage Methods
+
+Shrinkage methods are techniques that will reduce a full parameterized model (a high number of predictors) to a lower parameterized model (a smaller number of predictors).
+
+## Ridge Regression
+
+Ridge regression incorporates a shrinkage penalty term to the least squares formula. The shrinkage penalty term will reduce the $\beta$ coefficients towards 0 based on a penalty parameter ($\lambda$)
+
+## Ridge Regression
+
+$$
+\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}\beta_j^2
+$$
+
+## LASSO
+
+Least Absolute Shrinkage and Selection Operator (LASSO) is known as a shrinkage method which forces $\beta$ coefficients that do not have a significant predicit power towards and possibly equal to 0.
+
+## LASSO
+
+$$
+\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}|\beta_j|
+$$
+
+## Why Ridge or LASSO?
+
+Each method is capable on identifying the optimum MSE for the Bias-Variance trade-off scenario. This will lead to a lower prediction error. The key is to find the optimal penalty parameter. This can be done with a Cross-Validation technique (next lecture).
+
+## Ridge Regression in R
+
+```{r}
+#| eval: false
+library(glmnet)
+glmnet(x,
+       y,
+       alpha = 0,
+       lambda)
+
+```
+
+## LASSO in R
+
+```{r}
+#| eval: false
+library(glmnet)
+glmnet(x,
+       y,
+       alpha = 1,
+       lambda)
+
+```
+
+## Example
+
+```{r}
+library(glmnet)
+library(tidyverse)
+library(palmerpenguins)
+penguins <- penguins |> drop_na()
+mod <- penguins |> model.matrix(~ flipper_length_mm + bill_depth_mm + bill_length_mm - 1,
+  data = _) # Must include -1 to remove intercept, needed for glmnet
+ridge_mod <- glmnet(x = mod, 
+                    y = penguins$body_mass_g,
+                    alpha = 0,
+                    lambda = 1.3) # lambda was chosen at random
+coef(ridge_mod)[,1]
+```
+
+## Example
+
+```{r}
+lasso_mod <- glmnet(x = mod, 
+                    y = penguins$body_mass_g,
+                    alpha = 1,
+                    lambda = 1.3) # lambda was chosen at random
+coef(lasso_mod)[,1]
+```

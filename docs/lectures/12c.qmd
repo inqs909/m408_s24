@@ -1,0 +1,124 @@
+---
+title: "Resampling Methods"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: true
+    message: false
+    warnings: false
+    comment: "#>" 
+    
+revealjs-plugins:
+  - pointer
+  - verticator
+  
+filters: 
+  - reveal-header
+  - code-fullscreen
+
+editor: visual
+---
+
+## Learning Outcomes
+
+-   Cross-Validation
+
+    -   Leave-one-out
+
+    -   K-Fold
+
+-   Bootstrap Methods
+
+# Cross-Validation
+
+## Cross-Validation
+
+A cross-validation approach is to obtain a good estimate of the error-rate of a machine learning algorithm. We split the data set into two categories: training and testing. The training data set is used to train the model, and the test data is used to test the model and compute the error rate.
+
+## Tuning Parameter
+
+A cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate.
+
+## LOOCV Cross-Validation
+
+-   Choose a set of tuning parameters to test.
+
+-   For each $k$th turning parameter Calculate the tuning parameter error for each value
+
+    -   Utilize the leave-one-out approach
+
+        -   For each observation fit a model with the remaining observations and fit the excluded value
+
+        -   Compute the following error:
+
+            $$
+            CVE_k = \frac{1}{n}\sum^n_{i=1}e_i 
+            $$
+
+-   Identify the $k$th tuning parameter with the lowest $CVE_k$
+
+## K-Fold Cross-Validation
+
+-   Choose a set of tuning parameters to test.
+
+-   Create different K subsets of the data.
+
+-   For each $j$th turning parameter Calculate the tuning parameter error for each value
+
+    -   For each K subset, fit a model using the data excluding the Kth subset
+
+    -   Predict the values in the Kth subset using the fitted model
+
+    -   Repeat the process for each K subset
+
+    -   Compute the following error:
+
+        $$
+        CVE_j = \frac{1}{n}\sum^n_{i=1}e_i 
+        $$
+
+-   Identify the $j$th tuning parameter with the lowest $CVE_j$
+
+# Bootstrap Methods
+
+## Bootstrap Methods
+
+Bootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.
+
+When all else fails, a bootstrap approach will compute accurate standard errors.
+
+## Bootstrap Algorithm
+
+1.  Draw a sample $X*$ of size $n$ with replacement from the original data $X$.
+    1.  $n$ is the size of the data
+2.  Compute the bootstrap replicate statistic $T* = g(X*)$, where $g(\cdot)$ is the function that computes the statistic of interest.
+3.  Repeat steps 1-2 $B$ times to obtain $B$ bootstrap replicates ${T*_1, T*_2, ..., T*_B}$.
+4.  The computed statistics from $B$ samples are the empirical bootstrap distribution of the statistic, $g(X)$.
+5.  Calculate the bootstrap standard error of the statistic, $se_b(g(X))$, as the standard deviation of the bootstrap replicates.
+6.  Calculate the bootstrap confidence interval for the statistic, $CI(g(X))$, with the $\alpha$ and $(1-\alpha)%$ percentiles of the bootstrap replicates, where $\alpha$ is the desired level of significance.
+
+## Examples
+
+Fitting the following model:
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+library(magrittr)
+penguins <- penguins %>% drop_na()
+penguins %$% lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm)
+```
+
+Obtain the Bootstrap-based Standard Errors. Use $B=1000$ bootstrap samples.

@@ -16,7 +16,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Resampling Methods</title>
+  <title>MATH 408 - Model Selection</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -401,7 +401,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Resampling Methods</h1>
+  <h1 class="title">Model Selection</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -410,108 +410,440 @@
 <section id="learning-outcomes" class="slide level2">
 <h2>Learning Outcomes</h2>
 <ul>
-<li><p>Cross-Validation</p>
-<ul>
-<li><p>Leave-one-out</p></li>
-<li><p>K-Fold</p></li>
-</ul></li>
-<li><p>Bootstrap Methods</p></li>
+<li><p>Selection Criteria</p></li>
+<li><p>Subset Selection</p></li>
+<li><p>Shrinkage Methods</p></li>
 </ul>
+</section>
+<section id="model-building" class="slide level2">
+<h2>Model Building</h2>
+<p>When given a set of predictors, we want to build a model that only contains predictors that best fits the data, without overfitting.</p>
+</section>
+<section id="model-building-1" class="slide level2">
+<h2>Model Building</h2>
+<p>Ideally, we always want to choose a parsimonious model that best describes the outcome variable. The more predictors into the model, the less parsimonious and less powerful.</p>
+<p>Choosing the best model can be done based on selection criteria such as Mallow’s <span class="math inline">\(C_p\)</span>, AIC, AICc, BIC, and adjusted <span class="math inline">\(R^2\)</span>.</p>
 </section>
 <section>
-<section id="cross-validation" class="title-slide slide level1 center">
-<h1>Cross-Validation</h1>
+<section id="selection-criteria" class="title-slide slide level1 center">
+<h1>Selection Criteria</h1>
 
 </section>
-<section id="cross-validation-1" class="slide level2">
-<h2>Cross-Validation</h2>
-<p>A cross-validation approach is to obtain a good estimate of the error-rate of a machine learning algorithm. We split the data set into two categories: training and testing. The training data set is used to train the model, and the test data is used to test the model and compute the error rate.</p>
-</section>
-<section id="tuning-parameter" class="slide level2">
-<h2>Tuning Parameter</h2>
-<p>A cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate.</p>
-</section>
-<section id="loocv-cross-validation" class="slide level2">
-<h2>LOOCV Cross-Validation</h2>
-<ul>
-<li><p>Choose a set of tuning parameters to test.</p></li>
-<li><p>For each <span class="math inline">\(k\)</span>th turning parameter Calculate the tuning parameter error for each value</p>
-<ul>
-<li><p>Utilize the leave-one-out approach</p>
-<ul>
-<li><p>For each observation fit a model with the remaining observations and fit the excluded value</p></li>
-<li><p>Compute the following error:</p>
+<section id="mallows-c_p" class="slide level2">
+<h2>Mallow’s <span class="math inline">\(C_p\)</span></h2>
 <p><span class="math display">\[
-CVE_k = \frac{1}{n}\sum^n_{i=1}e_i
-\]</span></p></li>
-</ul></li>
-</ul></li>
-<li><p>Identify the <span class="math inline">\(k\)</span>th tuning parameter with the lowest <span class="math inline">\(CVE_k\)</span></p></li>
+C_p = \frac{1}{n}(RSS + 2 d \hat \sigma^2)
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(RSS\)</span>: Residual Sum of Squares</p></li>
+<li><p><span class="math inline">\(\hat \sigma^2\)</span>: Mean Square Error</p></li>
+<li><p><span class="math inline">\(d\)</span>: number of predictors</p></li>
+<li><p>Lower is better</p></li>
 </ul>
 </section>
-<section id="k-fold-cross-validation" class="slide level2">
-<h2>K-Fold Cross-Validation</h2>
-<ul>
-<li><p>Choose a set of tuning parameters to test.</p></li>
-<li><p>Create different K subsets of the data.</p></li>
-<li><p>For each <span class="math inline">\(j\)</span>th turning parameter Calculate the tuning parameter error for each value</p>
-<ul>
-<li><p>For each K subset, fit a model using the data excluding the Kth subset</p></li>
-<li><p>Predict the values in the Kth subset using the fitted model</p></li>
-<li><p>Repeat the process for each K subset</p></li>
-<li><p>Compute the following error:</p>
+<section id="aikaike-information-criteria-aic" class="slide level2">
+<h2>Aikaike Information Criteria (AIC)</h2>
 <p><span class="math display">\[
-CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
-\]</span></p></li>
-</ul></li>
-<li><p>Identify the <span class="math inline">\(j\)</span>th tuning parameter with the lowest <span class="math inline">\(CVE_j\)</span></p></li>
+\frac{1}{n\hat\sigma^2}(RSS+2d\hat\sigma^2)
+\]</span></p>
+<ul>
+<li>Lower is Better</li>
+</ul>
+</section>
+<section id="bayesian-information-criteria-bic" class="slide level2">
+<h2>Bayesian Information Criteria (BIC)</h2>
+<p><span class="math display">\[
+\frac{1}{n\hat\sigma^2}\{RSS+\log(n)d\hat\sigma^2\}
+\]</span></p>
+<ul>
+<li>Lower is better</li>
+</ul>
+</section>
+<section id="r2" class="slide level2">
+<h2><span class="math inline">\(R^2\)</span></h2>
+<p><span class="math display">\[
+1-\frac{RSS}{TSS}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(RSS=\sum^n_{i=1}(y_i-\hat y_i)^2\)</span></p></li>
+<li><p><span class="math inline">\(TSS=\sum^n_{i=1}(y_i-\bar y)^2\)</span></p></li>
+<li><p>Higher is Better</p></li>
+</ul>
+</section>
+<section id="adjusted-r2" class="slide level2">
+<h2>Adjusted <span class="math inline">\(R^2\)</span></h2>
+<p><span class="math display">\[
+1-\frac{RSS/(n-d-1)}{
+TSS/(n-1)}
+\]</span></p>
+<ul>
+<li>Higher is Better</li>
 </ul>
 </section></section>
 <section>
-<section id="bootstrap-methods" class="title-slide slide level1 center">
-<h1>Bootstrap Methods</h1>
+<section id="subset-selection" class="title-slide slide level1 center">
+<h1>Subset Selection</h1>
 
 </section>
-<section id="bootstrap-methods-1" class="slide level2">
-<h2>Bootstrap Methods</h2>
-<p>Bootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.</p>
-<p>When all else fails, a bootstrap approach will compute accurate standard errors.</p>
+<section id="model-building-2" class="slide level2">
+<h2>Model Building</h2>
+<ul>
+<li><p>Best Subset Model</p>
+<ul>
+<li>Fit all models and select the best model based criteria</li>
+</ul></li>
+<li><p>Forward Stepwise Model Building</p>
+<ul>
+<li>Begin with the null model (<span class="math inline">\(Y\sim 1\)</span>) and add variables until a final model is chosen.</li>
+</ul></li>
+<li><p>Backward Stepwise Model Building</p>
+<ul>
+<li>Begin with the full model, and remove variable until the final model is chosen.</li>
+</ul></li>
+<li><p>Hybrid Stepwise Regression</p>
+<ul>
+<li>A hybrid approach between the forward and backward building approach.</li>
+</ul></li>
+</ul>
 </section>
-<section id="bootstrap-algorithm" class="slide level2">
-<h2>Bootstrap Algorithm</h2>
+<section id="best-subset-model-building" class="slide level2">
+<h2>Best Subset Model Building</h2>
 <ol type="1">
-<li>Draw a sample <span class="math inline">\(X*\)</span> of size <span class="math inline">\(n\)</span> with replacement from the original data <span class="math inline">\(X\)</span>.
+<li>Begin with the null model, no predictors</li>
+<li>For <span class="math inline">\(k=1,\ldots, p\)</span> (number of predictors):
 <ol type="1">
-<li><span class="math inline">\(n\)</span> is the size of the data</li>
+<li><p>Fit all <span class="math inline">\(\left(^p_k\right)\)</span> models that contain <span class="math inline">\(k\)</span> predictors</p></li>
+<li><p>Define <span class="math inline">\(M_k\)</span> as the model with the largest <span class="math inline">\(R²\)</span></p></li>
 </ol></li>
-<li>Compute the bootstrap replicate statistic <span class="math inline">\(T* = g(X*)\)</span>, where <span class="math inline">\(g(\cdot)\)</span> is the function that computes the statistic of interest.</li>
-<li>Repeat steps 1-2 <span class="math inline">\(B\)</span> times to obtain <span class="math inline">\(B\)</span> bootstrap replicates <span class="math inline">\({T*_1, T*_2, ..., T*_B}\)</span>.</li>
-<li>The computed statistics from <span class="math inline">\(B\)</span> samples are the empirical bootstrap distribution of the statistic, <span class="math inline">\(g(X)\)</span>.</li>
-<li>Calculate the bootstrap standard error of the statistic, <span class="math inline">\(se_b(g(X))\)</span>, as the standard deviation of the bootstrap replicates.</li>
-<li>Calculate the bootstrap confidence interval for the statistic, <span class="math inline">\(CI(g(X))\)</span>, with the <span class="math inline">\(\alpha\)</span> and <span class="math inline">\((1-\alpha)%\)</span> percentiles of the bootstrap replicates, where <span class="math inline">\(\alpha\)</span> is the desired level of significance.</li>
+<li>The final model is the model <span class="math inline">\(M_k\)</span> based on selection criteria</li>
 </ol>
 </section>
-<section id="examples" class="slide level2">
-<h2>Examples</h2>
-<p>Fitting the following model:</p>
+<section id="forward-stepwise-model-building" class="slide level2">
+<h2>Forward Stepwise Model Building</h2>
+<ol type="1">
+<li>Begin with the null model, no predictors</li>
+<li>For <span class="math inline">\(k=0,\ldots, p-1\)</span> (number of predictors):
+<ol type="1">
+<li><p>Fit all <span class="math inline">\(p-k\)</span> models that adds one new predictor to the orginal model containing <span class="math inline">\(k\)</span> predictors</p></li>
+<li><p>Define <span class="math inline">\(M_{k+1}\)</span> as the model with the largest <span class="math inline">\(R²\)</span> among <span class="math inline">\(p-k\)</span> models</p></li>
+</ol></li>
+<li>The final model is the model <span class="math inline">\(M_(k+1)\)</span> based on selection criteria</li>
+</ol>
+</section>
+<section id="backward-stepwise-model-building" class="slide level2">
+<h2>Backward Stepwise Model Building</h2>
+<ol type="1">
+<li>Begin with the full model <span class="math inline">\(M_p\)</span>, with all predictors</li>
+<li>For <span class="math inline">\(k=p,p-1, \ldots, 1\)</span> (number of predictors):
+<ol type="1">
+<li><p>Fit all models that contain <span class="math inline">\(k-1\)</span> predictors</p></li>
+<li><p>Define <span class="math inline">\(M_{k-1}\)</span> as the model with the largest <span class="math inline">\(R²\)</span></p></li>
+</ol></li>
+<li>The final model is the model <span class="math inline">\(M_k\)</span> based on selection criteria</li>
+</ol>
+</section>
+<section id="r-code" class="slide level2">
+<h2>R Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb1-5"><a href="#cb1-5"></a>penguins <span class="sc">%$%</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(leaps)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">regsubsets</span>(y <span class="sc">~</span> ., data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="full-subset" class="slide level2">
+<h2>Full Subset</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Code</a></li><li><a href="#tabset-1-2">Summary</a></li><li><a href="#tabset-1-3">Plot</a></li><li><a href="#tabset-1-4">Model</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(leaps)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>sum_lm_full <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_full)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">print</span>(sum_lm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; lm(formula = body_mass_g ~ flipper_length_mm + bill_length_mm + 
-#&gt;     bill_depth_mm)
-#&gt; 
-#&gt; Coefficients:
-#&gt;       (Intercept)  flipper_length_mm     bill_length_mm      bill_depth_mm  
-#&gt;         -6445.476             50.762              3.293             17.836</code></pre>
+<pre><code>#&gt; Subset selection object
+#&gt; Call: regsubsets.formula(mpg ~ ., data = mtcars)
+#&gt; 10 Variables  (and intercept)
+#&gt;      Forced in Forced out
+#&gt; cyl      FALSE      FALSE
+#&gt; disp     FALSE      FALSE
+#&gt; hp       FALSE      FALSE
+#&gt; drat     FALSE      FALSE
+#&gt; wt       FALSE      FALSE
+#&gt; qsec     FALSE      FALSE
+#&gt; vs       FALSE      FALSE
+#&gt; am       FALSE      FALSE
+#&gt; gear     FALSE      FALSE
+#&gt; carb     FALSE      FALSE
+#&gt; 1 subsets of each size up to 8
+#&gt; Selection Algorithm: exhaustive
+#&gt;          cyl disp hp  drat wt  qsec vs  am  gear carb
+#&gt; 1  ( 1 ) " " " "  " " " "  "*" " "  " " " " " "  " " 
+#&gt; 2  ( 1 ) "*" " "  " " " "  "*" " "  " " " " " "  " " 
+#&gt; 3  ( 1 ) " " " "  " " " "  "*" "*"  " " "*" " "  " " 
+#&gt; 4  ( 1 ) " " " "  "*" " "  "*" "*"  " " "*" " "  " " 
+#&gt; 5  ( 1 ) " " "*"  "*" " "  "*" "*"  " " "*" " "  " " 
+#&gt; 6  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" " "  " " 
+#&gt; 7  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  " " 
+#&gt; 8  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  "*"</code></pre>
 </div>
 </div>
-<p>Obtain the Bootstrap-based Standard Errors. Use <span class="math inline">\(B=1000\)</span> bootstrap samples.</p>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plot</span>(sum_lm_full<span class="sc">$</span>cp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="12a_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">coef</span>(lm_full,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; (Intercept)          wt        qsec          am 
+#&gt;    9.617781   -3.916504    1.225886    2.935837</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="forward-model-building" class="slide level2">
+<h2>Forward Model Building</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Code</a></li><li><a href="#tabset-2-2">Summary</a></li><li><a href="#tabset-2-3">Plot</a></li><li><a href="#tabset-2-4">Model</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars,</span>
+<span id="cb8-2"><a href="#cb8-2"></a>                      <span class="at">method =</span>  <span class="st">"forward"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>sum_lm_full <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_full)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">print</span>(sum_lm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Subset selection object
+#&gt; Call: regsubsets.formula(mpg ~ ., data = mtcars, method = "forward")
+#&gt; 10 Variables  (and intercept)
+#&gt;      Forced in Forced out
+#&gt; cyl      FALSE      FALSE
+#&gt; disp     FALSE      FALSE
+#&gt; hp       FALSE      FALSE
+#&gt; drat     FALSE      FALSE
+#&gt; wt       FALSE      FALSE
+#&gt; qsec     FALSE      FALSE
+#&gt; vs       FALSE      FALSE
+#&gt; am       FALSE      FALSE
+#&gt; gear     FALSE      FALSE
+#&gt; carb     FALSE      FALSE
+#&gt; 1 subsets of each size up to 8
+#&gt; Selection Algorithm: forward
+#&gt;          cyl disp hp  drat wt  qsec vs  am  gear carb
+#&gt; 1  ( 1 ) " " " "  " " " "  "*" " "  " " " " " "  " " 
+#&gt; 2  ( 1 ) "*" " "  " " " "  "*" " "  " " " " " "  " " 
+#&gt; 3  ( 1 ) "*" " "  "*" " "  "*" " "  " " " " " "  " " 
+#&gt; 4  ( 1 ) "*" " "  "*" " "  "*" " "  " " "*" " "  " " 
+#&gt; 5  ( 1 ) "*" " "  "*" " "  "*" "*"  " " "*" " "  " " 
+#&gt; 6  ( 1 ) "*" "*"  "*" " "  "*" "*"  " " "*" " "  " " 
+#&gt; 7  ( 1 ) "*" "*"  "*" "*"  "*" "*"  " " "*" " "  " " 
+#&gt; 8  ( 1 ) "*" "*"  "*" "*"  "*" "*"  " " "*" "*"  " "</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">plot</span>(sum_lm_full<span class="sc">$</span>bic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="12a_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-4">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">coef</span>(lm_full,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; (Intercept)         cyl          wt 
+#&gt;   39.686261   -1.507795   -3.190972</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="backward-model-building" class="slide level2">
+<h2>Backward Model Building</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Summary</a></li><li><a href="#tabset-3-3">Plot</a></li><li><a href="#tabset-3-4">Model</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars,</span>
+<span id="cb14-2"><a href="#cb14-2"></a>                      <span class="at">method =</span>  <span class="st">"backward"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>sum_lm_full <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_full)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">print</span>(sum_lm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Subset selection object
+#&gt; Call: regsubsets.formula(mpg ~ ., data = mtcars, method = "backward")
+#&gt; 10 Variables  (and intercept)
+#&gt;      Forced in Forced out
+#&gt; cyl      FALSE      FALSE
+#&gt; disp     FALSE      FALSE
+#&gt; hp       FALSE      FALSE
+#&gt; drat     FALSE      FALSE
+#&gt; wt       FALSE      FALSE
+#&gt; qsec     FALSE      FALSE
+#&gt; vs       FALSE      FALSE
+#&gt; am       FALSE      FALSE
+#&gt; gear     FALSE      FALSE
+#&gt; carb     FALSE      FALSE
+#&gt; 1 subsets of each size up to 8
+#&gt; Selection Algorithm: backward
+#&gt;          cyl disp hp  drat wt  qsec vs  am  gear carb
+#&gt; 1  ( 1 ) " " " "  " " " "  "*" " "  " " " " " "  " " 
+#&gt; 2  ( 1 ) " " " "  " " " "  "*" "*"  " " " " " "  " " 
+#&gt; 3  ( 1 ) " " " "  " " " "  "*" "*"  " " "*" " "  " " 
+#&gt; 4  ( 1 ) " " " "  "*" " "  "*" "*"  " " "*" " "  " " 
+#&gt; 5  ( 1 ) " " "*"  "*" " "  "*" "*"  " " "*" " "  " " 
+#&gt; 6  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" " "  " " 
+#&gt; 7  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  " " 
+#&gt; 8  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  "*"</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">plot</span>(sum_lm_full<span class="sc">$</span>adjr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="12a_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-4">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">coef</span>(lm_full,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; (Intercept)        disp          hp        drat          wt        qsec 
+#&gt; 10.71061639  0.01310313 -0.02179818  1.02065283 -4.04454214  0.99072948 
+#&gt;          am 
+#&gt;  2.98468801</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="selection-critera" class="slide level2">
+<h2>Selection Critera</h2>
+</section></section>
+<section>
+<section id="shrinkage-methods" class="title-slide slide level1 center">
+<h1>Shrinkage Methods</h1>
+
+</section>
+<section id="shrinkage-methods-1" class="slide level2">
+<h2>Shrinkage Methods</h2>
+<p>Shrinkage methods are techniques that will reduce a full parameterized model (a high number of predictors) to a lower parameterized model (a smaller number of predictors).</p>
+</section>
+<section id="ridge-regression" class="slide level2">
+<h2>Ridge Regression</h2>
+<p>Ridge regression incorporates a shrinkage penalty term to the least squares formula. The shrinkage penalty term will reduce the <span class="math inline">\(\beta\)</span> coefficients towards 0 based on a penalty parameter (<span class="math inline">\(\lambda\)</span>)</p>
+</section>
+<section id="ridge-regression-1" class="slide level2">
+<h2>Ridge Regression</h2>
+<p><span class="math display">\[
+\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}\beta_j^2
+\]</span></p>
+</section>
+<section id="lasso" class="slide level2">
+<h2>LASSO</h2>
+<p>Least Absolute Shrinkage and Selection Operator (LASSO) is known as a shrinkage method which forces <span class="math inline">\(\beta\)</span> coefficients that do not have a significant predicit power towards and possibly equal to 0.</p>
+</section>
+<section id="lasso-1" class="slide level2">
+<h2>LASSO</h2>
+<p><span class="math display">\[
+\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}|\beta_j|
+\]</span></p>
+</section>
+<section id="why-ridge-or-lasso" class="slide level2">
+<h2>Why Ridge or LASSO?</h2>
+<p>Each method is capable on identifying the optimum MSE for the Bias-Variance trade-off scenario. This will lead to a lower prediction error. The key is to find the optimal penalty parameter. This can be done with a Cross-Validation technique (next lecture).</p>
+</section>
+<section id="ridge-regression-in-r" class="slide level2">
+<h2>Ridge Regression in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">glmnet</span>(x,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>       y,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>       <span class="at">alpha =</span> <span class="dv">0</span>,</span>
+<span id="cb20-5"><a href="#cb20-5"></a>       lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lasso-in-r" class="slide level2">
+<h2>LASSO in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">glmnet</span>(x,</span>
+<span id="cb21-3"><a href="#cb21-3"></a>       y,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>       <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb21-5"><a href="#cb21-5"></a>       lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
+<span id="cb22-5"><a href="#cb22-5"></a>mod <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="at">data =</span> _) <span class="co"># Must include -1 to remove intercept, needed for glmnet</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>ridge_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
+<span id="cb22-8"><a href="#cb22-8"></a>                    <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
+<span id="cb22-9"><a href="#cb22-9"></a>                    <span class="at">alpha =</span> <span class="dv">0</span>,</span>
+<span id="cb22-10"><a href="#cb22-10"></a>                    <span class="at">lambda =</span> <span class="fl">1.3</span>) <span class="co"># lambda was chosen at random</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a><span class="fu">coef</span>(ridge_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm 
+#&gt;       -6400.54459          50.53481          17.07967           3.60524</code></pre>
+</div>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>lasso_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
+<span id="cb24-2"><a href="#cb24-2"></a>                    <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>                    <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>                    <span class="at">lambda =</span> <span class="fl">1.3</span>) <span class="co"># lambda was chosen at random</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="fu">coef</span>(lasso_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm 
+#&gt;      -6372.371080         50.530548         16.241920          3.311152</code></pre>
+</div>
+</div>
 
 <div class="footer footer-default">
 

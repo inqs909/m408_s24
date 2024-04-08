@@ -1,9 +1,9 @@
 ---
 title: "Week 11"
-date: 04-10-23
+date: 04-8-24
 description: We will begin our discussion on statistical learning.
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,16 +12,16 @@ editor_options:
 
 ### First Lecture
 
--   Intro to Statistical Learning
+-   Model Building
 
 ### Second Lecture
 
--   Bayes Classifier
--   K-Nearest Neighbors
+-   Cross-Validation
+-   Bootstrapping
 
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       |        |        |       |
-| 2       |        |        |       |
+| Lecture | Slides                                                          | Videos | Files |
+|---------|-----------------------------------------------------------------|--------|-------|
+| 1       | [Slides](https://m408.inqs.info/lectures/11a.html#/title-slide) |        |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/11b.html#/title-slide) |        |       |

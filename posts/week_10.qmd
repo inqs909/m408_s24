@@ -18,7 +18,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides                                                          | Videos | Files |
-|---------|-----------------------------------------------------------------|--------|-------|
-| 1       |                                                                 |        |       |
-| 2       | [Slides](https://m408.inqs.info/lectures/10a.html#/title-slide) |        |       |
+| Lecture | Slides                                                          | Videos                                | Files |
+|----------|------------------------------------------|----------|----------|
+| 1       |                                                                 |                                       |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/10a.html#/title-slide) | [Video](https://youtu.be/DcfC2tPBcMQ) |       |
