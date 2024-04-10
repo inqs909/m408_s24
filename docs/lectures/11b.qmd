@@ -122,6 +122,8 @@ Several R Packages have developed methods to execute the a cross-validation appr
 ## CV in `glmnet`
 
 ```{r}
+#| eval: false
+#| echo: true
 cv.glmnet(x, # predictor matrix
           y, # response variable
           alpha, # Ridge

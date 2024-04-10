@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "lectures/11b.html#learning-outcomes",
+    "href": "lectures/11b.html#learning-outcomes",
+    "title": "Resampling Methods",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nCross-Validation\n\nLeave-one-out\nK-Fold\n\nBootstrap Methods"
+  },
+  {
+    "objectID": "lectures/11b.html#training-error-rate",
+    "href": "lectures/11b.html#training-error-rate",
+    "title": "Resampling Methods",
+    "section": "Training Error Rate",
+    "text": "Training Error Rate\nTraining Error Rate is the error rate of the data used to create the model of interest. It describes how well the model predicts the data used to construct it."
+  },
+  {
+    "objectID": "lectures/11b.html#test-error-rate",
+    "href": "lectures/11b.html#test-error-rate",
+    "title": "Resampling Methods",
+    "section": "Test Error Rate",
+    "text": "Test Error Rate\nTest Error Rate is the error rate of predicting a new data point using the current established model."
+  },
+  {
+    "objectID": "lectures/11b.html#test-error-rate-1",
+    "href": "lectures/11b.html#test-error-rate-1",
+    "title": "Resampling Methods",
+    "section": "Test Error Rate",
+    "text": "Test Error Rate\nIn order to obtain the test error rate, data not used to fit the model must be available\n\nThis is not the case the majority of time.\n\n\nNew methods have been developed to compute the test error rate using the existing data."
+  },
+  {
+    "objectID": "lectures/11b.html#cross-validation-1",
+    "href": "lectures/11b.html#cross-validation-1",
+    "title": "Resampling Methods",
+    "section": "Cross-Validation",
+    "text": "Cross-Validation\nA cross-validation approach is to obtain a good estimate of the error-rate of a machine learning algorithm. We split the data set into two categories: training and testing. The training data set is used to train the model, and the test data is used to test the model and compute the error rate."
+  },
+  {
+    "objectID": "lectures/11b.html#tuning-parameter",
+    "href": "lectures/11b.html#tuning-parameter",
+    "title": "Resampling Methods",
+    "section": "Tuning Parameter",
+    "text": "Tuning Parameter\nA cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate."
+  },
+  {
+    "objectID": "lectures/11b.html#training-and-testing-data",
+    "href": "lectures/11b.html#training-and-testing-data",
+    "title": "Resampling Methods",
+    "section": "Training and Testing Data",
+    "text": "Training and Testing Data\nThe training and testing data sets are constructed by randomly assigning data points to one type of data."
+  },
+  {
+    "objectID": "lectures/11b.html#loocv-cross-validation",
+    "href": "lectures/11b.html#loocv-cross-validation",
+    "title": "Resampling Methods",
+    "section": "LOOCV Cross-Validation",
+    "text": "LOOCV Cross-Validation\n\nChoose a set of tuning parameters to test.\nFor each \\(k\\)th turning parameter, calculate the tuning parameter error for each value\n\nUtilize the leave-one-out approach\n\nFor each observation fit a model with the remaining observations and fit the excluded value\nCompute the following error:\n\\[\nCVE_k = \\frac{1}{n}\\sum^n_{i=1}e_i\n\\]\n\n\nIdentify the \\(k\\)th tuning parameter with the lowest \\(CVE_k\\)"
+  },
+  {
+    "objectID": "lectures/11b.html#k-fold-cross-validation",
+    "href": "lectures/11b.html#k-fold-cross-validation",
+    "title": "Resampling Methods",
+    "section": "K-Fold Cross-Validation",
+    "text": "K-Fold Cross-Validation\n\nChoose a set of tuning parameters to test.\nCreate different K subsets of the data.\nFor each \\(j\\)th turning parameter Calculate the tuning parameter error for each value\n\nFor each K subset, fit a model using the data excluding the Kth subset\nPredict the values in the Kth subset using the fitted model\nRepeat the process for each K subset\nCompute the following error:\n\\[\nCVE_j = \\frac{1}{n}\\sum^n_{i=1}e_i\n\\]\n\nIdentify the \\(j\\)th tuning parameter with the lowest \\(CVE_j\\)"
+  },
+  {
+    "objectID": "lectures/11b.html#executing-in-r",
+    "href": "lectures/11b.html#executing-in-r",
+    "title": "Resampling Methods",
+    "section": "Executing in R",
+    "text": "Executing in R\nSeveral R Packages have developed methods to execute the a cross-validation approach."
+  },
+  {
+    "objectID": "lectures/11b.html#cv-in-glmnet",
+    "href": "lectures/11b.html#cv-in-glmnet",
+    "title": "Resampling Methods",
+    "section": "CV in glmnet",
+    "text": "CV in glmnet\n\ncv.glmnet(x, # predictor matrix\n          y, # response variable\n          alpha, # Ridge\n          lambda, # Use a vector of lambdas\n          nfolds) # Number folds, use size of data for LOOCV"
+  },
+  {
+    "objectID": "lectures/11b.html#example---ridge-regression",
+    "href": "lectures/11b.html#example---ridge-regression",
+    "title": "Resampling Methods",
+    "section": "Example - Ridge Regression",
+    "text": "Example - Ridge Regression\n\nPreparationCVCV PlotBest ParameterResults\n\n\n\nlibrary(glmnet)\nlibrary(tidyverse)\nlibrary(palmerpenguins)\npenguins &lt;- penguins |&gt; drop_na()\nmod &lt;- penguins |&gt; model.matrix(~ flipper_length_mm + bill_depth_mm + bill_length_mm - 1,\n  data = _) # Must include -1 to remove intercept, needed for glmnet\nlambdas &lt;- seq(1,1000, by = 0.1)\n\n\n\n\nridge_mod_cv &lt;- cv.glmnet(x = mod, \n                          y = penguins$body_mass_g,\n                          alpha = 0,\n                          lambda = lambdas,\n                          nfolds = 333)\n\n\n\n\nplot(ridge_mod_cv)\n\n\n\n\n\n\n\n\n\n\n\nridge_mod_cv$lambda.min\n\n#&gt; [1] 1.8\n\n\n\n\n\nridge_mod &lt;- glmnet(x = mod, \n                       y = penguins$body_mass_g,\n                       alpha = 0,\n                       lambda = 1.8)\n\ncoef(ridge_mod)[,1]\n\n#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm \n#&gt;      -6384.278567         50.452983         16.803642          3.716981"
+  },
+  {
+    "objectID": "lectures/11b.html#example---lasso",
+    "href": "lectures/11b.html#example---lasso",
+    "title": "Resampling Methods",
+    "section": "Example - LASSO",
+    "text": "Example - LASSO\n\nPreparationCVCV PlotBest ParameterResults\n\n\n\nlibrary(glmnet)\nlibrary(tidyverse)\nlibrary(palmerpenguins)\npenguins &lt;- penguins |&gt; drop_na()\nmod &lt;- penguins |&gt; model.matrix(~ flipper_length_mm + bill_depth_mm + bill_length_mm - 1,\n  data = _) # Must include -1 to remove intercept, needed for glmnet\nlambdas &lt;- seq(1,1000, by = 0.1)\n\n\n\n\nridge_mod_cv &lt;- cv.glmnet(x = mod, \n                          y = penguins$body_mass_g,\n                          alpha = 1,\n                          lambda = lambdas,\n                          nfolds = 333)\n\n\n\n\nplot(ridge_mod_cv)\n\n\n\n\n\n\n\n\n\n\n\nridge_mod_cv$lambda.min\n\n#&gt; [1] 1\n\n\n\n\n\nridge_mod &lt;- glmnet(x = mod, \n                       y = penguins$body_mass_g,\n                       alpha = 1,\n                       lambda = 1)\n\ncoef(ridge_mod)[,1]\n\n#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm \n#&gt;      -6388.713373         50.581044         16.602520          3.311258"
+  },
+  {
+    "objectID": "lectures/11b.html#try-with-mtcars",
+    "href": "lectures/11b.html#try-with-mtcars",
+    "title": "Resampling Methods",
+    "section": "Try with mtcars",
+    "text": "Try with mtcars\nComplete a LASSO approach using mtcars to predict mpg from the remaining variables."
+  },
+  {
+    "objectID": "lectures/11b.html#bootstrap-methods-1",
+    "href": "lectures/11b.html#bootstrap-methods-1",
+    "title": "Resampling Methods",
+    "section": "Bootstrap Methods",
+    "text": "Bootstrap Methods\nBootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.\nWhen all else fails, a bootstrap approach will compute accurate standard errors."
+  },
+  {
+    "objectID": "lectures/11b.html#bootstrap-algorithm",
+    "href": "lectures/11b.html#bootstrap-algorithm",
+    "title": "Resampling Methods",
+    "section": "Bootstrap Algorithm",
+    "text": "Bootstrap Algorithm\n\nDraw a sample \\(X*\\) of size \\(n\\) with replacement from the original data \\(X\\).\n\n\\(n\\) is the size of the data\n\nCompute the bootstrap replicate statistic \\(T* = g(X*)\\), where \\(g(\\cdot)\\) is the function that computes the statistic of interest.\nRepeat steps 1-2 \\(B\\) times to obtain \\(B\\) bootstrap replicates \\({T*_1, T*_2, ..., T*_B}\\).\nThe computed statistics from \\(B\\) samples are the empirical bootstrap distribution of the statistic, \\(g(X)\\).\nCalculate the bootstrap standard error of the statistic, \\(se_b(g(X))\\), as the standard deviation of the bootstrap replicates.\nCalculate the bootstrap confidence interval for the statistic, \\(CI(g(X))\\), with the \\(\\alpha\\) and \\((1-\\alpha)%\\) percentiles of the bootstrap replicates, where \\(\\alpha\\) is the desired level of significance."
+  },
+  {
+    "objectID": "lectures/11b.html#examples",
+    "href": "lectures/11b.html#examples",
+    "title": "Resampling Methods",
+    "section": "Examples",
+    "text": "Examples\nFitting the following model:\n\nlibrary(palmerpenguins)\nlibrary(tidyverse)\npenguins &lt;- penguins |&gt; drop_na()\npenguins |&gt; lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm,\n               data = _)\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass_g ~ flipper_length_mm + bill_length_mm + \n#&gt;     bill_depth_mm, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt;       (Intercept)  flipper_length_mm     bill_length_mm      bill_depth_mm  \n#&gt;         -6445.476             50.762              3.293             17.836\n\n\nObtain the Bootstrap-based Standard Errors for the regression coefficients. Use \\(B=1000\\) bootstrap samples."
+  }
+]
