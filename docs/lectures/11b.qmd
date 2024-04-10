@@ -41,6 +41,26 @@ editor: visual
 
 -   Bootstrap Methods
 
+## Training Error Rate
+
+Training Error Rate is the error rate of the data used to create the model of interest. It describes how well the model predicts the data used to construct it.
+
+## Test Error Rate
+
+Test Error Rate is the error rate of predicting a new data point using the current established model.
+
+## Test Error Rate
+
+In order to obtain the test error rate, data not used to fit the model must be available
+
+::: fragment
+This is not the case the majority of time.
+:::
+
+::: fragment
+New methods have been developed to compute the test error rate using the existing data.
+:::
+
 # Cross-Validation
 
 ## Cross-Validation
@@ -51,11 +71,15 @@ A cross-validation approach is to obtain a good estimate of the error-rate of a 
 
 A cross-validation approach is great when there is a tuning parameter. We can fit a model for different values of the tuning parameter, and we can choose which value results in the lowest error rate.
 
+## Training and Testing Data
+
+The training and testing data sets are constructed by randomly assigning data points to one type of data.
+
 ## LOOCV Cross-Validation
 
 -   Choose a set of tuning parameters to test.
 
--   For each $k$th turning parameter Calculate the tuning parameter error for each value
+-   For each $k$th turning parameter, calculate the tuning parameter error for each value
 
     -   Utilize the leave-one-out approach
 
@@ -91,6 +115,162 @@ A cross-validation approach is great when there is a tuning parameter. We can fi
 
 -   Identify the $j$th tuning parameter with the lowest $CVE_j$
 
+## Executing in R
+
+Several R Packages have developed methods to execute the a cross-validation approach.
+
+## CV in `glmnet`
+
+```{r}
+cv.glmnet(x, # predictor matrix
+          y, # response variable
+          alpha, # Ridge
+          lambda, # Use a vector of lambdas
+          nfolds) # Number folds, use size of data for LOOCV
+```
+
+## Example - Ridge Regression
+
+
+::: panel-tabset
+## Preparation
+
+```{r}
+#| echo: true
+#| eval: true
+library(glmnet)
+library(tidyverse)
+library(palmerpenguins)
+penguins <- penguins |> drop_na()
+mod <- penguins |> model.matrix(~ flipper_length_mm + bill_depth_mm + bill_length_mm - 1,
+  data = _) # Must include -1 to remove intercept, needed for glmnet
+lambdas <- seq(1,1000, by = 0.1)
+```
+
+
+## CV
+
+```{r}
+#| echo: true
+#| eval: true
+ridge_mod_cv <- cv.glmnet(x = mod, 
+                          y = penguins$body_mass_g,
+                          alpha = 0,
+                          lambda = lambdas,
+                          nfolds = 333)
+```
+
+
+## CV Plot
+
+```{r}
+#| echo: true
+#| eval: true
+
+
+plot(ridge_mod_cv)
+
+```
+
+
+
+## Best Parameter
+
+```{r}
+#| echo: true
+#| eval: true
+
+ridge_mod_cv$lambda.min
+
+```
+
+## Results
+
+```{r}
+
+ridge_mod <- glmnet(x = mod, 
+                       y = penguins$body_mass_g,
+                       alpha = 0,
+                       lambda = 1.8)
+
+coef(ridge_mod)[,1]
+```
+
+:::
+
+
+## Example - LASSO
+
+::: panel-tabset
+## Preparation
+
+```{r}
+#| echo: true
+#| eval: true
+library(glmnet)
+library(tidyverse)
+library(palmerpenguins)
+penguins <- penguins |> drop_na()
+mod <- penguins |> model.matrix(~ flipper_length_mm + bill_depth_mm + bill_length_mm - 1,
+  data = _) # Must include -1 to remove intercept, needed for glmnet
+lambdas <- seq(1,1000, by = 0.1)
+```
+
+
+## CV
+
+```{r}
+#| echo: true
+#| eval: true
+ridge_mod_cv <- cv.glmnet(x = mod, 
+                          y = penguins$body_mass_g,
+                          alpha = 1,
+                          lambda = lambdas,
+                          nfolds = 333)
+```
+
+
+## CV Plot
+
+```{r}
+#| echo: true
+#| eval: true
+
+
+plot(ridge_mod_cv)
+
+```
+
+
+
+## Best Parameter
+
+```{r}
+#| echo: true
+#| eval: true
+
+ridge_mod_cv$lambda.min
+
+```
+
+## Results
+
+```{r}
+
+ridge_mod <- glmnet(x = mod, 
+                       y = penguins$body_mass_g,
+                       alpha = 1,
+                       lambda = 1)
+
+coef(ridge_mod)[,1]
+```
+
+:::
+
+## Try with `mtcars`
+
+Complete a LASSO approach using `mtcars` to predict mpg from the remaining variables.
+
 # Bootstrap Methods
 
 ## Bootstrap Methods
@@ -116,9 +296,9 @@ Fitting the following model:
 ```{r}
 library(palmerpenguins)
 library(tidyverse)
-library(magrittr)
-penguins <- penguins %>% drop_na()
-penguins %$% lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm)
+penguins <- penguins |> drop_na()
+penguins |> lm(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm,
+               data = _)
 ```
 
-Obtain the Bootstrap-based Standard Errors. Use $B=1000$ bootstrap samples.
+Obtain the Bootstrap-based Standard Errors for the regression coefficients. Use $B=1000$ bootstrap samples.

@@ -21,7 +21,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides                                                          | Videos | Files |
-|---------|-----------------------------------------------------------------|--------|-------|
-| 1       | [Slides](https://m408.inqs.info/lectures/11a.html#/title-slide) |        |       |
-| 2       | [Slides](https://m408.inqs.info/lectures/11b.html#/title-slide) |        |       |
+| Lecture | Slides                                                          | Videos                                | Files |
+|----------|------------------------------------------|----------|----------|
+| 1       | [Slides](https://m408.inqs.info/lectures/11a.html#/title-slide) | [Video](https://youtu.be/CZ-Rp1ceCoE) |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/11b.html#/title-slide) |                                       |       |
