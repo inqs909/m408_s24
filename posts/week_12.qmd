@@ -1,7 +1,7 @@
 ---
 title: "Week 12"
-date: 04-17-23
-description: We will begin our discussion on Classification.
+date: 04-14-24
+description: We will begin discussing nonparametric regression.
 editor: visual
 draft: true
 editor_options: 
@@ -12,12 +12,14 @@ editor_options:
 
 ### First Lecture
 
--   Linear Discriminant Analysis
--   Quadratic Discriminant Analysis
+-   Polynomial Functions
+-   Step Functions
+-   Basis Functions
 
 ### Second Lecture
 
--   Cross-Validation Technique
+-   Regression Splines
+-   Smoothing Splines
 
 ## Resources
 
