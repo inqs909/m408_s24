@@ -13,11 +13,10 @@
 <script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Moving Beyond Linear Functions</title>
+  <title>MATH 408 - Tree-Based Methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -402,387 +401,248 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Moving Beyond Linear Functions</h1>
+  <h1 class="title">Tree-Based Methods</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
+<section id="learning-outcomes" class="slide level2">
+<h2>Learning Outcomes</h2>
+<ul>
+<li><p>Trees</p></li>
+<li><p>Pruning</p></li>
+<li><p>Classification Trees</p></li>
+<li><p>Regression Trees</p></li>
+<li><p>R Examples</p></li>
+</ul>
+</section>
 <section>
-<section id="motivating-example" class="title-slide slide level1 agenda-slide center">
-<h1>Motivating Example</h1>
-<div class="agenda">
-<ul>
-<li><div class="agenda-active">
-<p>Motivating Example</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p>Polynomial Functions</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p>Step Functions</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p>Regression Splines</p>
-</div></li>
-</ul>
-</div>
-</section>
-<section id="plot" class="slide level2">
-<h2>Plot</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="trees" class="title-slide slide level1 center">
+<h1>Trees</h1>
 
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="plot-1" class="slide level2">
-<h2>Plot</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">3.5</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fu">sinpi</span>(x<span class="sc">/</span><span class="dv">8</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="polynomial-functions" class="title-slide slide level1 agenda-slide center">
-<h1>Polynomial Functions</h1>
-<div class="agenda">
-<ul>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Motivating Example</p>
-</div></li>
-<li><div class="agenda-active">
-<p>Polynomial Functions</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p>Step Functions</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p>Regression Splines</p>
-</div></li>
-</ul>
-</div>
 </section>
-<section id="simple-linear-regression" class="slide level2">
-<h2>Simple Linear Regression</h2>
-<p>Simple Linear Regression models the association between one predictor <code>X</code> and an outcome <code>Y</code>:</p>
-<p><span class="math display">\[
-Y = \beta_0 + \beta_1 X + \varepsilon
-\]</span></p>
-</section>
-<section id="polynomial-regression" class="slide level2">
-<h2>Polynomial Regression</h2>
-<p>Polynomial Regression models the association between predictor <code>X</code> and outcome <code>Y</code> with a polynomial function. For example, <code>X</code> can be related with <code>Y</code> with a cubic polynomial:</p>
-<p><span class="math display">\[
-Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \beta_3 X^3  + \varepsilon
-\]</span></p>
-</section>
-<section id="finding-estimates-of-boldsymbol-beta" class="slide level2">
-<h2>Finding estimates of <span class="math inline">\(\boldsymbol \beta\)</span></h2>
-<p>The estimates of <span class="math inline">\(\boldsymbol \beta\)</span> can be found by minimizing the following least squares formula for a given data set:</p>
-<p><span class="math display">\[
-L(\boldsymbol \beta) = \sum^n_{i=1}(Y_i-\hat Y_i)^2
-\]</span></p>
-<p><span class="math display">\[
-\hat Y_i = \hat \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \beta_3 X_i^3
-\]</span></p>
-</section>
-<section id="polynomial-functions-in-glms" class="slide level2">
-<h2>Polynomial Functions in GLMs</h2>
-<p>Polynomial functions can be utilized in GLMs as well. The model below is for a logistic model:</p>
-<p><span class="math display">\[
-P(Y=1|X) = \frac{\exp\left\{ \beta_0 + \sum^3_{j=1}\beta_j X^j \right\}}{1 +\exp \left\{  \beta_0 + \sum^3_{j=1}\beta_j X^j\right\}}
-\]</span></p>
-</section>
-<section id="fitting-a-linear-model" class="slide level2">
-<h2>Fitting a Linear Model</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="fitting-a-model" class="slide level2">
-<h2>Fitting a Model</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="polynomial-functions-in-r" class="slide level2">
-<h2>Polynomial Functions in R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="at">degree =</span> p),</span>
-<span id="cb5-2"><a href="#cb5-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="individual-terms-in-r" class="slide level2">
-<h2>Individual terms in R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">3</span>),</span>
-<span id="cb6-2"><a href="#cb6-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p>Simulate the data below a fit a quadratic, cubic, and quartic model. Compute the mean squared error and <span class="math inline">\(R^2\)</span> for each model.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="step-functions" class="title-slide slide level1 agenda-slide center">
-<h1>Step Functions</h1>
-<div class="agenda">
-<ul>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Motivating Example</p>
-</div></li>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Polynomial Functions</p>
-</div></li>
-<li><div class="agenda-active">
-<p>Step Functions</p>
-</div></li>
-<li><div class="agenda-inactive agenda-post-active">
-<p>Regression Splines</p>
-</div></li>
-</ul>
-</div>
-</section>
-<section id="stepwise-function" class="slide level2">
-<h2>Stepwise Function</h2>
-<p>Stepwise Function will add horizontal lines to best explain the data at different ranges of <code>X</code>.</p>
-</section>
-<section id="plot-2" class="slide level2">
-<h2>Plot</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">library</span>(splines)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb8-4"><a href="#cb8-4"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">cut</span>(x, <span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-<section id="constructing-model" class="slide level2">
-<h2>Constructing Model</h2>
-<div>
-<ul>
-<li class="fragment">Divide the range of <code>X</code> with <code>k</code> different intervals.</li>
-<li class="fragment">Create <code>k-1</code> dummy variables indicating if the value <code>X</code> belongs to the interval or not.</li>
-<li class="fragment">Construct a model incorporating all dummy variable and their corresponding coefficient.</li>
-<li class="fragment">Find the estimates of the model by minimizing the Least Squares Estimator.</li>
-</ul>
-</div>
-</section>
-<section id="step-functions-in-r" class="slide level2">
-<h2>Step Functions in R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">cut</span>(x, <span class="dv">10</span>),</span>
-<span id="cb9-2"><a href="#cb9-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
-<p>Simulate the data below a fit step regression model with 10, 20, and 30 steps. Compute the mean squared error and <span class="math inline">\(R^2\)</span> for each model.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="regression-splines" class="title-slide slide level1 agenda-slide center">
-<h1>Regression Splines</h1>
-<div class="agenda">
-<ul>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Motivating Example</p>
-</div></li>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Polynomial Functions</p>
-</div></li>
-<li><div class="agenda-inactive agenda-pre-active">
-<p>Step Functions</p>
-</div></li>
-<li><div class="agenda-active">
-<p>Regression Splines</p>
-</div></li>
-</ul>
-</div>
-</section>
-<section id="basis-functions" class="slide level2">
-<h2>Basis Functions</h2>
-<p>Basis functions model the outcome <code>Y</code> with a set of predefined functions on <code>X</code>:</p>
-<p><span class="math display">\[
-Y = \beta_0 + \sum^p_{j=1}\beta_jb_j(X) + \varepsilon
-\]</span></p>
-<ul>
-<li><span class="math inline">\(\boldsymbol \beta\)</span>: Regression Coefficients</li>
-<li><span class="math inline">\(b_j(\cdot)\)</span>: basis functions</li>
-</ul>
+<section id="trees-1" class="slide level2">
+<h2>Trees</h2>
+<p>A Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.</p>
 <div class="fragment">
-<p><span class="math inline">\(b_j(\cdot)\)</span> is allowed to be any function we define</p>
-</div>
-</section>
-<section id="knots" class="slide level2">
-<h2>Knots</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x <span class="sc">*</span> (x<span class="sc">&gt;</span><span class="dv">0</span>))) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
-<section id="more-knots" class="slide level2">
-<h2>More Knots</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">bs</span>(x, <span class="at">knots =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="dv">0</span>, <span class="fl">0.25</span>), <span class="at">degree =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.25</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> .<span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">0.25</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> .<span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> .<span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
-<section id="truncated-power-basis-function" class="slide level2">
-<h2>Truncated Power Basis Function</h2>
-<p>Once the number of knots and locations are chosen, a common basis function to utilize is the truncated power function:</p>
-<p><span class="math display">\[
-h(x,\xi_l) = (x-\xi_l)_+^p = \left\{
-\begin{array}{cc}
-(x-\xi_l)^p &amp; x&gt;\xi_l\\
-0 &amp; \mathrm{Otherwise}
-\end{array}
-\right.
-\]</span></p>
-</section>
-<section id="spline-function" class="slide level2">
-<h2>Spline Function</h2>
-<p>For <span class="math inline">\(L\)</span> knots:</p>
-<p><span class="math display">\[
-Y = \beta_0 + \sum^p_{j=1}x^j\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{p+l} + \varepsilon
-\]</span></p>
-</section>
-<section id="spline-functions-constraints" class="slide level2">
-<h2>Spline Functions Constraints</h2>
-<p>When choosing basis functions, we want maintain the following constraints at the location of the knots:</p>
-<div>
-<ul>
-<li class="fragment">Continuous</li>
-<li class="fragment">First Differentiable</li>
-<li class="fragment">Second Differentiable</li>
-</ul>
+<p>Trees will split a region based on a predictors ability to reduce the overall mean squared error.</p>
 </div>
 <div class="fragment">
-<p>A common choice is to use a cubic spline function</p>
+<p>Trees are sometimes preferred to linear models due to the visual explanation of the model.</p>
 </div>
 </section>
-<section id="cubic-splines" class="slide level2">
-<h2>Cubic Splines</h2>
-<p>For <span class="math inline">\(L\)</span> knots:</p>
+<section id="trees-2" class="slide level2">
+<h2>Trees</h2>
+
+<img data-src="https://www.mathworks.com/help/stats/simpleregressiontree.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="fitting-a-tree" class="slide level2">
+<h2>Fitting a Tree</h2>
+<ol type="1">
+<li>Start with the entire dataset and define the maximum number of regions or number of observations per region of the tree.</li>
+<li>Calculate the MSE of the dataset.</li>
+<li>For each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.</li>
+<li>Create a node in the tree with the selected split as the split criterion.</li>
+<li>Repeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small.</li>
+</ol>
+</section></section>
+<section>
+<section id="pruning" class="title-slide slide level1 center">
+<h1>Pruning</h1>
+
+</section>
+<section id="pruning-1" class="slide level2">
+<h2>Pruning</h2>
+<p>Pruning is the process that will remove branches from a regression tree in order to prevent overfitting.</p>
+<div class="fragment">
+<p>This will result in a subtree that has high predictive power with no overfitting.</p>
+</div>
+<div class="fragment">
+<p>Due to the computational burden of pruning, it is recommended to implement <em>Cost Complexity Pruning.</em></p>
+</div>
+</section>
+<section id="cost-complexity-pruning" class="slide level2">
+<h2>Cost Complexity Pruning</h2>
+<p>Let <span class="math inline">\(\alpha\)</span> be nonnegative tuning parameter that indexes a sequence of trees. Identify the tree that reduces:</p>
 <p><span class="math display">\[
-Y = \beta_0 + \sum^3_{j=1}x^j\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{3+l} + \varepsilon
+\sum^{|T|}_{m=1}\sum_{i:\ x_i \in R_m}(y_i-\hat y_{R_m})^2 +\alpha|T|
 \]</span></p>
+<ul>
+<li><p><span class="math inline">\(|T|\)</span>: Number of terminal nodes</p></li>
+<li><p><span class="math inline">\(R_m\)</span>: rectangular region containing data</p></li>
+<li><p><span class="math inline">\(y_i\)</span>: observed value</p></li>
+<li><p><span class="math inline">\(\hat y_{R_m}\)</span>: predicted value in rectangular region.</p></li>
+</ul>
 </section>
-<section id="plot-3" class="slide level2">
-<h2>Plot</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">bs</span>(x, <span class="at">knots =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="fl">0.25</span>))) <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<section id="pruning-algorithm" class="slide level2">
+<h2>Pruning Algorithm</h2>
+<ol type="1">
+<li>Conduct a fitting algorithm to find the largest tree from the training data. Stop once every region has a small number of observations.</li>
+<li>Apply the cost complexity pruning algorithm to identify the best subset of trees.</li>
+<li>Use a K-fold cross-validation approach to choose the proper <span class="math inline">\(\alpha\)</span>. For each kth fold:
+<ol type="1">
+<li>Repeat steps 1 and 2.</li>
+<li>Evaluate the mean squared prediction error as a function of <span class="math inline">\(\alpha\)</span>.</li>
+</ol></li>
+<li>Average the results for each value of <span class="math inline">\(\alpha\)</span>. Pick the <span class="math inline">\(\alpha\)</span> that minimizes the error.</li>
+<li>Return the subtree with the selected <span class="math inline">\(\alpha\)</span> from step 2</li>
+</ol>
+</section></section>
+<section>
+<section id="classification-trees" class="title-slide slide level1 center">
+<h1>Classification Trees</h1>
 
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
-<section id="natural-splines" class="slide level2">
-<h2>Natural Splines</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
-<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">ns</span>(x, <span class="at">knots =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="fl">0.25</span>))) <span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</section>
+<section id="classification-trees-1" class="slide level2">
+<h2>Classification Trees</h2>
+<p>Classification Trees will construct a tree that will classify data based on the region (leaf) you land. The class majority is what is classified.</p>
+</section>
+<section id="criterion-gini-index" class="slide level2">
+<h2>Criterion: Gini Index</h2>
+<p>The Gini Index is used to determine the error rate in classification trees:</p>
+<p><span class="math display">\[
+G = \sum^K_{k=1} \hat p_{mk}(1-\hat p_{mk})
+\]</span></p>
+</section></section>
+<section>
+<section id="regression-trees" class="title-slide slide level1 center">
+<h1>Regression Trees</h1>
 
-</div>
-<img data-src="12a_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
-<section id="cubic-splines-in-r" class="slide level2">
-<h2>Cubic Splines in R</h2>
-<p>The <code>bs()</code> function in R from the <code>splines</code> package will construct the basis matrix to be fitted in the <code>lm</code> function. You will need to specify the locations of the knots. By default, the cubic splines are provided:</p>
+</section>
+<section id="regression-trees-1" class="slide level2">
+<h2>Regression Trees</h2>
+<p>Regression trees will construct a tree and predict the value of the outcome based on the average value of the region (leaf).</p>
+<p>Trees are constructed by minimizing the residual sums of square.</p>
+</section></section>
+<section>
+<section id="r-code" class="title-slide slide level1 center">
+<h1>R Code</h1>
+
+</section>
+<section id="regression-trees-2" class="slide level2">
+<h2>Regression Trees</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Code</a></li><li><a href="#tabset-1-2">Plot</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">bs</span>(x, <span class="at">knots =</span> <span class="fu">c</span>()),</span>
-<span id="cb15-2"><a href="#cb15-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tree)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb1-6"><a href="#cb1-6"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="fu">nrow</span>(df)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>tree_penguin <span class="ot">&lt;-</span> penguins <span class="sc">%$%</span> <span class="fu">tree</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm, <span class="at">subset =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">plot</span>(tree_penguin)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">text</span>(tree_penguin, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="12d_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="cubic-splines-in-r-1" class="slide level2">
-<h2>Cubic Splines in R</h2>
-<p>The <code>ns()</code> function in R from the <code>splines</code> package will construct the basis matrix for natural cubic splines. You will need to specify the locations of the knots.</p>
+<section id="classification-trees-2" class="slide level2">
+<h2>Classification Trees</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Code</a></li><li><a href="#tabset-2-2">Plot</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">ns</span>(x, <span class="at">knots =</span> <span class="fu">c</span>()),</span>
-<span id="cb16-2"><a href="#cb16-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tree)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb3-6"><a href="#cb3-6"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="fu">nrow</span>(df)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>tree_penguin_class <span class="ot">&lt;-</span> df <span class="sc">%$%</span> <span class="fu">tree</span>(species <span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm, <span class="at">subset =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">plot</span>(tree_penguin_class)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">text</span>(tree_penguin_class, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="12d_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="example-2" class="slide level2">
-<h2>Example</h2>
-<p>Simulate the data below a fit regression model using cubic splines and natural cubic splines. Choose what you think is the appropriate number of knots and locations. Compute the mean squared error and <span class="math inline">\(R^2\)</span> for each model.</p>
+<section id="pruning-2" class="slide level2">
+<h2>Pruning</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Summary</a></li><li><a href="#tabset-3-3">Plot</a></li><li><a href="#tabset-3-4">Pruning</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">attach</span>(df)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>tree_penguin_cv <span class="ot">&lt;-</span> <span class="fu">cv.tree</span>(tree_penguin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>tree_penguin_cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; $size
+#&gt; [1] 8 7 6 5 4 3 2 1
+#&gt; 
+#&gt; $dev
+#&gt; [1] 25114634 24589936 24614552 25459062 25619914 29033977 37559512 90775548
+#&gt; 
+#&gt; $k
+#&gt; [1]     -Inf  1272964  1451864  1606589  1761161  5071633 10437367 70225468
+#&gt; 
+#&gt; $method
+#&gt; [1] "deviance"
+#&gt; 
+#&gt; attr(,"class")
+#&gt; [1] "prune"         "tree.sequence"</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">plot</span>(tree_penguin_cv<span class="sc">$</span>size,</span>
+<span id="cb8-2"><a href="#cb8-2"></a>     tree_penguin_cv<span class="sc">$</span>dev, <span class="at">type =</span> <span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="12d_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-4">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>prune_best <span class="ot">&lt;-</span> <span class="fu">prune.tree</span>(tree_penguin, <span class="at">best =</span> <span class="dv">7</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">plot</span>(prune_best)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">text</span>(prune_best, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="12d_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <div class="footer footer-default">
