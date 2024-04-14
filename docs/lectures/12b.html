@@ -13,10 +13,11 @@
 <script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Tree-Based Methods</title>
+  <title>MATH 408 - Nonparametric Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -401,249 +402,255 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Tree-Based Methods</h1>
+  <h1 class="title">Nonparametric Regression</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="learning-outcomes" class="slide level2">
-<h2>Learning Outcomes</h2>
+<section>
+<section id="motivating-example" class="title-slide slide level1 agenda-slide center">
+<h1>Motivating Example</h1>
+<div class="agenda">
 <ul>
-<li><p>Trees</p></li>
-<li><p>Pruning</p></li>
-<li><p>Classification Trees</p></li>
-<li><p>Regression Trees</p></li>
-<li><p>R Examples</p></li>
+<li><div class="agenda-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Smoothing Splines</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Local Regression</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Generalized Additive Models</p>
+</div></li>
 </ul>
+</div>
 </section>
+<section id="plot" class="slide level2">
+<h2>Plot</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12b_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="plot-1" class="slide level2">
+<h2>Plot</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">3.5</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fu">sinpi</span>(x<span class="sc">/</span><span class="dv">8</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12b_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
 <section>
-<section id="trees" class="title-slide slide level1 center">
-<h1>Trees</h1>
-
-</section>
-<section id="trees-1" class="slide level2">
-<h2>Trees</h2>
-<p>A Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.</p>
-<div class="fragment">
-<p>Trees will split a region based on a predictors ability to reduce the overall mean squared error.</p>
-</div>
-<div class="fragment">
-<p>Trees are sometimes preferred to linear models due to the visual explanation of the model.</p>
-</div>
-</section>
-<section id="trees-2" class="slide level2">
-<h2>Trees</h2>
-
-<img data-src="https://www.mathworks.com/help/stats/simpleregressiontree.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="fitting-a-tree" class="slide level2">
-<h2>Fitting a Tree</h2>
-<ol type="1">
-<li>Start with the entire dataset and define the maximum number of regions or number of observations per region of the tree.</li>
-<li>Calculate the MSE of the dataset.</li>
-<li>For each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.</li>
-<li>Create a node in the tree with the selected split as the split criterion.</li>
-<li>Repeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small.</li>
-</ol>
-</section></section>
-<section>
-<section id="pruning" class="title-slide slide level1 center">
-<h1>Pruning</h1>
-
-</section>
-<section id="pruning-1" class="slide level2">
-<h2>Pruning</h2>
-<p>Pruning is the process that will remove branches from a regression tree in order to prevent overfitting.</p>
-<div class="fragment">
-<p>This will result in a subtree that has high predictive power with no overfitting.</p>
-</div>
-<div class="fragment">
-<p>Due to the computational burden of pruning, it is recommended to implement <em>Cost Complexity Pruning.</em></p>
+<section id="smoothing-splines" class="title-slide slide level1 agenda-slide center">
+<h1>Smoothing Splines</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Smoothing Splines</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Local Regression</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Generalized Additive Models</p>
+</div></li>
+</ul>
 </div>
 </section>
-<section id="cost-complexity-pruning" class="slide level2">
-<h2>Cost Complexity Pruning</h2>
-<p>Let <span class="math inline">\(\alpha\)</span> be nonnegative tuning parameter that indexes a sequence of trees. Identify the tree that reduces:</p>
+<section id="regression-splines" class="slide level2">
+<h2>Regression Splines</h2>
+<p>For <span class="math inline">\(L\)</span> knots:</p>
 <p><span class="math display">\[
-\sum^{|T|}_{m=1}\sum_{i:\ x_i \in R_m}(y_i-\hat y_{R_m})^2 +\alpha|T|
+Y = \beta_0 + \sum^p_{j=1}x^j\beta_j + \sum_{l=1}^L \beta_{p+l}(x - \xi_l)^p_+ + \varepsilon
+\]</span></p>
+</section>
+<section id="issues-with-regression-splines" class="slide level2">
+<h2>Issues with Regression Splines</h2>
+<div>
+<ul>
+<li class="fragment">Must specify a correct number of knots</li>
+<li class="fragment">Must specify the correct location of knots</li>
+<li class="fragment">Must specify the degree p</li>
+</ul>
+</div>
+</section>
+<section id="solutions" class="slide level2">
+<h2>Solutions</h2>
+<div>
+<ul>
+<li class="fragment">Use <span class="math inline">\(p=3\)</span>, performs the best</li>
+<li class="fragment">Implement a penalty term</li>
+</ul>
+</div>
+</section>
+<section id="smooting-parameter" class="slide level2">
+<h2>Smooting Parameter</h2>
+<p>A smoothing (penalty) parameter will allow us to specify a large number of knots to grid up the range of <code>X</code>.</p>
+<div class="fragment">
+<p>The smoothing parameter will will force the effect of certain knots to zero that are not relevant.</p>
+</div>
+<div class="fragment">
+<p>As long as we choose a high number of knots (20-30), it will properly model the data without the worry of overfitting.</p>
+</div>
+<div class="fragment">
+<p>The smoothing parameter can be estimated by using a cross-validation approach and identifying the which values lowers the MSE.</p>
+</div>
+</section>
+<section id="likelihood-function" class="slide level2">
+<h2>Likelihood Function</h2>
+<p><span class="math display">\[
+\sum^n_{i=1}\{Y_i-g(X_i)\}^2 + \lambda\int g^{\prime\prime}(t)^2dt
 \]</span></p>
 <ul>
-<li><p><span class="math inline">\(|T|\)</span>: Number of terminal nodes</p></li>
-<li><p><span class="math inline">\(R_m\)</span>: rectangular region containing data</p></li>
-<li><p><span class="math inline">\(y_i\)</span>: observed value</p></li>
-<li><p><span class="math inline">\(\hat y_{R_m}\)</span>: predicted value in rectangular region.</p></li>
+<li><span class="math inline">\(g(\cdot)\)</span>: function used to model data (using cubic splines)</li>
+<li><span class="math inline">\(\lambda\)</span>: smoothing parameter</li>
 </ul>
 </section>
-<section id="pruning-algorithm" class="slide level2">
-<h2>Pruning Algorithm</h2>
-<ol type="1">
-<li>Conduct a fitting algorithm to find the largest tree from the training data. Stop once every region has a small number of observations.</li>
-<li>Apply the cost complexity pruning algorithm to identify the best subset of trees.</li>
-<li>Use a K-fold cross-validation approach to choose the proper <span class="math inline">\(\alpha\)</span>. For each kth fold:
-<ol type="1">
-<li>Repeat steps 1 and 2.</li>
-<li>Evaluate the mean squared prediction error as a function of <span class="math inline">\(\alpha\)</span>.</li>
-</ol></li>
-<li>Average the results for each value of <span class="math inline">\(\alpha\)</span>. Pick the <span class="math inline">\(\alpha\)</span> that minimizes the error.</li>
-<li>Return the subtree with the selected <span class="math inline">\(\alpha\)</span> from step 2</li>
-</ol>
+<section id="smoothing-splines-in-r" class="slide level2">
+<h2>Smoothing Splines in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">smooth.spline</span>(x, <span class="co"># Vector of predictor</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>              y, <span class="co"># Vector of outcome</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>              <span class="at">cv =</span> <span class="cn">TRUE</span>, <span class="co"># Indicates to use LOOCV</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>              nknots) <span class="co"># number of knots; can use default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>Fit a smoothing spline model with the following simulated data. Search through the help documentation to print out <span class="math inline">\(\lambda\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section></section>
 <section>
-<section id="classification-trees" class="title-slide slide level1 center">
-<h1>Classification Trees</h1>
+<section id="local-regression" class="title-slide slide level1 agenda-slide center">
+<h1>Local Regression</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Smoothing Splines</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Local Regression</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Generalized Additive Models</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="local-models" class="slide level2">
+<h2>Local Models</h2>
+<p>Local models will construct a curve to model the data based on a set of given grid points.</p>
+<div class="fragment">
+<p>The grid points are selected by taking the range of <code>X</code> and choosing values that are equidistant from each other in <code>X</code>.</p>
+</div>
+<div class="fragment">
+<p>At each grid point, fit a model based on the data points within its neighborhood.</p>
+</div>
+<div class="fragment">
+<p>Data points closer to each grid point will have more importance than data points further away.</p>
+</div>
+</section>
+<section id="local-neighborhood" class="slide level2">
+<h2>Local Neighborhood</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>xx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">range</span>(x)[<span class="dv">1</span>], <span class="at">to =</span> <span class="fu">range</span>(x)[<span class="dv">2</span>], <span class="at">by =</span> <span class="fl">0.3</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xx, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
+</div>
+<img data-src="12b_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="importance-weights" class="slide level2">
+<h2>Importance (Weights)</h2>
 </section>
-<section id="classification-trees-1" class="slide level2">
-<h2>Classification Trees</h2>
-<p>Classification Trees will construct a tree that will classify data based on the region (leaf) you land. The class majority is what is classified.</p>
-</section>
-<section id="criterion-gini-index" class="slide level2">
-<h2>Criterion: Gini Index</h2>
-<p>The Gini Index is used to determine the error rate in classification trees:</p>
-<p><span class="math display">\[
-G = \sum^K_{k=1} \hat p_{mk}(1-\hat p_{mk})
-\]</span></p>
+<section id="local-constant-model" class="slide level2">
+<h2>Local Constant Model</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> stats<span class="sc">::</span>loess, </span>
+<span id="cb6-6"><a href="#cb6-6"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">0</span>,</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                                 <span class="at">span =</span> <span class="fl">0.05</span>)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12b_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="local-linear-model" class="slide level2">
+<h2>Local Linear Model</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> stats<span class="sc">::</span>loess, </span>
+<span id="cb7-6"><a href="#cb7-6"></a>              <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">degree =</span> <span class="dv">1</span>,</span>
+<span id="cb7-7"><a href="#cb7-7"></a>                                 <span class="at">span =</span> <span class="fl">0.05</span>)) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12b_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="local-regression-1" class="slide level2">
+<h2>Local Regression</h2>
 </section></section>
-<section>
-<section id="regression-trees" class="title-slide slide level1 center">
-<h1>Regression Trees</h1>
-
-</section>
-<section id="regression-trees-1" class="slide level2">
-<h2>Regression Trees</h2>
-<p>Regression trees will construct a tree and predict the value of the outcome based on the average value of the region (leaf).</p>
-<p>Trees are constructed by minimizing the residual sums of square.</p>
-</section></section>
-<section>
-<section id="r-code" class="title-slide slide level1 center">
-<h1>R Code</h1>
-
-</section>
-<section id="regression-trees-2" class="slide level2">
-<h2>Regression Trees</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Code</a></li><li><a href="#tabset-1-2">Plot</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tree)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb1-6"><a href="#cb1-6"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="fu">nrow</span>(df)<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a>tree_penguin <span class="ot">&lt;-</span> penguins <span class="sc">%$%</span> <span class="fu">tree</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm, <span class="at">subset =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-1-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">plot</span>(tree_penguin)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">text</span>(tree_penguin, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="12b_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="classification-trees-2" class="slide level2">
-<h2>Classification Trees</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Code</a></li><li><a href="#tabset-2-2">Plot</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tree)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb3-6"><a href="#cb3-6"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="fu">nrow</span>(df)<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb3-7"><a href="#cb3-7"></a>tree_penguin_class <span class="ot">&lt;-</span> df <span class="sc">%$%</span> <span class="fu">tree</span>(species <span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm, <span class="at">subset =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-2-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">plot</span>(tree_penguin_class)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">text</span>(tree_penguin_class, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="12b_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="pruning-2" class="slide level2">
-<h2>Pruning</h2>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Summary</a></li><li><a href="#tabset-3-3">Plot</a></li><li><a href="#tabset-3-4">Pruning</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">attach</span>(df)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>tree_penguin_cv <span class="ot">&lt;-</span> <span class="fu">cv.tree</span>(tree_penguin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-3-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>tree_penguin_cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; $size
-#&gt; [1] 8 7 6 5 4 3 2 1
-#&gt; 
-#&gt; $dev
-#&gt; [1]  22486826  23179082  23221807  23825078  23825078  28421261  40441517
-#&gt; [8] 110325299
-#&gt; 
-#&gt; $k
-#&gt; [1]     -Inf  1216571  1347311  1518646  1530920  4213320 11206367 72770443
-#&gt; 
-#&gt; $method
-#&gt; [1] "deviance"
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "prune"         "tree.sequence"</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-3">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">plot</span>(tree_penguin_cv<span class="sc">$</span>size,</span>
-<span id="cb8-2"><a href="#cb8-2"></a>     tree_penguin_cv<span class="sc">$</span>dev, <span class="at">type =</span> <span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="12b_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-3-4">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>prune_best <span class="ot">&lt;-</span> <span class="fu">prune.tree</span>(tree_penguin, <span class="at">best =</span> <span class="dv">7</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">plot</span>(prune_best)</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">text</span>(prune_best, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="12b_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="generalized-additive-models" class="title-slide slide level1 agenda-slide center">
+<h1>Generalized Additive Models</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Smoothing Splines</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Local Regression</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Generalized Additive Models</p>
+</div></li>
+</ul>
 </div>
 
 <div class="footer footer-default">
@@ -663,7 +670,7 @@ G = \sum^K_{k=1} \hat p_{mk}(1-\hat p_{mk})
 <p> </p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

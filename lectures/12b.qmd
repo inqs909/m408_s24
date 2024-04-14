@@ -1,5 +1,5 @@
 ---
-title: "Tree-Based Methods"
+title: "Nonparametric Regression"
 format:
   revealjs:
     scrollable: true
@@ -15,6 +15,7 @@ format:
 knitr:
   opts_chunk: 
     echo: true
+    code-fold: true
     eval: true
     message: false
     warnings: false
@@ -27,195 +28,167 @@ revealjs-plugins:
 filters: 
   - reveal-header
   - code-fullscreen
+  - reveal-auto-agenda
 
 editor: visual
 ---
 
-## Learning Outcomes
+# Motivating Example
 
--   Trees
-
--   Pruning
-
--   Classification Trees
-
--   Regression Trees
-
--   R Examples
-
-# Trees
-
-## Trees
-
-A Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.
-
-::: fragment
-Trees will split a region based on a predictors ability to reduce the overall mean squared error.
-:::
-
-::: fragment
-Trees are sometimes preferred to linear models due to the visual explanation of the model.
-:::
-
-## Trees
-
-![](https://www.mathworks.com/help/stats/simpleregressiontree.png){fig-align="center"}
-
-## Fitting a Tree
-
-1.  Start with the entire dataset and define the maximum number of regions or number of observations per region of the tree.
-2.  Calculate the MSE of the dataset.
-3.  For each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.
-4.  Create a node in the tree with the selected split as the split criterion.
-5.  Repeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small.
-
-# Pruning
-
-## Pruning
-
-Pruning is the process that will remove branches from a regression tree in order to prevent overfitting.
-
-::: fragment
-This will result in a subtree that has high predictive power with no overfitting.
-:::
-
-::: fragment
-Due to the computational burden of pruning, it is recommended to implement *Cost Complexity Pruning.*
-:::
-
-## Cost Complexity Pruning
-
-Let $\alpha$ be nonnegative tuning parameter that indexes a sequence of trees. Identify the tree that reduces:
-
-$$
-\sum^{|T|}_{m=1}\sum_{i:\ x_i \in R_m}(y_i-\hat y_{R_m})^2 +\alpha|T|
-$$
-
--   $|T|$: Number of terminal nodes
-
--   $R_m$: rectangular region containing data
-
--   $y_i$: observed value
-
--   $\hat y_{R_m}$: predicted value in rectangular region.
-
-## Pruning Algorithm
-
-1.  Conduct a fitting algorithm to find the largest tree from the training data. Stop once every region has a small number of observations.
-2.  Apply the cost complexity pruning algorithm to identify the best subset of trees.
-3.  Use a K-fold cross-validation approach to choose the proper $\alpha$. For each kth fold:
-    1.  Repeat steps 1 and 2.
-    2.  Evaluate the mean squared prediction error as a function of $\alpha$.
-4.  Average the results for each value of $\alpha$. Pick the $\alpha$ that minimizes the error.
-5.  Return the subtree with the selected $\alpha$ from step 2
-
-# Classification Trees
-
-## Classification Trees
-
-Classification Trees will construct a tree that will classify data based on the region (leaf) you land. The class majority is what is classified.
-
-## Criterion: Gini Index
-
-The Gini Index is used to determine the error rate in classification trees:
-
-$$
-G = \sum^K_{k=1} \hat p_{mk}(1-\hat p_{mk})
-$$
-
-# Regression Trees
-
-## Regression Trees
-
-Regression trees will construct a tree and predict the value of the outcome based on the average value of the region (leaf).
-
-Trees are constructed by minimizing the residual sums of square.
-
-
-# R Code
-
-## Regression Trees
-
-::: panel-tabset
-
-### Code
+## Plot
 
 ```{r}
-library(tree)
-library(palmerpenguins)
 library(tidyverse)
-library(magrittr)
-df <- penguins %>% drop_na()
-train <- sample(1:nrow(df), nrow(df)/2)
-tree_penguin <- penguins %$% tree(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm, subset = train)
+x <- rnorm(1000, sd = 0.25)
+y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
+ggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()
 ```
+## Plot
 
-### Plot
 
 ```{r}
-plot(tree_penguin)
-text(tree_penguin, pretty = 0)
-```
-
-:::
-
-## Classification Trees
-
-::: panel-tabset
-
-### Code
-
-```{r}
-library(tree)
-library(palmerpenguins)
 library(tidyverse)
-library(magrittr)
-df <- penguins %>% drop_na()
-train <- sample(1:nrow(df), nrow(df)/2)
-tree_penguin_class <- df %$% tree(species ~ body_mass_g + flipper_length_mm + bill_length_mm + bill_depth_mm, subset = train)
+x <- rnorm(1000, sd = 3.5)
+y <- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)
+ggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()
 ```
 
-### Plot
 
-```{r}
-plot(tree_penguin_class)
-text(tree_penguin_class, pretty = 0)
-```
+# Smoothing Splines
 
+## Regression Splines
+
+For $L$ knots:
+
+$$
+Y = \beta_0 + \sum^p_{j=1}x^j\beta_j + \sum_{l=1}^L \beta_{p+l}(x - \xi_l)^p_+ + \varepsilon
+$$
+
+## Issues with Regression Splines
+
+::: incremental
+-   Must specify a correct number of knots
+-   Must specify the correct location of knots
+-   Must specify the degree p
 :::
 
-## Pruning
+## Solutions
 
-::: panel-tabset
-
-### Code
-
-```{r}
-attach(df)
-tree_penguin_cv <- cv.tree(tree_penguin)
-```
-
-### Summary
-
-```{r}
-tree_penguin_cv
-```
-
-### Plot
-
-```{r}
-plot(tree_penguin_cv$size,
-     tree_penguin_cv$dev, type = "b")
-```
-
-### Pruning
-
-```{r}
-prune_best <- prune.tree(tree_penguin, best = 7)
-plot(prune_best)
-text(prune_best, pretty = 0)
-```
-
-
+::: incremental
+-   Use $p=3$, performs the best
+-   Implement a penalty term
 :::
+
+## Smooting Parameter
+
+A smoothing (penalty) parameter will allow us to specify a large number of knots to grid up the range of `X`.
+
+::: fragment
+The smoothing parameter will will force the effect of certain knots to zero that are not relevant.
+:::
+
+::: fragment
+As long as we choose a high number of knots (20-30), it will properly model the data without the worry of overfitting.
+:::
+
+::: fragment
+The smoothing parameter can be estimated by using a cross-validation approach and identifying the which values lowers the MSE.
+:::
+
+## Likelihood Function
+
+$$
+\sum^n_{i=1}\{Y_i-g(X_i)\}^2 + \lambda\int g^{\prime\prime}(t)^2dt
+$$
+
+-   $g(\cdot)$: function used to model data (using cubic splines)
+-   $\lambda$: smoothing parameter
+
+## Smoothing Splines in R
+
+```{r}
+#| code-fold: false
+#| eval: false
+
+smooth.spline(x, # Vector of predictor
+              y, # Vector of outcome
+              cv = TRUE, # Indicates to use LOOCV
+              nknots) # number of knots; can use default
+```
+
+## Example
+
+Fit a smoothing spline model with the following simulated data. Search through the help documentation to print out $\lambda$.
+
+```{r}
+library(tidyverse)
+x <- rnorm(1000, sd = 0.25)
+y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
+```
+# Local Regression
+
+
+
+## Local Models
+
+Local models will construct a curve to model the data based on a set of given grid points.
+
+::: fragment
+The grid points are selected by taking the range of `X` and choosing values that are equidistant from each other in `X`.
+:::
+
+::: fragment
+At each grid point, fit a model based on the data points within its neighborhood.
+:::
+
+::: fragment
+Data points closer to each grid point will have more importance than data points further away.
+:::
+
+## Local Neighborhood
+
+```{r}
+x <- rnorm(1000, sd = 0.25)
+y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
+xx <- seq(from = range(x)[1], to = range(x)[2], by = 0.3)
+
+ggplot(tibble(x=x, y=y), aes(x,y)) + 
+  geom_point() +
+  geom_vline(xintercept = xx, col = "red", lty = 2) +
+  theme_bw()
+```
+
+
+## Importance (Weights)
+
+
+## Local Constant Model
+
+```{r}
+x <- rnorm(1000, sd = 0.25)
+y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
+ggplot(tibble(x=x, y=y), aes(x,y)) + 
+  geom_point() +
+  stat_smooth(method = stats::loess, 
+              method.args = list(degree = 0,
+                                 span = 0.05)) +
+  theme_bw()
+```
+
+## Local Linear Model
+
+```{r}
+x <- rnorm(1000, sd = 0.25)
+y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
+ggplot(tibble(x=x, y=y), aes(x,y)) + 
+  geom_point() +
+  stat_smooth(method = stats::loess, 
+              method.args = list(degree = 1,
+                                 span = 0.05)) +
+  theme_bw()
+```
+
+## Local Regression
+
+# Generalized Additive Models
 

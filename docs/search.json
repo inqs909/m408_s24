@@ -2753,16 +2753,16 @@
   {
     "objectID": "lectures/12a.html#example",
     "href": "lectures/12a.html#example",
-    "title": "Model Selection",
+    "title": "Moving Beyond Linear Functions",
     "section": "Example",
-    "text": "Example\n\nlibrary(glmnet)\nlibrary(tidyverse)\nlibrary(palmerpenguins)\npenguins &lt;- penguins |&gt; drop_na()\nmod &lt;- penguins |&gt; model.matrix(~ flipper_length_mm + bill_depth_mm + bill_length_mm - 1,\n  data = _) # Must include -1 to remove intercept, needed for glmnet\nridge_mod &lt;- glmnet(x = mod, \n                    y = penguins$body_mass_g,\n                    alpha = 0,\n                    lambda = 1.3) # lambda was chosen at random\ncoef(ridge_mod)[,1]\n\n#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm \n#&gt;       -6400.54459          50.53481          17.07967           3.60524"
+    "text": "Example\nSimulate the data below a fit a quadratic, cubic, and quartic model. Compute the mean squared error and \\(R^2\\) for each model.\n\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)"
   },
   {
     "objectID": "lectures/12a.html#example-1",
     "href": "lectures/12a.html#example-1",
-    "title": "Model Selection",
+    "title": "Moving Beyond Linear Functions",
     "section": "Example",
-    "text": "Example\n\nlasso_mod &lt;- glmnet(x = mod, \n                    y = penguins$body_mass_g,\n                    alpha = 1,\n                    lambda = 1.3) # lambda was chosen at random\ncoef(lasso_mod)[,1]\n\n#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm \n#&gt;      -6372.371080         50.530548         16.241920          3.311152"
+    "text": "Example\nSimulate the data below a fit step regression model with 10, 20, and 30 steps. Compute the mean squared error and \\(R^2\\) for each model.\n\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)"
   },
   {
     "objectID": "lectures/11b.html#learning-outcomes",
@@ -6592,5 +6592,306 @@
     "title": "Week 9",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
+  },
+  {
+    "objectID": "lectures/12a.html#simple-linear-regression",
+    "href": "lectures/12a.html#simple-linear-regression",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Simple Linear Regression",
+    "text": "Simple Linear Regression\nSimple Linear Regression models the association between one predictor X and an outcome Y:\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon\n\\]"
+  },
+  {
+    "objectID": "lectures/12a.html#polynomial-regression",
+    "href": "lectures/12a.html#polynomial-regression",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Polynomial Regression",
+    "text": "Polynomial Regression\nPolynomial Regression models the association between predictor X and outcome Y with a polynomial function. For example, X can be related with Y with a cubic polynomial:\n\\[\nY = \\beta_0 + \\beta_1 X + \\beta_2 X^2 + \\beta_3 X^3  + \\varepsilon\n\\]"
+  },
+  {
+    "objectID": "lectures/12a.html#finding-estimates-of-boldsymbol-beta",
+    "href": "lectures/12a.html#finding-estimates-of-boldsymbol-beta",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Finding estimates of \\(\\boldsymbol \\beta\\)",
+    "text": "Finding estimates of \\(\\boldsymbol \\beta\\)\nThe estimates of \\(\\boldsymbol \\beta\\) can be found by minimizing the following least squares formula for a given data set:\n\\[\nL(\\boldsymbol \\beta) = \\sum^n_{i=1}(Y_i-\\hat Y_i)^2\n\\]\n\\[\n\\hat Y_i = \\hat \\beta_0 + \\beta_1 X_i + \\beta_2 X_i^2 + \\beta_3 X_i^3\n\\]"
+  },
+  {
+    "objectID": "lectures/12a.html#polynomial-functions-in-glms",
+    "href": "lectures/12a.html#polynomial-functions-in-glms",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Polynomial Functions in GLMs",
+    "text": "Polynomial Functions in GLMs\nPolynomial functions can be utilized in GLMs as well. The model below is for a logistic model:\n\\[\nP(Y=1|X) = \\frac{\\exp\\left\\{ \\beta_0 + \\sum^3_{j=1}\\beta_j X^j \\right\\}}{1 +\\exp \\left\\{  \\beta_0 + \\sum^3_{j=1}\\beta_j X^j\\right\\}}\n\\]"
+  },
+  {
+    "objectID": "lectures/12a.html#piecewise-function",
+    "href": "lectures/12a.html#piecewise-function",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Piecewise Function",
+    "text": "Piecewise Function"
+  },
+  {
+    "objectID": "lectures/12a.html#plot",
+    "href": "lectures/12a.html#plot",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#plot-1",
+    "href": "lectures/12a.html#plot-1",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#polynomial-functions-in-r",
+    "href": "lectures/12a.html#polynomial-functions-in-r",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Polynomial Functions in R",
+    "text": "Polynomial Functions in R\n\nlm(y ~ poly(x, degree = p),\n   data)"
+  },
+  {
+    "objectID": "lectures/12a.html#section",
+    "href": "lectures/12a.html#section",
+    "title": "Moving Beyond Linear Functions",
+    "section": "",
+    "text": "x &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)"
+  },
+  {
+    "objectID": "lectures/12a.html#fitting-a-model",
+    "href": "lectures/12a.html#fitting-a-model",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Fitting a Model",
+    "text": "Fitting a Model\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ poly(x, 4)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#individual-terms-in-r",
+    "href": "lectures/12a.html#individual-terms-in-r",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Individual terms in R",
+    "text": "Individual terms in R\n\nlm(y ~ I(x^3),\n   data)"
+  },
+  {
+    "objectID": "lectures/12a.html#stepwise-functions-in-r",
+    "href": "lectures/12a.html#stepwise-functions-in-r",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Stepwise Functions in R",
+    "text": "Stepwise Functions in R"
+  },
+  {
+    "objectID": "lectures/12a.html#plot-2",
+    "href": "lectures/12a.html#plot-2",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nlibrary(splines)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ cut(x, 10)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#step-functions-in-r",
+    "href": "lectures/12a.html#step-functions-in-r",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Step Functions in R",
+    "text": "Step Functions in R\n\nlm(y ~ cut(x, 10),\n   data)"
+  },
+  {
+    "objectID": "lectures/12a.html#basis-functions",
+    "href": "lectures/12a.html#basis-functions",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Basis Functions",
+    "text": "Basis Functions\nBasis functions model the outcome Y with a set of predefined functions on X:\n\\[\nY = \\beta_0 + \\sum^p_{j=1}\\beta_jb_j(X) + \\varepsilon\n\\]\n\n\\(\\boldsymbol \\beta\\): Regression Coefficients\n\\(b_j(\\cdot)\\): basis functions\n\n\n\\(b_j(\\cdot)\\) is allowed to be any function we define"
+  },
+  {
+    "objectID": "lectures/12a.html#fitting-a-linear-model",
+    "href": "lectures/12a.html#fitting-a-linear-model",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Fitting a Linear Model",
+    "text": "Fitting a Linear Model\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#stepwise-function",
+    "href": "lectures/12a.html#stepwise-function",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Stepwise Function",
+    "text": "Stepwise Function\nStepwise Function will add horizontal lines to best explain the data at different ranges of X."
+  },
+  {
+    "objectID": "lectures/12a.html#constructing-model",
+    "href": "lectures/12a.html#constructing-model",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Constructing Model",
+    "text": "Constructing Model\n\n\nDivide the range of X with k different intervals.\nCreate k-1 dummy variables indicating if the value X belongs to the interval or not.\nConstruct a model incorporating all dummy variable and their corresponding coefficient.\nFind the estimates of the model by minimizing the Least Squares Estimator."
+  },
+  {
+    "objectID": "lectures/12a.html#knots",
+    "href": "lectures/12a.html#knots",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Knots",
+    "text": "Knots\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point(size = 0.5) +\n  geom_smooth(method = \"lm\", formula = y ~ x + I(x * (x&gt;0))) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#more-knots",
+    "href": "lectures/12a.html#more-knots",
+    "title": "Moving Beyond Linear Functions",
+    "section": "More Knots",
+    "text": "More Knots\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point(size = 0.5) +\n  geom_smooth(method = \"lm\", formula = y ~ bs(x, knots = c(-0.25, 0, 0.25), degree = 1)) +\n  geom_vline(xintercept = 0.25, lty = 2, lwd = .2, col = \"red\") +\n  geom_vline(xintercept = -0.25, lty = 2, lwd = .2, col = \"red\") +\n  geom_vline(xintercept = 0, lty = 2, lwd = .2, col = \"red\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#truncated-power-basis-function",
+    "href": "lectures/12a.html#truncated-power-basis-function",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Truncated Power Basis Function",
+    "text": "Truncated Power Basis Function\nOnce the number of knots and locations are chosen, a common basis function to utilize is the truncated power function:\n\\[\nh(x,\\xi_l) = (x-\\xi_l)_+^p = \\left\\{\n\\begin{array}{cc}\n(x-\\xi_l)^p & x&gt;\\xi_l\\\\\n0 & \\mathrm{Otherwise}\n\\end{array}\n\\right.\n\\]"
+  },
+  {
+    "objectID": "lectures/12a.html#spline-function",
+    "href": "lectures/12a.html#spline-function",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Spline Function",
+    "text": "Spline Function\nFor \\(L\\) knots:\n\\[\nY = \\beta_0 + \\sum^p_{j=1}x^p\\beta_j + \\sum_{l=1}^Lh(x, \\xi_l)\\beta_{p+l} + \\varepsilon\n\\]"
+  },
+  {
+    "objectID": "lectures/12a.html#spline-functions-constraints",
+    "href": "lectures/12a.html#spline-functions-constraints",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Spline Functions Constraints",
+    "text": "Spline Functions Constraints\nWhen choosing basis functions, we want maintain the following constraints at the location of the knots:\n\n\nContinuous\nFirst Differentiable\nSecond Differentiable\n\n\n\nA common choice is to use a cubic spline function"
+  },
+  {
+    "objectID": "lectures/12a.html#cubic-splines",
+    "href": "lectures/12a.html#cubic-splines",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Cubic Splines",
+    "text": "Cubic Splines\nFor \\(L\\) knots:\n\\[\nY = \\beta_0 + \\sum^3_{j=1}x^p\\beta_j + \\sum_{l=1}^Lh(x, \\xi_l)\\beta_{3+l} + \\varepsilon\n\\]"
+  },
+  {
+    "objectID": "lectures/12a.html#plot-3",
+    "href": "lectures/12a.html#plot-3",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ bs(x, knots = c(-0.25, 0.25))) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#natural-splines",
+    "href": "lectures/12a.html#natural-splines",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Natural Splines",
+    "text": "Natural Splines\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ ns(x, knots = c(-0.25, 0.25))) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12a.html#cubic-splines-in-r",
+    "href": "lectures/12a.html#cubic-splines-in-r",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Cubic Splines in R",
+    "text": "Cubic Splines in R\nThe bs() function in R from the splines package will construct the basis matrix to be fitted in the lm function. You will need to specify the locations of the knots. By default, the cubic splines are provided:\n\nlm(y ~ bs(x, knots = c()),\n   data)"
+  },
+  {
+    "objectID": "lectures/12a.html#cubic-splines-in-r-1",
+    "href": "lectures/12a.html#cubic-splines-in-r-1",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Cubic Splines in R",
+    "text": "Cubic Splines in R\nThe ns() function in R from the splines package will construct the basis matrix for natural cubic splines. You will need to specify the locations of the knots.\n\nlm(y ~ ns(x, knots = c()),\n   data)"
+  },
+  {
+    "objectID": "lectures/12b.html#plot",
+    "href": "lectures/12b.html#plot",
+    "title": "Nonparametric Regression",
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+  },
+  {
+    "objectID": "lectures/12b.html#plot-1",
+    "href": "lectures/12b.html#plot-1",
+    "title": "Nonparametric Regression",
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+  },
+  {
+    "objectID": "lectures/12b.html#regression-splines",
+    "href": "lectures/12b.html#regression-splines",
+    "title": "Nonparametric Regression",
+    "section": "Regression Splines",
+    "text": "Regression Splines\nFor \\(L\\) knots:\n\\[\nY = \\beta_0 + \\sum^p_{j=1}x^j\\beta_j + \\sum_{l=1}^L \\beta_{p+l}(x - \\xi_l)^p_+ + \\varepsilon\n\\]"
+  },
+  {
+    "objectID": "lectures/12b.html#issues-with-regression-splines",
+    "href": "lectures/12b.html#issues-with-regression-splines",
+    "title": "Nonparametric Regression",
+    "section": "Issues with Regression Splines",
+    "text": "Issues with Regression Splines\n\n\nMust specify a correct number of knots\nMust specify the correct location of knots\nMust specify the degree p"
+  },
+  {
+    "objectID": "lectures/12b.html#solutions",
+    "href": "lectures/12b.html#solutions",
+    "title": "Nonparametric Regression",
+    "section": "Solutions",
+    "text": "Solutions\n\n\nUse \\(p=3\\), performs the best\nImplement a penalty term"
+  },
+  {
+    "objectID": "lectures/12b.html#smooting-parameter",
+    "href": "lectures/12b.html#smooting-parameter",
+    "title": "Nonparametric Regression",
+    "section": "Smooting Parameter",
+    "text": "Smooting Parameter\nA smoothing (penalty) parameter will allow us to specify a large number of knots to grid up the range of X.\n\nThe smoothing parameter will will force the effect of certain knots to zero that are not relevant.\n\n\nAs long as we choose a high number of knots (20-30), it will properly model the data without the worry of overfitting.\n\n\nThe smoothing parameter can be estimated by using a cross-validation approach and identifying the which values lowers the MSE."
+  },
+  {
+    "objectID": "lectures/12b.html#likelihood-function",
+    "href": "lectures/12b.html#likelihood-function",
+    "title": "Nonparametric Regression",
+    "section": "Likelihood Function",
+    "text": "Likelihood Function\n\\[\n\\sum^n_{i=1}\\{Y_i-g(X_i)\\}^2 + \\lambda\\int g^{\\prime\\prime}(t)^2dt\n\\]\n\n\\(g(\\cdot)\\): function used to model data (using cubic splines)\n\\(\\lambda\\): smoothing parameter"
+  },
+  {
+    "objectID": "lectures/12b.html#smoothing-splines-in-r",
+    "href": "lectures/12b.html#smoothing-splines-in-r",
+    "title": "Nonparametric Regression",
+    "section": "Smoothing Splines in R",
+    "text": "Smoothing Splines in R\n\nsmooth.spline(x, # Vector of predictor\n              y, # Vector of outcome\n              cv = TRUE, # Indicates to use LOOCV\n              nknots) # number of knots; can use default"
+  },
+  {
+    "objectID": "lectures/12b.html#example",
+    "href": "lectures/12b.html#example",
+    "title": "Nonparametric Regression",
+    "section": "Example",
+    "text": "Example\nFit a smoothing spline model with the following simulated data. Search through the help documentation to print out \\(\\lambda\\).\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)"
+  },
+  {
+    "objectID": "lectures/12b.html#local-neighborhood",
+    "href": "lectures/12b.html#local-neighborhood",
+    "title": "Nonparametric Regression",
+    "section": "Local Neighborhood",
+    "text": "Local Neighborhood\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nxx &lt;- seq(from = range(x)[1], to = range(x)[2], by = 0.3)\n\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_vline(xintercept = xx, col = \"red\", lty = 2) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12b.html#local-regression-1",
+    "href": "lectures/12b.html#local-regression-1",
+    "title": "Nonparametric Regression",
+    "section": "Local Regression",
+    "text": "Local Regression"
+  },
+  {
+    "objectID": "lectures/12b.html#local-constant-model",
+    "href": "lectures/12b.html#local-constant-model",
+    "title": "Nonparametric Regression",
+    "section": "Local Constant Model",
+    "text": "Local Constant Model\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  stat_smooth(method = stats::loess, \n              method.args = list(degree = 0,\n                                 span = 0.05)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12b.html#local-linear-model",
+    "href": "lectures/12b.html#local-linear-model",
+    "title": "Nonparametric Regression",
+    "section": "Local Linear Model",
+    "text": "Local Linear Model\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  stat_smooth(method = stats::loess, \n              method.args = list(degree = 1,\n                                 span = 0.05)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12b.html#local-models",
+    "href": "lectures/12b.html#local-models",
+    "title": "Nonparametric Regression",
+    "section": "Local Models",
+    "text": "Local Models\nLocal models will construct a curve to model the data based on a set of given grid points.\n\nThe grid points are selected by taking the range of X and choosing values that are equidistant from each other in X.\n\n\nAt each grid point, fit a model based on the data points within its neighborhood.\n\n\nData points closer to each grid point will have more importance than data points further away."
+  },
+  {
+    "objectID": "lectures/12b.html#importance-weights",
+    "href": "lectures/12b.html#importance-weights",
+    "title": "Nonparametric Regression",
+    "section": "Importance (Weights)",
+    "text": "Importance (Weights)"
   }
 ]

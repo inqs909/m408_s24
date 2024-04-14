@@ -13,10 +13,11 @@
 <script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Model Selection</title>
+  <title>MATH 408 - Moving Beyond Linear Functions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -401,448 +402,379 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Model Selection</h1>
+  <h1 class="title">Moving Beyond Linear Functions</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="learning-outcomes" class="slide level2">
-<h2>Learning Outcomes</h2>
-<ul>
-<li><p>Selection Criteria</p></li>
-<li><p>Subset Selection</p></li>
-<li><p>Shrinkage Methods</p></li>
-</ul>
-</section>
-<section id="model-building" class="slide level2">
-<h2>Model Building</h2>
-<p>When given a set of predictors, we want to build a model that only contains predictors that best fits the data, without overfitting.</p>
-</section>
-<section id="model-building-1" class="slide level2">
-<h2>Model Building</h2>
-<p>Ideally, we always want to choose a parsimonious model that best describes the outcome variable. The more predictors into the model, the less parsimonious and less powerful.</p>
-<p>Choosing the best model can be done based on selection criteria such as Mallow’s <span class="math inline">\(C_p\)</span>, AIC, AICc, BIC, and adjusted <span class="math inline">\(R^2\)</span>.</p>
-</section>
 <section>
-<section id="selection-criteria" class="title-slide slide level1 center">
-<h1>Selection Criteria</h1>
+<section id="motivating-example" class="title-slide slide level1 agenda-slide center">
+<h1>Motivating Example</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Polynomial Functions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Step Functions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Regression Splines</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="plot" class="slide level2">
+<h2>Plot</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
-</section>
-<section id="mallows-c_p" class="slide level2">
-<h2>Mallow’s <span class="math inline">\(C_p\)</span></h2>
-<p><span class="math display">\[
-C_p = \frac{1}{n}(RSS + 2 d \hat \sigma^2)
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(RSS\)</span>: Residual Sum of Squares</p></li>
-<li><p><span class="math inline">\(\hat \sigma^2\)</span>: Mean Square Error</p></li>
-<li><p><span class="math inline">\(d\)</span>: number of predictors</p></li>
-<li><p>Lower is better</p></li>
-</ul>
-</section>
-<section id="aikaike-information-criteria-aic" class="slide level2">
-<h2>Aikaike Information Criteria (AIC)</h2>
-<p><span class="math display">\[
-\frac{1}{n\hat\sigma^2}(RSS+2d\hat\sigma^2)
-\]</span></p>
-<ul>
-<li>Lower is Better</li>
-</ul>
-</section>
-<section id="bayesian-information-criteria-bic" class="slide level2">
-<h2>Bayesian Information Criteria (BIC)</h2>
-<p><span class="math display">\[
-\frac{1}{n\hat\sigma^2}\{RSS+\log(n)d\hat\sigma^2\}
-\]</span></p>
-<ul>
-<li>Lower is better</li>
-</ul>
-</section>
-<section id="r2" class="slide level2">
-<h2><span class="math inline">\(R^2\)</span></h2>
-<p><span class="math display">\[
-1-\frac{RSS}{TSS}
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(RSS=\sum^n_{i=1}(y_i-\hat y_i)^2\)</span></p></li>
-<li><p><span class="math inline">\(TSS=\sum^n_{i=1}(y_i-\bar y)^2\)</span></p></li>
-<li><p>Higher is Better</p></li>
-</ul>
-</section>
-<section id="adjusted-r2" class="slide level2">
-<h2>Adjusted <span class="math inline">\(R^2\)</span></h2>
-<p><span class="math display">\[
-1-\frac{RSS/(n-d-1)}{
-TSS/(n-1)}
-\]</span></p>
-<ul>
-<li>Higher is Better</li>
-</ul>
-</section></section>
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="plot-1" class="slide level2">
+<h2>Plot</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">3.5</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fu">sinpi</span>(x<span class="sc">/</span><span class="dv">8</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
 <section>
-<section id="subset-selection" class="title-slide slide level1 center">
-<h1>Subset Selection</h1>
-
-</section>
-<section id="model-building-2" class="slide level2">
-<h2>Model Building</h2>
+<section id="polynomial-functions" class="title-slide slide level1 agenda-slide center">
+<h1>Polynomial Functions</h1>
+<div class="agenda">
 <ul>
-<li><p>Best Subset Model</p>
-<ul>
-<li>Fit all models and select the best model based criteria</li>
-</ul></li>
-<li><p>Forward Stepwise Model Building</p>
-<ul>
-<li>Begin with the null model (<span class="math inline">\(Y\sim 1\)</span>) and add variables until a final model is chosen.</li>
-</ul></li>
-<li><p>Backward Stepwise Model Building</p>
-<ul>
-<li>Begin with the full model, and remove variable until the final model is chosen.</li>
-</ul></li>
-<li><p>Hybrid Stepwise Regression</p>
-<ul>
-<li>A hybrid approach between the forward and backward building approach.</li>
-</ul></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Polynomial Functions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Step Functions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Regression Splines</p>
+</div></li>
 </ul>
-</section>
-<section id="best-subset-model-building" class="slide level2">
-<h2>Best Subset Model Building</h2>
-<ol type="1">
-<li>Begin with the null model, no predictors</li>
-<li>For <span class="math inline">\(k=1,\ldots, p\)</span> (number of predictors):
-<ol type="1">
-<li><p>Fit all <span class="math inline">\(\left(^p_k\right)\)</span> models that contain <span class="math inline">\(k\)</span> predictors</p></li>
-<li><p>Define <span class="math inline">\(M_k\)</span> as the model with the largest <span class="math inline">\(R²\)</span></p></li>
-</ol></li>
-<li>The final model is the model <span class="math inline">\(M_k\)</span> based on selection criteria</li>
-</ol>
-</section>
-<section id="forward-stepwise-model-building" class="slide level2">
-<h2>Forward Stepwise Model Building</h2>
-<ol type="1">
-<li>Begin with the null model, no predictors</li>
-<li>For <span class="math inline">\(k=0,\ldots, p-1\)</span> (number of predictors):
-<ol type="1">
-<li><p>Fit all <span class="math inline">\(p-k\)</span> models that adds one new predictor to the orginal model containing <span class="math inline">\(k\)</span> predictors</p></li>
-<li><p>Define <span class="math inline">\(M_{k+1}\)</span> as the model with the largest <span class="math inline">\(R²\)</span> among <span class="math inline">\(p-k\)</span> models</p></li>
-</ol></li>
-<li>The final model is the model <span class="math inline">\(M_(k+1)\)</span> based on selection criteria</li>
-</ol>
-</section>
-<section id="backward-stepwise-model-building" class="slide level2">
-<h2>Backward Stepwise Model Building</h2>
-<ol type="1">
-<li>Begin with the full model <span class="math inline">\(M_p\)</span>, with all predictors</li>
-<li>For <span class="math inline">\(k=p,p-1, \ldots, 1\)</span> (number of predictors):
-<ol type="1">
-<li><p>Fit all models that contain <span class="math inline">\(k-1\)</span> predictors</p></li>
-<li><p>Define <span class="math inline">\(M_{k-1}\)</span> as the model with the largest <span class="math inline">\(R²\)</span></p></li>
-</ol></li>
-<li>The final model is the model <span class="math inline">\(M_k\)</span> based on selection criteria</li>
-</ol>
-</section>
-<section id="r-code" class="slide level2">
-<h2>R Code</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(leaps)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">regsubsets</span>(y <span class="sc">~</span> ., data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="full-subset" class="slide level2">
-<h2>Full Subset</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Code</a></li><li><a href="#tabset-1-2">Summary</a></li><li><a href="#tabset-1-3">Plot</a></li><li><a href="#tabset-1-4">Model</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(leaps)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-1-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>sum_lm_full <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_full)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">print</span>(sum_lm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Subset selection object
-#&gt; Call: regsubsets.formula(mpg ~ ., data = mtcars)
-#&gt; 10 Variables  (and intercept)
-#&gt;      Forced in Forced out
-#&gt; cyl      FALSE      FALSE
-#&gt; disp     FALSE      FALSE
-#&gt; hp       FALSE      FALSE
-#&gt; drat     FALSE      FALSE
-#&gt; wt       FALSE      FALSE
-#&gt; qsec     FALSE      FALSE
-#&gt; vs       FALSE      FALSE
-#&gt; am       FALSE      FALSE
-#&gt; gear     FALSE      FALSE
-#&gt; carb     FALSE      FALSE
-#&gt; 1 subsets of each size up to 8
-#&gt; Selection Algorithm: exhaustive
-#&gt;          cyl disp hp  drat wt  qsec vs  am  gear carb
-#&gt; 1  ( 1 ) " " " "  " " " "  "*" " "  " " " " " "  " " 
-#&gt; 2  ( 1 ) "*" " "  " " " "  "*" " "  " " " " " "  " " 
-#&gt; 3  ( 1 ) " " " "  " " " "  "*" "*"  " " "*" " "  " " 
-#&gt; 4  ( 1 ) " " " "  "*" " "  "*" "*"  " " "*" " "  " " 
-#&gt; 5  ( 1 ) " " "*"  "*" " "  "*" "*"  " " "*" " "  " " 
-#&gt; 6  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" " "  " " 
-#&gt; 7  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  " " 
-#&gt; 8  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  "*"</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-1-3">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plot</span>(sum_lm_full<span class="sc">$</span>cp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="12a_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-4">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">coef</span>(lm_full,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; (Intercept)          wt        qsec          am 
-#&gt;    9.617781   -3.916504    1.225886    2.935837</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="simple-linear-regression" class="slide level2">
+<h2>Simple Linear Regression</h2>
+<p>Simple Linear Regression models the association between one predictor <code>X</code> and an outcome <code>Y</code>:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon
+\]</span></p>
 </section>
-<section id="forward-model-building" class="slide level2">
-<h2>Forward Model Building</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Code</a></li><li><a href="#tabset-2-2">Summary</a></li><li><a href="#tabset-2-3">Plot</a></li><li><a href="#tabset-2-4">Model</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars,</span>
-<span id="cb8-2"><a href="#cb8-2"></a>                      <span class="at">method =</span>  <span class="st">"forward"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-2-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>sum_lm_full <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_full)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">print</span>(sum_lm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Subset selection object
-#&gt; Call: regsubsets.formula(mpg ~ ., data = mtcars, method = "forward")
-#&gt; 10 Variables  (and intercept)
-#&gt;      Forced in Forced out
-#&gt; cyl      FALSE      FALSE
-#&gt; disp     FALSE      FALSE
-#&gt; hp       FALSE      FALSE
-#&gt; drat     FALSE      FALSE
-#&gt; wt       FALSE      FALSE
-#&gt; qsec     FALSE      FALSE
-#&gt; vs       FALSE      FALSE
-#&gt; am       FALSE      FALSE
-#&gt; gear     FALSE      FALSE
-#&gt; carb     FALSE      FALSE
-#&gt; 1 subsets of each size up to 8
-#&gt; Selection Algorithm: forward
-#&gt;          cyl disp hp  drat wt  qsec vs  am  gear carb
-#&gt; 1  ( 1 ) " " " "  " " " "  "*" " "  " " " " " "  " " 
-#&gt; 2  ( 1 ) "*" " "  " " " "  "*" " "  " " " " " "  " " 
-#&gt; 3  ( 1 ) "*" " "  "*" " "  "*" " "  " " " " " "  " " 
-#&gt; 4  ( 1 ) "*" " "  "*" " "  "*" " "  " " "*" " "  " " 
-#&gt; 5  ( 1 ) "*" " "  "*" " "  "*" "*"  " " "*" " "  " " 
-#&gt; 6  ( 1 ) "*" "*"  "*" " "  "*" "*"  " " "*" " "  " " 
-#&gt; 7  ( 1 ) "*" "*"  "*" "*"  "*" "*"  " " "*" " "  " " 
-#&gt; 8  ( 1 ) "*" "*"  "*" "*"  "*" "*"  " " "*" "*"  " "</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-2-3">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">plot</span>(sum_lm_full<span class="sc">$</span>bic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="12a_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-4">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">coef</span>(lm_full,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; (Intercept)         cyl          wt 
-#&gt;   39.686261   -1.507795   -3.190972</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="polynomial-regression" class="slide level2">
+<h2>Polynomial Regression</h2>
+<p>Polynomial Regression models the association between predictor <code>X</code> and outcome <code>Y</code> with a polynomial function. For example, <code>X</code> can be related with <code>Y</code> with a cubic polynomial:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \beta_3 X^3  + \varepsilon
+\]</span></p>
 </section>
-<section id="backward-model-building" class="slide level2">
-<h2>Backward Model Building</h2>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Summary</a></li><li><a href="#tabset-3-3">Plot</a></li><li><a href="#tabset-3-4">Model</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">regsubsets</span>(mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars,</span>
-<span id="cb14-2"><a href="#cb14-2"></a>                      <span class="at">method =</span>  <span class="st">"backward"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-3-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>sum_lm_full <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm_full)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">print</span>(sum_lm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Subset selection object
-#&gt; Call: regsubsets.formula(mpg ~ ., data = mtcars, method = "backward")
-#&gt; 10 Variables  (and intercept)
-#&gt;      Forced in Forced out
-#&gt; cyl      FALSE      FALSE
-#&gt; disp     FALSE      FALSE
-#&gt; hp       FALSE      FALSE
-#&gt; drat     FALSE      FALSE
-#&gt; wt       FALSE      FALSE
-#&gt; qsec     FALSE      FALSE
-#&gt; vs       FALSE      FALSE
-#&gt; am       FALSE      FALSE
-#&gt; gear     FALSE      FALSE
-#&gt; carb     FALSE      FALSE
-#&gt; 1 subsets of each size up to 8
-#&gt; Selection Algorithm: backward
-#&gt;          cyl disp hp  drat wt  qsec vs  am  gear carb
-#&gt; 1  ( 1 ) " " " "  " " " "  "*" " "  " " " " " "  " " 
-#&gt; 2  ( 1 ) " " " "  " " " "  "*" "*"  " " " " " "  " " 
-#&gt; 3  ( 1 ) " " " "  " " " "  "*" "*"  " " "*" " "  " " 
-#&gt; 4  ( 1 ) " " " "  "*" " "  "*" "*"  " " "*" " "  " " 
-#&gt; 5  ( 1 ) " " "*"  "*" " "  "*" "*"  " " "*" " "  " " 
-#&gt; 6  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" " "  " " 
-#&gt; 7  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  " " 
-#&gt; 8  ( 1 ) " " "*"  "*" "*"  "*" "*"  " " "*" "*"  "*"</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-3">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">plot</span>(sum_lm_full<span class="sc">$</span>adjr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="12a_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-3-4">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">coef</span>(lm_full,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; (Intercept)        disp          hp        drat          wt        qsec 
-#&gt; 10.71061639  0.01310313 -0.02179818  1.02065283 -4.04454214  0.99072948 
-#&gt;          am 
-#&gt;  2.98468801</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="finding-estimates-of-boldsymbol-beta" class="slide level2">
+<h2>Finding estimates of <span class="math inline">\(\boldsymbol \beta\)</span></h2>
+<p>The estimates of <span class="math inline">\(\boldsymbol \beta\)</span> can be found by minimizing the following least squares formula for a given data set:</p>
+<p><span class="math display">\[
+L(\boldsymbol \beta) = \sum^n_{i=1}(Y_i-\hat Y_i)^2
+\]</span></p>
+<p><span class="math display">\[
+\hat Y_i = \hat \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + \beta_3 X_i^3
+\]</span></p>
 </section>
-<section id="selection-critera" class="slide level2">
-<h2>Selection Critera</h2>
-</section></section>
-<section>
-<section id="shrinkage-methods" class="title-slide slide level1 center">
-<h1>Shrinkage Methods</h1>
+<section id="polynomial-functions-in-glms" class="slide level2">
+<h2>Polynomial Functions in GLMs</h2>
+<p>Polynomial functions can be utilized in GLMs as well. The model below is for a logistic model:</p>
+<p><span class="math display">\[
+P(Y=1|X) = \frac{\exp\left\{ \beta_0 + \sum^3_{j=1}\beta_j X^j \right\}}{1 +\exp \left\{  \beta_0 + \sum^3_{j=1}\beta_j X^j\right\}}
+\]</span></p>
+</section>
+<section id="fitting-a-linear-model" class="slide level2">
+<h2>Fitting a Linear Model</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
-</section>
-<section id="shrinkage-methods-1" class="slide level2">
-<h2>Shrinkage Methods</h2>
-<p>Shrinkage methods are techniques that will reduce a full parameterized model (a high number of predictors) to a lower parameterized model (a smaller number of predictors).</p>
-</section>
-<section id="ridge-regression" class="slide level2">
-<h2>Ridge Regression</h2>
-<p>Ridge regression incorporates a shrinkage penalty term to the least squares formula. The shrinkage penalty term will reduce the <span class="math inline">\(\beta\)</span> coefficients towards 0 based on a penalty parameter (<span class="math inline">\(\lambda\)</span>)</p>
-</section>
-<section id="ridge-regression-1" class="slide level2">
-<h2>Ridge Regression</h2>
-<p><span class="math display">\[
-\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}\beta_j^2
-\]</span></p>
-</section>
-<section id="lasso" class="slide level2">
-<h2>LASSO</h2>
-<p>Least Absolute Shrinkage and Selection Operator (LASSO) is known as a shrinkage method which forces <span class="math inline">\(\beta\)</span> coefficients that do not have a significant predicit power towards and possibly equal to 0.</p>
-</section>
-<section id="lasso-1" class="slide level2">
-<h2>LASSO</h2>
-<p><span class="math display">\[
-\sum^n_{i=1}\left(Y_i-\beta_0 +\sum^p_{j=1}X_{ij}\beta_j\right)^2 + \lambda\sum^p_{j=1}|\beta_j|
-\]</span></p>
-</section>
-<section id="why-ridge-or-lasso" class="slide level2">
-<h2>Why Ridge or LASSO?</h2>
-<p>Each method is capable on identifying the optimum MSE for the Bias-Variance trade-off scenario. This will lead to a lower prediction error. The key is to find the optimal penalty parameter. This can be done with a Cross-Validation technique (next lecture).</p>
-</section>
-<section id="ridge-regression-in-r" class="slide level2">
-<h2>Ridge Regression in R</h2>
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="fitting-a-model" class="slide level2">
+<h2>Fitting a Model</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">glmnet</span>(x,</span>
-<span id="cb20-3"><a href="#cb20-3"></a>       y,</span>
-<span id="cb20-4"><a href="#cb20-4"></a>       <span class="at">alpha =</span> <span class="dv">0</span>,</span>
-<span id="cb20-5"><a href="#cb20-5"></a>       lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="polynomial-functions-in-r" class="slide level2">
+<h2>Polynomial Functions in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="at">degree =</span> p),</span>
+<span id="cb5-2"><a href="#cb5-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="lasso-in-r" class="slide level2">
-<h2>LASSO in R</h2>
+<section id="individual-terms-in-r" class="slide level2">
+<h2>Individual terms in R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">glmnet</span>(x,</span>
-<span id="cb21-3"><a href="#cb21-3"></a>       y,</span>
-<span id="cb21-4"><a href="#cb21-4"></a>       <span class="at">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb21-5"><a href="#cb21-5"></a>       lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">3</span>),</span>
+<span id="cb6-2"><a href="#cb6-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
+<p>Simulate the data below a fit a quadratic, cubic, and quartic model. Compute the mean squared error and <span class="math inline">\(R^2\)</span> for each model.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb22-4"><a href="#cb22-4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
-<span id="cb22-5"><a href="#cb22-5"></a>mod <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="at">data =</span> _) <span class="co"># Must include -1 to remove intercept, needed for glmnet</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>ridge_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
-<span id="cb22-8"><a href="#cb22-8"></a>                    <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
-<span id="cb22-9"><a href="#cb22-9"></a>                    <span class="at">alpha =</span> <span class="dv">0</span>,</span>
-<span id="cb22-10"><a href="#cb22-10"></a>                    <span class="at">lambda =</span> <span class="fl">1.3</span>) <span class="co"># lambda was chosen at random</span></span>
-<span id="cb22-11"><a href="#cb22-11"></a><span class="fu">coef</span>(ridge_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm 
-#&gt;       -6400.54459          50.53481          17.07967           3.60524</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section></section>
+<section>
+<section id="step-functions" class="title-slide slide level1 agenda-slide center">
+<h1>Step Functions</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Polynomial Functions</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Step Functions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Regression Splines</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="stepwise-function" class="slide level2">
+<h2>Stepwise Function</h2>
+<p>Stepwise Function will add horizontal lines to best explain the data at different ranges of <code>X</code>.</p>
+</section>
+<section id="plot-2" class="slide level2">
+<h2>Plot</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">library</span>(splines)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">cut</span>(x, <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="constructing-model" class="slide level2">
+<h2>Constructing Model</h2>
+<div>
+<ul>
+<li class="fragment">Divide the range of <code>X</code> with <code>k</code> different intervals.</li>
+<li class="fragment">Create <code>k-1</code> dummy variables indicating if the value <code>X</code> belongs to the interval or not.</li>
+<li class="fragment">Construct a model incorporating all dummy variable and their corresponding coefficient.</li>
+<li class="fragment">Find the estimates of the model by minimizing the Least Squares Estimator.</li>
+</ul>
+</div>
+</section>
+<section id="step-functions-in-r" class="slide level2">
+<h2>Step Functions in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">cut</span>(x, <span class="dv">10</span>),</span>
+<span id="cb9-2"><a href="#cb9-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
+<p>Simulate the data below a fit step regression model with 10, 20, and 30 steps. Compute the mean squared error and <span class="math inline">\(R^2\)</span> for each model.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>lasso_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
-<span id="cb24-2"><a href="#cb24-2"></a>                    <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
-<span id="cb24-3"><a href="#cb24-3"></a>                    <span class="at">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb24-4"><a href="#cb24-4"></a>                    <span class="at">lambda =</span> <span class="fl">1.3</span>) <span class="co"># lambda was chosen at random</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a><span class="fu">coef</span>(lasso_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm 
-#&gt;      -6372.371080         50.530548         16.241920          3.311152</code></pre>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section></section>
+<section>
+<section id="regression-splines" class="title-slide slide level1 agenda-slide center">
+<h1>Regression Splines</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Motivating Example</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Polynomial Functions</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Step Functions</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Regression Splines</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="basis-functions" class="slide level2">
+<h2>Basis Functions</h2>
+<p>Basis functions model the outcome <code>Y</code> with a set of predefined functions on <code>X</code>:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \sum^p_{j=1}\beta_jb_j(X) + \varepsilon
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\boldsymbol \beta\)</span>: Regression Coefficients</li>
+<li><span class="math inline">\(b_j(\cdot)\)</span>: basis functions</li>
+</ul>
+<div class="fragment">
+<p><span class="math inline">\(b_j(\cdot)\)</span> is allowed to be any function we define</p>
+</div>
+</section>
+<section id="knots" class="slide level2">
+<h2>Knots</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x <span class="sc">*</span> (x<span class="sc">&gt;</span><span class="dv">0</span>))) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="more-knots" class="slide level2">
+<h2>More Knots</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">bs</span>(x, <span class="at">knots =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="dv">0</span>, <span class="fl">0.25</span>), <span class="at">degree =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.25</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> .<span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="sc">-</span><span class="fl">0.25</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> .<span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> .<span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<section id="truncated-power-basis-function" class="slide level2">
+<h2>Truncated Power Basis Function</h2>
+<p>Once the number of knots and locations are chosen, a common basis function to utilize is the truncated power function:</p>
+<p><span class="math display">\[
+h(x,\xi_l) = (x-\xi_l)_+^p = \left\{
+\begin{array}{cc}
+(x-\xi_l)^p &amp; x&gt;\xi_l\\
+0 &amp; \mathrm{Otherwise}
+\end{array}
+\right.
+\]</span></p>
+</section>
+<section id="spline-function" class="slide level2">
+<h2>Spline Function</h2>
+<p>For <span class="math inline">\(L\)</span> knots:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \sum^p_{j=1}x^p\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{p+l} + \varepsilon
+\]</span></p>
+</section>
+<section id="spline-functions-constraints" class="slide level2">
+<h2>Spline Functions Constraints</h2>
+<p>When choosing basis functions, we want maintain the following constraints at the location of the knots:</p>
+<div>
+<ul>
+<li class="fragment">Continuous</li>
+<li class="fragment">First Differentiable</li>
+<li class="fragment">Second Differentiable</li>
+</ul>
+</div>
+<div class="fragment">
+<p>A common choice is to use a cubic spline function</p>
+</div>
+</section>
+<section id="cubic-splines" class="slide level2">
+<h2>Cubic Splines</h2>
+<p>For <span class="math inline">\(L\)</span> knots:</p>
+<p><span class="math display">\[
+Y = \beta_0 + \sum^3_{j=1}x^p\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{3+l} + \varepsilon
+\]</span></p>
+</section>
+<section id="plot-3" class="slide level2">
+<h2>Plot</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">bs</span>(x, <span class="at">knots =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="fl">0.25</span>))) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<section id="natural-splines" class="slide level2">
+<h2>Natural Splines</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="fu">aes</span>(x,y)) <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">ns</span>(x, <span class="at">knots =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.25</span>, <span class="fl">0.25</span>))) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="12a_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section id="cubic-splines-in-r" class="slide level2">
+<h2>Cubic Splines in R</h2>
+<p>The <code>bs()</code> function in R from the <code>splines</code> package will construct the basis matrix to be fitted in the <code>lm</code> function. You will need to specify the locations of the knots. By default, the cubic splines are provided:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">bs</span>(x, <span class="at">knots =</span> <span class="fu">c</span>()),</span>
+<span id="cb15-2"><a href="#cb15-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cubic-splines-in-r-1" class="slide level2">
+<h2>Cubic Splines in R</h2>
+<p>The <code>ns()</code> function in R from the <code>splines</code> package will construct the basis matrix for natural cubic splines. You will need to specify the locations of the knots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">ns</span>(x, <span class="at">knots =</span> <span class="fu">c</span>()),</span>
+<span id="cb16-2"><a href="#cb16-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">

@@ -1,0 +1,212 @@
+---
+title: "Tree-Based Methods"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: true
+    message: false
+    warnings: false
+    comment: "#>" 
+    
+revealjs-plugins:
+  - pointer
+  - verticator
+  
+filters: 
+  - reveal-header
+  - code-fullscreen
+
+editor: visual
+---
+
+## Learning Outcomes
+
+-   Trees
+
+-   Pruning
+
+-   Classification Trees
+
+-   Regression Trees
+
+-   R Examples
+
+# Trees
+
+## Trees
+
+A Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.
+
+::: fragment
+Trees will split a region based on a predictors ability to reduce the overall mean squared error.
+:::
+
+::: fragment
+Trees are sometimes preferred to linear models due to the visual explanation of the model.
+:::
+
+## Trees
+
+![](https://www.mathworks.com/help/stats/simpleregressiontree.png){fig-align="center"}
+
+## Fitting a Tree
+
+1.  Start with the entire dataset and define the maximum number of regions or number of observations per region of the tree.
+2.  Calculate the MSE of the dataset.
+3.  For each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.
+4.  Create a node in the tree with the selected split as the split criterion.
+5.  Repeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small.
+
+# Pruning
+
+## Pruning
+
+Pruning is the process that will remove branches from a regression tree in order to prevent overfitting.
+
+::: fragment
+This will result in a subtree that has high predictive power with no overfitting.
+:::
+
+::: fragment
+Due to the computational burden of pruning, it is recommended to implement *Cost Complexity Pruning.*
+:::
+
+## Cost Complexity Pruning
+
+Let $\alpha$ be nonnegative tuning parameter that indexes a sequence of trees. Identify the tree that reduces:
+
+$$
+\sum^{|T|}_{m=1}\sum_{i:\ x_i \in R_m}(y_i-\hat y_{R_m})^2 +\alpha|T|
+$$
+
+-   $|T|$: Number of terminal nodes
+
+-   $R_m$: rectangular region containing data
+
+-   $y_i$: observed value
+
+-   $\hat y_{R_m}$: predicted value in rectangular region.
+
+## Pruning Algorithm
+
+1.  Conduct a fitting algorithm to find the largest tree from the training data. Stop once every region has a small number of observations.
+2.  Apply the cost complexity pruning algorithm to identify the best subset of trees.
+3.  Use a K-fold cross-validation approach to choose the proper $\alpha$. For each kth fold:
+    1.  Repeat steps 1 and 2.
+    2.  Evaluate the mean squared prediction error as a function of $\alpha$.
+4.  Average the results for each value of $\alpha$. Pick the $\alpha$ that minimizes the error.
+5.  Return the subtree with the selected $\alpha$ from step 2
+
+# Classification Trees
+
+## Classification Trees
+
+Classification Trees will construct a tree that will classify data based on the region (leaf) you land. The class majority is what is classified.
+
+## Criterion: Gini Index
+
+The Gini Index is used to determine the error rate in classification trees:
+
+$$
+G = \sum^K_{k=1} \hat p_{mk}(1-\hat p_{mk})
+$$
+
+# Regression Trees
+
+## Regression Trees
+
+Regression trees will construct a tree and predict the value of the outcome based on the average value of the region (leaf).
+
+Trees are constructed by minimizing the residual sums of square.
+
+# R Code
+
+## Regression Trees
+
+::: panel-tabset
+### Code
+
+```{r}
+library(tree)
+library(palmerpenguins)
+library(tidyverse)
+library(magrittr)
+df <- penguins %>% drop_na()
+train <- sample(1:nrow(df), nrow(df)/2)
+tree_penguin <- penguins %$% tree(body_mass_g ~ flipper_length_mm + bill_length_mm + bill_depth_mm, subset = train)
+```
+
+### Plot
+
+```{r}
+plot(tree_penguin)
+text(tree_penguin, pretty = 0)
+```
+:::
+
+## Classification Trees
+
+::: panel-tabset
+### Code
+
+```{r}
+library(tree)
+library(palmerpenguins)
+library(tidyverse)
+library(magrittr)
+df <- penguins %>% drop_na()
+train <- sample(1:nrow(df), nrow(df)/2)
+tree_penguin_class <- df %$% tree(species ~ body_mass_g + flipper_length_mm + bill_length_mm + bill_depth_mm, subset = train)
+```
+
+### Plot
+
+```{r}
+plot(tree_penguin_class)
+text(tree_penguin_class, pretty = 0)
+```
+:::
+
+## Pruning
+
+::: panel-tabset
+### Code
+
+```{r}
+attach(df)
+tree_penguin_cv <- cv.tree(tree_penguin)
+```
+
+### Summary
+
+```{r}
+tree_penguin_cv
+```
+
+### Plot
+
+```{r}
+plot(tree_penguin_cv$size,
+     tree_penguin_cv$dev, type = "b")
+```
+
+### Pruning
+
+```{r}
+prune_best <- prune.tree(tree_penguin, best = 7)
+plot(prune_best)
+text(prune_best, pretty = 0)
+```
+:::
