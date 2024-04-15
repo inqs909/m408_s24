@@ -4057,7 +4057,7 @@
     "href": "lectures/12a.html#finding-estimates-of-boldsymbol-beta",
     "title": "Moving Beyond Linear Functions",
     "section": "Finding estimates of \\(\\boldsymbol \\beta\\)",
-    "text": "Finding estimates of \\(\\boldsymbol \\beta\\)\nThe estimates of \\(\\boldsymbol \\beta\\) can be found by minimizing the following least squares formula for a given data set:\n\\[\nL(\\boldsymbol \\beta) = \\sum^n_{i=1}(Y_i-\\hat Y_i)^2\n\\]\n\\[\n\\hat Y_i = \\hat \\beta_0 + \\beta_1 X_i + \\beta_2 X_i^2 + \\beta_3 X_i^3\n\\]"
+    "text": "Finding estimates of \\(\\boldsymbol \\beta\\)\nThe estimates of \\(\\boldsymbol \\beta\\) can be found by minimizing the following least squares formula for a given data set:\n\\[\nL(\\boldsymbol \\beta) = \\sum^n_{i=1}(Y_i-\\hat Y_i)^2\n\\]\n\\[\n\\hat Y_i = \\hat \\beta_0 + \\hat\\beta_1 X_i + \\hat\\beta_2 X_i^2 + \\hat\\beta_3 X_i^3\n\\]"
   },
   {
     "objectID": "lectures/12a.html#polynomial-functions-in-glms",
