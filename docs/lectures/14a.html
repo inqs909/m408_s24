@@ -410,20 +410,266 @@
 <section id="learning-outcomes" class="slide level2">
 <h2>Learning Outcomes</h2>
 <ul>
-<li>Support Vector Machine</li>
-<li>R Code</li>
+<li>Maximal Margin Classifier</li>
+<li>Support Vector Classifier</li>
+<li>Support Vector Machines</li>
 </ul>
 </section>
 <section>
-<section id="support-vector-machines" class="title-slide slide level1 center">
-<h1>Support Vector Machines</h1>
+<section id="maximal-margin-classifier" class="title-slide slide level1 center">
+<h1>Maximal Margin Classifier</h1>
 
 </section>
 <section id="motivating-example" class="slide level2">
 <h2>Motivating Example</h2>
 
+<img data-src="14a_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="maximal-margin-classifier-1" class="slide level2">
+<h2>Maximal Margin Classifier</h2>
+<p>The <strong>Maximal Margin Classifier</strong> will impose a hyperplane on a graph that will classify the data given a vector of predictor variables.</p>
+</section>
+<section id="hyperplane" class="slide level2">
+<h2>Hyperplane</h2>
+<p>Given a p-dimensional space, a hyperplane is flat affine subspace of p-1 dimensions. It is mathematically defined as:</p>
+<p><span class="math display">\[
+\beta_0 + \beta_1X_1 + \beta_2 X_2 + \cdots+\beta_pX_p = 0
+\]</span></p>
+</section>
+<section id="hyperplane-1" class="slide level2">
+<h2>Hyperplane</h2>
+
+<img data-src="https://images.deepai.org/glossary-terms/3bb86574825445cba73a67222b744648/hyperplane.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="constructing-the-hyperplane" class="slide level2">
+<h2>Constructing the Hyperplane</h2>
+<p>A hyperplane is constructed by maximizing the margin <span class="math inline">\(M\)</span> of the data points that are farthest from the theoretical margin. The data points that define the outer edge of the margins are known as support vectors.</p>
+
+<img data-src="14a_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="optimization-problem" class="slide level2">
+<h2>Optimization Problem</h2>
+<ul>
+<li><p><span class="math inline">\(\overset{\mathrm{maximize}}{\tiny\beta_0, \beta_1,\ldots,\beta_p,M}\ \large M\)</span></p></li>
+<li><p>subject to <span class="math inline">\(\sum^p_{j=1}\beta_j^2 = 1\)</span></p></li>
+<li><p><span class="math inline">\(y_i(\beta_0 + \beta_1X_{1i} + \beta_2 X_{2i} + \cdots+\beta_pX_{pi})\geq M \ \forall \ i=1,\ldots,n\)</span></p></li>
+</ul>
+</section>
+<section id="maximal-margin-classifier-2" class="slide level2">
+<h2>Maximal Margin Classifier</h2>
+
+<img data-src="https://bookdown.org/mpfoley1973/data-sci/images/svm_mmc.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<section>
+<section id="support-vector-classifier" class="title-slide slide level1 center">
+<h1>Support Vector Classifier</h1>
+
+</section>
+<section id="support-vector-classifier-1" class="slide level2">
+<h2>Support Vector Classifier</h2>
+<p>Maximal Margin Classifiers have one fatal defect, the data points must be completely on one side of the margin. This does not allow room for error.</p>
+<div class="fragment">
+<p>A Support Vector Classifier allows for data points to be misclassified if need be.</p>
+</div>
+<div class="fragment">
+<p>It achieves this by implementing a Cost mechanism, denoted as <span class="math inline">\(C\)</span>, to account for any errors for data points.</p>
+</div>
+</section>
+<section id="support-vector-classifiers" class="slide level2">
+<h2>Support Vector Classifiers</h2>
+
 <img data-src="https://www.surveypractice.org/article/2715-using-support-vector-machines-for-survey-research/attachment/9153.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="optimization-problem-1" class="slide level2">
+<h2>Optimization Problem</h2>
+<ul>
+<li><p><span class="math inline">\(\overset{\mathrm{maximize}}{\tiny\beta_0, \beta_1,\ldots,\beta_p,\epsilon_1,\ldots, \epsilon_n,M}\ \large M\)</span></p></li>
+<li><p>subject to <span class="math inline">\(\sum^p_{j=1}\beta_j^2 = 1\)</span></p></li>
+<li><p><span class="math inline">\(y_i(\beta_0 + \beta_1X_{1i} + \beta_2 X_{2i} + \cdots+\beta_pX_{pi})\geq M (1-\epsilon_i) \ \forall \ i=1,\ldots,n\)</span></p></li>
+<li><p><span class="math inline">\(\epsilon_i\geq 0\)</span></p></li>
+<li><p><span class="math inline">\(\sum^n_{i=1} \epsilon_i \leq C\)</span></p></li>
+</ul>
+</section>
+<section id="budget-c" class="slide level2">
+<h2>Budget C</h2>
+<p>The tuning parameter <span class="math inline">\(C\)</span> is known as the budget parameter for error. When the data point is on the correct side of the margin, then it has an error of <span class="math inline">\(0\)</span>. When a data point in on the wrong side the margin, it has a bit of error. When the data point is on the opposite side of the hyperplane, then it has an error greater than <span class="math inline">\(1\)</span>. This is allowed as long as the sum of errors are less than or equal to <span class="math inline">\(C\)</span>.</p>
+</section>
+<section id="r-code-support-vector-classifier" class="slide level2">
+<h2>R Code: Support Vector Classifier</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation</a></li><li><a href="#tabset-1-2">R Code</a></li><li><a href="#tabset-1-3">Support Vectors</a></li><li><a href="#tabset-1-4">Summary</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span> ( <span class="fu">rnorm</span> (<span class="dv">20</span> <span class="sc">*</span> <span class="dv">2</span>) , <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="fu">rep</span> (<span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>) , <span class="fu">rep</span> (<span class="dv">1</span>, <span class="dv">10</span>) )</span>
+<span id="cb1-3"><a href="#cb1-3"></a>x[y <span class="sc">==</span> <span class="dv">1</span>, ] <span class="ot">&lt;-</span> x[y <span class="sc">==</span> <span class="dv">1</span>, ] <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">plot</span> (x, <span class="at">col =</span> (<span class="dv">3</span> <span class="sc">-</span> y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="14a_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span> (<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">as.factor</span>(y))</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>svmfit <span class="ot">&lt;-</span> <span class="fu">svm</span> (y <span class="sc">~</span> ., <span class="at">data =</span> dat , <span class="at">kernel =</span> <span class="st">"linear"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">cost =</span> <span class="dv">10</span>, <span class="at">scale =</span> <span class="cn">FALSE</span> )</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">plot</span>(svmfit, dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="14a_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>svmfit<span class="sc">$</span>index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1]  2  3  4  5  6 11 12 16 19</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">summary</span>(svmfit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; svm(formula = y ~ ., data = dat, kernel = "linear", cost = 10, scale = FALSE)
+#&gt; 
+#&gt; 
+#&gt; Parameters:
+#&gt;    SVM-Type:  C-classification 
+#&gt;  SVM-Kernel:  linear 
+#&gt;        cost:  10 
+#&gt; 
+#&gt; Number of Support Vectors:  9
+#&gt; 
+#&gt;  ( 5 4 )
+#&gt; 
+#&gt; 
+#&gt; Number of Classes:  2 
+#&gt; 
+#&gt; Levels: 
+#&gt;  -1 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cross-validation-approach-for-c" class="slide level2">
+<h2>Cross-Validation Approach for C</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">R Code</a></li><li><a href="#tabset-2-2">Summary</a></li><li><a href="#tabset-2-3">Best Model</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">set.seed</span>(<span class="dv">2434</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>tune.out <span class="ot">&lt;-</span> <span class="fu">tune</span>(svm, y <span class="sc">~</span> ., <span class="at">data =</span> dat, <span class="at">kernel =</span> <span class="st">"linear"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>                 <span class="at">ranges =</span> <span class="fu">list</span>(<span class="at">cost =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">100</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">summary</span>(tune.out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Parameter tuning of 'svm':
+#&gt; 
+#&gt; - sampling method: 10-fold cross validation 
+#&gt; 
+#&gt; - best parameters:
+#&gt;  cost
+#&gt;   0.1
+#&gt; 
+#&gt; - best performance: 0.15 
+#&gt; 
+#&gt; - Detailed performance results:
+#&gt;    cost error dispersion
+#&gt; 1 1e-03  0.45  0.4972145
+#&gt; 2 1e-02  0.45  0.4972145
+#&gt; 3 1e-01  0.15  0.2415229
+#&gt; 4 1e+00  0.15  0.2415229
+#&gt; 5 5e+00  0.20  0.2581989
+#&gt; 6 1e+01  0.20  0.2581989
+#&gt; 7 1e+02  0.20  0.2581989</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>bestmod <span class="ot">&lt;-</span> tune.out<span class="sc">$</span>best.model</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">summary</span>(bestmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; best.tune(METHOD = svm, train.x = y ~ ., data = dat, ranges = list(cost = c(0.001, 
+#&gt;     0.01, 0.1, 1, 5, 10, 100)), kernel = "linear")
+#&gt; 
+#&gt; 
+#&gt; Parameters:
+#&gt;    SVM-Type:  C-classification 
+#&gt;  SVM-Kernel:  linear 
+#&gt;        cost:  0.1 
+#&gt; 
+#&gt; Number of Support Vectors:  16
+#&gt; 
+#&gt;  ( 8 8 )
+#&gt; 
+#&gt; 
+#&gt; Number of Classes:  2 
+#&gt; 
+#&gt; Levels: 
+#&gt;  -1 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction" class="slide level2">
+<h2>Prediction</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Set Up</a></li><li><a href="#tabset-3-2">Prediction</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>xtest <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">20</span> <span class="sc">*</span> <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>ytest <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">20</span>, <span class="at">rep =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>xtest[ytest <span class="sc">==</span> <span class="dv">1</span>,] <span class="ot">&lt;-</span> xtest[ytest <span class="sc">==</span> <span class="dv">1</span>, ] <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>testdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span> (<span class="at">x =</span> xtest , <span class="at">y =</span> <span class="fu">as.factor</span>(ytest))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>ypred <span class="ot">&lt;-</span> <span class="fu">predict</span>(bestmod, testdat)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">table</span>(<span class="at">pred =</span> ypred, <span class="at">truth =</span> testdat<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;     truth
+#&gt; pred -1  1
+#&gt;   -1  9  0
+#&gt;   1   1 10</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="support-vector-machines" class="title-slide slide level1 center">
+<h1>Support Vector Machines</h1>
+
+</section>
 <section id="motivating-example-1" class="slide level2">
+<h2>Motivating Example</h2>
+
+<img data-src="https://www.surveypractice.org/article/2715-using-support-vector-machines-for-survey-research/attachment/9153.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="motivating-example-2" class="slide level2">
 <h2>Motivating Example</h2>
 
 <img data-src="https://i.stack.imgur.com/shjDw.png" class="quarto-figure quarto-figure-center r-stretch"></section>
@@ -444,7 +690,7 @@
 <section id="nonlinear-boundary-1" class="slide level2">
 <h2>Nonlinear Boundary</h2>
 
-<img data-src="https://blog-c7ff.kxcdn.com/blog/wp-content/uploads/2017/02/kernel.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="https://s3.amazonaws.com/production.scholastica/public/attachments/b275a94b-e5ba-4e3b-8bbe-5e3235e95892/large/image4.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="support-vector-machines-kernels" class="slide level2">
 <h2>Support Vector Machines Kernels</h2>
 <ul>
@@ -452,50 +698,45 @@
 <li><p>Polynomial</p></li>
 <li><p>Radial</p></li>
 </ul>
-</section></section>
-<section>
-<section id="r-code" class="title-slide slide level1 center">
-<h1>R Code</h1>
-
 </section>
-<section id="r-code-1" class="slide level2">
-<h2>R Code</h2>
+<section id="r-code-svm" class="slide level2">
+<h2>R Code: SVM</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Data</a></li><li><a href="#tabset-1-2">Plot</a></li><li><a href="#tabset-1-3">SVM</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Data</a></li><li><a href="#tabset-4-2">Plot</a></li><li><a href="#tabset-4-3">SVM</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1">
+<div id="tabset-4-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span> <span class="sc">*</span> <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ] <span class="ot">&lt;-</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ] <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>x[<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span>, ] <span class="ot">&lt;-</span> x[<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span> , ] <span class="sc">-</span> <span class="dv">2</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">150</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">50</span>))</span>
-<span id="cb1-6"><a href="#cb1-6"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span> (<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">as.factor</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span> <span class="sc">*</span> <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ] <span class="ot">&lt;-</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ] <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>x[<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span>, ] <span class="ot">&lt;-</span> x[<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span> , ] <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">150</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">50</span>))</span>
+<span id="cb15-6"><a href="#cb15-6"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span> (<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">as.factor</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-1-2">
+<div id="tabset-4-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">plot</span>(x,<span class="at">col=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">plot</span>(x,<span class="at">col=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14a_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="14a_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-1-3">
+<div id="tabset-4-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(e1071)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">200</span>, <span class="dv">100</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>svmfit <span class="ot">&lt;-</span> <span class="fu">svm</span>(y <span class="sc">~</span> ., <span class="at">data =</span> dat[train, ], <span class="at">kernel =</span> <span class="st">"radial"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="at">gamma =</span> <span class="dv">1</span>, <span class="at">cost =</span> <span class="dv">1</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">plot</span>(svmfit, dat[train, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">200</span>, <span class="dv">100</span>)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>svmfit <span class="ot">&lt;-</span> <span class="fu">svm</span>(y <span class="sc">~</span> ., <span class="at">data =</span> dat[train, ], <span class="at">kernel =</span> <span class="st">"radial"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="at">gamma =</span> <span class="dv">1</span>, <span class="at">cost =</span> <span class="dv">1</span>)</span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="fu">plot</span>(svmfit, dat[train, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14a_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="14a_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>

@@ -33,21 +33,17 @@ editor: visual
 
 ## My Experience
 
-![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlHz3FX7_stt68d_8oIh-f06VxyxxUYPgvE01qcYeJX5UcSFFlisdRQMJDSNbUp8wxbhc&usqp=CAU){fig-align="center"}
-
-## My Experience
-
-![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/programming-or-googling.jpg){fig-align="center"}
-
-## My Experience
-
 ![](https://assets-global.website-files.com/5f3c19f18169b62a0d0bf387/60d33be7eedf8e1f31aabcec_BwENfmI0CU5dZGYlSyo142mpfG08-rYgTS-Qm47uMUXN6JXtmdZvtzVzTooUQdXTWmTD8uzF9N6XQJA2vUIMi53tunFyVtvOBJTNfOjHit2P_JkTmFzFsK7ep6Vb9781XZnRAryH.png){fig-align="center"}
 
 ## Learning Outcomes
 
--   Tensorflow
+-   ~~Tensorflow~~
 
 -   Torch
+
+## My Opinion
+
+![](/files/torch.jpg){fig-align="center"}
 
 # TensorFlow
 
@@ -375,7 +371,3 @@ fit_modellr %>%
 evaluate(fit_modellr, test_ds)
 ###
 ```
-
-## My Opinion
-
-![](/files/torch.jpg){fig-align="center"}

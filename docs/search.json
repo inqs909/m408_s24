@@ -4,14 +4,14 @@
     "href": "syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "Term: Spring 2024\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nR OH\nTidy Tuesday on Wednesday\n\n\n\n\nDay\nMW\nTuesday\nWednesday\n\n\nLocation\nBTE 2840\nBTE 2840\nOJAI 1964\n\n\nTime\n12-1 PM\n10 AM - 12 PM\n3-5 PM\n\n\n\nOr by Zoom appointment: calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 1:30-3:00 PM in BT 1642\nCourse Website: m408.inqs.info AND Canvas\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\nwww.statlearning.com\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nwww.inqs.info/stat_comp\nhypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: www.r-project.org.\nR Markdown is a scientific documentation known as an RMD file that can be used to provide reproducible code and documents.\nRStudio provides free and open source tools for your data analysis in R: posit.co/downloads\ncsucistats is a developmental R package that will contain RMD templates to submit assignments for class: csucistats\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted here and Canvas. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 25% point penalty. The last day late work will be accepted is on 5/10/2024 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Communication about the exam, sharing material, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 4 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/22-1/26\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/29-2/2\nControl Flow\nSC: Ch 2\nHW # 1\n\n\n2/5-2/9\nControl Flow/Functional Programming\nSC: Ch 2-3\nHW # 2\n\n\n2/12-2/16\nFunctional Programming\nSC: Ch 3-4\nHW # 3\n\n\n2/19-2/23\nData Manipulation\nSC: Ch 17\nTH Exam # 1\n\n\n2/26-3/1\nIntroduction to Statistical Learning\nSL: Ch 2\nHW # 4\n\n\n3/4-3/8\nLinear Regression\nSL: Ch 3\nHW # 5\n\n\n3/11-3/15\nMultivariable Linear Regression\nSL: Ch 3\n\n\n\n3/18-3/22\nSpring Break\n\n\n\n\n3/25-3/29\nClassification\nSL: Ch 4\nHW # 6\n\n\n4/1-4/5\nResampling Methods\nSL: Ch 5\nTH Exam # 2\n\n\n4/8-4/12\nModel Selection\nSL: Ch 6\nHW # 7\n\n\n4/15-4/19\nNonparametric Regression\nSL: Ch 7\nHW # 8\n\n\n4/22-4/26\nTree-Based Methods\nSL: Ch 8\nHW # 9\n\n\n4/29-5/3\nSupport Vector Machines\nSL: Ch 9\nHW # 10\n\n\n5/6-5/10\nDeep Learning\nSL: Ch 10\n\n\n\n5/13-5/17\nTH Exam # 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom.\n\n\n\n\nThe California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. We will be going on strike from January 22 – January 26 unless management gives us a fair contract that recognizes the dignity of CSU faculty, staff, and students. Our working conditions are student learning conditions; we seek to protect both. For further information go to: www.calfac.org/strike."
+    "text": "Term: Spring 2024\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nR OH\nTidy Tuesday on Wednesday\n\n\n\n\nDay\nMW\nTuesday\nWednesday\n\n\nLocation\nBTE 2840\nBTE 2840\nOJAI 1964\n\n\nTime\n12-1 PM\n10 AM - 12 PM\n3-5 PM\n\n\n\nOr by Zoom appointment: calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 1:30-3:00 PM in BT 1642\nCourse Website: m408.inqs.info AND Canvas\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\nwww.statlearning.com\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nwww.inqs.info/stat_comp\nhypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: www.r-project.org.\nR Markdown is a scientific documentation known as an RMD file that can be used to provide reproducible code and documents.\nRStudio provides free and open source tools for your data analysis in R: posit.co/downloads\ncsucistats is a developmental R package that will contain RMD templates to submit assignments for class: csucistats\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted here and Canvas. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 25% point penalty. The last day late work will be accepted is on 5/10/2024 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Communication about the exam, sharing material, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 4 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/22-1/26\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/29-2/2\nControl Flow\nSC: Ch 2\nHW # 1\n\n\n2/5-2/9\nControl Flow/Functional Programming\nSC: Ch 2-3\nHW # 2\n\n\n2/12-2/16\nFunctional Programming\nSC: Ch 3-4\nHW # 3\n\n\n2/19-2/23\nData Manipulation\nSC: Ch 17\nTH Exam # 1\n\n\n2/26-3/1\nIntroduction to Statistical Learning\nSL: Ch 2\nHW # 4\n\n\n3/4-3/8\nLinear Regression\nSL: Ch 3\nHW # 5\n\n\n3/11-3/15\nMultivariable Linear Regression\nSL: Ch 3\n\n\n\n3/18-3/22\nSpring Break\n\n\n\n\n3/25-3/29\nClassification\nSL: Ch 4\nHW # 6\n\n\n4/1-4/5\nResampling Methods\nSL: Ch 5\nTH Exam # 2\n\n\n4/8-4/12\nModel Selection\nSL: Ch 6\nHW # 7\n\n\n4/15-4/19\nNonparametric Regression\nSL: Ch 7\nHW # 8\n\n\n4/22-4/26\nTree-Based Methods & Support Vector Machines\nSL: Ch 8-9\nHW # 9\n\n\n4/29-5/3\nDeep Learning\nSL: Ch 10\nHW # 10\n\n\n5/6-5/10\nUnsupervised Machine Learning\nSL: Ch 12\n\n\n\n5/13-5/17\nTH Exam # 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom.\n\n\n\n\nThe California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. We will be going on strike from January 22 – January 26 unless management gives us a fair contract that recognizes the dignity of CSU faculty, staff, and students. Our working conditions are student learning conditions; we seek to protect both. For further information go to: www.calfac.org/strike."
   },
   {
     "objectID": "syllabus.html#math-408-advanced-data-analysis",
     "href": "syllabus.html#math-408-advanced-data-analysis",
     "title": "Syllabus",
     "section": "",
-    "text": "Term: Spring 2024\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nR OH\nTidy Tuesday on Wednesday\n\n\n\n\nDay\nMW\nTuesday\nWednesday\n\n\nLocation\nBTE 2840\nBTE 2840\nOJAI 1964\n\n\nTime\n12-1 PM\n10 AM - 12 PM\n3-5 PM\n\n\n\nOr by Zoom appointment: calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 1:30-3:00 PM in BT 1642\nCourse Website: m408.inqs.info AND Canvas\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\nwww.statlearning.com\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nwww.inqs.info/stat_comp\nhypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: www.r-project.org.\nR Markdown is a scientific documentation known as an RMD file that can be used to provide reproducible code and documents.\nRStudio provides free and open source tools for your data analysis in R: posit.co/downloads\ncsucistats is a developmental R package that will contain RMD templates to submit assignments for class: csucistats\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted here and Canvas. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 25% point penalty. The last day late work will be accepted is on 5/10/2024 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Communication about the exam, sharing material, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 4 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/22-1/26\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/29-2/2\nControl Flow\nSC: Ch 2\nHW # 1\n\n\n2/5-2/9\nControl Flow/Functional Programming\nSC: Ch 2-3\nHW # 2\n\n\n2/12-2/16\nFunctional Programming\nSC: Ch 3-4\nHW # 3\n\n\n2/19-2/23\nData Manipulation\nSC: Ch 17\nTH Exam # 1\n\n\n2/26-3/1\nIntroduction to Statistical Learning\nSL: Ch 2\nHW # 4\n\n\n3/4-3/8\nLinear Regression\nSL: Ch 3\nHW # 5\n\n\n3/11-3/15\nMultivariable Linear Regression\nSL: Ch 3\n\n\n\n3/18-3/22\nSpring Break\n\n\n\n\n3/25-3/29\nClassification\nSL: Ch 4\nHW # 6\n\n\n4/1-4/5\nResampling Methods\nSL: Ch 5\nTH Exam # 2\n\n\n4/8-4/12\nModel Selection\nSL: Ch 6\nHW # 7\n\n\n4/15-4/19\nNonparametric Regression\nSL: Ch 7\nHW # 8\n\n\n4/22-4/26\nTree-Based Methods\nSL: Ch 8\nHW # 9\n\n\n4/29-5/3\nSupport Vector Machines\nSL: Ch 9\nHW # 10\n\n\n5/6-5/10\nDeep Learning\nSL: Ch 10\n\n\n\n5/13-5/17\nTH Exam # 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom.\n\n\n\n\nThe California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. We will be going on strike from January 22 – January 26 unless management gives us a fair contract that recognizes the dignity of CSU faculty, staff, and students. Our working conditions are student learning conditions; we seek to protect both. For further information go to: www.calfac.org/strike."
+    "text": "Term: Spring 2024\nInstructor: Isaac Quintanilla Salinas\nContact: isaac.qs@csuci.edu\nOffice Location: BTE 2840\nOffice Hours:\n\n\n\nOH\nCourse\nR OH\nTidy Tuesday on Wednesday\n\n\n\n\nDay\nMW\nTuesday\nWednesday\n\n\nLocation\nBTE 2840\nBTE 2840\nOJAI 1964\n\n\nTime\n12-1 PM\n10 AM - 12 PM\n3-5 PM\n\n\n\nOr by Zoom appointment: calendly.com/isaac-qs/office-hours\nLecture: Monday and Wednesday 1:30-3:00 PM in BT 1642\nCourse Website: m408.inqs.info AND Canvas\n\n\n\nIntroduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.\n\n\n\n\nPrepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context\nEnable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques\nEmpower students to apply computational and inferential thinking to address real-world problems\n\n\n\n\n\nAn Introduction to Statistical Learning (SL)\n\nGareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani\nAvailable to Download from the Broome Library\nwww.statlearning.com\n\nStatistical Computing (SC)\n\nIsaac Quintanilla Salinas\nwww.inqs.info/stat_comp\nhypothes.is/groups/xMmDdj2A/m408\n\n\n\n\n\nFor this course, we will use R, Quarto, and RStudio. Please download and install on your computer.\n\nR is a free statistical software program that is available for download at: www.r-project.org.\nR Markdown is a scientific documentation known as an RMD file that can be used to provide reproducible code and documents.\nRStudio provides free and open source tools for your data analysis in R: posit.co/downloads\ncsucistats is a developmental R package that will contain RMD templates to submit assignments for class: csucistats\n\n\n\n\n\n\n\nCategory\nPercentage\n\n\n\n\nHomework\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nExam 3\n25%\n\n\n\nAt the end of the quarter, course grades will be assigned according to the following scale:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA+\n98 – 100\nB+\n87 – &lt;90\nC+\n77 – &lt;80\nD+\n67 – &lt;70\n\n\n\n\nA\n93 – &lt;98\nB\n83 – &lt;87\nC\n73 – &lt;77\nD\n63 – &lt;67\nF\n&lt; 60\n\n\nA–\n90 - &lt;93\nB-\n80 – &lt;83\nC–\n70 – &lt;73\nD–\n60 – &lt;63\n\n\n\n\n\n\n\nHomework will be assigned on a regular basis and posted here and Canvas. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 25% point penalty. The last day late work will be accepted is on 5/10/2024 at 11:59 PM.\n\n\n\nThere will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Communication about the exam, sharing material, or not following directions given will be subject to the University’s academic integrity policy.\n\n\n\nThere will be 4 extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found here.\n\n\n\n\nThe following outline may be subject to change. Any changes will be announced in class.\n\n\n\n\n\n\n\n\n\nWeek\nTopic\nReading\nAssignment/Exam\n\n\n\n\n1/22-1/26\nIntro to Course/Intro to R/Notebooks\nSC: Ch 1\n\n\n\n1/29-2/2\nControl Flow\nSC: Ch 2\nHW # 1\n\n\n2/5-2/9\nControl Flow/Functional Programming\nSC: Ch 2-3\nHW # 2\n\n\n2/12-2/16\nFunctional Programming\nSC: Ch 3-4\nHW # 3\n\n\n2/19-2/23\nData Manipulation\nSC: Ch 17\nTH Exam # 1\n\n\n2/26-3/1\nIntroduction to Statistical Learning\nSL: Ch 2\nHW # 4\n\n\n3/4-3/8\nLinear Regression\nSL: Ch 3\nHW # 5\n\n\n3/11-3/15\nMultivariable Linear Regression\nSL: Ch 3\n\n\n\n3/18-3/22\nSpring Break\n\n\n\n\n3/25-3/29\nClassification\nSL: Ch 4\nHW # 6\n\n\n4/1-4/5\nResampling Methods\nSL: Ch 5\nTH Exam # 2\n\n\n4/8-4/12\nModel Selection\nSL: Ch 6\nHW # 7\n\n\n4/15-4/19\nNonparametric Regression\nSL: Ch 7\nHW # 8\n\n\n4/22-4/26\nTree-Based Methods & Support Vector Machines\nSL: Ch 8-9\nHW # 9\n\n\n4/29-5/3\nDeep Learning\nSL: Ch 10\nHW # 10\n\n\n5/6-5/10\nUnsupervised Machine Learning\nSL: Ch 12\n\n\n\n5/13-5/17\nTH Exam # 3\n\n\n\n\n\n\n\n\n\nAcademic Honesty:\nPlease conduct yourself with honesty and integrity. Do not submit others’ work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.\nDisabilities:\nIf you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: https://www.csuci.edu/dass/students/apply-for-services.htm. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.\nEmergency Procedure Notice to Students:\nCSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University’s Spring 2023 Semester website or they may be subject to removal from the classroom.\n\n\n\n\nThe California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. We will be going on strike from January 22 – January 26 unless management gives us a fair contract that recognizes the dignity of CSU faculty, staff, and students. Our working conditions are student learning conditions; we seek to protect both. For further information go to: www.calfac.org/strike."
   },
   {
     "objectID": "posts/week_8.html",
@@ -2382,56 +2382,56 @@
   {
     "objectID": "lectures/14b.html#learning-outcomes",
     "href": "lectures/14b.html#learning-outcomes",
-    "title": "Neural Networks",
+    "title": "Deep Learning",
     "section": "Learning Outcomes",
     "text": "Learning Outcomes\n\nNeural Networks"
   },
   {
-    "objectID": "lectures/14b.html#neural-networks",
-    "href": "lectures/14b.html#neural-networks",
-    "title": "Neural Networks",
+    "objectID": "lectures/14b.html#neural-networks-1",
+    "href": "lectures/14b.html#neural-networks-1",
+    "title": "Deep Learning",
     "section": "Neural Networks",
     "text": "Neural Networks\nNeural networks are a type of machine learning algorithm that are designed to mimic the function of the human brain. They consist of interconnected nodes or “neurons” that process information and generate outputs based on the inputs they receive."
   },
   {
     "objectID": "lectures/14b.html#uses",
     "href": "lectures/14b.html#uses",
-    "title": "Neural Networks",
+    "title": "Deep Learning",
     "section": "Uses",
     "text": "Uses\nNeural networks are typically used for tasks such as image recognition, natural language processing, and prediction. They are capable of learning from data and improving their performance over time, which makes them well-suited for complex and dynamic problems."
   },
   {
     "objectID": "lectures/14b.html#single-layer-neural-networks",
     "href": "lectures/14b.html#single-layer-neural-networks",
-    "title": "Neural Networks",
+    "title": "Deep Learning",
     "section": "Single Layer Neural Networks",
     "text": "Single Layer Neural Networks\nA single layer neural networks can be formulated as linear function:\n\\[\nf(X) = \\beta_0 + \\sum^K_{k=1}\\beta_kh_k(X)\n\\]\nWhere \\(X\\) is a vector of inputs of length \\(p\\) and \\(K\\) is the number of activations, \\(\\beta_j\\) are the regression coefficients and\n\\[\nh_k(X) = A_k = g(w_{k0} + \\sum^p_{l1}w_{kl}X_{l})\n\\]\nwith \\(g(\\cdot)\\) being a nonlinear function and \\(w_{kl}\\) are the weights."
   },
   {
     "objectID": "lectures/14b.html#nonlinear-function-gcdot",
     "href": "lectures/14b.html#nonlinear-function-gcdot",
-    "title": "Neural Networks",
+    "title": "Deep Learning",
     "section": "Nonlinear Function \\(g(\\cdot)\\)",
     "text": "Nonlinear Function \\(g(\\cdot)\\)\n\n\\(g(z) = \\frac{e^z}{1+e^z}\\)\n\\(g(z) = (z)_+ = zI(z\\geq0)\\)"
   },
   {
     "objectID": "lectures/14b.html#single-layer-neural-network",
     "href": "lectures/14b.html#single-layer-neural-network",
-    "title": "Neural Networks",
+    "title": "Deep Learning",
     "section": "Single Layer Neural Network",
     "text": "Single Layer Neural Network"
   },
   {
     "objectID": "lectures/14b.html#multilayer-neural-network",
     "href": "lectures/14b.html#multilayer-neural-network",
-    "title": "Neural Networks",
+    "title": "Deep Learning",
     "section": "Multilayer Neural Network",
     "text": "Multilayer Neural Network\nMultilayer Neural Networks create multiple hidden layers where each layer feeds into each other which will create a final outcome."
   },
   {
     "objectID": "lectures/14b.html#multilayer-neural-network-1",
     "href": "lectures/14b.html#multilayer-neural-network-1",
-    "title": "Neural Networks",
+    "title": "Deep Learning",
     "section": "Multilayer Neural Network",
     "text": "Multilayer Neural Network"
   },
@@ -2713,14 +2713,35 @@
     "href": "lectures/12b.html#importance-weights",
     "title": "Nonparametric Regression",
     "section": "Importance (Weights)",
-    "text": "Importance (Weights)"
+    "text": "Importance (Weights)\nThe importance of a data point to a grid point is determined by the distance between the two points.\n\nIf the distance is small, the data point is more important.\n\n\nWe must assign a numerical value to the importance. Known as weight.\n\n\nWeights can be obtained using a kernel function."
+  },
+  {
+    "objectID": "lectures/12b.html#kernel-function",
+    "href": "lectures/12b.html#kernel-function",
+    "title": "Nonparametric Regression",
+    "section": "Kernel Function",
+    "text": "Kernel Function\n\nEpanechnikovGaussianTriangular\n\n\n\\[\nK(X_i, x_0) = w_i = 3/4\\{1-(X_i-x_0)^2\\}\n\\]\n\n\n\\[\nK(X_i, x_0) = w_i = \\frac{1}{\\sqrt{2\\pi}}\\exp\\{-(X_i-x_0)^2/2\\}\n\\]\n\n\n\\[\nK(X_i, x_0) = w_i =  \\{1-|X_i-x_0|\\}\n\\]"
   },
   {
     "objectID": "lectures/12b.html#local-constant-model",
     "href": "lectures/12b.html#local-constant-model",
     "title": "Nonparametric Regression",
     "section": "Local Constant Model",
+    "text": "Local Constant Model\nFor each grid point \\(x_0\\), find the weighted mean:\n\\[\nf(x_0) = \\sum^n_{i=1} w_i X_i\n\\]"
+  },
+  {
+    "objectID": "lectures/12b.html#local-constant-model-1",
+    "href": "lectures/12b.html#local-constant-model-1",
+    "title": "Nonparametric Regression",
+    "section": "Local Constant Model",
     "text": "Local Constant Model\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  stat_smooth(method = stats::loess, \n              method.args = list(degree = 0,\n                                 span = 0.05)) +\n  theme_bw()"
+  },
+  {
+    "objectID": "lectures/12b.html#local-linear-models",
+    "href": "lectures/12b.html#local-linear-models",
+    "title": "Nonparametric Regression",
+    "section": "Local Linear Models",
+    "text": "Local Linear Models\nFor each grid point \\(x_0\\), it can be modeled with\n\\[\n\\hat f(x_0)= \\hat \\beta_0 + \\hat\\beta_1 x_0\n\\] Estimated via:\n\n\\[\n\\sum^n_{i=1}\\{Y_i - \\hat f(X_i)\\}^2w_i\n\\]"
   },
   {
     "objectID": "lectures/12b.html#local-linear-model",
@@ -2730,11 +2751,46 @@
     "text": "Local Linear Model\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  stat_smooth(method = stats::loess, \n              method.args = list(degree = 1,\n                                 span = 0.05)) +\n  theme_bw()"
   },
   {
-    "objectID": "lectures/12b.html#local-regression-1",
-    "href": "lectures/12b.html#local-regression-1",
+    "objectID": "lectures/12b.html#local-regression-in-r",
+    "href": "lectures/12b.html#local-regression-in-r",
     "title": "Nonparametric Regression",
-    "section": "Local Regression",
-    "text": "Local Regression"
+    "section": "Local Regression in R",
+    "text": "Local Regression in R\nLocal Regression can be conducted via the loess() function\n\nLocal ConstantLocal Linear\n\n\n\nloess(y ~ x,\n      data,\n      span,\n      degree = 0)\n\n\n\n\nloess(y ~ x,\n      data,\n      span,\n      degree = 1)"
+  },
+  {
+    "objectID": "lectures/12b.html#gam",
+    "href": "lectures/12b.html#gam",
+    "title": "Nonparametric Regression",
+    "section": "GAM",
+    "text": "GAM\nGeneralized Additive Models extends the nonparametric models to include more than one predictor to explain the outcome Y."
+  },
+  {
+    "objectID": "lectures/12b.html#gam-1",
+    "href": "lectures/12b.html#gam-1",
+    "title": "Nonparametric Regression",
+    "section": "GAM",
+    "text": "GAM\n\\[\nY = \\beta_0 + f_1(X_1) + f_2(X_2) + \\cdots + f_k(X_k) + \\varepsilon\n\\]\n\\[\nY = \\beta_0 + \\sum^k_{j=1} f_j(X_j) +\\varepsilon\n\\]"
+  },
+  {
+    "objectID": "lectures/12b.html#gam-estimation",
+    "href": "lectures/12b.html#gam-estimation",
+    "title": "Nonparametric Regression",
+    "section": "GAM Estimation",
+    "text": "GAM Estimation\nEach \\(\\hat f_j\\) can be estimated using an approach mentioned before.\n\\[\n\\hat Y = \\hat \\beta_0 + \\sum^k_{j=1} \\hat f_j(X_j)\n\\]\n\nEach \\(hat f_j\\) can be estimated differently from other predictor functions."
+  },
+  {
+    "objectID": "lectures/12b.html#gams-for-non-normal-variables",
+    "href": "lectures/12b.html#gams-for-non-normal-variables",
+    "title": "Nonparametric Regression",
+    "section": "GAMs for Non-Normal Variables",
+    "text": "GAMs for Non-Normal Variables\nGAM can be extended to model"
+  },
+  {
+    "objectID": "lectures/12b.html#gams-in-r",
+    "href": "lectures/12b.html#gams-in-r",
+    "title": "Nonparametric Regression",
+    "section": "GAMs in R",
+    "text": "GAMs in R\nThe gam package provides a set of functions to fit a GAM for multiple predictor variables"
   },
   {
     "objectID": "lectures/11c.html#learning-outcomes",
@@ -4130,6 +4186,13 @@
     "text": "Cubic Splines\nFor \\(L\\) knots:\n\\[\nY = \\beta_0 + \\sum^3_{j=1}x^j\\beta_j + \\sum_{l=1}^Lh(x, \\xi_l)\\beta_{3+l} + \\varepsilon\n\\]"
   },
   {
+    "objectID": "lectures/12a.html#natural-cubic-splines",
+    "href": "lectures/12a.html#natural-cubic-splines",
+    "title": "Moving Beyond Linear Functions",
+    "section": "Natural Cubic Splines",
+    "text": "Natural Cubic Splines\nNatural splines force the boundary knots to be fitted with simple lines instead of spline functions. The interior knots are fitted with spline functions."
+  },
+  {
     "objectID": "lectures/12a.html#plot-3",
     "href": "lectures/12a.html#plot-3",
     "title": "Moving Beyond Linear Functions",
@@ -4137,11 +4200,11 @@
     "text": "Plot\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ bs(x, knots = c(-0.25, 0.25))) +\n  theme_bw()"
   },
   {
-    "objectID": "lectures/12a.html#natural-splines",
-    "href": "lectures/12a.html#natural-splines",
+    "objectID": "lectures/12a.html#natural-cubic-splines-1",
+    "href": "lectures/12a.html#natural-cubic-splines-1",
     "title": "Moving Beyond Linear Functions",
-    "section": "Natural Splines",
-    "text": "Natural Splines\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ ns(x, knots = c(-0.25, 0.25))) +\n  theme_bw()"
+    "section": "Natural Cubic Splines",
+    "text": "Natural Cubic Splines\n\n\nCode\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + \n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ ns(x, knots = c(-0.25, 0.25))) +\n  theme_bw()"
   },
   {
     "objectID": "lectures/12a.html#cubic-splines-in-r",
@@ -4151,11 +4214,11 @@
     "text": "Cubic Splines in R\nThe bs() function in R from the splines package will construct the basis matrix to be fitted in the lm function. You will need to specify the locations of the knots. By default, the cubic splines are provided:\n\nlm(y ~ bs(x, knots = c()),\n   data)"
   },
   {
-    "objectID": "lectures/12a.html#cubic-splines-in-r-1",
-    "href": "lectures/12a.html#cubic-splines-in-r-1",
+    "objectID": "lectures/12a.html#natural-cubic-splines-in-r",
+    "href": "lectures/12a.html#natural-cubic-splines-in-r",
     "title": "Moving Beyond Linear Functions",
-    "section": "Cubic Splines in R",
-    "text": "Cubic Splines in R\nThe ns() function in R from the splines package will construct the basis matrix for natural cubic splines. You will need to specify the locations of the knots.\n\nlm(y ~ ns(x, knots = c()),\n   data)"
+    "section": "Natural Cubic Splines in R",
+    "text": "Natural Cubic Splines in R\nThe ns() function in R from the splines package will construct the basis matrix for natural cubic splines. You will need to specify the locations of the knots.\n\nlm(y ~ ns(x, knots = c()),\n   data)"
   },
   {
     "objectID": "lectures/12a.html#example-2",
@@ -4316,7 +4379,7 @@
     "href": "lectures/14a.html#learning-outcomes",
     "title": "Support Vector Machines",
     "section": "Learning Outcomes",
-    "text": "Learning Outcomes\n\nSupport Vector Machine\nR Code"
+    "text": "Learning Outcomes\n\nMaximal Margin Classifier\nSupport Vector Classifier\nSupport Vector Machines"
   },
   {
     "objectID": "lectures/14a.html#motivating-example",
@@ -4326,8 +4389,106 @@
     "text": "Motivating Example"
   },
   {
+    "objectID": "lectures/14a.html#maximal-margin-classifier-1",
+    "href": "lectures/14a.html#maximal-margin-classifier-1",
+    "title": "Support Vector Machines",
+    "section": "Maximal Margin Classifier",
+    "text": "Maximal Margin Classifier\nThe Maximal Margin Classifier will impose a hyperplane on a graph that will classify the data given a vector of predictor variables."
+  },
+  {
+    "objectID": "lectures/14a.html#hyperplane",
+    "href": "lectures/14a.html#hyperplane",
+    "title": "Support Vector Machines",
+    "section": "Hyperplane",
+    "text": "Hyperplane\nGiven a p-dimensional space, a hyperplane is flat affine subspace of p-1 dimensions. It is mathematically defined as:\n\\[\n\\beta_0 + \\beta_1X_1 + \\beta_2 X_2 + \\cdots+\\beta_pX_p = 0\n\\]"
+  },
+  {
+    "objectID": "lectures/14a.html#hyperplane-1",
+    "href": "lectures/14a.html#hyperplane-1",
+    "title": "Support Vector Machines",
+    "section": "Hyperplane",
+    "text": "Hyperplane"
+  },
+  {
+    "objectID": "lectures/14a.html#constructing-the-hyperplane",
+    "href": "lectures/14a.html#constructing-the-hyperplane",
+    "title": "Support Vector Machines",
+    "section": "Constructing the Hyperplane",
+    "text": "Constructing the Hyperplane\nA hyperplane is constructed by maximizing the margin \\(M\\) of the data points that are farthest from the theoretical margin. The data points that define the outer edge of the margins are known as support vectors."
+  },
+  {
+    "objectID": "lectures/14a.html#optimization-problem",
+    "href": "lectures/14a.html#optimization-problem",
+    "title": "Support Vector Machines",
+    "section": "Optimization Problem",
+    "text": "Optimization Problem\n\n\\(\\overset{\\mathrm{maximize}}{\\tiny\\beta_0, \\beta_1,\\ldots,\\beta_p,M}\\ \\large M\\)\nsubject to \\(\\sum^p_{j=1}\\beta_j^2 = 1\\)\n\\(y_i(\\beta_0 + \\beta_1X_{1i} + \\beta_2 X_{2i} + \\cdots+\\beta_pX_{pi})\\geq M \\ \\forall \\ i=1,\\ldots,n\\)"
+  },
+  {
+    "objectID": "lectures/14a.html#maximal-margin-classifier-2",
+    "href": "lectures/14a.html#maximal-margin-classifier-2",
+    "title": "Support Vector Machines",
+    "section": "Maximal Margin Classifier",
+    "text": "Maximal Margin Classifier"
+  },
+  {
+    "objectID": "lectures/14a.html#support-vector-classifier-1",
+    "href": "lectures/14a.html#support-vector-classifier-1",
+    "title": "Support Vector Machines",
+    "section": "Support Vector Classifier",
+    "text": "Support Vector Classifier\nMaximal Margin Classifiers have one fatal defect, the data points must be completely on one side of the margin. This does not allow room for error.\n\nA Support Vector Classifier allows for data points to be misclassified if need be.\n\n\nIt achieves this by implementing a Cost mechanism, denoted as \\(C\\), to account for any errors for data points."
+  },
+  {
+    "objectID": "lectures/14a.html#support-vector-classifiers",
+    "href": "lectures/14a.html#support-vector-classifiers",
+    "title": "Support Vector Machines",
+    "section": "Support Vector Classifiers",
+    "text": "Support Vector Classifiers"
+  },
+  {
+    "objectID": "lectures/14a.html#optimization-problem-1",
+    "href": "lectures/14a.html#optimization-problem-1",
+    "title": "Support Vector Machines",
+    "section": "Optimization Problem",
+    "text": "Optimization Problem\n\n\\(\\overset{\\mathrm{maximize}}{\\tiny\\beta_0, \\beta_1,\\ldots,\\beta_p,\\epsilon_1,\\ldots, \\epsilon_n,M}\\ \\large M\\)\nsubject to \\(\\sum^p_{j=1}\\beta_j^2 = 1\\)\n\\(y_i(\\beta_0 + \\beta_1X_{1i} + \\beta_2 X_{2i} + \\cdots+\\beta_pX_{pi})\\geq M (1-\\epsilon_i) \\ \\forall \\ i=1,\\ldots,n\\)\n\\(\\epsilon_i\\geq 0\\)\n\\(\\sum^n_{i=1} \\epsilon_i \\leq C\\)"
+  },
+  {
+    "objectID": "lectures/14a.html#budget-c",
+    "href": "lectures/14a.html#budget-c",
+    "title": "Support Vector Machines",
+    "section": "Budget C",
+    "text": "Budget C\nThe tuning parameter \\(C\\) is known as the budget parameter for error. When the data point is on the correct side of the margin, then it has an error of \\(0\\). When a data point in on the wrong side the margin, it has a bit of error. When the data point is on the opposite side of the hyperplane, then it has an error greater than \\(1\\). This is allowed as long as the sum of errors are less than or equal to \\(C\\)."
+  },
+  {
+    "objectID": "lectures/14a.html#r-code-support-vector-classifier",
+    "href": "lectures/14a.html#r-code-support-vector-classifier",
+    "title": "Support Vector Machines",
+    "section": "R Code: Support Vector Classifier",
+    "text": "R Code: Support Vector Classifier\n\nSimulationR CodeSupport VectorsSummary\n\n\n\nx &lt;- matrix ( rnorm (20 * 2) , ncol = 2)\ny &lt;- c( rep (-1, 10) , rep (1, 10) )\nx[y == 1, ] &lt;- x[y == 1, ] + 1\nplot (x, col = (3 - y))\n\n\n\n\n\n\n\n\n\n\n\ndat &lt;- data.frame (x = x, y = as.factor(y))\nlibrary(e1071)\nsvmfit &lt;- svm (y ~ ., data = dat , kernel = \"linear\",\ncost = 10, scale = FALSE )\nplot(svmfit, dat)\n\n\n\n\n\n\n\n\n\n\n\nsvmfit$index\n\n#&gt; [1]  2  3  4  5  6 11 12 16 19\n\n\n\n\n\nsummary(svmfit)\n\n#&gt; \n#&gt; Call:\n#&gt; svm(formula = y ~ ., data = dat, kernel = \"linear\", cost = 10, scale = FALSE)\n#&gt; \n#&gt; \n#&gt; Parameters:\n#&gt;    SVM-Type:  C-classification \n#&gt;  SVM-Kernel:  linear \n#&gt;        cost:  10 \n#&gt; \n#&gt; Number of Support Vectors:  9\n#&gt; \n#&gt;  ( 5 4 )\n#&gt; \n#&gt; \n#&gt; Number of Classes:  2 \n#&gt; \n#&gt; Levels: \n#&gt;  -1 1"
+  },
+  {
+    "objectID": "lectures/14a.html#cross-validation-approach-for-c",
+    "href": "lectures/14a.html#cross-validation-approach-for-c",
+    "title": "Support Vector Machines",
+    "section": "Cross-Validation Approach for C",
+    "text": "Cross-Validation Approach for C\n\nR CodeSummaryBest Model\n\n\n\nset.seed(2434)\ntune.out &lt;- tune(svm, y ~ ., data = dat, kernel = \"linear\",\n                 ranges = list(cost = c(0.001, 0.01, 0.1, 1, 5, 10, 100)))\n\n\n\n\nsummary(tune.out)\n\n#&gt; \n#&gt; Parameter tuning of 'svm':\n#&gt; \n#&gt; - sampling method: 10-fold cross validation \n#&gt; \n#&gt; - best parameters:\n#&gt;  cost\n#&gt;   0.1\n#&gt; \n#&gt; - best performance: 0.15 \n#&gt; \n#&gt; - Detailed performance results:\n#&gt;    cost error dispersion\n#&gt; 1 1e-03  0.45  0.4972145\n#&gt; 2 1e-02  0.45  0.4972145\n#&gt; 3 1e-01  0.15  0.2415229\n#&gt; 4 1e+00  0.15  0.2415229\n#&gt; 5 5e+00  0.20  0.2581989\n#&gt; 6 1e+01  0.20  0.2581989\n#&gt; 7 1e+02  0.20  0.2581989\n\n\n\n\n\nbestmod &lt;- tune.out$best.model\nsummary(bestmod)\n\n#&gt; \n#&gt; Call:\n#&gt; best.tune(METHOD = svm, train.x = y ~ ., data = dat, ranges = list(cost = c(0.001, \n#&gt;     0.01, 0.1, 1, 5, 10, 100)), kernel = \"linear\")\n#&gt; \n#&gt; \n#&gt; Parameters:\n#&gt;    SVM-Type:  C-classification \n#&gt;  SVM-Kernel:  linear \n#&gt;        cost:  0.1 \n#&gt; \n#&gt; Number of Support Vectors:  16\n#&gt; \n#&gt;  ( 8 8 )\n#&gt; \n#&gt; \n#&gt; Number of Classes:  2 \n#&gt; \n#&gt; Levels: \n#&gt;  -1 1"
+  },
+  {
+    "objectID": "lectures/14a.html#prediction",
+    "href": "lectures/14a.html#prediction",
+    "title": "Support Vector Machines",
+    "section": "Prediction",
+    "text": "Prediction\n\nSet UpPrediction\n\n\n\nxtest &lt;- matrix(rnorm(20 * 2), ncol = 2)\nytest &lt;- sample(c(-1, 1), 20, rep = TRUE)\nxtest[ytest == 1,] &lt;- xtest[ytest == 1, ] + 1\ntestdat &lt;- data.frame (x = xtest , y = as.factor(ytest))\n\n\n\n\nypred &lt;- predict(bestmod, testdat)\ntable(pred = ypred, truth = testdat$y)\n\n#&gt;     truth\n#&gt; pred -1  1\n#&gt;   -1  9  0\n#&gt;   1   1 10"
+  },
+  {
     "objectID": "lectures/14a.html#motivating-example-1",
     "href": "lectures/14a.html#motivating-example-1",
+    "title": "Support Vector Machines",
+    "section": "Motivating Example",
+    "text": "Motivating Example"
+  },
+  {
+    "objectID": "lectures/14a.html#motivating-example-2",
+    "href": "lectures/14a.html#motivating-example-2",
     "title": "Support Vector Machines",
     "section": "Motivating Example",
     "text": "Motivating Example"
@@ -4361,29 +4522,15 @@
     "text": "Support Vector Machines Kernels\n\nLinear\nPolynomial\nRadial"
   },
   {
-    "objectID": "lectures/14a.html#r-code-1",
-    "href": "lectures/14a.html#r-code-1",
+    "objectID": "lectures/14a.html#r-code-svm",
+    "href": "lectures/14a.html#r-code-svm",
     "title": "Support Vector Machines",
-    "section": "R Code",
-    "text": "R Code\n\nDataPlotSVM\n\n\n\nset.seed(1)\nx &lt;- matrix(rnorm(200 * 2), ncol = 2)\nx[1:100, ] &lt;- x[1:100, ] + 2\nx[101:150, ] &lt;- x[101:150 , ] - 2\ny &lt;- c(rep(1, 150), rep(2, 50))\ndat &lt;- data.frame (x = x, y = as.factor(y))\n\n\n\n\nplot(x,col=y)\n\n\n\n\n\n\n\n\n\n\n\nlibrary(e1071)\ntrain &lt;- sample(200, 100)\nsvmfit &lt;- svm(y ~ ., data = dat[train, ], kernel = \"radial\",\ngamma = 1, cost = 1)\nplot(svmfit, dat[train, ])"
+    "section": "R Code: SVM",
+    "text": "R Code: SVM\n\nDataPlotSVM\n\n\n\nset.seed(1)\nx &lt;- matrix(rnorm(200 * 2), ncol = 2)\nx[1:100, ] &lt;- x[1:100, ] + 2\nx[101:150, ] &lt;- x[101:150 , ] - 2\ny &lt;- c(rep(1, 150), rep(2, 50))\ndat &lt;- data.frame (x = x, y = as.factor(y))\n\n\n\n\nplot(x,col=y)\n\n\n\n\n\n\n\n\n\n\n\nlibrary(e1071)\ntrain &lt;- sample(200, 100)\nsvmfit &lt;- svm(y ~ ., data = dat[train, ], kernel = \"radial\",\ngamma = 1, cost = 1)\nplot(svmfit, dat[train, ])"
   },
   {
     "objectID": "lectures/15a.html#my-experience",
     "href": "lectures/15a.html#my-experience",
-    "title": "Neural Networks in R",
-    "section": "My Experience",
-    "text": "My Experience"
-  },
-  {
-    "objectID": "lectures/15a.html#my-experience-1",
-    "href": "lectures/15a.html#my-experience-1",
-    "title": "Neural Networks in R",
-    "section": "My Experience",
-    "text": "My Experience"
-  },
-  {
-    "objectID": "lectures/15a.html#my-experience-2",
-    "href": "lectures/15a.html#my-experience-2",
     "title": "Neural Networks in R",
     "section": "My Experience",
     "text": "My Experience"
@@ -4394,6 +4541,13 @@
     "title": "Neural Networks in R",
     "section": "Learning Outcomes",
     "text": "Learning Outcomes\n\nTensorflow\nTorch"
+  },
+  {
+    "objectID": "lectures/15a.html#my-opinion",
+    "href": "lectures/15a.html#my-opinion",
+    "title": "Neural Networks in R",
+    "section": "My Opinion",
+    "text": "My Opinion"
   },
   {
     "objectID": "lectures/15a.html#tensorflow-1",
@@ -4478,13 +4632,6 @@
     "title": "Neural Networks in R",
     "section": "Torch in R",
     "text": "Torch in R\n\nlibrary(torch)\nlibrary(luz) # high-level interface for torch\nlibrary(torchvision) # for datasets and image transformation\nlibrary(torchdatasets) # for datasets we are going to use\nlibrary(zeallot)\ntorch_manual_seed(13)\n\n###\ntrain_ds &lt;- mnist_dataset(root = \".\", train = TRUE, download = TRUE)\ntest_ds &lt;- mnist_dataset(root = \".\", train = FALSE, download = TRUE)\n\nstr(train_ds[1])\nstr(test_ds[2])\n\nlength(train_ds)\nlength(test_ds)\n###\n\n\n###\ntransform &lt;- function(x) {\n  x %&gt;%\n    torch_tensor() %&gt;%\n    torch_flatten() %&gt;%\n    torch_div(255)\n}\ntrain_ds &lt;- mnist_dataset(\n  root = \".\",\n  train = TRUE,\n  download = TRUE,\n  transform = transform\n)\ntest_ds &lt;- mnist_dataset(\n  root = \".\",\n  train = FALSE,\n  download = TRUE,\n  transform = transform\n)\n###\n\n\n###\nmodelnn &lt;- nn_module(\n  initialize = function() {\n    self$linear1 &lt;- nn_linear(in_features = 28*28, out_features = 256)\n    self$linear2 &lt;- nn_linear(in_features = 256, out_features = 128)\n    self$linear3 &lt;- nn_linear(in_features = 128, out_features = 10)\n\n    self$drop1 &lt;- nn_dropout(p = 0.4)\n    self$drop2 &lt;- nn_dropout(p = 0.3)\n\n    self$activation &lt;- nn_relu()\n  },\n  forward = function(x) {\n    x %&gt;%\n\n      self$linear1() %&gt;%\n      self$activation() %&gt;%\n      self$drop1() %&gt;%\n\n      self$linear2() %&gt;%\n      self$activation() %&gt;%\n      self$drop2() %&gt;%\n\n      self$linear3()\n  }\n)\n###\n\n\n###\nprint(modelnn())\n###\n\n\n###\nmodelnn &lt;- modelnn %&gt;%\n  setup(\n    loss = nn_cross_entropy_loss(),\n    optimizer = optim_rmsprop,\n    metrics = list(luz_metric_accuracy())\n  )\n###\n\n###\nsystem.time(\n   fitted &lt;- modelnn %&gt;%\n      fit(\n        data = train_ds,\n        epochs = 5,\n        valid_data = 0.2,\n        dataloader_options = list(batch_size = 256),\n        verbose = FALSE\n      )\n )\nplot(fitted)\n###\n\n###\naccuracy &lt;- function(pred, truth) {\n   mean(pred == truth) }\n\n# gets the true classes from all observations in test_ds.\ntruth &lt;- sapply(seq_along(test_ds), function(x) test_ds[x][[2]])\n\nfitted %&gt;%\n  predict(test_ds) %&gt;%\n  torch_argmax(dim = 2) %&gt;%  # the predicted class is the one with higher 'logit'.\n  as_array() %&gt;% # we convert to an R object\n  accuracy(truth)\n###\n\n###\nmodellr &lt;- nn_module(\n  initialize = function() {\n    self$linear &lt;- nn_linear(784, 10)\n  },\n  forward = function(x) {\n    self$linear(x)\n  }\n)\nprint(modellr())\n###\n\n###\nfit_modellr &lt;- modellr %&gt;%\n  setup(\n    loss = nn_cross_entropy_loss(),\n    optimizer = optim_rmsprop,\n    metrics = list(luz_metric_accuracy())\n  ) %&gt;%\n  fit(\n    data = train_ds,\n    epochs = 5,\n    valid_data = 0.2,\n    dataloader_options = list(batch_size = 128)\n  )\n\nfit_modellr %&gt;%\n  predict(test_ds) %&gt;%\n  torch_argmax(dim = 2) %&gt;%  # the predicted class is the one with higher 'logit'.\n  as_array() %&gt;% # we convert to an R object\n  accuracy(truth)\n\n\n# alternatively one can use the `evaluate` function to get the results\n# on the test_ds\nevaluate(fit_modellr, test_ds)\n###"
-  },
-  {
-    "objectID": "lectures/15a.html#my-opinion",
-    "href": "lectures/15a.html#my-opinion",
-    "title": "Neural Networks in R",
-    "section": "My Opinion",
-    "text": "My Opinion"
   },
   {
     "objectID": "lectures/1a.html#introductions",

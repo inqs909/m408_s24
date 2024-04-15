@@ -731,6 +731,10 @@ Y = \beta_0 + \sum^p_{j=1}x^j\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{p+l} + \var
 Y = \beta_0 + \sum^3_{j=1}x^j\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{3+l} + \varepsilon
 \]</span></p>
 </section>
+<section id="natural-cubic-splines" class="slide level2">
+<h2>Natural Cubic Splines</h2>
+<p>Natural splines force the boundary knots to be fitted with simple lines instead of spline functions. The interior knots are fitted with spline functions.</p>
+</section>
 <section id="plot-3" class="slide level2">
 <h2>Plot</h2>
 <div class="cell">
@@ -746,8 +750,8 @@ Y = \beta_0 + \sum^3_{j=1}x^j\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{3+l} + \var
 
 </div>
 <img data-src="12a_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
-<section id="natural-splines" class="slide level2">
-<h2>Natural Splines</h2>
+<section id="natural-cubic-splines-1" class="slide level2">
+<h2>Natural Cubic Splines</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -769,8 +773,8 @@ Y = \beta_0 + \sum^3_{j=1}x^j\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{3+l} + \var
 <span id="cb15-2"><a href="#cb15-2"></a>   data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="cubic-splines-in-r-1" class="slide level2">
-<h2>Cubic Splines in R</h2>
+<section id="natural-cubic-splines-in-r" class="slide level2">
+<h2>Natural Cubic Splines in R</h2>
 <p>The <code>ns()</code> function in R from the <code>splines</code> package will construct the basis matrix for natural cubic splines. You will need to specify the locations of the knots.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">ns</span>(x, <span class="at">knots =</span> <span class="fu">c</span>()),</span>

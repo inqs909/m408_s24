@@ -14,23 +14,23 @@ format:
       chalk-width: 4
 knitr:
   opts_chunk: 
+    
     echo: true
     code-fold: true
     eval: true
     message: false
     warnings: false
     comment: "#>" 
-    
 revealjs-plugins:
   - pointer
   - verticator
-  
 filters: 
   - reveal-header
   - code-fullscreen
   - reveal-auto-agenda
-
-editor: visual
+editor_options: 
+  chunk_output_type: console
+editor: source
 ---
 
 # Motivating Example
@@ -43,8 +43,8 @@ x <- rnorm(1000, sd = 0.25)
 y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
 ggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()
 ```
-## Plot
 
+## Plot
 
 ```{r}
 library(tidyverse)
@@ -52,7 +52,6 @@ x <- rnorm(1000, sd = 3.5)
 y <- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)
 ggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()
 ```
-
 
 # Smoothing Splines
 
@@ -125,9 +124,8 @@ library(tidyverse)
 x <- rnorm(1000, sd = 0.25)
 y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
 ```
+
 # Local Regression
-
-
 
 ## Local Models
 
@@ -158,9 +156,51 @@ ggplot(tibble(x=x, y=y), aes(x,y)) +
   theme_bw()
 ```
 
-
 ## Importance (Weights)
 
+The importance of a data point to a grid point is determined by the distance between the two points.
+
+::: fragment
+If the distance is small, the data point is more important.
+:::
+
+::: fragment
+We must assign a numerical value to the importance. Known as weight.
+:::
+
+::: fragment
+Weights can be obtained using a kernel function.
+:::
+
+## Kernel Function
+
+::: panel-tabset
+### Epanechnikov
+
+$$
+K(X_i, x_0) = w_i = 3/4\{1-(X_i-x_0)^2\}
+$$
+
+### Gaussian
+
+$$
+K(X_i, x_0) = w_i = \frac{1}{\sqrt{2\pi}}\exp\{-(X_i-x_0)^2/2\}
+$$
+
+### Triangular
+
+$$
+K(X_i, x_0) = w_i =  \{1-|X_i-x_0|\}
+$$
+:::
+
+## Local Constant Model
+
+For each grid point $x_0$, find the weighted mean:
+
+$$
+f(x_0) = \sum^n_{i=1} w_i X_i
+$$
 
 ## Local Constant Model
 
@@ -175,6 +215,20 @@ ggplot(tibble(x=x, y=y), aes(x,y)) +
   theme_bw()
 ```
 
+## Local Linear Models
+
+For each grid point $x_0$, it can be modeled with
+
+$$
+\hat f(x_0)= \hat \beta_0 + \hat\beta_1 x_0
+$$ Estimated via:
+
+::: fragment
+$$
+\sum^n_{i=1}\{Y_i - \hat f(X_i)\}^2w_i
+$$
+:::
+
 ## Local Linear Model
 
 ```{r}
@@ -188,7 +242,69 @@ ggplot(tibble(x=x, y=y), aes(x,y)) +
   theme_bw()
 ```
 
-## Local Regression
+## Local Regression in R
+
+Local Regression can be conducted via the `loess()` function
+
+::: panel-tabset
+### Local Constant
+
+```{r}
+#| code-fold: false
+#| eval: false
+
+loess(y ~ x,
+      data,
+      span,
+      degree = 0)
+```
+
+### Local Linear
+
+```{r}
+#| code-fold: false
+#| eval: false
+
+loess(y ~ x,
+      data,
+      span,
+      degree = 1)
+```
+:::
 
 # Generalized Additive Models
+
+## GAM
+
+Generalized Additive Models extends the nonparametric models to include more than one predictor to explain the outcome `Y`.
+
+## GAM
+
+$$
+Y = \beta_0 + f_1(X_1) + f_2(X_2) + \cdots + f_k(X_k) + \varepsilon 
+$$
+
+$$
+Y = \beta_0 + \sum^k_{j=1} f_j(X_j) +\varepsilon
+$$
+
+## GAM Estimation
+
+Each $\hat f_j$ can be estimated using an approach mentioned before.
+
+$$
+\hat Y = \hat \beta_0 + \sum^k_{j=1} \hat f_j(X_j) 
+$$
+
+::: fragment
+Each $hat f_j$ can be estimated differently from other predictor functions.
+:::
+
+## GAMs for Non-Normal Variables
+
+GAM can be extended to model 
+
+## GAMs in R
+
+The `gam` package provides a set of functions to fit a GAM for multiple predictor variables
 

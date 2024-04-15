@@ -277,6 +277,10 @@ $$
 Y = \beta_0 + \sum^3_{j=1}x^j\beta_j + \sum_{l=1}^Lh(x, \xi_l)\beta_{3+l} + \varepsilon
 $$
 
+## Natural Cubic Splines
+
+Natural splines force the boundary knots to be fitted with simple lines instead of spline functions. The interior knots are fitted with spline functions.
+
 ## Plot
 
 ```{r}
@@ -288,7 +292,7 @@ ggplot(tibble(x=x, y=y), aes(x,y)) +
   theme_bw()
 ```
 
-## Natural Splines
+## Natural Cubic Splines
 
 ```{r}
 x <- rnorm(1000, sd = 0.25)
@@ -311,7 +315,7 @@ lm(y ~ bs(x, knots = c()),
    data)
 ```
 
-## Cubic Splines in R
+## Natural Cubic Splines in R
 
 The `ns()` function in R from the `splines` package will construct the basis matrix for natural cubic splines. You will need to specify the locations of the knots.
 

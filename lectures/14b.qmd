@@ -1,5 +1,5 @@
 ---
-title: "Neural Networks"
+title: "Deep Learning"
 format:
   revealjs:
     scrollable: true
@@ -34,6 +34,9 @@ editor: visual
 ## Learning Outcomes
 
 -   Neural Networks
+-   
+
+# Neural Networks
 
 ## Neural Networks
 
@@ -76,3 +79,9 @@ Multilayer Neural Networks create multiple hidden layers where each layer feeds 
 ## Multilayer Neural Network
 
 ![](https://www.oreilly.com/api/v2/epubs/9781838642709/files/assets/61bc8450-f3ac-4d81-b405-3d748e30d04a.png){fig-align="center"}
+
+# Convolutional Neural Networks
+
+# Document Classification
+
+# Recurrent Neural Networks
