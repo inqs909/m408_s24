@@ -2783,14 +2783,14 @@
     "href": "lectures/12b.html#gams-for-non-normal-variables",
     "title": "Nonparametric Regression",
     "section": "GAMs for Non-Normal Variables",
-    "text": "GAMs for Non-Normal Variables\nGAM can be extended to model"
+    "text": "GAMs for Non-Normal Variables\nGAMs can be extended to model outcome variables that do not follow a normal distribution.\n\\[\ng(\\hat Y) = \\hat \\beta_0 + \\sum^k_{j=1} \\hat f_j(X_j)\n\\]"
   },
   {
     "objectID": "lectures/12b.html#gams-in-r",
     "href": "lectures/12b.html#gams-in-r",
     "title": "Nonparametric Regression",
     "section": "GAMs in R",
-    "text": "GAMs in R\nThe gam package provides a set of functions to fit a GAM for multiple predictor variables"
+    "text": "GAMs in R\nThe gam package provides a set of functions to fit a GAM for multiple predictor variables\n\nlibrary(gam)\ngam(y ~ f_1 + f_2 + ...,\n    family,\n    data)"
   },
   {
     "objectID": "lectures/11c.html#learning-outcomes",

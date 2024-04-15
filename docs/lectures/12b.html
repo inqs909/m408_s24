@@ -753,11 +753,20 @@ Y = \beta_0 + \sum^k_{j=1} f_j(X_j) +\varepsilon
 </section>
 <section id="gams-for-non-normal-variables" class="slide level2">
 <h2>GAMs for Non-Normal Variables</h2>
-<p>GAM can be extended to model</p>
+<p>GAMs can be extended to model outcome variables that do not follow a normal distribution.</p>
+<p><span class="math display">\[
+g(\hat Y) = \hat \beta_0 + \sum^k_{j=1} \hat f_j(X_j)
+\]</span></p>
 </section>
 <section id="gams-in-r" class="slide level2">
 <h2>GAMs in R</h2>
 <p>The <code>gam</code> package provides a set of functions to fit a GAM for multiple predictor variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(gam)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">gam</span>(y <span class="sc">~</span> f_1 <span class="sc">+</span> f_2 <span class="sc">+</span> ...,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>    family,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>    data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="footer footer-default">
 

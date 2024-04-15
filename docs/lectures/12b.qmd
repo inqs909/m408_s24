@@ -302,9 +302,23 @@ Each $hat f_j$ can be estimated differently from other predictor functions.
 
 ## GAMs for Non-Normal Variables
 
-GAM can be extended to model 
+GAMs can be extended to model outcome variables that do not follow a normal distribution.
+
+
+$$
+g(\hat Y) = \hat \beta_0 + \sum^k_{j=1} \hat f_j(X_j) 
+$$
 
 ## GAMs in R
 
 The `gam` package provides a set of functions to fit a GAM for multiple predictor variables
+
+```{r}
+#| eval: false
+#| code-fold: false
+library(gam)
+gam(y ~ f_1 + f_2 + ...,
+    family,
+    data)
+```
 
