@@ -1,13 +1,25 @@
 ---
 title: "Homework 8"
-date: 4/27/23
-description: "Assignment is due 5/5/23"
+date: 4/15/24
+description: "Assignment is due 4/28/24"
 editor: visual
-draft: true
+draft: false
 ---
 
 From *An Introduction to Statistical Learning* from James, Witten, Hastie, and Tibshirani (Second Edition)
 
 ## Problem 1
 
-From the Applied Section in Chapter 8: Problem 8 a,b,c,d,e
+From the Applied Section in Chapter 7: Problem 6 a, b
+
+## Problem 2
+
+From the Applied Section in Chapter 7: Problem 7
+
+## Problem 3
+
+From the Applied Section in Chapter 7: Problem 9 a, b, c, d
+
+## Problem 4
+
+From the Applied Section in Chapter 7: Problem 10 a, b, c
