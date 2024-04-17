@@ -534,7 +534,7 @@ Y = \beta_0 + \sum^p_{j=1}x^j\beta_j + \sum_{l=1}^L \beta_{p+l}(x - \xi_l)^p_+ +
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
-<p>Fit a smoothing spline model with the following simulated data. Search through the help documentation to print out <span class="math inline">\(\lambda\)</span>.</p>
+<p>Fit a smoothing spline model with the following simulated data. Search through the help documentation to print out <span class="math inline">\(\lambda\)</span>. What is the MSE?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -707,6 +707,18 @@ f(x_0) = \sum^n_{i=1} w_i X_i
 </div>
 </div>
 </div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>Fit a Local Linear model with the following simulated data. What is the MSE?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.25</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">5.3</span> <span class="sc">*</span> x <span class="sc">-</span> <span class="dv">45</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="fl">35.5</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">4</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section></section>
 <section>
 <section id="generalized-additive-models" class="title-slide slide level1 agenda-slide center">
@@ -762,10 +774,24 @@ g(\hat Y) = \hat \beta_0 + \sum^k_{j=1} \hat f_j(X_j)
 <h2>GAMs in R</h2>
 <p>The <code>gam</code> package provides a set of functions to fit a GAM for multiple predictor variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(gam)</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">gam</span>(y <span class="sc">~</span> f_1 <span class="sc">+</span> f_2 <span class="sc">+</span> ...,</span>
-<span id="cb10-3"><a href="#cb10-3"></a>    family,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>    data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(gam)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">gam</span>(y <span class="sc">~</span> f_1 <span class="sc">+</span> f_2 <span class="sc">+</span> ...,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>    family,</span>
+<span id="cb11-4"><a href="#cb11-4"></a>    data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
+<p>Using <code>mtcars</code>, fit a GAM with <code>mpg</code> as an outcome variable with 3 or 4 predictors. Use different types of functions to model the predictors.</p>
+</section>
+<section id="example-3" class="slide level2">
+<h2>Example</h2>
+<p>Fit the data using the simulated data below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span><span class="dv">4</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>mu <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> boot<span class="sc">::</span><span class="fu">inv.logit</span>(x) <span class="sc">+</span> <span class="fu">sqrt</span>(y<span class="sc">+</span><span class="dv">15</span>))</span>
+<span id="cb12-4"><a href="#cb12-4"></a>z <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">

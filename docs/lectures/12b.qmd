@@ -117,7 +117,7 @@ smooth.spline(x, # Vector of predictor
 
 ## Example
 
-Fit a smoothing spline model with the following simulated data. Search through the help documentation to print out $\lambda$.
+Fit a smoothing spline model with the following simulated data. Search through the help documentation to print out $\lambda$. What is the MSE?
 
 ```{r}
 library(tidyverse)
@@ -272,6 +272,16 @@ loess(y ~ x,
 ```
 :::
 
+## Example
+
+Fit a Local Linear model with the following simulated data. What is the MSE?
+
+```{r}
+library(tidyverse)
+x <- rnorm(1000, sd = 0.25)
+y <- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)
+```
+
 # Generalized Additive Models
 
 ## GAM
@@ -322,4 +332,19 @@ gam(y ~ f_1 + f_2 + ...,
     data)
 ```
 
+## Example
+
+Using `mtcars`, fit a GAM with `mpg` as an outcome variable with 3 or 4 predictors. Use different types of functions to model the predictors.
+
+## Example
+Fit the data using the simulated data below:
+
+```{r}
+#| eval: false
+#| code-fold: false
+x <- rnorm(1000)
+y <- rnorm(1000, mean =4)
+mu <- exp(-2 + boot::inv.logit(x) + sqrt(y+15))
+z <- rpois(1000, mu)
+```
 

@@ -2692,7 +2692,7 @@
     "href": "lectures/12b.html#example",
     "title": "Nonparametric Regression",
     "section": "Example",
-    "text": "Example\nFit a smoothing spline model with the following simulated data. Search through the help documentation to print out \\(\\lambda\\).\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)"
+    "text": "Example\nFit a smoothing spline model with the following simulated data. Search through the help documentation to print out \\(\\lambda\\). What is the MSE?\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)"
   },
   {
     "objectID": "lectures/12b.html#local-models",
@@ -6998,5 +6998,26 @@
     "title": "Week 9",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
+  },
+  {
+    "objectID": "lectures/12b.html#example-1",
+    "href": "lectures/12b.html#example-1",
+    "title": "Nonparametric Regression",
+    "section": "Example",
+    "text": "Example\nFit a Local Linear model with the following simulated data. What is the MSE?\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)"
+  },
+  {
+    "objectID": "lectures/12b.html#example-2",
+    "href": "lectures/12b.html#example-2",
+    "title": "Nonparametric Regression",
+    "section": "Example",
+    "text": "Example\nUsing mtcars, fit a GAM with mpg as an outcome variable with 3 or 4 predictors. Use different types of functions to model the predictors."
+  },
+  {
+    "objectID": "lectures/12b.html#example-3",
+    "href": "lectures/12b.html#example-3",
+    "title": "Nonparametric Regression",
+    "section": "Example",
+    "text": "Example\nFit the data using the simulated data below:\n\nx &lt;- rnorm(1000)\ny &lt;- rnorm(1000, mean =4)\nmu &lt;- exp(-2 + boot::inv.logit(x) + sqrt(y+15))\nz &lt;- rpois(1000, mu)"
   }
 ]
