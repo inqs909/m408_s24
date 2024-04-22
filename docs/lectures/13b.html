@@ -402,7 +402,6 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Support Vector Machines</h1>
-  <p class="subtitle">Maximal Margin and Support Vector Classifiers</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -491,6 +490,45 @@
 <p>The tuning parameter <span class="math inline">\(C\)</span> is known as the budget parameter for error. When the data point is on the correct side of the margin, then it has an error of <span class="math inline">\(0\)</span>. When a data point in on the wrong side the margin, it has a bit of error. When the data point is on the opposite side of the hyperplane, then it has an error greater than <span class="math inline">\(1\)</span>. This is allowed as long as the sum of errors are less than or equal to <span class="math inline">\(C\)</span>.</p>
 </section></section>
 <section>
+<section id="support-vector-machines" class="title-slide slide level1 center">
+<h1>Support Vector Machines</h1>
+
+</section>
+<section id="motivating-example-1" class="slide level2">
+<h2>Motivating Example</h2>
+
+<img data-src="https://www.surveypractice.org/article/2715-using-support-vector-machines-for-survey-research/attachment/9153.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="motivating-example-2" class="slide level2">
+<h2>Motivating Example</h2>
+
+<img data-src="https://i.stack.imgur.com/shjDw.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="support-vector-machines-1" class="slide level2">
+<h2>Support Vector Machines</h2>
+<p>A Support Vector Machine will create a nonlinear boundary instead of a line.</p>
+<div class="fragment">
+<p>It incorporates a kernel function that will compute the similarities between two support vectors.</p>
+</div>
+<div class="fragment">
+<p>The kernel function can be loosely claimed how the data is modeled.</p>
+</div>
+</section>
+<section id="nonlinear-boundary" class="slide level2">
+<h2>Nonlinear Boundary</h2>
+
+<img data-src="https://miro.medium.com/v2/resize:fit:982/1*J0k7TxTLoL5ZG-Hq6v34Jg.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="nonlinear-boundary-1" class="slide level2">
+<h2>Nonlinear Boundary</h2>
+
+<img data-src="https://s3.amazonaws.com/production.scholastica/public/attachments/b275a94b-e5ba-4e3b-8bbe-5e3235e95892/large/image4.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="support-vector-machines-kernels" class="slide level2">
+<h2>Support Vector Machines Kernels</h2>
+<ul>
+<li><p>Linear</p></li>
+<li><p>Polynomial</p></li>
+<li><p>Radial</p></li>
+</ul>
+</section></section>
+<section>
 <section id="r-code" class="title-slide slide level1 center">
 <h1>R Code</h1>
 
@@ -535,7 +573,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>svmfit<span class="sc">$</span>index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  [1]  3  5  6  7  8  9 10 11 12 13 14 18 19</code></pre>
+<pre><code>#&gt;  [1]  1  3  4  6  9 10 12 15 16 18 19 20</code></pre>
 </div>
 </div>
 </div>
@@ -553,9 +591,9 @@
 #&gt;  SVM-Kernel:  linear 
 #&gt;        cost:  10 
 #&gt; 
-#&gt; Number of Support Vectors:  13
+#&gt; Number of Support Vectors:  12
 #&gt; 
-#&gt;  ( 7 6 )
+#&gt;  ( 6 6 )
 #&gt; 
 #&gt; 
 #&gt; Number of Classes:  2 
@@ -591,19 +629,19 @@
 #&gt; 
 #&gt; - best parameters:
 #&gt;  cost
-#&gt;    10
+#&gt;   0.1
 #&gt; 
-#&gt; - best performance: 0.25 
+#&gt; - best performance: 0.3 
 #&gt; 
 #&gt; - Detailed performance results:
 #&gt;    cost error dispersion
 #&gt; 1 1e-03  0.55  0.4377975
 #&gt; 2 1e-02  0.55  0.4377975
-#&gt; 3 1e-01  0.30  0.3496029
-#&gt; 4 1e+00  0.35  0.3374743
-#&gt; 5 5e+00  0.30  0.4216370
-#&gt; 6 1e+01  0.25  0.3535534
-#&gt; 7 1e+02  0.25  0.3535534</code></pre>
+#&gt; 3 1e-01  0.30  0.2581989
+#&gt; 4 1e+00  0.40  0.3162278
+#&gt; 5 5e+00  0.40  0.3162278
+#&gt; 6 1e+01  0.35  0.3374743
+#&gt; 7 1e+02  0.35  0.3374743</code></pre>
 </div>
 </div>
 </div>
@@ -621,11 +659,11 @@
 #&gt; Parameters:
 #&gt;    SVM-Type:  C-classification 
 #&gt;  SVM-Kernel:  linear 
-#&gt;        cost:  10 
+#&gt;        cost:  0.1 
 #&gt; 
-#&gt; Number of Support Vectors:  13
+#&gt; Number of Support Vectors:  16
 #&gt; 
-#&gt;  ( 7 6 )
+#&gt;  ( 8 8 )
 #&gt; 
 #&gt; 
 #&gt; Number of Classes:  2 
@@ -660,6 +698,55 @@
 #&gt; pred -1  1
 #&gt;   -1  9  0
 #&gt;   1   1 10</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="r-code-svm" class="slide level2">
+<h2>R Code: SVM</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Data</a></li><li><a href="#tabset-4-2">Plot</a></li><li><a href="#tabset-4-3">SVM</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span> <span class="sc">*</span> <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ] <span class="ot">&lt;-</span> x[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ] <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>x[<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span>, ] <span class="ot">&lt;-</span> x[<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span> , ] <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">150</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">50</span>))</span>
+<span id="cb15-6"><a href="#cb15-6"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span> (<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">as.factor</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">plot</span>(x,<span class="at">col=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="13b_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">200</span>, <span class="dv">100</span>)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>svmfit <span class="ot">&lt;-</span> <span class="fu">svm</span>(y <span class="sc">~</span> ., </span>
+<span id="cb17-4"><a href="#cb17-4"></a>              <span class="at">data =</span> dat[train, ], </span>
+<span id="cb17-5"><a href="#cb17-5"></a>              <span class="at">kernel =</span> <span class="st">"radial"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6"></a>              <span class="at">gamma =</span> <span class="dv">1</span>, </span>
+<span id="cb17-7"><a href="#cb17-7"></a>              <span class="at">cost =</span> <span class="dv">1</span>)</span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="fu">plot</span>(svmfit, dat[train, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="13b_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>

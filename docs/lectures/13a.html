@@ -13,10 +13,11 @@
 <script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.506">
 
-  <title>MATH 408 - Bagging, Random Forests, and Boosting</title>
+  <title>MATH 408 - Tree-Based Methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -401,24 +402,248 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Bagging, Random Forests, and Boosting</h1>
+  <h1 class="title">Tree-Based Methods</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="learning-outcomes" class="slide level2">
-<h2>Learning Outcomes</h2>
+<section>
+<section id="trees" class="title-slide slide level1 agenda-slide center">
+<h1>Trees</h1>
+<div class="agenda">
 <ul>
-<li><p>Bagging</p></li>
-<li><p>Random Forests</p></li>
-<li><p>Boosting</p></li>
+<li><div class="agenda-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="trees-1" class="slide level2">
+<h2>Trees</h2>
+<p>A Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.</p>
+<div class="fragment">
+<p>Trees will split a region based on a predictors ability to reduce the overall mean squared error.</p>
+</div>
+<div class="fragment">
+<p>Trees are sometimes preferred to linear models due to the visual explanation of the model.</p>
+</div>
+</section>
+<section id="trees-2" class="slide level2">
+<h2>Trees</h2>
+
+<img data-src="https://www.mathworks.com/help/stats/simpleregressiontree.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="fitting-a-tree" class="slide level2">
+<h2>Fitting a Tree</h2>
+<ol type="1">
+<li>Start with the entire dataset and define the maximum number of regions or number of observations per region of the tree.</li>
+<li>Calculate the MSE of the dataset.</li>
+<li>For each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.</li>
+<li>Create a node in the tree with the selected split as the split criterion.</li>
+<li>Repeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small.</li>
+</ol>
+</section></section>
+<section>
+<section id="pruning" class="title-slide slide level1 agenda-slide center">
+<h1>Pruning</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="pruning-1" class="slide level2">
+<h2>Pruning</h2>
+<p>Pruning is the process that will remove branches from a regression tree in order to prevent overfitting.</p>
+<div class="fragment">
+<p>This will result in a subtree that has high predictive power with no overfitting.</p>
+</div>
+<div class="fragment">
+<p>Due to the computational burden of pruning, it is recommended to implement <em>Cost Complexity Pruning.</em></p>
+</div>
+</section>
+<section id="cost-complexity-pruning" class="slide level2">
+<h2>Cost Complexity Pruning</h2>
+<p>Let <span class="math inline">\(\alpha\)</span> be nonnegative tuning parameter that indexes a sequence of trees. Identify the tree that reduces:</p>
+<p><span class="math display">\[
+\sum^{|T|}_{m=1}\sum_{i:\ x_i \in R_m}(y_i-\hat y_{R_m})^2 +\alpha|T|
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(|T|\)</span>: Number of terminal nodes</p></li>
+<li><p><span class="math inline">\(R_m\)</span>: rectangular region containing data</p></li>
+<li><p><span class="math inline">\(y_i\)</span>: observed value</p></li>
+<li><p><span class="math inline">\(\hat y_{R_m}\)</span>: predicted value in rectangular region.</p></li>
 </ul>
 </section>
+<section id="pruning-algorithm" class="slide level2">
+<h2>Pruning Algorithm</h2>
+<ol type="1">
+<li>Conduct a fitting algorithm to find the largest tree from the training data. Stop once every region has a small number of observations.</li>
+<li>Apply the cost complexity pruning algorithm to identify the best subset of trees.</li>
+<li>Use a K-fold cross-validation approach to choose the proper <span class="math inline">\(\alpha\)</span>. For each kth fold:
+<ol type="1">
+<li>Repeat steps 1 and 2.</li>
+<li>Evaluate the mean squared prediction error as a function of <span class="math inline">\(\alpha\)</span>.</li>
+</ol></li>
+<li>Average the results for each value of <span class="math inline">\(\alpha\)</span>. Pick the <span class="math inline">\(\alpha\)</span> that minimizes the error.</li>
+<li>Return the subtree with the selected <span class="math inline">\(\alpha\)</span> from step 2</li>
+</ol>
+</section></section>
 <section>
-<section id="bagging" class="title-slide slide level1 center">
+<section id="classification-trees" class="title-slide slide level1 agenda-slide center">
+<h1>Classification Trees</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="classification-trees-1" class="slide level2">
+<h2>Classification Trees</h2>
+<p>Classification Trees will construct a tree that will classify data based on the region (leaf) you land. The class majority is what is classified.</p>
+</section>
+<section id="criterion-gini-index" class="slide level2">
+<h2>Criterion: Gini Index</h2>
+<p>The Gini Index is used to determine the error rate in classification trees:</p>
+<p><span class="math display">\[
+G = \sum^K_{k=1} \hat p_{mk}(1-\hat p_{mk})
+\]</span></p>
+</section></section>
+<section>
+<section id="regression-trees" class="title-slide slide level1 agenda-slide center">
+<h1>Regression Trees</h1>
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
+</section>
+<section id="regression-trees-1" class="slide level2">
+<h2>Regression Trees</h2>
+<p>Regression trees will construct a tree and predict the value of the outcome based on the average value of the region (leaf).</p>
+<p>Trees are constructed by minimizing the residual sums of square.</p>
+</section></section>
+<section>
+<section id="bagging" class="title-slide slide level1 agenda-slide center">
 <h1>Bagging</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="bagging-1" class="slide level2">
 <h2>Bagging</h2>
@@ -459,9 +684,36 @@
 <p>However, we can compute which variables reduced the RSS or Gini Index for all the trees. The variables with the largest reduction are considered important.</p>
 </section></section>
 <section>
-<section id="random-forests" class="title-slide slide level1 center">
+<section id="random-forests" class="title-slide slide level1 agenda-slide center">
 <h1>Random Forests</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="random-forests-1" class="slide level2">
 <h2>Random Forests</h2>
@@ -474,9 +726,36 @@
 </div>
 </section></section>
 <section>
-<section id="boosting" class="title-slide slide level1 center">
+<section id="boosting" class="title-slide slide level1 agenda-slide center">
 <h1>Boosting</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-inactive agenda-post-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
 </section>
 <section id="boosting-1" class="slide level2">
 <h2>Boosting</h2>
@@ -511,32 +790,62 @@ r_i \leftarrow r_i - \lambda\hat f^{b}(x_i)
 </ol>
 </section></section>
 <section>
-<section id="r-code" class="title-slide slide level1 center">
+<section id="r-code" class="title-slide slide level1 agenda-slide center">
 <h1>R Code</h1>
-
+<div class="agenda">
+<ul>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Pruning</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Classification Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Regression Trees</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Bagging</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Random Forests</p>
+</div></li>
+<li><div class="agenda-inactive agenda-pre-active">
+<p>Boosting</p>
+</div></li>
+<li><div class="agenda-active">
+<p>R Code</p>
+</div></li>
+</ul>
+</div>
 </section>
-<section id="bagging-regression-trees" class="slide level2">
-<h2>Bagging Regression Trees</h2>
+<section id="regression-trees-2" class="slide level2">
+<h2>Regression Trees</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R Code</a></li><li><a href="#tabset-1-2">Predictions</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R Code</a></li><li><a href="#tabset-1-2">Plot</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(randomForest)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tree)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>penguins <span class="sc">%&lt;&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb1-7"><a href="#cb1-7"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(penguins), <span class="fu">nrow</span>(penguins)<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>bag_penguins <span class="ot">&lt;-</span> penguins <span class="sc">%$%</span> <span class="fu">randomForest</span>(body_mass_g <span class="sc">~</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, <span class="at">subset =</span> train, <span class="at">mtry =</span> <span class="dv">3</span>, <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>()</span>
+<span id="cb1-6"><a href="#cb1-6"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="fu">nrow</span>(df)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>tree_penguin <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">tree</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>                                  <span class="at">data =</span> _,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>                                  <span class="at">subset =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
-<span id="cb2-2"><a href="#cb2-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>body_mass_g</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">plot</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">plot</span>(tree_penguin)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">text</span>(tree_penguin, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -549,27 +858,183 @@ r_i \leftarrow r_i - \lambda\hat f^{b}(x_i)
 </div>
 </div>
 </section>
-<section id="bagging-classification-trees" class="slide level2">
-<h2>Bagging Classification Trees</h2>
+<section id="classification-trees-2" class="slide level2">
+<h2>Classification Trees</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">R Code</a></li><li><a href="#tabset-2-2">Prediction</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Code</a></li><li><a href="#tabset-2-2">Plot</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>bag_penguins <span class="ot">&lt;-</span> penguins <span class="sc">%$%</span> <span class="fu">randomForest</span>(species <span class="sc">~</span> body_mass_g <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, <span class="at">subset =</span> train, <span class="at">mtry =</span> <span class="dv">4</span>, <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tree)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>()</span>
+<span id="cb3-6"><a href="#cb3-6"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="fu">nrow</span>(df)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>tree_penguin_class <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span>  <span class="fu">tree</span>(species <span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm, </span>
+<span id="cb3-8"><a href="#cb3-8"></a>                                  <span class="at">data =</span> _,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>                                  <span class="at">subset =</span> train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
-<span id="cb4-2"><a href="#cb4-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>species</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">table</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">plot</span>(tree_penguin_class)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">text</span>(tree_penguin_class, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pruning-2" class="slide level2">
+<h2>Pruning</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Summary</a></li><li><a href="#tabset-3-3">Plot</a></li><li><a href="#tabset-3-4">Pruning</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">attach</span>(df)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>tree_penguin_cv <span class="ot">&lt;-</span> <span class="fu">cv.tree</span>(tree_penguin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>tree_penguin_cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; $size
+#&gt; [1] 6 5 4 3 2 1
+#&gt; 
+#&gt; $dev
+#&gt; [1]  24079306  26138047  30484059  30549626  38718249 112604795
+#&gt; 
+#&gt; $k
+#&gt; [1]     -Inf  1967559  3060054  3537257  9664694 75001877
+#&gt; 
+#&gt; $method
+#&gt; [1] "deviance"
+#&gt; 
+#&gt; attr(,"class")
+#&gt; [1] "prune"         "tree.sequence"</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-3">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">plot</span>(tree_penguin_cv<span class="sc">$</span>size,</span>
+<span id="cb8-2"><a href="#cb8-2"></a>     tree_penguin_cv<span class="sc">$</span>dev, <span class="at">type =</span> <span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-4">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>prune_best <span class="ot">&lt;-</span> <span class="fu">prune.tree</span>(tree_penguin, <span class="at">best =</span> <span class="dv">7</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">plot</span>(prune_best)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">text</span>(prune_best, <span class="at">pretty =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagging-regression-trees" class="slide level2">
+<h2>Bagging Regression Trees</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">R Code</a></li><li><a href="#tabset-4-2">Predictions</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>penguins <span class="ot">&lt;-</span> penguins  <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>()</span>
+<span id="cb10-7"><a href="#cb10-7"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(penguins), <span class="fu">nrow</span>(penguins)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a>bag_penguins <span class="ot">&lt;-</span> penguins  <span class="sc">|&gt;</span>  <span class="fu">randomForest</span>(body_mass_g <span class="sc">~</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm,</span>
+<span id="cb10-9"><a href="#cb10-9"></a>                                           <span class="at">data =</span> _,</span>
+<span id="cb10-10"><a href="#cb10-10"></a>                                           <span class="at">subset =</span> train, </span>
+<span id="cb10-11"><a href="#cb10-11"></a>                                           <span class="at">mtry =</span> <span class="dv">3</span>, </span>
+<span id="cb10-12"><a href="#cb10-12"></a>                                           <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
+<span id="cb11-2"><a href="#cb11-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>body_mass_g</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">plot</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagging-classification-trees" class="slide level2">
+<h2>Bagging Classification Trees</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">R Code</a></li><li><a href="#tabset-5-2">Prediction</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>bag_penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">randomForest</span>(species <span class="sc">~</span> body_mass_g <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, </span>
+<span id="cb12-2"><a href="#cb12-2"></a>                                          <span class="at">data =</span> _,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>                                          <span class="at">subset =</span> train, </span>
+<span id="cb12-4"><a href="#cb12-4"></a>                                          <span class="at">mtry =</span> <span class="dv">4</span>, </span>
+<span id="cb12-5"><a href="#cb12-5"></a>                                          <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
+<span id="cb13-2"><a href="#cb13-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>species</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">table</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;            test
 #&gt; yhat_bag    Adelie Chinstrap Gentoo
-#&gt;   Adelie        63         1      0
-#&gt;   Chinstrap      2        36      0
-#&gt;   Gentoo         1         0     64</code></pre>
+#&gt;   Adelie        72         5      0
+#&gt;   Chinstrap      1        30      0
+#&gt;   Gentoo         0         0     59</code></pre>
 </div>
 </div>
 </div>
@@ -579,22 +1044,26 @@ r_i \leftarrow r_i - \lambda\hat f^{b}(x_i)
 <section id="random-forests-regression-trees" class="slide level2">
 <h2>Random Forests Regression Trees</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">R Code</a></li><li><a href="#tabset-3-2">Prediction</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">R Code</a></li><li><a href="#tabset-6-2">Prediction</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-6-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>bag_penguins <span class="ot">&lt;-</span> penguins <span class="sc">%$%</span> <span class="fu">randomForest</span>(body_mass_g <span class="sc">~</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, <span class="at">subset =</span> train, <span class="at">mtry =</span> <span class="dv">2</span>, <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>bag_penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">randomForest</span>(body_mass_g <span class="sc">~</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, </span>
+<span id="cb15-2"><a href="#cb15-2"></a>                                          <span class="at">data =</span> _,</span>
+<span id="cb15-3"><a href="#cb15-3"></a>                                          <span class="at">subset =</span> train, </span>
+<span id="cb15-4"><a href="#cb15-4"></a>                                          <span class="at">mtry =</span> <span class="dv">2</span>, </span>
+<span id="cb15-5"><a href="#cb15-5"></a>                                          <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-6-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
-<span id="cb7-2"><a href="#cb7-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>body_mass_g</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">plot</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
+<span id="cb16-2"><a href="#cb16-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>body_mass_g</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">plot</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -606,24 +1075,28 @@ r_i \leftarrow r_i - \lambda\hat f^{b}(x_i)
 <section id="random-forests-classification-trees" class="slide level2">
 <h2>Random Forests Classification Trees</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">R Code</a></li><li><a href="#tabset-4-2">Prediction</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">R Code</a></li><li><a href="#tabset-7-2">Prediction</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-7-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>bag_penguins <span class="ot">&lt;-</span> penguins <span class="sc">%$%</span> <span class="fu">randomForest</span>(species <span class="sc">~</span> body_mass_g <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, <span class="at">subset =</span> train, <span class="at">mtry =</span> <span class="dv">2</span>, <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>bag_penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">randomForest</span>(species <span class="sc">~</span> body_mass_g <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, </span>
+<span id="cb17-2"><a href="#cb17-2"></a>                                          <span class="at">data =</span> _,</span>
+<span id="cb17-3"><a href="#cb17-3"></a>                                          <span class="at">subset =</span> train, </span>
+<span id="cb17-4"><a href="#cb17-4"></a>                                          <span class="at">mtry =</span> <span class="dv">2</span>, </span>
+<span id="cb17-5"><a href="#cb17-5"></a>                                          <span class="at">importance =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-7-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
-<span id="cb9-2"><a href="#cb9-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>species</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">table</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>yhat_bag <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag_penguins, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ])</span>
+<span id="cb18-2"><a href="#cb18-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>species</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">table</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;            test
 #&gt; yhat_bag    Adelie Chinstrap Gentoo
-#&gt;   Adelie        64         1      0
-#&gt;   Chinstrap      1        36      0
-#&gt;   Gentoo         1         0     64</code></pre>
+#&gt;   Adelie        72         5      0
+#&gt;   Chinstrap      1        30      0
+#&gt;   Gentoo         0         0     59</code></pre>
 </div>
 </div>
 </div>
@@ -633,25 +1106,29 @@ r_i \leftarrow r_i - \lambda\hat f^{b}(x_i)
 <section id="boosting-regression-trees" class="slide level2">
 <h2>Boosting Regression Trees</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">R Code</a></li><li><a href="#tabset-5-2">Prediction</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">R Code</a></li><li><a href="#tabset-8-2">Prediction</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-8-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(gbm)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>boost_penguin <span class="ot">&lt;-</span> <span class="fu">gbm</span>(body_mass_g <span class="sc">~</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, <span class="at">data =</span> penguins[train , ],</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="at">distribution =</span> <span class="st">"gaussian"</span>, <span class="at">n.trees =</span> <span class="dv">5000</span>,</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="at">interaction.depth =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(gbm)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>boost_penguin <span class="ot">&lt;-</span> <span class="fu">gbm</span>(body_mass_g <span class="sc">~</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, </span>
+<span id="cb20-3"><a href="#cb20-3"></a>                     <span class="at">data =</span> penguins[train , ],</span>
+<span id="cb20-4"><a href="#cb20-4"></a>                     <span class="at">distribution =</span> <span class="st">"gaussian"</span>, </span>
+<span id="cb20-5"><a href="#cb20-5"></a>                     <span class="at">n.trees =</span> <span class="dv">5000</span>,</span>
+<span id="cb20-6"><a href="#cb20-6"></a>                     <span class="at">interaction.depth =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-8-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>yhat_boost <span class="ot">&lt;-</span> <span class="fu">predict</span>(boost_penguin, <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ], <span class="at">n.trees =</span> <span class="dv">5000</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>body_mass_g</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">plot</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>yhat_boost <span class="ot">&lt;-</span> <span class="fu">predict</span>(boost_penguin, </span>
+<span id="cb21-2"><a href="#cb21-2"></a>                      <span class="at">newdata =</span> penguins[<span class="sc">-</span>train , ], </span>
+<span id="cb21-3"><a href="#cb21-3"></a>                      <span class="at">n.trees =</span> <span class="dv">5000</span>)</span>
+<span id="cb21-4"><a href="#cb21-4"></a>test <span class="ot">&lt;-</span> penguins[<span class="sc">-</span>train , ]<span class="sc">$</span>body_mass_g</span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">plot</span>(yhat_bag, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="13a_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>

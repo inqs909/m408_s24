@@ -1,6 +1,5 @@
 ---
 title: "Support Vector Machines"
-subtitle: "Maximal Margin and Support Vector Classifiers"
 format:
   revealjs:
     scrollable: true
@@ -29,7 +28,7 @@ filters:
   - reveal-header
   - code-fullscreen
 
-editor: visual
+editor: source
 ---
 
 ## Learning Outcomes
@@ -130,6 +129,46 @@ It achieves this by implementing a Cost mechanism, denoted as $C$, to account fo
 
 The tuning parameter $C$ is known as the budget parameter for error. When the data point is on the correct side of the margin, then it has an error of $0$. When a data point in on the wrong side the margin, it has a bit of error. When the data point is on the opposite side of the hyperplane, then it has an error greater than $1$. This is allowed as long as the sum of errors are less than or equal to $C$.
 
+
+# Support Vector Machines
+
+## Motivating Example
+
+![](https://www.surveypractice.org/article/2715-using-support-vector-machines-for-survey-research/attachment/9153.png){fig-align="center"}
+
+## Motivating Example
+
+![](https://i.stack.imgur.com/shjDw.png){fig-align="center"}
+
+## Support Vector Machines
+
+A Support Vector Machine will create a nonlinear boundary instead of a line.
+
+::: fragment
+It incorporates a kernel function that will compute the similarities between two support vectors.
+:::
+
+::: fragment
+The kernel function can be loosely claimed how the data is modeled.
+:::
+
+## Nonlinear Boundary
+
+![](https://miro.medium.com/v2/resize:fit:982/1*J0k7TxTLoL5ZG-Hq6v34Jg.png){fig-align="center"}
+
+## Nonlinear Boundary
+
+![](https://s3.amazonaws.com/production.scholastica/public/attachments/b275a94b-e5ba-4e3b-8bbe-5e3235e95892/large/image4.png){fig-align="center"}
+
+## Support Vector Machines Kernels
+
+-   Linear
+
+-   Polynomial
+
+-   Radial
+
+
 # R Code
 
 ## Support Vector Classifier
@@ -209,5 +248,40 @@ testdat <- data.frame (x = xtest , y = as.factor(ytest))
 ```{r}
 ypred <- predict(bestmod, testdat)
 table(pred = ypred, truth = testdat$y)
+```
+:::
+
+
+## R Code: SVM
+
+::: panel-tabset
+### Data
+
+```{r}
+set.seed(1)
+x <- matrix(rnorm(200 * 2), ncol = 2)
+x[1:100, ] <- x[1:100, ] + 2
+x[101:150, ] <- x[101:150 , ] - 2
+y <- c(rep(1, 150), rep(2, 50))
+dat <- data.frame (x = x, y = as.factor(y))
+```
+
+### Plot
+
+```{r}
+plot(x,col=y)
+```
+
+### SVM
+
+```{r}
+library(e1071)
+train <- sample(200, 100)
+svmfit <- svm(y ~ ., 
+              data = dat[train, ], 
+              kernel = "radial",
+              gamma = 1, 
+              cost = 1)
+plot(svmfit, dat[train, ])
 ```
 :::

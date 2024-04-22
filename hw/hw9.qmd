@@ -1,6 +1,6 @@
 ---
 title: "Homework 9"
-date: 4/15/24
+date: 4/16/24
 description: "Assignment is due 5/5/24"
 editor: visual
 draft: false

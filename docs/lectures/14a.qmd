@@ -1,5 +1,5 @@
 ---
-title: "Support Vector Machines"
+title: "Deep Learning"
 format:
   revealjs:
     scrollable: true
@@ -28,252 +28,290 @@ filters:
   - reveal-header
   - code-fullscreen
 
-editor: visual
+editor: source
 ---
 
-## Learning Outcomes
 
--   Maximal Margin Classifier
--   Support Vector Classifier
--   Support Vector Machines
+# Neural Networks
 
-# Maximal Margin Classifier
+## Neural Networks
 
-## Motivating Example
+Neural networks are a type of machine learning algorithm that are designed to mimic the function of the human brain. They consist of interconnected nodes or "neurons" that process information and generate outputs based on the inputs they receive.
 
-```{r}
-#| echo: false
-#| eval: true
-library(palmerpenguins)
-library(tidyverse)
-library(magrittr)
-penguins %<>% mutate(gentoo = ifelse(species == "Gentoo", "A", "B")) %>%  drop_na()
-penguins %>% ggplot(aes(x = bill_depth_mm, y = flipper_length_mm, color = gentoo)) +
-  geom_point() + theme_bw() + xlab("X") + ylab("Y") + theme(legend.position = "none") 
-```
+## Uses
 
-## Maximal Margin Classifier
+Neural networks are typically used for tasks such as image recognition, natural language processing, and prediction. They are capable of learning from data and improving their performance over time, which makes them well-suited for complex and dynamic problems.
 
-The **Maximal Margin Classifier** will impose a hyperplane on a graph that will classify the data given a vector of predictor variables.
+## Single Layer Neural Networks
 
-## Hyperplane
-
-Given a p-dimensional space, a hyperplane is flat affine subspace of p-1 dimensions. It is mathematically defined as:
+A single layer neural networks can be formulated as linear function:
 
 $$
-\beta_0 + \beta_1X_1 + \beta_2 X_2 + \cdots+\beta_pX_p = 0
+f(X) = \beta_0 + \sum^K_{k=1}\beta_kh_k(X)
 $$
 
-## Hyperplane
+Where $X$ is a vector of inputs of length $p$ and $K$ is the number of activations, $\beta_j$ are the regression coefficients and
 
-![](https://images.deepai.org/glossary-terms/3bb86574825445cba73a67222b744648/hyperplane.png){fig-align="center"}
+$$
+h_k(X) = A_k = g(w_{k0} + \sum^p_{l1}w_{kl}X_{l})
+$$
 
-## Constructing the Hyperplane
+with $g(\cdot)$ being a nonlinear function and $w_{kl}$ are the weights.
 
-A hyperplane is constructed by maximizing the margin $M$ of the data points that are farthest from the theoretical margin. The data points that define the outer edge of the margins are known as support vectors.
+## Nonlinear Function $g(\cdot)$
 
-```{r}
-#| echo: false
-#| eval: true
-library(palmerpenguins)
-library(tidyverse)
-library(magrittr)
-penguins %<>% mutate(gentoo = ifelse(species == "Gentoo", "A", "B")) %>%  drop_na()
-penguins %>% ggplot(aes(x = bill_depth_mm, y = flipper_length_mm, color = gentoo)) +
-  geom_point() + theme_bw() + xlab("X") + ylab("Y") + theme(legend.position = "none") 
-```
+-   $g(z) = \frac{e^z}{1+e^z}$
 
-## Optimization Problem
+-   $g(z) = (z)_+ = zI(z\geq0)$
 
--   $\overset{\mathrm{maximize}}{\tiny\beta_0, \beta_1,\ldots,\beta_p,M}\ \large M$
+## Single Layer Neural Network
 
--   subject to $\sum^p_{j=1}\beta_j^2 = 1$
+![](https://www.oreilly.com/api/v2/epubs/9781789808452/files/assets/290136cc-48f2-47b1-bb95-ffdb625b987d.png){fig-align="center"}
 
--   $y_i(\beta_0 + \beta_1X_{1i} + \beta_2 X_{2i} + \cdots+\beta_pX_{pi})\geq M \ \forall \ i=1,\ldots,n$
+## Multilayer Neural Network
 
-## Maximal Margin Classifier
+Multilayer Neural Networks create multiple hidden layers where each layer feeds into each other which will create a final outcome.
 
-![](https://bookdown.org/mpfoley1973/data-sci/images/svm_mmc.png){fig-align="center"}
+## Multilayer Neural Network
 
-# Support Vector Classifier
+![](https://www.oreilly.com/api/v2/epubs/9781838642709/files/assets/61bc8450-f3ac-4d81-b405-3d748e30d04a.png){fig-align="center"}
 
-## Support Vector Classifier
 
-Maximal Margin Classifiers have one fatal defect, the data points must be completely on one side of the margin. This does not allow room for error.
+# TensorFlow
 
-::: fragment
-A Support Vector Classifier allows for data points to be misclassified if need be.
-:::
+## TensorFlow
 
-::: fragment
-It achieves this by implementing a Cost mechanism, denoted as $C$, to account for any errors for data points.
-:::
+Tensorflow is an open-source machine learning platform developed by Google. Tensorflow is capable of completing the following tasks:
 
-## Support Vector Classifiers
+-   Image Classification
 
-![](https://www.surveypractice.org/article/2715-using-support-vector-machines-for-survey-research/attachment/9153.png){fig-align="center"}
+-   Text Classification
 
-## Optimization Problem
+-   Regression
 
--   $\overset{\mathrm{maximize}}{\tiny\beta_0, \beta_1,\ldots,\beta_p,\epsilon_1,\ldots, \epsilon_n,M}\ \large M$
+-   Time-Series
 
--   subject to $\sum^p_{j=1}\beta_j^2 = 1$
+## Keras
 
--   $y_i(\beta_0 + \beta_1X_{1i} + \beta_2 X_{2i} + \cdots+\beta_pX_{pi})\geq M (1-\epsilon_i) \ \forall \ i=1,\ldots,n$
+Keras is the API that will talk to Tensorflow via different platforms.
 
--   $\epsilon_i\geq 0$
+## More Information
 
--   $\sum^n_{i=1} \epsilon_i \leq C$
+[TensorFlow for R](https://tensorflow.rstudio.com/)
 
-## Budget C
+# Torch
 
-The tuning parameter $C$ is known as the budget parameter for error. When the data point is on the correct side of the margin, then it has an error of $0$. When a data point in on the wrong side the margin, it has a bit of error. When the data point is on the opposite side of the hyperplane, then it has an error greater than $1$. This is allowed as long as the sum of errors are less than or equal to $C$.
+## Torch
 
-## R Code: Support Vector Classifier
+Torch is a scientific computing framework designed to support machine learning in CPU/GPU computing. Torch is capable of computing:
 
-::: panel-tabset
-### Simulation
+-   Matrix Operations
 
-```{r}
-x <- matrix ( rnorm (20 * 2) , ncol = 2)
-y <- c( rep (-1, 10) , rep (1, 10) )
-x[y == 1, ] <- x[y == 1, ] + 1
-plot (x, col = (3 - y))
-```
+-   Linear Algebra
 
-### R Code
+-   Neural Networks
 
-```{r}
-dat <- data.frame (x = x, y = as.factor(y))
-library(e1071)
-svmfit <- svm (y ~ ., data = dat , kernel = "linear",
-cost = 10, scale = FALSE )
-plot(svmfit, dat)
-```
+-   Numerical Optimization
 
-### Support Vectors
+-   and so much more!
 
-```{r}
-svmfit$index
-```
+## Torch
 
-### Summary
+Torch can be accessed in both:
 
-```{r}
-summary(svmfit)
-```
-:::
+-   Pytorch
 
-## Cross-Validation Approach for C
+-   R Torch
 
-::: panel-tabset
-### R Code
+## R Torch
+
+R Torch is capable of handling:
+
+-   Image Recognition
+
+-   Tabular Data
+
+-   Time Series Forecasting
+
+-   Audio Processing
+
+## More Information
+
+[![](https://torch.mlverse.org/images/cover.jpg){fig-align="center"}](https://skeydan.github.io/Deep-Learning-and-Scientific-Computing-with-R-torch/)
+
+# R Code
+
+## MNIST
+
+This is a database of handwritten digits.
+
+We will use to construct neural networks that will classify images.
+
+
+## Installation of Torch
 
 ```{r}
-set.seed(2434)
-tune.out <- tune(svm, y ~ ., data = dat, kernel = "linear",
-                 ranges = list(cost = c(0.001, 0.01, 0.1, 1, 5, 10, 100)))
+#| echo: true
+#| eval: false
+install.packages("torch")
+install.packages("luz")
+install.packages("torchvision")
+install.packages("torchdatasets")
+install.packages("zeallot")
+
 ```
 
-### Summary
+## Torch in R
 
 ```{r}
-summary(tune.out)
+#| echo: true
+#| eval: false
+
+library(torch)
+library(luz) # high-level interface for torch
+library(torchvision) # for datasets and image transformation
+library(torchdatasets) # for datasets we are going to use
+library(zeallot)
+torch_manual_seed(13)
+
+###
+train_ds <- mnist_dataset(root = ".", train = TRUE, download = TRUE)
+test_ds <- mnist_dataset(root = ".", train = FALSE, download = TRUE)
+
+str(train_ds[1])
+str(test_ds[2])
+
+length(train_ds)
+length(test_ds)
+###
+
+
+###
+transform <- function(x) {
+  x |> 
+    torch_tensor()  |> 
+    torch_flatten() |> 
+    torch_div(255)
+}
+train_ds <- mnist_dataset(
+  root = ".",
+  train = TRUE,
+  download = TRUE,
+  transform = transform
+)
+test_ds <- mnist_dataset(
+  root = ".",
+  train = FALSE,
+  download = TRUE,
+  transform = transform
+)
+###
+
+
+###
+modelnn <- nn_module(
+  initialize = function() {
+    self$linear1 <- nn_linear(in_features = 28*28, out_features = 256)
+    self$linear2 <- nn_linear(in_features = 256, out_features = 128)
+    self$linear3 <- nn_linear(in_features = 128, out_features = 10)
+
+    self$drop1 <- nn_dropout(p = 0.4)
+    self$drop2 <- nn_dropout(p = 0.3)
+
+    self$activation <- nn_relu()
+  },
+  forward = function(x) {
+    x |> 
+      self$linear1() |> 
+      self$activation() |> 
+      self$drop1() |> 
+
+      self$linear2() |> 
+      self$activation() |> 
+      self$drop2() |> 
+      self$linear3()
+  }
+)
+###
+
+
+###
+print(modelnn())
+###
+
+
+###
+modelnn <- modelnn |> 
+  setup(
+    loss = nn_cross_entropy_loss(),
+    optimizer = optim_rmsprop,
+    metrics = list(luz_metric_accuracy())
+  )
+###
+
+###
+system.time(
+   fitted <- modelnn |> 
+      fit(
+        data = train_ds,
+        epochs = 5,
+        valid_data = 0.2,
+        dataloader_options = list(batch_size = 256),
+        verbose = FALSE
+      )
+ )
+plot(fitted)
+###
+
+###
+accuracy <- function(pred, truth) {
+   mean(pred == truth) }
+
+# gets the true classes from all observations in test_ds.
+truth <- sapply(seq_along(test_ds), function(x) test_ds[x][[2]])
+
+fitted |> 
+  predict(test_ds) |> 
+  torch_argmax(dim = 2) |> # the predicted class is the one with higher 'logit'.
+  as_array() |>  # we convert to an R object
+  accuracy(truth)
+###
+
+###
+modellr <- nn_module(
+  initialize = function() {
+    self$linear <- nn_linear(784, 10)
+  },
+  forward = function(x) {
+    self$linear(x)
+  }
+)
+print(modellr())
+###
+
+###
+fit_modellr <- modellr |> 
+  setup(
+    loss = nn_cross_entropy_loss(),
+    optimizer = optim_rmsprop,
+    metrics = list(luz_metric_accuracy())
+  ) |> 
+  fit(
+    data = train_ds,
+    epochs = 5,
+    valid_data = 0.2,
+    dataloader_options = list(batch_size = 128)
+  )
+
+fit_modellr |> 
+  predict(test_ds) |> 
+  torch_argmax(dim = 2) |>   # the predicted class is the one with higher 'logit'.
+  as_array() |>  # we convert to an R object
+  accuracy(truth)
+
+
+# alternatively one can use the `evaluate` function to get the results
+# on the test_ds
+evaluate(fit_modellr, test_ds)
+###
 ```
-
-### Best Model
-
-```{r}
-bestmod <- tune.out$best.model
-summary(bestmod)
-```
-:::
-
-## Prediction
-
-::: panel-tabset
-### Set Up
-
-```{r}
-xtest <- matrix(rnorm(20 * 2), ncol = 2)
-ytest <- sample(c(-1, 1), 20, rep = TRUE)
-xtest[ytest == 1,] <- xtest[ytest == 1, ] + 1
-testdat <- data.frame (x = xtest , y = as.factor(ytest))
-```
-
-### Prediction
-
-```{r}
-ypred <- predict(bestmod, testdat)
-table(pred = ypred, truth = testdat$y)
-```
-:::
-
-# Support Vector Machines
-
-## Motivating Example
-
-![](https://www.surveypractice.org/article/2715-using-support-vector-machines-for-survey-research/attachment/9153.png){fig-align="center"}
-
-## Motivating Example
-
-![](https://i.stack.imgur.com/shjDw.png){fig-align="center"}
-
-## Support Vector Machines
-
-A Support Vector Machine will create a nonlinear boundary instead of a line.
-
-::: fragment
-It incorporates a kernel function that will compute the similarities between two support vectors.
-:::
-
-::: fragment
-The kernel function can be loosely claimed how the data is modeled.
-:::
-
-## Nonlinear Boundary
-
-![](https://miro.medium.com/v2/resize:fit:982/1*J0k7TxTLoL5ZG-Hq6v34Jg.png){fig-align="center"}
-
-## Nonlinear Boundary
-
-![](https://s3.amazonaws.com/production.scholastica/public/attachments/b275a94b-e5ba-4e3b-8bbe-5e3235e95892/large/image4.png){fig-align="center"}
-
-## Support Vector Machines Kernels
-
--   Linear
-
--   Polynomial
-
--   Radial
-
-## R Code: SVM
-
-::: panel-tabset
-### Data
-
-```{r}
-set.seed(1)
-x <- matrix(rnorm(200 * 2), ncol = 2)
-x[1:100, ] <- x[1:100, ] + 2
-x[101:150, ] <- x[101:150 , ] - 2
-y <- c(rep(1, 150), rep(2, 50))
-dat <- data.frame (x = x, y = as.factor(y))
-```
-
-### Plot
-
-```{r}
-plot(x,col=y)
-```
-
-### SVM
-
-```{r}
-library(e1071)
-train <- sample(200, 100)
-svmfit <- svm(y ~ ., data = dat[train, ], kernel = "radial",
-gamma = 1, cost = 1)
-plot(svmfit, dat[train, ])
-```
-:::
