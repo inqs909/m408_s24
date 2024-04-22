@@ -3,7 +3,7 @@ title: "Week 13"
 date: 04-22-24
 description: We will begin our discussion on Tree-Based methods and Support Vector Machines.
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -27,6 +27,6 @@ editor_options:
 ## Resources
 
 | Lecture | Slides                                                          | Videos |
-|---------|-----------------------------------------------------------------|--------|
+|------------|-------------------------------------------------|------------|
 | 1       | [Slides](https://m408.inqs.info/lectures/13a.html#/title-slide) |        |
 | 2       | [Slides](https://m408.inqs.info/lectures/13b.html#/title-slide) |        |
