@@ -26,7 +26,7 @@ editor_options:
 
 ## Resources
 
-| Lecture | Slides                                                          | Videos |
-|---------------|-------------------------------------------|---------------|
-| 1       | [Slides](https://m408.inqs.info/lectures/13a.html#/title-slide) |        |
-| 2       | [Slides](https://m408.inqs.info/lectures/13b.html#/title-slide) |        |
+| Lecture | Slides                                                          | Videos                                |
+|----------------|---------------------------------------|----------------|
+| 1       | [Slides](https://m408.inqs.info/lectures/13a.html#/title-slide) | [Video](https://youtu.be/cJIVGb7B9Pw) |
+| 2       | [Slides](https://m408.inqs.info/lectures/13b.html#/title-slide) | [Video](https://youtu.be/PlpMMUNdMSw) |

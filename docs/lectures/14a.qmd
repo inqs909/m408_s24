@@ -147,6 +147,7 @@ This is a database of handwritten digits.
 
 We will use to construct neural networks that will classify images.
 
+## MNIST
 
 ## Installation of Torch
 
@@ -166,7 +167,7 @@ install.packages("zeallot")
 ```{r}
 #| echo: true
 #| eval: false
-
+# 
 library(torch)
 library(luz) # high-level interface for torch
 library(torchvision) # for datasets and image transformation
@@ -178,140 +179,140 @@ torch_manual_seed(13)
 train_ds <- mnist_dataset(root = ".", train = TRUE, download = TRUE)
 test_ds <- mnist_dataset(root = ".", train = FALSE, download = TRUE)
 
-str(train_ds[1])
+train_ds[1]
 str(test_ds[2])
 
 length(train_ds)
 length(test_ds)
 ###
 
-
-###
-transform <- function(x) {
-  x |> 
-    torch_tensor()  |> 
-    torch_flatten() |> 
-    torch_div(255)
-}
-train_ds <- mnist_dataset(
-  root = ".",
-  train = TRUE,
-  download = TRUE,
-  transform = transform
-)
-test_ds <- mnist_dataset(
-  root = ".",
-  train = FALSE,
-  download = TRUE,
-  transform = transform
-)
-###
-
-
-###
-modelnn <- nn_module(
-  initialize = function() {
-    self$linear1 <- nn_linear(in_features = 28*28, out_features = 256)
-    self$linear2 <- nn_linear(in_features = 256, out_features = 128)
-    self$linear3 <- nn_linear(in_features = 128, out_features = 10)
-
-    self$drop1 <- nn_dropout(p = 0.4)
-    self$drop2 <- nn_dropout(p = 0.3)
-
-    self$activation <- nn_relu()
-  },
-  forward = function(x) {
-    x |> 
-      self$linear1() |> 
-      self$activation() |> 
-      self$drop1() |> 
-
-      self$linear2() |> 
-      self$activation() |> 
-      self$drop2() |> 
-      self$linear3()
-  }
-)
-###
-
-
-###
-print(modelnn())
-###
-
-
-###
-modelnn <- modelnn |> 
-  setup(
-    loss = nn_cross_entropy_loss(),
-    optimizer = optim_rmsprop,
-    metrics = list(luz_metric_accuracy())
-  )
-###
-
-###
-system.time(
-   fitted <- modelnn |> 
-      fit(
-        data = train_ds,
-        epochs = 5,
-        valid_data = 0.2,
-        dataloader_options = list(batch_size = 256),
-        verbose = FALSE
-      )
- )
-plot(fitted)
-###
-
-###
-accuracy <- function(pred, truth) {
-   mean(pred == truth) }
-
-# gets the true classes from all observations in test_ds.
-truth <- sapply(seq_along(test_ds), function(x) test_ds[x][[2]])
-
-fitted |> 
-  predict(test_ds) |> 
-  torch_argmax(dim = 2) |> # the predicted class is the one with higher 'logit'.
-  as_array() |>  # we convert to an R object
-  accuracy(truth)
-###
-
-###
-modellr <- nn_module(
-  initialize = function() {
-    self$linear <- nn_linear(784, 10)
-  },
-  forward = function(x) {
-    self$linear(x)
-  }
-)
-print(modellr())
-###
-
-###
-fit_modellr <- modellr |> 
-  setup(
-    loss = nn_cross_entropy_loss(),
-    optimizer = optim_rmsprop,
-    metrics = list(luz_metric_accuracy())
-  ) |> 
-  fit(
-    data = train_ds,
-    epochs = 5,
-    valid_data = 0.2,
-    dataloader_options = list(batch_size = 128)
-  )
-
-fit_modellr |> 
-  predict(test_ds) |> 
-  torch_argmax(dim = 2) |>   # the predicted class is the one with higher 'logit'.
-  as_array() |>  # we convert to an R object
-  accuracy(truth)
-
-
-# alternatively one can use the `evaluate` function to get the results
-# on the test_ds
-evaluate(fit_modellr, test_ds)
-###
+# 
+# ###
+# transform <- function(x) {
+#   x |> 
+#     torch_tensor()  |> 
+#     torch_flatten() |> 
+#     torch_div(255)
+# }
+# train_ds <- mnist_dataset(
+#   root = ".",
+#   train = TRUE,
+#   download = TRUE,
+#   transform = transform
+# )
+# test_ds <- mnist_dataset(
+#   root = ".",
+#   train = FALSE,
+#   download = TRUE,
+#   transform = transform
+# )
+# ###
+# 
+# 
+# ###
+# modelnn <- nn_module(
+#   initialize = function() {
+#     self$linear1 <- nn_linear(in_features = 28*28, out_features = 256)
+#     self$linear2 <- nn_linear(in_features = 256, out_features = 128)
+#     self$linear3 <- nn_linear(in_features = 128, out_features = 10)
+# 
+#     self$drop1 <- nn_dropout(p = 0.4)
+#     self$drop2 <- nn_dropout(p = 0.3)
+# 
+#     self$activation <- nn_relu()
+#   },
+#   forward = function(x) {
+#     x |> 
+#       self$linear1() |> 
+#       self$activation() |> 
+#       self$drop1() |> 
+# 
+#       self$linear2() |> 
+#       self$activation() |> 
+#       self$drop2() |> 
+#       self$linear3()
+#   }
+# )
+# ###
+# 
+# 
+# ###
+# print(modelnn())
+# ###
+# 
+# 
+# ###
+# modelnn <- modelnn |> 
+#   setup(
+#     loss = nn_cross_entropy_loss(),
+#     optimizer = optim_rmsprop,
+#     metrics = list(luz_metric_accuracy())
+#   )
+# ###
+# 
+# ###
+# system.time(
+#    fitted <- modelnn |> 
+#       fit(
+#         data = train_ds,
+#         epochs = 5,
+#         valid_data = 0.2,
+#         dataloader_options = list(batch_size = 256),
+#         verbose = FALSE
+#       )
+#  )
+# plot(fitted)
+# ###
+# 
+# ###
+# accuracy <- function(pred, truth) {
+#    mean(pred == truth) }
+# 
+# # gets the true classes from all observations in test_ds.
+# truth <- sapply(seq_along(test_ds), function(x) test_ds[x][[2]])
+# 
+# fitted |> 
+#   predict(test_ds) |> 
+#   torch_argmax(dim = 2) |> # the predicted class is the one with higher 'logit'.
+#   as_array() |>  # we convert to an R object
+#   accuracy(truth)
+# ###
+# 
+# ###
+# modellr <- nn_module(
+#   initialize = function() {
+#     self$linear <- nn_linear(784, 10)
+#   },
+#   forward = function(x) {
+#     self$linear(x)
+#   }
+# )
+# print(modellr())
+# ###
+# 
+# ###
+# fit_modellr <- modellr |> 
+#   setup(
+#     loss = nn_cross_entropy_loss(),
+#     optimizer = optim_rmsprop,
+#     metrics = list(luz_metric_accuracy())
+#   ) |> 
+#   fit(
+#     data = train_ds,
+#     epochs = 5,
+#     valid_data = 0.2,
+#     dataloader_options = list(batch_size = 128)
+#   )
+# 
+# fit_modellr |> 
+#   predict(test_ds) |> 
+#   torch_argmax(dim = 2) |>   # the predicted class is the one with higher 'logit'.
+#   as_array() |>  # we convert to an R object
+#   accuracy(truth)
+# 
+# 
+# # alternatively one can use the `evaluate` function to get the results
+# # on the test_ds
+# evaluate(fit_modellr, test_ds)
+# ###
 ```
