@@ -147,7 +147,7 @@ This is a database of handwritten digits.
 
 We will use to construct neural networks that will classify images.
 
-## MNIST
+
 
 ## Installation of Torch
 
@@ -162,11 +162,11 @@ install.packages("zeallot")
 
 ```
 
-## Torch in R
+## Torch Packages in R
 
 ```{r}
 #| echo: true
-#| eval: false
+#| eval: true
 # 
 library(torch)
 library(luz) # high-level interface for torch
@@ -175,16 +175,29 @@ library(torchdatasets) # for datasets we are going to use
 library(zeallot)
 torch_manual_seed(13)
 
+```
+
+
+## MNIST
+
+```{r}
+#| echo: true
+#| eval: true
 ###
 train_ds <- mnist_dataset(root = ".", train = TRUE, download = TRUE)
 test_ds <- mnist_dataset(root = ".", train = FALSE, download = TRUE)
 
 train_ds[1]
-str(test_ds[2])
+# test_ds[2]
 
-length(train_ds)
-length(test_ds)
-###
+```
+
+
+## Transforming Data
+
+
+
+```{r}
 
 # 
 # ###
