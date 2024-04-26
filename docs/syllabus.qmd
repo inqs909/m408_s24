@@ -1,0 +1,143 @@
+---
+title: "Syllabus"
+editor: source
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+---
+
+## Math 408: Advanced Data Analysis
+
+### Course Information
+
+**Term:** Spring 2024
+
+**Instructor:** Isaac Quintanilla Salinas
+
+**Contact:** isaac.qs\@csuci.edu
+
+**Office Location:** BTE 2840
+
+**Office Hours:**
+
+| OH       | Course   | R OH          | Tidy Tuesday on Wednesday |
+|:---------|:---------|:--------------|:--------------------------|
+| Day      | MW       | Tuesday       | Wednesday                 |
+| Location | BTE 2840 | BTE 2840      | OJAI 1964                 |
+| Time     | 12-1 PM  | 10 AM - 12 PM | 3-5 PM                    |
+
+Or by Zoom appointment: [calendly.com/isaac-qs/office-hours](https://calendly.com/isaac-qs/office-hours)
+
+**Lecture:** Monday and Wednesday 1:30-3:00 PM in BT 1642
+
+**Course Website:** [m408.inqs.info](https://m408.inqs.info/) AND Canvas
+
+### Course Description
+
+Introduction to data management, regression, and machine learning. Bayesian methods, multivariate data, multivariate normal distribution, multivariate regression, principal components, factor, canonical correlation, discriminant analyses, and clustering. Extensive use of appropriate statistical and programming software.
+
+### Learning Outcomes
+
+-   Prepare students for advanced courses in data-management, machine learning, and statistics, by providing the necessary foundation and context
+-   Enable students to start careers as data scientists by providing experience working with real-world data, tools, and techniques
+-   Empower students to apply computational and inferential thinking to address real-world problems
+
+### Required Texts
+
+-   An Introduction to Statistical Learning (SL)
+    -   Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani
+    -   Available to Download from the Broome Library
+    -   [www.statlearning.com](https://www.statlearning.com/)
+    
+-   Statistical Computing (SC)
+    -   Isaac Quintanilla Salinas
+    -   [www.inqs.info/stat_comp](https://www.inqs.info/stat_comp/)
+    -   [hypothes.is/groups/xMmDdj2A/m408](https://hypothes.is/groups/xMmDdj2A/m408)
+
+
+### Required Software
+
+For this course, we will use R, Quarto, and RStudio. Please download and install on your computer.
+
+-   **R** is a free statistical software program that is available for download at: [www.r-project.org](https://www.r-project.org/).
+
+-   **R Markdown** is a scientific documentation known as an [RMD](https://rmarkdown.rstudio.com/) file that can be used to provide reproducible code and documents. 
+
+-   **RStudio** provides free and open source tools for your data analysis in R: [posit.co/downloads](https://posit.co/downloads/)
+
+-   **csucistats** is a developmental R package that will contain RMD templates to submit assignments for class: [csucistats](https://www.inqs.info/csucistats/)
+
+### Course Grading
+
+| Category | Percentage |
+|:---------|:-----------|
+| Homework | 25%        |
+| Exam 1   | 25%        |
+| Exam 2   | 25%        |
+| Exam 3   | 25%        |
+
+At the end of the quarter, course grades will be assigned according to the following scale:
+
+|         |            |        |            |         |            |         |            |       |       |
+|:--------|:-----------|:-------|:-----------|:--------|:-----------|:--------|:-----------|:------|:------|
+| **A+**  | 98 -- 100  | **B+** | 87 -- \<90 | **C+**  | 77 -- \<80 | **D+**  | 67 -- \<70 |       |       |
+| **A**   | 93 -- \<98 | **B**  | 83 -- \<87 | **C**   | 73 -- \<77 | **D**   | 63 -- \<67 | **F** | \< 60 |
+| **A--** | 90 - \<93  | **B-** | 80 -- \<83 | **C--** | 70 -- \<73 | **D--** | 60 -- \<63 |       |       |
+
+#### Homework
+
+Homework will be assigned on a regular basis and posted [here](hw.html) and Canvas. The homework is to help you practice the concepts learned in lecture and to help you study. You must turn in your own individual homework and show your understanding of the material. At the end of the semester, the two lowest homework grades will be dropped. Late work will be accepted, but with a 25% point penalty. The last day late work will be accepted is on 5/15/2024 at 11:59 PM.
+
+#### Exams
+
+There will be three exams. Exam #1 will most likely be during the 6th week of the semester. Exam #2 will most likely be during the 11th week of the semester. Exam #3 will be on finals week. While the exams are not considered cumulative, the material builds on each other. Developing a strong understanding of the material through out the course is important for your success. At the end of the semester, your lowest exam grade will be replaced by your median average exam grade. This course will operate under a zero-tolerance policy. Communication about the exam, sharing material, or not following directions given will be subject to the University's academic integrity policy.
+
+#### Extra Credit
+
+There will be **4** extra credit opportunities worth a total of 10% of your overall grade. (There are no make-ups for missed extra credit assignments!) More information will be provided on the extra credit assignments on a later date. Information on the extra credit can be found [here](ec.html).
+
+### Class Schedule
+
+The following outline may be subject to change. Any changes will be announced in class.
+
+| Week      | Topic                                         | Reading     | Assignment/Exam |
+|:----------|:----------------------------------------------|:------------|:----------------|
+| 1/22-1/26 | Intro to Course/Intro to R/Notebooks          | SC: Ch 1    |                 |
+| 1/29-2/2  | Control Flow                                  | SC: Ch 2    | HW # 1          |
+| 2/5-2/9   | Control Flow/Functional Programming           | SC: Ch 2-3  | HW # 2          |
+| 2/12-2/16 | Functional Programming                        | SC: Ch 3-4  | HW # 3          |
+| 2/19-2/23 | Data Manipulation                             | SC: Ch 17   | TH Exam # 1     |   
+| 2/26-3/1  | Introduction to Statistical Learning          | SL: Ch 2    | HW # 4          |
+| 3/4-3/8   | Linear Regression                             | SL: Ch 3    | HW # 5          |
+| 3/11-3/15 | Multivariable Linear Regression               | SL: Ch 3    |                 |
+| 3/18-3/22 | Spring Break                                  |             |                 |
+| 3/25-3/29 | Classification                                | SL: Ch 4    | HW # 6          |
+| 4/1-4/5   | Resampling Methods                            | SL: Ch 5    | TH Exam # 2     |
+| 4/8-4/12  | Model Selection                               | SL: Ch 6    | HW # 7          |
+| 4/15-4/19 | Nonparametric Regression                      | SL: Ch 7    | HW # 8          |
+| 4/22-4/26 | Tree-Based Methods & Support Vector Machines  | SL: Ch 8-9  | HW # 9          |
+| 4/29-5/3  | Deep Learning                                 | SL: Ch 10   | HW # 10         |
+| 5/6-5/10  | Unsupervised Machine Learning                 | SL: Ch 12   |                 |
+| 5/13-5/17 | TH Exam # 3                                   |             |                 |
+
+### University Policies
+
+1.  **Academic Honesty**:
+
+    Please conduct yourself with honesty and integrity. Do not submit others' work as your own. For assignments and quizzes that allow you to work with a group, only put your name on what the group submits if you genuinely contributed to the work. Work completely independently on exams, using only the materials that are indicated as allowed. Failure to observe academic honesty results in substantial penalties that can include failing the course.
+
+2.  **Disabilities:**
+
+    If you are a student with a disability requesting reasonable accommodations in this course, you need to contact Disability Accommodations and Support Services (DASS) located on the second floor of Arroyo Hall, via email accommodations\@csuci.edu or call 805-437-3331. All requests for reasonable accommodations require registration with DASS in advance of need: <https://www.csuci.edu/dass/students/apply-for-services.htm>. Faculty, students and DASS will work together regarding classroom accommodations. You are encouraged to discuss approved.
+
+3.  **Emergency Procedure Notice to Students:**
+
+    CSUCI is following guidelines and public orders from the California Department of Public Health and Ventura County Public Health for the COVID-19 pandemic as it pertains to CSUCI students, employees and visitors on the campus. Students are expected to adhere to all health and safety requirements as noted on the University's Spring 2023 Semester [website](https://www.csuci.edu/news/campus-updates/covid-19/index.htm) or they may be subject to removal from the classroom.
+    
+### Important note about work stoppages during the semester
+
+The California Faculty Association (the labor union of Lecturers, Professors, Coaches, Counselors, and Librarians across the 23 CSU campuses) is in a difficult contract dispute with California State University management. We will be going on strike from January 22 – January 26 unless management gives us a fair contract that recognizes the dignity of CSU faculty, staff, and students. Our working conditions are student learning conditions; we seek to protect both. For further information go to: www.calfac.org/strike.
+
+    
+

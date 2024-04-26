@@ -1,0 +1,43 @@
+---
+title: "Week 1"
+date: 01-22-24
+description: This week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+::: callout-important
+## Class Begins on Wednesday (1/24)
+:::
+
+## Learning Outcomes
+
+### First Lecture
+
+-   Installing R and RStudio
+
+-   Scripts
+
+-   R Calculator
+
+-   Types of Data
+
+### First/Second Lecture
+
+-   Installing R and RStudio
+
+-   Scripts
+
+-   R Calculator
+
+-   R Objects
+
+-   R Packages
+
+## Resources
+
+| Lecture | Slides                                                         | Videos                                | Files |
+|---------|----------------------------------------------------------------|---------------------------------------|-------|
+| 1       | NA                                                             | NA                                    | NA    |
+| 2       | [Slides](https://m408.inqs.info/lectures/1b.html#/title-slide) | [Video](https://youtu.be/fpVJ9X06aCM) |       |

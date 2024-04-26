@@ -30,7 +30,7 @@ filters:
   - code-fullscreen
   - reveal-auto-agenda
 
-editor: visual
+editor: source
 ---
 
 # Motivating Example

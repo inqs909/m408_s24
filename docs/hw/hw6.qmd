@@ -1,0 +1,21 @@
+---
+title: "Homework 6"
+date: 3/15/24
+description: "Assignment is due 4/06/24"
+editor: visual
+draft: false
+---
+
+From *An Introduction to Statistical Learning* from James, Witten, Hastie, and Tibshirani (Second Edition)
+
+## Problem 1
+
+From the Applied Section in Chapter 4: Problem 13 a,d,e,f,h,i
+
+## Problem 2
+
+From the Applied Section in Chapter 4: Problem 14 a,b,c,d,e,f,g
+
+## Problem 3
+
+From the Applied Section in Chapter 4: Problem 16 (Don't do the KNN algorithm.)

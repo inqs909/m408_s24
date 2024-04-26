@@ -1,0 +1,15 @@
+---
+title: "Homework 10"
+date: 4/17/24
+description: "Assignment is due 5/12/24"
+editor: visual
+draft: false
+---
+
+From *An Introduction to Statistical Learning* from James, Witten, Hastie, and Tibshirani (Second Edition)
+
+## Problem 1
+
+From the Applied Section in Chapter 10: Problem 8
+
+You must embed a few images in the document to demonstrate the results of the model.

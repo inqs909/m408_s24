@@ -1,0 +1,69 @@
+---
+title: |
+  Data Science \
+  in High School
+author: "Isaac Quintanilla Salinas"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: true
+    message: false
+    warnings: false
+    comment: "#>" 
+    
+revealjs-plugins:
+  - verticator
+  
+filters: 
+  - reveal-header
+  - reveal-auto-agenda
+
+editor: source
+---
+
+## Introductions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+-   San Bernardino, CA
+
+-   CSU Monterey Bay
+
+    -   BS Biology
+
+-   San Diego State University
+
+    -   Master's in Public Health
+
+-   UC Riverside
+
+    -   PhD in Applied Statistics
+:::
+
+::: {.column width="50%"}
+![](img/sb.jpg)
+:::
+
+::::
+
+
+
+## Introductions
+
+-   Name
+
+-   Year
+
+-   Major
+
+-   Fun Fact
+
+-   Career Goal

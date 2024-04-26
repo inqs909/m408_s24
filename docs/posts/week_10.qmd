@@ -1,0 +1,24 @@
+---
+title: "Week 10"
+date: 04-01-24
+description: We will discuss GLMs.
+editor: visual
+draft: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## Learning Outcomes
+
+### First Lecture Cancelled
+
+### Second Lecture
+
+-   Generalized Linear Models
+
+## Resources
+
+| Lecture | Slides                                                          | Videos                                | Files |
+|----------|------------------------------------------|----------|----------|
+| 1       |                                                                 |                                       |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/10a.html#/title-slide) | [Video](https://youtu.be/DcfC2tPBcMQ) |       |

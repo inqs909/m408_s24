@@ -1,0 +1,145 @@
+---
+title: |
+  Data Science \
+  in High School
+author: "Isaac Quintanilla Salinas"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: true
+    message: false
+    warnings: false
+    comment: "#>" 
+    
+revealjs-plugins:
+  - verticator
+  
+filters: 
+  - reveal-header
+  - reveal-auto-agenda
+
+editor: source
+---
+
+## Introductions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+-   San Bernardino, CA
+
+-   CSU Monterey Bay
+
+    -   BS Biology
+
+-   San Diego State University
+
+    -   Master's in Public Health
+
+-   UC Riverside
+
+    -   PhD in Applied Statistics
+:::
+
+::: {.column width="50%"}
+![](files/img/sb.jpg)
+:::
+
+::::
+
+
+
+## Introductions
+
+-   Name
+
+-   Major in College (Emphasis)
+
+-   Fun Fact
+
+-   What class do you want to teach?
+
+# Data Science
+
+## What is Data Science?
+
+![](https://i.ytimg.com/vi/r2I3IDKwyMw/maxresdefault.jpg)
+
+## Statistics
+
+- Knowing how to apply mathematical models to data
+- Understand the data generating process (probability theory)
+- Construction of statistical estimators to model data
+
+## Simple Model
+
+For a sample $\{X_i, Y_i\}^n_{i=1}$, we claim that
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \epsilon_i
+$$
+
+- $\beta_0$, $\beta_1$: Regression Coefficients
+- $\epsilon_i$: Error term
+
+## Goal
+
+Construct
+
+$$
+\hat Y_i = \hat\beta_0 + \hat \beta_1 X_i
+$$
+
+## Coding
+
+This is the process of handling large amounts of data for analysis. This includes:
+
+- Data Collection
+- Data Storage
+- Data Cleaning
+- Analysis
+
+## Size of Data
+
+With the ease of collecting data, large amounts of data are being collected (> 1 GB)
+
+## Domain Knowledge
+
+***The most crucial part!***
+
+Not knowing how a scientific fields collect data, or the lack of knowledge, can lead faulty results.
+
+# Teaching Data Science
+
+## How do you teach mathematics?
+
+## What do you need to teach Data Science?
+
+## Where do you learn data science?
+
+- Online Tutorials
+- Books
+  -   https://r4ds.hadley.nz/
+  -   https://wesmckinney.com/book/
+  -   https://www.statlearning.com/
+  -   https://tellingstorieswithdata.com/
+  -   https://m408.inqs.info/books.html
+    - Get the Springer books
+
+## Conducting Data Science Projects
+
+- https://archive.ics.uci.edu/
+
+## Learn how science is conducted.
+
+- Read scientific articles.
+- Read on reproducible research.
+
+# Alg 2 and DS

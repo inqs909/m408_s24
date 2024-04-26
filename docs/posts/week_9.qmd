@@ -1,0 +1,26 @@
+---
+title: "Week 9"
+date: 03-24-24
+description: We will begin our discussion on Generalized Linear Models
+editor: visual
+draft: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## Learning Outcomes
+
+### First Lecture
+
+-   Logistic Regression
+
+### Second Lecture
+
+-   Classificaion
+
+## Resources
+
+| Lecture | Slides                                                         | Videos                                | Files |
+|-------------|-----------------------------------|-------------|-------------|
+| 1       | [Slides](https://m408.inqs.info/lectures/9a.html#/title-slide) | [Video](https://youtu.be/zsnqBrn86iA) |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/9b.html#/title-slide) | [Video](https://youtu.be/UnQA7aMxcFo) |       |

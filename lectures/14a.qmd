@@ -27,6 +27,7 @@ revealjs-plugins:
 filters: 
   - reveal-header
   - code-fullscreen
+  - reveal-auto-agenda
 
 editor: source
 ---
@@ -58,11 +59,11 @@ $$
 
 with $g(\cdot)$ being a nonlinear function and $w_{kl}$ are the weights.
 
-## Nonlinear Function $g(\cdot)$
+## Nonlinear (Activations) Function $g(\cdot)$
 
--   $g(z) = \frac{e^z}{1+e^z}$
+-   Sigmoidal: $g(z) = \frac{e^z}{1+e^z}$
 
--   $g(z) = (z)_+ = zI(z\geq0)$
+-   ReLU (rectified linear unit): $g(z) = (z)_+ = zI(z\geq0)$
 
 ## Single Layer Neural Network
 
@@ -74,7 +75,121 @@ Multilayer Neural Networks create multiple hidden layers where each layer feeds 
 
 ## Multilayer Neural Network
 
-![](https://www.oreilly.com/api/v2/epubs/9781838642709/files/assets/61bc8450-f3ac-4d81-b405-3d748e30d04a.png){fig-align="center"}
+![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230602113310/Neural-Networks-Architecture.png){fig-align="center"}
+
+## Hidden Layer 1
+
+With $p$ predictors of $X$:
+
+$$
+h^{(1)}_k(X) = A^{(1)}_k = g\left\{w^{(1)}_{k0} + \sum^p_{j=1}w^{(1)}_{kj}X_{j}\right\}
+$$
+for $k = 1, \cdots, K$ nodes.
+
+## Hidden Layer 2
+
+$$
+h^{(2)}_l(X) = A^{(2)}_l = g\left\{w^{(2)}_{l0} + \sum^K_{k=1}w^{(2)}_{lk}A^{(1)}_{k}\right\}
+$$
+for $l = 1, \cdots, L$ nodes.
+
+
+## Hidden Layer 3 +
+
+$$
+h^{(3)}_m(X) = A^{(3)}_l = g\left\{w^{(3)}_{m0} + \sum^L_{l=1}w^{(3)}_{ml}A^{(2)}_{l}\right\}
+$$
+for $m = 1, \cdots, M$ nodes.
+
+## Output Layer
+
+$$
+f_t(X) = \beta_{t0} + \sum^M_{m=1}\beta_{tm}h^{(3)}_m(X)
+$$
+for outcomes $t = 1, \cdots, T$
+
+# Stochastic Gradient Descent
+
+## Gradient Descent
+
+This is an optimization algorithm used to identify the maximum or minimum of a functions.
+
+## Method
+
+For a given $F(\boldsymbol X)$, the minimum $\boldsymbol X^\prime$ can be found by iterating the following formula:
+
+$$
+\boldsymbol X_{j+1} = \boldsymbol X_{j} - \gamma \nabla F(\boldsymbol X_j)
+$$
+where
+
+$$
+\boldsymbol X_j \rightarrow \boldsymbol X^\prime
+$$
+
+
+-   $\nabla F$: gradient
+-   $\gamma \in (0,1]$: is the step size
+
+## Stochastic Gradient Descent
+
+
+ Let:
+ 
+$$
+F(\boldsymbol X) = \sum^n_{i=1} f(y_i; \boldsymbol X)
+$$
+
+Instead of minimizing $F(\boldsymbol X)$ at each step, we minimize:
+
+$$
+F_\alpha(\boldsymbol X) = \sum_{i\in\alpha} f(y_i; \boldsymbol X)
+$$
+where $\alpha$ indicates the data points randomly sampled to be used to compute the gradient.
+
+# R6
+
+## Object-Oriented Programming
+
+Loosely speaking Object-Oriented Programming involves developing R objects with specialized attributes.
+
+::: fragment
+There are 3 main types of OOP: S3, R6, S4
+:::
+
+::: fragment
+
+
+```{r}
+xlm <- lm(mpg ~ wt, mtcars)
+attributes(xlm)
+```
+
+```{r}
+sloop::s3_methods_generic("summary")
+```
+
+:::
+
+## R6
+
+R6 is slightly different, where the generic functions belong to the object instead.
+
+::: fragment
+This allows us to modify an R objects with different methodologies if needed.
+:::
+
+::: fragment
+This is also useful when interacting with objects outside of R's environment.
+:::
+
+## `self`
+
+`self` is a special container within R6 that contains all the items and functions within the object.
+
+::: fragment
+You must always use `self` when dealing with R6 objects.
+:::
 
 
 # TensorFlow
@@ -141,14 +256,6 @@ R Torch is capable of handling:
 
 # R Code
 
-## MNIST
-
-This is a database of handwritten digits.
-
-We will use to construct neural networks that will classify images.
-
-
-
 ## Installation of Torch
 
 ```{r}
@@ -178,154 +285,354 @@ torch_manual_seed(13)
 ```
 
 
-## MNIST
+## ISLR Torch Lab
+
+ISLR uses Tensorflow.
+
+Use this instead:
+<https://hastie.su.domains/ISLR2/Labs/Rmarkdown_Notebooks/Ch10-deeplearning-lab-torch.html>
+
+# Single Layer R Code
+
+## Penguin Data
+
+::: {.panel-tabset}
+
+## Description
+
+Build a single-layer neural network that will predict `body_mass_g` with the remaining predictors except for `year`. The hidden layer will contain 50 nodes, and the activation functions will be ReLU.
+
+## Train/Test
+  
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+
+penguins <- penguins |> drop_na() |> select(-year)
+training <- penguins |> slice_sample(prop = .8)
+testing <- penguins |> anti_join(training)
+
+```
+  
+  
+##  Training
 
 ```{r}
-#| echo: true
-#| eval: true
-###
-train_ds <- mnist_dataset(root = ".", train = TRUE, download = TRUE)
-test_ds <- mnist_dataset(root = ".", train = FALSE, download = TRUE)
+Xtraining <- training |> 
+  model.matrix(body_mass_g ~ . - 1, data = _) |> 
+  scale() |> 
+  torch_tensor(dtype = torch_float())
 
-train_ds[1]
-# test_ds[2]
+Ytraining <- training |> 
+  select(body_mass_g) |> 
+  as.matrix() |> 
+  torch_tensor(dtype = torch_float())
 
 ```
 
-
-## Transforming Data
-
-
+## Testing
 
 ```{r}
+Xtesting <- testing |> 
+  model.matrix(body_mass_g ~ . - 1, data = _) |> 
+  scale() |> 
+  torch_tensor(dtype = torch_float())
 
-# 
-# ###
-# transform <- function(x) {
-#   x |> 
-#     torch_tensor()  |> 
-#     torch_flatten() |> 
-#     torch_div(255)
-# }
-# train_ds <- mnist_dataset(
-#   root = ".",
-#   train = TRUE,
-#   download = TRUE,
-#   transform = transform
-# )
-# test_ds <- mnist_dataset(
-#   root = ".",
-#   train = FALSE,
-#   download = TRUE,
-#   transform = transform
-# )
-# ###
-# 
-# 
-# ###
-# modelnn <- nn_module(
-#   initialize = function() {
-#     self$linear1 <- nn_linear(in_features = 28*28, out_features = 256)
-#     self$linear2 <- nn_linear(in_features = 256, out_features = 128)
-#     self$linear3 <- nn_linear(in_features = 128, out_features = 10)
-# 
-#     self$drop1 <- nn_dropout(p = 0.4)
-#     self$drop2 <- nn_dropout(p = 0.3)
-# 
-#     self$activation <- nn_relu()
-#   },
-#   forward = function(x) {
-#     x |> 
-#       self$linear1() |> 
-#       self$activation() |> 
-#       self$drop1() |> 
-# 
-#       self$linear2() |> 
-#       self$activation() |> 
-#       self$drop2() |> 
-#       self$linear3()
-#   }
-# )
-# ###
-# 
-# 
-# ###
-# print(modelnn())
-# ###
-# 
-# 
-# ###
-# modelnn <- modelnn |> 
-#   setup(
-#     loss = nn_cross_entropy_loss(),
-#     optimizer = optim_rmsprop,
-#     metrics = list(luz_metric_accuracy())
-#   )
-# ###
-# 
-# ###
-# system.time(
-#    fitted <- modelnn |> 
-#       fit(
-#         data = train_ds,
-#         epochs = 5,
-#         valid_data = 0.2,
-#         dataloader_options = list(batch_size = 256),
-#         verbose = FALSE
-#       )
-#  )
-# plot(fitted)
-# ###
-# 
-# ###
-# accuracy <- function(pred, truth) {
-#    mean(pred == truth) }
-# 
-# # gets the true classes from all observations in test_ds.
-# truth <- sapply(seq_along(test_ds), function(x) test_ds[x][[2]])
-# 
-# fitted |> 
-#   predict(test_ds) |> 
-#   torch_argmax(dim = 2) |> # the predicted class is the one with higher 'logit'.
-#   as_array() |>  # we convert to an R object
-#   accuracy(truth)
-# ###
-# 
-# ###
-# modellr <- nn_module(
-#   initialize = function() {
-#     self$linear <- nn_linear(784, 10)
-#   },
-#   forward = function(x) {
-#     self$linear(x)
-#   }
-# )
-# print(modellr())
-# ###
-# 
-# ###
-# fit_modellr <- modellr |> 
-#   setup(
-#     loss = nn_cross_entropy_loss(),
-#     optimizer = optim_rmsprop,
-#     metrics = list(luz_metric_accuracy())
-#   ) |> 
-#   fit(
-#     data = train_ds,
-#     epochs = 5,
-#     valid_data = 0.2,
-#     dataloader_options = list(batch_size = 128)
-#   )
-# 
-# fit_modellr |> 
-#   predict(test_ds) |> 
-#   torch_argmax(dim = 2) |>   # the predicted class is the one with higher 'logit'.
-#   as_array() |>  # we convert to an R object
-#   accuracy(truth)
-# 
-# 
-# # alternatively one can use the `evaluate` function to get the results
-# # on the test_ds
-# evaluate(fit_modellr, test_ds)
-# ###
+Ytesting <- testing |> 
+  select(body_mass_g) |> 
+  as.matrix() |> 
+  torch_tensor(dtype = torch_float())
 ```
+
+:::
+
+
+## Model Description
+
+::: {.panel-tabset}
+## Overall
+  
+```{r}
+modnn <- nn_module(
+  initialize = function(input_size) {
+    self$hidden <- nn_linear(input_size, 50)
+    self$activation <- nn_relu()
+    self$dropout <- nn_dropout(0.4)
+    self$output <- nn_linear(50, 1)
+  },
+  forward = function(x) {
+    x |> 
+      self$hidden() |>  
+      self$activation() |>  
+      self$dropout() |>  
+      self$output()
+  }
+)
+```
+  
+## Initialize
+
+Creates the functions needed to describe the details of each network.
+
+```{r}
+#| eval: false
+initialize = function(input_size) {
+    self$hidden <- nn_linear(input_size, 50)
+    self$activation <- nn_relu()
+    self$dropout <- nn_dropout(0.4)
+    self$output <- nn_linear(50, 1)
+  }
+```
+
+
+## Forward
+
+Models the neural network. 
+
+```{r}
+#| eval: false
+forward = function(x) {
+    x |> 
+      self$hidden() |>  
+      self$activation() |>  
+      self$dropout() |>  
+      self$output()
+  }
+```
+
+
+:::
+
+
+
+## Optimizer Set Up
+
+```{r}
+modnn <- modnn |> 
+  setup(
+    loss = nn_mse_loss(), # Used for numerical counts
+    optimizer = optim_rmsprop,
+    metrics = list(luz_metric_mae())
+  ) |>
+  set_hparams(input_size = ncol(Xtraining))
+```
+
+
+## Fit a Model
+
+::: {.panel-tabset}
+## Fit
+
+```{r}
+fitted <- modnn |> 
+  fit(
+    data = list(Xtraining, Ytraining),
+    epochs = 100 # Can think as number of iterations
+  )
+```
+
+## Plot
+
+```{r}
+#| code-fold: true
+plot(fitted)
+```
+:::
+
+
+## Testing Model
+
+::: {.panel-tabset}
+
+## Prediction
+
+```{r}
+npred <- predict(fitted, Xtesting)
+```
+
+## MAE
+
+```{r}
+mean(abs(as.matrix(Ytesting) - as.matrix(npred)))
+```
+
+## Plot
+
+```{r}
+#| code-fold: true
+
+plot(as.matrix(Ytesting), as.matrix(npred),
+     xlab = "Truth",
+     ylab = "Predicted")
+```
+
+:::
+
+
+# Multilayer R Code
+
+## Penguins Data
+
+::: {.panel-tabset}
+
+## Description
+
+Use the `penguins` data set to construct a 2-layer neural network to predict `species` with the other predictors, except for year. The 1st layer should have 10 nodes, the second layer should have 5 nodes, and use ReLU activations.
+
+## Prep
+
+```{r}
+training <- penguins |> slice_sample(prop = .8)
+testing <- penguins |> anti_join(training)
+```
+
+## Training
+
+```{r}
+Xtraining <- training |> 
+  model.matrix(species ~ . - 1, data = _) |> 
+  scale()
+
+Xtesting <- testing |> 
+  model.matrix(species ~ . - 1, data = _) |> 
+  scale()
+```
+
+## Testing
+
+```{r}
+Ytraining <- training |> 
+  select(species) |> 
+  as.matrix() |> 
+  as.factor()
+
+Ytesting <- testing |> 
+  select(species) |> 
+  as.matrix() |> 
+  as.factor()
+```
+
+:::
+
+## Model
+
+::: {.panel-tabset}
+
+## Overall
+
+```{r}
+modelnn2 <- nn_module(
+  initialize = function(input_size) {
+    self$hidden1 <- nn_linear(in_features = input_size, 
+                              out_features = 10)
+    self$hidden2 <- nn_linear(in_features = 10, 
+                              out_features = 5)
+    self$output <- nn_linear(in_features = 5, 
+                             out_features = 3)
+    
+    self$drop1 <- nn_dropout(p = 0.4)
+    self$drop2 <- nn_dropout(p = 0.3)
+    
+    self$activation <- nn_relu()
+  },
+  forward = function(x) {
+    x |>  
+      self$hidden1() |>  
+      self$activation() |>  
+      self$drop1() |>  
+      
+      self$hidden2() |>  
+      self$activation() |>  
+      self$drop2() |>  
+      
+      self$output()
+  }
+)
+```
+
+## Initialize
+
+```{r}
+#| eval: false
+
+  initialize = function(input_size) {
+    self$hidden1 <- nn_linear(in_features = input_size, 
+                              out_features = 10)
+    self$hidden2 <- nn_linear(in_features = 10, 
+                              out_features = 5)
+    self$output <- nn_linear(in_features = 5, 
+                             out_features = 3)
+    
+    self$drop1 <- nn_dropout(p = 0.4)
+    self$drop2 <- nn_dropout(p = 0.3)
+    
+    self$activation <- nn_relu()
+  }
+```
+
+## Forward
+
+```{r}
+#| eval: false
+forward = function(x) {
+    x |>  
+      self$hidden1() |>  
+      self$activation() |>  
+      self$drop1() |>  
+      
+      self$hidden2() |>  
+      self$activation() |>  
+      self$drop2() |>  
+      
+      self$output()
+  }
+```
+
+
+
+:::
+
+## Setup
+
+```{r}
+modelnn2 <- modelnn2 |> 
+  setup(loss = nn_cross_entropy_loss(),
+        optimizer = optim_rmsprop, 
+        metrics = list(luz_metric_accuracy())) |>
+  set_hparams(input_size = ncol(Xtraining))
+```
+
+## Model Fitting
+
+::: {.panel-tabset}
+
+## Fit
+
+```{r}
+fitted2 <- modelnn2 |> 
+  fit(data = list(Xtraining, Ytraining), 
+      epochs = 100)
+```
+
+## Plot
+
+```{r}
+plot(fitted2)
+```
+
+:::
+
+
+
+## Testing
+
+```{r}
+res <- fitted2 |>  
+  predict(Xtesting) |>  
+  torch_argmax(dim = 2) |>   
+  as_array() 
+
+mean(as.numeric(Ytesting)==res)
+```
+

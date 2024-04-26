@@ -1,0 +1,57 @@
+---
+title: "Untitled"
+editor: visual
+---
+
+-   **`subset()`** - subsets a data frame based on logical conditions
+-   **`dplyr::select()`** - selects specific columns from a data frame
+-   **`dplyr::filter()`** - filters rows from a data frame based on logical conditions
+-   **`dplyr::mutate()`** - adds new columns to a data frame based on calculations or transformations of existing columns
+-   **`ggplot2::ggplot()`** - creates a graphical visualization (plot) from a data frame
+-   **`summary()`** - provides a summary of a data frame, including basic descriptive statistics
+-   **`table()`** - creates a contingency table of the frequencies of categorical variables
+-   **`lm()`** - fits a linear regression model to a data set
+-   **`t.test()`** - performs a t-test on a set of data to compare means
+-   **`cor()`** - calculates the correlation coefficient between two variables
+-   **`scale()`** - standardizes a set of values to have mean zero and standard deviation one
+-   **`rnorm()`** - generates a set of random numbers from a normal distribution with specified mean and standard deviation
+-   **`sample()`** - randomly samples a subset of data from a larger data set
+-   **`paste()`** - concatenates strings together
+-   **`gsub()`** - finds and replaces specific text within a string
+-   **`toupper()`** and **`tolower()`** - converts a string to all uppercase or all lowercase
+-   **`unique()`** - finds unique values in a vector or data frame column
+-   **`na.omit()`** - removes missing values from a data frame or vector
+-   **`mean()`** - calculates the mean of a set of values
+-   **`median()`** - calculates the median of a set of values
+-   **`sd()`** - calculates the standard deviation of a set of values
+-   **`var()`** - calculates the variance of a set of values
+-   **`quantile()`** - calculates the quartiles, deciles, or percentiles of a set of values
+-   **`min()`** - calculates the minimum value of a set of values
+-   **`max()`** - calculates the maximum value of a set of values
+-   **`range()`** - calculates the range (i.e., max - min) of a set of values
+-   **`describe()`** - provides a summary of a data frame or a numeric vector, including measures of central tendency, dispersion, skewness, and kurtosis
+-   **`psych::describe()`** - provides a more extensive summary of a data frame or a numeric vector, including measures of central tendency, dispersion, skewness, kurtosis, and various other statistics such as standard error, confidence intervals, and effect size estimates.
+-   **`stat.desc()`** - calculates a comprehensive set of descriptive statistics for a data frame, including measures of central tendency, dispersion, skewness, kurtosis, and various other statistics such as standard error, confidence intervals, and effect size estimates.
+-   **`if`**, **`else if`**, **`else`** - allows conditional execution of code based on logical conditions
+-   **`for()`** - iterates over a sequence of values and executes a block of code for each value
+-   **`while()`** - repeatedly executes a block of code as long as a logical condition is true
+-   **`repeat()`** - repeatedly executes a block of code until a **`break`** statement is encountered
+-   **`break`** - used to exit a loop prematurely
+-   **`next`** - used to skip to the next iteration of a loop
+-   **`return()`** - exits a function and returns a value
+-   **`switch()`** - allows selection of one of several alternative blocks of code based on a specified value
+-   **`tryCatch()`** - allows error handling in R by executing a block of code in case an error occurs, and handling the error in a specified way
+-   **`stop()`** - raises an error and exits the execution of a function or program
+-   **`ifelse()`** - a vectorized version of **`if()`**, which applies a conditional expression to each element of a vector or array and returns a vector or array of the same length with the results.
+-   **`read.table()`** - reads a text file into a data frame
+-   **`read.csv()`** - reads a CSV file into a data frame
+-   **`read.delim()`** - reads a tab-delimited file into a data frame
+-   **`read_excel()`** - reads an Excel file into a data frame using the **`readxl`** package
+-   **`readxl::read_xlsx()`** - reads an Excel file into a data frame using the **`readxl`** package
+-   **`readr::read_csv()`** - reads a CSV file into a data frame using the **`readr`** package, which is faster and more user-friendly than the base R **`read.csv()`** function
+-   **`data.table::fread()`** - reads a text file or CSV file into a data table using the **`data.table`** package, which is very fast and memory-efficient
+-   **`jsonlite::fromJSON()`** - reads a JSON file or string into a data frame using the **`jsonlite`** package
+-   **`xml2::read_html()`** - reads an HTML file or URL into an XML document, which can be further processed using the **`xml2`** package
+-   **`httr::GET()`** - retrieves data from a web API using HTTP methods such as GET and POST, and returns the response as a data frame or other object
+
+\
