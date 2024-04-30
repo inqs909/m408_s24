@@ -1,9 +1,9 @@
 ---
 title: "Week 14"
-date: 04-27-23
-description: We will begin our discussion on Tree-Based methods.
+date: 04-29-24
+description: We will begin our discussion on Neural Networks
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,16 +12,15 @@ editor_options:
 
 ### First Lecture
 
--   Maximum Margin Classifier
--   Support Vector Classifier
+-   Neural Networks
 
 ### Second Lecture
 
--   Support Vector Machine
+-   Convolutional Neural Networks
 
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       |        |        |       |
-| 2       |        |        |       |
+| Lecture | Slides                                                          | Videos | Files |
+|---------|-----------------------------------------------------------------|--------|-------|
+| 1       | [Slides](https://m408.inqs.info/lectures/14a.html#/title-slide) |        |       |
+| 2       | [Slides](https://m408.inqs.info/lectures/14b.html#/title-slide) |        |       |

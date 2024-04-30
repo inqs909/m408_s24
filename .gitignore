@@ -4,3 +4,5 @@
 .Ruserdata
 
 /.quarto/
+./lectures/cifar-100-binary
+./lectures/mnist

@@ -36,6 +36,7 @@ editor: source
 
 ---
 
+
 # Convolutional Neural Networks
 
 ## Convolutional Neural Networks
@@ -245,6 +246,7 @@ We will use to construct neural networks that will classify images.
 
 ## Torch Packages in R
 
+
 ```{r}
 #| echo: true
 #| eval: true
@@ -258,7 +260,9 @@ torch_manual_seed(13)
 
 ```
 
+
 ## MNIST
+
 
 ```{r}
 #| echo: true
@@ -272,9 +276,11 @@ train_ds[1]
 
 ```
 
+
 ## Transforming Data
 
 In order to use torch, you must transform the data: - tensor - flatten - tensor divided by the potential values (255)
+
 
 ```{r}
 #| echo: true
@@ -302,6 +308,7 @@ test_ds <- mnist_dataset(
 
 ```
 
+
 ## Neural Network Model Set Up
 
 The `nn_module` will begin to setup the neural network. It requires the `initialize` and `forward` functions.
@@ -325,6 +332,7 @@ The `nn_module` will begin to setup the neural network. It requires the `initial
 ::: fragment
 `forward` describes how the neural network is formatted using the values from the `initialize` function.
 :::
+
 
 ```{r}
 #| echo: true
@@ -358,9 +366,11 @@ modelnn <- nn_module(
 
 ```
 
+
 ## Set Up Neural Network
 
 Tells `luz` (`torch`) how to execute the neural network.
+
 
 ```{r}
 #| echo: true
@@ -374,11 +384,13 @@ modelnn <- modelnn |>
   )
 ```
 
+
 ## Fit the Neural Network
 
 ::: {.panel-tabset}
 ## Fitting
   
+
 ```{r}
 #| echo: true
 #| eval: true
@@ -395,15 +407,19 @@ system.time(
  )
 ```
 
+
 ## Plot
+
 
 ```{r}
 plot(fitted)
 ```
 
+
 :::
 
 ## Test Efficiency of Neural Network
+
 
 ```{r}
 #| echo: true
@@ -424,6 +440,7 @@ fitted |>
 
 ```
 
+
 # R Code CNN
 
 ## CIFAR Data
@@ -431,6 +448,7 @@ fitted |>
 The CIFAR database contains 60,000 images labeled with 20 superclasses with 5 animals for each superclass.
 
 ## CIFAR Data
+
 
 ```{r}
 #| echo: true
@@ -456,7 +474,9 @@ train_ds[1]
 
 ```
 
+
 ## Sample Image
+
 
 ```{r}
 par(mar = c(0, 0, 0, 0), mfrow = c(2, 2))
@@ -464,11 +484,13 @@ index <- sample(seq(50000), 4)
 for (i in index) plot(as.raster(as.array(train_ds[i][[1]]$permute(c(2,3,1)))))
 ```
 
+
 ## Defining CNN
 
 ::: {.panel-tabset}
 
 ## Convulational Layers
+
 
 ```{r}
 #| echo: true
@@ -493,6 +515,7 @@ conv_block <- nn_module(
 )
 ```
 
+
 -   `in_channels`: Number of inputs planes (3 at the beginning)
 -   `out_channels`: Number of output planes (may vary)
 -   `kernel_size`: convolutional filter size
@@ -502,6 +525,7 @@ conv_block <- nn_module(
 
 
 ## NN
+
 
 ```{r}
 #| echo: true
@@ -530,6 +554,7 @@ model <- nn_module(
 )
 ```
 
+
 -   `nn_sequential`: creates a sequence of functions
 -   `conv_block`: defined previously
 -   `Output`: Defines final neural network
@@ -537,15 +562,18 @@ model <- nn_module(
 
 ## Model
 
+
 ```{r}
 #| echo: true
 #| eval: true
 model()
 ```
 
+
 :::
 
 ## Fitting CNN
+
 
 
 ```{r}
@@ -554,6 +582,4 @@ model()
 
 unlink("cifar-100-binary", recursive = TRUE)
 ```
-
-
 

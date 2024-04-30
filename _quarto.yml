@@ -6,10 +6,14 @@ project:
     - "!files/"
     - "files/functions.qmd"
     - "files/dshs.qmd"
+
   resources:
     - "*.json"
     - "files"
     - "_extensions"
+    - "!lectures/cifar-100-binary/"
+    - "!lectures/mnist/"
+
 
 execute:
   freeze: auto
