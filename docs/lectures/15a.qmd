@@ -1,0 +1,52 @@
+---
+title: |
+  Recurrent \
+  Neural Networks
+subtitle: "Time-Series and Audio Processing"
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: true
+    message: false
+    warnings: false
+    comment: "#>" 
+    
+revealjs-plugins:
+  - pointer
+  - verticator
+  
+filters: 
+  - reveal-header
+  - code-fullscreen
+  - reveal-auto-agenda
+
+editor: source
+---
+
+# Sequential Data
+
+# Recurrent Neural Networks
+
+## RNN
+
+
+
+# Document Classification
+
+## Document Classification
+
+# Time Series
+
+# R Code

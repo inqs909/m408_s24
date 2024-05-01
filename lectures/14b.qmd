@@ -33,7 +33,6 @@ filters:
   - reveal-auto-agenda
 
 editor: source
-
 ---
 
 # Convolutional Neural Networks
@@ -54,8 +53,6 @@ A convolutional neural networks is trained by using a set of images that have be
 Once the network is trained, we can give new types of images to be classified.
 :::
 
-
-
 ## Convolutiona Neural Networks
 
 ![](img/squirrel.jpg){fig-align="center"}
@@ -66,7 +63,7 @@ A CNN will identify certain features, arrange them, and match them to what is cl
 
 ## CNN
 
-![](https://miro.medium.com/v2/resize:fit:1358/1*kSNAmClWpnej_ToQprru-Q.png){fig-align="center"}
+![Credit: ISLR2](img/islr2/Chapter10/10_6.jpg){fig-align="center"}
 
 # Layers
 
@@ -84,8 +81,7 @@ Dismatching features will contain a smaller value.
 
 ## Convolution Filter
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## Image
 
 $$
@@ -141,14 +137,11 @@ g\alpha + h\beta + j\gamma + k\delta & h\alpha + i\beta + k\gamma + l\delta
 \end{array}
 \right)
 $$
-
 :::
-
 
 ## Convolutional Layers
 
 Convolution layers are a set of filters in a hidden layers. We can have $K$ layers that an image is passed through.
-
 
 ## Pooling Layers
 
@@ -183,7 +176,6 @@ For each image, there are 3 channels (RGB) that represent the image.
 Afterwards, the image is gridded up into pixels with each containing a 3-values (RGB).
 :::
 
-
 ## Data Image
 
 ![](https://insightimi.wordpress.com/wp-content/uploads/2021/02/1_r2wi31-arzxihybbjd7luq.png?w=1024){fig-align="center"}
@@ -208,7 +200,6 @@ Once the images has been pooled to a select pixels or features. The images are f
 These inputs are used to a traditional neural network to classify an image.
 :::
 
-
 ## Architecture
 
 ![](https://www.embedded.com/wp-content/uploads/2023/06/23026adi-cnn1_f03_thumb.jpg){fig-align="center"}
@@ -223,8 +214,7 @@ The parameters in the convolution filters are estimates using standard technique
 
 ## Data Augmentation
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
 ![](img/squirrel.jpg)
 :::
@@ -232,8 +222,7 @@ The parameters in the convolution filters are estimates using standard technique
 ::: {.column width="50%"}
 ![](img/squirrel_mirror.jpg)
 :::
-
-::::
+:::
 
 # R MNIST Code
 
@@ -376,9 +365,9 @@ modelnn <- modelnn |>
 
 ## Fit the Neural Network
 
-::: {.panel-tabset}
+::: panel-tabset
 ## Fitting
-  
+
 ```{r}
 #| echo: true
 #| eval: true
@@ -400,7 +389,6 @@ system.time(
 ```{r}
 plot(fitted)
 ```
-
 :::
 
 ## Test Efficiency of Neural Network
@@ -466,8 +454,7 @@ for (i in index) plot(as.raster(as.array(train_ds[i][[1]]$permute(c(2,3,1)))))
 
 ## Defining CNN
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## Convulational Layers
 
 ```{r}
@@ -499,7 +486,6 @@ conv_block <- nn_module(
 -   `padding`: adds null values to images make the same
 -   `nn_relu`: Use ReLU
 -   `nn_max_pool2d`: Size Pooling Matrix
-
 
 ## NN
 
@@ -542,10 +528,409 @@ model <- nn_module(
 #| eval: true
 model()
 ```
-
 :::
 
 ## Fitting CNN
+
+::: panel-tabset
+## Fit
+
+```{r}
+#| eval: true
+#| echo: true
+system.time(
+fitted <- model |>  
+  setup(
+    loss = nn_cross_entropy_loss(),
+    optimizer = optim_rmsprop, 
+    metrics = list(luz_metric_accuracy())
+  ) |> 
+  set_opt_hparams(lr = 0.001) |> 
+  fit(
+    train_ds,
+    epochs = 10, #30,
+    valid_data = 0.2,
+    dataloader_options = list(batch_size = 128)
+  )
+)
+
+```
+
+## Summary
+
+```{r}
+#| eval: true
+#| echo: true
+print(fitted)
+```
+
+## Evaluate
+
+```{r}
+#| eval: true
+#| echo: true
+evaluate(fitted, test_ds)
+```
+:::
+
+## Squirrel Image
+
+Download labels json [here](https://github.com/MartinThoma/algorithms/blob/master/ML/confusion-matrix/labels/cifar-100-labels.json).
+
+Download the squirrel image [here](https://m408.inqs.info/lectures/img/squirrel.jpg).
+
+```{r}
+#| eval: true
+#| echo: false
+
+cifar100_mapping <- jsonlite::read_json("data/cifar-100-labels.json")
+
+x <- torch_empty(1, 3, 32, 32)
+img_path <- file.path("img/squirrel.jpg")
+img <- img_path |>  
+  base_loader() |>  
+  transform_to_tensor() |>  
+  transform_resize(c(32, 32)) |>  
+  # normalize with imagenet mean and stds.
+  transform_normalize(
+    mean = c(0.4914, 0.4822, 0.4465),
+    std = c(0.2470, 0.2435, 0.2616)
+  )
+x[1,,, ] <- img
+
+
+preds <- fitted |> 
+  predict(x) |> 
+  torch_topk(dim = 2, k = 100)
+
+cifar100_mapping[as.integer(preds[[2]])]
+
+```
+
+## All R Code
+
+```{r}
+#| echo: true
+#| eval: false
+
+transform <- function(x) {
+  transform_to_tensor(x)
+}
+
+train_ds <- cifar100_dataset(
+  root = "./", 
+  train = TRUE, 
+  download = TRUE, 
+  transform = transform
+)
+
+test_ds <- cifar100_dataset(
+  root = "./", 
+  train = FALSE, 
+  transform = transform
+)
+
+train_ds[1]
+par(mar = c(0, 0, 0, 0), mfrow = c(2, 2))
+index <- sample(seq(50000), 4)
+for (i in index) plot(as.raster(as.array(train_ds[i][[1]]$permute(c(2,3,1)))))
+conv_block <- nn_module(
+  initialize = function(in_channels, out_channels) {
+    self$conv <- nn_conv2d(
+      in_channels = in_channels, 
+      out_channels = out_channels, 
+      kernel_size = c(3,3),
+      padding = "same"
+    )
+    self$relu <- nn_relu()
+    self$pool <- nn_max_pool2d(kernel_size = c(2,2))
+  },
+  forward = function(x) {
+    x |> 
+      self$conv() |>  
+      self$relu() |> 
+      self$pool()
+  }
+)
+model <- nn_module(
+  initialize = function() {
+    self$conv <- nn_sequential(
+      conv_block(3, 32),
+      conv_block(32, 64),
+      conv_block(64, 128),
+      conv_block(128, 256)
+    )
+    self$output <- nn_sequential(
+      nn_dropout(0.5),
+      nn_linear(2*2*256, 512),
+      nn_relu(),
+      nn_linear(512, 100)
+    )
+  },
+  forward = function(x) {
+    x |> 
+      self$conv() |> 
+      torch_flatten(start_dim = 2) |>
+      self$output()
+  }
+)
+
+model()
+system.time(
+fitted <- model |>  
+  setup(
+    loss = nn_cross_entropy_loss(),
+    optimizer = optim_rmsprop, 
+    metrics = list(luz_metric_accuracy())
+  ) |> 
+  set_opt_hparams(lr = 0.001) |> 
+  fit(
+    train_ds,
+    epochs = 10, #30,
+    valid_data = 0.2,
+    dataloader_options = list(batch_size = 128)
+  )
+)
+
+print(fitted)
+evaluate(fitted, test_ds)
+
+cifar100_mapping <- jsonlite::read_json("data/cifar-100-labels.json")
+
+x <- torch_empty(1, 3, 32, 32)
+img_path <- file.path("img/squirrel.jpg")
+img <- img_path |>  
+  base_loader() |>  
+  transform_to_tensor() |>  
+  transform_resize(c(32, 32)) |>  
+  # normalize with imagenet mean and stds.
+  transform_normalize(
+    mean = c(0.4914, 0.4822, 0.4465),
+    std = c(0.2470, 0.2435, 0.2616)
+  )
+x[1,,, ] <- img
+
+
+preds <- fitted |> 
+  predict(x) |> 
+  torch_topk(dim = 2, k = 100)
+
+cifar100_mapping[as.integer(preds[[2]])]
+```
+
+
+
+# R Code Pre-Trained CNN
+
+## Pre-Trained CNN
+
+Both Torch and Tensorflow has access to convolutional neural networks trained using the imagenet data base.
+
+## Pre-Trained CNN
+
+```{r}
+#| eval: true
+#| echo: true
+
+model_imagenet <- torchvision::model_resnet18(pretrained = TRUE)
+model_imagenet$eval() # put the model in evaluation mode
+
+```
+
+## Loading Images
+
+Download book images [here](https://www.statlearning.com/s/book_images.zip).
+
+```{r}
+#| echo: true
+#| eval: true
+img_dir <- "img/books"
+image_names <- list.files(img_dir)
+num_images <- length(image_names)
+x <- torch_empty(num_images, 3, 224, 224)
+for (i in 1:num_images) {
+   img_path <- file.path(img_dir, image_names[i])
+   img <- img_path |> 
+     base_loader() |>  
+     transform_to_tensor() |>  
+     transform_resize(c(224, 224)) |>  
+     # normalize with imagenet mean and stds.
+     transform_normalize(
+       mean = c(0.485, 0.456, 0.406),
+       std = c(0.229, 0.224, 0.225)
+     )
+   x[i,,, ] <- img
+}
+```
+
+## Prediction
+
+::: {.panel-tabset}
+
+## Prediction
+
+```{r}
+#| echo: true
+#| eval: true
+preds <- model_imagenet(x)
+top3 <- torch_topk(preds, dim = 2, k = 3)
+```
+
+## Labels
+
+```{r}
+#| echo: true
+#| eval: true
+mapping <- jsonlite::read_json("https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json") |> 
+  sapply(function(x) x[[2]])
+```
+
+## Labeling
+
+```{r}
+#| echo: true
+#| eval: true
+top3_prob <- top3[[1]] |> 
+  nnf_softmax(dim = 2) |> 
+  torch_unbind() |> 
+  lapply(as.numeric)
+
+top3_class <- top3[[2]] |> 
+  torch_unbind() |> 
+  lapply(function(x) mapping[as.integer(x)])
+
+result <- purrr::map2(top3_prob, top3_class, function(pr, cl) {
+  names(pr) <- cl
+  pr
+})
+names(result) <- image_names
+
+```
+## Results
+
+```{r}
+#| echo: true
+#| eval: true
+
+
+print(result)
+```
+
+  
+:::
+
+
+## Squirrel
+
+::: {.panel-tabset}
+
+## Reload Image
+
+```{r}
+#| echo: true
+#| eval: true
+
+x <- torch_empty(1, 3, 224, 224)
+img_path <- file.path("img/squirrel.jpg")
+img <- img_path |>  
+  base_loader() |>  
+  transform_to_tensor() |>  
+  transform_resize(c(224, 224)) |>  
+  # normalize with imagenet mean and stds.
+     transform_normalize(
+       mean = c(0.485, 0.456, 0.406),
+       std = c(0.229, 0.224, 0.225)
+     )
+x[1,,, ] <- img
+
+```
+## Results
+
+```{r}
+#| echo: true
+#| eval: true
+
+
+preds <- model_imagenet(x)
+top3 <- torch_topk(preds, dim = 2, k = 3)
+mapping[as.integer(top3[[2]])]
+
+```
+
+:::
+
+
+## ALL R Code
+
+```{r}
+#| echo: true
+#| eval: false
+
+img_dir <- "img/books" ## CHANGE THIS
+image_names <- list.files(img_dir)
+num_images <- length(image_names)
+x <- torch_empty(num_images, 3, 224, 224)
+for (i in 1:num_images) {
+   img_path <- file.path(img_dir, image_names[i])
+   img <- img_path |> 
+     base_loader() |>  
+     transform_to_tensor() |>  
+     transform_resize(c(224, 224)) |>  
+     # normalize with imagenet mean and stds.
+     transform_normalize(
+       mean = c(0.485, 0.456, 0.406),
+       std = c(0.229, 0.224, 0.225)
+     )
+   x[i,,, ] <- img
+}
+
+preds <- model_imagenet(x)
+top3 <- torch_topk(preds, dim = 2, k = 3)
+
+model_imagenet <- torchvision::model_resnet18(pretrained = TRUE)
+model_imagenet$eval() # put the model in evaluation mode
+
+
+mapping <- jsonlite::read_json("https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json") |> 
+  sapply(function(x) x[[2]])
+
+top3_prob <- top3[[1]] |> 
+  nnf_softmax(dim = 2) |> 
+  torch_unbind() |> 
+  lapply(as.numeric)
+
+top3_class <- top3[[2]] |> 
+  torch_unbind() |> 
+  lapply(function(x) mapping[as.integer(x)])
+
+result <- purrr::map2(top3_prob, top3_class, function(pr, cl) {
+  names(pr) <- cl
+  pr
+})
+names(result) <- image_names
+
+print(result)
+
+x <- torch_empty(1, 3, 224, 224)
+img_path <- file.path("img/squirrel.jpg") ## CHANGE THIS
+img <- img_path |>  
+  base_loader() |>  
+  transform_to_tensor() |>  
+  transform_resize(c(224, 224)) |>  
+  # normalize with imagenet mean and stds.
+     transform_normalize(
+       mean = c(0.485, 0.456, 0.406),
+       std = c(0.229, 0.224, 0.225)
+     )
+x[1,,, ] <- img
+
+preds <- model_imagenet(x)
+top3 <- torch_topk(preds, dim = 2, k = 3)
+mapping[as.integer(top3[[2]])]
+
+```
+
+
 
 
 ```{r}
@@ -554,6 +939,3 @@ model()
 
 unlink("cifar-100-binary", recursive = TRUE)
 ```
-
-
-
