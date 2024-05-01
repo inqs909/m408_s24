@@ -613,6 +613,13 @@ cifar100_mapping[as.integer(preds[[2]])]
 #| echo: true
 #| eval: false
 
+library(torch)
+library(luz) # high-level interface for torch
+library(torchvision) # for datasets and image transformation
+library(torchdatasets) # for datasets we are going to use
+library(zeallot)
+torch_manual_seed(13)
+
 transform <- function(x) {
   transform_to_tensor(x)
 }
@@ -866,6 +873,13 @@ mapping[as.integer(top3[[2]])]
 #| echo: true
 #| eval: false
 
+library(torch)
+library(luz) # high-level interface for torch
+library(torchvision) # for datasets and image transformation
+library(torchdatasets) # for datasets we are going to use
+library(zeallot)
+torch_manual_seed(13)
+
 img_dir <- "img/books" ## CHANGE THIS
 image_names <- list.files(img_dir)
 num_images <- length(image_names)
@@ -884,12 +898,11 @@ for (i in 1:num_images) {
    x[i,,, ] <- img
 }
 
-preds <- model_imagenet(x)
-top3 <- torch_topk(preds, dim = 2, k = 3)
-
 model_imagenet <- torchvision::model_resnet18(pretrained = TRUE)
 model_imagenet$eval() # put the model in evaluation mode
 
+preds <- model_imagenet(x)
+top3 <- torch_topk(preds, dim = 2, k = 3)
 
 mapping <- jsonlite::read_json("https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json") |> 
   sapply(function(x) x[[2]])

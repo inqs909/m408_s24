@@ -907,7 +907,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <span id="cb8-10"><a href="#cb8-10"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;    user  system elapsed 
-#&gt; 144.086   0.572 143.670</code></pre>
+#&gt; 156.931   0.495 155.996</code></pre>
 </div>
 </div>
 </div>
@@ -941,7 +941,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <span id="cb11-10"><a href="#cb11-10"></a>  <span class="fu">as_array</span>() <span class="sc">|&gt;</span>  <span class="co"># convert to an R object</span></span>
 <span id="cb11-11"><a href="#cb11-11"></a>  <span class="fu">accuracy</span>(truth) <span class="co"># use function created</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.9539</code></pre>
+<pre><code>#&gt; [1] 0.9572</code></pre>
 </div>
 </div>
 </section></section>
@@ -1152,7 +1152,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <span id="cb20-15"><a href="#cb20-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;     user   system  elapsed 
-#&gt; 1398.430    6.421  902.224</code></pre>
+#&gt; 1448.988    6.315  927.744</code></pre>
 </div>
 </div>
 </div>
@@ -1162,15 +1162,15 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; A `luz_module_fitted`
 #&gt; ── Time ────────────────────────────────────────────────────────────────────────
-#&gt; • Total time: 15m 2.2s
-#&gt; • Avg time per training epoch: 1m 18.5s
+#&gt; • Total time: 15m 27.7s
+#&gt; • Avg time per training epoch: 1m 20.8s
 #&gt; 
 #&gt; ── Results ─────────────────────────────────────────────────────────────────────
 #&gt; Metrics observed in the last epoch.
 #&gt; 
 #&gt; ℹ Training:
-#&gt; loss: 2.4524
-#&gt; acc: 0.357
+#&gt; loss: 2.2801
+#&gt; acc: 0.3939
 #&gt; 
 #&gt; ── Model ───────────────────────────────────────────────────────────────────────
 #&gt; An `nn_module` containing 964,516 parameters.
@@ -1187,8 +1187,8 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; A `luz_module_evaluation`
 #&gt; ── Results ─────────────────────────────────────────────────────────────────────
-#&gt; loss: 2.5548
-#&gt; acc: 0.3494</code></pre>
+#&gt; loss: 2.3907
+#&gt; acc: 0.3857</code></pre>
 </div>
 </div>
 </div>
@@ -1202,413 +1202,420 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [[1]]
-#&gt; [1] "keyboard"
-#&gt; 
-#&gt; [[2]]
-#&gt; [1] "worm"
-#&gt; 
-#&gt; [[3]]
-#&gt; [1] "clock"
-#&gt; 
-#&gt; [[4]]
-#&gt; [1] "bus"
-#&gt; 
-#&gt; [[5]]
-#&gt; [1] "lamp"
-#&gt; 
-#&gt; [[6]]
-#&gt; [1] "shark"
-#&gt; 
-#&gt; [[7]]
-#&gt; [1] "motorcycle"
-#&gt; 
-#&gt; [[8]]
-#&gt; [1] "couch"
-#&gt; 
-#&gt; [[9]]
-#&gt; [1] "telephone"
-#&gt; 
-#&gt; [[10]]
-#&gt; [1] "bowl"
-#&gt; 
-#&gt; [[11]]
-#&gt; [1] "sunflower"
-#&gt; 
-#&gt; [[12]]
-#&gt; [1] "pickup_truck"
-#&gt; 
-#&gt; [[13]]
-#&gt; [1] "sea"
-#&gt; 
-#&gt; [[14]]
-#&gt; [1] "whale"
-#&gt; 
-#&gt; [[15]]
-#&gt; [1] "plate"
-#&gt; 
-#&gt; [[16]]
-#&gt; [1] "streetcar"
-#&gt; 
-#&gt; [[17]]
-#&gt; [1] "cup"
-#&gt; 
-#&gt; [[18]]
-#&gt; [1] "television"
-#&gt; 
-#&gt; [[19]]
-#&gt; [1] "can"
-#&gt; 
-#&gt; [[20]]
-#&gt; [1] "poppy"
-#&gt; 
-#&gt; [[21]]
-#&gt; [1] "bottle"
-#&gt; 
-#&gt; [[22]]
 #&gt; [1] "sweet_pepper"
 #&gt; 
-#&gt; [[23]]
-#&gt; [1] "orchid"
-#&gt; 
-#&gt; [[24]]
-#&gt; [1] "bridge"
-#&gt; 
-#&gt; [[25]]
-#&gt; [1] "baby"
-#&gt; 
-#&gt; [[26]]
-#&gt; [1] "seal"
-#&gt; 
-#&gt; [[27]]
+#&gt; [[2]]
 #&gt; [1] "butterfly"
 #&gt; 
-#&gt; [[28]]
+#&gt; [[3]]
+#&gt; [1] "worm"
+#&gt; 
+#&gt; [[4]]
+#&gt; [1] "lobster"
+#&gt; 
+#&gt; [[5]]
+#&gt; [1] "keyboard"
+#&gt; 
+#&gt; [[6]]
+#&gt; [1] "snake"
+#&gt; 
+#&gt; [[7]]
+#&gt; [1] "lizard"
+#&gt; 
+#&gt; [[8]]
+#&gt; [1] "bee"
+#&gt; 
+#&gt; [[9]]
+#&gt; [1] "crab"
+#&gt; 
+#&gt; [[10]]
 #&gt; [1] "tulip"
 #&gt; 
-#&gt; [[29]]
-#&gt; [1] "turtle"
+#&gt; [[11]]
+#&gt; [1] "forest"
 #&gt; 
-#&gt; [[30]]
-#&gt; [1] "rocket"
+#&gt; [[12]]
+#&gt; [1] "pear"
 #&gt; 
-#&gt; [[31]]
+#&gt; [[13]]
+#&gt; [1] "orchid"
+#&gt; 
+#&gt; [[14]]
+#&gt; [1] "bottle"
+#&gt; 
+#&gt; [[15]]
+#&gt; [1] "beetle"
+#&gt; 
+#&gt; [[16]]
+#&gt; [1] "dinosaur"
+#&gt; 
+#&gt; [[17]]
+#&gt; [1] "rose"
+#&gt; 
+#&gt; [[18]]
+#&gt; [1] "caterpillar"
+#&gt; 
+#&gt; [[19]]
+#&gt; [1] "woman"
+#&gt; 
+#&gt; [[20]]
+#&gt; [1] "bowl"
+#&gt; 
+#&gt; [[21]]
 #&gt; [1] "table"
 #&gt; 
-#&gt; [[32]]
-#&gt; [1] "cloud"
+#&gt; [[22]]
+#&gt; [1] "sunflower"
 #&gt; 
-#&gt; [[33]]
-#&gt; [1] "mountain"
+#&gt; [[23]]
+#&gt; [1] "mouse"
 #&gt; 
-#&gt; [[34]]
-#&gt; [1] "lawn_mower"
+#&gt; [[24]]
+#&gt; [1] "clock"
 #&gt; 
-#&gt; [[35]]
-#&gt; [1] "train"
+#&gt; [[25]]
+#&gt; [1] "bridge"
 #&gt; 
-#&gt; [[36]]
-#&gt; [1] "ray"
+#&gt; [[26]]
+#&gt; [1] "couch"
 #&gt; 
-#&gt; [[37]]
-#&gt; [1] "aquarium_fish"
-#&gt; 
-#&gt; [[38]]
-#&gt; [1] "plain"
-#&gt; 
-#&gt; [[39]]
+#&gt; [[27]]
 #&gt; [1] "flatfish"
 #&gt; 
+#&gt; [[28]]
+#&gt; [1] "lamp"
+#&gt; 
+#&gt; [[29]]
+#&gt; [1] "bus"
+#&gt; 
+#&gt; [[30]]
+#&gt; [1] "poppy"
+#&gt; 
+#&gt; [[31]]
+#&gt; [1] "telephone"
+#&gt; 
+#&gt; [[32]]
+#&gt; [1] "spider"
+#&gt; 
+#&gt; [[33]]
+#&gt; [1] "motorcycle"
+#&gt; 
+#&gt; [[34]]
+#&gt; [1] "baby"
+#&gt; 
+#&gt; [[35]]
+#&gt; [1] "apple"
+#&gt; 
+#&gt; [[36]]
+#&gt; [1] "bicycle"
+#&gt; 
+#&gt; [[37]]
+#&gt; [1] "can"
+#&gt; 
+#&gt; [[38]]
+#&gt; [1] "mushroom"
+#&gt; 
+#&gt; [[39]]
+#&gt; [1] "cup"
+#&gt; 
 #&gt; [[40]]
-#&gt; [1] "dolphin"
+#&gt; [1] "shrew"
 #&gt; 
 #&gt; [[41]]
 #&gt; [1] "pine_tree"
 #&gt; 
 #&gt; [[42]]
-#&gt; [1] "snake"
+#&gt; [1] "streetcar"
 #&gt; 
 #&gt; [[43]]
-#&gt; [1] "skunk"
-#&gt; 
-#&gt; [[44]]
-#&gt; [1] "trout"
-#&gt; 
-#&gt; [[45]]
 #&gt; [1] "bed"
 #&gt; 
-#&gt; [[46]]
-#&gt; [1] "palm_tree"
-#&gt; 
-#&gt; [[47]]
-#&gt; [1] "skyscraper"
-#&gt; 
-#&gt; [[48]]
-#&gt; [1] "woman"
-#&gt; 
-#&gt; [[49]]
-#&gt; [1] "lobster"
-#&gt; 
-#&gt; [[50]]
-#&gt; [1] "caterpillar"
-#&gt; 
-#&gt; [[51]]
-#&gt; [1] "crab"
-#&gt; 
-#&gt; [[52]]
-#&gt; [1] "man"
-#&gt; 
-#&gt; [[53]]
-#&gt; [1] "chair"
-#&gt; 
-#&gt; [[54]]
-#&gt; [1] "boy"
-#&gt; 
-#&gt; [[55]]
-#&gt; [1] "beetle"
-#&gt; 
-#&gt; [[56]]
-#&gt; [1] "tank"
-#&gt; 
-#&gt; [[57]]
-#&gt; [1] "house"
-#&gt; 
-#&gt; [[58]]
-#&gt; [1] "pear"
-#&gt; 
-#&gt; [[59]]
-#&gt; [1] "forest"
-#&gt; 
-#&gt; [[60]]
-#&gt; [1] "bicycle"
-#&gt; 
-#&gt; [[61]]
-#&gt; [1] "maple_tree"
-#&gt; 
-#&gt; [[62]]
-#&gt; [1] "bear"
-#&gt; 
-#&gt; [[63]]
-#&gt; [1] "rose"
-#&gt; 
-#&gt; [[64]]
-#&gt; [1] "dinosaur"
-#&gt; 
-#&gt; [[65]]
-#&gt; [1] "spider"
-#&gt; 
-#&gt; [[66]]
-#&gt; [1] "cattle"
-#&gt; 
-#&gt; [[67]]
-#&gt; [1] "chimpanzee"
-#&gt; 
-#&gt; [[68]]
-#&gt; [1] "mouse"
-#&gt; 
-#&gt; [[69]]
-#&gt; [1] "tractor"
-#&gt; 
-#&gt; [[70]]
-#&gt; [1] "lizard"
-#&gt; 
-#&gt; [[71]]
-#&gt; [1] "otter"
-#&gt; 
-#&gt; [[72]]
-#&gt; [1] "cockroach"
-#&gt; 
-#&gt; [[73]]
-#&gt; [1] "raccoon"
-#&gt; 
-#&gt; [[74]]
-#&gt; [1] "rabbit"
-#&gt; 
-#&gt; [[75]]
-#&gt; [1] "mushroom"
-#&gt; 
-#&gt; [[76]]
-#&gt; [1] "orange"
-#&gt; 
-#&gt; [[77]]
-#&gt; [1] "bee"
-#&gt; 
-#&gt; [[78]]
-#&gt; [1] "shrew"
-#&gt; 
-#&gt; [[79]]
-#&gt; [1] "willow_tree"
-#&gt; 
-#&gt; [[80]]
-#&gt; [1] "wardrobe"
-#&gt; 
-#&gt; [[81]]
+#&gt; [[44]]
 #&gt; [1] "camel"
 #&gt; 
-#&gt; [[82]]
-#&gt; [1] "girl"
-#&gt; 
-#&gt; [[83]]
+#&gt; [[45]]
 #&gt; [1] "possum"
 #&gt; 
-#&gt; [[84]]
-#&gt; [1] "beaver"
+#&gt; [[46]]
+#&gt; [1] "boy"
 #&gt; 
-#&gt; [[85]]
-#&gt; [1] "oak_tree"
+#&gt; [[47]]
+#&gt; [1] "aquarium_fish"
 #&gt; 
-#&gt; [[86]]
-#&gt; [1] "road"
+#&gt; [[48]]
+#&gt; [1] "television"
 #&gt; 
-#&gt; [[87]]
-#&gt; [1] "crocodile"
+#&gt; [[49]]
+#&gt; [1] "man"
 #&gt; 
-#&gt; [[88]]
+#&gt; [[50]]
+#&gt; [1] "girl"
+#&gt; 
+#&gt; [[51]]
+#&gt; [1] "plate"
+#&gt; 
+#&gt; [[52]]
+#&gt; [1] "ray"
+#&gt; 
+#&gt; [[53]]
+#&gt; [1] "seal"
+#&gt; 
+#&gt; [[54]]
 #&gt; [1] "snail"
 #&gt; 
-#&gt; [[89]]
-#&gt; [1] "wolf"
-#&gt; 
-#&gt; [[90]]
-#&gt; [1] "apple"
-#&gt; 
-#&gt; [[91]]
-#&gt; [1] "tiger"
-#&gt; 
-#&gt; [[92]]
-#&gt; [1] "castle"
-#&gt; 
-#&gt; [[93]]
-#&gt; [1] "hamster"
-#&gt; 
-#&gt; [[94]]
+#&gt; [[55]]
 #&gt; [1] "kangaroo"
 #&gt; 
-#&gt; [[95]]
-#&gt; [1] "fox"
+#&gt; [[56]]
+#&gt; [1] "cockroach"
 #&gt; 
-#&gt; [[96]]
+#&gt; [[57]]
+#&gt; [1] "pickup_truck"
+#&gt; 
+#&gt; [[58]]
+#&gt; [1] "rabbit"
+#&gt; 
+#&gt; [[59]]
+#&gt; [1] "turtle"
+#&gt; 
+#&gt; [[60]]
+#&gt; [1] "trout"
+#&gt; 
+#&gt; [[61]]
+#&gt; [1] "lawn_mower"
+#&gt; 
+#&gt; [[62]]
+#&gt; [1] "shark"
+#&gt; 
+#&gt; [[63]]
+#&gt; [1] "tractor"
+#&gt; 
+#&gt; [[64]]
+#&gt; [1] "maple_tree"
+#&gt; 
+#&gt; [[65]]
+#&gt; [1] "orange"
+#&gt; 
+#&gt; [[66]]
+#&gt; [1] "bear"
+#&gt; 
+#&gt; [[67]]
+#&gt; [1] "raccoon"
+#&gt; 
+#&gt; [[68]]
+#&gt; [1] "crocodile"
+#&gt; 
+#&gt; [[69]]
+#&gt; [1] "tiger"
+#&gt; 
+#&gt; [[70]]
+#&gt; [1] "chimpanzee"
+#&gt; 
+#&gt; [[71]]
+#&gt; [1] "skunk"
+#&gt; 
+#&gt; [[72]]
+#&gt; [1] "rocket"
+#&gt; 
+#&gt; [[73]]
+#&gt; [1] "otter"
+#&gt; 
+#&gt; [[74]]
+#&gt; [1] "willow_tree"
+#&gt; 
+#&gt; [[75]]
+#&gt; [1] "wardrobe"
+#&gt; 
+#&gt; [[76]]
+#&gt; [1] "cattle"
+#&gt; 
+#&gt; [[77]]
+#&gt; [1] "tank"
+#&gt; 
+#&gt; [[78]]
+#&gt; [1] "beaver"
+#&gt; 
+#&gt; [[79]]
+#&gt; [1] "train"
+#&gt; 
+#&gt; [[80]]
+#&gt; [1] "palm_tree"
+#&gt; 
+#&gt; [[81]]
+#&gt; [1] "house"
+#&gt; 
+#&gt; [[82]]
+#&gt; [1] "sea"
+#&gt; 
+#&gt; [[83]]
 #&gt; [1] "leopard"
 #&gt; 
-#&gt; [[97]]
-#&gt; [1] "elephant"
+#&gt; [[84]]
+#&gt; [1] "wolf"
 #&gt; 
-#&gt; [[98]]
+#&gt; [[85]]
+#&gt; [1] "chair"
+#&gt; 
+#&gt; [[86]]
+#&gt; [1] "squirrel"
+#&gt; 
+#&gt; [[87]]
 #&gt; [1] "lion"
 #&gt; 
-#&gt; [[99]]
+#&gt; [[88]]
+#&gt; [1] "fox"
+#&gt; 
+#&gt; [[89]]
+#&gt; [1] "mountain"
+#&gt; 
+#&gt; [[90]]
+#&gt; [1] "cloud"
+#&gt; 
+#&gt; [[91]]
+#&gt; [1] "hamster"
+#&gt; 
+#&gt; [[92]]
+#&gt; [1] "elephant"
+#&gt; 
+#&gt; [[93]]
+#&gt; [1] "plain"
+#&gt; 
+#&gt; [[94]]
+#&gt; [1] "skyscraper"
+#&gt; 
+#&gt; [[95]]
+#&gt; [1] "dolphin"
+#&gt; 
+#&gt; [[96]]
 #&gt; [1] "porcupine"
 #&gt; 
+#&gt; [[97]]
+#&gt; [1] "whale"
+#&gt; 
+#&gt; [[98]]
+#&gt; [1] "oak_tree"
+#&gt; 
+#&gt; [[99]]
+#&gt; [1] "castle"
+#&gt; 
 #&gt; [[100]]
-#&gt; [1] "squirrel"</code></pre>
+#&gt; [1] "road"</code></pre>
 </div>
 </div>
 </section>
 <section id="all-r-code" class="slide level2">
 <h2>All R Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">transform_to_tensor</span>(x)</span>
-<span id="cb27-3"><a href="#cb27-3"></a>}</span>
-<span id="cb27-4"><a href="#cb27-4"></a></span>
-<span id="cb27-5"><a href="#cb27-5"></a>train_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
-<span id="cb27-7"><a href="#cb27-7"></a>  <span class="at">train =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb27-8"><a href="#cb27-8"></a>  <span class="at">download =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb27-9"><a href="#cb27-9"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb27-10"><a href="#cb27-10"></a>)</span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">library</span>(torch)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="fu">library</span>(zeallot)</span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span>
+<span id="cb27-7"><a href="#cb27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8"></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb27-9"><a href="#cb27-9"></a>  <span class="fu">transform_to_tensor</span>(x)</span>
+<span id="cb27-10"><a href="#cb27-10"></a>}</span>
 <span id="cb27-11"><a href="#cb27-11"></a></span>
-<span id="cb27-12"><a href="#cb27-12"></a>test_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
+<span id="cb27-12"><a href="#cb27-12"></a>train_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
 <span id="cb27-13"><a href="#cb27-13"></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
-<span id="cb27-14"><a href="#cb27-14"></a>  <span class="at">train =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb27-15"><a href="#cb27-15"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb27-16"><a href="#cb27-16"></a>)</span>
-<span id="cb27-17"><a href="#cb27-17"></a></span>
-<span id="cb27-18"><a href="#cb27-18"></a>train_ds[<span class="dv">1</span>]</span>
-<span id="cb27-19"><a href="#cb27-19"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb27-20"><a href="#cb27-20"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">50000</span>), <span class="dv">4</span>)</span>
-<span id="cb27-21"><a href="#cb27-21"></a><span class="cf">for</span> (i <span class="cf">in</span> index) <span class="fu">plot</span>(<span class="fu">as.raster</span>(<span class="fu">as.array</span>(train_ds[i][[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">permute</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)))))</span>
-<span id="cb27-22"><a href="#cb27-22"></a>conv_block <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
-<span id="cb27-23"><a href="#cb27-23"></a>  <span class="at">initialize =</span> <span class="cf">function</span>(in_channels, out_channels) {</span>
-<span id="cb27-24"><a href="#cb27-24"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_conv2d</span>(</span>
-<span id="cb27-25"><a href="#cb27-25"></a>      <span class="at">in_channels =</span> in_channels, </span>
-<span id="cb27-26"><a href="#cb27-26"></a>      <span class="at">out_channels =</span> out_channels, </span>
-<span id="cb27-27"><a href="#cb27-27"></a>      <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>),</span>
-<span id="cb27-28"><a href="#cb27-28"></a>      <span class="at">padding =</span> <span class="st">"same"</span></span>
-<span id="cb27-29"><a href="#cb27-29"></a>    )</span>
-<span id="cb27-30"><a href="#cb27-30"></a>    self<span class="sc">$</span>relu <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
-<span id="cb27-31"><a href="#cb27-31"></a>    self<span class="sc">$</span>pool <span class="ot">&lt;-</span> <span class="fu">nn_max_pool2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb27-32"><a href="#cb27-32"></a>  },</span>
-<span id="cb27-33"><a href="#cb27-33"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb27-34"><a href="#cb27-34"></a>    x <span class="sc">|&gt;</span> </span>
-<span id="cb27-35"><a href="#cb27-35"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb27-36"><a href="#cb27-36"></a>      self<span class="sc">$</span><span class="fu">relu</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb27-37"><a href="#cb27-37"></a>      self<span class="sc">$</span><span class="fu">pool</span>()</span>
-<span id="cb27-38"><a href="#cb27-38"></a>  }</span>
-<span id="cb27-39"><a href="#cb27-39"></a>)</span>
-<span id="cb27-40"><a href="#cb27-40"></a>model <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
-<span id="cb27-41"><a href="#cb27-41"></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
-<span id="cb27-42"><a href="#cb27-42"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
-<span id="cb27-43"><a href="#cb27-43"></a>      <span class="fu">conv_block</span>(<span class="dv">3</span>, <span class="dv">32</span>),</span>
-<span id="cb27-44"><a href="#cb27-44"></a>      <span class="fu">conv_block</span>(<span class="dv">32</span>, <span class="dv">64</span>),</span>
-<span id="cb27-45"><a href="#cb27-45"></a>      <span class="fu">conv_block</span>(<span class="dv">64</span>, <span class="dv">128</span>),</span>
-<span id="cb27-46"><a href="#cb27-46"></a>      <span class="fu">conv_block</span>(<span class="dv">128</span>, <span class="dv">256</span>)</span>
-<span id="cb27-47"><a href="#cb27-47"></a>    )</span>
-<span id="cb27-48"><a href="#cb27-48"></a>    self<span class="sc">$</span>output <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
-<span id="cb27-49"><a href="#cb27-49"></a>      <span class="fu">nn_dropout</span>(<span class="fl">0.5</span>),</span>
-<span id="cb27-50"><a href="#cb27-50"></a>      <span class="fu">nn_linear</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">256</span>, <span class="dv">512</span>),</span>
-<span id="cb27-51"><a href="#cb27-51"></a>      <span class="fu">nn_relu</span>(),</span>
-<span id="cb27-52"><a href="#cb27-52"></a>      <span class="fu">nn_linear</span>(<span class="dv">512</span>, <span class="dv">100</span>)</span>
-<span id="cb27-53"><a href="#cb27-53"></a>    )</span>
-<span id="cb27-54"><a href="#cb27-54"></a>  },</span>
-<span id="cb27-55"><a href="#cb27-55"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb27-56"><a href="#cb27-56"></a>    x <span class="sc">|&gt;</span> </span>
-<span id="cb27-57"><a href="#cb27-57"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb27-58"><a href="#cb27-58"></a>      <span class="fu">torch_flatten</span>(<span class="at">start_dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb27-59"><a href="#cb27-59"></a>      self<span class="sc">$</span><span class="fu">output</span>()</span>
-<span id="cb27-60"><a href="#cb27-60"></a>  }</span>
-<span id="cb27-61"><a href="#cb27-61"></a>)</span>
-<span id="cb27-62"><a href="#cb27-62"></a></span>
-<span id="cb27-63"><a href="#cb27-63"></a><span class="fu">model</span>()</span>
-<span id="cb27-64"><a href="#cb27-64"></a><span class="fu">system.time</span>(</span>
-<span id="cb27-65"><a href="#cb27-65"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span>  </span>
-<span id="cb27-66"><a href="#cb27-66"></a>  <span class="fu">setup</span>(</span>
-<span id="cb27-67"><a href="#cb27-67"></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
-<span id="cb27-68"><a href="#cb27-68"></a>    <span class="at">optimizer =</span> optim_rmsprop, </span>
-<span id="cb27-69"><a href="#cb27-69"></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
-<span id="cb27-70"><a href="#cb27-70"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb27-71"><a href="#cb27-71"></a>  <span class="fu">set_opt_hparams</span>(<span class="at">lr =</span> <span class="fl">0.001</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-72"><a href="#cb27-72"></a>  <span class="fu">fit</span>(</span>
-<span id="cb27-73"><a href="#cb27-73"></a>    train_ds,</span>
-<span id="cb27-74"><a href="#cb27-74"></a>    <span class="at">epochs =</span> <span class="dv">10</span>, <span class="co">#30,</span></span>
-<span id="cb27-75"><a href="#cb27-75"></a>    <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
-<span id="cb27-76"><a href="#cb27-76"></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">128</span>)</span>
-<span id="cb27-77"><a href="#cb27-77"></a>  )</span>
-<span id="cb27-78"><a href="#cb27-78"></a>)</span>
-<span id="cb27-79"><a href="#cb27-79"></a></span>
-<span id="cb27-80"><a href="#cb27-80"></a><span class="fu">print</span>(fitted)</span>
-<span id="cb27-81"><a href="#cb27-81"></a><span class="fu">evaluate</span>(fitted, test_ds)</span>
-<span id="cb27-82"><a href="#cb27-82"></a></span>
-<span id="cb27-83"><a href="#cb27-83"></a>cifar100_mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"data/cifar-100-labels.json"</span>)</span>
-<span id="cb27-84"><a href="#cb27-84"></a></span>
-<span id="cb27-85"><a href="#cb27-85"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">32</span>, <span class="dv">32</span>)</span>
-<span id="cb27-86"><a href="#cb27-86"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>)</span>
-<span id="cb27-87"><a href="#cb27-87"></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
-<span id="cb27-88"><a href="#cb27-88"></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb27-89"><a href="#cb27-89"></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb27-90"><a href="#cb27-90"></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb27-91"><a href="#cb27-91"></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb27-92"><a href="#cb27-92"></a>  <span class="fu">transform_normalize</span>(</span>
-<span id="cb27-93"><a href="#cb27-93"></a>    <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.4914</span>, <span class="fl">0.4822</span>, <span class="fl">0.4465</span>),</span>
-<span id="cb27-94"><a href="#cb27-94"></a>    <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.2470</span>, <span class="fl">0.2435</span>, <span class="fl">0.2616</span>)</span>
-<span id="cb27-95"><a href="#cb27-95"></a>  )</span>
-<span id="cb27-96"><a href="#cb27-96"></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
-<span id="cb27-97"><a href="#cb27-97"></a></span>
-<span id="cb27-98"><a href="#cb27-98"></a></span>
-<span id="cb27-99"><a href="#cb27-99"></a>preds <span class="ot">&lt;-</span> fitted <span class="sc">|&gt;</span> </span>
-<span id="cb27-100"><a href="#cb27-100"></a>  <span class="fu">predict</span>(x) <span class="sc">|&gt;</span> </span>
-<span id="cb27-101"><a href="#cb27-101"></a>  <span class="fu">torch_topk</span>(<span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">100</span>)</span>
-<span id="cb27-102"><a href="#cb27-102"></a></span>
-<span id="cb27-103"><a href="#cb27-103"></a>cifar100_mapping[<span class="fu">as.integer</span>(preds[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-14"><a href="#cb27-14"></a>  <span class="at">train =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb27-15"><a href="#cb27-15"></a>  <span class="at">download =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb27-16"><a href="#cb27-16"></a>  <span class="at">transform =</span> transform</span>
+<span id="cb27-17"><a href="#cb27-17"></a>)</span>
+<span id="cb27-18"><a href="#cb27-18"></a></span>
+<span id="cb27-19"><a href="#cb27-19"></a>test_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
+<span id="cb27-20"><a href="#cb27-20"></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
+<span id="cb27-21"><a href="#cb27-21"></a>  <span class="at">train =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb27-22"><a href="#cb27-22"></a>  <span class="at">transform =</span> transform</span>
+<span id="cb27-23"><a href="#cb27-23"></a>)</span>
+<span id="cb27-24"><a href="#cb27-24"></a></span>
+<span id="cb27-25"><a href="#cb27-25"></a>train_ds[<span class="dv">1</span>]</span>
+<span id="cb27-26"><a href="#cb27-26"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb27-27"><a href="#cb27-27"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">50000</span>), <span class="dv">4</span>)</span>
+<span id="cb27-28"><a href="#cb27-28"></a><span class="cf">for</span> (i <span class="cf">in</span> index) <span class="fu">plot</span>(<span class="fu">as.raster</span>(<span class="fu">as.array</span>(train_ds[i][[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">permute</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)))))</span>
+<span id="cb27-29"><a href="#cb27-29"></a>conv_block <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
+<span id="cb27-30"><a href="#cb27-30"></a>  <span class="at">initialize =</span> <span class="cf">function</span>(in_channels, out_channels) {</span>
+<span id="cb27-31"><a href="#cb27-31"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_conv2d</span>(</span>
+<span id="cb27-32"><a href="#cb27-32"></a>      <span class="at">in_channels =</span> in_channels, </span>
+<span id="cb27-33"><a href="#cb27-33"></a>      <span class="at">out_channels =</span> out_channels, </span>
+<span id="cb27-34"><a href="#cb27-34"></a>      <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>),</span>
+<span id="cb27-35"><a href="#cb27-35"></a>      <span class="at">padding =</span> <span class="st">"same"</span></span>
+<span id="cb27-36"><a href="#cb27-36"></a>    )</span>
+<span id="cb27-37"><a href="#cb27-37"></a>    self<span class="sc">$</span>relu <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
+<span id="cb27-38"><a href="#cb27-38"></a>    self<span class="sc">$</span>pool <span class="ot">&lt;-</span> <span class="fu">nn_max_pool2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb27-39"><a href="#cb27-39"></a>  },</span>
+<span id="cb27-40"><a href="#cb27-40"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb27-41"><a href="#cb27-41"></a>    x <span class="sc">|&gt;</span> </span>
+<span id="cb27-42"><a href="#cb27-42"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb27-43"><a href="#cb27-43"></a>      self<span class="sc">$</span><span class="fu">relu</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb27-44"><a href="#cb27-44"></a>      self<span class="sc">$</span><span class="fu">pool</span>()</span>
+<span id="cb27-45"><a href="#cb27-45"></a>  }</span>
+<span id="cb27-46"><a href="#cb27-46"></a>)</span>
+<span id="cb27-47"><a href="#cb27-47"></a>model <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
+<span id="cb27-48"><a href="#cb27-48"></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
+<span id="cb27-49"><a href="#cb27-49"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
+<span id="cb27-50"><a href="#cb27-50"></a>      <span class="fu">conv_block</span>(<span class="dv">3</span>, <span class="dv">32</span>),</span>
+<span id="cb27-51"><a href="#cb27-51"></a>      <span class="fu">conv_block</span>(<span class="dv">32</span>, <span class="dv">64</span>),</span>
+<span id="cb27-52"><a href="#cb27-52"></a>      <span class="fu">conv_block</span>(<span class="dv">64</span>, <span class="dv">128</span>),</span>
+<span id="cb27-53"><a href="#cb27-53"></a>      <span class="fu">conv_block</span>(<span class="dv">128</span>, <span class="dv">256</span>)</span>
+<span id="cb27-54"><a href="#cb27-54"></a>    )</span>
+<span id="cb27-55"><a href="#cb27-55"></a>    self<span class="sc">$</span>output <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
+<span id="cb27-56"><a href="#cb27-56"></a>      <span class="fu">nn_dropout</span>(<span class="fl">0.5</span>),</span>
+<span id="cb27-57"><a href="#cb27-57"></a>      <span class="fu">nn_linear</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">256</span>, <span class="dv">512</span>),</span>
+<span id="cb27-58"><a href="#cb27-58"></a>      <span class="fu">nn_relu</span>(),</span>
+<span id="cb27-59"><a href="#cb27-59"></a>      <span class="fu">nn_linear</span>(<span class="dv">512</span>, <span class="dv">100</span>)</span>
+<span id="cb27-60"><a href="#cb27-60"></a>    )</span>
+<span id="cb27-61"><a href="#cb27-61"></a>  },</span>
+<span id="cb27-62"><a href="#cb27-62"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb27-63"><a href="#cb27-63"></a>    x <span class="sc">|&gt;</span> </span>
+<span id="cb27-64"><a href="#cb27-64"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb27-65"><a href="#cb27-65"></a>      <span class="fu">torch_flatten</span>(<span class="at">start_dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-66"><a href="#cb27-66"></a>      self<span class="sc">$</span><span class="fu">output</span>()</span>
+<span id="cb27-67"><a href="#cb27-67"></a>  }</span>
+<span id="cb27-68"><a href="#cb27-68"></a>)</span>
+<span id="cb27-69"><a href="#cb27-69"></a></span>
+<span id="cb27-70"><a href="#cb27-70"></a><span class="fu">model</span>()</span>
+<span id="cb27-71"><a href="#cb27-71"></a><span class="fu">system.time</span>(</span>
+<span id="cb27-72"><a href="#cb27-72"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span>  </span>
+<span id="cb27-73"><a href="#cb27-73"></a>  <span class="fu">setup</span>(</span>
+<span id="cb27-74"><a href="#cb27-74"></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
+<span id="cb27-75"><a href="#cb27-75"></a>    <span class="at">optimizer =</span> optim_rmsprop, </span>
+<span id="cb27-76"><a href="#cb27-76"></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
+<span id="cb27-77"><a href="#cb27-77"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb27-78"><a href="#cb27-78"></a>  <span class="fu">set_opt_hparams</span>(<span class="at">lr =</span> <span class="fl">0.001</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-79"><a href="#cb27-79"></a>  <span class="fu">fit</span>(</span>
+<span id="cb27-80"><a href="#cb27-80"></a>    train_ds,</span>
+<span id="cb27-81"><a href="#cb27-81"></a>    <span class="at">epochs =</span> <span class="dv">10</span>, <span class="co">#30,</span></span>
+<span id="cb27-82"><a href="#cb27-82"></a>    <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
+<span id="cb27-83"><a href="#cb27-83"></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">128</span>)</span>
+<span id="cb27-84"><a href="#cb27-84"></a>  )</span>
+<span id="cb27-85"><a href="#cb27-85"></a>)</span>
+<span id="cb27-86"><a href="#cb27-86"></a></span>
+<span id="cb27-87"><a href="#cb27-87"></a><span class="fu">print</span>(fitted)</span>
+<span id="cb27-88"><a href="#cb27-88"></a><span class="fu">evaluate</span>(fitted, test_ds)</span>
+<span id="cb27-89"><a href="#cb27-89"></a></span>
+<span id="cb27-90"><a href="#cb27-90"></a>cifar100_mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"data/cifar-100-labels.json"</span>)</span>
+<span id="cb27-91"><a href="#cb27-91"></a></span>
+<span id="cb27-92"><a href="#cb27-92"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">32</span>, <span class="dv">32</span>)</span>
+<span id="cb27-93"><a href="#cb27-93"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>)</span>
+<span id="cb27-94"><a href="#cb27-94"></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
+<span id="cb27-95"><a href="#cb27-95"></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb27-96"><a href="#cb27-96"></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb27-97"><a href="#cb27-97"></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb27-98"><a href="#cb27-98"></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb27-99"><a href="#cb27-99"></a>  <span class="fu">transform_normalize</span>(</span>
+<span id="cb27-100"><a href="#cb27-100"></a>    <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.4914</span>, <span class="fl">0.4822</span>, <span class="fl">0.4465</span>),</span>
+<span id="cb27-101"><a href="#cb27-101"></a>    <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.2470</span>, <span class="fl">0.2435</span>, <span class="fl">0.2616</span>)</span>
+<span id="cb27-102"><a href="#cb27-102"></a>  )</span>
+<span id="cb27-103"><a href="#cb27-103"></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
+<span id="cb27-104"><a href="#cb27-104"></a></span>
+<span id="cb27-105"><a href="#cb27-105"></a></span>
+<span id="cb27-106"><a href="#cb27-106"></a>preds <span class="ot">&lt;-</span> fitted <span class="sc">|&gt;</span> </span>
+<span id="cb27-107"><a href="#cb27-107"></a>  <span class="fu">predict</span>(x) <span class="sc">|&gt;</span> </span>
+<span id="cb27-108"><a href="#cb27-108"></a>  <span class="fu">torch_topk</span>(<span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">100</span>)</span>
+<span id="cb27-109"><a href="#cb27-109"></a></span>
+<span id="cb27-110"><a href="#cb27-110"></a>cifar100_mapping[<span class="fu">as.integer</span>(preds[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -1777,67 +1784,73 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="all-r-code-1" class="slide level2">
 <h2>ALL R Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>img_dir <span class="ot">&lt;-</span> <span class="st">"img/books"</span> <span class="do">## CHANGE THIS</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>image_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(img_dir)</span>
-<span id="cb38-3"><a href="#cb38-3"></a>num_images <span class="ot">&lt;-</span> <span class="fu">length</span>(image_names)</span>
-<span id="cb38-4"><a href="#cb38-4"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(num_images, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
-<span id="cb38-5"><a href="#cb38-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_images) {</span>
-<span id="cb38-6"><a href="#cb38-6"></a>   img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(img_dir, image_names[i])</span>
-<span id="cb38-7"><a href="#cb38-7"></a>   img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span> </span>
-<span id="cb38-8"><a href="#cb38-8"></a>     <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-9"><a href="#cb38-9"></a>     <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-10"><a href="#cb38-10"></a>     <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb38-11"><a href="#cb38-11"></a>     <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb38-12"><a href="#cb38-12"></a>     <span class="fu">transform_normalize</span>(</span>
-<span id="cb38-13"><a href="#cb38-13"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
-<span id="cb38-14"><a href="#cb38-14"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
-<span id="cb38-15"><a href="#cb38-15"></a>     )</span>
-<span id="cb38-16"><a href="#cb38-16"></a>   x[i,,, ] <span class="ot">&lt;-</span> img</span>
-<span id="cb38-17"><a href="#cb38-17"></a>}</span>
-<span id="cb38-18"><a href="#cb38-18"></a></span>
-<span id="cb38-19"><a href="#cb38-19"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
-<span id="cb38-20"><a href="#cb38-20"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb38-21"><a href="#cb38-21"></a></span>
-<span id="cb38-22"><a href="#cb38-22"></a>model_imagenet <span class="ot">&lt;-</span> torchvision<span class="sc">::</span><span class="fu">model_resnet18</span>(<span class="at">pretrained =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb38-23"><a href="#cb38-23"></a>model_imagenet<span class="sc">$</span><span class="fu">eval</span>() <span class="co"># put the model in evaluation mode</span></span>
-<span id="cb38-24"><a href="#cb38-24"></a></span>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">library</span>(torch)</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="fu">library</span>(zeallot)</span>
+<span id="cb38-6"><a href="#cb38-6"></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span>
+<span id="cb38-7"><a href="#cb38-7"></a></span>
+<span id="cb38-8"><a href="#cb38-8"></a>img_dir <span class="ot">&lt;-</span> <span class="st">"img/books"</span> <span class="do">## CHANGE THIS</span></span>
+<span id="cb38-9"><a href="#cb38-9"></a>image_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(img_dir)</span>
+<span id="cb38-10"><a href="#cb38-10"></a>num_images <span class="ot">&lt;-</span> <span class="fu">length</span>(image_names)</span>
+<span id="cb38-11"><a href="#cb38-11"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(num_images, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
+<span id="cb38-12"><a href="#cb38-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_images) {</span>
+<span id="cb38-13"><a href="#cb38-13"></a>   img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(img_dir, image_names[i])</span>
+<span id="cb38-14"><a href="#cb38-14"></a>   img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span> </span>
+<span id="cb38-15"><a href="#cb38-15"></a>     <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-16"><a href="#cb38-16"></a>     <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-17"><a href="#cb38-17"></a>     <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb38-18"><a href="#cb38-18"></a>     <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb38-19"><a href="#cb38-19"></a>     <span class="fu">transform_normalize</span>(</span>
+<span id="cb38-20"><a href="#cb38-20"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
+<span id="cb38-21"><a href="#cb38-21"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
+<span id="cb38-22"><a href="#cb38-22"></a>     )</span>
+<span id="cb38-23"><a href="#cb38-23"></a>   x[i,,, ] <span class="ot">&lt;-</span> img</span>
+<span id="cb38-24"><a href="#cb38-24"></a>}</span>
 <span id="cb38-25"><a href="#cb38-25"></a></span>
-<span id="cb38-26"><a href="#cb38-26"></a>mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb38-27"><a href="#cb38-27"></a>  <span class="fu">sapply</span>(<span class="cf">function</span>(x) x[[<span class="dv">2</span>]])</span>
+<span id="cb38-26"><a href="#cb38-26"></a>model_imagenet <span class="ot">&lt;-</span> torchvision<span class="sc">::</span><span class="fu">model_resnet18</span>(<span class="at">pretrained =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb38-27"><a href="#cb38-27"></a>model_imagenet<span class="sc">$</span><span class="fu">eval</span>() <span class="co"># put the model in evaluation mode</span></span>
 <span id="cb38-28"><a href="#cb38-28"></a></span>
-<span id="cb38-29"><a href="#cb38-29"></a>top3_prob <span class="ot">&lt;-</span> top3[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb38-30"><a href="#cb38-30"></a>  <span class="fu">nnf_softmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb38-31"><a href="#cb38-31"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb38-32"><a href="#cb38-32"></a>  <span class="fu">lapply</span>(as.numeric)</span>
-<span id="cb38-33"><a href="#cb38-33"></a></span>
-<span id="cb38-34"><a href="#cb38-34"></a>top3_class <span class="ot">&lt;-</span> top3[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb38-35"><a href="#cb38-35"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb38-36"><a href="#cb38-36"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) mapping[<span class="fu">as.integer</span>(x)])</span>
-<span id="cb38-37"><a href="#cb38-37"></a></span>
-<span id="cb38-38"><a href="#cb38-38"></a>result <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(top3_prob, top3_class, <span class="cf">function</span>(pr, cl) {</span>
-<span id="cb38-39"><a href="#cb38-39"></a>  <span class="fu">names</span>(pr) <span class="ot">&lt;-</span> cl</span>
-<span id="cb38-40"><a href="#cb38-40"></a>  pr</span>
-<span id="cb38-41"><a href="#cb38-41"></a>})</span>
-<span id="cb38-42"><a href="#cb38-42"></a><span class="fu">names</span>(result) <span class="ot">&lt;-</span> image_names</span>
+<span id="cb38-29"><a href="#cb38-29"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
+<span id="cb38-30"><a href="#cb38-30"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb38-31"><a href="#cb38-31"></a></span>
+<span id="cb38-32"><a href="#cb38-32"></a>mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-33"><a href="#cb38-33"></a>  <span class="fu">sapply</span>(<span class="cf">function</span>(x) x[[<span class="dv">2</span>]])</span>
+<span id="cb38-34"><a href="#cb38-34"></a></span>
+<span id="cb38-35"><a href="#cb38-35"></a>top3_prob <span class="ot">&lt;-</span> top3[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb38-36"><a href="#cb38-36"></a>  <span class="fu">nnf_softmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-37"><a href="#cb38-37"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb38-38"><a href="#cb38-38"></a>  <span class="fu">lapply</span>(as.numeric)</span>
+<span id="cb38-39"><a href="#cb38-39"></a></span>
+<span id="cb38-40"><a href="#cb38-40"></a>top3_class <span class="ot">&lt;-</span> top3[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb38-41"><a href="#cb38-41"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb38-42"><a href="#cb38-42"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) mapping[<span class="fu">as.integer</span>(x)])</span>
 <span id="cb38-43"><a href="#cb38-43"></a></span>
-<span id="cb38-44"><a href="#cb38-44"></a><span class="fu">print</span>(result)</span>
-<span id="cb38-45"><a href="#cb38-45"></a></span>
-<span id="cb38-46"><a href="#cb38-46"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
-<span id="cb38-47"><a href="#cb38-47"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>) <span class="do">## CHANGE THIS</span></span>
-<span id="cb38-48"><a href="#cb38-48"></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
-<span id="cb38-49"><a href="#cb38-49"></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-50"><a href="#cb38-50"></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-51"><a href="#cb38-51"></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb38-52"><a href="#cb38-52"></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb38-53"><a href="#cb38-53"></a>     <span class="fu">transform_normalize</span>(</span>
-<span id="cb38-54"><a href="#cb38-54"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
-<span id="cb38-55"><a href="#cb38-55"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
-<span id="cb38-56"><a href="#cb38-56"></a>     )</span>
-<span id="cb38-57"><a href="#cb38-57"></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
-<span id="cb38-58"><a href="#cb38-58"></a></span>
-<span id="cb38-59"><a href="#cb38-59"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
-<span id="cb38-60"><a href="#cb38-60"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb38-61"><a href="#cb38-61"></a>mapping[<span class="fu">as.integer</span>(top3[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-44"><a href="#cb38-44"></a>result <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(top3_prob, top3_class, <span class="cf">function</span>(pr, cl) {</span>
+<span id="cb38-45"><a href="#cb38-45"></a>  <span class="fu">names</span>(pr) <span class="ot">&lt;-</span> cl</span>
+<span id="cb38-46"><a href="#cb38-46"></a>  pr</span>
+<span id="cb38-47"><a href="#cb38-47"></a>})</span>
+<span id="cb38-48"><a href="#cb38-48"></a><span class="fu">names</span>(result) <span class="ot">&lt;-</span> image_names</span>
+<span id="cb38-49"><a href="#cb38-49"></a></span>
+<span id="cb38-50"><a href="#cb38-50"></a><span class="fu">print</span>(result)</span>
+<span id="cb38-51"><a href="#cb38-51"></a></span>
+<span id="cb38-52"><a href="#cb38-52"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
+<span id="cb38-53"><a href="#cb38-53"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>) <span class="do">## CHANGE THIS</span></span>
+<span id="cb38-54"><a href="#cb38-54"></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
+<span id="cb38-55"><a href="#cb38-55"></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-56"><a href="#cb38-56"></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-57"><a href="#cb38-57"></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb38-58"><a href="#cb38-58"></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb38-59"><a href="#cb38-59"></a>     <span class="fu">transform_normalize</span>(</span>
+<span id="cb38-60"><a href="#cb38-60"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
+<span id="cb38-61"><a href="#cb38-61"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
+<span id="cb38-62"><a href="#cb38-62"></a>     )</span>
+<span id="cb38-63"><a href="#cb38-63"></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
+<span id="cb38-64"><a href="#cb38-64"></a></span>
+<span id="cb38-65"><a href="#cb38-65"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
+<span id="cb38-66"><a href="#cb38-66"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb38-67"><a href="#cb38-67"></a>mapping[<span class="fu">as.integer</span>(top3[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">
