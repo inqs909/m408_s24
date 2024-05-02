@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-04-29">
+<meta name="description" content="We will begin our discussion on Neural Networks">
 
-<title>MATH 408 - Generalized Linear Models</title>
+<title>MATH 408 - Week 14</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
-<script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,10 +68,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -82,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">MATH 408</span>
     </a>
   </div>
@@ -93,19 +90,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
+    <a class="nav-link" href="./syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../hw.html"> 
+    <a class="nav-link" href="./hw.html"> 
 <span class="menu-text">Homework</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ec.html"> 
+    <a class="nav-link" href="./ec.html"> 
 <span class="menu-text">Extra Credit</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../books.html"> 
+    <a class="nav-link" href="./books.html"> 
 <span class="menu-text">Books</span></a>
   </li>  
 </ul>
@@ -124,39 +121,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
-  <li><a href="#estimating-boldsymbol-beta" id="toc-estimating-boldsymbol-beta" class="nav-link" data-scroll-target="#estimating-boldsymbol-beta">Estimating: <span class="math inline">\(\boldsymbol \beta\)</span></a>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning Outcomes</a>
   <ul class="collapse">
-  <li><a href="#estimating-boldsymbolbeta" id="toc-estimating-boldsymbolbeta" class="nav-link" data-scroll-target="#estimating-boldsymbolbeta">Estimating <span class="math inline">\(\boldsymbol\beta\)</span></a></li>
-  <li><a href="#maximum-likelihood-approach" id="toc-maximum-likelihood-approach" class="nav-link" data-scroll-target="#maximum-likelihood-approach">Maximum Likelihood Approach</a></li>
-  <li><a href="#numerical-approaches" id="toc-numerical-approaches" class="nav-link" data-scroll-target="#numerical-approaches">Numerical Approaches</a></li>
+  <li><a href="#first-lecture" id="toc-first-lecture" class="nav-link" data-scroll-target="#first-lecture">First Lecture</a></li>
+  <li><a href="#second-lecture" id="toc-second-lecture" class="nav-link" data-scroll-target="#second-lecture">Second Lecture</a></li>
   </ul></li>
-  <li><a href="#estimating-phi" id="toc-estimating-phi" class="nav-link" data-scroll-target="#estimating-phi">Estimating: <span class="math inline">\(\phi\)</span></a>
-  <ul class="collapse">
-  <li><a href="#estimating-phi-1" id="toc-estimating-phi-1" class="nav-link" data-scroll-target="#estimating-phi-1">Estimating <span class="math inline">\(\phi\)</span></a></li>
-  <li><a href="#maximum-likelihood-approach-1" id="toc-maximum-likelihood-approach-1" class="nav-link" data-scroll-target="#maximum-likelihood-approach-1">Maximum Likelihood Approach</a></li>
-  <li><a href="#maximum-modified-profile-likelihood-approach" id="toc-maximum-modified-profile-likelihood-approach" class="nav-link" data-scroll-target="#maximum-modified-profile-likelihood-approach">Maximum (Modified) Profile Likelihood Approach</a></li>
-  <li><a href="#mean-deviance-estimator" id="toc-mean-deviance-estimator" class="nav-link" data-scroll-target="#mean-deviance-estimator">Mean Deviance Estimator</a></li>
-  <li><a href="#pearson-estimator" id="toc-pearson-estimator" class="nav-link" data-scroll-target="#pearson-estimator">Pearson Estimator</a></li>
-  </ul></li>
-  <li><a href="#newton-raphson-algorithm" id="toc-newton-raphson-algorithm" class="nav-link" data-scroll-target="#newton-raphson-algorithm">Newton-Raphson Algorithm</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="9c.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Generalized Linear Models</h1>
-<p class="subtitle lead">Estimation</p>
+<h1 class="title">Week 14</h1>
 </div>
 
+<div>
+  <div class="description">
+    We will begin our discussion on Neural Networks
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 29, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -168,132 +165,47 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="learning-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
+<section id="first-lecture" class="level3">
+<h3 class="anchored" data-anchor-id="first-lecture">First Lecture</h3>
 <ul>
-<li><p>Estimation Procedures</p>
-<ul>
-<li><p>Regression Coefficients</p></li>
-<li><p>Dispersion Parameter</p></li>
-</ul></li>
-<li><p>Newton-Raphson Algorithm</p></li>
+<li>Neural Networks</li>
 </ul>
 </section>
-<section id="estimating-boldsymbol-beta" class="level1">
-<h1>Estimating: <span class="math inline">\(\boldsymbol \beta\)</span></h1>
-<section id="estimating-boldsymbolbeta" class="level2">
-<h2 class="anchored" data-anchor-id="estimating-boldsymbolbeta">Estimating <span class="math inline">\(\boldsymbol\beta\)</span></h2>
-<p>To obtain the estimates of <span class="math inline">\(\boldsymbol \beta\)</span> we can use the maximum log-likelihood approach to obtain <span class="math inline">\(\hat{\boldsymbol\beta}\)</span>.</p>
-<p><span class="math display">\[
-L(\boldsymbol \beta) =  \prod^n_{i=1}f\left(y_i|\boldsymbol X_i;\boldsymbol \beta,\phi\right)
-\]</span></p>
-</section>
-<section id="maximum-likelihood-approach" class="level2">
-<h2 class="anchored" data-anchor-id="maximum-likelihood-approach">Maximum Likelihood Approach</h2>
-<p><span class="math display">\[
-\ell(\boldsymbol \beta) =  \sum^n_{i=1}\log\left\{f\left(y_i|\boldsymbol X_i;\boldsymbol \beta,\phi\right)\right\}
-\]</span></p>
-</section>
-<section id="numerical-approaches" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-approaches">Numerical Approaches</h2>
+<section id="second-lecture" class="level3">
+<h3 class="anchored" data-anchor-id="second-lecture">Second Lecture</h3>
 <ul>
-<li><p>Newton-Rhapson Algorithm</p></li>
-<li><p>Fisher-Scoring Algorithm</p></li>
-<li><p>Nelder-Mead</p></li>
-<li><p>BFGS</p></li>
+<li>Convolutional Neural Networks</li>
 </ul>
 </section>
 </section>
-<section id="estimating-phi" class="level1">
-<h1>Estimating: <span class="math inline">\(\phi\)</span></h1>
-<section id="estimating-phi-1" class="level2">
-<h2 class="anchored" data-anchor-id="estimating-phi-1">Estimating <span class="math inline">\(\phi\)</span></h2>
-<p>Depending on the random variable, the dispersion parameter will need to be estimated to conduct inference procedures. There are 4 methods to estimate the dispersion parameter:</p>
-<ul>
-<li><p>Maximum Likelihood</p></li>
-<li><p>Maximum (Modified) Profile Likelihood Approach</p></li>
-<li><p>Mean Deviance Estimator</p></li>
-<li><p>Pearson Estimator</p></li>
-</ul>
-</section>
-<section id="maximum-likelihood-approach-1" class="level2">
-<h2 class="anchored" data-anchor-id="maximum-likelihood-approach-1">Maximum Likelihood Approach</h2>
-<p><span class="math display">\[
-\ell(\phi) =  \sum^n_{i=1}\log\left\{f\left(y_i|\boldsymbol X_i;\boldsymbol \beta,\phi\right)\right\}
-\]</span></p>
-</section>
-<section id="maximum-modified-profile-likelihood-approach" class="level2">
-<h2 class="anchored" data-anchor-id="maximum-modified-profile-likelihood-approach">Maximum (Modified) Profile Likelihood Approach</h2>
-<p><span class="math display">\[
-\ell_p(\phi) = \frac{p}{2}\log \phi + \sum^n_{i=1}\log\left\{f\left(y_i|\boldsymbol X_i;\hat{\boldsymbol \beta},\phi\right)\right\}
-\]</span></p>
-</section>
-<section id="mean-deviance-estimator" class="level2">
-<h2 class="anchored" data-anchor-id="mean-deviance-estimator">Mean Deviance Estimator</h2>
-<p><span class="math display">\[
-\tilde \phi = \frac{D(y,\hat\mu)}{n-p}
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(D(y,\hat\mu)=2\sum^n_{i=1}\left\{t(y,y) - t(y,\mu) \right\}\)</span></p></li>
-<li><p><span class="math inline">\(t(y,\mu)=y\theta-\kappa(\theta)\)</span></p></li>
-<li><p><span class="math inline">\(p\)</span>: number of regression coefficients</p></li>
-</ul>
-</section>
-<section id="pearson-estimator" class="level2">
-<h2 class="anchored" data-anchor-id="pearson-estimator">Pearson Estimator</h2>
-<p><span class="math display">\[
-\bar \phi = \frac{\Lambda^2}{n-p}
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(\Lambda^2=\sum^n_{i=1}\frac{y_i-\hat\mu_i}{V(\hat\mu_i)}\)</span></p></li>
-<li><p><span class="math inline">\(\hat \mu_i = g^{-1}(\hat\beta_0 + \sum^n_{j=1}{X_{ij}\hat\beta_j})\)</span></p></li>
-<li><p><span class="math inline">\(V(\hat\mu_i)=\frac{d^2\kappa(\hat\theta_i)}{d\theta_i^2}\)</span></p></li>
-</ul>
-</section>
-</section>
-<section id="newton-raphson-algorithm" class="level1">
-<h1>Newton-Raphson Algorithm</h1>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Lecture</th>
+<th>Slides</th>
+<th>Videos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><a href="https://m408.inqs.info/lectures/14a.html#/title-slide">Slides</a></td>
+<td><a href="https://youtu.be/JehCWeMOWho">Video</a></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><a href="https://m408.inqs.info/lectures/14b.html#/title-slide">Slides</a></td>
+<td><a href="https://youtu.be/2OZJ002J8R8">Video</a></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
 
 </main> <!-- /main -->
-
-<script>
-  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-  // slide changes (different for each slide format).
-  (function () {
-    // dispatch for htmlwidgets
-    function fireSlideEnter() {
-      const event = window.document.createEvent("Event");
-      event.initEvent("slideenter", true, true);
-      window.document.dispatchEvent(event);
-    }
-
-    function fireSlideChanged(previousSlide, currentSlide) {
-      fireSlideEnter();
-
-      // dispatch for shiny
-      if (window.jQuery) {
-        if (previousSlide) {
-          window.jQuery(previousSlide).trigger("hidden");
-        }
-        if (currentSlide) {
-          window.jQuery(currentSlide).trigger("shown");
-        }
-      }
-    }
-
-    // hookup for slidy
-    if (window.w3c_slidy) {
-      window.w3c_slidy.add_observer(function (slide_num) {
-        // slide_num starts at position 1
-        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-      });
-    }
-
-  })();
-</script>
-
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

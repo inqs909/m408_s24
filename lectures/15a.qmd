@@ -37,11 +37,55 @@ editor: source
 
 # Sequential Data
 
+## Sequential Data
+
+Sequential data is data that is obtained in a series:
+
+$$
+X_{(0)}\rightarrow
+X_{(1)}\rightarrow
+X_{(2)}\rightarrow
+X_{(3)}\rightarrow
+\cdots\rightarrow
+X_{(J-1)}\rightarrow
+X_{(J)}
+$$ \## Stochastic Procceses
+
+A stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.
+
+::: fragment
+The generation of a variable $X_{(j)}$ may or may not be dependent of the previous values.
+:::
+
+## Examples of Sequential Data
+
+-   Documents and Books
+
+-   Temperature
+
+-   Stock Prices
+
+-   Speech/Recordings
+
+-   Handwriting
+
 # Recurrent Neural Networks
 
 ## RNN
 
+Recurrent Neural Networks are designed to analyze input data that is sequential data.
 
+::: fragment
+An RNN can accounts for the position of a data point in the sequence as well as the distance it has to other data points.
+:::
+
+::: fragment
+Using the data sequence, we can predict and outcome $Y$.
+:::
+
+## RNN
+
+![Source: ISLR2](img/islr2/Chapter10/10_12.png)
 
 # Document Classification
 

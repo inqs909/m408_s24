@@ -1,0 +1,27 @@
+---
+title: "Week 15"
+date: 05-06-24
+description: We will begin our discussion on Tree-Based methods.
+editor: visual
+draft: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## Learning Outcomes
+
+### First Lecture
+
+-   Recurrent Neural Networks
+
+### Second Lecture
+
+-   Unsupervised Machine Learning
+-   Topic Modeling
+
+## Resources
+
+| Lecture | Slides                                                          | Videos |
+|-------------|------------------------------|------------------------------|
+| 1       | [Slides](https://m408.inqs.info/lectures/15a.html#/title-slide) |        |
+| 2       | [Slides](https://m408.inqs.info/lectures/15b.html#/title-slide) |        |

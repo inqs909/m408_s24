@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MATH 408 - Multivariable Linear Regression</title>
+<title>MATH 408 - Recurrent
+Neural Networks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,6 +40,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -155,46 +125,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#multivariable-linear-regression" id="toc-multivariable-linear-regression" class="nav-link" data-scroll-target="#multivariable-linear-regression">Multivariable Linear Regression</a>
+  <li><a href="#sequential-data" id="toc-sequential-data" class="nav-link active" data-scroll-target="#sequential-data">Sequential Data</a>
   <ul class="collapse">
-  <li><a href="#mlr" id="toc-mlr" class="nav-link" data-scroll-target="#mlr">MLR</a></li>
-  <li><a href="#continuous-variable" id="toc-continuous-variable" class="nav-link" data-scroll-target="#continuous-variable">Continuous Variable</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
-  <li><a href="#categorical-variable" id="toc-categorical-variable" class="nav-link" data-scroll-target="#categorical-variable">Categorical Variable</a></li>
-  <li><a href="#fitting-a-model-with-categorical-variables" id="toc-fitting-a-model-with-categorical-variables" class="nav-link" data-scroll-target="#fitting-a-model-with-categorical-variables">Fitting a model with categorical variables</a></li>
-  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example</a></li>
-  <li><a href="#fitting-a-model-with-categorical-variables-1" id="toc-fitting-a-model-with-categorical-variables-1" class="nav-link" data-scroll-target="#fitting-a-model-with-categorical-variables-1">Fitting a model with categorical variables</a></li>
-  <li><a href="#interpreting-categorical-variable-results" id="toc-interpreting-categorical-variable-results" class="nav-link" data-scroll-target="#interpreting-categorical-variable-results">Interpreting Categorical Variable Results</a></li>
-  <li><a href="#relevel-a-factor-variable-in-r" id="toc-relevel-a-factor-variable-in-r" class="nav-link" data-scroll-target="#relevel-a-factor-variable-in-r">Relevel a factor variable in R</a></li>
+  <li><a href="#sequential-data-1" id="toc-sequential-data-1" class="nav-link" data-scroll-target="#sequential-data-1">Sequential Data</a></li>
+  <li><a href="#examples-of-sequential-data" id="toc-examples-of-sequential-data" class="nav-link" data-scroll-target="#examples-of-sequential-data">Examples of Sequential Data</a></li>
   </ul></li>
-  <li><a href="#simulation-study-1" id="toc-simulation-study-1" class="nav-link" data-scroll-target="#simulation-study-1">Simulation Study 1</a>
+  <li><a href="#recurrent-neural-networks" id="toc-recurrent-neural-networks" class="nav-link" data-scroll-target="#recurrent-neural-networks">Recurrent Neural Networks</a>
   <ul class="collapse">
-  <li><a href="#simulation-study-1-1" id="toc-simulation-study-1-1" class="nav-link" data-scroll-target="#simulation-study-1-1">Simulation Study 1</a></li>
-  <li><a href="#fit-model" id="toc-fit-model" class="nav-link" data-scroll-target="#fit-model">Fit Model</a></li>
-  <li><a href="#mlr-model" id="toc-mlr-model" class="nav-link" data-scroll-target="#mlr-model">MLR Model</a></li>
+  <li><a href="#rnn" id="toc-rnn" class="nav-link" data-scroll-target="#rnn">RNN</a></li>
+  <li><a href="#rnn-1" id="toc-rnn-1" class="nav-link" data-scroll-target="#rnn-1">RNN</a></li>
   </ul></li>
-  <li><a href="#simulation-study-2" id="toc-simulation-study-2" class="nav-link" data-scroll-target="#simulation-study-2">Simulation Study 2</a>
+  <li><a href="#document-classification" id="toc-document-classification" class="nav-link" data-scroll-target="#document-classification">Document Classification</a>
   <ul class="collapse">
-  <li><a href="#simulation-study-2-1" id="toc-simulation-study-2-1" class="nav-link" data-scroll-target="#simulation-study-2-1">Simulation Study 2</a></li>
-  <li><a href="#fit-model-1" id="toc-fit-model-1" class="nav-link" data-scroll-target="#fit-model-1">Fit Model</a></li>
-  <li><a href="#slr-model" id="toc-slr-model" class="nav-link" data-scroll-target="#slr-model">SLR Model</a></li>
+  <li><a href="#document-classification-1" id="toc-document-classification-1" class="nav-link" data-scroll-target="#document-classification-1">Document Classification</a></li>
   </ul></li>
-  <li><a href="#matrix-formulation" id="toc-matrix-formulation" class="nav-link" data-scroll-target="#matrix-formulation">Matrix Formulation</a>
-  <ul class="collapse">
-  <li><a href="#matrix-formulation-1" id="toc-matrix-formulation-1" class="nav-link" data-scroll-target="#matrix-formulation-1">Matrix Formulation</a></li>
-  <li><a href="#matrix-formulation-2" id="toc-matrix-formulation-2" class="nav-link" data-scroll-target="#matrix-formulation-2">Matrix Formulation</a></li>
-  </ul></li>
+  <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time Series</a></li>
+  <li><a href="#r-code" id="toc-r-code" class="nav-link" data-scroll-target="#r-code">R Code</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="7d.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="15a.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Multivariable Linear Regression</h1>
+<h1 class="title"><p>Recurrent<br>
+Neural Networks</p></h1>
+<p class="subtitle lead">Time-Series and Audio Processing</p>
 </div>
 
 
@@ -211,260 +168,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<section id="sequential-data" class="level1">
+<h1>Sequential Data</h1>
+<section id="sequential-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="sequential-data-1">Sequential Data</h2>
+<p>Sequential data is data that is obtained in a series:</p>
+<p><span class="math display">\[
+X_{(0)}\rightarrow
+X_{(1)}\rightarrow
+X_{(2)}\rightarrow
+X_{(3)}\rightarrow
+\cdots\rightarrow
+X_{(J-1)}\rightarrow
+X_{(J)}
+\]</span> ## Stochastic Procceses</p>
+<p>A stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.</p>
+<div class="fragment">
+<p>The generation of a variable <span class="math inline">\(X_{(j)}\)</span> may or may not be dependent of the previous values.</p>
+</div>
+</section>
+<section id="examples-of-sequential-data" class="level2">
+<h2 class="anchored" data-anchor-id="examples-of-sequential-data">Examples of Sequential Data</h2>
 <ul>
-<li><p>Multivariable Linear Regression</p></li>
-<li><p>Simulation Study 1</p></li>
-<li><p>Simulation Study 2</p></li>
-<li><p>Matrix Formulation</p></li>
+<li><p>Documents and Books</p></li>
+<li><p>Temperature</p></li>
+<li><p>Stock Prices</p></li>
+<li><p>Speech/Recordings</p></li>
+<li><p>Handwriting</p></li>
 </ul>
 </section>
-<section id="multivariable-linear-regression" class="level1">
-<h1>Multivariable Linear Regression</h1>
-<section id="mlr" class="level2">
-<h2 class="anchored" data-anchor-id="mlr">MLR</h2>
-<p>Multivariable linear regression models are used when more than one explanatory variable is used to explain the outcome of interest.</p>
 </section>
-<section id="continuous-variable" class="level2">
-<h2 class="anchored" data-anchor-id="continuous-variable">Continuous Variable</h2>
-<p>To fit an additional continuous random variable to the model, we will only need to add it to the model:</p>
-<p><span class="math display">\[
-Y = \beta_0 +\beta_1 X_1 + \beta_2 X_2
-\]</span></p>
-</section>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
-<p>Looking at the <code>penguins</code> from <code>palmerpenguins</code>, fit a model between <code>body_mass_g</code> as an outcome variable and <code>flipper_length_mm</code> and <code>bill_length_mm</code> as predictor variables.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%$%</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="recurrent-neural-networks" class="level1">
+<h1>Recurrent Neural Networks</h1>
+<section id="rnn" class="level2">
+<h2 class="anchored" data-anchor-id="rnn">RNN</h2>
+<p>Recurrent Neural Networks are designed to analyze input data that is sequential data.</p>
+<div class="fragment">
+<p>An RNN can accounts for the position of a data point in the sequence as well as the distance it has to other data points.</p>
+</div>
+<div class="fragment">
+<p>Using the data sequence, we can predict and outcome <span class="math inline">\(Y\)</span>.</p>
 </div>
 </section>
-<section id="interpretation" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; lm(formula = body_mass_g ~ flipper_length_mm + bill_length_mm)
-#&gt; 
-#&gt; Coefficients:
-#&gt;       (Intercept)  flipper_length_mm     bill_length_mm  
-#&gt;         -5736.897             48.145              6.047</code></pre>
-</div>
+<section id="rnn-1" class="level2">
+<h2 class="anchored" data-anchor-id="rnn-1">RNN</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/islr2/Chapter10/10_12.png" class="img-fluid figure-img"></p>
+<figcaption>Source: ISLR2</figcaption>
+</figure>
 </div>
 </section>
-<section id="categorical-variable" class="level2">
-<h2 class="anchored" data-anchor-id="categorical-variable">Categorical Variable</h2>
-<p>A categorical variable can be included in a model, but a reference category must be specified.</p>
 </section>
-<section id="fitting-a-model-with-categorical-variables" class="level2">
-<h2 class="anchored" data-anchor-id="fitting-a-model-with-categorical-variables">Fitting a model with categorical variables</h2>
-<p>To fit a model with categorical variables, we must utilize dummy (binary) variables that indicate which category is being referenced. We use <span class="math inline">\(C-1\)</span> dummy variables where <span class="math inline">\(C\)</span> indicates the number of categories. When coded correctly, each category will be represented by a combination of dummy variables.</p>
-</section>
-<section id="example-1" class="level2">
-<h2 class="anchored" data-anchor-id="example-1">Example</h2>
-<p>If we have 4 categories, we will need 3 dummy variables:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Cat 1</th>
-<th>Cat 2</th>
-<th>Cat 3</th>
-<th>Cat 4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Dummy 1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Dummy 2</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>Dummy 3</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>Which one is the reference category?</p>
-</section>
-<section id="fitting-a-model-with-categorical-variables-1" class="level2">
-<h2 class="anchored" data-anchor-id="fitting-a-model-with-categorical-variables-1">Fitting a model with categorical variables</h2>
-<p>Looking at the <code>penguins</code> from <code>palmerpenguins</code>, fit a model between <code>body_mass_g</code> as an outcome variable and <code>flipper_length_mm</code> and <code>islands</code> as predictor variables.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%$%</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="interpreting-categorical-variable-results" class="level2">
-<h2 class="anchored" data-anchor-id="interpreting-categorical-variable-results">Interpreting Categorical Variable Results</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; lm(formula = body_mass_g ~ flipper_length_mm + island)
-#&gt; 
-#&gt; Coefficients:
-#&gt;       (Intercept)  flipper_length_mm        islandDream    islandTorgersen  
-#&gt;          -4624.98              44.54            -262.18            -185.13</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] "Biscoe"    "Dream"     "Torgersen"</code></pre>
-</div>
-</div>
-</section>
-<section id="relevel-a-factor-variable-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="relevel-a-factor-variable-in-r">Relevel a factor variable in R</h2>
+<section id="document-classification" class="level1">
+<h1>Document Classification</h1>
+<section id="document-classification-1" class="level2">
+<h2 class="anchored" data-anchor-id="document-classification-1">Document Classification</h2>
 </section>
 </section>
-<section id="simulation-study-1" class="level1">
-<h1>Simulation Study 1</h1>
-<section id="simulation-study-1-1" class="level2">
-<h2 class="anchored" data-anchor-id="simulation-study-1-1">Simulation Study 1</h2>
-<p>Simulate 1000 random variables from the following model:</p>
-<p><span class="math display">\[
-Y = 3 + 2X_1 + 4X_2 + \epsilon
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(X_1\sim N(2,1)\)</span></p></li>
-<li><p><span class="math inline">\(X_2\sim N(-4,1)\)</span></p></li>
-<li><p><span class="math inline">\(\epsilon\sim N(0, 2)\)</span></p></li>
-</ul>
+<section id="time-series" class="level1">
+<h1>Time Series</h1>
 </section>
-<section id="fit-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-model">Fit Model</h2>
-<p>Fit a model between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_1\)</span>.</p>
-<p>Repeat the process 1000 times. and answer the following questions:</p>
-<ul>
-<li><p>On average does <span class="math inline">\(\beta_1\)</span> get estimated correctly? Why?</p></li>
-<li><p>What is the average model variance?</p></li>
-</ul>
-</section>
-<section id="mlr-model" class="level2">
-<h2 class="anchored" data-anchor-id="mlr-model">MLR Model</h2>
-<p>Instead of fitting a simple linear regression model. Fit a model that will include predictor <span class="math inline">\(X_2\)</span>. This can be done by adding <span class="math inline">\(X_2\)</span> in R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Modify your simulation study and see what happens to <span class="math inline">\(\beta_1\)</span> and the model variance.</p>
-</section>
-</section>
-<section id="simulation-study-2" class="level1">
-<h1>Simulation Study 2</h1>
-<section id="simulation-study-2-1" class="level2">
-<h2 class="anchored" data-anchor-id="simulation-study-2-1">Simulation Study 2</h2>
-<p>Simulate 1000 random variables from the following model:</p>
-<p><span class="math display">\[
-Y = 3 + 2log(X_1) + \epsilon
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(X_1\sim N(8,1)\)</span></p></li>
-<li><p><span class="math inline">\(\epsilon\sim N(0, 2)\)</span></p></li>
-</ul>
-</section>
-<section id="fit-model-1" class="level2">
-<h2 class="anchored" data-anchor-id="fit-model-1">Fit Model</h2>
-<p>Fit a model between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_1\)</span>.</p>
-<p>Repeat the process 1000 times. and answer the following questions:</p>
-<ul>
-<li><p>On average does <span class="math inline">\(\beta_1\)</span> get estimated correctly? Why?</p></li>
-<li><p>What is the average model variance?</p></li>
-</ul>
-</section>
-<section id="slr-model" class="level2">
-<h2 class="anchored" data-anchor-id="slr-model">SLR Model</h2>
-<p>Fit a simple linear regression model using <span class="math inline">\(\log(X_1)\)</span> instead.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">log</span>(x1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Modify your simulation study and see what happens to <span class="math inline">\(\beta_1\)</span> and the model variance.</p>
-</section>
-</section>
-<section id="matrix-formulation" class="level1">
-<h1>Matrix Formulation</h1>
-<section id="matrix-formulation-1" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-formulation-1">Matrix Formulation</h2>
-<p><span class="math display">\[
-Y_i = \boldsymbol X_i^\mathrm T \boldsymbol \beta + \epsilon_i
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(Y_i\)</span>: Outcome Variable</p></li>
-<li><p><span class="math inline">\(\boldsymbol X_i\)</span>: Predictors</p></li>
-<li><p><span class="math inline">\(\boldsymbol \beta\)</span>: Coefficients</p></li>
-<li><p><span class="math inline">\(\epsilon_i\)</span>: error term</p></li>
-</ul>
-</section>
-<section id="matrix-formulation-2" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-formulation-2">Matrix Formulation</h2>
-<p>Fit the following models using matrix formulas instead of the <code>lm</code> function.</p>
-<p><span class="math display">\[
-body\_mass\_g = \beta_0+\beta_1flipper\_length\_mm + \beta_2bill\_length\_mm
-\]</span></p>
-<p><span class="math display">\[
-body\_mass\_g = \beta_0 +\beta_1 flipper\_length\_mm + \beta_2 dream \_island +\beta_3 biscoe\_island  
-\]</span></p>
-<p><span class="math display">\[
-\boldsymbol\beta = (\boldsymbol X^\mathrm T \boldsymbol X)^{-1} \boldsymbol X^\mathrm T \boldsymbol Y
-\]</span></p>
-<p>Define <span class="math inline">\(\boldsymbol X\)</span> in each case.</p>
+<section id="r-code" class="level1">
+<h1>R Code</h1>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
-
-<script>
-  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-  // slide changes (different for each slide format).
-  (function () {
-    // dispatch for htmlwidgets
-    function fireSlideEnter() {
-      const event = window.document.createEvent("Event");
-      event.initEvent("slideenter", true, true);
-      window.document.dispatchEvent(event);
-    }
-
-    function fireSlideChanged(previousSlide, currentSlide) {
-      fireSlideEnter();
-
-      // dispatch for shiny
-      if (window.jQuery) {
-        if (previousSlide) {
-          window.jQuery(previousSlide).trigger("hidden");
-        }
-        if (currentSlide) {
-          window.jQuery(currentSlide).trigger("shown");
-        }
-      }
-    }
-
-    // hookup for slidy
-    if (window.w3c_slidy) {
-      window.w3c_slidy.add_observer(function (slide_num) {
-        // slide_num starts at position 1
-        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-      });
-    }
-
-  })();
-</script>
-
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
