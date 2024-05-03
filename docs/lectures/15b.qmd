@@ -1,0 +1,125 @@
+---
+title: |
+  Unsupervised \
+  Machine Learning
+format:
+  revealjs:
+    scrollable: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    incremental: false 
+    chalkboard:
+      src: chalkboard.json
+      storage: chalkboard_pres
+      theme: whiteboard
+      chalk-width: 4
+knitr:
+  opts_chunk: 
+    echo: true
+    eval: true
+    message: false
+    warnings: false
+    comment: "#>" 
+    
+revealjs-plugins:
+  - pointer
+  - verticator
+  
+filters: 
+  - reveal-header
+  - code-fullscreen
+  - reveal-auto-agenda
+
+editor: source
+---
+
+# Unsupervised Machine Learning
+
+# Topic Modeling with Talor Swift
+
+# The Missing Statistics Semester at CI
+
+## The Missing Statistics Sememster at CI
+
+Here is a list of resources to expand on topics not covered in your education.
+
+## Introduction to Statistics
+
+-   [Traditional Statistics](https://bookdown.org/lgpcappiello/introstats/introduction-to-hypothesis-testing.html#p-value-approach-to-hypothesis-testing)
+-   [Modern Basic Statistics](https://openintro-ims.netlify.app/)
+-   [Statistical Modeling](https://statistical-modeling.netlify.app/)
+-   [Statistical Thinking](https://dtkaplan.github.io/Lessons-in-statistical-thinking/)
+
+## Statistical Computing
+
+-   Computational Statistics (Download from CSUCI Library)
+-   
+
+## Regression
+
+-   [Beyond Linear Regression](https://bookdown.org/roback/bookdown-BeyondMLR/)
+-   [Regression Modelling Strategies](https://hbiostat.org/rmsc/) (Download from CSUCI Library)
+-   [Linear Models](https://bookdown.org/pingapang9/linear_models_bookdown/)
+-   Generalized Linear Models With Examples in R (Download from CSUCI Library)
+-   Linear and Generalized Linear Mixed Models and Their Applications (2nd Edition) (Download from CSUCI Library)
+-   Vector Generalized Linear and Additive Models; Yee (Download from CSUCI Library)
+
+## R Programming
+
+
+-   [Basic R](https://r4ds.hadley.nz/)
+-   [Basic R](https://jjallaire.github.io/hopr/)
+-   [Advanced R](https://adv-r.hadley.nz/)
+-   [Efficient R](https://csgillespie.github.io/efficientR/)
+-   [R Bootcamp](https://r-bootcamp.netlify.app/)
+-   [Deep R](https://deepr.gagolewski.com/index.html)
+-   [Rcpp](https://www.rcpp.org/)
+-   [Rcpp 4 Everyone](https://teuder.github.io/rcpp4everyone_en/)
+-   [Rcpp Armadillo](http://dirk.eddelbuettel.com/code/rcpp.armadillo.html)
+
+## Python Programming
+
+-   [Basic Python](https://wesmckinney.com/book/)
+-   [Anaconda](https://docs.anaconda.com/free/anaconda/install/)
+-   [Learn Python](https://www.learnpython.org/)
+-   [Python Data Science](https://jakevdp.github.io/PythonDataScienceHandbook/)
+-   [Reticulate](https://rstudio.github.io/reticulate/)
+
+## SQL
+
+-   [SQL for Data Science](https://mode.com/sql-tutorial/introduction-to-sql)
+-   [Khan Academy](https://www.khanacademy.org/computing/computer-programming/sql)
+-   [SQLBolt](https://sqlbolt.com/)
+-   [SQLZoo](https://sqlzoo.net/wiki/SQL_Tutorial)
+
+## Shell
+
+-   [Missing Semester](https://missing.csail.mit.edu/2020/shell-tools/)
+-   [Shell](https://swcarpentry.github.io/shell-novice/)
+-   [Explain Shell](https://explainshell.com/)
+-   [Vim Adventures](https://vim-adventures.com/)
+
+
+## Git
+
+-   [Missing Semester](https://missing.csail.mit.edu/2020/version-control/)
+-   [Happy Git](https://happygitwithr.com/)                              
+-   [Pro Git](https://git-scm.com/book/en/v2)                            
+-   [Oh S\*\*\*, Git!?!](https://ohshitgit.com/)                         
+-   [Git in Simple Words](https://xosh.org/explain-git-in-simple-words/) 
+
+## Markdown
+
+-   [R Mardown](https://bookdown.org/yihui/rmarkdown/)
+-   [Quarto](https://quarto.org/)
+-   [LaTeX](https://tobi.oetiker.ch/lshort/lshort.pdf)
+-   [LaTeX for Beginners](https://www.colorado.edu/aps/sites/default/files/attached-files/latex_primer.pdf)
+-   [Typst](https://typst.app/)
+
+## Other Programming
+
+-   [Cpp](https://www.learncpp.com/)
+-   [Cpp Armadillo](https://arma.sourceforge.net/)
+-   [Julia Data Science](https://juliadatascience.io/)
+-   []

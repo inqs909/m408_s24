@@ -116,7 +116,7 @@
     "href": "posts/week_14.html#resources",
     "title": "Week 14",
     "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides"
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
   },
   {
     "objectID": "posts/week_12.html",
@@ -164,8 +164,8 @@
     "objectID": "lectures/9d.html#learning-outcomes",
     "href": "lectures/9d.html#learning-outcomes",
     "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Model Diagnostics\nResiduals\nResidual Analysis\nModel Selection"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nModel Diagnostics\nResiduals\nResidual Analysis\nModel Selection"
   },
   {
     "objectID": "lectures/9d.html#assumptions",
@@ -318,8 +318,8 @@
     "objectID": "lectures/9b.html#learning-outcomes",
     "href": "lectures/9b.html#learning-outcomes",
     "title": "Classification",
-    "section": "",
-    "text": "K-Nearest Neighbors\nBayes’ Classifier\nLinear and Quadratic Discriminant Analysis\nNaive Bayes"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nK-Nearest Neighbors\nBayes’ Classifier\nLinear and Quadratic Discriminant Analysis\nNaive Bayes"
   },
   {
     "objectID": "lectures/9b.html#classification",
@@ -487,7 +487,7 @@
     "href": "lectures/9b.html#naive-bayes-3",
     "title": "Classification",
     "section": "Naive Bayes",
-    "text": "Naive Bayes\n\n\n\nQuantitative\n\nNormal: \\(N(\\mu_{jk}, \\sigma^2_{jk})\\)\nNonparametric\n\nKernel Density\n\n\n\n\n\nQualitative\n\nNonparametric"
+    "text": "Naive Bayes\n\n\nQuantitative\n\nNormal: \\(N(\\mu_{jk}, \\sigma^2_{jk})\\)\nNonparametric\n\nKernel Density\n\n\n\nQualitative\n\nNonparametric"
   },
   {
     "objectID": "lectures/9b.html#lda-1",
@@ -563,8 +563,8 @@
     "objectID": "lectures/8d.html#learning-outcomes",
     "href": "lectures/8d.html#learning-outcomes",
     "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Exponential Family of Distributions\nGeneralized Linear Models\nR Code"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nExponential Family of Distributions\nGeneralized Linear Models\nR Code"
   },
   {
     "objectID": "lectures/8d.html#exponential-family-of-distributions-1",
@@ -724,8 +724,8 @@
     "objectID": "lectures/8b.html#learning-outcomes",
     "href": "lectures/8b.html#learning-outcomes",
     "title": "Hypothesis Testing",
-    "section": "",
-    "text": "Hypothesis Tests\nModel Inference"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nHypothesis Tests\nModel Inference"
   },
   {
     "objectID": "lectures/8b.html#hypothesis-tests-1",
@@ -885,8 +885,8 @@
     "objectID": "lectures/7e.html#learning-objective",
     "href": "lectures/7e.html#learning-objective",
     "title": "Residual Analysis",
-    "section": "",
-    "text": "Model Assumptions\nResidual Analysis\nMulticollinearity"
+    "section": "Learning Objective",
+    "text": "Learning Objective\n\nModel Assumptions\nResidual Analysis\nMulticollinearity"
   },
   {
     "objectID": "lectures/7e.html#model",
@@ -1130,8 +1130,8 @@
     "objectID": "lectures/7c.html#learning-objectives",
     "href": "lectures/7c.html#learning-objectives",
     "title": "Correlation, Confounding, and Interaction Terms",
-    "section": "",
-    "text": "Correlation vs Causation\nConfounding Variables\nInteraction Terms"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nCorrelation vs Causation\nConfounding Variables\nInteraction Terms"
   },
   {
     "objectID": "lectures/7c.html#correlation-vs-causation-1",
@@ -1180,7 +1180,7 @@
     "href": "lectures/7c.html#confounding-variables-2",
     "title": "Correlation, Confounding, and Interaction Terms",
     "section": "Confounding Variables",
-    "text": "Confounding Variables\n\n\n\nSource: Statology"
+    "text": "Confounding Variables\n\nSource: Statology"
   },
   {
     "objectID": "lectures/7c.html#simulation-example",
@@ -1242,8 +1242,8 @@
     "objectID": "lectures/7a.html#learning-objectives",
     "href": "lectures/7a.html#learning-objectives",
     "title": "Linear Regression",
-    "section": "",
-    "text": "Estimation\nOrdinary Least Squares\nMatrix Formulation\nStandard Errors\nConduct in R"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nEstimation\nOrdinary Least Squares\nMatrix Formulation\nStandard Errors\nConduct in R"
   },
   {
     "objectID": "lectures/7a.html#updated-quarto-hw-document",
@@ -1410,8 +1410,8 @@
     "objectID": "lectures/6c.html#learning-objectives",
     "href": "lectures/6c.html#learning-objectives",
     "title": "Linear Regression",
-    "section": "",
-    "text": "Associations\nLinear Regression\nConducting it in R"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nAssociations\nLinear Regression\nConducting it in R"
   },
   {
     "objectID": "lectures/6c.html#types-of-associations",
@@ -1495,7 +1495,7 @@
     "href": "lectures/6c.html#r-example",
     "title": "Linear Regression",
     "section": "R Example",
-    "text": "R Example\nApplying a linear regression model to body_mass_g (Predictor) and flipper_length_mm (Outcome) from penguins:\n\nR OutputScatter Plot\n\n\n\n# summary(lm(flipper_length_mm ~ body_mass_g, data = penguins))\n\n# OR\n\npenguins %$% lm(flipper_length_mm ~ body_mass_g) %&gt;% summary\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = flipper_length_mm ~ body_mass_g)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -23.7626  -4.9138   0.9891   5.1166  16.6392 \n#&gt; \n#&gt; Coefficients:\n#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept) 1.367e+02  1.997e+00   68.47   &lt;2e-16 ***\n#&gt; body_mass_g 1.528e-02  4.668e-04   32.72   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 6.913 on 340 degrees of freedom\n#&gt;   (2 observations deleted due to missingness)\n#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 \n#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\nggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) + geom_point() + \n  geom_smooth(method = \"lm\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\nInterpretation\n\\[\n\\hat y = 136.73 + 0.015 x\n\\]"
+    "text": "R Example\nApplying a linear regression model to body_mass_g (Predictor) and flipper_length_mm (Outcome) from penguins:\n\nR OutputScatter Plot\n\n\n\n# summary(lm(flipper_length_mm ~ body_mass_g, data = penguins))\n\n# OR\n\npenguins %$% lm(flipper_length_mm ~ body_mass_g) %&gt;% summary\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = flipper_length_mm ~ body_mass_g)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -23.7626  -4.9138   0.9891   5.1166  16.6392 \n#&gt; \n#&gt; Coefficients:\n#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept) 1.367e+02  1.997e+00   68.47   &lt;2e-16 ***\n#&gt; body_mass_g 1.528e-02  4.668e-04   32.72   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 6.913 on 340 degrees of freedom\n#&gt;   (2 observations deleted due to missingness)\n#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 \n#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\nggplot(penguins, aes(y = flipper_length_mm, x = body_mass_g)) + geom_point() + \n  geom_smooth(method = \"lm\") +\n  theme_bw()\n\n\n\n\n\n\n\n\nInterpretation\n\\[\n\\hat y = 136.73 + 0.015 x\n\\]"
   },
   {
     "objectID": "lectures/6c.html#simulation-example",
@@ -1550,8 +1550,8 @@
     "objectID": "lectures/6a.html#learning-outcomes",
     "href": "lectures/6a.html#learning-outcomes",
     "title": "Introduction to Statistical Learning",
-    "section": "",
-    "text": "Introduction to Statistical Learning\nClassification vs Regression\nSupervised vs Unsupervised Machine Learning\nModel Adequacy"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nIntroduction to Statistical Learning\nClassification vs Regression\nSupervised vs Unsupervised Machine Learning\nModel Adequacy"
   },
   {
     "objectID": "lectures/6a.html#book",
@@ -1642,7 +1642,7 @@
     "href": "lectures/6a.html#machine-learning",
     "title": "Introduction to Statistical Learning",
     "section": "Machine Learning",
-    "text": "Machine Learning\nMachine learning is a set of methods used for predicting and classifying data. Several statistical methods are considered machine learning techniques.\n\n\nCommon Methods\n\nRegression\nMixed-Effects\nNonparametric Regression\nNeural Networks\nTree-based methods\nBayesian Methods"
+    "text": "Machine Learning\nMachine learning is a set of methods used for predicting and classifying data. Several statistical methods are considered machine learning techniques.\n\nCommon Methods\n\nRegression\nMixed-Effects\nNonparametric Regression\nNeural Networks\nTree-based methods\nBayesian Methods"
   },
   {
     "objectID": "lectures/6a.html#training-data",
@@ -1810,7 +1810,7 @@
     "href": "lectures/5a.html#rdata",
     "title": "Data Manipulation",
     "section": "RData",
-    "text": "RData\nRData is the data file specific for R.\n\nLoad Data\n\nload(\"data.RData\")\n\n\n\nWrite Data\n\nsave(RObject, file = \"data.RData\")"
+    "text": "RData\nRData is the data file specific for R.\nLoad Data\n\nload(\"data.RData\")\n\nWrite Data\n\nsave(RObject, file = \"data.RData\")"
   },
   {
     "objectID": "lectures/5a.html#join",
@@ -1907,8 +1907,8 @@
     "objectID": "lectures/4a.html#re-install",
     "href": "lectures/4a.html#re-install",
     "title": "*apply Functions",
-    "section": "",
-    "text": "csucistats\n\n\ninstall.packages('csucistats', \n  repos = c('https://inqs909.r-universe.dev', \n  'https://cloud.r-project.org'))"
+    "section": "Re Install",
+    "text": "Re Install\n\ncsucistats\n\n\ninstall.packages('csucistats', \n  repos = c('https://inqs909.r-universe.dev', \n  'https://cloud.r-project.org'))"
   },
   {
     "objectID": "lectures/4a.html#learning-objectives",
@@ -2096,8 +2096,8 @@
     "objectID": "lectures/2b.html#learning-objectives",
     "href": "lectures/2b.html#learning-objectives",
     "title": "Control Flow",
-    "section": "",
-    "text": "Nested for Loops"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nNested for Loops"
   },
   {
     "objectID": "lectures/2b.html#nested-for-loops-1",
@@ -2152,15 +2152,15 @@
     "objectID": "lectures/1b.html#introductions-1",
     "href": "lectures/1b.html#introductions-1",
     "title": "R Basics",
-    "section": "",
-    "text": "San Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
+    "section": "Introductions",
+    "text": "Introductions\n\nSan Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
   },
   {
     "objectID": "lectures/1b.html#introductions-2",
     "href": "lectures/1b.html#introductions-2",
     "title": "R Basics",
-    "section": "",
-    "text": "Name\nYear\nMajor\nFun Fact\nCareer Goal"
+    "section": "Introductions",
+    "text": "Introductions\n\nName\nYear\nMajor\nFun Fact\nCareer Goal"
   },
   {
     "objectID": "lectures/1b.html#syllabus",
@@ -2282,11 +2282,88 @@
     "text": "Lists\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
+    "objectID": "lectures/15b.html#the-missing-statistics-sememster-at-ci",
+    "href": "lectures/15b.html#the-missing-statistics-sememster-at-ci",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "The Missing Statistics Sememster at CI",
+    "text": "The Missing Statistics Sememster at CI\nHere is a list of resources to expand on topics not covered in your education."
+  },
+  {
+    "objectID": "lectures/15b.html#introduction-to-statistics",
+    "href": "lectures/15b.html#introduction-to-statistics",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Introduction to Statistics",
+    "text": "Introduction to Statistics\n\nTraditional Statistics\nModern Basic Statistics\nStatistical Modeling\nStatistical Thinking"
+  },
+  {
+    "objectID": "lectures/15b.html#statistical-computing",
+    "href": "lectures/15b.html#statistical-computing",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Statistical Computing",
+    "text": "Statistical Computing\n\nComputational Statistics (Download from CSUCI Library)"
+  },
+  {
+    "objectID": "lectures/15b.html#regression",
+    "href": "lectures/15b.html#regression",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Regression",
+    "text": "Regression\n\nBeyond Linear Regression\nRegression Modelling Strategies (Download from CSUCI Library)\nLinear Models\nGeneralized Linear Models With Examples in R (Download from CSUCI Library)\nLinear and Generalized Linear Mixed Models and Their Applications (2nd Edition) (Download from CSUCI Library)\nVector Generalized Linear and Additive Models; Yee (Download from CSUCI Library)"
+  },
+  {
+    "objectID": "lectures/15b.html#r-programming",
+    "href": "lectures/15b.html#r-programming",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "R Programming",
+    "text": "R Programming\n\nBasic R\nBasic R\nAdvanced R\nEfficient R\nR Bootcamp\nDeep R\nRcpp\nRcpp 4 Everyone\nRcpp Armadillo"
+  },
+  {
+    "objectID": "lectures/15b.html#python-programming",
+    "href": "lectures/15b.html#python-programming",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Python Programming",
+    "text": "Python Programming\n\nBasic Python\nAnaconda\nLearn Python\nPython Data Science\nReticulate"
+  },
+  {
+    "objectID": "lectures/15b.html#sql",
+    "href": "lectures/15b.html#sql",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "SQL",
+    "text": "SQL\n\nSQL for Data Science\nKhan Academy\nSQLBolt\nSQLZoo"
+  },
+  {
+    "objectID": "lectures/15b.html#shell",
+    "href": "lectures/15b.html#shell",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Shell",
+    "text": "Shell\n\nMissing Semester\nShell\nExplain Shell\nVim Adventures"
+  },
+  {
+    "objectID": "lectures/15b.html#git",
+    "href": "lectures/15b.html#git",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Git",
+    "text": "Git\n\nMissing Semester\nHappy Git\n\nPro Git\n\nOh S***, Git!?!\n\nGit in Simple Words"
+  },
+  {
+    "objectID": "lectures/15b.html#markdown",
+    "href": "lectures/15b.html#markdown",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Markdown",
+    "text": "Markdown\n\nR Mardown\nQuarto\nLaTeX\nLaTeX for Beginners\nTypst"
+  },
+  {
+    "objectID": "lectures/15b.html#other-programming",
+    "href": "lectures/15b.html#other-programming",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Other Programming",
+    "text": "Other Programming\n\nCpp\nCpp Armadillo\nJulia Data Science\n[]"
+  },
+  {
     "objectID": "lectures/14b.html#convolutional-neural-networks-1",
     "href": "lectures/14b.html#convolutional-neural-networks-1",
     "title": "Convolutional\nNeural Networks",
-    "section": "",
-    "text": "Convolutional Neural Networks were developed in terms of image analysis.\n\nThe idea is to mimic how a human minds will classify an image.\n\n\nA convolutional neural networks is trained by using a set of images that have been previously classfied.\n\n\nOnce the network is trained, we can give new types of images to be classified."
+    "section": "Convolutional Neural Networks",
+    "text": "Convolutional Neural Networks\nConvolutional Neural Networks were developed in terms of image analysis.\n\nThe idea is to mimic how a human minds will classify an image.\n\n\nA convolutional neural networks is trained by using a set of images that have been previously classfied.\n\n\nOnce the network is trained, we can give new types of images to be classified."
   },
   {
     "objectID": "lectures/14b.html#convolutiona-neural-networks",
@@ -2299,15 +2376,15 @@
     "objectID": "lectures/14b.html#convolutional-neural-networks-2",
     "href": "lectures/14b.html#convolutional-neural-networks-2",
     "title": "Convolutional\nNeural Networks",
-    "section": "",
-    "text": "A CNN will identify certain features, arrange them, and match them to what is closely is known."
+    "section": "Convolutional Neural Networks",
+    "text": "Convolutional Neural Networks\nA CNN will identify certain features, arrange them, and match them to what is closely is known."
   },
   {
     "objectID": "lectures/14b.html#cnn",
     "href": "lectures/14b.html#cnn",
     "title": "Convolutional\nNeural Networks",
-    "section": "",
-    "text": "Credit: ISLR2"
+    "section": "CNN",
+    "text": "CNN\n\nCredit: ISLR2"
   },
   {
     "objectID": "lectures/14b.html#convolution-filter",
@@ -2485,11 +2562,67 @@
     "text": "Fitting CNN\n\nFitSummaryEvaluate\n\n\n\nsystem.time(\nfitted &lt;- model |&gt;  \n  setup(\n    loss = nn_cross_entropy_loss(),\n    optimizer = optim_rmsprop, \n    metrics = list(luz_metric_accuracy())\n  ) |&gt; \n  set_opt_hparams(lr = 0.001) |&gt; \n  fit(\n    train_ds,\n    epochs = 10, #30,\n    valid_data = 0.2,\n    dataloader_options = list(batch_size = 128)\n  )\n)\n\n#&gt;     user   system  elapsed \n#&gt; 1448.988    6.315  927.744\n\n\n\n\n\nprint(fitted)\n\n#&gt; A `luz_module_fitted`\n#&gt; ── Time ────────────────────────────────────────────────────────────────────────\n#&gt; • Total time: 15m 27.7s\n#&gt; • Avg time per training epoch: 1m 20.8s\n#&gt; \n#&gt; ── Results ─────────────────────────────────────────────────────────────────────\n#&gt; Metrics observed in the last epoch.\n#&gt; \n#&gt; ℹ Training:\n#&gt; loss: 2.2801\n#&gt; acc: 0.3939\n#&gt; \n#&gt; ── Model ───────────────────────────────────────────────────────────────────────\n#&gt; An `nn_module` containing 964,516 parameters.\n#&gt; \n#&gt; ── Modules ─────────────────────────────────────────────────────────────────────\n#&gt; • conv: &lt;nn_sequential&gt; #388,416 parameters\n#&gt; • output: &lt;nn_sequential&gt; #576,100 parameters\n\n\n\n\n\nevaluate(fitted, test_ds)\n\n#&gt; A `luz_module_evaluation`\n#&gt; ── Results ─────────────────────────────────────────────────────────────────────\n#&gt; loss: 2.3907\n#&gt; acc: 0.3857"
   },
   {
+    "objectID": "lectures/14b.html#squirrel-image",
+    "href": "lectures/14b.html#squirrel-image",
+    "title": "Convolutional\nNeural Networks",
+    "section": "Squirrel Image",
+    "text": "Squirrel Image\nDownload labels json here.\nDownload the squirrel image here.\n\n\n#&gt; [[1]]\n#&gt; [1] \"sweet_pepper\"\n#&gt; \n#&gt; [[2]]\n#&gt; [1] \"butterfly\"\n#&gt; \n#&gt; [[3]]\n#&gt; [1] \"worm\"\n#&gt; \n#&gt; [[4]]\n#&gt; [1] \"lobster\"\n#&gt; \n#&gt; [[5]]\n#&gt; [1] \"keyboard\"\n#&gt; \n#&gt; [[6]]\n#&gt; [1] \"snake\"\n#&gt; \n#&gt; [[7]]\n#&gt; [1] \"lizard\"\n#&gt; \n#&gt; [[8]]\n#&gt; [1] \"bee\"\n#&gt; \n#&gt; [[9]]\n#&gt; [1] \"crab\"\n#&gt; \n#&gt; [[10]]\n#&gt; [1] \"tulip\"\n#&gt; \n#&gt; [[11]]\n#&gt; [1] \"forest\"\n#&gt; \n#&gt; [[12]]\n#&gt; [1] \"pear\"\n#&gt; \n#&gt; [[13]]\n#&gt; [1] \"orchid\"\n#&gt; \n#&gt; [[14]]\n#&gt; [1] \"bottle\"\n#&gt; \n#&gt; [[15]]\n#&gt; [1] \"beetle\"\n#&gt; \n#&gt; [[16]]\n#&gt; [1] \"dinosaur\"\n#&gt; \n#&gt; [[17]]\n#&gt; [1] \"rose\"\n#&gt; \n#&gt; [[18]]\n#&gt; [1] \"caterpillar\"\n#&gt; \n#&gt; [[19]]\n#&gt; [1] \"woman\"\n#&gt; \n#&gt; [[20]]\n#&gt; [1] \"bowl\"\n#&gt; \n#&gt; [[21]]\n#&gt; [1] \"table\"\n#&gt; \n#&gt; [[22]]\n#&gt; [1] \"sunflower\"\n#&gt; \n#&gt; [[23]]\n#&gt; [1] \"mouse\"\n#&gt; \n#&gt; [[24]]\n#&gt; [1] \"clock\"\n#&gt; \n#&gt; [[25]]\n#&gt; [1] \"bridge\"\n#&gt; \n#&gt; [[26]]\n#&gt; [1] \"couch\"\n#&gt; \n#&gt; [[27]]\n#&gt; [1] \"flatfish\"\n#&gt; \n#&gt; [[28]]\n#&gt; [1] \"lamp\"\n#&gt; \n#&gt; [[29]]\n#&gt; [1] \"bus\"\n#&gt; \n#&gt; [[30]]\n#&gt; [1] \"poppy\"\n#&gt; \n#&gt; [[31]]\n#&gt; [1] \"telephone\"\n#&gt; \n#&gt; [[32]]\n#&gt; [1] \"spider\"\n#&gt; \n#&gt; [[33]]\n#&gt; [1] \"motorcycle\"\n#&gt; \n#&gt; [[34]]\n#&gt; [1] \"baby\"\n#&gt; \n#&gt; [[35]]\n#&gt; [1] \"apple\"\n#&gt; \n#&gt; [[36]]\n#&gt; [1] \"bicycle\"\n#&gt; \n#&gt; [[37]]\n#&gt; [1] \"can\"\n#&gt; \n#&gt; [[38]]\n#&gt; [1] \"mushroom\"\n#&gt; \n#&gt; [[39]]\n#&gt; [1] \"cup\"\n#&gt; \n#&gt; [[40]]\n#&gt; [1] \"shrew\"\n#&gt; \n#&gt; [[41]]\n#&gt; [1] \"pine_tree\"\n#&gt; \n#&gt; [[42]]\n#&gt; [1] \"streetcar\"\n#&gt; \n#&gt; [[43]]\n#&gt; [1] \"bed\"\n#&gt; \n#&gt; [[44]]\n#&gt; [1] \"camel\"\n#&gt; \n#&gt; [[45]]\n#&gt; [1] \"possum\"\n#&gt; \n#&gt; [[46]]\n#&gt; [1] \"boy\"\n#&gt; \n#&gt; [[47]]\n#&gt; [1] \"aquarium_fish\"\n#&gt; \n#&gt; [[48]]\n#&gt; [1] \"television\"\n#&gt; \n#&gt; [[49]]\n#&gt; [1] \"man\"\n#&gt; \n#&gt; [[50]]\n#&gt; [1] \"girl\"\n#&gt; \n#&gt; [[51]]\n#&gt; [1] \"plate\"\n#&gt; \n#&gt; [[52]]\n#&gt; [1] \"ray\"\n#&gt; \n#&gt; [[53]]\n#&gt; [1] \"seal\"\n#&gt; \n#&gt; [[54]]\n#&gt; [1] \"snail\"\n#&gt; \n#&gt; [[55]]\n#&gt; [1] \"kangaroo\"\n#&gt; \n#&gt; [[56]]\n#&gt; [1] \"cockroach\"\n#&gt; \n#&gt; [[57]]\n#&gt; [1] \"pickup_truck\"\n#&gt; \n#&gt; [[58]]\n#&gt; [1] \"rabbit\"\n#&gt; \n#&gt; [[59]]\n#&gt; [1] \"turtle\"\n#&gt; \n#&gt; [[60]]\n#&gt; [1] \"trout\"\n#&gt; \n#&gt; [[61]]\n#&gt; [1] \"lawn_mower\"\n#&gt; \n#&gt; [[62]]\n#&gt; [1] \"shark\"\n#&gt; \n#&gt; [[63]]\n#&gt; [1] \"tractor\"\n#&gt; \n#&gt; [[64]]\n#&gt; [1] \"maple_tree\"\n#&gt; \n#&gt; [[65]]\n#&gt; [1] \"orange\"\n#&gt; \n#&gt; [[66]]\n#&gt; [1] \"bear\"\n#&gt; \n#&gt; [[67]]\n#&gt; [1] \"raccoon\"\n#&gt; \n#&gt; [[68]]\n#&gt; [1] \"crocodile\"\n#&gt; \n#&gt; [[69]]\n#&gt; [1] \"tiger\"\n#&gt; \n#&gt; [[70]]\n#&gt; [1] \"chimpanzee\"\n#&gt; \n#&gt; [[71]]\n#&gt; [1] \"skunk\"\n#&gt; \n#&gt; [[72]]\n#&gt; [1] \"rocket\"\n#&gt; \n#&gt; [[73]]\n#&gt; [1] \"otter\"\n#&gt; \n#&gt; [[74]]\n#&gt; [1] \"willow_tree\"\n#&gt; \n#&gt; [[75]]\n#&gt; [1] \"wardrobe\"\n#&gt; \n#&gt; [[76]]\n#&gt; [1] \"cattle\"\n#&gt; \n#&gt; [[77]]\n#&gt; [1] \"tank\"\n#&gt; \n#&gt; [[78]]\n#&gt; [1] \"beaver\"\n#&gt; \n#&gt; [[79]]\n#&gt; [1] \"train\"\n#&gt; \n#&gt; [[80]]\n#&gt; [1] \"palm_tree\"\n#&gt; \n#&gt; [[81]]\n#&gt; [1] \"house\"\n#&gt; \n#&gt; [[82]]\n#&gt; [1] \"sea\"\n#&gt; \n#&gt; [[83]]\n#&gt; [1] \"leopard\"\n#&gt; \n#&gt; [[84]]\n#&gt; [1] \"wolf\"\n#&gt; \n#&gt; [[85]]\n#&gt; [1] \"chair\"\n#&gt; \n#&gt; [[86]]\n#&gt; [1] \"squirrel\"\n#&gt; \n#&gt; [[87]]\n#&gt; [1] \"lion\"\n#&gt; \n#&gt; [[88]]\n#&gt; [1] \"fox\"\n#&gt; \n#&gt; [[89]]\n#&gt; [1] \"mountain\"\n#&gt; \n#&gt; [[90]]\n#&gt; [1] \"cloud\"\n#&gt; \n#&gt; [[91]]\n#&gt; [1] \"hamster\"\n#&gt; \n#&gt; [[92]]\n#&gt; [1] \"elephant\"\n#&gt; \n#&gt; [[93]]\n#&gt; [1] \"plain\"\n#&gt; \n#&gt; [[94]]\n#&gt; [1] \"skyscraper\"\n#&gt; \n#&gt; [[95]]\n#&gt; [1] \"dolphin\"\n#&gt; \n#&gt; [[96]]\n#&gt; [1] \"porcupine\"\n#&gt; \n#&gt; [[97]]\n#&gt; [1] \"whale\"\n#&gt; \n#&gt; [[98]]\n#&gt; [1] \"oak_tree\"\n#&gt; \n#&gt; [[99]]\n#&gt; [1] \"castle\"\n#&gt; \n#&gt; [[100]]\n#&gt; [1] \"road\""
+  },
+  {
+    "objectID": "lectures/14b.html#all-r-code",
+    "href": "lectures/14b.html#all-r-code",
+    "title": "Convolutional\nNeural Networks",
+    "section": "All R Code",
+    "text": "All R Code\n\nlibrary(torch)\nlibrary(luz) # high-level interface for torch\nlibrary(torchvision) # for datasets and image transformation\nlibrary(torchdatasets) # for datasets we are going to use\nlibrary(zeallot)\ntorch_manual_seed(13)\n\ntransform &lt;- function(x) {\n  transform_to_tensor(x)\n}\n\ntrain_ds &lt;- cifar100_dataset(\n  root = \"./\", \n  train = TRUE, \n  download = TRUE, \n  transform = transform\n)\n\ntest_ds &lt;- cifar100_dataset(\n  root = \"./\", \n  train = FALSE, \n  transform = transform\n)\n\ntrain_ds[1]\npar(mar = c(0, 0, 0, 0), mfrow = c(2, 2))\nindex &lt;- sample(seq(50000), 4)\nfor (i in index) plot(as.raster(as.array(train_ds[i][[1]]$permute(c(2,3,1)))))\nconv_block &lt;- nn_module(\n  initialize = function(in_channels, out_channels) {\n    self$conv &lt;- nn_conv2d(\n      in_channels = in_channels, \n      out_channels = out_channels, \n      kernel_size = c(3,3),\n      padding = \"same\"\n    )\n    self$relu &lt;- nn_relu()\n    self$pool &lt;- nn_max_pool2d(kernel_size = c(2,2))\n  },\n  forward = function(x) {\n    x |&gt; \n      self$conv() |&gt;  \n      self$relu() |&gt; \n      self$pool()\n  }\n)\nmodel &lt;- nn_module(\n  initialize = function() {\n    self$conv &lt;- nn_sequential(\n      conv_block(3, 32),\n      conv_block(32, 64),\n      conv_block(64, 128),\n      conv_block(128, 256)\n    )\n    self$output &lt;- nn_sequential(\n      nn_dropout(0.5),\n      nn_linear(2*2*256, 512),\n      nn_relu(),\n      nn_linear(512, 100)\n    )\n  },\n  forward = function(x) {\n    x |&gt; \n      self$conv() |&gt; \n      torch_flatten(start_dim = 2) |&gt;\n      self$output()\n  }\n)\n\nmodel()\nsystem.time(\nfitted &lt;- model |&gt;  \n  setup(\n    loss = nn_cross_entropy_loss(),\n    optimizer = optim_rmsprop, \n    metrics = list(luz_metric_accuracy())\n  ) |&gt; \n  set_opt_hparams(lr = 0.001) |&gt; \n  fit(\n    train_ds,\n    epochs = 10, #30,\n    valid_data = 0.2,\n    dataloader_options = list(batch_size = 128)\n  )\n)\n\nprint(fitted)\nevaluate(fitted, test_ds)\n\ncifar100_mapping &lt;- jsonlite::read_json(\"data/cifar-100-labels.json\")\n\nx &lt;- torch_empty(1, 3, 32, 32)\nimg_path &lt;- file.path(\"img/squirrel.jpg\")\nimg &lt;- img_path |&gt;  \n  base_loader() |&gt;  \n  transform_to_tensor() |&gt;  \n  transform_resize(c(32, 32)) |&gt;  \n  # normalize with imagenet mean and stds.\n  transform_normalize(\n    mean = c(0.4914, 0.4822, 0.4465),\n    std = c(0.2470, 0.2435, 0.2616)\n  )\nx[1,,, ] &lt;- img\n\n\npreds &lt;- fitted |&gt; \n  predict(x) |&gt; \n  torch_topk(dim = 2, k = 100)\n\ncifar100_mapping[as.integer(preds[[2]])]"
+  },
+  {
+    "objectID": "lectures/14b.html#pre-trained-cnn",
+    "href": "lectures/14b.html#pre-trained-cnn",
+    "title": "Convolutional\nNeural Networks",
+    "section": "Pre-Trained CNN",
+    "text": "Pre-Trained CNN\nBoth Torch and Tensorflow has access to convolutional neural networks trained using the imagenet data base."
+  },
+  {
+    "objectID": "lectures/14b.html#pre-trained-cnn-1",
+    "href": "lectures/14b.html#pre-trained-cnn-1",
+    "title": "Convolutional\nNeural Networks",
+    "section": "Pre-Trained CNN",
+    "text": "Pre-Trained CNN\n\nmodel_imagenet &lt;- torchvision::model_resnet18(pretrained = TRUE)\nmodel_imagenet$eval() # put the model in evaluation mode"
+  },
+  {
+    "objectID": "lectures/14b.html#loading-images",
+    "href": "lectures/14b.html#loading-images",
+    "title": "Convolutional\nNeural Networks",
+    "section": "Loading Images",
+    "text": "Loading Images\nDownload book images here.\n\nimg_dir &lt;- \"img/books\"\nimage_names &lt;- list.files(img_dir)\nnum_images &lt;- length(image_names)\nx &lt;- torch_empty(num_images, 3, 224, 224)\nfor (i in 1:num_images) {\n   img_path &lt;- file.path(img_dir, image_names[i])\n   img &lt;- img_path |&gt; \n     base_loader() |&gt;  \n     transform_to_tensor() |&gt;  \n     transform_resize(c(224, 224)) |&gt;  \n     # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\n   x[i,,, ] &lt;- img\n}"
+  },
+  {
+    "objectID": "lectures/14b.html#prediction",
+    "href": "lectures/14b.html#prediction",
+    "title": "Convolutional\nNeural Networks",
+    "section": "Prediction",
+    "text": "Prediction\n\nPredictionLabelsLabelingResults\n\n\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\n\n\n\n\nmapping &lt;- jsonlite::read_json(\"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json\") |&gt; \n  sapply(function(x) x[[2]])\n\n\n\n\ntop3_prob &lt;- top3[[1]] |&gt; \n  nnf_softmax(dim = 2) |&gt; \n  torch_unbind() |&gt; \n  lapply(as.numeric)\n\ntop3_class &lt;- top3[[2]] |&gt; \n  torch_unbind() |&gt; \n  lapply(function(x) mapping[as.integer(x)])\n\nresult &lt;- purrr::map2(top3_prob, top3_class, function(pr, cl) {\n  names(pr) &lt;- cl\n  pr\n})\nnames(result) &lt;- image_names\n\n\n\n\nprint(result)\n\n#&gt; $flamingo.jpg\n#&gt;    flamingo   spoonbill white_stork \n#&gt; 0.978253186 0.016800024 0.004946792 \n#&gt; \n#&gt; $hawk_cropped.jpeg\n#&gt;      kite       jay    magpie \n#&gt; 0.6131909 0.2380927 0.1487164 \n#&gt; \n#&gt; $hawk.jpg\n#&gt;         eel       agama common_newt \n#&gt;   0.5320330   0.2608396   0.2071273 \n#&gt; \n#&gt; $huey.jpg\n#&gt;           Lhasa Tibetan_terrier        Shih-Tzu \n#&gt;      0.80046022      0.11664963      0.08289006 \n#&gt; \n#&gt; $kitty.jpg\n#&gt;        Saint_Bernard           guinea_pig Bernese_mountain_dog \n#&gt;            0.3915999            0.3394892            0.2689110 \n#&gt; \n#&gt; $weaver.jpg\n#&gt; hummingbird    lorikeet   bee_eater \n#&gt;   0.3568341   0.3490927   0.2940732"
+  },
+  {
+    "objectID": "lectures/14b.html#squirrel",
+    "href": "lectures/14b.html#squirrel",
+    "title": "Convolutional\nNeural Networks",
+    "section": "Squirrel",
+    "text": "Squirrel\n\nReload ImageResults\n\n\n\nx &lt;- torch_empty(1, 3, 224, 224)\nimg_path &lt;- file.path(\"img/squirrel.jpg\")\nimg &lt;- img_path |&gt;  \n  base_loader() |&gt;  \n  transform_to_tensor() |&gt;  \n  transform_resize(c(224, 224)) |&gt;  \n  # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\nx[1,,, ] &lt;- img\n\n\n\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\nmapping[as.integer(top3[[2]])]\n\n#&gt;                  288                   48                   50 \n#&gt;            \"leopard\"      \"Komodo_dragon\" \"American_alligator\""
+  },
+  {
+    "objectID": "lectures/14b.html#all-r-code-1",
+    "href": "lectures/14b.html#all-r-code-1",
+    "title": "Convolutional\nNeural Networks",
+    "section": "ALL R Code",
+    "text": "ALL R Code\n\nlibrary(torch)\nlibrary(luz) # high-level interface for torch\nlibrary(torchvision) # for datasets and image transformation\nlibrary(torchdatasets) # for datasets we are going to use\nlibrary(zeallot)\ntorch_manual_seed(13)\n\nimg_dir &lt;- \"img/books\" ## CHANGE THIS\nimage_names &lt;- list.files(img_dir)\nnum_images &lt;- length(image_names)\nx &lt;- torch_empty(num_images, 3, 224, 224)\nfor (i in 1:num_images) {\n   img_path &lt;- file.path(img_dir, image_names[i])\n   img &lt;- img_path |&gt; \n     base_loader() |&gt;  \n     transform_to_tensor() |&gt;  \n     transform_resize(c(224, 224)) |&gt;  \n     # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\n   x[i,,, ] &lt;- img\n}\n\nmodel_imagenet &lt;- torchvision::model_resnet18(pretrained = TRUE)\nmodel_imagenet$eval() # put the model in evaluation mode\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\n\nmapping &lt;- jsonlite::read_json(\"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json\") |&gt; \n  sapply(function(x) x[[2]])\n\ntop3_prob &lt;- top3[[1]] |&gt; \n  nnf_softmax(dim = 2) |&gt; \n  torch_unbind() |&gt; \n  lapply(as.numeric)\n\ntop3_class &lt;- top3[[2]] |&gt; \n  torch_unbind() |&gt; \n  lapply(function(x) mapping[as.integer(x)])\n\nresult &lt;- purrr::map2(top3_prob, top3_class, function(pr, cl) {\n  names(pr) &lt;- cl\n  pr\n})\nnames(result) &lt;- image_names\n\nprint(result)\n\nx &lt;- torch_empty(1, 3, 224, 224)\nimg_path &lt;- file.path(\"img/squirrel.jpg\") ## CHANGE THIS\nimg &lt;- img_path |&gt;  \n  base_loader() |&gt;  \n  transform_to_tensor() |&gt;  \n  transform_resize(c(224, 224)) |&gt;  \n  # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\nx[1,,, ] &lt;- img\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\nmapping[as.integer(top3[[2]])]"
+  },
+  {
     "objectID": "lectures/13c.html#learning-outcomes",
     "href": "lectures/13c.html#learning-outcomes",
     "title": "Bagging, Random Forests, and Boosting",
-    "section": "",
-    "text": "Bagging\nRandom Forests\nBoosting"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\n\nBagging\nRandom Forests\nBoosting"
   },
   {
     "objectID": "lectures/13c.html#bagging-1",
@@ -2579,8 +2712,8 @@
     "objectID": "lectures/13a.html#trees-1",
     "href": "lectures/13a.html#trees-1",
     "title": "Tree-Based Methods",
-    "section": "",
-    "text": "A Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.\n\nTrees will split a region based on a predictors ability to reduce the overall mean squared error.\n\n\nTrees are sometimes preferred to linear models due to the visual explanation of the model."
+    "section": "Trees",
+    "text": "Trees\nA Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.\n\nTrees will split a region based on a predictors ability to reduce the overall mean squared error.\n\n\nTrees are sometimes preferred to linear models due to the visual explanation of the model."
   },
   {
     "objectID": "lectures/13a.html#trees-2",
@@ -2593,8 +2726,8 @@
     "objectID": "lectures/13a.html#fitting-a-tree",
     "href": "lectures/13a.html#fitting-a-tree",
     "title": "Tree-Based Methods",
-    "section": "",
-    "text": "Start with the entire dataset and define the maximum number of regions or number of observations per region of the tree.\nCalculate the MSE of the dataset.\nFor each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.\nCreate a node in the tree with the selected split as the split criterion.\nRepeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small."
+    "section": "Fitting a Tree",
+    "text": "Fitting a Tree\n\nStart with the entire dataset and define the maximum number of regions or number of observations per region of the tree.\nCalculate the MSE of the dataset.\nFor each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.\nCreate a node in the tree with the selected split as the split criterion.\nRepeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small."
   },
   {
     "objectID": "lectures/13a.html#pruning-1",
@@ -2747,8 +2880,8 @@
     "objectID": "lectures/12c.html#learning-outcomes",
     "href": "lectures/12c.html#learning-outcomes",
     "title": "Resampling Methods",
-    "section": "",
-    "text": "Cross-Validation\n\nLeave-one-out\nK-Fold\n\nBootstrap Methods"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nCross-Validation\n\nLeave-one-out\nK-Fold\n\nBootstrap Methods"
   },
   {
     "objectID": "lectures/12c.html#cross-validation-1",
@@ -2803,15 +2936,15 @@
     "objectID": "lectures/12a.html#plot",
     "href": "lectures/12a.html#plot",
     "title": "Moving Beyond Linear Functions",
-    "section": "",
-    "text": "Code\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
   },
   {
     "objectID": "lectures/12a.html#plot-1",
     "href": "lectures/12a.html#plot-1",
     "title": "Moving Beyond Linear Functions",
-    "section": "",
-    "text": "Code\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
   },
   {
     "objectID": "lectures/12a.html#simple-linear-regression",
@@ -3006,8 +3139,8 @@
     "objectID": "lectures/11b.html#learning-outcomes",
     "href": "lectures/11b.html#learning-outcomes",
     "title": "Resampling Methods",
-    "section": "",
-    "text": "Cross-Validation\n\nLeave-one-out\nK-Fold\n\nBootstrap Methods"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nCross-Validation\n\nLeave-one-out\nK-Fold\n\nBootstrap Methods"
   },
   {
     "objectID": "lectures/11b.html#training-error-rate",
@@ -3125,8 +3258,8 @@
     "objectID": "lectures/10c.html#learning-outcomes",
     "href": "lectures/10c.html#learning-outcomes",
     "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Hypothesis Tests\nModel Inference"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nHypothesis Tests\nModel Inference"
   },
   {
     "objectID": "lectures/10c.html#hypothesis-tests-1",
@@ -3161,7 +3294,7 @@
     "href": "lectures/10c.html#testing-beta_j",
     "title": "Generalized Linear Models",
     "section": "Testing \\(\\beta_j\\)",
-    "text": "Testing \\(\\beta_j\\)\n\n\n\n\\(\\phi\\) known\n\\[\n\\frac{\\hat\\beta_j - \\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim N(0,1)\n\\]\n\n\n\n\\(\\phi\\) unknown\n\\[\n\\frac{\\hat\\beta_j-\\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim t_{n-p^\\prime}\n\\]"
+    "text": "Testing \\(\\beta_j\\)\n\n\n\\(\\phi\\) known\n\\[\n\\frac{\\hat\\beta_j - \\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim N(0,1)\n\\]\n\n\\(\\phi\\) unknown\n\\[\n\\frac{\\hat\\beta_j-\\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim t_{n-p^\\prime}\n\\]"
   },
   {
     "objectID": "lectures/10c.html#confidence-intervals",
@@ -3216,8 +3349,8 @@
     "objectID": "lectures/10a.html#learning-outcomes",
     "href": "lectures/10a.html#learning-outcomes",
     "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Exponential Family of Distributions\nGeneralized Linear Models\nR Code"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nExponential Family of Distributions\nGeneralized Linear Models\nR Code"
   },
   {
     "objectID": "lectures/10a.html#exponential-family-of-distributions-1",
@@ -3329,7 +3462,7 @@
     "href": "lectures/10a.html#testing-beta_j",
     "title": "Generalized Linear Models",
     "section": "Testing \\(\\beta_j\\)",
-    "text": "Testing \\(\\beta_j\\)\n\n\n\n\\(\\phi\\) known\n\\[\n\\frac{\\hat\\beta_j - \\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim N(0,1)\n\\]\n\n\n\n\\(\\phi\\) unknown\n\\[\n\\frac{\\hat\\beta_j-\\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim t_{n-p^\\prime}\n\\]"
+    "text": "Testing \\(\\beta_j\\)\n\n\n\\(\\phi\\) known\n\\[\n\\frac{\\hat\\beta_j - \\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim N(0,1)\n\\]\n\n\\(\\phi\\) unknown\n\\[\n\\frac{\\hat\\beta_j-\\theta}{\\mathrm{se}(\\hat\\beta_j)} \\sim t_{n-p^\\prime}\n\\]"
   },
   {
     "objectID": "lectures/10a.html#confidence-intervals",
@@ -3566,8 +3699,8 @@
     "objectID": "dshs.html#introductions",
     "href": "dshs.html#introductions",
     "title": "Data Science\nin High School",
-    "section": "",
-    "text": "San Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
+    "section": "Introductions",
+    "text": "Introductions\n\n\n\nSan Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
   },
   {
     "objectID": "dshs.html#introductions-1",
@@ -3910,14 +4043,14 @@
     "href": "index.html",
     "title": "Welcome to Advanced Data Analysis!",
     "section": "",
-    "text": "Brief Introduction\n\n\n\n\n\nWelcome to the course! This is the home page of the course where I will provide a recap on what was covered in the week. Here I will post any documents or videos for your reference. If you have any questions, please email me at isaac.qs@csuci.edu.\n\n\n\n\n\n\n\n\n\nQuarto Template for HW\n\n\n\n\n\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\n    embed-resources: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n\n\n\n\n\n\n\n\n\n\nDiscord Server\n\n\n\n\n\nWill post if class creates one.\n\n\n\n\n\n\n\n\n\nIntroduction to Statistics Book\n\n\n\n\n\nhttps://openintro-ims.netlify.app/\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\n\n\n\nWe will begin our discussion on Neural Networks\n\n\n\n\n\nApr 29, 2024\n\n\n\n\n\n\n\nWeek 13\n\n\n\n\n\nWe will begin our discussion on Tree-Based methods and Support Vector Machines.\n\n\n\n\n\nApr 21, 2024\n\n\n\n\n\n\n\nWeek 12\n\n\n\n\n\nWe will begin discussing nonparametric regression.\n\n\n\n\n\nApr 14, 2024\n\n\n\n\n\n\n\nWeek 11\n\n\n\n\n\nWe will begin our discussion on statistical learning.\n\n\n\n\n\nApr 8, 2024\n\n\n\n\n\n\n\nWeek 10\n\n\n\n\n\nWe will discuss GLMs.\n\n\n\n\n\nApr 1, 2024\n\n\n\n\n\n\n\nWeek 9\n\n\n\n\n\nWe will begin our discussion on Generalized Linear Models\n\n\n\n\n\nMar 24, 2024\n\n\n\n\n\n\n\nWeek 8\n\n\n\n\n\nWe will continue our discussion on linear regression.\n\n\n\n\n\nMar 11, 2024\n\n\n\n\n\n\n\nWeek 7\n\n\n\n\n\nWe will begin our discussion on multiple linear regression.\n\n\n\n\n\nMar 4, 2024\n\n\n\n\n\n\n\nWeek 6\n\n\n\n\n\nWe will begin our discussion on statistical learning.\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\nWeek 5\n\n\n\n\n\nWe will continue and finish our discussion on data manipulation.\n\n\n\n\n\nFeb 18, 2024\n\n\n\n\n\n\n\nWeek 4\n\n\n\n\n\nWe will finish our discussion with functions and begin data manipulation.\n\n\n\n\n\nFeb 11, 2024\n\n\n\n\n\n\n\nWeek 3\n\n\n\n\n\nWe will continue our discussion with control flow and begin our discussion on Functional Programming Analysis.\n\n\n\n\n\nFeb 5, 2024\n\n\n\n\n\n\n\nWeek 2\n\n\n\n\n\nWe will begin our discussion on control flow.\n\n\n\n\n\nJan 29, 2024\n\n\n\n\n\n\n\nWeek 1\n\n\n\n\n\nThis week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.\n\n\n\n\n\nJan 22, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "Brief Introduction\n\n\n\n\n\nWelcome to the course! This is the home page of the course where I will provide a recap on what was covered in the week. Here I will post any documents or videos for your reference. If you have any questions, please email me at isaac.qs@csuci.edu.\n\n\n\n\n\n\n\n\n\nQuarto Template for HW\n\n\n\n\n\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\n    embed-resources: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\n\n\n\n\n\n\n\n\n\n\nDiscord Server\n\n\n\n\n\nWill post if class creates one.\n\n\n\n\n\n\n\n\n\nIntroduction to Statistics Book\n\n\n\n\n\nhttps://openintro-ims.netlify.app/\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 15\n\n\n\n\n\nFinsih up the discussion on Nueral Networks and begin topic modelling.\n\n\n\n\n\nMay 2, 2024\n\n\n\n\n\n\n\nWeek 14\n\n\n\n\n\nWe will begin our discussion on Neural Networks\n\n\n\n\n\nApr 29, 2024\n\n\n\n\n\n\n\nWeek 13\n\n\n\n\n\nWe will begin our discussion on Tree-Based methods and Support Vector Machines.\n\n\n\n\n\nApr 21, 2024\n\n\n\n\n\n\n\nWeek 12\n\n\n\n\n\nWe will begin discussing nonparametric regression.\n\n\n\n\n\nApr 14, 2024\n\n\n\n\n\n\n\nWeek 11\n\n\n\n\n\nWe will begin our discussion on statistical learning.\n\n\n\n\n\nApr 8, 2024\n\n\n\n\n\n\n\nWeek 10\n\n\n\n\n\nWe will discuss GLMs.\n\n\n\n\n\nApr 1, 2024\n\n\n\n\n\n\n\nWeek 9\n\n\n\n\n\nWe will begin our discussion on Generalized Linear Models\n\n\n\n\n\nMar 24, 2024\n\n\n\n\n\n\n\nWeek 8\n\n\n\n\n\nWe will continue our discussion on linear regression.\n\n\n\n\n\nMar 11, 2024\n\n\n\n\n\n\n\nWeek 7\n\n\n\n\n\nWe will begin our discussion on multiple linear regression.\n\n\n\n\n\nMar 4, 2024\n\n\n\n\n\n\n\nWeek 6\n\n\n\n\n\nWe will begin our discussion on statistical learning.\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\nWeek 5\n\n\n\n\n\nWe will continue and finish our discussion on data manipulation.\n\n\n\n\n\nFeb 18, 2024\n\n\n\n\n\n\n\nWeek 4\n\n\n\n\n\nWe will finish our discussion with functions and begin data manipulation.\n\n\n\n\n\nFeb 11, 2024\n\n\n\n\n\n\n\nWeek 3\n\n\n\n\n\nWe will continue our discussion with control flow and begin our discussion on Functional Programming Analysis.\n\n\n\n\n\nFeb 5, 2024\n\n\n\n\n\n\n\nWeek 2\n\n\n\n\n\nWe will begin our discussion on control flow.\n\n\n\n\n\nJan 29, 2024\n\n\n\n\n\n\n\nWeek 1\n\n\n\n\n\nThis week is designed to be an introduction week. We will briefly discuss topics related to statistics and inference. Then we will look at installing R and RStudio as well as the basics of using R.\n\n\n\n\n\nJan 22, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/10b.html#learning-outcomes",
     "href": "lectures/10b.html#learning-outcomes",
     "title": "Introduction to Statistical Learning",
-    "section": "",
-    "text": "Introduction to Statistical Learning\nClassification vs Regression\nSupervised vs Unsupervised Machine Learning\nModel Adequacy"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nIntroduction to Statistical Learning\nClassification vs Regression\nSupervised vs Unsupervised Machine Learning\nModel Adequacy"
   },
   {
     "objectID": "lectures/10b.html#announcements",
@@ -4001,7 +4134,7 @@
     "href": "lectures/10b.html#machine-learning",
     "title": "Introduction to Statistical Learning",
     "section": "Machine Learning",
-    "text": "Machine Learning\nMachine learning is a set of methods used for predicting and classifying data. Several statistical methods are considered machine learning techniques.\n\n\nCommon Methods\n\nRegression\nMixed-Effects\nNonparametric Regression\nNeural Networks\nTree-based methods\nBayesian Methods"
+    "text": "Machine Learning\nMachine learning is a set of methods used for predicting and classifying data. Several statistical methods are considered machine learning techniques.\n\nCommon Methods\n\nRegression\nMixed-Effects\nNonparametric Regression\nNeural Networks\nTree-based methods\nBayesian Methods"
   },
   {
     "objectID": "lectures/10b.html#training-data",
@@ -4056,8 +4189,8 @@
     "objectID": "lectures/11a.html#learning-outcomes",
     "href": "lectures/11a.html#learning-outcomes",
     "title": "Model Selection",
-    "section": "",
-    "text": "Selection Criteria\nSubset Selection\nShrinkage Methods"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nSelection Criteria\nSubset Selection\nShrinkage Methods"
   },
   {
     "objectID": "lectures/11a.html#model-building",
@@ -4245,8 +4378,8 @@
     "objectID": "lectures/11c.html#learning-outcomes",
     "href": "lectures/11c.html#learning-outcomes",
     "title": "Bayes Classifier",
-    "section": "",
-    "text": "Bayes Classifier\nLinear Discriminant Analysis\nQuadratic Discriminant Analysis\nNaive Bayes\nR Code"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nBayes Classifier\nLinear Discriminant Analysis\nQuadratic Discriminant Analysis\nNaive Bayes\nR Code"
   },
   {
     "objectID": "lectures/11c.html#bayes-classifier-1",
@@ -4351,7 +4484,7 @@
     "href": "lectures/11c.html#naive-bayes-3",
     "title": "Bayes Classifier",
     "section": "Naive Bayes",
-    "text": "Naive Bayes\n\n\n\nQuantitative\n\nNormal: \\(N(\\mu_{jk}, \\sigma^2_{jk})\\)\nNonparametric\n\nKernel Density\n\n\n\n\n\nQualitative\n\nNonparametric"
+    "text": "Naive Bayes\n\n\nQuantitative\n\nNormal: \\(N(\\mu_{jk}, \\sigma^2_{jk})\\)\nNonparametric\n\nKernel Density\n\n\n\nQualitative\n\nNonparametric"
   },
   {
     "objectID": "lectures/11c.html#lda-1",
@@ -4420,15 +4553,15 @@
     "objectID": "lectures/12b.html#plot",
     "href": "lectures/12b.html#plot",
     "title": "Nonparametric Regression",
-    "section": "",
-    "text": "Code\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
   },
   {
     "objectID": "lectures/12b.html#plot-1",
     "href": "lectures/12b.html#plot-1",
     "title": "Nonparametric Regression",
-    "section": "",
-    "text": "Code\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
   },
   {
     "objectID": "lectures/12b.html#regression-splines",
@@ -4602,8 +4735,8 @@
     "objectID": "lectures/12d.html#learning-outcomes",
     "href": "lectures/12d.html#learning-outcomes",
     "title": "Tree-Based Methods",
-    "section": "",
-    "text": "Trees\nPruning\nClassification Trees\nRegression Trees\nR Examples"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nTrees\nPruning\nClassification Trees\nRegression Trees\nR Examples"
   },
   {
     "objectID": "lectures/12d.html#trees-1",
@@ -4693,8 +4826,8 @@
     "objectID": "lectures/13b.html#learning-outcomes",
     "href": "lectures/13b.html#learning-outcomes",
     "title": "Support Vector Machines",
-    "section": "",
-    "text": "Maximal Margin Classifier\nSupport Vector Classifier\nR Code"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nMaximal Margin Classifier\nSupport Vector Classifier\nR Code"
   },
   {
     "objectID": "lectures/13b.html#motivating-example",
@@ -4847,29 +4980,29 @@
     "objectID": "lectures/14a.html#neural-networks-1",
     "href": "lectures/14a.html#neural-networks-1",
     "title": "Deep Learning",
-    "section": "",
-    "text": "Neural networks are a type of machine learning algorithm that are designed to mimic the function of the human brain. They consist of interconnected nodes or “neurons” that process information and generate outputs based on the inputs they receive."
+    "section": "Neural Networks",
+    "text": "Neural Networks\nNeural networks are a type of machine learning algorithm that are designed to mimic the function of the human brain. They consist of interconnected nodes or “neurons” that process information and generate outputs based on the inputs they receive."
   },
   {
     "objectID": "lectures/14a.html#uses",
     "href": "lectures/14a.html#uses",
     "title": "Deep Learning",
-    "section": "",
-    "text": "Neural networks are typically used for tasks such as image recognition, natural language processing, and prediction. They are capable of learning from data and improving their performance over time, which makes them well-suited for complex and dynamic problems."
+    "section": "Uses",
+    "text": "Uses\nNeural networks are typically used for tasks such as image recognition, natural language processing, and prediction. They are capable of learning from data and improving their performance over time, which makes them well-suited for complex and dynamic problems."
   },
   {
     "objectID": "lectures/14a.html#single-layer-neural-networks",
     "href": "lectures/14a.html#single-layer-neural-networks",
     "title": "Deep Learning",
-    "section": "",
-    "text": "A single layer neural networks can be formulated as linear function:\n\\[\nf(X) = \\beta_0 + \\sum^K_{k=1}\\beta_kh_k(X)\n\\]\nWhere \\(X\\) is a vector of inputs of length \\(p\\) and \\(K\\) is the number of activations, \\(\\beta_j\\) are the regression coefficients and\n\\[\nh_k(X) = A_k = g(w_{k0} + \\sum^p_{l1}w_{kl}X_{l})\n\\]\nwith \\(g(\\cdot)\\) being a nonlinear function and \\(w_{kl}\\) are the weights."
+    "section": "Single Layer Neural Networks",
+    "text": "Single Layer Neural Networks\nA single layer neural networks can be formulated as linear function:\n\\[\nf(X) = \\beta_0 + \\sum^K_{k=1}\\beta_kh_k(X)\n\\]\nWhere \\(X\\) is a vector of inputs of length \\(p\\) and \\(K\\) is the number of activations, \\(\\beta_j\\) are the regression coefficients and\n\\[\nh_k(X) = A_k = g(w_{k0} + \\sum^p_{l1}w_{kl}X_{l})\n\\]\nwith \\(g(\\cdot)\\) being a nonlinear function and \\(w_{kl}\\) are the weights."
   },
   {
     "objectID": "lectures/14a.html#nonlinear-activations-function-gcdot",
     "href": "lectures/14a.html#nonlinear-activations-function-gcdot",
     "title": "Deep Learning",
-    "section": "",
-    "text": "Sigmoidal: \\(g(z) = \\frac{e^z}{1+e^z}\\)\nReLU (rectified linear unit): \\(g(z) = (z)_+ = zI(z\\geq0)\\)"
+    "section": "Nonlinear (Activations) Function \\(g(\\cdot)\\)",
+    "text": "Nonlinear (Activations) Function \\(g(\\cdot)\\)\n\nSigmoidal: \\(g(z) = \\frac{e^z}{1+e^z}\\)\nReLU (rectified linear unit): \\(g(z) = (z)_+ = zI(z\\geq0)\\)"
   },
   {
     "objectID": "lectures/14a.html#single-layer-neural-network",
@@ -4882,8 +5015,8 @@
     "objectID": "lectures/14a.html#multilayer-neural-network",
     "href": "lectures/14a.html#multilayer-neural-network",
     "title": "Deep Learning",
-    "section": "",
-    "text": "Multilayer Neural Networks create multiple hidden layers where each layer feeds into each other which will create a final outcome."
+    "section": "Multilayer Neural Network",
+    "text": "Multilayer Neural Network\nMultilayer Neural Networks create multiple hidden layers where each layer feeds into each other which will create a final outcome."
   },
   {
     "objectID": "lectures/14a.html#multilayer-neural-network-1",
@@ -4896,29 +5029,29 @@
     "objectID": "lectures/14a.html#hidden-layer-1",
     "href": "lectures/14a.html#hidden-layer-1",
     "title": "Deep Learning",
-    "section": "",
-    "text": "With \\(p\\) predictors of \\(X\\):\n\\[\nh^{(1)}_k(X) = A^{(1)}_k = g\\left\\{w^{(1)}_{k0} + \\sum^p_{j=1}w^{(1)}_{kj}X_{j}\\right\\}\n\\] for \\(k = 1, \\cdots, K\\) nodes."
+    "section": "Hidden Layer 1",
+    "text": "Hidden Layer 1\nWith \\(p\\) predictors of \\(X\\):\n\\[\nh^{(1)}_k(X) = A^{(1)}_k = g\\left\\{w^{(1)}_{k0} + \\sum^p_{j=1}w^{(1)}_{kj}X_{j}\\right\\}\n\\] for \\(k = 1, \\cdots, K\\) nodes."
   },
   {
     "objectID": "lectures/14a.html#hidden-layer-2",
     "href": "lectures/14a.html#hidden-layer-2",
     "title": "Deep Learning",
-    "section": "",
-    "text": "\\[\nh^{(2)}_l(X) = A^{(2)}_l = g\\left\\{w^{(2)}_{l0} + \\sum^K_{k=1}w^{(2)}_{lk}A^{(1)}_{k}\\right\\}\n\\] for \\(l = 1, \\cdots, L\\) nodes."
+    "section": "Hidden Layer 2",
+    "text": "Hidden Layer 2\n\\[\nh^{(2)}_l(X) = A^{(2)}_l = g\\left\\{w^{(2)}_{l0} + \\sum^K_{k=1}w^{(2)}_{lk}A^{(1)}_{k}\\right\\}\n\\] for \\(l = 1, \\cdots, L\\) nodes."
   },
   {
     "objectID": "lectures/14a.html#hidden-layer-3",
     "href": "lectures/14a.html#hidden-layer-3",
     "title": "Deep Learning",
-    "section": "",
-    "text": "\\[\nh^{(3)}_m(X) = A^{(3)}_l = g\\left\\{w^{(3)}_{m0} + \\sum^L_{l=1}w^{(3)}_{ml}A^{(2)}_{l}\\right\\}\n\\] for \\(m = 1, \\cdots, M\\) nodes."
+    "section": "Hidden Layer 3 +",
+    "text": "Hidden Layer 3 +\n\\[\nh^{(3)}_m(X) = A^{(3)}_l = g\\left\\{w^{(3)}_{m0} + \\sum^L_{l=1}w^{(3)}_{ml}A^{(2)}_{l}\\right\\}\n\\] for \\(m = 1, \\cdots, M\\) nodes."
   },
   {
     "objectID": "lectures/14a.html#output-layer",
     "href": "lectures/14a.html#output-layer",
     "title": "Deep Learning",
-    "section": "",
-    "text": "\\[\nf_t(X) = \\beta_{t0} + \\sum^M_{m=1}\\beta_{tm}h^{(3)}_m(X)\n\\] for outcomes \\(t = 1, \\cdots, T\\)"
+    "section": "Output Layer",
+    "text": "Output Layer\n\\[\nf_t(X) = \\beta_{t0} + \\sum^M_{m=1}\\beta_{tm}h^{(3)}_m(X)\n\\] for outcomes \\(t = 1, \\cdots, T\\)"
   },
   {
     "objectID": "lectures/14a.html#gradient-descent",
@@ -5103,11 +5236,46 @@
     "text": "Testing\n\nres &lt;- fitted2 |&gt;  \n  predict(Xtesting) |&gt;  \n  torch_argmax(dim = 2) |&gt;   \n  as_array() \n\nmean(as.numeric(Ytesting)==res)\n\n#&gt; [1] 1"
   },
   {
+    "objectID": "lectures/15a.html#sequential-data-1",
+    "href": "lectures/15a.html#sequential-data-1",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Sequential Data",
+    "text": "Sequential Data\nSequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values."
+  },
+  {
+    "objectID": "lectures/15a.html#examples-of-sequential-data",
+    "href": "lectures/15a.html#examples-of-sequential-data",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Examples of Sequential Data",
+    "text": "Examples of Sequential Data\n\nDocuments and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
+  },
+  {
+    "objectID": "lectures/15a.html#rnn",
+    "href": "lectures/15a.html#rnn",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN",
+    "text": "RNN\nRecurrent Neural Networks are designed to analyze input data that is sequential data.\n\nAn RNN can accounts for the position of a data point in the sequence as well as the distance it has to other data points.\n\n\nUsing the data sequence, we can predict and outcome \\(Y\\)."
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-1",
+    "href": "lectures/15a.html#rnn-1",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN",
+    "text": "RNN\n\nSource: ISLR2"
+  },
+  {
+    "objectID": "lectures/15a.html#document-classification-1",
+    "href": "lectures/15a.html#document-classification-1",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Document Classification",
+    "text": "Document Classification\nDocument Classification is the process of classifying a"
+  },
+  {
     "objectID": "lectures/1a.html#introductions",
     "href": "lectures/1a.html#introductions",
     "title": "Welcome to Math 408",
-    "section": "",
-    "text": "San Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
+    "section": "Introductions",
+    "text": "Introductions\n\nSan Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
   },
   {
     "objectID": "lectures/1a.html#introductions-1",
@@ -5197,8 +5365,8 @@
     "objectID": "lectures/2a.html#anouncements",
     "href": "lectures/2a.html#anouncements",
     "title": "Control Flow",
-    "section": "",
-    "text": "Download it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\nGuides:\n\nQuarto\nStatistical Computing"
+    "section": "Anouncements",
+    "text": "Anouncements\nQuarto Template for HW\nDownload it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\nGuides:\n\nQuarto\nStatistical Computing"
   },
   {
     "objectID": "lectures/2a.html#learning-objectives",
@@ -5365,8 +5533,8 @@
     "objectID": "lectures/2c.html#learning-objectives",
     "href": "lectures/2c.html#learning-objectives",
     "title": "Control Flow",
-    "section": "",
-    "text": "next Statements\nbreak Statements\nwhile Loops"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nnext Statements\nbreak Statements\nwhile Loops"
   },
   {
     "objectID": "lectures/2c.html#next-statements-1",
@@ -5513,7 +5681,7 @@
     "href": "lectures/3b.html#r-packages",
     "title": "Functions",
     "section": "R Packages",
-    "text": "R Packages\nR Packages are used to utilize functions created from the community.\n\nInstallation\n\ninstall.packages(\"tidyverse\")\n\n\n\nLoading\n\nlibrary(tidyverse)"
+    "text": "R Packages\nR Packages are used to utilize functions created from the community.\nInstallation\n\ninstall.packages(\"tidyverse\")\n\nLoading\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "lectures/3b.html#reticulate",
@@ -5561,8 +5729,8 @@
     "objectID": "lectures/4b.html#learning-objectives",
     "href": "lectures/4b.html#learning-objectives",
     "title": "Intro to Data Manipulation",
-    "section": "",
-    "text": "Anonymous Functions\nPipes\nScripting\nData Manipulation"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nAnonymous Functions\nPipes\nScripting\nData Manipulation"
   },
   {
     "objectID": "lectures/4b.html#anonymous-functions-1",
@@ -5722,8 +5890,8 @@
     "objectID": "lectures/5b.html#learning-objectives",
     "href": "lectures/5b.html#learning-objectives",
     "title": "Data Manipulation",
-    "section": "",
-    "text": "tidyr Functions\nWide to Long Example\nPlotting with ggplot2"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\ntidyr Functions\nWide to Long Example\nPlotting with ggplot2"
   },
   {
     "objectID": "lectures/5b.html#tidyr-functions",
@@ -5897,8 +6065,8 @@
     "objectID": "lectures/6b.html#learning-objectives",
     "href": "lectures/6b.html#learning-objectives",
     "title": "Linear Regression",
-    "section": "",
-    "text": "Associations\nLinear Regression\nConducting it in R"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nAssociations\nLinear Regression\nConducting it in R"
   },
   {
     "objectID": "lectures/6b.html#types-of-associations",
@@ -6038,7 +6206,7 @@
     "href": "lectures/6b.html#r-example",
     "title": "Linear Regression",
     "section": "R Example",
-    "text": "R Example\nApplying a linear regression model to body_mass_g (Predictor) and flipper_length_mm (Outcome) from penguins:\n\nR OutputScatter Plot\n\n\n\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = flipper_length_mm ~ body_mass_g, data = penguins)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -23.7626  -4.9138   0.9891   5.1166  16.6392 \n#&gt; \n#&gt; Coefficients:\n#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept) 1.367e+02  1.997e+00   68.47   &lt;2e-16 ***\n#&gt; body_mass_g 1.528e-02  4.668e-04   32.72   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 6.913 on 340 degrees of freedom\n#&gt;   (2 observations deleted due to missingness)\n#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 \n#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation\n\\[\n\\hat y = 136.73 + 0.015 x\n\\]"
+    "text": "R Example\nApplying a linear regression model to body_mass_g (Predictor) and flipper_length_mm (Outcome) from penguins:\n\nR OutputScatter Plot\n\n\n\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = flipper_length_mm ~ body_mass_g, data = penguins)\n#&gt; \n#&gt; Residuals:\n#&gt;      Min       1Q   Median       3Q      Max \n#&gt; -23.7626  -4.9138   0.9891   5.1166  16.6392 \n#&gt; \n#&gt; Coefficients:\n#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    \n#&gt; (Intercept) 1.367e+02  1.997e+00   68.47   &lt;2e-16 ***\n#&gt; body_mass_g 1.528e-02  4.668e-04   32.72   &lt;2e-16 ***\n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n#&gt; \n#&gt; Residual standard error: 6.913 on 340 degrees of freedom\n#&gt;   (2 observations deleted due to missingness)\n#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 \n#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretation\n\\[\n\\hat y = 136.73 + 0.015 x\n\\]"
   },
   {
     "objectID": "lectures/6b.html#simulation-example",
@@ -6093,8 +6261,8 @@
     "objectID": "lectures/6d.html#learning-objectives",
     "href": "lectures/6d.html#learning-objectives",
     "title": "Linear Regression",
-    "section": "",
-    "text": "Estimation\nOrdinary Least Squares\nMatrix Formulation\nStandard Errors\nConduct in R"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nEstimation\nOrdinary Least Squares\nMatrix Formulation\nStandard Errors\nConduct in R"
   },
   {
     "objectID": "lectures/6d.html#estimation-1",
@@ -6226,8 +6394,8 @@
     "objectID": "lectures/7b.html#learning-objectives",
     "href": "lectures/7b.html#learning-objectives",
     "title": "Multivariable Linear Regression",
-    "section": "",
-    "text": "Multivariable Linear Regression\nSimulation Study 1\nSimulation Study 2\nMatrix Formulation"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nMultivariable Linear Regression\nSimulation Study 1\nSimulation Study 2\nMatrix Formulation"
   },
   {
     "objectID": "lectures/7b.html#mlr",
@@ -6373,8 +6541,8 @@
     "objectID": "lectures/7d.html#learning-objectives",
     "href": "lectures/7d.html#learning-objectives",
     "title": "Multivariable Linear Regression",
-    "section": "",
-    "text": "Multivariable Linear Regression\nSimulation Study 1\nSimulation Study 2\nMatrix Formulation"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nMultivariable Linear Regression\nSimulation Study 1\nSimulation Study 2\nMatrix Formulation"
   },
   {
     "objectID": "lectures/7d.html#mlr",
@@ -6506,8 +6674,8 @@
     "objectID": "lectures/8a.html#learning-objective",
     "href": "lectures/8a.html#learning-objective",
     "title": "Residual Analysis",
-    "section": "",
-    "text": "Model Assumptions\nResidual Analysis\nMulticollinearity"
+    "section": "Learning Objective",
+    "text": "Learning Objective\n\nModel Assumptions\nResidual Analysis\nMulticollinearity"
   },
   {
     "objectID": "lectures/8a.html#model",
@@ -6786,8 +6954,8 @@
     "objectID": "lectures/8c.html#learning-objective",
     "href": "lectures/8c.html#learning-objective",
     "title": "Model Building",
-    "section": "",
-    "text": "Fixing Assumptions\nModel Building"
+    "section": "Learning Objective",
+    "text": "Learning Objective\n\nFixing Assumptions\nModel Building"
   },
   {
     "objectID": "lectures/8c.html#fixing-assumptions-1",
@@ -6989,8 +7157,8 @@
     "objectID": "lectures/9a.html#learning-outcomes",
     "href": "lectures/9a.html#learning-outcomes",
     "title": "Classification",
-    "section": "",
-    "text": "Logistic Regression\nMultinomial Regression"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nLogistic Regression\nMultinomial Regression"
   },
   {
     "objectID": "lectures/9a.html#classification",
@@ -7199,8 +7367,8 @@
     "objectID": "lectures/9c.html#learning-outcomes",
     "href": "lectures/9c.html#learning-outcomes",
     "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Estimation Procedures\n\nRegression Coefficients\nDispersion Parameter\n\nNewton-Raphson Algorithm"
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nEstimation Procedures\n\nRegression Coefficients\nDispersion Parameter\n\nNewton-Raphson Algorithm"
   },
   {
     "objectID": "lectures/9c.html#estimating-boldsymbolbeta",
@@ -7322,6 +7490,27 @@
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\n\n\n\n\n1\nSlides\nVideo\n\n\n2\nSlides\nVideo"
   },
   {
+    "objectID": "posts/week_15.html",
+    "href": "posts/week_15.html",
+    "title": "Week 15",
+    "section": "",
+    "text": "Recurrent Neural Networks\n\n\n\n\n\nUnsupervised Machine Learning\nTopic Modeling"
+  },
+  {
+    "objectID": "posts/week_15.html#learning-outcomes",
+    "href": "posts/week_15.html#learning-outcomes",
+    "title": "Week 15",
+    "section": "",
+    "text": "Recurrent Neural Networks\n\n\n\n\n\nUnsupervised Machine Learning\nTopic Modeling"
+  },
+  {
+    "objectID": "posts/week_15.html#resources",
+    "href": "posts/week_15.html#resources",
+    "title": "Week 15",
+    "section": "Resources",
+    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\n\n\n\n\n1\nSlides\n\n\n\n2\nSlides"
+  },
+  {
     "objectID": "posts/week_3.html",
     "href": "posts/week_3.html",
     "title": "Week 3",
@@ -7397,432 +7586,5 @@
     "title": "Week 9",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
-  },
-  {
-    "objectID": "lectures/14b.html#squirrel-image",
-    "href": "lectures/14b.html#squirrel-image",
-    "title": "Convolutional\nNeural Networks",
-    "section": "Squirrel Image",
-    "text": "Squirrel Image\nDownload labels json here.\nDownload the squirrel image here.\n\n\n#&gt; [[1]]\n#&gt; [1] \"sweet_pepper\"\n#&gt; \n#&gt; [[2]]\n#&gt; [1] \"butterfly\"\n#&gt; \n#&gt; [[3]]\n#&gt; [1] \"worm\"\n#&gt; \n#&gt; [[4]]\n#&gt; [1] \"lobster\"\n#&gt; \n#&gt; [[5]]\n#&gt; [1] \"keyboard\"\n#&gt; \n#&gt; [[6]]\n#&gt; [1] \"snake\"\n#&gt; \n#&gt; [[7]]\n#&gt; [1] \"lizard\"\n#&gt; \n#&gt; [[8]]\n#&gt; [1] \"bee\"\n#&gt; \n#&gt; [[9]]\n#&gt; [1] \"crab\"\n#&gt; \n#&gt; [[10]]\n#&gt; [1] \"tulip\"\n#&gt; \n#&gt; [[11]]\n#&gt; [1] \"forest\"\n#&gt; \n#&gt; [[12]]\n#&gt; [1] \"pear\"\n#&gt; \n#&gt; [[13]]\n#&gt; [1] \"orchid\"\n#&gt; \n#&gt; [[14]]\n#&gt; [1] \"bottle\"\n#&gt; \n#&gt; [[15]]\n#&gt; [1] \"beetle\"\n#&gt; \n#&gt; [[16]]\n#&gt; [1] \"dinosaur\"\n#&gt; \n#&gt; [[17]]\n#&gt; [1] \"rose\"\n#&gt; \n#&gt; [[18]]\n#&gt; [1] \"caterpillar\"\n#&gt; \n#&gt; [[19]]\n#&gt; [1] \"woman\"\n#&gt; \n#&gt; [[20]]\n#&gt; [1] \"bowl\"\n#&gt; \n#&gt; [[21]]\n#&gt; [1] \"table\"\n#&gt; \n#&gt; [[22]]\n#&gt; [1] \"sunflower\"\n#&gt; \n#&gt; [[23]]\n#&gt; [1] \"mouse\"\n#&gt; \n#&gt; [[24]]\n#&gt; [1] \"clock\"\n#&gt; \n#&gt; [[25]]\n#&gt; [1] \"bridge\"\n#&gt; \n#&gt; [[26]]\n#&gt; [1] \"couch\"\n#&gt; \n#&gt; [[27]]\n#&gt; [1] \"flatfish\"\n#&gt; \n#&gt; [[28]]\n#&gt; [1] \"lamp\"\n#&gt; \n#&gt; [[29]]\n#&gt; [1] \"bus\"\n#&gt; \n#&gt; [[30]]\n#&gt; [1] \"poppy\"\n#&gt; \n#&gt; [[31]]\n#&gt; [1] \"telephone\"\n#&gt; \n#&gt; [[32]]\n#&gt; [1] \"spider\"\n#&gt; \n#&gt; [[33]]\n#&gt; [1] \"motorcycle\"\n#&gt; \n#&gt; [[34]]\n#&gt; [1] \"baby\"\n#&gt; \n#&gt; [[35]]\n#&gt; [1] \"apple\"\n#&gt; \n#&gt; [[36]]\n#&gt; [1] \"bicycle\"\n#&gt; \n#&gt; [[37]]\n#&gt; [1] \"can\"\n#&gt; \n#&gt; [[38]]\n#&gt; [1] \"mushroom\"\n#&gt; \n#&gt; [[39]]\n#&gt; [1] \"cup\"\n#&gt; \n#&gt; [[40]]\n#&gt; [1] \"shrew\"\n#&gt; \n#&gt; [[41]]\n#&gt; [1] \"pine_tree\"\n#&gt; \n#&gt; [[42]]\n#&gt; [1] \"streetcar\"\n#&gt; \n#&gt; [[43]]\n#&gt; [1] \"bed\"\n#&gt; \n#&gt; [[44]]\n#&gt; [1] \"camel\"\n#&gt; \n#&gt; [[45]]\n#&gt; [1] \"possum\"\n#&gt; \n#&gt; [[46]]\n#&gt; [1] \"boy\"\n#&gt; \n#&gt; [[47]]\n#&gt; [1] \"aquarium_fish\"\n#&gt; \n#&gt; [[48]]\n#&gt; [1] \"television\"\n#&gt; \n#&gt; [[49]]\n#&gt; [1] \"man\"\n#&gt; \n#&gt; [[50]]\n#&gt; [1] \"girl\"\n#&gt; \n#&gt; [[51]]\n#&gt; [1] \"plate\"\n#&gt; \n#&gt; [[52]]\n#&gt; [1] \"ray\"\n#&gt; \n#&gt; [[53]]\n#&gt; [1] \"seal\"\n#&gt; \n#&gt; [[54]]\n#&gt; [1] \"snail\"\n#&gt; \n#&gt; [[55]]\n#&gt; [1] \"kangaroo\"\n#&gt; \n#&gt; [[56]]\n#&gt; [1] \"cockroach\"\n#&gt; \n#&gt; [[57]]\n#&gt; [1] \"pickup_truck\"\n#&gt; \n#&gt; [[58]]\n#&gt; [1] \"rabbit\"\n#&gt; \n#&gt; [[59]]\n#&gt; [1] \"turtle\"\n#&gt; \n#&gt; [[60]]\n#&gt; [1] \"trout\"\n#&gt; \n#&gt; [[61]]\n#&gt; [1] \"lawn_mower\"\n#&gt; \n#&gt; [[62]]\n#&gt; [1] \"shark\"\n#&gt; \n#&gt; [[63]]\n#&gt; [1] \"tractor\"\n#&gt; \n#&gt; [[64]]\n#&gt; [1] \"maple_tree\"\n#&gt; \n#&gt; [[65]]\n#&gt; [1] \"orange\"\n#&gt; \n#&gt; [[66]]\n#&gt; [1] \"bear\"\n#&gt; \n#&gt; [[67]]\n#&gt; [1] \"raccoon\"\n#&gt; \n#&gt; [[68]]\n#&gt; [1] \"crocodile\"\n#&gt; \n#&gt; [[69]]\n#&gt; [1] \"tiger\"\n#&gt; \n#&gt; [[70]]\n#&gt; [1] \"chimpanzee\"\n#&gt; \n#&gt; [[71]]\n#&gt; [1] \"skunk\"\n#&gt; \n#&gt; [[72]]\n#&gt; [1] \"rocket\"\n#&gt; \n#&gt; [[73]]\n#&gt; [1] \"otter\"\n#&gt; \n#&gt; [[74]]\n#&gt; [1] \"willow_tree\"\n#&gt; \n#&gt; [[75]]\n#&gt; [1] \"wardrobe\"\n#&gt; \n#&gt; [[76]]\n#&gt; [1] \"cattle\"\n#&gt; \n#&gt; [[77]]\n#&gt; [1] \"tank\"\n#&gt; \n#&gt; [[78]]\n#&gt; [1] \"beaver\"\n#&gt; \n#&gt; [[79]]\n#&gt; [1] \"train\"\n#&gt; \n#&gt; [[80]]\n#&gt; [1] \"palm_tree\"\n#&gt; \n#&gt; [[81]]\n#&gt; [1] \"house\"\n#&gt; \n#&gt; [[82]]\n#&gt; [1] \"sea\"\n#&gt; \n#&gt; [[83]]\n#&gt; [1] \"leopard\"\n#&gt; \n#&gt; [[84]]\n#&gt; [1] \"wolf\"\n#&gt; \n#&gt; [[85]]\n#&gt; [1] \"chair\"\n#&gt; \n#&gt; [[86]]\n#&gt; [1] \"squirrel\"\n#&gt; \n#&gt; [[87]]\n#&gt; [1] \"lion\"\n#&gt; \n#&gt; [[88]]\n#&gt; [1] \"fox\"\n#&gt; \n#&gt; [[89]]\n#&gt; [1] \"mountain\"\n#&gt; \n#&gt; [[90]]\n#&gt; [1] \"cloud\"\n#&gt; \n#&gt; [[91]]\n#&gt; [1] \"hamster\"\n#&gt; \n#&gt; [[92]]\n#&gt; [1] \"elephant\"\n#&gt; \n#&gt; [[93]]\n#&gt; [1] \"plain\"\n#&gt; \n#&gt; [[94]]\n#&gt; [1] \"skyscraper\"\n#&gt; \n#&gt; [[95]]\n#&gt; [1] \"dolphin\"\n#&gt; \n#&gt; [[96]]\n#&gt; [1] \"porcupine\"\n#&gt; \n#&gt; [[97]]\n#&gt; [1] \"whale\"\n#&gt; \n#&gt; [[98]]\n#&gt; [1] \"oak_tree\"\n#&gt; \n#&gt; [[99]]\n#&gt; [1] \"castle\"\n#&gt; \n#&gt; [[100]]\n#&gt; [1] \"road\""
-  },
-  {
-    "objectID": "lectures/14b.html#pre-trained-cnn",
-    "href": "lectures/14b.html#pre-trained-cnn",
-    "title": "Convolutional\nNeural Networks",
-    "section": "Pre-Trained CNN",
-    "text": "Pre-Trained CNN\nBoth Torch and Tensorflow has access to convolutional neural networks trained using the imagenet data base."
-  },
-  {
-    "objectID": "lectures/14b.html#pre-trained-cnn-1",
-    "href": "lectures/14b.html#pre-trained-cnn-1",
-    "title": "Convolutional\nNeural Networks",
-    "section": "Pre-Trained CNN",
-    "text": "Pre-Trained CNN\n\nmodel_imagenet &lt;- torchvision::model_resnet18(pretrained = TRUE)\nmodel_imagenet$eval() # put the model in evaluation mode"
-  },
-  {
-    "objectID": "lectures/14b.html#loading-images",
-    "href": "lectures/14b.html#loading-images",
-    "title": "Convolutional\nNeural Networks",
-    "section": "Loading Images",
-    "text": "Loading Images\nDownload book images here.\n\nimg_dir &lt;- \"img/books\"\nimage_names &lt;- list.files(img_dir)\nnum_images &lt;- length(image_names)\nx &lt;- torch_empty(num_images, 3, 224, 224)\nfor (i in 1:num_images) {\n   img_path &lt;- file.path(img_dir, image_names[i])\n   img &lt;- img_path |&gt; \n     base_loader() |&gt;  \n     transform_to_tensor() |&gt;  \n     transform_resize(c(224, 224)) |&gt;  \n     # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\n   x[i,,, ] &lt;- img\n}"
-  },
-  {
-    "objectID": "lectures/14b.html#prediction",
-    "href": "lectures/14b.html#prediction",
-    "title": "Convolutional\nNeural Networks",
-    "section": "Prediction",
-    "text": "Prediction\n\nPredictionLabelsLabelingResults\n\n\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\n\n\n\n\nmapping &lt;- jsonlite::read_json(\"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json\") |&gt; \n  sapply(function(x) x[[2]])\n\n\n\n\ntop3_prob &lt;- top3[[1]] |&gt; \n  nnf_softmax(dim = 2) |&gt; \n  torch_unbind() |&gt; \n  lapply(as.numeric)\n\ntop3_class &lt;- top3[[2]] |&gt; \n  torch_unbind() |&gt; \n  lapply(function(x) mapping[as.integer(x)])\n\nresult &lt;- purrr::map2(top3_prob, top3_class, function(pr, cl) {\n  names(pr) &lt;- cl\n  pr\n})\nnames(result) &lt;- image_names\n\n\n\n\nprint(result)\n\n#&gt; $flamingo.jpg\n#&gt;    flamingo   spoonbill white_stork \n#&gt; 0.978253186 0.016800024 0.004946792 \n#&gt; \n#&gt; $hawk_cropped.jpeg\n#&gt;      kite       jay    magpie \n#&gt; 0.6131909 0.2380927 0.1487164 \n#&gt; \n#&gt; $hawk.jpg\n#&gt;         eel       agama common_newt \n#&gt;   0.5320330   0.2608396   0.2071273 \n#&gt; \n#&gt; $huey.jpg\n#&gt;           Lhasa Tibetan_terrier        Shih-Tzu \n#&gt;      0.80046022      0.11664963      0.08289006 \n#&gt; \n#&gt; $kitty.jpg\n#&gt;        Saint_Bernard           guinea_pig Bernese_mountain_dog \n#&gt;            0.3915999            0.3394892            0.2689110 \n#&gt; \n#&gt; $weaver.jpg\n#&gt; hummingbird    lorikeet   bee_eater \n#&gt;   0.3568341   0.3490927   0.2940732"
-  },
-  {
-    "objectID": "lectures/14b.html#all-r-code",
-    "href": "lectures/14b.html#all-r-code",
-    "title": "Convolutional\nNeural Networks",
-    "section": "All R Code",
-    "text": "All R Code\n\nlibrary(torch)\nlibrary(luz) # high-level interface for torch\nlibrary(torchvision) # for datasets and image transformation\nlibrary(torchdatasets) # for datasets we are going to use\nlibrary(zeallot)\ntorch_manual_seed(13)\n\ntransform &lt;- function(x) {\n  transform_to_tensor(x)\n}\n\ntrain_ds &lt;- cifar100_dataset(\n  root = \"./\", \n  train = TRUE, \n  download = TRUE, \n  transform = transform\n)\n\ntest_ds &lt;- cifar100_dataset(\n  root = \"./\", \n  train = FALSE, \n  transform = transform\n)\n\ntrain_ds[1]\npar(mar = c(0, 0, 0, 0), mfrow = c(2, 2))\nindex &lt;- sample(seq(50000), 4)\nfor (i in index) plot(as.raster(as.array(train_ds[i][[1]]$permute(c(2,3,1)))))\nconv_block &lt;- nn_module(\n  initialize = function(in_channels, out_channels) {\n    self$conv &lt;- nn_conv2d(\n      in_channels = in_channels, \n      out_channels = out_channels, \n      kernel_size = c(3,3),\n      padding = \"same\"\n    )\n    self$relu &lt;- nn_relu()\n    self$pool &lt;- nn_max_pool2d(kernel_size = c(2,2))\n  },\n  forward = function(x) {\n    x |&gt; \n      self$conv() |&gt;  \n      self$relu() |&gt; \n      self$pool()\n  }\n)\nmodel &lt;- nn_module(\n  initialize = function() {\n    self$conv &lt;- nn_sequential(\n      conv_block(3, 32),\n      conv_block(32, 64),\n      conv_block(64, 128),\n      conv_block(128, 256)\n    )\n    self$output &lt;- nn_sequential(\n      nn_dropout(0.5),\n      nn_linear(2*2*256, 512),\n      nn_relu(),\n      nn_linear(512, 100)\n    )\n  },\n  forward = function(x) {\n    x |&gt; \n      self$conv() |&gt; \n      torch_flatten(start_dim = 2) |&gt;\n      self$output()\n  }\n)\n\nmodel()\nsystem.time(\nfitted &lt;- model |&gt;  \n  setup(\n    loss = nn_cross_entropy_loss(),\n    optimizer = optim_rmsprop, \n    metrics = list(luz_metric_accuracy())\n  ) |&gt; \n  set_opt_hparams(lr = 0.001) |&gt; \n  fit(\n    train_ds,\n    epochs = 10, #30,\n    valid_data = 0.2,\n    dataloader_options = list(batch_size = 128)\n  )\n)\n\nprint(fitted)\nevaluate(fitted, test_ds)\n\ncifar100_mapping &lt;- jsonlite::read_json(\"data/cifar-100-labels.json\")\n\nx &lt;- torch_empty(1, 3, 32, 32)\nimg_path &lt;- file.path(\"img/squirrel.jpg\")\nimg &lt;- img_path |&gt;  \n  base_loader() |&gt;  \n  transform_to_tensor() |&gt;  \n  transform_resize(c(32, 32)) |&gt;  \n  # normalize with imagenet mean and stds.\n  transform_normalize(\n    mean = c(0.4914, 0.4822, 0.4465),\n    std = c(0.2470, 0.2435, 0.2616)\n  )\nx[1,,, ] &lt;- img\n\n\npreds &lt;- fitted |&gt; \n  predict(x) |&gt; \n  torch_topk(dim = 2, k = 100)\n\ncifar100_mapping[as.integer(preds[[2]])]"
-  },
-  {
-    "objectID": "lectures/14b.html#squirrel",
-    "href": "lectures/14b.html#squirrel",
-    "title": "Convolutional\nNeural Networks",
-    "section": "Squirrel",
-    "text": "Squirrel\n\nReload ImageResults\n\n\n\nx &lt;- torch_empty(1, 3, 224, 224)\nimg_path &lt;- file.path(\"img/squirrel.jpg\")\nimg &lt;- img_path |&gt;  \n  base_loader() |&gt;  \n  transform_to_tensor() |&gt;  \n  transform_resize(c(224, 224)) |&gt;  \n  # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\nx[1,,, ] &lt;- img\n\n\n\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\nmapping[as.integer(top3[[2]])]\n\n#&gt;                  288                   48                   50 \n#&gt;            \"leopard\"      \"Komodo_dragon\" \"American_alligator\""
-  },
-  {
-    "objectID": "lectures/14b.html#all-r-code-1",
-    "href": "lectures/14b.html#all-r-code-1",
-    "title": "Convolutional\nNeural Networks",
-    "section": "ALL R Code",
-    "text": "ALL R Code\n\nlibrary(torch)\nlibrary(luz) # high-level interface for torch\nlibrary(torchvision) # for datasets and image transformation\nlibrary(torchdatasets) # for datasets we are going to use\nlibrary(zeallot)\ntorch_manual_seed(13)\n\nimg_dir &lt;- \"img/books\" ## CHANGE THIS\nimage_names &lt;- list.files(img_dir)\nnum_images &lt;- length(image_names)\nx &lt;- torch_empty(num_images, 3, 224, 224)\nfor (i in 1:num_images) {\n   img_path &lt;- file.path(img_dir, image_names[i])\n   img &lt;- img_path |&gt; \n     base_loader() |&gt;  \n     transform_to_tensor() |&gt;  \n     transform_resize(c(224, 224)) |&gt;  \n     # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\n   x[i,,, ] &lt;- img\n}\n\nmodel_imagenet &lt;- torchvision::model_resnet18(pretrained = TRUE)\nmodel_imagenet$eval() # put the model in evaluation mode\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\n\nmapping &lt;- jsonlite::read_json(\"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json\") |&gt; \n  sapply(function(x) x[[2]])\n\ntop3_prob &lt;- top3[[1]] |&gt; \n  nnf_softmax(dim = 2) |&gt; \n  torch_unbind() |&gt; \n  lapply(as.numeric)\n\ntop3_class &lt;- top3[[2]] |&gt; \n  torch_unbind() |&gt; \n  lapply(function(x) mapping[as.integer(x)])\n\nresult &lt;- purrr::map2(top3_prob, top3_class, function(pr, cl) {\n  names(pr) &lt;- cl\n  pr\n})\nnames(result) &lt;- image_names\n\nprint(result)\n\nx &lt;- torch_empty(1, 3, 224, 224)\nimg_path &lt;- file.path(\"img/squirrel.jpg\") ## CHANGE THIS\nimg &lt;- img_path |&gt;  \n  base_loader() |&gt;  \n  transform_to_tensor() |&gt;  \n  transform_resize(c(224, 224)) |&gt;  \n  # normalize with imagenet mean and stds.\n     transform_normalize(\n       mean = c(0.485, 0.456, 0.406),\n       std = c(0.229, 0.224, 0.225)\n     )\nx[1,,, ] &lt;- img\n\npreds &lt;- model_imagenet(x)\ntop3 &lt;- torch_topk(preds, dim = 2, k = 3)\nmapping[as.integer(top3[[2]])]"
-  },
-  {
-    "objectID": "week_14.html",
-    "href": "week_14.html",
-    "title": "Week 14",
-    "section": "",
-    "text": "Neural Networks\n\n\n\n\n\nConvolutional Neural Networks"
-  },
-  {
-    "objectID": "week_14.html#learning-outcomes",
-    "href": "week_14.html#learning-outcomes",
-    "title": "Week 14",
-    "section": "",
-    "text": "Neural Networks\n\n\n\n\n\nConvolutional Neural Networks"
-  },
-  {
-    "objectID": "week_14.html#resources",
-    "href": "week_14.html#resources",
-    "title": "Week 14",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\n\n\n\n\n1\nSlides\nVideo\n\n\n2\nSlides\nVideo"
-  },
-  {
-    "objectID": "week_15.html",
-    "href": "week_15.html",
-    "title": "Week 15",
-    "section": "",
-    "text": "Recurrent Neural Networks\n\n\n\n\n\nUnsupervised Machine Learning\nTopic Modeling"
-  },
-  {
-    "objectID": "week_15.html#learning-outcomes",
-    "href": "week_15.html#learning-outcomes",
-    "title": "Week 15",
-    "section": "",
-    "text": "Recurrent Neural Networks\n\n\n\n\n\nUnsupervised Machine Learning\nTopic Modeling"
-  },
-  {
-    "objectID": "week_15.html#resources",
-    "href": "week_15.html#resources",
-    "title": "Week 15",
-    "section": "Resources",
-    "text": "Resources\n\n\n\nLecture\nSlides\nVideos\n\n\n\n\n1\n\n\n\n\n2"
-  },
-  {
-    "objectID": "lectures/9c.html",
-    "href": "lectures/9c.html",
-    "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Estimation Procedures\n\nRegression Coefficients\nDispersion Parameter\n\nNewton-Raphson Algorithm"
-  },
-  {
-    "objectID": "lectures/9a.html",
-    "href": "lectures/9a.html",
-    "title": "Classification",
-    "section": "",
-    "text": "Logistic Regression\nMultinomial Regression"
-  },
-  {
-    "objectID": "lectures/8c.html",
-    "href": "lectures/8c.html",
-    "title": "Model Building",
-    "section": "",
-    "text": "Fixing Assumptions\nModel Building"
-  },
-  {
-    "objectID": "lectures/8a.html",
-    "href": "lectures/8a.html",
-    "title": "Residual Analysis",
-    "section": "",
-    "text": "Model Assumptions\nResidual Analysis\nMulticollinearity"
-  },
-  {
-    "objectID": "lectures/7d.html",
-    "href": "lectures/7d.html",
-    "title": "Multivariable Linear Regression",
-    "section": "",
-    "text": "Multivariable Linear Regression\nSimulation Study 1\nSimulation Study 2\nMatrix Formulation"
-  },
-  {
-    "objectID": "lectures/7b.html",
-    "href": "lectures/7b.html",
-    "title": "Multivariable Linear Regression",
-    "section": "",
-    "text": "Multivariable Linear Regression\nSimulation Study 1\nSimulation Study 2\nMatrix Formulation"
-  },
-  {
-    "objectID": "lectures/6d.html",
-    "href": "lectures/6d.html",
-    "title": "Linear Regression",
-    "section": "",
-    "text": "Estimation\nOrdinary Least Squares\nMatrix Formulation\nStandard Errors\nConduct in R"
-  },
-  {
-    "objectID": "lectures/6b.html",
-    "href": "lectures/6b.html",
-    "title": "Linear Regression",
-    "section": "",
-    "text": "Associations\nLinear Regression\nConducting it in R"
-  },
-  {
-    "objectID": "lectures/5b.html",
-    "href": "lectures/5b.html",
-    "title": "Data Manipulation",
-    "section": "",
-    "text": "tidyr Functions\nWide to Long Example\nPlotting with ggplot2"
-  },
-  {
-    "objectID": "lectures/4b.html",
-    "href": "lectures/4b.html",
-    "title": "Intro to Data Manipulation",
-    "section": "",
-    "text": "Anonymous Functions\nPipes\nScripting\nData Manipulation"
-  },
-  {
-    "objectID": "lectures/2c.html",
-    "href": "lectures/2c.html",
-    "title": "Control Flow",
-    "section": "",
-    "text": "next Statements\nbreak Statements\nwhile Loops"
-  },
-  {
-    "objectID": "lectures/2a.html",
-    "href": "lectures/2a.html",
-    "title": "Control Flow",
-    "section": "",
-    "text": "Download it here: Github Repo\nOR Type this in the RStudio terminal:\nquarto use template inqs909/m408_hw\nType Y for the trust author. Type a name of a new directory in where to save the file. For example, type hw1.\nOR Save this in an empty source quarto document:\n\n---\ntitle: \"Title\"\nauthor: \"Name Here\"\ndate: \"`r format(Sys.time(),'%m-%d-%Y')`\"\nformat: \n  html:\n    toc: true\n    toc-depth: 2\n    code-fold: true\n    code-tools: true\n    code-line-numbers: true\nknitr:\n  opts_chunk:\n    echo: true\n    message: false\n    warning: false\n    error: true\n    tidy: styler\n    R.options:\n      digits: 3\n      max.print: 100\n---\n\n## Problem 1\n\n## Problem 2\n\n## Problem 3\n\nGuides:\n\nQuarto\nStatistical Computing"
-  },
-  {
-    "objectID": "lectures/1a.html",
-    "href": "lectures/1a.html",
-    "title": "Welcome to Math 408",
-    "section": "",
-    "text": "San Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
-  },
-  {
-    "objectID": "lectures/14b.html",
-    "href": "lectures/14b.html",
-    "title": "Convolutional\nNeural Networks",
-    "section": "",
-    "text": "Convolutional Neural Networks were developed in terms of image analysis.\n\nThe idea is to mimic how a human minds will classify an image.\n\n\nA convolutional neural networks is trained by using a set of images that have been previously classfied.\n\n\nOnce the network is trained, we can give new types of images to be classified.\n\n\n\n\n\n\n\n\n\n\n\n\nA CNN will identify certain features, arrange them, and match them to what is closely is known.\n\n\n\n\n\n\nCredit: ISLR2"
-  },
-  {
-    "objectID": "lectures/13c.html",
-    "href": "lectures/13c.html",
-    "title": "Bagging, Random Forests, and Boosting",
-    "section": "",
-    "text": "Bagging\nRandom Forests\nBoosting"
-  },
-  {
-    "objectID": "lectures/13a.html",
-    "href": "lectures/13a.html",
-    "title": "Tree-Based Methods",
-    "section": "",
-    "text": "A Statistical tree will partition a region from a set of predictor variables that will predict an outcome of interest.\n\nTrees will split a region based on a predictors ability to reduce the overall mean squared error.\n\n\nTrees are sometimes preferred to linear models due to the visual explanation of the model.\n\n\n\n\n\n\n\n\n\n\n\n\n\nStart with the entire dataset and define the maximum number of regions or number of observations per region of the tree.\nCalculate the MSE of the dataset.\nFor each potential split, calculate the MSE. Choose the split that results in the lowest overall MSE.\nCreate a node in the tree with the selected split as the split criterion.\nRepeat steps 2-4 for each subset, stopping if the maximum number of regions has been reached or if the subset size is too small."
-  },
-  {
-    "objectID": "lectures/12c.html",
-    "href": "lectures/12c.html",
-    "title": "Resampling Methods",
-    "section": "",
-    "text": "Cross-Validation\n\nLeave-one-out\nK-Fold\n\nBootstrap Methods"
-  },
-  {
-    "objectID": "lectures/12a.html",
-    "href": "lectures/12a.html",
-    "title": "Moving Beyond Linear Functions",
-    "section": "",
-    "text": "Code\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
-  },
-  {
-    "objectID": "lectures/11b.html",
-    "href": "lectures/11b.html",
-    "title": "Resampling Methods",
-    "section": "",
-    "text": "Cross-Validation\n\nLeave-one-out\nK-Fold\n\nBootstrap Methods"
-  },
-  {
-    "objectID": "lectures/10c.html",
-    "href": "lectures/10c.html",
-    "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Hypothesis Tests\nModel Inference"
-  },
-  {
-    "objectID": "lectures/10a.html",
-    "href": "lectures/10a.html",
-    "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Exponential Family of Distributions\nGeneralized Linear Models\nR Code"
-  },
-  {
-    "objectID": "dshs.html",
-    "href": "dshs.html",
-    "title": "Data Science\nin High School",
-    "section": "",
-    "text": "San Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics"
-  },
-  {
-    "objectID": "lectures/10b.html",
-    "href": "lectures/10b.html",
-    "title": "Introduction to Statistical Learning",
-    "section": "",
-    "text": "Introduction to Statistical Learning\nClassification vs Regression\nSupervised vs Unsupervised Machine Learning\nModel Adequacy"
-  },
-  {
-    "objectID": "lectures/11a.html",
-    "href": "lectures/11a.html",
-    "title": "Model Selection",
-    "section": "",
-    "text": "Selection Criteria\nSubset Selection\nShrinkage Methods"
-  },
-  {
-    "objectID": "lectures/11c.html",
-    "href": "lectures/11c.html",
-    "title": "Bayes Classifier",
-    "section": "",
-    "text": "Bayes Classifier\nLinear Discriminant Analysis\nQuadratic Discriminant Analysis\nNaive Bayes\nR Code"
-  },
-  {
-    "objectID": "lectures/12b.html",
-    "href": "lectures/12b.html",
-    "title": "Nonparametric Regression",
-    "section": "",
-    "text": "Code\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 0.25)\ny &lt;- 1 + 5.3 * x - 45 * x^2 - 35.5 * x^3 + 60 * x^4 + rnorm(1000, sd = 0.5)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tidyverse)\nx &lt;- rnorm(1000, sd = 3.5)\ny &lt;- 1 + sinpi(x/8) + rnorm(1000, sd = 0.25)\nggplot(tibble(x=x, y=y), aes(x,y)) + geom_point() + theme_bw()"
-  },
-  {
-    "objectID": "lectures/12d.html",
-    "href": "lectures/12d.html",
-    "title": "Tree-Based Methods",
-    "section": "",
-    "text": "Trees\nPruning\nClassification Trees\nRegression Trees\nR Examples"
-  },
-  {
-    "objectID": "lectures/13b.html",
-    "href": "lectures/13b.html",
-    "title": "Support Vector Machines",
-    "section": "",
-    "text": "Maximal Margin Classifier\nSupport Vector Classifier\nR Code"
-  },
-  {
-    "objectID": "lectures/14a.html",
-    "href": "lectures/14a.html",
-    "title": "Deep Learning",
-    "section": "",
-    "text": "Neural networks are a type of machine learning algorithm that are designed to mimic the function of the human brain. They consist of interconnected nodes or “neurons” that process information and generate outputs based on the inputs they receive.\n\n\n\nNeural networks are typically used for tasks such as image recognition, natural language processing, and prediction. They are capable of learning from data and improving their performance over time, which makes them well-suited for complex and dynamic problems.\n\n\n\nA single layer neural networks can be formulated as linear function:\n\\[\nf(X) = \\beta_0 + \\sum^K_{k=1}\\beta_kh_k(X)\n\\]\nWhere \\(X\\) is a vector of inputs of length \\(p\\) and \\(K\\) is the number of activations, \\(\\beta_j\\) are the regression coefficients and\n\\[\nh_k(X) = A_k = g(w_{k0} + \\sum^p_{l1}w_{kl}X_{l})\n\\]\nwith \\(g(\\cdot)\\) being a nonlinear function and \\(w_{kl}\\) are the weights.\n\n\n\n\nSigmoidal: \\(g(z) = \\frac{e^z}{1+e^z}\\)\nReLU (rectified linear unit): \\(g(z) = (z)_+ = zI(z\\geq0)\\)\n\n\n\n\n\n\n\n\n\n\n\n\nMultilayer Neural Networks create multiple hidden layers where each layer feeds into each other which will create a final outcome.\n\n\n\n\n\n\n\n\n\n\n\nWith \\(p\\) predictors of \\(X\\):\n\\[\nh^{(1)}_k(X) = A^{(1)}_k = g\\left\\{w^{(1)}_{k0} + \\sum^p_{j=1}w^{(1)}_{kj}X_{j}\\right\\}\n\\] for \\(k = 1, \\cdots, K\\) nodes.\n\n\n\n\\[\nh^{(2)}_l(X) = A^{(2)}_l = g\\left\\{w^{(2)}_{l0} + \\sum^K_{k=1}w^{(2)}_{lk}A^{(1)}_{k}\\right\\}\n\\] for \\(l = 1, \\cdots, L\\) nodes.\n\n\n\n\\[\nh^{(3)}_m(X) = A^{(3)}_l = g\\left\\{w^{(3)}_{m0} + \\sum^L_{l=1}w^{(3)}_{ml}A^{(2)}_{l}\\right\\}\n\\] for \\(m = 1, \\cdots, M\\) nodes.\n\n\n\n\\[\nf_t(X) = \\beta_{t0} + \\sum^M_{m=1}\\beta_{tm}h^{(3)}_m(X)\n\\] for outcomes \\(t = 1, \\cdots, T\\)"
-  },
-  {
-    "objectID": "lectures/15a.html",
-    "href": "lectures/15a.html",
-    "title": "Recurrent\nNeural Networks",
-    "section": "",
-    "text": "Sequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values.\n\n\n\n\n\nDocuments and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
-  },
-  {
-    "objectID": "lectures/15a.html#sequential-data-1",
-    "href": "lectures/15a.html#sequential-data-1",
-    "title": "Recurrent\nNeural Networks",
-    "section": "",
-    "text": "Sequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values."
-  },
-  {
-    "objectID": "lectures/15a.html#examples-of-sequential-data",
-    "href": "lectures/15a.html#examples-of-sequential-data",
-    "title": "Recurrent\nNeural Networks",
-    "section": "",
-    "text": "Documents and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
-  },
-  {
-    "objectID": "lectures/15a.html#rnn",
-    "href": "lectures/15a.html#rnn",
-    "title": "Recurrent\nNeural Networks",
-    "section": "RNN",
-    "text": "RNN\nRecurrent Neural Networks are designed to analyze input data that is sequential data.\n\nAn RNN can accounts for the position of a data point in the sequence as well as the distance it has to other data points.\n\n\nUsing the data sequence, we can predict and outcome \\(Y\\)."
-  },
-  {
-    "objectID": "lectures/15a.html#rnn-1",
-    "href": "lectures/15a.html#rnn-1",
-    "title": "Recurrent\nNeural Networks",
-    "section": "RNN",
-    "text": "RNN\n\n\n\nSource: ISLR2"
-  },
-  {
-    "objectID": "lectures/15a.html#document-classification-1",
-    "href": "lectures/15a.html#document-classification-1",
-    "title": "Recurrent\nNeural Networks",
-    "section": "Document Classification",
-    "text": "Document Classification"
-  },
-  {
-    "objectID": "lectures/1b.html",
-    "href": "lectures/1b.html",
-    "title": "R Basics",
-    "section": "",
-    "text": "San Bernardino, CA\nCSU Monterey Bay\n\nBS Biology\n\nSan Diego State University\n\nMaster’s in Public Health\n\nUC Riverside\n\nPhD in Applied Statistics\n\n\n\n\n\n\nName\nYear\nMajor\nFun Fact\nCareer Goal"
-  },
-  {
-    "objectID": "lectures/2b.html",
-    "href": "lectures/2b.html",
-    "title": "Control Flow",
-    "section": "",
-    "text": "Nested for Loops"
-  },
-  {
-    "objectID": "lectures/4a.html",
-    "href": "lectures/4a.html",
-    "title": "*apply Functions",
-    "section": "",
-    "text": "csucistats\n\n\ninstall.packages('csucistats', \n  repos = c('https://inqs909.r-universe.dev', \n  'https://cloud.r-project.org'))"
-  },
-  {
-    "objectID": "lectures/6a.html",
-    "href": "lectures/6a.html",
-    "title": "Introduction to Statistical Learning",
-    "section": "",
-    "text": "Introduction to Statistical Learning\nClassification vs Regression\nSupervised vs Unsupervised Machine Learning\nModel Adequacy"
-  },
-  {
-    "objectID": "lectures/6c.html",
-    "href": "lectures/6c.html",
-    "title": "Linear Regression",
-    "section": "",
-    "text": "Associations\nLinear Regression\nConducting it in R"
-  },
-  {
-    "objectID": "lectures/7a.html",
-    "href": "lectures/7a.html",
-    "title": "Linear Regression",
-    "section": "",
-    "text": "Estimation\nOrdinary Least Squares\nMatrix Formulation\nStandard Errors\nConduct in R"
-  },
-  {
-    "objectID": "lectures/7c.html",
-    "href": "lectures/7c.html",
-    "title": "Correlation, Confounding, and Interaction Terms",
-    "section": "",
-    "text": "Correlation vs Causation\nConfounding Variables\nInteraction Terms"
-  },
-  {
-    "objectID": "lectures/7e.html",
-    "href": "lectures/7e.html",
-    "title": "Residual Analysis",
-    "section": "",
-    "text": "Model Assumptions\nResidual Analysis\nMulticollinearity"
-  },
-  {
-    "objectID": "lectures/8b.html",
-    "href": "lectures/8b.html",
-    "title": "Hypothesis Testing",
-    "section": "",
-    "text": "Hypothesis Tests\nModel Inference"
-  },
-  {
-    "objectID": "lectures/8d.html",
-    "href": "lectures/8d.html",
-    "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Exponential Family of Distributions\nGeneralized Linear Models\nR Code"
-  },
-  {
-    "objectID": "lectures/9b.html",
-    "href": "lectures/9b.html",
-    "title": "Classification",
-    "section": "",
-    "text": "K-Nearest Neighbors\nBayes’ Classifier\nLinear and Quadratic Discriminant Analysis\nNaive Bayes"
-  },
-  {
-    "objectID": "lectures/9d.html",
-    "href": "lectures/9d.html",
-    "title": "Generalized Linear Models",
-    "section": "",
-    "text": "Model Diagnostics\nResiduals\nResidual Analysis\nModel Selection"
   }
 ]

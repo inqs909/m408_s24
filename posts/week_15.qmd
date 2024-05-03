@@ -1,9 +1,9 @@
 ---
 title: "Week 15"
-date: 05-07-23
-description: We will begin our discussion on Tree-Based methods.
+date: 05-02-24
+description: Finsih up the discussion on Nueral Networks and begin topic modelling.
 editor: visual
-draft: true
+draft: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,16 +12,16 @@ editor_options:
 
 ### First Lecture
 
--   Neural Networks
+-   Recurrent Neural Networks
 
 ### Second Lecture
 
--   Tensorflow
--   Torch
+-   Unsupervised Machine Learning
+-   Topic Modeling
 
 ## Resources
 
-| Lecture | Slides | Videos | Files |
-|---------|--------|--------|-------|
-| 1       |        |        |       |
-| 2       |        |        |       |
+| Lecture | Slides                                                          | Videos |
+|---------|-----------------------------------------------------------------|--------|
+| 1       | [Slides](https://m408.inqs.info/lectures/15a.html#/title-slide) |        |
+| 2       | [Slides](https://m408.inqs.info/lectures/15b.html#/title-slide) |        |
