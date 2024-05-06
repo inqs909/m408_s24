@@ -7719,5 +7719,19 @@
     "title": "Recurrent\nNeural Networks",
     "section": "One-Hot Encoding",
     "text": "One-Hot Encoding"
+  },
+  {
+    "objectID": "lectures/15a.html#autocorrelation",
+    "href": "lectures/15a.html#autocorrelation",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Autocorrelation",
+    "text": "Autocorrelation\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\]"
+  },
+  {
+    "objectID": "lectures/15a.html#more-information",
+    "href": "lectures/15a.html#more-information",
+    "title": "Recurrent\nNeural Networks",
+    "section": "More Information",
+    "text": "More Information"
   }
 ]
