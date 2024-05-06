@@ -87,11 +87,15 @@ Using the data sequence, we can predict and outcome $Y$.
 
 ![Source: ISLR2](img/islr2/Chapter10/10_12.png)
 
+## RNN
+
+
+
 # Document Classification
 
 ## Document Classification
 
-Document Classification is the process of classifying a
+Document Classification is the process of classifying documents to different categories.
 
 # Time Series
 

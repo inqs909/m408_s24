@@ -5239,15 +5239,15 @@
     "objectID": "lectures/15a.html#sequential-data-1",
     "href": "lectures/15a.html#sequential-data-1",
     "title": "Recurrent\nNeural Networks",
-    "section": "Sequential Data",
-    "text": "Sequential Data\nSequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values."
+    "section": "",
+    "text": "Sequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values."
   },
   {
     "objectID": "lectures/15a.html#examples-of-sequential-data",
     "href": "lectures/15a.html#examples-of-sequential-data",
     "title": "Recurrent\nNeural Networks",
-    "section": "Examples of Sequential Data",
-    "text": "Examples of Sequential Data\n\nDocuments and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
+    "section": "",
+    "text": "Documents and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
   },
   {
     "objectID": "lectures/15a.html#rnn",
@@ -5261,14 +5261,14 @@
     "href": "lectures/15a.html#rnn-1",
     "title": "Recurrent\nNeural Networks",
     "section": "RNN",
-    "text": "RNN\n\nSource: ISLR2"
+    "text": "RNN\n\n\n\nSource: ISLR2"
   },
   {
     "objectID": "lectures/15a.html#document-classification-1",
     "href": "lectures/15a.html#document-classification-1",
     "title": "Recurrent\nNeural Networks",
     "section": "Document Classification",
-    "text": "Document Classification\nDocument Classification is the process of classifying a"
+    "text": "Document Classification\nDocument Classification is the process of classifying documents to different categories."
   },
   {
     "objectID": "lectures/1a.html#introductions",
@@ -7586,5 +7586,19 @@
     "title": "Week 9",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
+  },
+  {
+    "objectID": "lectures/15a.html",
+    "href": "lectures/15a.html",
+    "title": "Recurrent\nNeural Networks",
+    "section": "",
+    "text": "Sequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values.\n\n\n\n\n\nDocuments and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-2",
+    "href": "lectures/15a.html#rnn-2",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN",
+    "text": "RNN"
   }
 ]

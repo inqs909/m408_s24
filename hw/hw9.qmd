@@ -15,11 +15,3 @@ From the Applied Section in Chapter 8: Problem 9 a,b,d,e
 ## Problem 2
 
 From the Applied Section in Chapter 8: Problem 10 a,b,c,g
-
-## Problem 3
-
-From the Applied Section in Chapter 9: Problem 10 a,b,c
-
-## Problem 4
-
-From the Applied Section in Chapter 9: Problem 10 a,b,c,d,e,f
