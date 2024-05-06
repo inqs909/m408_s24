@@ -2517,14 +2517,14 @@
     "href": "lectures/14b.html#fit-the-neural-network",
     "title": "Convolutional\nNeural Networks",
     "section": "Fit the Neural Network",
-    "text": "Fit the Neural Network\n\nFittingPlot\n\n\n\nsystem.time(\n   fitted &lt;- modelnn |&gt;\n      fit(\n        data = train_ds,\n        epochs = 5,\n        valid_data = 0.2,\n        dataloader_options = list(batch_size = 256),\n        verbose = FALSE\n      )\n )\n\n#&gt;    user  system elapsed \n#&gt; 156.931   0.495 155.996\n\n\n\n\n\nplot(fitted)"
+    "text": "Fit the Neural Network\n\nFittingPlot\n\n\n\nsystem.time(\n   fitted &lt;- modelnn |&gt;\n      fit(\n        data = train_ds,\n        epochs = 5,\n        valid_data = 0.2,\n        dataloader_options = list(batch_size = 256),\n        verbose = FALSE\n      )\n )\n\n#&gt;    user  system elapsed \n#&gt; 169.428   0.544 168.528\n\n\n\n\n\nplot(fitted)"
   },
   {
     "objectID": "lectures/14b.html#test-efficiency-of-neural-network",
     "href": "lectures/14b.html#test-efficiency-of-neural-network",
     "title": "Convolutional\nNeural Networks",
     "section": "Test Efficiency of Neural Network",
-    "text": "Test Efficiency of Neural Network\n\naccuracy &lt;- function(pred, truth) {\n   mean(pred == truth) }\n\n# gets the true classes from all observations in test_ds.\ntruth &lt;- sapply(seq_along(test_ds), function(x) test_ds[x][[2]])\n\nfitted |&gt;\n  predict(test_ds) |&gt;\n  torch_argmax(dim = 2) |&gt; # the predicted class is the one with higher 'logit'.\n  as_array() |&gt;  # convert to an R object\n  accuracy(truth) # use function created\n\n#&gt; [1] 0.9572"
+    "text": "Test Efficiency of Neural Network\n\naccuracy &lt;- function(pred, truth) {\n   mean(pred == truth) }\n\n# gets the true classes from all observations in test_ds.\ntruth &lt;- sapply(seq_along(test_ds), function(x) test_ds[x][[2]])\n\nfitted |&gt;\n  predict(test_ds) |&gt;\n  torch_argmax(dim = 2) |&gt; # the predicted class is the one with higher 'logit'.\n  as_array() |&gt;  # convert to an R object\n  accuracy(truth) # use function created\n\n#&gt; [1] 0.9504"
   },
   {
     "objectID": "lectures/14b.html#cifar-data",
@@ -2559,14 +2559,14 @@
     "href": "lectures/14b.html#fitting-cnn",
     "title": "Convolutional\nNeural Networks",
     "section": "Fitting CNN",
-    "text": "Fitting CNN\n\nFitSummaryEvaluate\n\n\n\nsystem.time(\nfitted &lt;- model |&gt;  \n  setup(\n    loss = nn_cross_entropy_loss(),\n    optimizer = optim_rmsprop, \n    metrics = list(luz_metric_accuracy())\n  ) |&gt; \n  set_opt_hparams(lr = 0.001) |&gt; \n  fit(\n    train_ds,\n    epochs = 10, #30,\n    valid_data = 0.2,\n    dataloader_options = list(batch_size = 128)\n  )\n)\n\n#&gt;     user   system  elapsed \n#&gt; 1448.988    6.315  927.744\n\n\n\n\n\nprint(fitted)\n\n#&gt; A `luz_module_fitted`\n#&gt; ── Time ────────────────────────────────────────────────────────────────────────\n#&gt; • Total time: 15m 27.7s\n#&gt; • Avg time per training epoch: 1m 20.8s\n#&gt; \n#&gt; ── Results ─────────────────────────────────────────────────────────────────────\n#&gt; Metrics observed in the last epoch.\n#&gt; \n#&gt; ℹ Training:\n#&gt; loss: 2.2801\n#&gt; acc: 0.3939\n#&gt; \n#&gt; ── Model ───────────────────────────────────────────────────────────────────────\n#&gt; An `nn_module` containing 964,516 parameters.\n#&gt; \n#&gt; ── Modules ─────────────────────────────────────────────────────────────────────\n#&gt; • conv: &lt;nn_sequential&gt; #388,416 parameters\n#&gt; • output: &lt;nn_sequential&gt; #576,100 parameters\n\n\n\n\n\nevaluate(fitted, test_ds)\n\n#&gt; A `luz_module_evaluation`\n#&gt; ── Results ─────────────────────────────────────────────────────────────────────\n#&gt; loss: 2.3907\n#&gt; acc: 0.3857"
+    "text": "Fitting CNN\n\nFitSummaryEvaluate\n\n\n\nsystem.time(\nfitted &lt;- model |&gt;  \n  setup(\n    loss = nn_cross_entropy_loss(),\n    optimizer = optim_rmsprop, \n    metrics = list(luz_metric_accuracy())\n  ) |&gt; \n  set_opt_hparams(lr = 0.001) |&gt; \n  fit(\n    train_ds,\n    epochs = 10, #30,\n    valid_data = 0.2,\n    dataloader_options = list(batch_size = 128)\n  )\n)\n\n#&gt;     user   system  elapsed \n#&gt; 1831.546    9.220 1188.087\n\n\n\n\n\nprint(fitted)\n\n#&gt; A `luz_module_fitted`\n#&gt; ── Time ────────────────────────────────────────────────────────────────────────\n#&gt; • Total time: 19m 48s\n#&gt; • Avg time per training epoch: 1m 43.7s\n#&gt; \n#&gt; ── Results ─────────────────────────────────────────────────────────────────────\n#&gt; Metrics observed in the last epoch.\n#&gt; \n#&gt; ℹ Training:\n#&gt; loss: 2.3958\n#&gt; acc: 0.3732\n#&gt; \n#&gt; ── Model ───────────────────────────────────────────────────────────────────────\n#&gt; An `nn_module` containing 964,516 parameters.\n#&gt; \n#&gt; ── Modules ─────────────────────────────────────────────────────────────────────\n#&gt; • conv: &lt;nn_sequential&gt; #388,416 parameters\n#&gt; • output: &lt;nn_sequential&gt; #576,100 parameters\n\n\n\n\n\nevaluate(fitted, test_ds)\n\n#&gt; A `luz_module_evaluation`\n#&gt; ── Results ─────────────────────────────────────────────────────────────────────\n#&gt; loss: 2.4735\n#&gt; acc: 0.3724"
   },
   {
     "objectID": "lectures/14b.html#squirrel-image",
     "href": "lectures/14b.html#squirrel-image",
     "title": "Convolutional\nNeural Networks",
     "section": "Squirrel Image",
-    "text": "Squirrel Image\nDownload labels json here.\nDownload the squirrel image here.\n\n\n#&gt; [[1]]\n#&gt; [1] \"sweet_pepper\"\n#&gt; \n#&gt; [[2]]\n#&gt; [1] \"butterfly\"\n#&gt; \n#&gt; [[3]]\n#&gt; [1] \"worm\"\n#&gt; \n#&gt; [[4]]\n#&gt; [1] \"lobster\"\n#&gt; \n#&gt; [[5]]\n#&gt; [1] \"keyboard\"\n#&gt; \n#&gt; [[6]]\n#&gt; [1] \"snake\"\n#&gt; \n#&gt; [[7]]\n#&gt; [1] \"lizard\"\n#&gt; \n#&gt; [[8]]\n#&gt; [1] \"bee\"\n#&gt; \n#&gt; [[9]]\n#&gt; [1] \"crab\"\n#&gt; \n#&gt; [[10]]\n#&gt; [1] \"tulip\"\n#&gt; \n#&gt; [[11]]\n#&gt; [1] \"forest\"\n#&gt; \n#&gt; [[12]]\n#&gt; [1] \"pear\"\n#&gt; \n#&gt; [[13]]\n#&gt; [1] \"orchid\"\n#&gt; \n#&gt; [[14]]\n#&gt; [1] \"bottle\"\n#&gt; \n#&gt; [[15]]\n#&gt; [1] \"beetle\"\n#&gt; \n#&gt; [[16]]\n#&gt; [1] \"dinosaur\"\n#&gt; \n#&gt; [[17]]\n#&gt; [1] \"rose\"\n#&gt; \n#&gt; [[18]]\n#&gt; [1] \"caterpillar\"\n#&gt; \n#&gt; [[19]]\n#&gt; [1] \"woman\"\n#&gt; \n#&gt; [[20]]\n#&gt; [1] \"bowl\"\n#&gt; \n#&gt; [[21]]\n#&gt; [1] \"table\"\n#&gt; \n#&gt; [[22]]\n#&gt; [1] \"sunflower\"\n#&gt; \n#&gt; [[23]]\n#&gt; [1] \"mouse\"\n#&gt; \n#&gt; [[24]]\n#&gt; [1] \"clock\"\n#&gt; \n#&gt; [[25]]\n#&gt; [1] \"bridge\"\n#&gt; \n#&gt; [[26]]\n#&gt; [1] \"couch\"\n#&gt; \n#&gt; [[27]]\n#&gt; [1] \"flatfish\"\n#&gt; \n#&gt; [[28]]\n#&gt; [1] \"lamp\"\n#&gt; \n#&gt; [[29]]\n#&gt; [1] \"bus\"\n#&gt; \n#&gt; [[30]]\n#&gt; [1] \"poppy\"\n#&gt; \n#&gt; [[31]]\n#&gt; [1] \"telephone\"\n#&gt; \n#&gt; [[32]]\n#&gt; [1] \"spider\"\n#&gt; \n#&gt; [[33]]\n#&gt; [1] \"motorcycle\"\n#&gt; \n#&gt; [[34]]\n#&gt; [1] \"baby\"\n#&gt; \n#&gt; [[35]]\n#&gt; [1] \"apple\"\n#&gt; \n#&gt; [[36]]\n#&gt; [1] \"bicycle\"\n#&gt; \n#&gt; [[37]]\n#&gt; [1] \"can\"\n#&gt; \n#&gt; [[38]]\n#&gt; [1] \"mushroom\"\n#&gt; \n#&gt; [[39]]\n#&gt; [1] \"cup\"\n#&gt; \n#&gt; [[40]]\n#&gt; [1] \"shrew\"\n#&gt; \n#&gt; [[41]]\n#&gt; [1] \"pine_tree\"\n#&gt; \n#&gt; [[42]]\n#&gt; [1] \"streetcar\"\n#&gt; \n#&gt; [[43]]\n#&gt; [1] \"bed\"\n#&gt; \n#&gt; [[44]]\n#&gt; [1] \"camel\"\n#&gt; \n#&gt; [[45]]\n#&gt; [1] \"possum\"\n#&gt; \n#&gt; [[46]]\n#&gt; [1] \"boy\"\n#&gt; \n#&gt; [[47]]\n#&gt; [1] \"aquarium_fish\"\n#&gt; \n#&gt; [[48]]\n#&gt; [1] \"television\"\n#&gt; \n#&gt; [[49]]\n#&gt; [1] \"man\"\n#&gt; \n#&gt; [[50]]\n#&gt; [1] \"girl\"\n#&gt; \n#&gt; [[51]]\n#&gt; [1] \"plate\"\n#&gt; \n#&gt; [[52]]\n#&gt; [1] \"ray\"\n#&gt; \n#&gt; [[53]]\n#&gt; [1] \"seal\"\n#&gt; \n#&gt; [[54]]\n#&gt; [1] \"snail\"\n#&gt; \n#&gt; [[55]]\n#&gt; [1] \"kangaroo\"\n#&gt; \n#&gt; [[56]]\n#&gt; [1] \"cockroach\"\n#&gt; \n#&gt; [[57]]\n#&gt; [1] \"pickup_truck\"\n#&gt; \n#&gt; [[58]]\n#&gt; [1] \"rabbit\"\n#&gt; \n#&gt; [[59]]\n#&gt; [1] \"turtle\"\n#&gt; \n#&gt; [[60]]\n#&gt; [1] \"trout\"\n#&gt; \n#&gt; [[61]]\n#&gt; [1] \"lawn_mower\"\n#&gt; \n#&gt; [[62]]\n#&gt; [1] \"shark\"\n#&gt; \n#&gt; [[63]]\n#&gt; [1] \"tractor\"\n#&gt; \n#&gt; [[64]]\n#&gt; [1] \"maple_tree\"\n#&gt; \n#&gt; [[65]]\n#&gt; [1] \"orange\"\n#&gt; \n#&gt; [[66]]\n#&gt; [1] \"bear\"\n#&gt; \n#&gt; [[67]]\n#&gt; [1] \"raccoon\"\n#&gt; \n#&gt; [[68]]\n#&gt; [1] \"crocodile\"\n#&gt; \n#&gt; [[69]]\n#&gt; [1] \"tiger\"\n#&gt; \n#&gt; [[70]]\n#&gt; [1] \"chimpanzee\"\n#&gt; \n#&gt; [[71]]\n#&gt; [1] \"skunk\"\n#&gt; \n#&gt; [[72]]\n#&gt; [1] \"rocket\"\n#&gt; \n#&gt; [[73]]\n#&gt; [1] \"otter\"\n#&gt; \n#&gt; [[74]]\n#&gt; [1] \"willow_tree\"\n#&gt; \n#&gt; [[75]]\n#&gt; [1] \"wardrobe\"\n#&gt; \n#&gt; [[76]]\n#&gt; [1] \"cattle\"\n#&gt; \n#&gt; [[77]]\n#&gt; [1] \"tank\"\n#&gt; \n#&gt; [[78]]\n#&gt; [1] \"beaver\"\n#&gt; \n#&gt; [[79]]\n#&gt; [1] \"train\"\n#&gt; \n#&gt; [[80]]\n#&gt; [1] \"palm_tree\"\n#&gt; \n#&gt; [[81]]\n#&gt; [1] \"house\"\n#&gt; \n#&gt; [[82]]\n#&gt; [1] \"sea\"\n#&gt; \n#&gt; [[83]]\n#&gt; [1] \"leopard\"\n#&gt; \n#&gt; [[84]]\n#&gt; [1] \"wolf\"\n#&gt; \n#&gt; [[85]]\n#&gt; [1] \"chair\"\n#&gt; \n#&gt; [[86]]\n#&gt; [1] \"squirrel\"\n#&gt; \n#&gt; [[87]]\n#&gt; [1] \"lion\"\n#&gt; \n#&gt; [[88]]\n#&gt; [1] \"fox\"\n#&gt; \n#&gt; [[89]]\n#&gt; [1] \"mountain\"\n#&gt; \n#&gt; [[90]]\n#&gt; [1] \"cloud\"\n#&gt; \n#&gt; [[91]]\n#&gt; [1] \"hamster\"\n#&gt; \n#&gt; [[92]]\n#&gt; [1] \"elephant\"\n#&gt; \n#&gt; [[93]]\n#&gt; [1] \"plain\"\n#&gt; \n#&gt; [[94]]\n#&gt; [1] \"skyscraper\"\n#&gt; \n#&gt; [[95]]\n#&gt; [1] \"dolphin\"\n#&gt; \n#&gt; [[96]]\n#&gt; [1] \"porcupine\"\n#&gt; \n#&gt; [[97]]\n#&gt; [1] \"whale\"\n#&gt; \n#&gt; [[98]]\n#&gt; [1] \"oak_tree\"\n#&gt; \n#&gt; [[99]]\n#&gt; [1] \"castle\"\n#&gt; \n#&gt; [[100]]\n#&gt; [1] \"road\""
+    "text": "Squirrel Image\nDownload labels json here.\nDownload the squirrel image here.\n\n\n#&gt; [[1]]\n#&gt; [1] \"keyboard\"\n#&gt; \n#&gt; [[2]]\n#&gt; [1] \"worm\"\n#&gt; \n#&gt; [[3]]\n#&gt; [1] \"sunflower\"\n#&gt; \n#&gt; [[4]]\n#&gt; [1] \"lamp\"\n#&gt; \n#&gt; [[5]]\n#&gt; [1] \"clock\"\n#&gt; \n#&gt; [[6]]\n#&gt; [1] \"sweet_pepper\"\n#&gt; \n#&gt; [[7]]\n#&gt; [1] \"snake\"\n#&gt; \n#&gt; [[8]]\n#&gt; [1] \"tulip\"\n#&gt; \n#&gt; [[9]]\n#&gt; [1] \"butterfly\"\n#&gt; \n#&gt; [[10]]\n#&gt; [1] \"bee\"\n#&gt; \n#&gt; [[11]]\n#&gt; [1] \"shark\"\n#&gt; \n#&gt; [[12]]\n#&gt; [1] \"bus\"\n#&gt; \n#&gt; [[13]]\n#&gt; [1] \"motorcycle\"\n#&gt; \n#&gt; [[14]]\n#&gt; [1] \"poppy\"\n#&gt; \n#&gt; [[15]]\n#&gt; [1] \"couch\"\n#&gt; \n#&gt; [[16]]\n#&gt; [1] \"bowl\"\n#&gt; \n#&gt; [[17]]\n#&gt; [1] \"dinosaur\"\n#&gt; \n#&gt; [[18]]\n#&gt; [1] \"orchid\"\n#&gt; \n#&gt; [[19]]\n#&gt; [1] \"crab\"\n#&gt; \n#&gt; [[20]]\n#&gt; [1] \"pickup_truck\"\n#&gt; \n#&gt; [[21]]\n#&gt; [1] \"flatfish\"\n#&gt; \n#&gt; [[22]]\n#&gt; [1] \"aquarium_fish\"\n#&gt; \n#&gt; [[23]]\n#&gt; [1] \"train\"\n#&gt; \n#&gt; [[24]]\n#&gt; [1] \"cup\"\n#&gt; \n#&gt; [[25]]\n#&gt; [1] \"lobster\"\n#&gt; \n#&gt; [[26]]\n#&gt; [1] \"spider\"\n#&gt; \n#&gt; [[27]]\n#&gt; [1] \"bridge\"\n#&gt; \n#&gt; [[28]]\n#&gt; [1] \"rose\"\n#&gt; \n#&gt; [[29]]\n#&gt; [1] \"caterpillar\"\n#&gt; \n#&gt; [[30]]\n#&gt; [1] \"bicycle\"\n#&gt; \n#&gt; [[31]]\n#&gt; [1] \"lizard\"\n#&gt; \n#&gt; [[32]]\n#&gt; [1] \"rocket\"\n#&gt; \n#&gt; [[33]]\n#&gt; [1] \"beetle\"\n#&gt; \n#&gt; [[34]]\n#&gt; [1] \"telephone\"\n#&gt; \n#&gt; [[35]]\n#&gt; [1] \"man\"\n#&gt; \n#&gt; [[36]]\n#&gt; [1] \"forest\"\n#&gt; \n#&gt; [[37]]\n#&gt; [1] \"mountain\"\n#&gt; \n#&gt; [[38]]\n#&gt; [1] \"bottle\"\n#&gt; \n#&gt; [[39]]\n#&gt; [1] \"tank\"\n#&gt; \n#&gt; [[40]]\n#&gt; [1] \"streetcar\"\n#&gt; \n#&gt; [[41]]\n#&gt; [1] \"whale\"\n#&gt; \n#&gt; [[42]]\n#&gt; [1] \"lawn_mower\"\n#&gt; \n#&gt; [[43]]\n#&gt; [1] \"cattle\"\n#&gt; \n#&gt; [[44]]\n#&gt; [1] \"plate\"\n#&gt; \n#&gt; [[45]]\n#&gt; [1] \"ray\"\n#&gt; \n#&gt; [[46]]\n#&gt; [1] \"pine_tree\"\n#&gt; \n#&gt; [[47]]\n#&gt; [1] \"seal\"\n#&gt; \n#&gt; [[48]]\n#&gt; [1] \"turtle\"\n#&gt; \n#&gt; [[49]]\n#&gt; [1] \"can\"\n#&gt; \n#&gt; [[50]]\n#&gt; [1] \"camel\"\n#&gt; \n#&gt; [[51]]\n#&gt; [1] \"boy\"\n#&gt; \n#&gt; [[52]]\n#&gt; [1] \"mouse\"\n#&gt; \n#&gt; [[53]]\n#&gt; [1] \"skunk\"\n#&gt; \n#&gt; [[54]]\n#&gt; [1] \"chimpanzee\"\n#&gt; \n#&gt; [[55]]\n#&gt; [1] \"woman\"\n#&gt; \n#&gt; [[56]]\n#&gt; [1] \"table\"\n#&gt; \n#&gt; [[57]]\n#&gt; [1] \"possum\"\n#&gt; \n#&gt; [[58]]\n#&gt; [1] \"television\"\n#&gt; \n#&gt; [[59]]\n#&gt; [1] \"palm_tree\"\n#&gt; \n#&gt; [[60]]\n#&gt; [1] \"cloud\"\n#&gt; \n#&gt; [[61]]\n#&gt; [1] \"trout\"\n#&gt; \n#&gt; [[62]]\n#&gt; [1] \"baby\"\n#&gt; \n#&gt; [[63]]\n#&gt; [1] \"dolphin\"\n#&gt; \n#&gt; [[64]]\n#&gt; [1] \"sea\"\n#&gt; \n#&gt; [[65]]\n#&gt; [1] \"otter\"\n#&gt; \n#&gt; [[66]]\n#&gt; [1] \"tractor\"\n#&gt; \n#&gt; [[67]]\n#&gt; [1] \"maple_tree\"\n#&gt; \n#&gt; [[68]]\n#&gt; [1] \"kangaroo\"\n#&gt; \n#&gt; [[69]]\n#&gt; [1] \"skyscraper\"\n#&gt; \n#&gt; [[70]]\n#&gt; [1] \"shrew\"\n#&gt; \n#&gt; [[71]]\n#&gt; [1] \"bear\"\n#&gt; \n#&gt; [[72]]\n#&gt; [1] \"raccoon\"\n#&gt; \n#&gt; [[73]]\n#&gt; [1] \"bed\"\n#&gt; \n#&gt; [[74]]\n#&gt; [1] \"house\"\n#&gt; \n#&gt; [[75]]\n#&gt; [1] \"beaver\"\n#&gt; \n#&gt; [[76]]\n#&gt; [1] \"rabbit\"\n#&gt; \n#&gt; [[77]]\n#&gt; [1] \"mushroom\"\n#&gt; \n#&gt; [[78]]\n#&gt; [1] \"pear\"\n#&gt; \n#&gt; [[79]]\n#&gt; [1] \"crocodile\"\n#&gt; \n#&gt; [[80]]\n#&gt; [1] \"wolf\"\n#&gt; \n#&gt; [[81]]\n#&gt; [1] \"willow_tree\"\n#&gt; \n#&gt; [[82]]\n#&gt; [1] \"girl\"\n#&gt; \n#&gt; [[83]]\n#&gt; [1] \"cockroach\"\n#&gt; \n#&gt; [[84]]\n#&gt; [1] \"apple\"\n#&gt; \n#&gt; [[85]]\n#&gt; [1] \"plain\"\n#&gt; \n#&gt; [[86]]\n#&gt; [1] \"oak_tree\"\n#&gt; \n#&gt; [[87]]\n#&gt; [1] \"chair\"\n#&gt; \n#&gt; [[88]]\n#&gt; [1] \"hamster\"\n#&gt; \n#&gt; [[89]]\n#&gt; [1] \"tiger\"\n#&gt; \n#&gt; [[90]]\n#&gt; [1] \"orange\"\n#&gt; \n#&gt; [[91]]\n#&gt; [1] \"snail\"\n#&gt; \n#&gt; [[92]]\n#&gt; [1] \"elephant\"\n#&gt; \n#&gt; [[93]]\n#&gt; [1] \"leopard\"\n#&gt; \n#&gt; [[94]]\n#&gt; [1] \"fox\"\n#&gt; \n#&gt; [[95]]\n#&gt; [1] \"lion\"\n#&gt; \n#&gt; [[96]]\n#&gt; [1] \"castle\"\n#&gt; \n#&gt; [[97]]\n#&gt; [1] \"wardrobe\"\n#&gt; \n#&gt; [[98]]\n#&gt; [1] \"road\"\n#&gt; \n#&gt; [[99]]\n#&gt; [1] \"porcupine\"\n#&gt; \n#&gt; [[100]]\n#&gt; [1] \"squirrel\""
   },
   {
     "objectID": "lectures/14b.html#all-r-code",
@@ -7600,5 +7600,124 @@
     "title": "Week 9",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
+  },
+  {
+    "objectID": "lectures/15a.html#corpus",
+    "href": "lectures/15a.html#corpus",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Corpus",
+    "text": "Corpus\nA corpus refers to a large and structured collection of texts, typically stored electronically, and used for linguistic analysis, natural language processing (NLP), and other computational linguistics tasks."
+  },
+  {
+    "objectID": "lectures/15a.html#corpus-1",
+    "href": "lectures/15a.html#corpus-1",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Corpus",
+    "text": "Corpus\nThe texts in a corpus can vary widely in nature, ranging from written documents, such as books, articles, and websites, to transcribed speech and social media posts"
+  },
+  {
+    "objectID": "lectures/15a.html#bag-of-words-model",
+    "href": "lectures/15a.html#bag-of-words-model",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Bag-of-words Model",
+    "text": "Bag-of-words Model\nThe Bag of Words model is a simple and fundamental technique in natural language processing (NLP). It represents text data as a collection of words, disregarding grammar and word order. Each document is represented by a vector where each dimension corresponds to a unique word in the entire corpus, and the value indicates the frequency of that word in the document. This model is widely used for tasks like text classification and sentiment analysis."
+  },
+  {
+    "objectID": "lectures/15a.html#text-mining",
+    "href": "lectures/15a.html#text-mining",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Text Mining",
+    "text": "Text Mining"
+  },
+  {
+    "objectID": "lectures/15a.html#time-series-1",
+    "href": "lectures/15a.html#time-series-1",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Time Series",
+    "text": "Time Series\nA time series is a sequence of data points collected or recorded at successive, evenly spaced intervals of time. These data points can represent any variable that is observed or measured over time, such as temperature readings, stock prices, sales figures, or sensor data."
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-2",
+    "href": "lectures/15a.html#rnn-2",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN",
+    "text": "RNN\nA recurrent neural network can be used to account the sequential order of the words.\n\nSource: ISLR2"
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-3",
+    "href": "lectures/15a.html#rnn-3",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN",
+    "text": "RNN\nA recurrent neural network can be used to account the sequential order of each measurement.\n\nSource: ISLR2"
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-forecaster",
+    "href": "lectures/15a.html#rnn-forecaster",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN Forecaster",
+    "text": "RNN Forecaster"
+  },
+  {
+    "objectID": "lectures/15a.html#r-packages",
+    "href": "lectures/15a.html#r-packages",
+    "title": "Recurrent\nNeural Networks",
+    "section": "R Packages",
+    "text": "R Packages\n\nlibrary(torch)\nlibrary(luz) # high-level interface for torch\nlibrary(torchdatasets) # for datasets we are going to use\nlibrary(zeallot)\ntorch_manual_seed(909)"
+  },
+  {
+    "objectID": "lectures/15a.html#imdb-classification",
+    "href": "lectures/15a.html#imdb-classification",
+    "title": "Recurrent\nNeural Networks",
+    "section": "IMDB Classification",
+    "text": "IMDB Classification\n\nDataDataDecodeOne-hot Decode\n\n\n\nset.seed(1)\nmax_features &lt;- 10000\nimdb_train &lt;- imdb_dataset(\n  root = \".\", \n  download = TRUE,\n  split=\"train\",\n  num_words = max_features\n)\nimdb_test &lt;- imdb_dataset(\n  root = \".\", \n  download = TRUE,\n  split=\"test\",\n  num_words = max_features\n)\n\n\n\n\nimdb_train[1]$x[1:12]\n\n#&gt;  [1]    2   25  124   25   26   11 1113  149    6  211   54    4\n\n\n\n\n\nword_index &lt;- imdb_train$vocabulary\ndecode_review &lt;- function(text, word_index) {\n   word &lt;- names(word_index)\n   idx &lt;- unlist(word_index, use.names = FALSE)\n   word &lt;- c(\"&lt;PAD&gt;\", \"&lt;START&gt;\", \"&lt;UNK&gt;\", word)\n   words &lt;- word[text]\n   paste(words, collapse = \" \")\n}\ndecode_review(imdb_train[1]$x[1:12], word_index)\n\n#&gt; [1] \"&lt;START&gt; you know you are in trouble watching a comedy when the\"\n\n\n\n\n\nlibrary(Matrix)\none_hot &lt;- function(sequences, dimension) {\n   seqlen &lt;- sapply(sequences, length)\n   n &lt;- length(seqlen)\n   rowind &lt;- rep(1:n, seqlen)\n   colind &lt;- unlist(sequences)\n   sparseMatrix(i = rowind, j = colind,\n      dims = c(n, dimension))\n}\n\n# collect all values into a list\ntrain &lt;- seq_along(imdb_train) %&gt;% \n  lapply(function(i) imdb_train[i]) %&gt;% \n  purrr::transpose()\ntest &lt;- seq_along(imdb_test) %&gt;% \n  lapply(function(i) imdb_test[i]) %&gt;% \n  purrr::transpose()\n\n# num_words + padding + start + oov token = 10000 + 3\nx_train_1h &lt;- one_hot(train$x, 10000 + 3)\nx_test_1h &lt;- one_hot(test$x, 10000 + 3)\ndim(x_train_1h)\n\n#&gt; [1] 25000 10003\n\nnnzero(x_train_1h) / (25000 * (10000 + 3))\n\n#&gt; [1] 0.01316756\n\nset.seed(3)\nival &lt;- sample(seq(along = train$y), 2000)\nitrain &lt;- seq_along(train$y)[-ival]\ny_train &lt;- unlist(train$y)"
+  },
+  {
+    "objectID": "lectures/15a.html#neural-network",
+    "href": "lectures/15a.html#neural-network",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Neural Network",
+    "text": "Neural Network\n\nModulesModelFitPlot\n\n\n\nmodel &lt;- nn_module(\n  initialize = function(input_size = 10000 + 3) {\n    self$dense1 &lt;- nn_linear(input_size, 16)\n    self$relu &lt;- nn_relu()\n    self$dense2 &lt;- nn_linear(16, 16)\n    self$output &lt;- nn_linear(16, 1)\n  },\n  forward = function(x) {\n    x |&gt; \n      self$dense1() |&gt;  \n      self$relu() |&gt; \n      self$dense2() |&gt;  \n      self$relu() |&gt; \n      self$output() |&gt; \n      torch_flatten(start_dim = 1)\n  }\n)\n\n\n\n\nmodel &lt;- model |&gt; \n  setup(\n    loss = nn_bce_with_logits_loss(),\n    optimizer = optim_rmsprop,\n    metrics = list(luz_metric_binary_accuracy_with_logits())\n  ) |&gt; \n  set_opt_hparams(lr = 0.001)\n\n\n\n\nfitted &lt;- model |&gt; \n  fit(\n    # we transform the training and validation data into torch tensors\n    list(\n      torch_tensor(as.matrix(x_train_1h[itrain,]), dtype = torch_float()), \n      torch_tensor(unlist(train$y[itrain]))\n    ),\n    valid_data = list(\n      torch_tensor(as.matrix(x_train_1h[ival, ]), dtype = torch_float()), \n      torch_tensor(unlist(train$y[ival]))\n    ),\n    dataloader_options = list(batch_size = 512),\n    epochs = 10\n  )\n\n\n\n\nplot(fitted)"
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-document-classification",
+    "href": "lectures/15a.html#rnn-document-classification",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN Document Classification",
+    "text": "RNN Document Classification\n\nDataModulesModelFit\n\n\n\nmaxlen &lt;- 500\nnum_words &lt;- 10000\nimdb_train &lt;- imdb_dataset(root = \".\", split = \"train\", num_words = num_words,\n                           maxlen = maxlen)\nimdb_test &lt;- imdb_dataset(root = \".\", split = \"test\", num_words = num_words,\n                           maxlen = maxlen)\n\nvocab &lt;- c(rep(NA, imdb_train$index_from - 1), imdb_train$get_vocabulary())\ntail(names(vocab)[imdb_train[1]$x])\n\n#&gt; [1] \"compensate\" \"you\"        \"the\"        \"rental\"     \"\"          \n#&gt; [6] \"d\"\n\n\n\n\n\nmodel &lt;- nn_module(\n  initialize = function() {\n    self$embedding &lt;- nn_embedding(10000 + 3, 32)\n    self$lstm &lt;- nn_lstm(input_size = 32, hidden_size = 32, batch_first = TRUE)\n    self$dense &lt;- nn_linear(32, 1)\n  },\n  forward = function(x) {\n    c(output, c(hn, cn)) %&lt;-% (x %&gt;% \n      self$embedding() %&gt;% \n      self$lstm())\n    output[,-1,] %&gt;%  # get the last output\n      self$dense() %&gt;% \n      torch_flatten(start_dim = 1)\n  }\n)\n\n\n\n\nmodel &lt;- model %&gt;% \n  setup(\n    loss = nn_bce_with_logits_loss(),\n    optimizer = optim_rmsprop,\n    metrics = list(luz_metric_binary_accuracy_with_logits())\n  ) %&gt;% \n  set_opt_hparams(lr = 0.001)\n\n\n\n\nfitted &lt;- model %&gt;% fit(\n  imdb_train, \n  epochs = 10,\n  dataloader_options = list(batch_size = 128),\n  valid_data = imdb_test\n)"
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-diagnostics",
+    "href": "lectures/15a.html#rnn-diagnostics",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN Diagnostics",
+    "text": "RNN Diagnostics\n\nPlotEvaluation\n\n\n\nplot(fitted)\n\n\n\n\n\n\n\n\n\n\n\npredy &lt;- torch_sigmoid(predict(fitted, imdb_test)) &gt; 0.5\nevaluate(fitted, imdb_test, dataloader_options = list(batch_size = 512))\n\n#&gt; A `luz_module_evaluation`\n#&gt; ── Results ─────────────────────────────────────────────────────────────────────\n#&gt; loss: 0.3804\n#&gt; acc: 0.843"
+  },
+  {
+    "objectID": "lectures/15a.html#time-series-2",
+    "href": "lectures/15a.html#time-series-2",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Time-Series",
+    "text": "Time-Series\n\nDataLagRemove MissingRNN Prep\n\n\n\nlibrary(ISLR2)\nxdata &lt;- data.matrix(\n NYSE[, c(\"DJ_return\", \"log_volume\",\"log_volatility\")]\n )\nistrain &lt;- NYSE[, \"train\"]\nxdata &lt;- scale(xdata)\n\n\n\n\nlagm &lt;- function(x, k = 1) {\n   n &lt;- nrow(x)\n   pad &lt;- matrix(NA, k, ncol(x))\n   rbind(pad, x[1:(n - k), ])\n}\n\narframe &lt;- data.frame(log_volume = xdata[, \"log_volume\"],\n   L1 = lagm(xdata, 1), L2 = lagm(xdata, 2),\n   L3 = lagm(xdata, 3), L4 = lagm(xdata, 4),\n   L5 = lagm(xdata, 5)\n )\n\n\n\n\narframe &lt;- arframe[-(1:5), ]\nistrain &lt;- istrain[-(1:5)]\n\n\n\n\nn &lt;- nrow(arframe)\nxrnn &lt;- data.matrix(arframe[, -1])\nxrnn &lt;- array(xrnn, c(n, 3, 5))\nxrnn &lt;- xrnn[,, 5:1]\nxrnn &lt;- aperm(xrnn, c(1, 3, 2))\ndim(xrnn)\n\n#&gt; [1] 6046    5    3"
+  },
+  {
+    "objectID": "lectures/15a.html#neural-network-1",
+    "href": "lectures/15a.html#neural-network-1",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Neural Network",
+    "text": "Neural Network\n\nModulesModelFitPrediction\n\n\n\nmodel &lt;- nn_module(\n  initialize = function() {\n    self$rnn &lt;- nn_rnn(3, 12, batch_first = TRUE)\n    self$dense &lt;- nn_linear(12, 1)\n    self$dropout &lt;- nn_dropout(0.2)\n  },\n  forward = function(x) {\n    c(output, ...) %&lt;-% (x |&gt; \n      self$rnn())\n    output[,-1,] |&gt; \n      self$dropout() |&gt; \n      self$dense() |&gt; \n      torch_flatten(start_dim = 1)\n  }\n)\n\n\n\n\nmodel &lt;- model |&gt; \n  setup(\n    optimizer = optim_rmsprop,\n    loss = nn_mse_loss()\n  ) |&gt; \n  set_opt_hparams(lr = 0.001)\n\n\n\n\nfitted &lt;- model %&gt;% fit(\n    list(xrnn[istrain,, ], arframe[istrain, \"log_volume\"]),\n    epochs = 30, # = 200,\n    dataloader_options = list(batch_size = 64),\n    valid_data =\n      list(xrnn[!istrain,, ], arframe[!istrain, \"log_volume\"])\n  )\n\n\n\n\nkpred &lt;- as.numeric(predict(fitted, xrnn[!istrain,, ]))\nV0 &lt;- var(arframe[!istrain, \"log_volume\"])\n1 - mean((kpred - arframe[!istrain, \"log_volume\"])^2) / V0\n\n#&gt; [1] 0.4055528"
+  },
+  {
+    "objectID": "lectures/15a.html#one-hot-encoding",
+    "href": "lectures/15a.html#one-hot-encoding",
+    "title": "Recurrent\nNeural Networks",
+    "section": "One-Hot Encoding",
+    "text": "One-Hot Encoding\nOne-hot encoding converts categorical variables into a binary format where each category is represented by a binary vector. In this representation, each category corresponds to a unique index in the vector, and only one element in the vector is 1 (hot), while all other elements are 0 (cold)."
+  },
+  {
+    "objectID": "lectures/15a.html#one-hot-encoding-1",
+    "href": "lectures/15a.html#one-hot-encoding-1",
+    "title": "Recurrent\nNeural Networks",
+    "section": "One-Hot Encoding",
+    "text": "One-Hot Encoding"
   }
 ]
