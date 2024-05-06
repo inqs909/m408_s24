@@ -26,7 +26,7 @@ lyrics_sparse <-
 dim(lyrics_sparse)
 
 set.seed(123)
-topic_model <- stm(lyrics_sparse, K = 6, verbose = FALSE)
+topic_model <- stm(lyrics_sparse, K = 8, verbose = FALSE)
 
 summary(topic_model)
 tidy(topic_model, matrix = "lift")
@@ -52,15 +52,15 @@ set.seed(123)
 
 effects <-
   estimateEffect(
-    1:6 ~ album_name,
+    1:8 ~ album_name,
     topic_model,
     taylor_album_songs |> distinct(track_name, album_name) |> arrange(track_name)
   )
 
 
-tidy(effects) |> 
-  filter(term != "(Intercept)", p.value < 0.05)
-
-
+tidy(effects) |>  
+  filter(term != "(Intercept)", p.value < 0.1)
+  
+  
 tidy(topic_model, matrix = "lift") |> 
-  filter(topic == 2)
+  filter(topic == 3)

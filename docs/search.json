@@ -3528,20 +3528,6 @@
     "text": "Problem 2\nFrom the Applied Section in Chapter 8: Problem 10 a,b,c,g"
   },
   {
-    "objectID": "hw/hw9.html#problem-3",
-    "href": "hw/hw9.html#problem-3",
-    "title": "Homework 9",
-    "section": "Problem 3",
-    "text": "Problem 3\nFrom the Applied Section in Chapter 9: Problem 10 a,b,c"
-  },
-  {
-    "objectID": "hw/hw9.html#problem-4",
-    "href": "hw/hw9.html#problem-4",
-    "title": "Homework 9",
-    "section": "Problem 4",
-    "text": "Problem 4\nFrom the Applied Section in Chapter 9: Problem 10 a,b,c,d,e,f"
-  },
-  {
     "objectID": "hw/hw7.html",
     "href": "hw/hw7.html",
     "title": "Homework 7",
@@ -5239,15 +5225,22 @@
     "objectID": "lectures/15a.html#sequential-data-1",
     "href": "lectures/15a.html#sequential-data-1",
     "title": "Recurrent\nNeural Networks",
-    "section": "",
-    "text": "Sequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values."
+    "section": "Sequential Data",
+    "text": "Sequential Data\nSequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\]"
+  },
+  {
+    "objectID": "lectures/15a.html#stochastic-procceses",
+    "href": "lectures/15a.html#stochastic-procceses",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Stochastic Procceses",
+    "text": "Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values."
   },
   {
     "objectID": "lectures/15a.html#examples-of-sequential-data",
     "href": "lectures/15a.html#examples-of-sequential-data",
     "title": "Recurrent\nNeural Networks",
-    "section": "",
-    "text": "Documents and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
+    "section": "Examples of Sequential Data",
+    "text": "Examples of Sequential Data\n\nDocuments and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
   },
   {
     "objectID": "lectures/15a.html#rnn",
@@ -5261,7 +5254,28 @@
     "href": "lectures/15a.html#rnn-1",
     "title": "Recurrent\nNeural Networks",
     "section": "RNN",
-    "text": "RNN\n\n\n\nSource: ISLR2"
+    "text": "RNN\n\nSource: ISLR2"
+  },
+  {
+    "objectID": "lectures/15a.html#rnn-inputs",
+    "href": "lectures/15a.html#rnn-inputs",
+    "title": "Recurrent\nNeural Networks",
+    "section": "RNN Inputs",
+    "text": "RNN Inputs\n\\[\n\\boldsymbol X = (\\boldsymbol x_0, \\boldsymbol x_1, \\boldsymbol x_2, \\cdots, \\boldsymbol x_{J-1}, \\boldsymbol x_J)\n\\] where\n\\[\n\\boldsymbol x_{j} = (x_{j1},x_{j1}, \\cdots, x_{jK})\n\\]"
+  },
+  {
+    "objectID": "lectures/15a.html#hidden-layer",
+    "href": "lectures/15a.html#hidden-layer",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Hidden Layer",
+    "text": "Hidden Layer\n\\[\nh_{j} = f(\\bbeta_{hx}\\boldsymbol x_{j} + \\bbeta_{hh}h_{j-1} + b_h)\n\\]\n\n\\(\\bbeta_{hx}\\) and \\(\\bbeta_{hh}\\) are weight vectors for input-to-hidden, and hidden-to-hidden connections respectively."
+  },
+  {
+    "objectID": "lectures/15a.html#output-layer",
+    "href": "lectures/15a.html#output-layer",
+    "title": "Recurrent\nNeural Networks",
+    "section": "Output Layer",
+    "text": "Output Layer\n\\[\ny_{j} = g(\\bbeta_{hy}h_{j} + b_y)\n\\]"
   },
   {
     "objectID": "lectures/15a.html#document-classification-1",
@@ -7586,19 +7600,5 @@
     "title": "Week 9",
     "section": "Resources",
     "text": "Resources\n\n\n\nLecture\nSlides\nVideos\nFiles\n\n\n\n\n1\nSlides\nVideo\n\n\n\n2\nSlides\nVideo"
-  },
-  {
-    "objectID": "lectures/15a.html",
-    "href": "lectures/15a.html",
-    "title": "Recurrent\nNeural Networks",
-    "section": "",
-    "text": "Sequential data is data that is obtained in a series:\n\\[\nX_{(0)}\\rightarrow\nX_{(1)}\\rightarrow\nX_{(2)}\\rightarrow\nX_{(3)}\\rightarrow\n\\cdots\\rightarrow\nX_{(J-1)}\\rightarrow\nX_{(J)}\n\\] ## Stochastic Procceses\nA stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.\n\nThe generation of a variable \\(X_{(j)}\\) may or may not be dependent of the previous values.\n\n\n\n\n\nDocuments and Books\nTemperature\nStock Prices\nSpeech/Recordings\nHandwriting"
-  },
-  {
-    "objectID": "lectures/15a.html#rnn-2",
-    "href": "lectures/15a.html#rnn-2",
-    "title": "Recurrent\nNeural Networks",
-    "section": "RNN",
-    "text": "RNN"
   }
 ]

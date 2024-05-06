@@ -6,6 +6,7 @@ subtitle: "Time-Series and Audio Processing"
 format:
   revealjs:
     scrollable: true
+    include-in-header: "math_commands.html"
     navigation-mode: vertical
     controls-layout: bottom-right
     controls-tutorial: true
@@ -35,6 +36,7 @@ filters:
 editor: source
 ---
 
+
 # Sequential Data
 
 ## Sequential Data
@@ -49,7 +51,10 @@ X_{(3)}\rightarrow
 \cdots\rightarrow
 X_{(J-1)}\rightarrow
 X_{(J)}
-$$ \## Stochastic Procceses
+$$ 
+
+
+## Stochastic Procceses
 
 A stochastic process is a collection of random variables, that can be indexed by a parameters. Sequential data can be thought of as a stochastic process.
 
@@ -87,11 +92,36 @@ Using the data sequence, we can predict and outcome $Y$.
 
 ![Source: ISLR2](img/islr2/Chapter10/10_12.png)
 
+## RNN Inputs
+
+$$
+\boldsymbol X = (\boldsymbol x_0, \boldsymbol x_1, \boldsymbol x_2, \cdots, \boldsymbol x_{J-1}, \boldsymbol x_J)
+$$
+where 
+
+$$
+\boldsymbol x_{j} = (x_{j1},x_{j1}, \cdots, x_{jK})
+$$
+
+## Hidden Layer
+
+$$
+h_{j} = f(\bbeta_{hx}\boldsymbol x_{j} + \bbeta_{hh}h_{j-1} + b_h)
+$$
+
+- $\bbeta_{hx}$ and $\bbeta_{hh}$ are weight vectors for input-to-hidden, and hidden-to-hidden connections respectively.
+
+## Output Layer
+
+$$
+y_{j} = g(\bbeta_{hy}h_{j} + b_y)
+$$
+
 # Document Classification
 
 ## Document Classification
 
-Document Classification is the process of classifying a
+Document Classification is the process of classifying documents to different categories.
 
 # Time Series
 
