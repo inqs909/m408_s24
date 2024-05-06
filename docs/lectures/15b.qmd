@@ -38,11 +38,17 @@ editor: source
 
 # Topic Modeling with Talor Swift
 
-# The Missing Statistics Semester at CI
+## Topic Modelling
 
-## The Missing Statistics Sememster at CI
+
+
+# The Missing Statistics Semester
+
+## The Missing Statistics Sememster
 
 Here is a list of resources to expand on topics not covered in your education.
+
+Adapted from <https://missing.csail.mit.edu/>
 
 ## Introduction to Statistics
 
@@ -53,8 +59,10 @@ Here is a list of resources to expand on topics not covered in your education.
 
 ## Statistical Computing
 
--   Computational Statistics (Download from CSUCI Library)
--   
+-   Computational Statistics (2009, Springer; Download from CSUCI Library)
+-   Basic Elements of Computational Statistics (2017, Springer; Download from CSUCI)
+-   Optimization (2013, Springer; Download from CSUCI)
+
 
 ## Regression
 

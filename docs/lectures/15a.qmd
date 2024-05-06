@@ -250,11 +250,11 @@ one_hot <- function(sequences, dimension) {
 }
 
 # collect all values into a list
-train <- seq_along(imdb_train) %>% 
-  lapply(function(i) imdb_train[i]) %>% 
+train <- seq_along(imdb_train) |> 
+  lapply(function(i) imdb_train[i]) |>  
   purrr::transpose()
-test <- seq_along(imdb_test) %>% 
-  lapply(function(i) imdb_test[i]) %>% 
+test <- seq_along(imdb_test) |> 
+  lapply(function(i) imdb_test[i]) |> 
   purrr::transpose()
 
 # num_words + padding + start + oov token = 10000 + 3
@@ -329,7 +329,7 @@ fitted <- model |>
       torch_tensor(unlist(train$y[ival]))
     ),
     dataloader_options = list(batch_size = 512),
-    epochs = 10
+    epochs = 5
   )
 
 ```
@@ -370,11 +370,11 @@ model <- nn_module(
     self$dense <- nn_linear(32, 1)
   },
   forward = function(x) {
-    c(output, c(hn, cn)) %<-% (x %>% 
-      self$embedding() %>% 
+    c(output, c(hn, cn)) %<-% (x  |>  
+      self$embedding() |> 
       self$lstm())
-    output[,-1,] %>%  # get the last output
-      self$dense() %>% 
+    output[,-1,] |>   # get the last output
+      self$dense() |>  
       torch_flatten(start_dim = 1)
   }
 )
@@ -383,12 +383,12 @@ model <- nn_module(
 ## Model
 
 ```{r}
-model <- model %>% 
+model <- model |> 
   setup(
     loss = nn_bce_with_logits_loss(),
     optimizer = optim_rmsprop,
     metrics = list(luz_metric_binary_accuracy_with_logits())
-  ) %>% 
+  ) |> 
   set_opt_hparams(lr = 0.001)
 
 ```
@@ -396,9 +396,9 @@ model <- model %>%
 ## Fit
 
 ```{r}
-fitted <- model %>% fit(
+fitted <- model |> fit(
   imdb_train, 
-  epochs = 10,
+  epochs = 5,
   dataloader_options = list(batch_size = 128),
   valid_data = imdb_test
 )
@@ -521,9 +521,9 @@ model <- model |>
 ## Fit
 
 ```{r}
-fitted <- model %>% fit(
+fitted <- model |> fit(
     list(xrnn[istrain,, ], arframe[istrain, "log_volume"]),
-    epochs = 30, # = 200,
+    epochs = 20, # = 200,
     dataloader_options = list(batch_size = 64),
     valid_data =
       list(xrnn[!istrain,, ], arframe[!istrain, "log_volume"])

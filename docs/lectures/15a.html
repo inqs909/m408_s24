@@ -749,11 +749,11 @@ X_{(J)}
 <span id="cb7-9"><a href="#cb7-9"></a>}</span>
 <span id="cb7-10"><a href="#cb7-10"></a></span>
 <span id="cb7-11"><a href="#cb7-11"></a><span class="co"># collect all values into a list</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a>train <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(imdb_train) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-13"><a href="#cb7-13"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(i) imdb_train[i]) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-12"><a href="#cb7-12"></a>train <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(imdb_train) <span class="sc">|&gt;</span> </span>
+<span id="cb7-13"><a href="#cb7-13"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(i) imdb_train[i]) <span class="sc">|&gt;</span>  </span>
 <span id="cb7-14"><a href="#cb7-14"></a>  purrr<span class="sc">::</span><span class="fu">transpose</span>()</span>
-<span id="cb7-15"><a href="#cb7-15"></a>test <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(imdb_test) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-16"><a href="#cb7-16"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(i) imdb_test[i]) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-15"><a href="#cb7-15"></a>test <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(imdb_test) <span class="sc">|&gt;</span> </span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(i) imdb_test[i]) <span class="sc">|&gt;</span> </span>
 <span id="cb7-17"><a href="#cb7-17"></a>  purrr<span class="sc">::</span><span class="fu">transpose</span>()</span>
 <span id="cb7-18"><a href="#cb7-18"></a></span>
 <span id="cb7-19"><a href="#cb7-19"></a><span class="co"># num_words + padding + start + oov token = 10000 + 3</span></span>
@@ -827,7 +827,7 @@ X_{(J)}
 <span id="cb14-10"><a href="#cb14-10"></a>      <span class="fu">torch_tensor</span>(<span class="fu">unlist</span>(train<span class="sc">$</span>y[ival]))</span>
 <span id="cb14-11"><a href="#cb14-11"></a>    ),</span>
 <span id="cb14-12"><a href="#cb14-12"></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">512</span>),</span>
-<span id="cb14-13"><a href="#cb14-13"></a>    <span class="at">epochs =</span> <span class="dv">10</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>    <span class="at">epochs =</span> <span class="dv">5</span></span>
 <span id="cb14-14"><a href="#cb14-14"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -877,11 +877,11 @@ X_{(J)}
 <span id="cb18-5"><a href="#cb18-5"></a>    self<span class="sc">$</span>dense <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(<span class="dv">32</span>, <span class="dv">1</span>)</span>
 <span id="cb18-6"><a href="#cb18-6"></a>  },</span>
 <span id="cb18-7"><a href="#cb18-7"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb18-8"><a href="#cb18-8"></a>    <span class="fu">c</span>(output, <span class="fu">c</span>(hn, cn)) <span class="sc">%&lt;-%</span> (x <span class="sc">%&gt;%</span> </span>
-<span id="cb18-9"><a href="#cb18-9"></a>      self<span class="sc">$</span><span class="fu">embedding</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="fu">c</span>(output, <span class="fu">c</span>(hn, cn)) <span class="sc">%&lt;-%</span> (x  <span class="sc">|&gt;</span>  </span>
+<span id="cb18-9"><a href="#cb18-9"></a>      self<span class="sc">$</span><span class="fu">embedding</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb18-10"><a href="#cb18-10"></a>      self<span class="sc">$</span><span class="fu">lstm</span>())</span>
-<span id="cb18-11"><a href="#cb18-11"></a>    output[,<span class="sc">-</span><span class="dv">1</span>,] <span class="sc">%&gt;%</span>  <span class="co"># get the last output</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a>      self<span class="sc">$</span><span class="fu">dense</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-11"><a href="#cb18-11"></a>    output[,<span class="sc">-</span><span class="dv">1</span>,] <span class="sc">|&gt;</span>   <span class="co"># get the last output</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>      self<span class="sc">$</span><span class="fu">dense</span>() <span class="sc">|&gt;</span>  </span>
 <span id="cb18-13"><a href="#cb18-13"></a>      <span class="fu">torch_flatten</span>(<span class="at">start_dim =</span> <span class="dv">1</span>)</span>
 <span id="cb18-14"><a href="#cb18-14"></a>  }</span>
 <span id="cb18-15"><a href="#cb18-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -889,20 +889,20 @@ X_{(J)}
 </div>
 <div id="tabset-3-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>model <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>model <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">setup</span>(</span>
 <span id="cb19-3"><a href="#cb19-3"></a>    <span class="at">loss =</span> <span class="fu">nn_bce_with_logits_loss</span>(),</span>
 <span id="cb19-4"><a href="#cb19-4"></a>    <span class="at">optimizer =</span> optim_rmsprop,</span>
 <span id="cb19-5"><a href="#cb19-5"></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_binary_accuracy_with_logits</span>())</span>
-<span id="cb19-6"><a href="#cb19-6"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb19-7"><a href="#cb19-7"></a>  <span class="fu">set_opt_hparams</span>(<span class="at">lr =</span> <span class="fl">0.001</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-3-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span> <span class="fu">fit</span>(</span>
 <span id="cb20-2"><a href="#cb20-2"></a>  imdb_train, </span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">epochs =</span> <span class="dv">10</span>,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">epochs =</span> <span class="dv">5</span>,</span>
 <span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">128</span>),</span>
 <span id="cb20-5"><a href="#cb20-5"></a>  <span class="at">valid_data =</span> imdb_test</span>
 <span id="cb20-6"><a href="#cb20-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -935,8 +935,8 @@ X_{(J)}
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; A `luz_module_evaluation`
 #&gt; ── Results ─────────────────────────────────────────────────────────────────────
-#&gt; loss: 0.3804
-#&gt; acc: 0.843</code></pre>
+#&gt; loss: 0.3977
+#&gt; acc: 0.8258</code></pre>
 </div>
 </div>
 </div>
@@ -1057,9 +1057,9 @@ X_{(J)}
 </div>
 <div id="tabset-6-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span> <span class="fu">fit</span>(</span>
 <span id="cb31-2"><a href="#cb31-2"></a>    <span class="fu">list</span>(xrnn[istrain,, ], arframe[istrain, <span class="st">"log_volume"</span>]),</span>
-<span id="cb31-3"><a href="#cb31-3"></a>    <span class="at">epochs =</span> <span class="dv">30</span>, <span class="co"># = 200,</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>    <span class="at">epochs =</span> <span class="dv">20</span>, <span class="co"># = 200,</span></span>
 <span id="cb31-4"><a href="#cb31-4"></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">64</span>),</span>
 <span id="cb31-5"><a href="#cb31-5"></a>    <span class="at">valid_data =</span></span>
 <span id="cb31-6"><a href="#cb31-6"></a>      <span class="fu">list</span>(xrnn[<span class="sc">!</span>istrain,, ], arframe[<span class="sc">!</span>istrain, <span class="st">"log_volume"</span>])</span>
@@ -1072,7 +1072,7 @@ X_{(J)}
 <span id="cb32-2"><a href="#cb32-2"></a>V0 <span class="ot">&lt;-</span> <span class="fu">var</span>(arframe[<span class="sc">!</span>istrain, <span class="st">"log_volume"</span>])</span>
 <span id="cb32-3"><a href="#cb32-3"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">mean</span>((kpred <span class="sc">-</span> arframe[<span class="sc">!</span>istrain, <span class="st">"log_volume"</span>])<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> V0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.4055528</code></pre>
+<pre><code>#&gt; [1] 0.3947611</code></pre>
 </div>
 </div>
 </div>

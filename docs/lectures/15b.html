@@ -356,12 +356,13 @@ Machine Learning</p></h1>
 <p>Topic Modeling with Talor Swift</p>
 </div></li>
 <li><div class="agenda-inactive agenda-post-active">
-<p>The Missing Statistics Semester at CI</p>
+<p>The Missing Statistics Semester</p>
 </div></li>
 </ul>
 </div>
 </section>
 
+<section>
 <section id="topic-modeling-with-talor-swift" class="title-slide slide level1 agenda-slide center">
 <h1>Topic Modeling with Talor Swift</h1>
 <div class="agenda">
@@ -373,15 +374,17 @@ Machine Learning</p></h1>
 <p>Topic Modeling with Talor Swift</p>
 </div></li>
 <li><div class="agenda-inactive agenda-post-active">
-<p>The Missing Statistics Semester at CI</p>
+<p>The Missing Statistics Semester</p>
 </div></li>
 </ul>
 </div>
 </section>
-
+<section id="topic-modelling" class="slide level2">
+<h2>Topic Modelling</h2>
+</section></section>
 <section>
-<section id="the-missing-statistics-semester-at-ci" class="title-slide slide level1 agenda-slide center">
-<h1>The Missing Statistics Semester at CI</h1>
+<section id="the-missing-statistics-semester" class="title-slide slide level1 agenda-slide center">
+<h1>The Missing Statistics Semester</h1>
 <div class="agenda">
 <ul>
 <li><div class="agenda-inactive agenda-pre-active">
@@ -391,14 +394,15 @@ Machine Learning</p></h1>
 <p>Topic Modeling with Talor Swift</p>
 </div></li>
 <li><div class="agenda-active">
-<p>The Missing Statistics Semester at CI</p>
+<p>The Missing Statistics Semester</p>
 </div></li>
 </ul>
 </div>
 </section>
-<section id="the-missing-statistics-sememster-at-ci" class="slide level2">
-<h2>The Missing Statistics Sememster at CI</h2>
+<section id="the-missing-statistics-sememster" class="slide level2">
+<h2>The Missing Statistics Sememster</h2>
 <p>Here is a list of resources to expand on topics not covered in your education.</p>
+<p>Adapted from <a href="https://missing.csail.mit.edu/" class="uri">https://missing.csail.mit.edu/</a></p>
 </section>
 <section id="introduction-to-statistics" class="slide level2">
 <h2>Introduction to Statistics</h2>
@@ -412,8 +416,9 @@ Machine Learning</p></h1>
 <section id="statistical-computing" class="slide level2">
 <h2>Statistical Computing</h2>
 <ul>
-<li>Computational Statistics (Download from CSUCI Library)</li>
-<li></li>
+<li>Computational Statistics (2009, Springer; Download from CSUCI Library)</li>
+<li>Basic Elements of Computational Statistics (2017, Springer; Download from CSUCI)</li>
+<li>Optimization (2013, Springer; Download from CSUCI)</li>
 </ul>
 </section>
 <section id="regression" class="slide level2">
@@ -735,6 +740,44 @@ Machine Learning</p></h1>
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
