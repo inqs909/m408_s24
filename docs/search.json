@@ -2293,7 +2293,7 @@
     "href": "lectures/15b.html#introduction-to-statistics",
     "title": "Unsupervised\nMachine Learning",
     "section": "Introduction to Statistics",
-    "text": "Introduction to Statistics\n\nTraditional Statistics\nModern Basic Statistics\nStatistical Modeling\nStatistical Thinking"
+    "text": "Introduction to Statistics\n\nTraditional Statistics\nModern Basic Statistics\nStatistical Modeling\nStatistical Thinking\nStats for People Who Hate Stats"
   },
   {
     "objectID": "lectures/15b.html#statistical-computing",
@@ -2356,7 +2356,7 @@
     "href": "lectures/15b.html#other-programming",
     "title": "Unsupervised\nMachine Learning",
     "section": "Other Programming",
-    "text": "Other Programming\n\nCpp\nCpp Armadillo\nJulia Data Science\n[]"
+    "text": "Other Programming\n\nCpp\nCpp Armadillo\nJulia Data Science\nArcGIS\nSAS\nStata\nSPSS\nVBA\nJMP"
   },
   {
     "objectID": "lectures/14b.html#convolutional-neural-networks-1",
@@ -7739,7 +7739,7 @@
     "href": "lectures/15b.html#topic-modelling",
     "title": "Unsupervised\nMachine Learning",
     "section": "Topic Modelling",
-    "text": "Topic Modelling"
+    "text": "Topic Modelling\nTopic modeling is a statistical technique used to identify latent topics or themes within a collection of text documents. It aims to uncover the underlying structure of the text data by automatically clustering documents into topics based on the distribution of words across documents. Topic modeling is widely used in natural language processing (NLP) and text mining for tasks such as document clustering, information retrieval, and content analysis."
   },
   {
     "objectID": "lectures/15b.html#the-missing-statistics-sememster",
@@ -7747,5 +7747,131 @@
     "title": "Unsupervised\nMachine Learning",
     "section": "The Missing Statistics Sememster",
     "text": "The Missing Statistics Sememster\nHere is a list of resources to expand on topics not covered in your education.\nAdapted from https://missing.csail.mit.edu/"
+  },
+  {
+    "objectID": "lectures/15b.html#supervised-machine-learning",
+    "href": "lectures/15b.html#supervised-machine-learning",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Supervised Machine Learning",
+    "text": "Supervised Machine Learning\n\\[\n\\boldsymbol X = (X_1, X_2, \\cdots, X_n)\\mrTr\n\\] where\n\\[\nX_i = (x_{i1}, x_{i2}, \\cdots, x_{in})\n\\] and\n\\[\n\\boldsymbol Y = (Y_1, Y_2, \\cdots, Y_n)\\mrTr\n\\]"
+  },
+  {
+    "objectID": "lectures/15b.html#unsupervised-machine-learning-1",
+    "href": "lectures/15b.html#unsupervised-machine-learning-1",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Unsupervised Machine Learning",
+    "text": "Unsupervised Machine Learning\nGiven:\n\\[\n\\boldsymbol X = (X_1, X_2, \\cdots, X_n)\\mrTr\n\\] where\n\\[\nX_i = (x_{i1}, x_{i2}, \\cdots, x_{in})\n\\]\nGroup the data to \\(K\\) categories."
+  },
+  {
+    "objectID": "lectures/15b.html#shell-terminal",
+    "href": "lectures/15b.html#shell-terminal",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Shell-Terminal",
+    "text": "Shell-Terminal\n\nMissing Semester\nShell\nExplain Shell\nVim Adventures\nNeovim\ntmux\nHPCC Manuals"
+  },
+  {
+    "objectID": "lectures/15b.html#dashboards",
+    "href": "lectures/15b.html#dashboards",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Dashboards",
+    "text": "Dashboards\n\nShiny\nQuarto Dashboards\nTableau\nPower BI"
+  },
+  {
+    "objectID": "lectures/15b.html#unsupervised-machine-learning-2",
+    "href": "lectures/15b.html#unsupervised-machine-learning-2",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Unsupervised Machine Learning",
+    "text": "Unsupervised Machine Learning\nWe can naturally group data with the following techniques:\n\nPrincipal Component Analysis\nK-Means Clustering\nHierarchical Clustering\nMixture Models"
+  },
+  {
+    "objectID": "lectures/15b.html#principal-componenet-analysis",
+    "href": "lectures/15b.html#principal-componenet-analysis",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Principal Componenet Analysis",
+    "text": "Principal Componenet Analysis\nPrincipal Component Analysis (PCA) is a dimensionality reduction technique used to simplify complex datasets while retaining as much of the original variability as possible. It accomplishes this by transforming the original variables into a new set of orthogonal variables called principal components. PCA is widely used in data analysis, visualization, and machine learning for tasks such as feature extraction, data compression, and noise reduction."
+  },
+  {
+    "objectID": "lectures/15b.html#k-means-clustering",
+    "href": "lectures/15b.html#k-means-clustering",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "K-Means Clustering",
+    "text": "K-Means Clustering\nK-Means clustering is one of the most popular unsupervised machine learning algorithms used for partitioning a dataset into a predetermined number of clusters. It aims to group similar data points together and discover underlying patterns or structures within the data. K-Means is simple, efficient, and widely applicable in various domains, including data analysis, image processing, and customer segmentation."
+  },
+  {
+    "objectID": "lectures/15b.html#hierarchical-clustering",
+    "href": "lectures/15b.html#hierarchical-clustering",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Hierarchical Clustering",
+    "text": "Hierarchical Clustering\nHierarchical clustering is a method used to cluster data into a hierarchy of clusters. Unlike K-Means, which requires specifying the number of clusters upfront, hierarchical clustering builds a tree-like structure (dendrogram) that reflects the relationships between data points at different levels of granularity. Hierarchical clustering can be divided into two main types: agglomerative and divisive."
+  },
+  {
+    "objectID": "lectures/15b.html#mixture-models",
+    "href": "lectures/15b.html#mixture-models",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Mixture Models",
+    "text": "Mixture Models\nMixture models for clustering, often referred to as Gaussian Mixture Models (GMMs), are probabilistic models used to describe the distribution of data as a mixture of multiple Gaussian distributions. Unlike K-Means or hierarchical clustering, which assign data points to discrete clusters, GMMs represent each cluster as a probability distribution over the entire feature space. This allows for more flexible modeling of complex data distributions and enables soft assignment of data points to clusters based on their probabilities."
+  },
+  {
+    "objectID": "lectures/15b.html#latent-dirichlet-allocation",
+    "href": "lectures/15b.html#latent-dirichlet-allocation",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Latent Dirichlet Allocation",
+    "text": "Latent Dirichlet Allocation\nLatent Dirichlet Allocation (LDA) is a probabilistic model used for topic modeling in natural language processing (NLP). LDA assumes that each document in the corpus is generated by a probabilistic process involving a mixture of topics. It posits that documents exhibit multiple topics, and each word within a document is associated with one of these topics."
+  },
+  {
+    "objectID": "lectures/15b.html#structural-topic-model",
+    "href": "lectures/15b.html#structural-topic-model",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Structural Topic Model",
+    "text": "Structural Topic Model\nThe Structural Topic Model (STM) is an extension of the Latent Dirichlet Allocation (LDA) model that incorporates document metadata and covariates to capture the structural aspects of text data. Unlike LDA, which assumes that topics are generated independently of document metadata, STM allows for the incorporation of metadata or covariates associated with each document. Covariates could include document-level characteristics such as authorship, publication year, geographic location, or any other relevant metadata."
+  },
+  {
+    "objectID": "lectures/15b.html#r-packages",
+    "href": "lectures/15b.html#r-packages",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "R Packages",
+    "text": "R Packages\n\nlibrary(tidyverse)\nlibrary(taylor)\nlibrary(tidytext)\nlibrary(stm)"
+  },
+  {
+    "objectID": "lectures/15b.html#data-cleaning",
+    "href": "lectures/15b.html#data-cleaning",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\ntidy_taylor &lt;-\n  taylor_album_songs |&gt;\n  unnest(lyrics) |&gt; \n  unnest_tokens(word, lyric)\n\n\ntidy_taylor |&gt; \n  anti_join(get_stopwords()) |&gt; \n  count(track_name, word, sort = TRUE)\n\n#&gt; # A tibble: 17,375 × 3\n#&gt;    track_name                                word      n\n#&gt;    &lt;chr&gt;                                     &lt;chr&gt; &lt;int&gt;\n#&gt;  1 Red (Taylor's Version)                    red     107\n#&gt;  2 I Did Something Bad                       di       81\n#&gt;  3 I Wish You Would (Taylor's Version)       wish     81\n#&gt;  4 Shake It Off (Taylor's Version)           shake    70\n#&gt;  5 Out Of The Woods (Taylor's Version)       yet      64\n#&gt;  6 You Need To Calm Down                     oh       63\n#&gt;  7 State Of Grace (Taylor's Version)         oh       59\n#&gt;  8 Run (Taylor's Version) [From The Vault]   run      52\n#&gt;  9 This Love (Taylor's Version)              love     52\n#&gt; 10 Everything Has Changed (Taylor's Version) know     50\n#&gt; # ℹ 17,365 more rows\n\nlyrics_sparse &lt;-\n  tidy_taylor |&gt; \n  count(track_name, word) |&gt; \n  filter(n &gt; 3) |&gt; \n  cast_sparse(track_name, word, n)"
+  },
+  {
+    "objectID": "lectures/15b.html#topic-modelling-1",
+    "href": "lectures/15b.html#topic-modelling-1",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Topic Modelling",
+    "text": "Topic Modelling\n\nset.seed(123)\ntopic_model &lt;- stm(lyrics_sparse, K = 8, verbose = FALSE)"
+  },
+  {
+    "objectID": "lectures/15b.html#summary",
+    "href": "lectures/15b.html#summary",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Summary",
+    "text": "Summary\n\nsummary(topic_model)\n\n#&gt; A topic model with 8 topics, 209 documents and a 909 word dictionary.\n\n\n#&gt; Topic 1 Top Words:\n#&gt;       Highest Prob: i, was, you, the, it, like, and \n#&gt;       FREX: red, isn't, snow, beach, him, was, too \n#&gt;       Lift: between, hair, prayer, rare, sacred, stairs, wind \n#&gt;       Score: red, snow, beach, him, was, isn't, there \n#&gt; Topic 2 Top Words:\n#&gt;       Highest Prob: i, you, the, and, me, wanna, what \n#&gt;       FREX: shake, wanna, wish, would, mm, bye, game \n#&gt;       Lift: team, stephen, hide, fancy, tear, game, bye \n#&gt;       Score: shake, wanna, wish, mm, off, fake, hung \n#&gt; Topic 3 Top Words:\n#&gt;       Highest Prob: you, i, and, the, me, to, my \n#&gt;       FREX: fly, left, losing, jump, go, someday, belong \n#&gt;       Lift: shoulda, okay, ours, superstar, slope, lately, start \n#&gt;       Score: la, times, fly, mean, bet, losing, smile \n#&gt; Topic 4 Top Words:\n#&gt;       Highest Prob: the, i, we, in, you, and, of \n#&gt;       FREX: woods, clear, huh, mine, car, getaway, walk \n#&gt;       Lift: ready, shimmer, walk, checkin, mailbox, ridin, huh \n#&gt;       Score: clear, woods, yet, daylight, out, walk, street \n#&gt; Topic 5 Top Words:\n#&gt;       Highest Prob: oh, you, and, the, this, i, is \n#&gt;       FREX: trouble, oh, rains, this, grow, asking, last \n#&gt;       Lift: promises, sing, these, lovin, rest, usin, flew \n#&gt;       Score: oh, last, trouble, asking, grow, rains, being \n#&gt; Topic 6 Top Words:\n#&gt;       Highest Prob: you, the, ooh, i, and, ah, to \n#&gt;       FREX: ha, starlight, ah, ooh, twenty, thing, whoa \n#&gt;       Lift: bought, count, keeping, everyone's, humming, kitchen, push \n#&gt;       Score: ooh, ha, ah, dorothea, starlight, twenty, you'll \n#&gt; Topic 7 Top Words:\n#&gt;       Highest Prob: you, it, a, i, and, the, we \n#&gt;       FREX: di, karma, blood, beautiful, wonderland, call, we've \n#&gt;       Lift: deep, worship, sad, turns, felt, why's, boyfriend \n#&gt;       Score: di, blood, karma, call, we've, hey, da \n#&gt; Topic 8 Top Words:\n#&gt;       Highest Prob: you, i, to, the, me, been, and \n#&gt;       FREX: york, welcome, mr, been, stay, i've, would've \n#&gt;       Lift: guiding, caught, both, quite, beat, bright, closure \n#&gt;       Score: york, welcome, stay, mr, would've, new, soundtrack"
+  },
+  {
+    "objectID": "lectures/15b.html#plot",
+    "href": "lectures/15b.html#plot",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Plot",
+    "text": "Plot\n\n\nCode\nlyrics_gamma &lt;- tidy(\n  topic_model, \n  matrix = \"gamma\",\n  document_names = rownames(lyrics_sparse)\n) \n\nlyrics_gamma |&gt; \n  left_join(\n    taylor_album_songs |&gt; \n      select(album_name, document = track_name) |&gt; \n      mutate(album_name = fct_inorder(album_name))\n  ) |&gt; \n  mutate(topic = factor(topic)) |&gt; \n  ggplot(aes(gamma, topic, fill = topic)) +\n  geom_boxplot(alpha = 0.7, show.legend = FALSE) +\n  facet_wrap(vars(album_name)) +\n  labs(x = expression(gamma))"
+  },
+  {
+    "objectID": "lectures/15b.html#significant-effects",
+    "href": "lectures/15b.html#significant-effects",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Significant Effects",
+    "text": "Significant Effects\n\n\nCode\nset.seed(909)\n\neffects &lt;-\n  estimateEffect(\n    1:8 ~ album_name,\n    topic_model,\n    taylor_album_songs |&gt; distinct(track_name, album_name) |&gt; arrange(track_name)\n  )\n\n\ntidy(effects) |&gt;  \n  filter(term != \"(Intercept)\", p.value &lt; 0.1) |&gt; \n  select(topic, term, p.value)\n\n\n#&gt; # A tibble: 8 × 3\n#&gt;   topic term                                   p.value\n#&gt;   &lt;int&gt; &lt;chr&gt;                                    &lt;dbl&gt;\n#&gt; 1     1 album_nameMidnights                    0.0313 \n#&gt; 2     2 album_nameMidnights                    0.0781 \n#&gt; 3     3 album_nameFearless (Taylor's Version)  0.0205 \n#&gt; 4     3 album_namefolklore                     0.00472\n#&gt; 5     3 album_nameSpeak Now (Taylor's Version) 0.0242 \n#&gt; 6     3 album_nameTaylor Swift                 0.0289 \n#&gt; 7     7 album_nameFearless (Taylor's Version)  0.0475 \n#&gt; 8     7 album_nameSpeak Now (Taylor's Version) 0.0441"
+  },
+  {
+    "objectID": "lectures/15b.html#topic-3",
+    "href": "lectures/15b.html#topic-3",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Topic 3",
+    "text": "Topic 3\n\ntidy(topic_model, matrix = \"lift\") |&gt; \n  filter(topic == 3)\n\n#&gt; # A tibble: 909 × 2\n#&gt;    topic term     \n#&gt;    &lt;int&gt; &lt;chr&gt;    \n#&gt;  1     3 shoulda  \n#&gt;  2     3 okay     \n#&gt;  3     3 ours     \n#&gt;  4     3 superstar\n#&gt;  5     3 slope    \n#&gt;  6     3 lately   \n#&gt;  7     3 start    \n#&gt;  8     3 under    \n#&gt;  9     3 peace    \n#&gt; 10     3 lover    \n#&gt; # ℹ 899 more rows"
   }
 ]
