@@ -244,6 +244,13 @@ Adapted from <https://missing.csail.mit.edu/>
 -   Linear and Generalized Linear Mixed Models and Their Applications (2nd Edition) (Download from CSUCI Library)
 -   Vector Generalized Linear and Additive Models; Yee (Download from CSUCI Library)
 
+## Other Statistics Resources
+
+-   [StatLect](https://www.statlect.com/)
+-   [Causal Inference](https://www.r-causal.org/)
+-   [Linear Algebra](https://shainarace.github.io/LinearAlgebra/index.html)
+
+
 ## R Programming
 
 -   [Basic R](https://r4ds.hadley.nz/)

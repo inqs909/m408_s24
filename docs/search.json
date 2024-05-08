@@ -7873,5 +7873,12 @@
     "title": "Unsupervised\nMachine Learning",
     "section": "Topic 3",
     "text": "Topic 3\n\ntidy(topic_model, matrix = \"lift\") |&gt; \n  filter(topic == 3)\n\n#&gt; # A tibble: 909 × 2\n#&gt;    topic term     \n#&gt;    &lt;int&gt; &lt;chr&gt;    \n#&gt;  1     3 shoulda  \n#&gt;  2     3 okay     \n#&gt;  3     3 ours     \n#&gt;  4     3 superstar\n#&gt;  5     3 slope    \n#&gt;  6     3 lately   \n#&gt;  7     3 start    \n#&gt;  8     3 under    \n#&gt;  9     3 peace    \n#&gt; 10     3 lover    \n#&gt; # ℹ 899 more rows"
+  },
+  {
+    "objectID": "lectures/15b.html#other-statistics-resources",
+    "href": "lectures/15b.html#other-statistics-resources",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Other Statistics Resources",
+    "text": "Other Statistics Resources\n\nStatLect\nCausal Inference\nLinear Algebra"
   }
 ]
