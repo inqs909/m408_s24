@@ -109,6 +109,10 @@ Latent Dirichlet Allocation (LDA) is a probabilistic model used for topic modeli
 
 The Structural Topic Model (STM) is an extension of the Latent Dirichlet Allocation (LDA) model that incorporates document metadata and covariates to capture the structural aspects of text data. Unlike LDA, which assumes that topics are generated independently of document metadata, STM allows for the incorporation of metadata or covariates associated with each document. Covariates could include document-level characteristics such as authorship, publication year, geographic location, or any other relevant metadata.
 
+## Text Mining Resource
+
+[![](https://www.tidytextmining.com/images/cover.png)](https://www.tidytextmining.com/)
+
 ## R Packages
 
 ```{r}
@@ -129,7 +133,8 @@ tidy_taylor <-
 
 tidy_taylor |> 
   anti_join(get_stopwords()) |> 
-  count(track_name, word, sort = TRUE)
+  count(track_name, word, sort = TRUE) |> 
+  head(4)
 
 
 lyrics_sparse <-

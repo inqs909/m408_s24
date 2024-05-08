@@ -7837,7 +7837,7 @@
     "href": "lectures/15b.html#data-cleaning",
     "title": "Unsupervised\nMachine Learning",
     "section": "Data Cleaning",
-    "text": "Data Cleaning\n\ntidy_taylor &lt;-\n  taylor_album_songs |&gt;\n  unnest(lyrics) |&gt; \n  unnest_tokens(word, lyric)\n\n\ntidy_taylor |&gt; \n  anti_join(get_stopwords()) |&gt; \n  count(track_name, word, sort = TRUE)\n\n#&gt; # A tibble: 17,375 × 3\n#&gt;    track_name                                word      n\n#&gt;    &lt;chr&gt;                                     &lt;chr&gt; &lt;int&gt;\n#&gt;  1 Red (Taylor's Version)                    red     107\n#&gt;  2 I Did Something Bad                       di       81\n#&gt;  3 I Wish You Would (Taylor's Version)       wish     81\n#&gt;  4 Shake It Off (Taylor's Version)           shake    70\n#&gt;  5 Out Of The Woods (Taylor's Version)       yet      64\n#&gt;  6 You Need To Calm Down                     oh       63\n#&gt;  7 State Of Grace (Taylor's Version)         oh       59\n#&gt;  8 Run (Taylor's Version) [From The Vault]   run      52\n#&gt;  9 This Love (Taylor's Version)              love     52\n#&gt; 10 Everything Has Changed (Taylor's Version) know     50\n#&gt; # ℹ 17,365 more rows\n\nlyrics_sparse &lt;-\n  tidy_taylor |&gt; \n  count(track_name, word) |&gt; \n  filter(n &gt; 3) |&gt; \n  cast_sparse(track_name, word, n)"
+    "text": "Data Cleaning\n\ntidy_taylor &lt;-\n  taylor_album_songs |&gt;\n  unnest(lyrics) |&gt; \n  unnest_tokens(word, lyric)\n\n\ntidy_taylor |&gt; \n  anti_join(get_stopwords()) |&gt; \n  count(track_name, word, sort = TRUE) |&gt; \n  head(4)\n\n#&gt; # A tibble: 4 × 3\n#&gt;   track_name                          word      n\n#&gt;   &lt;chr&gt;                               &lt;chr&gt; &lt;int&gt;\n#&gt; 1 Red (Taylor's Version)              red     107\n#&gt; 2 I Did Something Bad                 di       81\n#&gt; 3 I Wish You Would (Taylor's Version) wish     81\n#&gt; 4 Shake It Off (Taylor's Version)     shake    70\n\nlyrics_sparse &lt;-\n  tidy_taylor |&gt; \n  count(track_name, word) |&gt; \n  filter(n &gt; 3) |&gt; \n  cast_sparse(track_name, word, n)"
   },
   {
     "objectID": "lectures/15b.html#topic-modelling-1",
@@ -7880,5 +7880,19 @@
     "title": "Unsupervised\nMachine Learning",
     "section": "Other Statistics Resources",
     "text": "Other Statistics Resources\n\nStatLect\nCausal Inference\nLinear Algebra"
+  },
+  {
+    "objectID": "lectures/15b.html#text-mining",
+    "href": "lectures/15b.html#text-mining",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Text Mining",
+    "text": "Text Mining"
+  },
+  {
+    "objectID": "lectures/15b.html#text-mining-resource",
+    "href": "lectures/15b.html#text-mining-resource",
+    "title": "Unsupervised\nMachine Learning",
+    "section": "Text Mining Resource",
+    "text": "Text Mining Resource"
   }
 ]

@@ -532,9 +532,8 @@ Machine Learning</title>
           'mfZ': '\\mathfrak{Z}',
           
           //Bold Numbers
-          'bzero': '\\boldsymbol{0}'
-          'bone': '\\boldsymbol{1}'
-
+          'bzero': '\\boldsymbol{0}',
+          'bone': '\\boldsymbol{1}',
 
         }
       }
@@ -648,6 +647,10 @@ X_i = (x_{i1}, x_{i2}, \cdots, x_{in})
 <h2>Structural Topic Model</h2>
 <p>The Structural Topic Model (STM) is an extension of the Latent Dirichlet Allocation (LDA) model that incorporates document metadata and covariates to capture the structural aspects of text data. Unlike LDA, which assumes that topics are generated independently of document metadata, STM allows for the incorporation of metadata or covariates associated with each document. Covariates could include document-level characteristics such as authorship, publication year, geographic location, or any other relevant metadata.</p>
 </section>
+<section id="text-mining-resource" class="slide level2">
+<h2>Text Mining Resource</h2>
+<p><a href="https://www.tidytextmining.com/"><img data-src="https://www.tidytextmining.com/images/cover.png"></a></p>
+</section>
 <section id="r-packages" class="slide level2">
 <h2>R Packages</h2>
 <div class="cell">
@@ -668,22 +671,16 @@ X_i = (x_{i1}, x_{i2}, \cdots, x_{in})
 <span id="cb2-6"><a href="#cb2-6"></a></span>
 <span id="cb2-7"><a href="#cb2-7"></a>tidy_taylor <span class="sc">|&gt;</span> </span>
 <span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">anti_join</span>(<span class="fu">get_stopwords</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">count</span>(track_name, word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">count</span>(track_name, word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; # A tibble: 17,375 × 3
-#&gt;    track_name                                word      n
-#&gt;    &lt;chr&gt;                                     &lt;chr&gt; &lt;int&gt;
-#&gt;  1 Red (Taylor's Version)                    red     107
-#&gt;  2 I Did Something Bad                       di       81
-#&gt;  3 I Wish You Would (Taylor's Version)       wish     81
-#&gt;  4 Shake It Off (Taylor's Version)           shake    70
-#&gt;  5 Out Of The Woods (Taylor's Version)       yet      64
-#&gt;  6 You Need To Calm Down                     oh       63
-#&gt;  7 State Of Grace (Taylor's Version)         oh       59
-#&gt;  8 Run (Taylor's Version) [From The Vault]   run      52
-#&gt;  9 This Love (Taylor's Version)              love     52
-#&gt; 10 Everything Has Changed (Taylor's Version) know     50
-#&gt; # ℹ 17,365 more rows</code></pre>
+<pre><code>#&gt; # A tibble: 4 × 3
+#&gt;   track_name                          word      n
+#&gt;   &lt;chr&gt;                               &lt;chr&gt; &lt;int&gt;
+#&gt; 1 Red (Taylor's Version)              red     107
+#&gt; 2 I Did Something Bad                 di       81
+#&gt; 3 I Wish You Would (Taylor's Version) wish     81
+#&gt; 4 Shake It Off (Taylor's Version)     shake    70</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>lyrics_sparse <span class="ot">&lt;-</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  tidy_taylor <span class="sc">|&gt;</span> </span>
