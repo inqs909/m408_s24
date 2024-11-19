@@ -15,9 +15,9 @@
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Control Flow</title>
+  <title>MATH 408 – Control Flow</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -48,7 +48,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -76,7 +76,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -90,7 +90,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -1312,34 +1312,34 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Type <code>Y</code> for the trust author. Type a name of a new directory in where to save the file. For example, type <code>hw1</code>.</p>
 <p><strong>OR</strong> Save this in an empty source quarto document:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>---</span>
-<span id="cb2-2"><a href="#cb2-2"></a>title: "Title"</span>
-<span id="cb2-3"><a href="#cb2-3"></a>author: "Name Here"</span>
-<span id="cb2-4"><a href="#cb2-4"></a>date: "`r format(Sys.time(),'%m-%d-%Y')`"</span>
-<span id="cb2-5"><a href="#cb2-5"></a>format: </span>
-<span id="cb2-6"><a href="#cb2-6"></a>  html:</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    toc: true</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    toc-depth: 2</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    code-fold: true</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    code-tools: true</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    code-line-numbers: true</span>
-<span id="cb2-12"><a href="#cb2-12"></a>knitr:</span>
-<span id="cb2-13"><a href="#cb2-13"></a>  opts_chunk:</span>
-<span id="cb2-14"><a href="#cb2-14"></a>    echo: true</span>
-<span id="cb2-15"><a href="#cb2-15"></a>    message: false</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    warning: false</span>
-<span id="cb2-17"><a href="#cb2-17"></a>    error: true</span>
-<span id="cb2-18"><a href="#cb2-18"></a>    tidy: styler</span>
-<span id="cb2-19"><a href="#cb2-19"></a>    R.options:</span>
-<span id="cb2-20"><a href="#cb2-20"></a>      digits: 3</span>
-<span id="cb2-21"><a href="#cb2-21"></a>      max.print: 100</span>
-<span id="cb2-22"><a href="#cb2-22"></a>---</span>
-<span id="cb2-23"><a href="#cb2-23"></a></span>
-<span id="cb2-24"><a href="#cb2-24"></a>## Problem 1</span>
-<span id="cb2-25"><a href="#cb2-25"></a></span>
-<span id="cb2-26"><a href="#cb2-26"></a>## Problem 2</span>
-<span id="cb2-27"><a href="#cb2-27"></a></span>
-<span id="cb2-28"><a href="#cb2-28"></a>## Problem 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a></a>---</span>
+<span id="cb2-2"><a></a>title: "Title"</span>
+<span id="cb2-3"><a></a>author: "Name Here"</span>
+<span id="cb2-4"><a></a>date: "`r format(Sys.time(),'%m-%d-%Y')`"</span>
+<span id="cb2-5"><a></a>format: </span>
+<span id="cb2-6"><a></a>  html:</span>
+<span id="cb2-7"><a></a>    toc: true</span>
+<span id="cb2-8"><a></a>    toc-depth: 2</span>
+<span id="cb2-9"><a></a>    code-fold: true</span>
+<span id="cb2-10"><a></a>    code-tools: true</span>
+<span id="cb2-11"><a></a>    code-line-numbers: true</span>
+<span id="cb2-12"><a></a>knitr:</span>
+<span id="cb2-13"><a></a>  opts_chunk:</span>
+<span id="cb2-14"><a></a>    echo: true</span>
+<span id="cb2-15"><a></a>    message: false</span>
+<span id="cb2-16"><a></a>    warning: false</span>
+<span id="cb2-17"><a></a>    error: true</span>
+<span id="cb2-18"><a></a>    tidy: styler</span>
+<span id="cb2-19"><a></a>    R.options:</span>
+<span id="cb2-20"><a></a>      digits: 3</span>
+<span id="cb2-21"><a></a>      max.print: 100</span>
+<span id="cb2-22"><a></a>---</span>
+<span id="cb2-23"><a></a></span>
+<span id="cb2-24"><a></a>## Problem 1</span>
+<span id="cb2-25"><a></a></span>
+<span id="cb2-26"><a></a>## Problem 2</span>
+<span id="cb2-27"><a></a></span>
+<span id="cb2-28"><a></a>## Problem 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Guides:</p>
 <ul>
@@ -1444,7 +1444,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="comparing-numbers-operators" class="slide level2">
 <h2>Comparing Numbers Operators</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Operator</th>
@@ -1606,9 +1606,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2><code>for</code> Loops</h2>
 <p><code>for</code> loops are used to conduct an iterative task with slight changes to the input. The general format goes as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">for</span> (index <span class="cf">in</span> vector){</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  Conduct task</span>
-<span id="cb3-3"><a href="#cb3-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="cf">for</span> (index <span class="cf">in</span> vector){</span>
+<span id="cb3-2"><a></a>  Conduct task</span>
+<span id="cb3-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You will repeat the <code>for</code> loop untie all the elements in the vector have been used.</p>
 </section>
@@ -1619,8 +1619,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 \bar x = \frac{1}{n}\sum^n_{i=1}x_i
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb4-2"><a></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 0.1095409</code></pre>
 </div>
@@ -1633,15 +1633,17 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 s^2 = \frac{1}{n-1}\sum^n_{i-1}(x_i-\bar x)^2
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb6-2"><a></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 0.6916603</code></pre>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 <div class="reveal-header">
 <div class="header-logo">
@@ -1942,18 +1944,7 @@ s^2 = \frac{1}{n-1}\sum^n_{i-1}(x_i-\bar x)^2
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1985,7 +1976,47 @@ s^2 = \frac{1}{n-1}\sum^n_{i-1}(x_i-\bar x)^2
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -2022,7 +2053,11 @@ s^2 = \frac{1}{n-1}\sum^n_{i-1}(x_i-\bar x)^2
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

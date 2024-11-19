@@ -15,9 +15,9 @@
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Generalized Linear Models</title>
+  <title>MATH 408 – Generalized Linear Models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -48,7 +48,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -76,7 +76,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -90,7 +90,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -462,7 +462,7 @@ f(x;n,p) = \left(\begin{array}{c}n\\x\end{array}\right) \exp\left\{x\log\left(\f
 </section>
 <section id="common-distributions-and-canonical-parameters" class="slide level2">
 <h2>Common Distributions and Canonical Parameters</h2>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Random Variable</th>
@@ -561,36 +561,36 @@ g(\mu)=\eta=\boldsymbol X_i^\mathrm T \boldsymbol \beta
 <h2>Poisson Regression</h2>
 <p>Poisson Regression is used when the outcome is count data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x,</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    data, </span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="at">family =</span> <span class="fu">poisson</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">glm</span>(y<span class="sc">~</span>x,</span>
+<span id="cb1-2"><a></a>    data, </span>
+<span id="cb1-3"><a></a>    <span class="at">family =</span> <span class="fu">poisson</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="gamma-regression" class="slide level2">
 <h2>Gamma Regression</h2>
 <p>Gamma Regression is used when modeling the association between predictors and positive continuous values:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
-<span id="cb2-2"><a href="#cb2-2"></a>    data, </span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="at">family =</span> <span class="fu">Gamma</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
+<span id="cb2-2"><a></a>    data, </span>
+<span id="cb2-3"><a></a>    <span class="at">family =</span> <span class="fu">Gamma</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="negative-binomial-regression" class="slide level2">
 <h2>Negative Binomial Regression</h2>
 <p>Negative Binomial Regression is used four with overdispersed count data, where the variance is larger than expected.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">glm.nb</span>(y<span class="sc">~</span>x, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>       data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(MASS)</span>
+<span id="cb3-2"><a></a><span class="fu">glm.nb</span>(y<span class="sc">~</span>x, </span>
+<span id="cb3-3"><a></a>       data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="inverse-gaussian-regression" class="slide level2">
 <h2>Inverse Gaussian Regression</h2>
 <p>Inverse Gaussian Regression is used for overly dispersed positive continuous data where Gamma Regression is inappropriate:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
-<span id="cb4-2"><a href="#cb4-2"></a>    data, </span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="at">family =</span> <span class="fu">inverse.gaussian</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">glm</span>(y<span class="sc">~</span>x, </span>
+<span id="cb4-2"><a></a>    data, </span>
+<span id="cb4-3"><a></a>    <span class="at">family =</span> <span class="fu">inverse.gaussian</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -615,8 +615,7 @@ g(\mu)=\eta=\boldsymbol X_i^\mathrm T \boldsymbol \beta
 <p><span class="math display">\[
 \frac{\hat\beta_j-\theta}{\mathrm{se}(\hat\beta_j)} \sim t_{n-p^\prime}
 \]</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="confidence-intervals" class="slide level2">
 <h2>Confidence Intervals</h2>
@@ -639,19 +638,19 @@ PE \pm CV \times SE
 <h2>Fitting Models</h2>
 <p>Use the <code>survival</code>, <code>MASS</code> and <code>GLMsData</code> R packages to fit the models for examples.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(GLMsData)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(survival)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(GLMsData)</span>
+<span id="cb5-2"><a></a><span class="fu">library</span>(survival)</span>
+<span id="cb5-3"><a></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="poisson-regression-1" class="slide level2">
 <h2>Poisson Regression</h2>
 <p>Fit a model between the outcome <code>recur</code>, number of reccurrence, and predictors <code>treatment</code>, drugs or placebo, and <code>number</code>, the initial number of tumors, from the <code>bladder1</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>bladder1 <span class="sc">|&gt;</span>  <span class="fu">glm</span>(recur <span class="sc">~</span> treatment <span class="sc">+</span> number,</span>
-<span id="cb6-2"><a href="#cb6-2"></a>                 <span class="at">data =</span> _,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>                 <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>bladder1 <span class="sc">|&gt;</span>  <span class="fu">glm</span>(recur <span class="sc">~</span> treatment <span class="sc">+</span> number,</span>
+<span id="cb6-2"><a></a>                 <span class="at">data =</span> _,</span>
+<span id="cb6-3"><a></a>                 <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb6-4"><a></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -681,10 +680,10 @@ PE \pm CV \times SE
 <h2>Negative Binomial Regression</h2>
 <p>Fit a model between the outcome <code>Count</code>, viral activity (pock counts), and predictor <code>Dilution</code> factor from the <code>pock</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">data</span>(<span class="st">"pock"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>pock <span class="sc">|&gt;</span> <span class="fu">glm.nb</span>(Count <span class="sc">~</span> Dilution, </span>
-<span id="cb8-3"><a href="#cb8-3"></a>               <span class="at">data =</span> _)  <span class="sc">|&gt;</span> </span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">data</span>(<span class="st">"pock"</span>)</span>
+<span id="cb8-2"><a></a>pock <span class="sc">|&gt;</span> <span class="fu">glm.nb</span>(Count <span class="sc">~</span> Dilution, </span>
+<span id="cb8-3"><a></a>               <span class="at">data =</span> _)  <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -718,11 +717,11 @@ PE \pm CV \times SE
 <h2>Gamma Regression</h2>
 <p>Fit a model between the outcome <code>Foliage</code>, foliage biomass, and predictor <code>DBH</code>, tree diameter at breast height, from the <code>lime</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
-<span id="cb10-3"><a href="#cb10-3"></a>             <span class="at">data =</span> _,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>             <span class="at">family =</span> <span class="fu">Gamma</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span>  </span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">summary</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
+<span id="cb10-2"><a></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
+<span id="cb10-3"><a></a>             <span class="at">data =</span> _,</span>
+<span id="cb10-4"><a></a>             <span class="at">family =</span> <span class="fu">Gamma</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span>  </span>
+<span id="cb10-5"><a></a>  <span class="fu">summary</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -749,11 +748,11 @@ PE \pm CV \times SE
 <h2>Inverse Gaussian Regression</h2>
 <p>Fit a model between the outcome <code>Foliage</code>, foliage biomass, and predictor <code>DBH</code>, tree diameter at breast height, from the <code>lime</code> data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
-<span id="cb12-3"><a href="#cb12-3"></a>             <span class="at">data =</span> _,</span>
-<span id="cb12-4"><a href="#cb12-4"></a>             <span class="at">family =</span> <span class="fu">inverse.gaussian</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">data</span>(<span class="st">"lime"</span>)</span>
+<span id="cb12-2"><a></a>lime <span class="sc">|&gt;</span>  <span class="fu">glm</span>(Foliage <span class="sc">~</span> DBH,</span>
+<span id="cb12-3"><a></a>             <span class="at">data =</span> _,</span>
+<span id="cb12-4"><a></a>             <span class="at">family =</span> <span class="fu">inverse.gaussian</span>(<span class="at">link =</span> <span class="st">"log"</span>))  <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -777,8 +776,10 @@ PE \pm CV \times SE
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 <div class="reveal-header">
 <div class="header-logo">
@@ -1081,18 +1082,7 @@ PE \pm CV \times SE
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1124,7 +1114,47 @@ PE \pm CV \times SE
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1161,7 +1191,11 @@ PE \pm CV \times SE
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

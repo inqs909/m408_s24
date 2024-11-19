@@ -133,7 +133,6 @@ cv.glmnet(x, # predictor matrix
 
 ## Example - Ridge Regression
 
-
 ::: panel-tabset
 ## Preparation
 
@@ -149,7 +148,6 @@ mod <- penguins |> model.matrix(~ flipper_length_mm + bill_depth_mm + bill_lengt
 lambdas <- seq(1,1000, by = 0.1)
 ```
 
-
 ## CV
 
 ```{r}
@@ -162,7 +160,6 @@ ridge_mod_cv <- cv.glmnet(x = mod,
                           nfolds = 333)
 ```
 
-
 ## CV Plot
 
 ```{r}
@@ -173,8 +170,6 @@ ridge_mod_cv <- cv.glmnet(x = mod,
 plot(ridge_mod_cv)
 
 ```
-
-
 
 ## Best Parameter
 
@@ -197,9 +192,7 @@ ridge_mod <- glmnet(x = mod,
 
 coef(ridge_mod)[,1]
 ```
-
 :::
-
 
 ## Example - LASSO
 
@@ -218,7 +211,6 @@ mod <- penguins |> model.matrix(~ flipper_length_mm + bill_depth_mm + bill_lengt
 lambdas <- seq(1,1000, by = 0.1)
 ```
 
-
 ## CV
 
 ```{r}
@@ -231,7 +223,6 @@ ridge_mod_cv <- cv.glmnet(x = mod,
                           nfolds = 333)
 ```
 
-
 ## CV Plot
 
 ```{r}
@@ -242,8 +233,6 @@ ridge_mod_cv <- cv.glmnet(x = mod,
 plot(ridge_mod_cv)
 
 ```
-
-
 
 ## Best Parameter
 
@@ -266,7 +255,6 @@ ridge_mod <- glmnet(x = mod,
 
 coef(ridge_mod)[,1]
 ```
-
 :::
 
 ## Try with `mtcars`

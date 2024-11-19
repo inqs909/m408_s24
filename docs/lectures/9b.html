@@ -14,9 +14,9 @@
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Classification</title>
+  <title>MATH 408 – Classification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -432,16 +432,16 @@
 <section id="knn" class="slide level2">
 <h2>KNN</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>penguins <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">xlab</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Y"</span>) <span class="sc">+</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a>penguins <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb1-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">xlab</span>(<span class="st">"X"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Y"</span>) <span class="sc">+</span></span>
+<span id="cb1-9"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="9b_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
@@ -631,8 +631,7 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 <ul>
 <li>Nonparametric</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="r-code" class="title-slide slide level1 center">
@@ -642,32 +641,32 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 <section id="lda-1" class="slide level2">
 <h2>LDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>select <span class="ot">&lt;-</span> dplyr<span class="sc">::</span>select</span>
-<span id="cb2-5"><a href="#cb2-5"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
-<span id="cb2-6"><a href="#cb2-6"></a>x_lda <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">lda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
-<span id="cb2-7"><a href="#cb2-7"></a>                                   bill_depth_mm <span class="sc">+</span> </span>
-<span id="cb2-8"><a href="#cb2-8"></a>                                   flipper_length_mm <span class="sc">+</span> </span>
-<span id="cb2-9"><a href="#cb2-9"></a>                                   body_mass_g,</span>
-<span id="cb2-10"><a href="#cb2-10"></a>                         <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(MASS)</span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-4"><a></a>select <span class="ot">&lt;-</span> dplyr<span class="sc">::</span>select</span>
+<span id="cb2-5"><a></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
+<span id="cb2-6"><a></a>x_lda <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">lda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
+<span id="cb2-7"><a></a>                                   bill_depth_mm <span class="sc">+</span> </span>
+<span id="cb2-8"><a></a>                                   flipper_length_mm <span class="sc">+</span> </span>
+<span id="cb2-9"><a></a>                                   body_mass_g,</span>
+<span id="cb2-10"><a></a>                         <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lda-prediction" class="slide level2">
 <h2>LDA Prediction</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>new_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">select</span>(bill_length_mm,</span>
-<span id="cb3-2"><a href="#cb3-2"></a>                           bill_depth_mm,</span>
-<span id="cb3-3"><a href="#cb3-3"></a>                          flipper_length_mm,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>                         body_mass_g)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>x_lda_predict <span class="ot">&lt;-</span> x_lda <span class="sc">|&gt;</span> <span class="fu">predict</span>(new_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>new_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">select</span>(bill_length_mm,</span>
+<span id="cb3-2"><a></a>                           bill_depth_mm,</span>
+<span id="cb3-3"><a></a>                          flipper_length_mm,</span>
+<span id="cb3-4"><a></a>                         body_mass_g)</span>
+<span id="cb3-5"><a></a>x_lda_predict <span class="ot">&lt;-</span> x_lda <span class="sc">|&gt;</span> <span class="fu">predict</span>(new_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lda-confusion-matrix" class="slide level2">
 <h2>LDA Confusion Matrix</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, x_lda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, x_lda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;            
 #&gt;             Adelie Chinstrap Gentoo
@@ -680,27 +679,27 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 <section id="qda-3" class="slide level2">
 <h2>QDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>x_qda <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">qda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>                                   bill_depth_mm <span class="sc">+</span> </span>
-<span id="cb6-3"><a href="#cb6-3"></a>                                   flipper_length_mm <span class="sc">+</span> </span>
-<span id="cb6-4"><a href="#cb6-4"></a>                                   body_mass_g,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>                         <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>x_qda <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">qda</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span> </span>
+<span id="cb6-2"><a></a>                                   bill_depth_mm <span class="sc">+</span> </span>
+<span id="cb6-3"><a></a>                                   flipper_length_mm <span class="sc">+</span> </span>
+<span id="cb6-4"><a></a>                                   body_mass_g,</span>
+<span id="cb6-5"><a></a>                         <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="qda-prediction" class="slide level2">
 <h2>QDA Prediction</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x_qda_predict <span class="ot">&lt;-</span> x_qda <span class="sc">|&gt;</span>  <span class="fu">predict</span>(penguins <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
-<span id="cb7-3"><a href="#cb7-3"></a>                                            bill_depth_mm,</span>
-<span id="cb7-4"><a href="#cb7-4"></a>                                            flipper_length_mm,</span>
-<span id="cb7-5"><a href="#cb7-5"></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x_qda_predict <span class="ot">&lt;-</span> x_qda <span class="sc">|&gt;</span>  <span class="fu">predict</span>(penguins <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
+<span id="cb7-3"><a></a>                                            bill_depth_mm,</span>
+<span id="cb7-4"><a></a>                                            flipper_length_mm,</span>
+<span id="cb7-5"><a></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="qda-confusion-matrix" class="slide level2">
 <h2>QDA Confusion Matrix</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, x_qda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, x_qda_predict<span class="sc">$</span>class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;            
 #&gt;             Adelie Chinstrap Gentoo
@@ -713,28 +712,28 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 <section id="naive-bayes-4" class="slide level2">
 <h2>Naive Bayes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(e1071)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>x_nb <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">naiveBayes</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>                                             bill_depth_mm <span class="sc">+</span> </span>
-<span id="cb10-4"><a href="#cb10-4"></a>                                             flipper_length_mm <span class="sc">+</span> </span>
-<span id="cb10-5"><a href="#cb10-5"></a>                                             body_mass_g, </span>
-<span id="cb10-6"><a href="#cb10-6"></a>                                   <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(e1071)</span>
+<span id="cb10-2"><a></a>x_nb <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span>  <span class="fu">naiveBayes</span>(species <span class="sc">~</span> bill_length_mm <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>                                             bill_depth_mm <span class="sc">+</span> </span>
+<span id="cb10-4"><a></a>                                             flipper_length_mm <span class="sc">+</span> </span>
+<span id="cb10-5"><a></a>                                             body_mass_g, </span>
+<span id="cb10-6"><a></a>                                   <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="naive-bayes-prediction" class="slide level2">
 <h2>Naive Bayes Prediction</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>x_nb_predict <span class="ot">&lt;-</span> x_nb  <span class="sc">|&gt;</span>  <span class="fu">predict</span>(penguins <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
-<span id="cb11-3"><a href="#cb11-3"></a>                                            bill_depth_mm,</span>
-<span id="cb11-4"><a href="#cb11-4"></a>                                            flipper_length_mm,</span>
-<span id="cb11-5"><a href="#cb11-5"></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>x_nb_predict <span class="ot">&lt;-</span> x_nb  <span class="sc">|&gt;</span>  <span class="fu">predict</span>(penguins <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a></a>                                     <span class="fu">select</span>(bill_length_mm, </span>
+<span id="cb11-3"><a></a>                                            bill_depth_mm,</span>
+<span id="cb11-4"><a></a>                                            flipper_length_mm,</span>
+<span id="cb11-5"><a></a>                                            body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="naive-bayes-confusion-matrix" class="slide level2">
 <h2>Naive Bayes Confusion Matrix</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, x_nb_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">table</span>(penguins<span class="sc">$</span>species, x_nb_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;            x_nb_predict
 #&gt;             Adelie Chinstrap Gentoo
@@ -758,25 +757,25 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 </ul>
 <p>Use the <code>penguins</code> data set from <code>palmerpenguins</code> and categorize the following data: <code>bill_depth = 19</code>, <code>bill_length = 40</code>, <code>flipper_length = 185</code>, and <code>body_mass = 3345</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>manhattan <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">sum</span>(<span class="fu">abs</span>(x<span class="sc">-</span>y))</span>
-<span id="cb14-3"><a href="#cb14-3"></a>}</span>
-<span id="cb14-4"><a href="#cb14-4"></a>euclidean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb14-6"><a href="#cb14-6"></a>}</span>
-<span id="cb14-7"><a href="#cb14-7"></a>minkowski_5 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb14-8"><a href="#cb14-8"></a>  (<span class="fu">sum</span>(<span class="fu">abs</span>(x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">5</span>))<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>}</span>
-<span id="cb14-9"><a href="#cb14-9"></a>}</span>
-<span id="cb14-10"><a href="#cb14-10"></a></span>
-<span id="cb14-11"><a href="#cb14-11"></a>x <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">select</span>(bill_depth_mm, bill_length_mm, flipper_length_mm, body_mass_g) <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span>
-<span id="cb14-12"><a href="#cb14-12"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">40</span>, <span class="dv">185</span>, <span class="dv">3345</span>)</span>
-<span id="cb14-13"><a href="#cb14-13"></a></span>
-<span id="cb14-14"><a href="#cb14-14"></a>manx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, manhattan, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
-<span id="cb14-15"><a href="#cb14-15"></a>eucx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, euclidean, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
-<span id="cb14-16"><a href="#cb14-16"></a>minx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, minkowski_5, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
-<span id="cb14-17"><a href="#cb14-17"></a></span>
-<span id="cb14-18"><a href="#cb14-18"></a>penguins_rank <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">manx =</span> manx, <span class="at">eucx =</span> eucx, <span class="at">minx =</span> minx)</span>
-<span id="cb14-19"><a href="#cb14-19"></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(manx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>manhattan <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb14-2"><a></a>  <span class="fu">sum</span>(<span class="fu">abs</span>(x<span class="sc">-</span>y))</span>
+<span id="cb14-3"><a></a>}</span>
+<span id="cb14-4"><a></a>euclidean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb14-5"><a></a>  <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb14-6"><a></a>}</span>
+<span id="cb14-7"><a></a>minkowski_5 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb14-8"><a></a>  (<span class="fu">sum</span>(<span class="fu">abs</span>(x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">5</span>))<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>}</span>
+<span id="cb14-9"><a></a>}</span>
+<span id="cb14-10"><a></a></span>
+<span id="cb14-11"><a></a>x <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">select</span>(bill_depth_mm, bill_length_mm, flipper_length_mm, body_mass_g) <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span>
+<span id="cb14-12"><a></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">40</span>, <span class="dv">185</span>, <span class="dv">3345</span>)</span>
+<span id="cb14-13"><a></a></span>
+<span id="cb14-14"><a></a>manx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, manhattan, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
+<span id="cb14-15"><a></a>eucx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, euclidean, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
+<span id="cb14-16"><a></a>minx <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, minkowski_5, <span class="at">y =</span> y) <span class="sc">|&gt;</span> <span class="fu">rank</span>()</span>
+<span id="cb14-17"><a></a></span>
+<span id="cb14-18"><a></a>penguins_rank <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">manx =</span> manx, <span class="at">eucx =</span> eucx, <span class="at">minx =</span> minx)</span>
+<span id="cb14-19"><a></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(manx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 333 × 1
 #&gt;    species  
@@ -793,7 +792,7 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 #&gt; 10 Chinstrap
 #&gt; # ℹ 323 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(eucx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(eucx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 333 × 1
 #&gt;    species  
@@ -810,7 +809,7 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 #&gt; 10 Chinstrap
 #&gt; # ℹ 323 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(minx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>penguins_rank <span class="sc">|&gt;</span> <span class="fu">arrange</span>(minx) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 333 × 1
 #&gt;    species  
@@ -829,8 +828,10 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 <div class="reveal-header">
 <div class="header-logo">
@@ -1133,18 +1134,7 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1176,7 +1166,47 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1213,7 +1243,11 @@ f_k(\boldsymbol X) = \prod^p_{j} f_{jk}(x_j|c_k)
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

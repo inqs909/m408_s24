@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Linear Regression</title>
+  <title>MATH 408 – Linear Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -413,35 +413,35 @@
 <section id="updated-quarto-hw-document" class="slide level2">
 <h2>Updated Quarto HW Document</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>---</span>
-<span id="cb1-2"><a href="#cb1-2"></a>title: "Title"</span>
-<span id="cb1-3"><a href="#cb1-3"></a>author: "Name Here"</span>
-<span id="cb1-4"><a href="#cb1-4"></a>date: "`r format(Sys.time(),'%m-%d-%Y')`"</span>
-<span id="cb1-5"><a href="#cb1-5"></a>format: </span>
-<span id="cb1-6"><a href="#cb1-6"></a>  html:</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    toc: true</span>
-<span id="cb1-8"><a href="#cb1-8"></a>    toc-depth: 2</span>
-<span id="cb1-9"><a href="#cb1-9"></a>    code-fold: true</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    code-tools: true</span>
-<span id="cb1-11"><a href="#cb1-11"></a>    code-line-numbers: true</span>
-<span id="cb1-12"><a href="#cb1-12"></a>    embed-resources: true</span>
-<span id="cb1-13"><a href="#cb1-13"></a>knitr:</span>
-<span id="cb1-14"><a href="#cb1-14"></a>  opts_chunk:</span>
-<span id="cb1-15"><a href="#cb1-15"></a>    echo: true</span>
-<span id="cb1-16"><a href="#cb1-16"></a>    message: false</span>
-<span id="cb1-17"><a href="#cb1-17"></a>    warning: false</span>
-<span id="cb1-18"><a href="#cb1-18"></a>    error: true</span>
-<span id="cb1-19"><a href="#cb1-19"></a>    tidy: styler</span>
-<span id="cb1-20"><a href="#cb1-20"></a>    R.options:</span>
-<span id="cb1-21"><a href="#cb1-21"></a>      digits: 3</span>
-<span id="cb1-22"><a href="#cb1-22"></a>      max.print: 100</span>
-<span id="cb1-23"><a href="#cb1-23"></a>---</span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a>## Problem 1</span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a>## Problem 2</span>
-<span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a>## Problem 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a></a>---</span>
+<span id="cb1-2"><a></a>title: "Title"</span>
+<span id="cb1-3"><a></a>author: "Name Here"</span>
+<span id="cb1-4"><a></a>date: "`r format(Sys.time(),'%m-%d-%Y')`"</span>
+<span id="cb1-5"><a></a>format: </span>
+<span id="cb1-6"><a></a>  html:</span>
+<span id="cb1-7"><a></a>    toc: true</span>
+<span id="cb1-8"><a></a>    toc-depth: 2</span>
+<span id="cb1-9"><a></a>    code-fold: true</span>
+<span id="cb1-10"><a></a>    code-tools: true</span>
+<span id="cb1-11"><a></a>    code-line-numbers: true</span>
+<span id="cb1-12"><a></a>    embed-resources: true</span>
+<span id="cb1-13"><a></a>knitr:</span>
+<span id="cb1-14"><a></a>  opts_chunk:</span>
+<span id="cb1-15"><a></a>    echo: true</span>
+<span id="cb1-16"><a></a>    message: false</span>
+<span id="cb1-17"><a></a>    warning: false</span>
+<span id="cb1-18"><a></a>    error: true</span>
+<span id="cb1-19"><a></a>    tidy: styler</span>
+<span id="cb1-20"><a></a>    R.options:</span>
+<span id="cb1-21"><a></a>      digits: 3</span>
+<span id="cb1-22"><a></a>      max.print: 100</span>
+<span id="cb1-23"><a></a>---</span>
+<span id="cb1-24"><a></a></span>
+<span id="cb1-25"><a></a>## Problem 1</span>
+<span id="cb1-26"><a></a></span>
+<span id="cb1-27"><a></a>## Problem 2</span>
+<span id="cb1-28"><a></a></span>
+<span id="cb1-29"><a></a>## Problem 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="resources" class="slide level2">
@@ -584,19 +584,19 @@ Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \ha
 <section id="fit-a-line-using-lm-for-the-following-data" class="slide level2">
 <h2>Fit a Line using <code>lm</code> for the following data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">500</span>, <span class="dv">6</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">9</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">32</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span>
-<span id="cb2-3"><a href="#cb2-3"></a>lm_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x) </span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">summary</span>(lm_res)</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">sqrt</span>(<span class="fu">vcov</span>(lm_res))</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">sigma</span>(lm_res)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">500</span>, <span class="dv">6</span>)</span>
+<span id="cb2-2"><a></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">9</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">32</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span>
+<span id="cb2-3"><a></a>lm_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x) </span>
+<span id="cb2-4"><a></a><span class="fu">summary</span>(lm_res)</span>
+<span id="cb2-5"><a></a><span class="fu">sqrt</span>(<span class="fu">vcov</span>(lm_res))</span>
+<span id="cb2-6"><a></a><span class="fu">sigma</span>(lm_res)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fit-a-linear-model-using-matrix-operation" class="slide level2">
 <h2>Fit a linear model using matrix operation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">500</span>), x)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">solve</span>(<span class="fu">t</span>(X)<span class="sc">%*%</span>X) <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> y  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">500</span>), x)</span>
+<span id="cb3-2"><a></a><span class="fu">solve</span>(<span class="fu">t</span>(X)<span class="sc">%*%</span>X) <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> y  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="minimizing-a-function-using-optim" class="slide level2">
@@ -606,10 +606,10 @@ Var(\hat {\boldsymbol \beta}) = (\boldsymbol X ^\mathrm T\boldsymbol X)^{-1} \ha
 f(x) = 2(x - 5)^2 + 11
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>d <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">11</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>}</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">optim</span>(<span class="dv">0</span>, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>d <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb4-2"><a></a>  <span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">11</span></span>
+<span id="cb4-3"><a></a>}</span>
+<span id="cb4-4"><a></a><span class="fu">optim</span>(<span class="dv">0</span>, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="maximizing-a-function-using-optim" class="slide level2">
@@ -619,10 +619,10 @@ f(x) = 2(x - 5)^2 + 11
 f(x) = - 3 (x - 8)^2 + 9
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>d <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">11</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>}</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">optim</span>(<span class="dv">0</span>, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>d <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb5-2"><a></a>  <span class="dv">2</span> <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">11</span></span>
+<span id="cb5-3"><a></a>}</span>
+<span id="cb5-4"><a></a><span class="fu">optim</span>(<span class="dv">0</span>, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="minimizing-function-using-optim" class="slide level2">
@@ -640,7 +640,7 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
 \]</span></p>
 <p>with the following data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>z <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, <span class="at">lambda =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>z <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1000</span>, <span class="at">lambda =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fit-a-linear-model-using-optim" class="slide level2">
@@ -654,12 +654,14 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
 \]</span></p>
 <p>Data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">500</span>, <span class="dv">6</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">9</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">32</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">500</span>, <span class="dv">6</span>)</span>
+<span id="cb7-2"><a></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">9</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">32</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -944,18 +946,7 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -987,7 +978,47 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1024,7 +1055,11 @@ f(x,y) = \frac{(x-3)^2}{a^2} + \frac{(y+4)^2}{b^2}
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

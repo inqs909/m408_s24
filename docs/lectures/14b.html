@@ -15,10 +15,9 @@
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Convolutional
-Neural Networks</title>
+  <title>MATH 408 – Convolutional Neural Networks</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -49,7 +48,7 @@ Neural Networks</title>
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -77,7 +76,7 @@ Neural Networks</title>
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -91,7 +90,7 @@ Neural Networks</title>
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -657,8 +656,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <p><img data-src="img/squirrel.jpg"></p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="img/squirrel_mirror.jpg"></p>
-</div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="r-mnist-code" class="title-slide slide level1 agenda-slide center">
@@ -694,22 +692,22 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="torch-packages-in-r" class="slide level2">
 <h2>Torch Packages in R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(torch)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(zeallot)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(torch)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(zeallot)</span>
+<span id="cb1-6"><a></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="mnist-1" class="slide level2">
 <h2>MNIST</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="do">###</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>train_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(<span class="at">root =</span> <span class="st">"."</span>, <span class="at">train =</span> <span class="cn">TRUE</span>, <span class="at">download =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>test_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(<span class="at">root =</span> <span class="st">"."</span>, <span class="at">train =</span> <span class="cn">FALSE</span>, <span class="at">download =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>train_ds[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="do">###</span></span>
+<span id="cb2-2"><a></a>train_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(<span class="at">root =</span> <span class="st">"."</span>, <span class="at">train =</span> <span class="cn">TRUE</span>, <span class="at">download =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-3"><a></a>test_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(<span class="at">root =</span> <span class="st">"."</span>, <span class="at">train =</span> <span class="cn">FALSE</span>, <span class="at">download =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a>train_ds[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; $x
 #&gt;       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
@@ -803,32 +801,32 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 #&gt; $y
 #&gt; [1] 6</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># test_ds[2]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># test_ds[2]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="transforming-data" class="slide level2">
 <h2>Transforming Data</h2>
 <p>In order to use torch, you must transform the data: - tensor - flatten - tensor divided by the potential values (255)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="do">###</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  x <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="fu">torch_tensor</span>()  <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>    <span class="fu">torch_flatten</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>    <span class="fu">torch_div</span>(<span class="dv">255</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>}</span>
-<span id="cb5-8"><a href="#cb5-8"></a>train_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(</span>
-<span id="cb5-9"><a href="#cb5-9"></a>  <span class="at">root =</span> <span class="st">"."</span>,</span>
-<span id="cb5-10"><a href="#cb5-10"></a>  <span class="at">train =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-11"><a href="#cb5-11"></a>  <span class="at">download =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-12"><a href="#cb5-12"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb5-13"><a href="#cb5-13"></a>)</span>
-<span id="cb5-14"><a href="#cb5-14"></a>test_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(</span>
-<span id="cb5-15"><a href="#cb5-15"></a>  <span class="at">root =</span> <span class="st">"."</span>,</span>
-<span id="cb5-16"><a href="#cb5-16"></a>  <span class="at">train =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb5-17"><a href="#cb5-17"></a>  <span class="at">download =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-18"><a href="#cb5-18"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb5-19"><a href="#cb5-19"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="do">###</span></span>
+<span id="cb5-2"><a></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb5-3"><a></a>  x <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a></a>    <span class="fu">torch_tensor</span>()  <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a></a>    <span class="fu">torch_flatten</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-6"><a></a>    <span class="fu">torch_div</span>(<span class="dv">255</span>)</span>
+<span id="cb5-7"><a></a>}</span>
+<span id="cb5-8"><a></a>train_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(</span>
+<span id="cb5-9"><a></a>  <span class="at">root =</span> <span class="st">"."</span>,</span>
+<span id="cb5-10"><a></a>  <span class="at">train =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-11"><a></a>  <span class="at">download =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-12"><a></a>  <span class="at">transform =</span> transform</span>
+<span id="cb5-13"><a></a>)</span>
+<span id="cb5-14"><a></a>test_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(</span>
+<span id="cb5-15"><a></a>  <span class="at">root =</span> <span class="st">"."</span>,</span>
+<span id="cb5-16"><a></a>  <span class="at">train =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-17"><a></a>  <span class="at">download =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-18"><a></a>  <span class="at">transform =</span> transform</span>
+<span id="cb5-19"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="neural-network-model-set-up" class="slide level2">
@@ -850,42 +848,42 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <p><code>forward</code> describes how the neural network is formatted using the values from the <code>initialize</code> function.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="do">###</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>modelnn <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
-<span id="cb6-4"><a href="#cb6-4"></a>    self<span class="sc">$</span>linear1 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(<span class="at">in_features =</span> <span class="dv">28</span><span class="sc">*</span><span class="dv">28</span>, <span class="at">out_features =</span> <span class="dv">256</span>)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>    self<span class="sc">$</span>linear2 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(<span class="at">in_features =</span> <span class="dv">256</span>, <span class="at">out_features =</span> <span class="dv">128</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>    self<span class="sc">$</span>linear3 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(<span class="at">in_features =</span> <span class="dv">128</span>, <span class="at">out_features =</span> <span class="dv">10</span>)</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a>    self<span class="sc">$</span>drop1 <span class="ot">&lt;-</span> <span class="fu">nn_dropout</span>(<span class="at">p =</span> <span class="fl">0.4</span>)</span>
-<span id="cb6-9"><a href="#cb6-9"></a>    self<span class="sc">$</span>drop2 <span class="ot">&lt;-</span> <span class="fu">nn_dropout</span>(<span class="at">p =</span> <span class="fl">0.3</span>)</span>
-<span id="cb6-10"><a href="#cb6-10"></a></span>
-<span id="cb6-11"><a href="#cb6-11"></a>    self<span class="sc">$</span>activation <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
-<span id="cb6-12"><a href="#cb6-12"></a>  },</span>
-<span id="cb6-13"><a href="#cb6-13"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb6-14"><a href="#cb6-14"></a>    x <span class="sc">|&gt;</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a>      self<span class="sc">$</span><span class="fu">linear1</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a>      self<span class="sc">$</span><span class="fu">activation</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-17"><a href="#cb6-17"></a>      self<span class="sc">$</span><span class="fu">drop1</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-18"><a href="#cb6-18"></a></span>
-<span id="cb6-19"><a href="#cb6-19"></a>      self<span class="sc">$</span><span class="fu">linear2</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-20"><a href="#cb6-20"></a>      self<span class="sc">$</span><span class="fu">activation</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-21"><a href="#cb6-21"></a>      self<span class="sc">$</span><span class="fu">drop2</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-22"><a href="#cb6-22"></a>      self<span class="sc">$</span><span class="fu">linear3</span>()</span>
-<span id="cb6-23"><a href="#cb6-23"></a>  }</span>
-<span id="cb6-24"><a href="#cb6-24"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="do">###</span></span>
+<span id="cb6-2"><a></a>modelnn <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
+<span id="cb6-3"><a></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
+<span id="cb6-4"><a></a>    self<span class="sc">$</span>linear1 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(<span class="at">in_features =</span> <span class="dv">28</span><span class="sc">*</span><span class="dv">28</span>, <span class="at">out_features =</span> <span class="dv">256</span>)</span>
+<span id="cb6-5"><a></a>    self<span class="sc">$</span>linear2 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(<span class="at">in_features =</span> <span class="dv">256</span>, <span class="at">out_features =</span> <span class="dv">128</span>)</span>
+<span id="cb6-6"><a></a>    self<span class="sc">$</span>linear3 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(<span class="at">in_features =</span> <span class="dv">128</span>, <span class="at">out_features =</span> <span class="dv">10</span>)</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a>    self<span class="sc">$</span>drop1 <span class="ot">&lt;-</span> <span class="fu">nn_dropout</span>(<span class="at">p =</span> <span class="fl">0.4</span>)</span>
+<span id="cb6-9"><a></a>    self<span class="sc">$</span>drop2 <span class="ot">&lt;-</span> <span class="fu">nn_dropout</span>(<span class="at">p =</span> <span class="fl">0.3</span>)</span>
+<span id="cb6-10"><a></a></span>
+<span id="cb6-11"><a></a>    self<span class="sc">$</span>activation <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
+<span id="cb6-12"><a></a>  },</span>
+<span id="cb6-13"><a></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb6-14"><a></a>    x <span class="sc">|&gt;</span></span>
+<span id="cb6-15"><a></a>      self<span class="sc">$</span><span class="fu">linear1</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-16"><a></a>      self<span class="sc">$</span><span class="fu">activation</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-17"><a></a>      self<span class="sc">$</span><span class="fu">drop1</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-18"><a></a></span>
+<span id="cb6-19"><a></a>      self<span class="sc">$</span><span class="fu">linear2</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-20"><a></a>      self<span class="sc">$</span><span class="fu">activation</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-21"><a></a>      self<span class="sc">$</span><span class="fu">drop2</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-22"><a></a>      self<span class="sc">$</span><span class="fu">linear3</span>()</span>
+<span id="cb6-23"><a></a>  }</span>
+<span id="cb6-24"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="set-up-neural-network" class="slide level2">
 <h2>Set Up Neural Network</h2>
 <p>Tells <code>luz</code> (<code>torch</code>) how to execute the neural network.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>modelnn <span class="ot">&lt;-</span> modelnn <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">setup</span>(</span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="at">optimizer =</span> optim_rmsprop,</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
-<span id="cb7-6"><a href="#cb7-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>modelnn <span class="ot">&lt;-</span> modelnn <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">setup</span>(</span>
+<span id="cb7-3"><a></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
+<span id="cb7-4"><a></a>    <span class="at">optimizer =</span> optim_rmsprop,</span>
+<span id="cb7-5"><a></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
+<span id="cb7-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fit-the-neural-network" class="slide level2">
@@ -895,16 +893,16 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">system.time</span>(</span>
-<span id="cb8-2"><a href="#cb8-2"></a>   fitted <span class="ot">&lt;-</span> modelnn <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>      <span class="fu">fit</span>(</span>
-<span id="cb8-4"><a href="#cb8-4"></a>        <span class="at">data =</span> train_ds,</span>
-<span id="cb8-5"><a href="#cb8-5"></a>        <span class="at">epochs =</span> <span class="dv">5</span>,</span>
-<span id="cb8-6"><a href="#cb8-6"></a>        <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
-<span id="cb8-7"><a href="#cb8-7"></a>        <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">256</span>),</span>
-<span id="cb8-8"><a href="#cb8-8"></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>      )</span>
-<span id="cb8-10"><a href="#cb8-10"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb8-2"><a></a>   fitted <span class="ot">&lt;-</span> modelnn <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a></a>      <span class="fu">fit</span>(</span>
+<span id="cb8-4"><a></a>        <span class="at">data =</span> train_ds,</span>
+<span id="cb8-5"><a></a>        <span class="at">epochs =</span> <span class="dv">5</span>,</span>
+<span id="cb8-6"><a></a>        <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
+<span id="cb8-7"><a></a>        <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">256</span>),</span>
+<span id="cb8-8"><a></a>        <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-9"><a></a>      )</span>
+<span id="cb8-10"><a></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;    user  system elapsed 
 #&gt; 169.428   0.544 168.528</code></pre>
@@ -913,7 +911,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">plot</span>(fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">plot</span>(fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -929,17 +927,17 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="test-efficiency-of-neural-network" class="slide level2">
 <h2>Test Efficiency of Neural Network</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>accuracy <span class="ot">&lt;-</span> <span class="cf">function</span>(pred, truth) {</span>
-<span id="cb11-2"><a href="#cb11-2"></a>   <span class="fu">mean</span>(pred <span class="sc">==</span> truth) }</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># gets the true classes from all observations in test_ds.</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>truth <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_along</span>(test_ds), <span class="cf">function</span>(x) test_ds[x][[<span class="dv">2</span>]])</span>
-<span id="cb11-6"><a href="#cb11-6"></a></span>
-<span id="cb11-7"><a href="#cb11-7"></a>fitted <span class="sc">|&gt;</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a>  <span class="fu">predict</span>(test_ds) <span class="sc">|&gt;</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">torch_argmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co"># the predicted class is the one with higher 'logit'.</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a>  <span class="fu">as_array</span>() <span class="sc">|&gt;</span>  <span class="co"># convert to an R object</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a>  <span class="fu">accuracy</span>(truth) <span class="co"># use function created</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>accuracy <span class="ot">&lt;-</span> <span class="cf">function</span>(pred, truth) {</span>
+<span id="cb11-2"><a></a>   <span class="fu">mean</span>(pred <span class="sc">==</span> truth) }</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="co"># gets the true classes from all observations in test_ds.</span></span>
+<span id="cb11-5"><a></a>truth <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_along</span>(test_ds), <span class="cf">function</span>(x) test_ds[x][[<span class="dv">2</span>]])</span>
+<span id="cb11-6"><a></a></span>
+<span id="cb11-7"><a></a>fitted <span class="sc">|&gt;</span></span>
+<span id="cb11-8"><a></a>  <span class="fu">predict</span>(test_ds) <span class="sc">|&gt;</span></span>
+<span id="cb11-9"><a></a>  <span class="fu">torch_argmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co"># the predicted class is the one with higher 'logit'.</span></span>
+<span id="cb11-10"><a></a>  <span class="fu">as_array</span>() <span class="sc">|&gt;</span>  <span class="co"># convert to an R object</span></span>
+<span id="cb11-11"><a></a>  <span class="fu">accuracy</span>(truth) <span class="co"># use function created</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 0.9504</code></pre>
 </div>
@@ -978,24 +976,24 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="cifar-data-1" class="slide level2">
 <h2>CIFAR Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">transform_to_tensor</span>(x)</span>
-<span id="cb13-3"><a href="#cb13-3"></a>}</span>
-<span id="cb13-4"><a href="#cb13-4"></a></span>
-<span id="cb13-5"><a href="#cb13-5"></a>train_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
-<span id="cb13-6"><a href="#cb13-6"></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
-<span id="cb13-7"><a href="#cb13-7"></a>  <span class="at">train =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb13-8"><a href="#cb13-8"></a>  <span class="at">download =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb13-9"><a href="#cb13-9"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb13-10"><a href="#cb13-10"></a>)</span>
-<span id="cb13-11"><a href="#cb13-11"></a></span>
-<span id="cb13-12"><a href="#cb13-12"></a>test_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
-<span id="cb13-13"><a href="#cb13-13"></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
-<span id="cb13-14"><a href="#cb13-14"></a>  <span class="at">train =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb13-15"><a href="#cb13-15"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb13-16"><a href="#cb13-16"></a>)</span>
-<span id="cb13-17"><a href="#cb13-17"></a></span>
-<span id="cb13-18"><a href="#cb13-18"></a>train_ds[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb13-2"><a></a>  <span class="fu">transform_to_tensor</span>(x)</span>
+<span id="cb13-3"><a></a>}</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a>train_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
+<span id="cb13-6"><a></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
+<span id="cb13-7"><a></a>  <span class="at">train =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb13-8"><a></a>  <span class="at">download =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb13-9"><a></a>  <span class="at">transform =</span> transform</span>
+<span id="cb13-10"><a></a>)</span>
+<span id="cb13-11"><a></a></span>
+<span id="cb13-12"><a></a>test_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
+<span id="cb13-13"><a></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
+<span id="cb13-14"><a></a>  <span class="at">train =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb13-15"><a></a>  <span class="at">transform =</span> transform</span>
+<span id="cb13-16"><a></a>)</span>
+<span id="cb13-17"><a></a></span>
+<span id="cb13-18"><a></a>train_ds[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; $x
 #&gt; torch_tensor
@@ -1040,9 +1038,9 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="sample-image" class="slide level2">
 <h2>Sample Image</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb15-2"><a href="#cb15-2"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">50000</span>), <span class="dv">4</span>)</span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="cf">for</span> (i <span class="cf">in</span> index) <span class="fu">plot</span>(<span class="fu">as.raster</span>(<span class="fu">as.array</span>(train_ds[i][[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">permute</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb15-2"><a></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">50000</span>), <span class="dv">4</span>)</span>
+<span id="cb15-3"><a></a><span class="cf">for</span> (i <span class="cf">in</span> index) <span class="fu">plot</span>(<span class="fu">as.raster</span>(<span class="fu">as.array</span>(train_ds[i][[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">permute</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="14b_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
@@ -1053,24 +1051,24 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="tab-content">
 <div id="tabset-3-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>conv_block <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="at">initialize =</span> <span class="cf">function</span>(in_channels, out_channels) {</span>
-<span id="cb16-3"><a href="#cb16-3"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_conv2d</span>(</span>
-<span id="cb16-4"><a href="#cb16-4"></a>      <span class="at">in_channels =</span> in_channels, </span>
-<span id="cb16-5"><a href="#cb16-5"></a>      <span class="at">out_channels =</span> out_channels, </span>
-<span id="cb16-6"><a href="#cb16-6"></a>      <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>),</span>
-<span id="cb16-7"><a href="#cb16-7"></a>      <span class="at">padding =</span> <span class="st">"same"</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a>    )</span>
-<span id="cb16-9"><a href="#cb16-9"></a>    self<span class="sc">$</span>relu <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
-<span id="cb16-10"><a href="#cb16-10"></a>    self<span class="sc">$</span>pool <span class="ot">&lt;-</span> <span class="fu">nn_max_pool2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb16-11"><a href="#cb16-11"></a>  },</span>
-<span id="cb16-12"><a href="#cb16-12"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb16-13"><a href="#cb16-13"></a>    x <span class="sc">|&gt;</span> </span>
-<span id="cb16-14"><a href="#cb16-14"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb16-15"><a href="#cb16-15"></a>      self<span class="sc">$</span><span class="fu">relu</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb16-16"><a href="#cb16-16"></a>      self<span class="sc">$</span><span class="fu">pool</span>()</span>
-<span id="cb16-17"><a href="#cb16-17"></a>  }</span>
-<span id="cb16-18"><a href="#cb16-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>conv_block <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
+<span id="cb16-2"><a></a>  <span class="at">initialize =</span> <span class="cf">function</span>(in_channels, out_channels) {</span>
+<span id="cb16-3"><a></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_conv2d</span>(</span>
+<span id="cb16-4"><a></a>      <span class="at">in_channels =</span> in_channels, </span>
+<span id="cb16-5"><a></a>      <span class="at">out_channels =</span> out_channels, </span>
+<span id="cb16-6"><a></a>      <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>),</span>
+<span id="cb16-7"><a></a>      <span class="at">padding =</span> <span class="st">"same"</span></span>
+<span id="cb16-8"><a></a>    )</span>
+<span id="cb16-9"><a></a>    self<span class="sc">$</span>relu <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
+<span id="cb16-10"><a></a>    self<span class="sc">$</span>pool <span class="ot">&lt;-</span> <span class="fu">nn_max_pool2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb16-11"><a></a>  },</span>
+<span id="cb16-12"><a></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb16-13"><a></a>    x <span class="sc">|&gt;</span> </span>
+<span id="cb16-14"><a></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb16-15"><a></a>      self<span class="sc">$</span><span class="fu">relu</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb16-16"><a></a>      self<span class="sc">$</span><span class="fu">pool</span>()</span>
+<span id="cb16-17"><a></a>  }</span>
+<span id="cb16-18"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>in_channels</code>: Number of inputs planes (3 at the beginning)</li>
@@ -1083,28 +1081,28 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 </div>
 <div id="tabset-3-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>model <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
-<span id="cb17-3"><a href="#cb17-3"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
-<span id="cb17-4"><a href="#cb17-4"></a>      <span class="fu">conv_block</span>(<span class="dv">3</span>, <span class="dv">32</span>),</span>
-<span id="cb17-5"><a href="#cb17-5"></a>      <span class="fu">conv_block</span>(<span class="dv">32</span>, <span class="dv">64</span>),</span>
-<span id="cb17-6"><a href="#cb17-6"></a>      <span class="fu">conv_block</span>(<span class="dv">64</span>, <span class="dv">128</span>),</span>
-<span id="cb17-7"><a href="#cb17-7"></a>      <span class="fu">conv_block</span>(<span class="dv">128</span>, <span class="dv">256</span>)</span>
-<span id="cb17-8"><a href="#cb17-8"></a>    )</span>
-<span id="cb17-9"><a href="#cb17-9"></a>    self<span class="sc">$</span>output <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
-<span id="cb17-10"><a href="#cb17-10"></a>      <span class="fu">nn_dropout</span>(<span class="fl">0.5</span>),</span>
-<span id="cb17-11"><a href="#cb17-11"></a>      <span class="fu">nn_linear</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">256</span>, <span class="dv">512</span>),</span>
-<span id="cb17-12"><a href="#cb17-12"></a>      <span class="fu">nn_relu</span>(),</span>
-<span id="cb17-13"><a href="#cb17-13"></a>      <span class="fu">nn_linear</span>(<span class="dv">512</span>, <span class="dv">100</span>)</span>
-<span id="cb17-14"><a href="#cb17-14"></a>    )</span>
-<span id="cb17-15"><a href="#cb17-15"></a>  },</span>
-<span id="cb17-16"><a href="#cb17-16"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb17-17"><a href="#cb17-17"></a>    x <span class="sc">|&gt;</span> </span>
-<span id="cb17-18"><a href="#cb17-18"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb17-19"><a href="#cb17-19"></a>      <span class="fu">torch_flatten</span>(<span class="at">start_dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-20"><a href="#cb17-20"></a>      self<span class="sc">$</span><span class="fu">output</span>()</span>
-<span id="cb17-21"><a href="#cb17-21"></a>  }</span>
-<span id="cb17-22"><a href="#cb17-22"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>model <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
+<span id="cb17-2"><a></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
+<span id="cb17-3"><a></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
+<span id="cb17-4"><a></a>      <span class="fu">conv_block</span>(<span class="dv">3</span>, <span class="dv">32</span>),</span>
+<span id="cb17-5"><a></a>      <span class="fu">conv_block</span>(<span class="dv">32</span>, <span class="dv">64</span>),</span>
+<span id="cb17-6"><a></a>      <span class="fu">conv_block</span>(<span class="dv">64</span>, <span class="dv">128</span>),</span>
+<span id="cb17-7"><a></a>      <span class="fu">conv_block</span>(<span class="dv">128</span>, <span class="dv">256</span>)</span>
+<span id="cb17-8"><a></a>    )</span>
+<span id="cb17-9"><a></a>    self<span class="sc">$</span>output <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
+<span id="cb17-10"><a></a>      <span class="fu">nn_dropout</span>(<span class="fl">0.5</span>),</span>
+<span id="cb17-11"><a></a>      <span class="fu">nn_linear</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">256</span>, <span class="dv">512</span>),</span>
+<span id="cb17-12"><a></a>      <span class="fu">nn_relu</span>(),</span>
+<span id="cb17-13"><a></a>      <span class="fu">nn_linear</span>(<span class="dv">512</span>, <span class="dv">100</span>)</span>
+<span id="cb17-14"><a></a>    )</span>
+<span id="cb17-15"><a></a>  },</span>
+<span id="cb17-16"><a></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb17-17"><a></a>    x <span class="sc">|&gt;</span> </span>
+<span id="cb17-18"><a></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-19"><a></a>      <span class="fu">torch_flatten</span>(<span class="at">start_dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-20"><a></a>      self<span class="sc">$</span><span class="fu">output</span>()</span>
+<span id="cb17-21"><a></a>  }</span>
+<span id="cb17-22"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>nn_sequential</code>: creates a sequence of functions</li>
@@ -1115,7 +1113,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 </div>
 <div id="tabset-3-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">model</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">model</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; An `nn_module` containing 964,516 parameters.
 #&gt; 
@@ -1135,21 +1133,21 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="tab-content">
 <div id="tabset-4-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">system.time</span>(</span>
-<span id="cb20-2"><a href="#cb20-2"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span>  </span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">setup</span>(</span>
-<span id="cb20-4"><a href="#cb20-4"></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
-<span id="cb20-5"><a href="#cb20-5"></a>    <span class="at">optimizer =</span> optim_rmsprop, </span>
-<span id="cb20-6"><a href="#cb20-6"></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
-<span id="cb20-7"><a href="#cb20-7"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb20-8"><a href="#cb20-8"></a>  <span class="fu">set_opt_hparams</span>(<span class="at">lr =</span> <span class="fl">0.001</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">fit</span>(</span>
-<span id="cb20-10"><a href="#cb20-10"></a>    train_ds,</span>
-<span id="cb20-11"><a href="#cb20-11"></a>    <span class="at">epochs =</span> <span class="dv">10</span>, <span class="co">#30,</span></span>
-<span id="cb20-12"><a href="#cb20-12"></a>    <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
-<span id="cb20-13"><a href="#cb20-13"></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">128</span>)</span>
-<span id="cb20-14"><a href="#cb20-14"></a>  )</span>
-<span id="cb20-15"><a href="#cb20-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb20-2"><a></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span>  </span>
+<span id="cb20-3"><a></a>  <span class="fu">setup</span>(</span>
+<span id="cb20-4"><a></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
+<span id="cb20-5"><a></a>    <span class="at">optimizer =</span> optim_rmsprop, </span>
+<span id="cb20-6"><a></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
+<span id="cb20-7"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb20-8"><a></a>  <span class="fu">set_opt_hparams</span>(<span class="at">lr =</span> <span class="fl">0.001</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb20-9"><a></a>  <span class="fu">fit</span>(</span>
+<span id="cb20-10"><a></a>    train_ds,</span>
+<span id="cb20-11"><a></a>    <span class="at">epochs =</span> <span class="dv">10</span>, <span class="co">#30,</span></span>
+<span id="cb20-12"><a></a>    <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
+<span id="cb20-13"><a></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">128</span>)</span>
+<span id="cb20-14"><a></a>  )</span>
+<span id="cb20-15"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;     user   system  elapsed 
 #&gt; 1831.546    9.220 1188.087</code></pre>
@@ -1158,7 +1156,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 </div>
 <div id="tabset-4-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">print</span>(fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">print</span>(fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; A `luz_module_fitted`
 #&gt; ── Time ────────────────────────────────────────────────────────────────────────
@@ -1183,7 +1181,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 </div>
 <div id="tabset-4-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">evaluate</span>(fitted, test_ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">evaluate</span>(fitted, test_ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; A `luz_module_evaluation`
 #&gt; ── Results ─────────────────────────────────────────────────────────────────────
@@ -1506,116 +1504,116 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="all-r-code" class="slide level2">
 <h2>All R Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">library</span>(torch)</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="fu">library</span>(zeallot)</span>
-<span id="cb27-6"><a href="#cb27-6"></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span>
-<span id="cb27-7"><a href="#cb27-7"></a></span>
-<span id="cb27-8"><a href="#cb27-8"></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb27-9"><a href="#cb27-9"></a>  <span class="fu">transform_to_tensor</span>(x)</span>
-<span id="cb27-10"><a href="#cb27-10"></a>}</span>
-<span id="cb27-11"><a href="#cb27-11"></a></span>
-<span id="cb27-12"><a href="#cb27-12"></a>train_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
-<span id="cb27-13"><a href="#cb27-13"></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
-<span id="cb27-14"><a href="#cb27-14"></a>  <span class="at">train =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb27-15"><a href="#cb27-15"></a>  <span class="at">download =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb27-16"><a href="#cb27-16"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb27-17"><a href="#cb27-17"></a>)</span>
-<span id="cb27-18"><a href="#cb27-18"></a></span>
-<span id="cb27-19"><a href="#cb27-19"></a>test_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
-<span id="cb27-20"><a href="#cb27-20"></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
-<span id="cb27-21"><a href="#cb27-21"></a>  <span class="at">train =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb27-22"><a href="#cb27-22"></a>  <span class="at">transform =</span> transform</span>
-<span id="cb27-23"><a href="#cb27-23"></a>)</span>
-<span id="cb27-24"><a href="#cb27-24"></a></span>
-<span id="cb27-25"><a href="#cb27-25"></a>train_ds[<span class="dv">1</span>]</span>
-<span id="cb27-26"><a href="#cb27-26"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb27-27"><a href="#cb27-27"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">50000</span>), <span class="dv">4</span>)</span>
-<span id="cb27-28"><a href="#cb27-28"></a><span class="cf">for</span> (i <span class="cf">in</span> index) <span class="fu">plot</span>(<span class="fu">as.raster</span>(<span class="fu">as.array</span>(train_ds[i][[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">permute</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)))))</span>
-<span id="cb27-29"><a href="#cb27-29"></a>conv_block <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
-<span id="cb27-30"><a href="#cb27-30"></a>  <span class="at">initialize =</span> <span class="cf">function</span>(in_channels, out_channels) {</span>
-<span id="cb27-31"><a href="#cb27-31"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_conv2d</span>(</span>
-<span id="cb27-32"><a href="#cb27-32"></a>      <span class="at">in_channels =</span> in_channels, </span>
-<span id="cb27-33"><a href="#cb27-33"></a>      <span class="at">out_channels =</span> out_channels, </span>
-<span id="cb27-34"><a href="#cb27-34"></a>      <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>),</span>
-<span id="cb27-35"><a href="#cb27-35"></a>      <span class="at">padding =</span> <span class="st">"same"</span></span>
-<span id="cb27-36"><a href="#cb27-36"></a>    )</span>
-<span id="cb27-37"><a href="#cb27-37"></a>    self<span class="sc">$</span>relu <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
-<span id="cb27-38"><a href="#cb27-38"></a>    self<span class="sc">$</span>pool <span class="ot">&lt;-</span> <span class="fu">nn_max_pool2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb27-39"><a href="#cb27-39"></a>  },</span>
-<span id="cb27-40"><a href="#cb27-40"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb27-41"><a href="#cb27-41"></a>    x <span class="sc">|&gt;</span> </span>
-<span id="cb27-42"><a href="#cb27-42"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb27-43"><a href="#cb27-43"></a>      self<span class="sc">$</span><span class="fu">relu</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb27-44"><a href="#cb27-44"></a>      self<span class="sc">$</span><span class="fu">pool</span>()</span>
-<span id="cb27-45"><a href="#cb27-45"></a>  }</span>
-<span id="cb27-46"><a href="#cb27-46"></a>)</span>
-<span id="cb27-47"><a href="#cb27-47"></a>model <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
-<span id="cb27-48"><a href="#cb27-48"></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
-<span id="cb27-49"><a href="#cb27-49"></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
-<span id="cb27-50"><a href="#cb27-50"></a>      <span class="fu">conv_block</span>(<span class="dv">3</span>, <span class="dv">32</span>),</span>
-<span id="cb27-51"><a href="#cb27-51"></a>      <span class="fu">conv_block</span>(<span class="dv">32</span>, <span class="dv">64</span>),</span>
-<span id="cb27-52"><a href="#cb27-52"></a>      <span class="fu">conv_block</span>(<span class="dv">64</span>, <span class="dv">128</span>),</span>
-<span id="cb27-53"><a href="#cb27-53"></a>      <span class="fu">conv_block</span>(<span class="dv">128</span>, <span class="dv">256</span>)</span>
-<span id="cb27-54"><a href="#cb27-54"></a>    )</span>
-<span id="cb27-55"><a href="#cb27-55"></a>    self<span class="sc">$</span>output <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
-<span id="cb27-56"><a href="#cb27-56"></a>      <span class="fu">nn_dropout</span>(<span class="fl">0.5</span>),</span>
-<span id="cb27-57"><a href="#cb27-57"></a>      <span class="fu">nn_linear</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">256</span>, <span class="dv">512</span>),</span>
-<span id="cb27-58"><a href="#cb27-58"></a>      <span class="fu">nn_relu</span>(),</span>
-<span id="cb27-59"><a href="#cb27-59"></a>      <span class="fu">nn_linear</span>(<span class="dv">512</span>, <span class="dv">100</span>)</span>
-<span id="cb27-60"><a href="#cb27-60"></a>    )</span>
-<span id="cb27-61"><a href="#cb27-61"></a>  },</span>
-<span id="cb27-62"><a href="#cb27-62"></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb27-63"><a href="#cb27-63"></a>    x <span class="sc">|&gt;</span> </span>
-<span id="cb27-64"><a href="#cb27-64"></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb27-65"><a href="#cb27-65"></a>      <span class="fu">torch_flatten</span>(<span class="at">start_dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb27-66"><a href="#cb27-66"></a>      self<span class="sc">$</span><span class="fu">output</span>()</span>
-<span id="cb27-67"><a href="#cb27-67"></a>  }</span>
-<span id="cb27-68"><a href="#cb27-68"></a>)</span>
-<span id="cb27-69"><a href="#cb27-69"></a></span>
-<span id="cb27-70"><a href="#cb27-70"></a><span class="fu">model</span>()</span>
-<span id="cb27-71"><a href="#cb27-71"></a><span class="fu">system.time</span>(</span>
-<span id="cb27-72"><a href="#cb27-72"></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span>  </span>
-<span id="cb27-73"><a href="#cb27-73"></a>  <span class="fu">setup</span>(</span>
-<span id="cb27-74"><a href="#cb27-74"></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
-<span id="cb27-75"><a href="#cb27-75"></a>    <span class="at">optimizer =</span> optim_rmsprop, </span>
-<span id="cb27-76"><a href="#cb27-76"></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
-<span id="cb27-77"><a href="#cb27-77"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb27-78"><a href="#cb27-78"></a>  <span class="fu">set_opt_hparams</span>(<span class="at">lr =</span> <span class="fl">0.001</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb27-79"><a href="#cb27-79"></a>  <span class="fu">fit</span>(</span>
-<span id="cb27-80"><a href="#cb27-80"></a>    train_ds,</span>
-<span id="cb27-81"><a href="#cb27-81"></a>    <span class="at">epochs =</span> <span class="dv">10</span>, <span class="co">#30,</span></span>
-<span id="cb27-82"><a href="#cb27-82"></a>    <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
-<span id="cb27-83"><a href="#cb27-83"></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">128</span>)</span>
-<span id="cb27-84"><a href="#cb27-84"></a>  )</span>
-<span id="cb27-85"><a href="#cb27-85"></a>)</span>
-<span id="cb27-86"><a href="#cb27-86"></a></span>
-<span id="cb27-87"><a href="#cb27-87"></a><span class="fu">print</span>(fitted)</span>
-<span id="cb27-88"><a href="#cb27-88"></a><span class="fu">evaluate</span>(fitted, test_ds)</span>
-<span id="cb27-89"><a href="#cb27-89"></a></span>
-<span id="cb27-90"><a href="#cb27-90"></a>cifar100_mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"data/cifar-100-labels.json"</span>)</span>
-<span id="cb27-91"><a href="#cb27-91"></a></span>
-<span id="cb27-92"><a href="#cb27-92"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">32</span>, <span class="dv">32</span>)</span>
-<span id="cb27-93"><a href="#cb27-93"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>)</span>
-<span id="cb27-94"><a href="#cb27-94"></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
-<span id="cb27-95"><a href="#cb27-95"></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb27-96"><a href="#cb27-96"></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb27-97"><a href="#cb27-97"></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb27-98"><a href="#cb27-98"></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb27-99"><a href="#cb27-99"></a>  <span class="fu">transform_normalize</span>(</span>
-<span id="cb27-100"><a href="#cb27-100"></a>    <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.4914</span>, <span class="fl">0.4822</span>, <span class="fl">0.4465</span>),</span>
-<span id="cb27-101"><a href="#cb27-101"></a>    <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.2470</span>, <span class="fl">0.2435</span>, <span class="fl">0.2616</span>)</span>
-<span id="cb27-102"><a href="#cb27-102"></a>  )</span>
-<span id="cb27-103"><a href="#cb27-103"></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
-<span id="cb27-104"><a href="#cb27-104"></a></span>
-<span id="cb27-105"><a href="#cb27-105"></a></span>
-<span id="cb27-106"><a href="#cb27-106"></a>preds <span class="ot">&lt;-</span> fitted <span class="sc">|&gt;</span> </span>
-<span id="cb27-107"><a href="#cb27-107"></a>  <span class="fu">predict</span>(x) <span class="sc">|&gt;</span> </span>
-<span id="cb27-108"><a href="#cb27-108"></a>  <span class="fu">torch_topk</span>(<span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">100</span>)</span>
-<span id="cb27-109"><a href="#cb27-109"></a></span>
-<span id="cb27-110"><a href="#cb27-110"></a>cifar100_mapping[<span class="fu">as.integer</span>(preds[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">library</span>(torch)</span>
+<span id="cb27-2"><a></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
+<span id="cb27-3"><a></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
+<span id="cb27-4"><a></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
+<span id="cb27-5"><a></a><span class="fu">library</span>(zeallot)</span>
+<span id="cb27-6"><a></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span>
+<span id="cb27-7"><a></a></span>
+<span id="cb27-8"><a></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb27-9"><a></a>  <span class="fu">transform_to_tensor</span>(x)</span>
+<span id="cb27-10"><a></a>}</span>
+<span id="cb27-11"><a></a></span>
+<span id="cb27-12"><a></a>train_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
+<span id="cb27-13"><a></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
+<span id="cb27-14"><a></a>  <span class="at">train =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb27-15"><a></a>  <span class="at">download =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb27-16"><a></a>  <span class="at">transform =</span> transform</span>
+<span id="cb27-17"><a></a>)</span>
+<span id="cb27-18"><a></a></span>
+<span id="cb27-19"><a></a>test_ds <span class="ot">&lt;-</span> <span class="fu">cifar100_dataset</span>(</span>
+<span id="cb27-20"><a></a>  <span class="at">root =</span> <span class="st">"./"</span>, </span>
+<span id="cb27-21"><a></a>  <span class="at">train =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb27-22"><a></a>  <span class="at">transform =</span> transform</span>
+<span id="cb27-23"><a></a>)</span>
+<span id="cb27-24"><a></a></span>
+<span id="cb27-25"><a></a>train_ds[<span class="dv">1</span>]</span>
+<span id="cb27-26"><a></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb27-27"><a></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">50000</span>), <span class="dv">4</span>)</span>
+<span id="cb27-28"><a></a><span class="cf">for</span> (i <span class="cf">in</span> index) <span class="fu">plot</span>(<span class="fu">as.raster</span>(<span class="fu">as.array</span>(train_ds[i][[<span class="dv">1</span>]]<span class="sc">$</span><span class="fu">permute</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>)))))</span>
+<span id="cb27-29"><a></a>conv_block <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
+<span id="cb27-30"><a></a>  <span class="at">initialize =</span> <span class="cf">function</span>(in_channels, out_channels) {</span>
+<span id="cb27-31"><a></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_conv2d</span>(</span>
+<span id="cb27-32"><a></a>      <span class="at">in_channels =</span> in_channels, </span>
+<span id="cb27-33"><a></a>      <span class="at">out_channels =</span> out_channels, </span>
+<span id="cb27-34"><a></a>      <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>),</span>
+<span id="cb27-35"><a></a>      <span class="at">padding =</span> <span class="st">"same"</span></span>
+<span id="cb27-36"><a></a>    )</span>
+<span id="cb27-37"><a></a>    self<span class="sc">$</span>relu <span class="ot">&lt;-</span> <span class="fu">nn_relu</span>()</span>
+<span id="cb27-38"><a></a>    self<span class="sc">$</span>pool <span class="ot">&lt;-</span> <span class="fu">nn_max_pool2d</span>(<span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb27-39"><a></a>  },</span>
+<span id="cb27-40"><a></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb27-41"><a></a>    x <span class="sc">|&gt;</span> </span>
+<span id="cb27-42"><a></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb27-43"><a></a>      self<span class="sc">$</span><span class="fu">relu</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb27-44"><a></a>      self<span class="sc">$</span><span class="fu">pool</span>()</span>
+<span id="cb27-45"><a></a>  }</span>
+<span id="cb27-46"><a></a>)</span>
+<span id="cb27-47"><a></a>model <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
+<span id="cb27-48"><a></a>  <span class="at">initialize =</span> <span class="cf">function</span>() {</span>
+<span id="cb27-49"><a></a>    self<span class="sc">$</span>conv <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
+<span id="cb27-50"><a></a>      <span class="fu">conv_block</span>(<span class="dv">3</span>, <span class="dv">32</span>),</span>
+<span id="cb27-51"><a></a>      <span class="fu">conv_block</span>(<span class="dv">32</span>, <span class="dv">64</span>),</span>
+<span id="cb27-52"><a></a>      <span class="fu">conv_block</span>(<span class="dv">64</span>, <span class="dv">128</span>),</span>
+<span id="cb27-53"><a></a>      <span class="fu">conv_block</span>(<span class="dv">128</span>, <span class="dv">256</span>)</span>
+<span id="cb27-54"><a></a>    )</span>
+<span id="cb27-55"><a></a>    self<span class="sc">$</span>output <span class="ot">&lt;-</span> <span class="fu">nn_sequential</span>(</span>
+<span id="cb27-56"><a></a>      <span class="fu">nn_dropout</span>(<span class="fl">0.5</span>),</span>
+<span id="cb27-57"><a></a>      <span class="fu">nn_linear</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">256</span>, <span class="dv">512</span>),</span>
+<span id="cb27-58"><a></a>      <span class="fu">nn_relu</span>(),</span>
+<span id="cb27-59"><a></a>      <span class="fu">nn_linear</span>(<span class="dv">512</span>, <span class="dv">100</span>)</span>
+<span id="cb27-60"><a></a>    )</span>
+<span id="cb27-61"><a></a>  },</span>
+<span id="cb27-62"><a></a>  <span class="at">forward =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb27-63"><a></a>    x <span class="sc">|&gt;</span> </span>
+<span id="cb27-64"><a></a>      self<span class="sc">$</span><span class="fu">conv</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb27-65"><a></a>      <span class="fu">torch_flatten</span>(<span class="at">start_dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-66"><a></a>      self<span class="sc">$</span><span class="fu">output</span>()</span>
+<span id="cb27-67"><a></a>  }</span>
+<span id="cb27-68"><a></a>)</span>
+<span id="cb27-69"><a></a></span>
+<span id="cb27-70"><a></a><span class="fu">model</span>()</span>
+<span id="cb27-71"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb27-72"><a></a>fitted <span class="ot">&lt;-</span> model <span class="sc">|&gt;</span>  </span>
+<span id="cb27-73"><a></a>  <span class="fu">setup</span>(</span>
+<span id="cb27-74"><a></a>    <span class="at">loss =</span> <span class="fu">nn_cross_entropy_loss</span>(),</span>
+<span id="cb27-75"><a></a>    <span class="at">optimizer =</span> optim_rmsprop, </span>
+<span id="cb27-76"><a></a>    <span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">luz_metric_accuracy</span>())</span>
+<span id="cb27-77"><a></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb27-78"><a></a>  <span class="fu">set_opt_hparams</span>(<span class="at">lr =</span> <span class="fl">0.001</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-79"><a></a>  <span class="fu">fit</span>(</span>
+<span id="cb27-80"><a></a>    train_ds,</span>
+<span id="cb27-81"><a></a>    <span class="at">epochs =</span> <span class="dv">10</span>, <span class="co">#30,</span></span>
+<span id="cb27-82"><a></a>    <span class="at">valid_data =</span> <span class="fl">0.2</span>,</span>
+<span id="cb27-83"><a></a>    <span class="at">dataloader_options =</span> <span class="fu">list</span>(<span class="at">batch_size =</span> <span class="dv">128</span>)</span>
+<span id="cb27-84"><a></a>  )</span>
+<span id="cb27-85"><a></a>)</span>
+<span id="cb27-86"><a></a></span>
+<span id="cb27-87"><a></a><span class="fu">print</span>(fitted)</span>
+<span id="cb27-88"><a></a><span class="fu">evaluate</span>(fitted, test_ds)</span>
+<span id="cb27-89"><a></a></span>
+<span id="cb27-90"><a></a>cifar100_mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"data/cifar-100-labels.json"</span>)</span>
+<span id="cb27-91"><a></a></span>
+<span id="cb27-92"><a></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">32</span>, <span class="dv">32</span>)</span>
+<span id="cb27-93"><a></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>)</span>
+<span id="cb27-94"><a></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
+<span id="cb27-95"><a></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb27-96"><a></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb27-97"><a></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb27-98"><a></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb27-99"><a></a>  <span class="fu">transform_normalize</span>(</span>
+<span id="cb27-100"><a></a>    <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.4914</span>, <span class="fl">0.4822</span>, <span class="fl">0.4465</span>),</span>
+<span id="cb27-101"><a></a>    <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.2470</span>, <span class="fl">0.2435</span>, <span class="fl">0.2616</span>)</span>
+<span id="cb27-102"><a></a>  )</span>
+<span id="cb27-103"><a></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
+<span id="cb27-104"><a></a></span>
+<span id="cb27-105"><a></a></span>
+<span id="cb27-106"><a></a>preds <span class="ot">&lt;-</span> fitted <span class="sc">|&gt;</span> </span>
+<span id="cb27-107"><a></a>  <span class="fu">predict</span>(x) <span class="sc">|&gt;</span> </span>
+<span id="cb27-108"><a></a>  <span class="fu">torch_topk</span>(<span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">100</span>)</span>
+<span id="cb27-109"><a></a></span>
+<span id="cb27-110"><a></a>cifar100_mapping[<span class="fu">as.integer</span>(preds[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -1651,31 +1649,31 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="pre-trained-cnn-1" class="slide level2">
 <h2>Pre-Trained CNN</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>model_imagenet <span class="ot">&lt;-</span> torchvision<span class="sc">::</span><span class="fu">model_resnet18</span>(<span class="at">pretrained =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-2"><a href="#cb28-2"></a>model_imagenet<span class="sc">$</span><span class="fu">eval</span>() <span class="co"># put the model in evaluation mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>model_imagenet <span class="ot">&lt;-</span> torchvision<span class="sc">::</span><span class="fu">model_resnet18</span>(<span class="at">pretrained =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-2"><a></a>model_imagenet<span class="sc">$</span><span class="fu">eval</span>() <span class="co"># put the model in evaluation mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="loading-images" class="slide level2">
 <h2>Loading Images</h2>
 <p>Download book images <a href="https://www.statlearning.com/s/book_images.zip">here</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>img_dir <span class="ot">&lt;-</span> <span class="st">"img/books"</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>image_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(img_dir)</span>
-<span id="cb29-3"><a href="#cb29-3"></a>num_images <span class="ot">&lt;-</span> <span class="fu">length</span>(image_names)</span>
-<span id="cb29-4"><a href="#cb29-4"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(num_images, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_images) {</span>
-<span id="cb29-6"><a href="#cb29-6"></a>   img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(img_dir, image_names[i])</span>
-<span id="cb29-7"><a href="#cb29-7"></a>   img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span> </span>
-<span id="cb29-8"><a href="#cb29-8"></a>     <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb29-9"><a href="#cb29-9"></a>     <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb29-10"><a href="#cb29-10"></a>     <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb29-11"><a href="#cb29-11"></a>     <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb29-12"><a href="#cb29-12"></a>     <span class="fu">transform_normalize</span>(</span>
-<span id="cb29-13"><a href="#cb29-13"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
-<span id="cb29-14"><a href="#cb29-14"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
-<span id="cb29-15"><a href="#cb29-15"></a>     )</span>
-<span id="cb29-16"><a href="#cb29-16"></a>   x[i,,, ] <span class="ot">&lt;-</span> img</span>
-<span id="cb29-17"><a href="#cb29-17"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>img_dir <span class="ot">&lt;-</span> <span class="st">"img/books"</span></span>
+<span id="cb29-2"><a></a>image_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(img_dir)</span>
+<span id="cb29-3"><a></a>num_images <span class="ot">&lt;-</span> <span class="fu">length</span>(image_names)</span>
+<span id="cb29-4"><a></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(num_images, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
+<span id="cb29-5"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_images) {</span>
+<span id="cb29-6"><a></a>   img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(img_dir, image_names[i])</span>
+<span id="cb29-7"><a></a>   img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span> </span>
+<span id="cb29-8"><a></a>     <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb29-9"><a></a>     <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb29-10"><a></a>     <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb29-11"><a></a>     <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb29-12"><a></a>     <span class="fu">transform_normalize</span>(</span>
+<span id="cb29-13"><a></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
+<span id="cb29-14"><a></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
+<span id="cb29-15"><a></a>     )</span>
+<span id="cb29-16"><a></a>   x[i,,, ] <span class="ot">&lt;-</span> img</span>
+<span id="cb29-17"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="prediction" class="slide level2">
@@ -1685,37 +1683,37 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="tab-content">
 <div id="tabset-5-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
-<span id="cb30-2"><a href="#cb30-2"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
+<span id="cb30-2"><a></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-5-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">sapply</span>(<span class="cf">function</span>(x) x[[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a></a>  <span class="fu">sapply</span>(<span class="cf">function</span>(x) x[[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-5-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>top3_prob <span class="ot">&lt;-</span> top3[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">nnf_softmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">lapply</span>(as.numeric)</span>
-<span id="cb32-5"><a href="#cb32-5"></a></span>
-<span id="cb32-6"><a href="#cb32-6"></a>top3_class <span class="ot">&lt;-</span> top3[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb32-7"><a href="#cb32-7"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb32-8"><a href="#cb32-8"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) mapping[<span class="fu">as.integer</span>(x)])</span>
-<span id="cb32-9"><a href="#cb32-9"></a></span>
-<span id="cb32-10"><a href="#cb32-10"></a>result <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(top3_prob, top3_class, <span class="cf">function</span>(pr, cl) {</span>
-<span id="cb32-11"><a href="#cb32-11"></a>  <span class="fu">names</span>(pr) <span class="ot">&lt;-</span> cl</span>
-<span id="cb32-12"><a href="#cb32-12"></a>  pr</span>
-<span id="cb32-13"><a href="#cb32-13"></a>})</span>
-<span id="cb32-14"><a href="#cb32-14"></a><span class="fu">names</span>(result) <span class="ot">&lt;-</span> image_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>top3_prob <span class="ot">&lt;-</span> top3[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a></a>  <span class="fu">nnf_softmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-3"><a></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb32-4"><a></a>  <span class="fu">lapply</span>(as.numeric)</span>
+<span id="cb32-5"><a></a></span>
+<span id="cb32-6"><a></a>top3_class <span class="ot">&lt;-</span> top3[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb32-7"><a></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb32-8"><a></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) mapping[<span class="fu">as.integer</span>(x)])</span>
+<span id="cb32-9"><a></a></span>
+<span id="cb32-10"><a></a>result <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(top3_prob, top3_class, <span class="cf">function</span>(pr, cl) {</span>
+<span id="cb32-11"><a></a>  <span class="fu">names</span>(pr) <span class="ot">&lt;-</span> cl</span>
+<span id="cb32-12"><a></a>  pr</span>
+<span id="cb32-13"><a></a>})</span>
+<span id="cb32-14"><a></a><span class="fu">names</span>(result) <span class="ot">&lt;-</span> image_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-5-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; $flamingo.jpg
 #&gt;    flamingo   spoonbill white_stork 
@@ -1753,25 +1751,25 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <div class="tab-content">
 <div id="tabset-6-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
-<span id="cb35-2"><a href="#cb35-2"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>)</span>
-<span id="cb35-3"><a href="#cb35-3"></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
-<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb35-5"><a href="#cb35-5"></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb35-6"><a href="#cb35-6"></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb35-7"><a href="#cb35-7"></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb35-8"><a href="#cb35-8"></a>     <span class="fu">transform_normalize</span>(</span>
-<span id="cb35-9"><a href="#cb35-9"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
-<span id="cb35-10"><a href="#cb35-10"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
-<span id="cb35-11"><a href="#cb35-11"></a>     )</span>
-<span id="cb35-12"><a href="#cb35-12"></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
+<span id="cb35-2"><a></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>)</span>
+<span id="cb35-3"><a></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
+<span id="cb35-4"><a></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb35-5"><a></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb35-6"><a></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb35-7"><a></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb35-8"><a></a>     <span class="fu">transform_normalize</span>(</span>
+<span id="cb35-9"><a></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
+<span id="cb35-10"><a></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
+<span id="cb35-11"><a></a>     )</span>
+<span id="cb35-12"><a></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-6-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
-<span id="cb36-2"><a href="#cb36-2"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb36-3"><a href="#cb36-3"></a>mapping[<span class="fu">as.integer</span>(top3[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
+<span id="cb36-2"><a></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb36-3"><a></a>mapping[<span class="fu">as.integer</span>(top3[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;                  288                   48                   50 
 #&gt;            "leopard"      "Komodo_dragon" "American_alligator"</code></pre>
@@ -1784,77 +1782,79 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
 <section id="all-r-code-1" class="slide level2">
 <h2>ALL R Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">library</span>(torch)</span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
-<span id="cb38-4"><a href="#cb38-4"></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
-<span id="cb38-5"><a href="#cb38-5"></a><span class="fu">library</span>(zeallot)</span>
-<span id="cb38-6"><a href="#cb38-6"></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span>
-<span id="cb38-7"><a href="#cb38-7"></a></span>
-<span id="cb38-8"><a href="#cb38-8"></a>img_dir <span class="ot">&lt;-</span> <span class="st">"img/books"</span> <span class="do">## CHANGE THIS</span></span>
-<span id="cb38-9"><a href="#cb38-9"></a>image_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(img_dir)</span>
-<span id="cb38-10"><a href="#cb38-10"></a>num_images <span class="ot">&lt;-</span> <span class="fu">length</span>(image_names)</span>
-<span id="cb38-11"><a href="#cb38-11"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(num_images, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
-<span id="cb38-12"><a href="#cb38-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_images) {</span>
-<span id="cb38-13"><a href="#cb38-13"></a>   img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(img_dir, image_names[i])</span>
-<span id="cb38-14"><a href="#cb38-14"></a>   img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span> </span>
-<span id="cb38-15"><a href="#cb38-15"></a>     <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-16"><a href="#cb38-16"></a>     <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-17"><a href="#cb38-17"></a>     <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb38-18"><a href="#cb38-18"></a>     <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb38-19"><a href="#cb38-19"></a>     <span class="fu">transform_normalize</span>(</span>
-<span id="cb38-20"><a href="#cb38-20"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
-<span id="cb38-21"><a href="#cb38-21"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
-<span id="cb38-22"><a href="#cb38-22"></a>     )</span>
-<span id="cb38-23"><a href="#cb38-23"></a>   x[i,,, ] <span class="ot">&lt;-</span> img</span>
-<span id="cb38-24"><a href="#cb38-24"></a>}</span>
-<span id="cb38-25"><a href="#cb38-25"></a></span>
-<span id="cb38-26"><a href="#cb38-26"></a>model_imagenet <span class="ot">&lt;-</span> torchvision<span class="sc">::</span><span class="fu">model_resnet18</span>(<span class="at">pretrained =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb38-27"><a href="#cb38-27"></a>model_imagenet<span class="sc">$</span><span class="fu">eval</span>() <span class="co"># put the model in evaluation mode</span></span>
-<span id="cb38-28"><a href="#cb38-28"></a></span>
-<span id="cb38-29"><a href="#cb38-29"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
-<span id="cb38-30"><a href="#cb38-30"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb38-31"><a href="#cb38-31"></a></span>
-<span id="cb38-32"><a href="#cb38-32"></a>mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb38-33"><a href="#cb38-33"></a>  <span class="fu">sapply</span>(<span class="cf">function</span>(x) x[[<span class="dv">2</span>]])</span>
-<span id="cb38-34"><a href="#cb38-34"></a></span>
-<span id="cb38-35"><a href="#cb38-35"></a>top3_prob <span class="ot">&lt;-</span> top3[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb38-36"><a href="#cb38-36"></a>  <span class="fu">nnf_softmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb38-37"><a href="#cb38-37"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb38-38"><a href="#cb38-38"></a>  <span class="fu">lapply</span>(as.numeric)</span>
-<span id="cb38-39"><a href="#cb38-39"></a></span>
-<span id="cb38-40"><a href="#cb38-40"></a>top3_class <span class="ot">&lt;-</span> top3[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
-<span id="cb38-41"><a href="#cb38-41"></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb38-42"><a href="#cb38-42"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) mapping[<span class="fu">as.integer</span>(x)])</span>
-<span id="cb38-43"><a href="#cb38-43"></a></span>
-<span id="cb38-44"><a href="#cb38-44"></a>result <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(top3_prob, top3_class, <span class="cf">function</span>(pr, cl) {</span>
-<span id="cb38-45"><a href="#cb38-45"></a>  <span class="fu">names</span>(pr) <span class="ot">&lt;-</span> cl</span>
-<span id="cb38-46"><a href="#cb38-46"></a>  pr</span>
-<span id="cb38-47"><a href="#cb38-47"></a>})</span>
-<span id="cb38-48"><a href="#cb38-48"></a><span class="fu">names</span>(result) <span class="ot">&lt;-</span> image_names</span>
-<span id="cb38-49"><a href="#cb38-49"></a></span>
-<span id="cb38-50"><a href="#cb38-50"></a><span class="fu">print</span>(result)</span>
-<span id="cb38-51"><a href="#cb38-51"></a></span>
-<span id="cb38-52"><a href="#cb38-52"></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
-<span id="cb38-53"><a href="#cb38-53"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>) <span class="do">## CHANGE THIS</span></span>
-<span id="cb38-54"><a href="#cb38-54"></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
-<span id="cb38-55"><a href="#cb38-55"></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-56"><a href="#cb38-56"></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
-<span id="cb38-57"><a href="#cb38-57"></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb38-58"><a href="#cb38-58"></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
-<span id="cb38-59"><a href="#cb38-59"></a>     <span class="fu">transform_normalize</span>(</span>
-<span id="cb38-60"><a href="#cb38-60"></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
-<span id="cb38-61"><a href="#cb38-61"></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
-<span id="cb38-62"><a href="#cb38-62"></a>     )</span>
-<span id="cb38-63"><a href="#cb38-63"></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
-<span id="cb38-64"><a href="#cb38-64"></a></span>
-<span id="cb38-65"><a href="#cb38-65"></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
-<span id="cb38-66"><a href="#cb38-66"></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb38-67"><a href="#cb38-67"></a>mapping[<span class="fu">as.integer</span>(top3[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">library</span>(torch)</span>
+<span id="cb38-2"><a></a><span class="fu">library</span>(luz) <span class="co"># high-level interface for torch</span></span>
+<span id="cb38-3"><a></a><span class="fu">library</span>(torchvision) <span class="co"># for datasets and image transformation</span></span>
+<span id="cb38-4"><a></a><span class="fu">library</span>(torchdatasets) <span class="co"># for datasets we are going to use</span></span>
+<span id="cb38-5"><a></a><span class="fu">library</span>(zeallot)</span>
+<span id="cb38-6"><a></a><span class="fu">torch_manual_seed</span>(<span class="dv">13</span>)</span>
+<span id="cb38-7"><a></a></span>
+<span id="cb38-8"><a></a>img_dir <span class="ot">&lt;-</span> <span class="st">"img/books"</span> <span class="do">## CHANGE THIS</span></span>
+<span id="cb38-9"><a></a>image_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(img_dir)</span>
+<span id="cb38-10"><a></a>num_images <span class="ot">&lt;-</span> <span class="fu">length</span>(image_names)</span>
+<span id="cb38-11"><a></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(num_images, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
+<span id="cb38-12"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_images) {</span>
+<span id="cb38-13"><a></a>   img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(img_dir, image_names[i])</span>
+<span id="cb38-14"><a></a>   img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span> </span>
+<span id="cb38-15"><a></a>     <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-16"><a></a>     <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-17"><a></a>     <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb38-18"><a></a>     <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb38-19"><a></a>     <span class="fu">transform_normalize</span>(</span>
+<span id="cb38-20"><a></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
+<span id="cb38-21"><a></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
+<span id="cb38-22"><a></a>     )</span>
+<span id="cb38-23"><a></a>   x[i,,, ] <span class="ot">&lt;-</span> img</span>
+<span id="cb38-24"><a></a>}</span>
+<span id="cb38-25"><a></a></span>
+<span id="cb38-26"><a></a>model_imagenet <span class="ot">&lt;-</span> torchvision<span class="sc">::</span><span class="fu">model_resnet18</span>(<span class="at">pretrained =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb38-27"><a></a>model_imagenet<span class="sc">$</span><span class="fu">eval</span>() <span class="co"># put the model in evaluation mode</span></span>
+<span id="cb38-28"><a></a></span>
+<span id="cb38-29"><a></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
+<span id="cb38-30"><a></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb38-31"><a></a></span>
+<span id="cb38-32"><a></a>mapping <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-33"><a></a>  <span class="fu">sapply</span>(<span class="cf">function</span>(x) x[[<span class="dv">2</span>]])</span>
+<span id="cb38-34"><a></a></span>
+<span id="cb38-35"><a></a>top3_prob <span class="ot">&lt;-</span> top3[[<span class="dv">1</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb38-36"><a></a>  <span class="fu">nnf_softmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-37"><a></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb38-38"><a></a>  <span class="fu">lapply</span>(as.numeric)</span>
+<span id="cb38-39"><a></a></span>
+<span id="cb38-40"><a></a>top3_class <span class="ot">&lt;-</span> top3[[<span class="dv">2</span>]] <span class="sc">|&gt;</span> </span>
+<span id="cb38-41"><a></a>  <span class="fu">torch_unbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb38-42"><a></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) mapping[<span class="fu">as.integer</span>(x)])</span>
+<span id="cb38-43"><a></a></span>
+<span id="cb38-44"><a></a>result <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(top3_prob, top3_class, <span class="cf">function</span>(pr, cl) {</span>
+<span id="cb38-45"><a></a>  <span class="fu">names</span>(pr) <span class="ot">&lt;-</span> cl</span>
+<span id="cb38-46"><a></a>  pr</span>
+<span id="cb38-47"><a></a>})</span>
+<span id="cb38-48"><a></a><span class="fu">names</span>(result) <span class="ot">&lt;-</span> image_names</span>
+<span id="cb38-49"><a></a></span>
+<span id="cb38-50"><a></a><span class="fu">print</span>(result)</span>
+<span id="cb38-51"><a></a></span>
+<span id="cb38-52"><a></a>x <span class="ot">&lt;-</span> <span class="fu">torch_empty</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
+<span id="cb38-53"><a></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"img/squirrel.jpg"</span>) <span class="do">## CHANGE THIS</span></span>
+<span id="cb38-54"><a></a>img <span class="ot">&lt;-</span> img_path <span class="sc">|&gt;</span>  </span>
+<span id="cb38-55"><a></a>  <span class="fu">base_loader</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-56"><a></a>  <span class="fu">transform_to_tensor</span>() <span class="sc">|&gt;</span>  </span>
+<span id="cb38-57"><a></a>  <span class="fu">transform_resize</span>(<span class="fu">c</span>(<span class="dv">224</span>, <span class="dv">224</span>)) <span class="sc">|&gt;</span>  </span>
+<span id="cb38-58"><a></a>  <span class="co"># normalize with imagenet mean and stds.</span></span>
+<span id="cb38-59"><a></a>     <span class="fu">transform_normalize</span>(</span>
+<span id="cb38-60"><a></a>       <span class="at">mean =</span> <span class="fu">c</span>(<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>),</span>
+<span id="cb38-61"><a></a>       <span class="at">std =</span> <span class="fu">c</span>(<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>)</span>
+<span id="cb38-62"><a></a>     )</span>
+<span id="cb38-63"><a></a>x[<span class="dv">1</span>,,, ] <span class="ot">&lt;-</span> img</span>
+<span id="cb38-64"><a></a></span>
+<span id="cb38-65"><a></a>preds <span class="ot">&lt;-</span> <span class="fu">model_imagenet</span>(x)</span>
+<span id="cb38-66"><a></a>top3 <span class="ot">&lt;-</span> <span class="fu">torch_topk</span>(preds, <span class="at">dim =</span> <span class="dv">2</span>, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb38-67"><a></a>mapping[<span class="fu">as.integer</span>(top3[[<span class="dv">2</span>]])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 <div class="reveal-header">
 <div class="header-logo">
@@ -2157,18 +2157,7 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2200,7 +2189,47 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -2237,7 +2266,11 @@ g\alpha + h\beta + j\gamma + k\delta &amp; h\alpha + i\beta + k\gamma + l\delta
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

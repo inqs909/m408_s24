@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Linear Regression</title>
+  <title>MATH 408 – Linear Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -429,11 +429,11 @@
 </ul>
 <p>Measuring the association between species and flipper length from <code>palmerpenguins</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Stratification</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>()  <span class="sc">|&gt;</span> </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span>  </span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(flipper_length_mm),</span>
-<span id="cb1-5"><a href="#cb1-5"></a>            <span class="at">median =</span> <span class="fu">median</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Stratification</span></span>
+<span id="cb1-2"><a></a>penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>()  <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span>  </span>
+<span id="cb1-4"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(flipper_length_mm),</span>
+<span id="cb1-5"><a></a>            <span class="at">median =</span> <span class="fu">median</span>(flipper_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 3 × 3
 #&gt;   species    mean median
@@ -442,9 +442,9 @@
 #&gt; 2 Chinstrap  196.    196
 #&gt; 3 Gentoo     217.    216</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># ANOVA</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>species_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(flipper_length_mm <span class="sc">~</span> species, penguins)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">tidy</span>(species_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># ANOVA</span></span>
+<span id="cb3-2"><a></a>species_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(flipper_length_mm <span class="sc">~</span> species, penguins)</span>
+<span id="cb3-3"><a></a><span class="fu">tidy</span>(species_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 2 × 6
 #&gt;   term         df  sumsq  meansq statistic    p.value
@@ -458,9 +458,9 @@
 <h2>Categorical vs Categorical</h2>
 <p>Comparing 2 categorical variables can be done by computing proportions or conducting a chi-square test. Below is an example comparing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Count and Proportions</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>penguins <span class="sc">|&gt;</span>  <span class="fu">group_by</span>(species, island) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">proportions =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(penguins))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Count and Proportions</span></span>
+<span id="cb5-2"><a></a>penguins <span class="sc">|&gt;</span>  <span class="fu">group_by</span>(species, island) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">proportions =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(penguins))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 5 × 4
 #&gt; # Groups:   species [3]
@@ -472,8 +472,8 @@
 #&gt; 4 Chinstrap Dream        68       0.198
 #&gt; 5 Gentoo    Biscoe      124       0.360</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Chi-Square Test</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>penguins <span class="sc">|&gt;</span> <span class="fu">with</span>(<span class="fu">chisq.test</span>(species, island))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Chi-Square Test</span></span>
+<span id="cb7-2"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">with</span>(<span class="fu">chisq.test</span>(species, island))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt;  Pearson's Chi-squared test
@@ -500,9 +500,9 @@
 <li><p>Kendall’s Tau</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Pearson's Correlation</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="fu">cor.test</span>(<span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm, </span>
-<span id="cb9-3"><a href="#cb9-3"></a>                                  <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Pearson's Correlation</span></span>
+<span id="cb9-2"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="fu">cor.test</span>(<span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm, </span>
+<span id="cb9-3"><a></a>                                  <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt;  Pearson's product-moment correlation
@@ -516,10 +516,10 @@
 #&gt;       cor 
 #&gt; 0.8729789</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Spearman's Correlation </span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="fu">cor.test</span>(<span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm,</span>
-<span id="cb11-3"><a href="#cb11-3"></a>                                   <span class="at">data =</span> _,</span>
-<span id="cb11-4"><a href="#cb11-4"></a>                                   <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># Spearman's Correlation </span></span>
+<span id="cb11-2"><a></a>penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="fu">cor.test</span>(<span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm,</span>
+<span id="cb11-3"><a></a>                                   <span class="at">data =</span> _,</span>
+<span id="cb11-4"><a></a>                                   <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt;  Spearman's rank correlation rho
@@ -531,10 +531,10 @@
 #&gt;       rho 
 #&gt; 0.8403902</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Kendall's Tau</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="fu">cor.test</span>(<span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm,</span>
-<span id="cb13-3"><a href="#cb13-3"></a>                                   <span class="at">data =</span> _,</span>
-<span id="cb13-4"><a href="#cb13-4"></a>                                   <span class="at">method =</span> <span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># Kendall's Tau</span></span>
+<span id="cb13-2"><a></a>penguins <span class="sc">|&gt;</span>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span> <span class="fu">cor.test</span>(<span class="sc">~</span> body_mass_g <span class="sc">+</span> flipper_length_mm,</span>
+<span id="cb13-3"><a></a>                                   <span class="at">data =</span> _,</span>
+<span id="cb13-4"><a></a>                                   <span class="at">method =</span> <span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt;  Kendall's rank correlation tau
@@ -627,7 +627,7 @@ RSS = \sum^n_{i=1}(Y_i-\hat Y_i)^2
 <p>In R, we create a formula using the <code>tilde</code></p>
 <p>Outcome Variable <code>tilde</code> Independent Variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ooutcome_variable_name <span class="sc">~</span> independent_variable_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>ooutcome_variable_name <span class="sc">~</span> independent_variable_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-example" class="slide level2">
@@ -686,7 +686,7 @@ RSS = \sum^n_{i=1}(Y_i-\hat Y_i)^2
 <h2>Generate X Values</h2>
 <p>Simulate 250 independent values (x) from <span class="math inline">\(N(3, 1)\)</span> and plot a histogram</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="generate-y-values" class="slide level2">
@@ -710,7 +710,7 @@ Y_i = 3 X_i + 20 + \epsilon_i
 \]</span></p>
 <p>Create a scatter plot</p>
 </section>
-<section id="simulation-study" class="slide level2">
+<section id="simulation-study" class="slide level2 scrollable">
 <h2>Simulation Study</h2>
 <p>To confirm that <code>lm</code> works, repeat the process 100 times and obtain the average <span class="math inline">\(\beta\)</span> estimates:</p>
 <ol type="1">
@@ -725,38 +725,40 @@ Y_i = 3 X_i + 20 + \epsilon_i
 <section id="r-code-of-simulation-study" class="slide level2">
 <h2>R Code of Simulation Study</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="do">## Original Code</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a></span>
-<span id="cb18-3"><a href="#cb18-3"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
-<span id="cb18-4"><a href="#cb18-4"></a>py <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">20</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>err <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb18-6"><a href="#cb18-6"></a>y <span class="ot">&lt;-</span> py <span class="sc">+</span> err</span>
-<span id="cb18-7"><a href="#cb18-7"></a>res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb18-8"><a href="#cb18-8"></a><span class="fu">coef</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="do">## Original Code</span></span>
+<span id="cb18-2"><a></a></span>
+<span id="cb18-3"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb18-4"><a></a>py <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">20</span></span>
+<span id="cb18-5"><a></a>err <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb18-6"><a></a>y <span class="ot">&lt;-</span> py <span class="sc">+</span> err</span>
+<span id="cb18-7"><a></a>res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb18-8"><a></a><span class="fu">coef</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; (Intercept)           x 
 #&gt;    20.85743     2.73536</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Simulation Study</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>sim <span class="ot">&lt;-</span> \(i){</span>
-<span id="cb20-3"><a href="#cb20-3"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
-<span id="cb20-4"><a href="#cb20-4"></a>  py <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">20</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  err <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb20-6"><a href="#cb20-6"></a>  y <span class="ot">&lt;-</span> py <span class="sc">+</span> err</span>
-<span id="cb20-7"><a href="#cb20-7"></a>  res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb20-8"><a href="#cb20-8"></a>  <span class="fu">return</span>(<span class="fu">coef</span>(res))</span>
-<span id="cb20-9"><a href="#cb20-9"></a>}</span>
-<span id="cb20-10"><a href="#cb20-10"></a></span>
-<span id="cb20-11"><a href="#cb20-11"></a>sim_results <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, sim)</span>
-<span id="cb20-12"><a href="#cb20-12"></a><span class="fu">rowMeans</span>(sim_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Simulation Study</span></span>
+<span id="cb20-2"><a></a>sim <span class="ot">&lt;-</span> \(i){</span>
+<span id="cb20-3"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb20-4"><a></a>  py <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">20</span></span>
+<span id="cb20-5"><a></a>  err <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb20-6"><a></a>  y <span class="ot">&lt;-</span> py <span class="sc">+</span> err</span>
+<span id="cb20-7"><a></a>  res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb20-8"><a></a>  <span class="fu">return</span>(<span class="fu">coef</span>(res))</span>
+<span id="cb20-9"><a></a>}</span>
+<span id="cb20-10"><a></a></span>
+<span id="cb20-11"><a></a>sim_results <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, sim)</span>
+<span id="cb20-12"><a></a><span class="fu">rowMeans</span>(sim_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; (Intercept)           x 
 #&gt;   20.018763    2.994175</code></pre>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -1041,18 +1043,7 @@ Y_i = 3 X_i + 20 + \epsilon_i
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1084,7 +1075,47 @@ Y_i = 3 X_i + 20 + \epsilon_i
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1121,7 +1152,11 @@ Y_i = 3 X_i + 20 + \epsilon_i
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

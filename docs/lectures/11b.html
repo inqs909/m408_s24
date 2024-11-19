@@ -14,9 +14,9 @@
 <script src="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/code-fullscreen-1.0.0/code-fullscreen.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Resampling Methods</title>
+  <title>MATH 408 – Resampling Methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -496,11 +496,11 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 <section id="cv-in-glmnet" class="slide level2">
 <h2>CV in <code>glmnet</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">cv.glmnet</span>(x, <span class="co"># predictor matrix</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>          y, <span class="co"># response variable</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>          alpha, <span class="co"># Ridge</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>          lambda, <span class="co"># Use a vector of lambdas</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>          nfolds) <span class="co"># Number folds, use size of data for LOOCV</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">cv.glmnet</span>(x, <span class="co"># predictor matrix</span></span>
+<span id="cb1-2"><a></a>          y, <span class="co"># response variable</span></span>
+<span id="cb1-3"><a></a>          alpha, <span class="co"># Ridge</span></span>
+<span id="cb1-4"><a></a>          lambda, <span class="co"># Use a vector of lambdas</span></span>
+<span id="cb1-5"><a></a>          nfolds) <span class="co"># Number folds, use size of data for LOOCV</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example---ridge-regression" class="slide level2">
@@ -510,27 +510,27 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
-<span id="cb2-5"><a href="#cb2-5"></a>mod <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="at">data =</span> _) <span class="co"># Must include -1 to remove intercept, needed for glmnet</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>lambdas <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-4"><a></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
+<span id="cb2-5"><a></a>mod <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb2-6"><a></a>  <span class="at">data =</span> _) <span class="co"># Must include -1 to remove intercept, needed for glmnet</span></span>
+<span id="cb2-7"><a></a>lambdas <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>ridge_mod_cv <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(<span class="at">x =</span> mod, </span>
-<span id="cb3-2"><a href="#cb3-2"></a>                          <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
-<span id="cb3-3"><a href="#cb3-3"></a>                          <span class="at">alpha =</span> <span class="dv">0</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>                          <span class="at">lambda =</span> lambdas,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>                          <span class="at">nfolds =</span> <span class="dv">333</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ridge_mod_cv <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(<span class="at">x =</span> mod, </span>
+<span id="cb3-2"><a></a>                          <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
+<span id="cb3-3"><a></a>                          <span class="at">alpha =</span> <span class="dv">0</span>,</span>
+<span id="cb3-4"><a></a>                          <span class="at">lambda =</span> lambdas,</span>
+<span id="cb3-5"><a></a>                          <span class="at">nfolds =</span> <span class="dv">333</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">plot</span>(ridge_mod_cv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">plot</span>(ridge_mod_cv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -542,7 +542,7 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 </div>
 <div id="tabset-1-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>ridge_mod_cv<span class="sc">$</span>lambda.min</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>ridge_mod_cv<span class="sc">$</span>lambda.min</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 1.8</code></pre>
 </div>
@@ -550,12 +550,12 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 </div>
 <div id="tabset-1-5">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>ridge_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
-<span id="cb7-2"><a href="#cb7-2"></a>                       <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
-<span id="cb7-3"><a href="#cb7-3"></a>                       <span class="at">alpha =</span> <span class="dv">0</span>,</span>
-<span id="cb7-4"><a href="#cb7-4"></a>                       <span class="at">lambda =</span> <span class="fl">1.8</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">coef</span>(ridge_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>ridge_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
+<span id="cb7-2"><a></a>                       <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
+<span id="cb7-3"><a></a>                       <span class="at">alpha =</span> <span class="dv">0</span>,</span>
+<span id="cb7-4"><a></a>                       <span class="at">lambda =</span> <span class="fl">1.8</span>)</span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a><span class="fu">coef</span>(ridge_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm 
 #&gt;      -6384.278567         50.452983         16.803642          3.716981</code></pre>
@@ -572,27 +572,27 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
-<span id="cb9-5"><a href="#cb9-5"></a>mod <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="at">data =</span> _) <span class="co"># Must include -1 to remove intercept, needed for glmnet</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>lambdas <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb9-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb9-4"><a></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
+<span id="cb9-5"><a></a>mod <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_depth_mm <span class="sc">+</span> bill_length_mm <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb9-6"><a></a>  <span class="at">data =</span> _) <span class="co"># Must include -1 to remove intercept, needed for glmnet</span></span>
+<span id="cb9-7"><a></a>lambdas <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>ridge_mod_cv <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(<span class="at">x =</span> mod, </span>
-<span id="cb10-2"><a href="#cb10-2"></a>                          <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
-<span id="cb10-3"><a href="#cb10-3"></a>                          <span class="at">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>                          <span class="at">lambda =</span> lambdas,</span>
-<span id="cb10-5"><a href="#cb10-5"></a>                          <span class="at">nfolds =</span> <span class="dv">333</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>ridge_mod_cv <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(<span class="at">x =</span> mod, </span>
+<span id="cb10-2"><a></a>                          <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
+<span id="cb10-3"><a></a>                          <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb10-4"><a></a>                          <span class="at">lambda =</span> lambdas,</span>
+<span id="cb10-5"><a></a>                          <span class="at">nfolds =</span> <span class="dv">333</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-2-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">plot</span>(ridge_mod_cv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">plot</span>(ridge_mod_cv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -604,7 +604,7 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 </div>
 <div id="tabset-2-4">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>ridge_mod_cv<span class="sc">$</span>lambda.min</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>ridge_mod_cv<span class="sc">$</span>lambda.min</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 1</code></pre>
 </div>
@@ -612,12 +612,12 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 </div>
 <div id="tabset-2-5">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>ridge_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
-<span id="cb14-2"><a href="#cb14-2"></a>                       <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
-<span id="cb14-3"><a href="#cb14-3"></a>                       <span class="at">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb14-4"><a href="#cb14-4"></a>                       <span class="at">lambda =</span> <span class="dv">1</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="fu">coef</span>(ridge_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>ridge_mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(<span class="at">x =</span> mod, </span>
+<span id="cb14-2"><a></a>                       <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g,</span>
+<span id="cb14-3"><a></a>                       <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb14-4"><a></a>                       <span class="at">lambda =</span> <span class="dv">1</span>)</span>
+<span id="cb14-5"><a></a></span>
+<span id="cb14-6"><a></a><span class="fu">coef</span>(ridge_mod)[,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;       (Intercept) flipper_length_mm     bill_depth_mm    bill_length_mm 
 #&gt;      -6388.713373         50.581044         16.602520          3.311258</code></pre>
@@ -641,7 +641,7 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 <p>Bootstrapping methods are used when we cannot theoretically compute the standard errors. Bootstrap methods are computationally intensive but will compute accurate standard errors.</p>
 <p>When all else fails, a bootstrap approach will compute accurate standard errors.</p>
 </section>
-<section id="bootstrap-algorithm" class="slide level2">
+<section id="bootstrap-algorithm" class="slide level2 scrollable">
 <h2>Bootstrap Algorithm</h2>
 <ol type="1">
 <li>Draw a sample <span class="math inline">\(X*\)</span> of size <span class="math inline">\(n\)</span> with replacement from the original data <span class="math inline">\(X\)</span>.
@@ -659,11 +659,11 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 <h2>Examples</h2>
 <p>Fitting the following model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb16-3"><a href="#cb16-3"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
-<span id="cb16-4"><a href="#cb16-4"></a>penguins <span class="sc">|&gt;</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm,</span>
-<span id="cb16-5"><a href="#cb16-5"></a>               <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb16-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-3"><a></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">drop_na</span>()</span>
+<span id="cb16-4"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> bill_length_mm <span class="sc">+</span> bill_depth_mm,</span>
+<span id="cb16-5"><a></a>               <span class="at">data =</span> _)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
 #&gt; Call:
@@ -677,8 +677,10 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
 </div>
 <p>Obtain the Bootstrap-based Standard Errors for the regression coefficients. Use <span class="math inline">\(B=1000\)</span> bootstrap samples.</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 <div class="reveal-header">
 <div class="header-logo">
@@ -981,18 +983,7 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1024,7 +1015,47 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1061,7 +1092,11 @@ CVE_j = \frac{1}{n}\sum^n_{i=1}e_i
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

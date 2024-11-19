@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.506">
+  <meta name="generator" content="quarto-1.5.56">
 
-  <title>MATH 408 - Intro to Data Manipulation</title>
+  <title>MATH 408 – Intro to Data Manipulation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -418,16 +418,16 @@
 <p>An anonymous function is a function that is not stored in an R object for the global environment. It can be thought of as a temporary function to complete a task. A common way to used an anonymous function is with an <code>*apply()</code> function<br>
 </p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">sapply</span>(x, <span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb1-2"><a></a><span class="fu">sapply</span>(x, <span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;  [1]  0.9645593  2.4985323  3.6130830  3.4038356  6.6371189  3.9822256
 #&gt;  [7]  7.6365972  8.9805052 12.6891921  7.6383656</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">sapply</span>(x, \(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb3-2"><a></a><span class="fu">sapply</span>(x, \(x) <span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="dv">1</span>,x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;  [1]   1.1161187   2.8188918  -1.8337787   3.9964652  -3.8217755  -1.3573966
 #&gt;  [7]  -1.4840088  -0.1488438  19.3957272 -12.3938028</code></pre>
@@ -438,16 +438,16 @@
 <h2>Example</h2>
 <p>Use an anonymous function to square all the values in the following vector:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Use an anonymous function to calculate the square of each element in a vector</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Use an anonymous function to calculate the square of each element in a vector</span></span>
+<span id="cb5-2"><a></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
 <p>Use an anonymous function to convert the vector from Fahrenheit to Celsius:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Create a vector of temperatures in Fahrenheit</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>temperatures_f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">68</span>, <span class="dv">104</span>, <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Create a vector of temperatures in Fahrenheit</span></span>
+<span id="cb6-2"><a></a>temperatures_f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">68</span>, <span class="dv">104</span>, <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math display">\[
 C = \frac{5(F-32)}{9}
@@ -462,7 +462,7 @@ C = \frac{5(F-32)}{9}
 <h2>Pipes</h2>
 <p>Pipes are used to pass the output from one function and use it as input for another function. The output is piped into the first argument of the next function. There are two main pipes: R’s base pipe and Magrittr’s pipes. You must download and install the <code>magrittr</code> package; and you will need to load it everytime:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(magrittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(magrittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Additionally, pipes can be used to chain functions together.</p>
 </section>
@@ -470,8 +470,8 @@ C = \frac{5(F-32)}{9}
 <h2><code>|&gt;</code></h2>
 <p>Before R 4.1, R did not have a pipe in its main program. The base pipe, <code>|&gt;</code>, will pipe the output of the first operation and use it as the input of the first argument of the next function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>x <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span></span>
+<span id="cb8-2"><a></a>x <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 20.5</code></pre>
 </div>
@@ -481,16 +481,16 @@ C = \frac{5(F-32)}{9}
 <h2><code>%&gt;%</code></h2>
 <p>The magrittr pipe, <code>%&gt;%</code>, operates the same way as <code>|&gt;</code>. Below are a couple of examples</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>x <span class="sc">%&gt;%</span>  <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb10-2"><a></a>x <span class="sc">%&gt;%</span>  <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 5.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="sc">%&gt;%</span> sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>x <span class="sc">%&gt;%</span> sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 3.02765</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>x <span class="sc">%&gt;%</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 2.281058</code></pre>
 </div>
@@ -500,7 +500,7 @@ C = \frac{5(F-32)}{9}
 <h2><code>%$%</code></h2>
 <p>The exposition pipe, <code>%$%</code>, will expose the named elements, from a list or data frame, to the next function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>mtcars <span class="sc">%$%</span> <span class="fu">plot</span>(mpg, hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>mtcars <span class="sc">%$%</span> <span class="fu">plot</span>(mpg, hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="4b_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
@@ -508,11 +508,11 @@ C = \frac{5(F-32)}{9}
 <h2><code>%T&gt;%</code></h2>
 <p>The Tee pipe, <code>%T&gt;%</code>, forward the output in the</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>sin_40 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span> <span class="sc">%&gt;%</span> mean <span class="sc">%T&gt;%</span> print <span class="sc">%&gt;%</span> sin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>sin_40 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span> <span class="sc">%&gt;%</span> mean <span class="sc">%T&gt;%</span> print <span class="sc">%&gt;%</span> sin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 20.5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">print</span>(sin_40)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">print</span>(sin_40)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 0.9968298</code></pre>
 </div>
@@ -521,19 +521,19 @@ C = \frac{5(F-32)}{9}
 <section id="t-1" class="slide level2">
 <h2><code>%T&gt;%</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">sin</span>() <span class="sc">%T&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">plot</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a></a>  <span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a></a>  <span class="fu">sin</span>() <span class="sc">%T&gt;%</span> </span>
+<span id="cb21-4"><a></a>  <span class="fu">plot</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a></a>  <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="examples" class="slide level2">
 <h2>Examples</h2>
 <p>Using the vector below, find the standard deviation using a pipe:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb22-2"><a></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="examples-1" class="slide level2">
@@ -560,56 +560,56 @@ C = \frac{5(F-32)}{9}
 <section id="beginning-of-script" class="slide level2">
 <h2>Beginning of Script</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1"></a>## Todays data </span>
-<span id="cb23-2"><a href="#cb23-2"></a>analysis_data &lt;- format(Sys.time(),"%Y-%m-%d-%H-%M")</span>
-<span id="cb23-3"><a href="#cb23-3"></a></span>
-<span id="cb23-4"><a href="#cb23-4"></a>## R Packages</span>
-<span id="cb23-5"><a href="#cb23-5"></a>library(tidyverse)</span>
-<span id="cb23-6"><a href="#cb23-6"></a>library(magrittr)</span>
-<span id="cb23-7"><a href="#cb23-7"></a></span>
-<span id="cb23-8"><a href="#cb23-8"></a>## Functions</span>
-<span id="cb23-9"><a href="#cb23-9"></a>source("fxs.R")</span>
-<span id="cb23-10"><a href="#cb23-10"></a>Rcpp::sourceCpp("fxs.cpp")</span>
-<span id="cb23-11"><a href="#cb23-11"></a></span>
-<span id="cb23-12"><a href="#cb23-12"></a>## Data</span>
-<span id="cb23-13"><a href="#cb23-13"></a>df1 &lt;- read_csv("file.csv")</span>
-<span id="cb23-14"><a href="#cb23-14"></a>df2 &lt;- load("file.RData") %&gt;% get</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a></a>## Todays data </span>
+<span id="cb23-2"><a></a>analysis_data &lt;- format(Sys.time(),"%Y-%m-%d-%H-%M")</span>
+<span id="cb23-3"><a></a></span>
+<span id="cb23-4"><a></a>## R Packages</span>
+<span id="cb23-5"><a></a>library(tidyverse)</span>
+<span id="cb23-6"><a></a>library(magrittr)</span>
+<span id="cb23-7"><a></a></span>
+<span id="cb23-8"><a></a>## Functions</span>
+<span id="cb23-9"><a></a>source("fxs.R")</span>
+<span id="cb23-10"><a></a>Rcpp::sourceCpp("fxs.cpp")</span>
+<span id="cb23-11"><a></a></span>
+<span id="cb23-12"><a></a>## Data</span>
+<span id="cb23-13"><a></a>df1 &lt;- read_csv("file.csv")</span>
+<span id="cb23-14"><a></a>df2 &lt;- load("file.RData") %&gt;% get</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="middle-of-script" class="slide level2">
 <h2>Middle of Script</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1"></a>## Pre Analysis</span>
-<span id="cb24-2"><a href="#cb24-2"></a>df1_prep &lt;- Prep_data(df1)</span>
-<span id="cb24-3"><a href="#cb24-3"></a>df2_prep &lt;- Prep_data(df2)</span>
-<span id="cb24-4"><a href="#cb24-4"></a></span>
-<span id="cb24-5"><a href="#cb24-5"></a>## Analysis</span>
-<span id="cb24-6"><a href="#cb24-6"></a>df1_analysis &lt;- analyze(df1_prep)</span>
-<span id="cb24-7"><a href="#cb24-7"></a>df2_analysis &lt;- analyze(df2_prep)</span>
-<span id="cb24-8"><a href="#cb24-8"></a></span>
-<span id="cb24-9"><a href="#cb24-9"></a>## Post Analysis</span>
-<span id="cb24-10"><a href="#cb24-10"></a>df1_post &lt;- Prep_post(df1_anlysis)</span>
-<span id="cb24-11"><a href="#cb24-11"></a>df2_post &lt;- Prep_post(df2_anlysis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a></a>## Pre Analysis</span>
+<span id="cb24-2"><a></a>df1_prep &lt;- Prep_data(df1)</span>
+<span id="cb24-3"><a></a>df2_prep &lt;- Prep_data(df2)</span>
+<span id="cb24-4"><a></a></span>
+<span id="cb24-5"><a></a>## Analysis</span>
+<span id="cb24-6"><a></a>df1_analysis &lt;- analyze(df1_prep)</span>
+<span id="cb24-7"><a></a>df2_analysis &lt;- analyze(df2_prep)</span>
+<span id="cb24-8"><a></a></span>
+<span id="cb24-9"><a></a>## Post Analysis</span>
+<span id="cb24-10"><a></a>df1_post &lt;- Prep_post(df1_anlysis)</span>
+<span id="cb24-11"><a></a>df2_post &lt;- Prep_post(df2_anlysis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="end-of-script" class="slide level2">
 <h2>End of Script</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1"></a>## Save Results</span>
-<span id="cb25-2"><a href="#cb25-2"></a>res &lt;- list(df1 = list(pre = df1_prep,</span>
-<span id="cb25-3"><a href="#cb25-3"></a>                       analysis = df1_analysis,</span>
-<span id="cb25-4"><a href="#cb25-4"></a>                       post = df1_post),</span>
-<span id="cb25-5"><a href="#cb25-5"></a>            df2 = list(pre = df2_prep,</span>
-<span id="cb25-6"><a href="#cb25-6"></a>                       analysis = df2_analysis,</span>
-<span id="cb25-7"><a href="#cb25-7"></a>                       post = df2_post))</span>
-<span id="cb25-8"><a href="#cb25-8"></a>file_name &lt;- paste0("results_", analysis_data, ".RData")</span>
-<span id="cb25-9"><a href="#cb25-9"></a>save(res, file = file_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb25-1"><a></a>## Save Results</span>
+<span id="cb25-2"><a></a>res &lt;- list(df1 = list(pre = df1_prep,</span>
+<span id="cb25-3"><a></a>                       analysis = df1_analysis,</span>
+<span id="cb25-4"><a></a>                       post = df1_post),</span>
+<span id="cb25-5"><a></a>            df2 = list(pre = df2_prep,</span>
+<span id="cb25-6"><a></a>                       analysis = df2_analysis,</span>
+<span id="cb25-7"><a></a>                       post = df2_post))</span>
+<span id="cb25-8"><a></a>file_name &lt;- paste0("results_", analysis_data, ".RData")</span>
+<span id="cb25-9"><a></a>save(res, file = file_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="keyboard-shortcuts" class="slide level2">
 <h2>Keyboard Shortcuts</h2>
 <p>Below is a list of recommended keyboard shortcuts:</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Shortcut</th>
@@ -651,7 +651,7 @@ C = \frac{5(F-32)}{9}
 </tbody>
 </table>
 <p>I recommend modify these keyboard shortcuts in RStudio</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Shortcut</th>
@@ -679,7 +679,7 @@ C = \frac{5(F-32)}{9}
 </table>
 <p>Note you will need to install the <code>extraInserts</code> package:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'konradzdeb/extraInserts'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">'konradzdeb/extraInserts'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -708,16 +708,16 @@ C = \frac{5(F-32)}{9}
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="|2|3|4|5|6-9|10|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb27-2"><a href="#cb27-2"></a>sum_stats <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb27-3"><a href="#cb27-3"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bill_length_mm),</span>
-<span id="cb27-7"><a href="#cb27-7"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(bill_length_mm),</span>
-<span id="cb27-8"><a href="#cb27-8"></a>            <span class="at">median =</span> <span class="fu">median</span>(bill_length_mm),</span>
-<span id="cb27-9"><a href="#cb27-9"></a>            <span class="at">n =</span> <span class="fu">length</span>(bill_length_mm)) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-10"><a href="#cb27-10"></a>  print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="|2|3|4|5|6-9|10|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb27-2"><a></a>sum_stats <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bill_length_mm),</span>
+<span id="cb27-7"><a></a>            <span class="at">sd =</span> <span class="fu">sd</span>(bill_length_mm),</span>
+<span id="cb27-8"><a></a>            <span class="at">median =</span> <span class="fu">median</span>(bill_length_mm),</span>
+<span id="cb27-9"><a></a>            <span class="at">n =</span> <span class="fu">length</span>(bill_length_mm)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-10"><a></a>  print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 3 × 5
 #&gt;   island     mean    sd median     n
@@ -728,8 +728,10 @@ C = \frac{5(F-32)}{9}
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -1014,18 +1016,7 @@ C = \frac{5(F-32)}{9}
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1057,7 +1048,47 @@ C = \frac{5(F-32)}{9}
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("www\.inqs\.info\/m408_s24");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1094,7 +1125,11 @@ C = \frac{5(F-32)}{9}
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
